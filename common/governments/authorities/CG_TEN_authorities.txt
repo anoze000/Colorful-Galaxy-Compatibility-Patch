@@ -5,6 +5,7 @@ auth_parasite_mind = {
 	has_factions = no
 	has_agendas = yes
 	valid_for_released_vassal = no
+	ruler_council_position = councilor_ruler_corporate
 	potential = {
 		species_class = {
 			value = TEN
@@ -22,6 +23,7 @@ auth_parasite_mind = {
 		planet_colony_development_speed_mult = 0.2
 		colony_start_num_pops_add = 1
 		pop_growth_speed = 0.05
+		num_tech_alternatives_add = 1
 	}
 	tags = {
 		TEN_AND_PAR_MUST_USE_PARMIND

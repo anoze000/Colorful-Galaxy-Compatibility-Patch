@@ -41,7 +41,6 @@ civic_flirtatious_regime = {
 		base = 50
 	}
 	modifier = {
-		leader_skill_levels = 3
 		country_base_influence_produces_add = 1
 		pop_factions_unity_produces_mult = 1
 		subject_integration_influence_cost_mult = -0.5
@@ -50,7 +49,6 @@ civic_flirtatious_regime = {
 		leaders_cost_mult = -0.5
 		leaders_upkeep_mult = -0.5
 		species_leader_exp_gain = 0.5
-		leader_skill_levels = 3
 		diplo_action_acceptance_add = 20
 	}
 }
@@ -1073,7 +1071,6 @@ civic_sacrifice_lustgod = {
 		leaders_cost_mult = 0.77
 		leader_age = 777
 		species_leader_exp_gain = 0.77
-		leader_skill_levels = 7
 		empire_size_penalty_mult = -0.21
 	}
 	random_weight = {

@@ -4,17 +4,12 @@ auth_united_fleet = {
 	has_factions = no
 	can_reform = no
 	valid_for_released_vassal = no
-	
+	ruler_council_position = councilor_ruler_warshipgirls
 	has_agendas = yes
 	
 	random_weight = {
 		modifier = {
 			factor = 0
-		}
-	}
-	potential = {
-		species_archetype = {
-			value = UNITED_FLEET
 		}
 	}
 	possible = {
