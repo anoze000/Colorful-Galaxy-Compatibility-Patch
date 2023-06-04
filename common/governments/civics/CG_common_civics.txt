@@ -1,0 +1,33 @@
+#系统化人才培养
+civic_systematic_cultivation = {
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Girl
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+				value = Dolls
+			}
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_systematic_cultivation.dds"
+	description = civic_systematic_cultivation_description
+	possible = {
+	}
+	modifier = {
+		planet_beauty_produces_mult = 0.2
+	}
+	random_weight = {
+		base = 50
+	}
+}

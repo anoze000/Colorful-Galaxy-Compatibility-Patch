@@ -1,0 +1,341 @@
+is_carbon_based = {
+	OR = {
+		is_species_class = TBHUMAM
+		is_species_class = CPHUM
+		is_species_class = TBPLANT
+		is_species_class = TBVAMPIRE
+		is_species_class = TBCAT
+		is_species_class = TBDOG
+		is_species_class = TBVILLAIN
+		is_species_class = NECROID
+		is_species_class = AQUATIC
+		species = {
+			OR = {
+				is_archetype = BIOLOGICAL # original trigger did not include pre-sapient classes
+
+				is_archetype = WARSHIPGIRL				#_wsg
+				is_archetype = SHENHAI
+				is_archetype = UNITED_FLEET
+				is_archetype = NANITES_CROP
+
+				is_archetype = LILY						# 突击莉莉
+				is_archetype = STARSHIPGIRLS			# swg
+				is_archetype = KANMUSU					# kc
+				is_archetype = DATEALIVE				# DAL
+
+				is_archetype = KANSEN					#_|azl|
+				is_archetype = Dolls					#_灰烬
+				is_archetype = POKEMON					#_[pkman]	[伊布帝国v1.22]=2398450274
+				is_archetype = SCARLET_DOLL				#_[sklt]	[斯卡雷特帝国]=2208079856
+				is_archetype = HUMANOID					#_[ETCPM]
+				is_archetype = MAMMALIAN
+				is_archetype = REPTILIAN
+				is_archetype = AVIAN
+				is_archetype = ARTHROPOID
+				is_archetype = MOLUSCOID
+				is_archetype = FUNGOID
+				is_archetype = PLANTOID
+				is_archetype = NECROID
+				is_archetype = half_species
+				is_archetype = half_species_special
+				is_archetype = half_aberration
+				is_archetype = half_perfect
+				is_archetype = half_amalgamated
+				is_archetype = ELF						#_[带刺]
+			
+				is_archetype = NYTO						#_|涅托|
+				is_archetype = EILD
+
+			#	is_archetype = KZ_VOY_TERRANOID			#_|久远|
+				is_KZ_VOY_organic_species = yes
+			#	is_archetype = DKHALAI					#_|SC|
+			#	is_archetype = DNERAZIM
+				is_archetype = ASCENDED					#_|EE|
+				is_archetype = Schale					#_|碧蓝档案|
+
+				is_archetype = Magical_Bitch
+				is_archetype = Magical_Girl
+				is_archetype = MONSTER
+				is_archetype = TENTACLE
+				is_archetype = PARASITE
+				is_archetype = Lust_Girl
+				is_archetype = Erotic_Creation
+			}
+		}
+	}
+}
+
+is_inorganic_species = {
+	species = {
+		OR = {
+			is_archetype = LITHOID
+			is_archetype = YGWAWA
+			is_archetype = LOVEMACHINE
+			is_archetype = HOLYROBOT
+			is_archetype = ROBOT
+			is_archetype = MACHINE
+		}
+	}
+}
+
+#是DC和与DC联动物种
+is_dcyh_pop = {		
+	species = {
+		OR = {
+			#多彩本体
+			is_archetype = Magical_Bitch
+			is_archetype = Magical_Girl
+			is_archetype = MONSTER
+			is_archetype = TENTACLE
+			is_archetype = PARASITE
+			is_archetype = Lust_Girl
+			is_archetype = Erotic_Creation
+			is_archetype = YGWAWA
+			is_archetype = LOVEMACHINE
+			is_archetype = HOLYROBOT
+			is_archetype = ROBOT
+			is_archetype = MACHINE
+			#涅托
+			is_archetype = NYTO
+			is_archetype = EILD
+			#舰R
+			is_archetype = WARSHIPGIRL
+			is_archetype = SHENHAI
+			#联合舰队
+			is_archetype = UNITED_FLEET
+			#星舰
+			is_archetype = STARSHIPGIRLS
+			#突击莉莉
+			is_archetype = LILY
+			#灰烬战线
+			is_archetype = Dolls
+		}
+	}
+}
+
+#是与DC有联动的物种
+is_dc_cor_archetype = {
+	species = {
+		OR = {
+			#舰R
+			is_archetype = WARSHIPGIRL
+			is_archetype = SHENHAI
+			#联合舰队
+			is_archetype = UNITED_FLEET
+			#涅托
+			is_archetype = NYTO
+			#星舰少女
+			is_archetype = STARSHIPGIRLS
+			#突击莉莉
+			is_archetype = LILY
+			#灰烬战线
+			is_archetype = Dolls
+		}
+	}
+}
+
+#是丑陋物种
+is_ugly_pop = {
+	#污女视角的“丑陋”
+	species = {
+		NOR = {
+			#这里都是非“有机生物”
+			is_archetype = LOVEMACHINE
+			is_archetype = HOLYROBOT
+			is_archetype = ROBOT
+			is_archetype = MACHINE
+			is_archetype = LITHOID
+			is_archetype = YGWAWA
+			#有机DC附属物种
+			is_archetype = MONSTER
+			is_archetype = PARASITE
+			is_archetype = Erotic_Creation
+			#DC物种
+			is_archetype = Magical_Bitch
+			is_archetype = Magical_Girl
+			is_archetype = Lust_Girl
+			is_archetype = TENTACLE
+			#涅托
+			is_archetype = NYTO
+			is_archetype = EILD
+			#舰R
+			is_archetype = WARSHIPGIRL
+			is_archetype = SHENHAI
+			#联合舰队
+			is_archetype = UNITED_FLEET
+			#星舰
+			is_archetype = STARSHIPGIRLS
+			#突击莉莉
+			is_archetype = LILY
+			#灰烬战线
+			is_archetype = Dolls
+		}		
+	}
+}
+
+#能否做性奴
+is_canbe_sex_slave = {
+	OR = {
+		species = {
+			OR = {
+				#DC物种
+				is_archetype = Magical_Bitch
+				is_archetype = Magical_Girl
+				is_archetype = Lust_Girl
+				#DC附属物种
+				is_archetype = MONSTER
+				is_archetype = PARASITE
+				#联动物种
+				is_archetype = NYTO
+				is_archetype = LILY
+				is_archetype = Dolls
+			}
+		}
+		AND = {
+			species = {
+				OR = {
+					is_archetype = LOVEMACHINE
+					is_archetype = YGWAWA
+				}
+			}
+			has_trait = trait_cyber_RBQ
+		}
+		#舰r相关
+		AND = {
+			species = {
+				OR = {
+					is_archetype = WARSHIPGIRL
+					is_archetype = SHENHAI
+					is_archetype = UNITED_FLEET
+					is_archetype = NANITES_CROP
+				}
+			}
+			OR = {
+				has_wg_traits = no
+				has_trait = trait_DC_ethic_carnalism
+				has_trait = trait_DC_ethic_asceticism
+			}			
+		}
+		#星舰相关
+		AND = {
+			species = {
+				is_archetype = STARSHIPGIRLS
+			}
+			OR = {
+				has_trait = trait_DC_ethic_carnalism
+				has_trait = trait_DC_ethic_asceticism
+			}		
+		}
+	}
+}
+
+is_organic_species = {
+	species = {
+		OR = {
+			is_archetype = BIOLOGICAL # original trigger did not include pre-sapient classes
+			is_archetype = LITHOID
+
+			is_archetype = WARSHIPGIRL				#_wsg
+			is_archetype = SHENHAI
+			is_archetype = UNITED_FLEET
+			is_archetype = NANITES_CROP
+
+			is_archetype = LILY						# 突击莉莉
+			is_archetype = STARSHIPGIRLS			# swg
+			is_archetype = KANMUSU					# kc
+			is_archetype = DATEALIVE				# DAL
+
+			is_archetype = KANSEN					#_|azl|
+			is_archetype = Dolls					#_灰烬
+			is_archetype = POKEMON					#_[pkman]	[伊布帝国v1.22]=2398450274
+			is_archetype = SCARLET_DOLL				#_[sklt]	[斯卡雷特帝国]=2208079856
+			is_archetype = HUMANOID					#_[ETCPM]
+			is_archetype = MAMMALIAN
+			is_archetype = REPTILIAN
+			is_archetype = AVIAN
+			is_archetype = ARTHROPOID
+			is_archetype = MOLUSCOID
+			is_archetype = FUNGOID
+			is_archetype = PLANTOID
+			is_archetype = NECROID
+			is_archetype = half_species
+			is_archetype = half_species_special
+			is_archetype = half_aberration
+			is_archetype = half_perfect
+			is_archetype = half_amalgamated
+			is_archetype = ELF						#_[带刺]
+			
+			is_archetype = NYTO						#_|涅托|
+			is_archetype = EILD
+
+		#	is_archetype = KZ_VOY_TERRANOID			#_|久远|
+			is_KZ_VOY_organic_species = yes
+		#	is_archetype = DKHALAI					#_|SC|
+		#	is_archetype = DNERAZIM
+			is_archetype = ASCENDED					#_|EE|
+			is_archetype = Schale					#_|碧蓝档案|
+
+			is_archetype = Magical_Bitch			#_|多彩|
+			is_archetype = Magical_Girl
+			is_archetype = MONSTER
+			is_archetype = TENTACLE
+			is_archetype = PARASITE
+			is_archetype = Lust_Girl
+			is_archetype = Erotic_Creation
+		}
+	}
+}
+
+is_ban_vanilla_ap_country = {
+	OR = {
+		has_authority = "auth_Arp_0"
+		has_civic = civic_AL_newearth
+		has_authority = auth_AL_pua_fall
+		has_authority = auth_AL_aggressive_fall
+		has_authority = "auth_machine_intelligence"
+		has_authority = "auth_starshipgirls"
+		has_authority = "auth_asharmdolls"
+		has_authority = "auth_commonwealth"
+		has_authority = "auth_kancolle"
+		has_authority = "auth_kan"
+		has_authority = "auth_GF_paradeus"
+	}
+}
+
+has_wg_and_uf_special_authority = {
+	OR = {
+		has_authority = auth_shenhai
+		has_authority = auth_warshipgirls
+		has_authority = auth_united_fleet
+	}
+}
+
+UGRC_trgr_spcs_WSG = {
+	OR = {
+		is_archetype = WARSHIPGIRL
+		is_archetype = SHENHAI
+		is_archetype = UNITED_FLEET
+		is_archetype = NANITES_CROP
+	}
+}
+
+UGRC_trgr_spcs_ASSEMBLY = {
+	OR = {
+		is_archetype = LILY						# 莉莉
+		is_archetype = STARSHIPGIRLS			# swg
+		is_archetype = KANMUSU					# kc
+		is_archetype = DATEALIVE				# DAL
+	}
+}
+
+is_futa_country = {
+	optimize_memory
+	custom_tooltip_fail = {
+		text = is_futa_country_txt
+		OR = {
+			has_country_flag = ICE_MOON_FUTA
+			has_country_flag = ICE_MOON_FUTA_AI
+			# has_country_flag = ICE_MOON_CD_LOST_AI
+		}
+	}
+}

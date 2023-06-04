@@ -1,0 +1,17 @@
+namespace = DGXS_game_start_Flag
+event = {
+	id = DGXS_start.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = {
+					has_global_flag = love_between_us
+				}
+				set_global_flag = love_between_us
+			}
+		}
+	}
+}

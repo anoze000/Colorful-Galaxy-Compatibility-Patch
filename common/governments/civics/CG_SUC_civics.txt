@@ -1,0 +1,1303 @@
+#淫媚政权
+civic_flirtatious_regime = {
+	traits = {
+		trait = trait_DC_ethic_carnalism
+	}
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_pacifist
+				value = ethic_pacifist
+				value = ethic_fanatic_pacifist
+			}
+			NOR = {
+				text = civic_tooltip_not_xenophobe
+				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_flirtatious_regime.dds"
+	modification = yes
+	random_weight = {
+		base = 50
+	}
+	modifier = {
+		leader_skill_levels = 3
+		country_base_influence_produces_add = 1
+		pop_factions_unity_produces_mult = 1
+		subject_integration_influence_cost_mult = -0.5
+		country_trust_cap_add = 100
+		country_trust_growth = 1
+		leaders_cost_mult = -0.5
+		leaders_upkeep_mult = -0.5
+		species_leader_exp_gain = 0.5
+		leader_skill_levels = 3
+		diplo_action_acceptance_add = 20
+	}
+}
+
+#精液压榨
+civic_semen_squeezing = {
+	icon = "gfx/interface/icons/governments/civics/civic_semen_squeezing.dds"
+	traits = {
+		trait = trait_DC_ethic_carnalism
+	}
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+		}
+	}
+	modifier = {
+		planet_jobs_alloys_produces_mult = 0.25
+		country_command_limit_add = 20
+		army_damage_mult = 0.6
+		army_health = 0.7
+		army_morale_damage_mult = 0.85
+		army_morale = 0.75
+		armies_cost_mult = -0.5
+		army_disengage_chance_mult = 0.2
+		army_starting_experience_add = 10000
+		ship_weapon_damage = 0.25
+		planet_building_complex_industry_start_build_speed_mult = 1
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#性爱自由
+civic_sex_freedom = {
+	icon = "gfx/interface/icons/governments/civics/civic_sex_freedom.dds"
+	traits = {
+		trait = trait_DC_ethic_carnalism
+	}
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_egalitarian
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian
+			}
+		}
+	}
+	modifier = {
+		planet_erotic_unity_produces_add = 1
+		planet_researchers_unity_produces_add = 1
+		planet_beauty_unity_produces_add = 1
+		planet_lovejuicer_unity_produces_add = 1
+		planet_crime_mult = -0.3
+		pop_amenities_usage_mult = -0.3
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#情色万物
+civic_sex_everything = {
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_sex_everything.dds"
+	traits = {
+		trait = trait_DC_ethic_carnalism
+	}
+	description = civic_sex_everything_description
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_materialist
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
+		}
+	}
+	modifier = {
+		category_lust_research_speed_mult = 0.15
+		all_technology_research_speed = 0.05
+		num_tech_alternatives_add = 1
+		planet_pops_physics_research_produces_mult = 0.25
+		planet_pops_society_research_produces_mult = 0.25
+		planet_pops_engineering_research_produces_mult = 0.25
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#至尊女族
+civic_fanatic_feminism = {
+	description = civic_fanatic_feminism_description
+	modification = no
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_xenophobe
+				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_slave_tradition
+				value = civic_all_slave
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_fanatic_feminism.dds"
+	modifier = {
+		planet_jobs_unity_produces_mult = 0.3
+		planet_jobs_slave_produces_mult = 0.2
+		pop_cat_slave_happiness = -0.4
+	}
+	traits = {
+		trait = trait_enslavement_resistance
+		trait = trait_DC_ethic_carnalism
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#堕淫圣教
+civic_Religion = {
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_Religion.dds"
+	traits = {
+		trait = trait_DC_ethic_carnalism
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
+	}
+	modifier = {
+		edicts_upkeep_mult = -0.4
+		country_base_unity_produces_add = 77
+		planet_stability_add = 7
+		pop_happiness = 0.07
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#共享高潮
+civic_collective_climax = {
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			value = ethic_gestalt_consciousness
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_collective_climax.dds"
+	possible = {
+		civics = {
+			NOT = {
+				value = civic_pleasure_neural_network
+			}
+		}
+	}
+	modifier = {
+		planet_jobs_unity_produces_mult = 0.2
+		planet_stability_add = 20
+		planet_crime_mult = -1
+	}
+	traits = {
+		trait = trait_DC_ethic_carnalism
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#快感神经网络
+civic_pleasure_neural_network = {
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			value = ethic_gestalt_consciousness
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_pleasure_neural_network.dds"
+	possible = {
+		civics = {
+			NOT = {
+				value = civic_collective_climax
+			}
+		}
+	}
+	modifier = {
+		category_lust_research_speed_mult = 0.2
+		planet_erotic_produces_mult = 0.2
+		planet_lovejuicer_produces_mult = 0.2
+		planet_master_produces_mult = 0.1
+		planet_beauty_produces_mult = 0.1
+	}
+	traits = {
+		trait = trait_DC_ethic_carnalism
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#苗床生殖
+civic_seedbed_reproduction = {
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			value = ethic_gestalt_consciousness
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_seedbed_reproduction.dds"
+	modification = yes
+	possible = {
+	}
+	modifier = {
+		planet_pops_food_upkeep_mult = 2
+		pop_growth_speed = 1
+	}
+	traits = {
+		trait = trait_DC_ethic_carnalism
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#饕餮盛宴
+civic_gluttonous_feast = {
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			value = ethic_gestalt_consciousness
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_gluttonous_feast.dds"
+	description = civic_gluttonous_feast_description
+	possible = {
+	}
+	traits = {
+		trait = trait_DC_ethic_carnalism
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#淫欲义务
+civic_lust_duty = {
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_lust_duty.dds"
+	description = civic_lust_duty_description
+	possible = {
+		ethics = {
+			NOR = {
+				text = civic_tooltip_not_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
+		}
+	}
+	traits = {
+		trait = trait_DC_ethic_carnalism
+	}
+	modifier = {
+		country_love_juice_upkeep_mult = -0.2
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#爱液压榨
+civic_love_juice_squeeze = {
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_love_juice_squeeze.dds"
+	description = civic_love_juice_squeeze_description
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
+		}
+	}
+	modifier = {
+		job_love_juice_maker_add = 2
+	}
+	traits = {
+		trait = trait_DC_ethic_carnalism
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#乱交派对
+civic_group_sex = {
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_group_sex.dds"
+	possible = {
+	}
+	modifier = {
+		pop_housing_usage_mult = -0.5
+		pop_amenities_usage_mult = -0.25
+		empire_size_pops_mult = -0.1
+		empire_size_districts_mult = -0.25
+		empire_size_colonies_mult = -0.25
+	}
+	traits = {
+		trait = trait_DC_ethic_carnalism
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#淫花精灵
+civic_garden_world = {
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_garden_world.dds"
+	description = civic_garden_world_description
+	modifier = {
+		planet_building_build_speed_mult = 0.25
+		empire_size_districts_mult = -0.25
+	}
+	traits = {
+		trait = trait_DC_ethic_carnalism
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#大脑重塑
+civic_brain_remodeling = {
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_brain_remodeling.dds"
+	description = civic_brain_remodeling_description
+	possible = {
+		ethics = {
+			NOR = {
+				text = civic_tooltip_not_egalitarian
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian
+			}
+		}
+	}
+	traits = {
+		trait = trait_DC_ethic_carnalism
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#爱欲盛宴
+civic_master = {
+	modification = yes
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_master.dds"
+	traits = {
+		trait = trait_DC_ethic_carnalism
+	}
+	possible = {
+		ethics = {
+			NOR = {
+				text = civic_tooltip_not_xenophobe
+				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
+			}
+		}
+	}
+	modifier = {
+		pop_growth_speed = 0.1
+		pop_happiness = 0.05
+		planet_crime_mult = 0.2
+		country_trust_growth = 0.5
+		pop_growth_from_immigration = 0.5
+		planet_immigration_pull_mult = 0.5
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#性奴传统
+civic_slave_tradition = {
+	modification = no
+	description = civic_slave_tradition_description
+	traits = {
+		trait = trait_all_slave
+		trait = trait_DC_ethic_carnalism
+	}
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			value = ethic_fanatic_authoritarian
+		}
+		civics = {
+			NOR = {
+				value = civic_slaver_guilds
+				value = civic_appease_regulations
+				value = civic_fanatic_feminism
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_slave_tradition.dds"
+	random_weight = {
+		base = 50
+	}
+	modifier = {
+		planet_jobs_slave_produces_mult = 0.1
+		pop_category_rulers_consumer_goods_upkeep_add = 1
+		planet_pops_lust_slave_love_juice_upkeep_add = 1
+		pop_resettlement_cost_mult = -0.66
+		pop_demotion_time_mult = -0.75
+		pop_cat_slave_political_power = -0.75
+	}
+}
+
+#安抚条令
+civic_appease_regulations = {
+	modification = no
+	traits = {
+		trait = trait_DC_ethic_carnalism
+	}
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_xenophile
+				value = ethic_xenophile
+				value = ethic_fanatic_xenophile
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_appease_regulations.dds"
+	random_weight = {
+		base = 50
+	}
+	modifier = {
+		diplo_weight_mult = 0.3
+		country_subject_power_penalty_mult = -0.25
+		country_trade_fee = -0.1
+		diplo_action_acceptance_add = 10
+		envoys_add = 5
+		country_trust_growth = 0.5
+		country_trust_cap_add = 100
+	}
+}
+
+#虐杀淫魔
+civic_lust_guro = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_lust_guro.dds"
+	description = civic_lust_guro_description
+	traits = {
+		trait = trait_enslavement_struggle
+		trait = trait_DC_ethic_carnalism
+	}
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			value = ethic_fanatic_xenophobe
+			NOR = {
+				text = civic_tooltip_not_pacifist
+				value = ethic_pacifist
+				value = ethic_fanatic_pacifist
+			}
+		}
+	}
+	modifier = {
+		army_morale_damage_mult = 0.4
+		ship_fire_rate_mult = 0.33
+		army_damage_mult = 0.2
+		starbase_shipyard_build_cost_mult = -0.15
+		country_naval_cap_add = 100
+		planet_beauty_produces_mult = -10
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#全民性奴
+civic_all_slave = {
+	modification = no
+	description = civic_all_slave_description
+	icon = "gfx/interface/icons/governments/civics/civic_all_slave.dds"
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	traits = {
+		trait = trait_all_slave
+		trait = trait_DC_ethic_carnalism
+	}
+	possible = {
+		ethics = {
+			value = ethic_fanatic_egalitarian
+			NOR = {
+				text = civic_tooltip_not_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_technocracy
+				value = civic_fanatic_feminism
+				value = civic_penis_craving
+			}
+		}
+	}
+	modifier = {
+		country_pop_enslaved_mult = 10
+		pop_cat_slave_political_power = 10
+		planet_jobs_unity_produces_mult = 0.2
+		pop_government_ethic_attraction = 1
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#生化机奸
+civic_mechanical_intercourse = {
+	modification = no
+	description = civic_mechanical_intercourse_description
+	icon = "gfx/interface/icons/governments/civics/civic_mechanical_intercourse.dds"
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	traits = {
+		trait = trait_DC_ethic_carnalism
+	}
+	possible = {
+		ethics = {
+			value = ethic_fanatic_materialist
+		}
+		civics = {
+			NOT = {
+				value = civic_penis_craving
+			}
+		}
+	}
+	modifier = {
+		leader_age = -20
+		planet_jobs_organic_produces_mult = -0.6
+		planet_lovejuicer_organic_produces_mult = 0.6
+		planet_erotic_organic_produces_mult = 0.6
+		planet_beauty_organic_produces_mult = 0.6
+		planet_pop_assembly_mult = 1
+		planet_jobs_robotic_produces_mult = 0.4
+		planet_max_buildings_add = 1
+		job_full_time_sex_toy_per_pop = 0.2
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#疯狂脑虫
+civic_crazy_brain = {
+	modification = no
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_crazy_brain.dds"
+	description = civic_crazy_brain_description
+	possible = {
+		ethics = {
+			value = ethic_fanatic_pacifist
+		}
+	}
+	traits = {
+		trait = trait_crazy_brain
+		trait = trait_DC_ethic_carnalism
+	}
+	modifier = {
+		pop_ethic_pacifist_attraction_mult = 1000
+		country_naval_cap_mult = -0.85
+		diplo_action_acceptance_add = -100
+		diplo_weight_mult = -0.99
+		country_war_exhaustion_mult = 1
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#肉棒渴求
+civic_penis_craving = {
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	modification = yes
+	icon = "gfx/interface/icons/governments/civics/civic_penis_craving.dds"
+	traits = {
+		trait = trait_DC_ethic_carnalism
+	}
+	has_secondary_species = {
+		title = civic_penis_craving_species
+		traits = {
+			trait = trait_strong_fuck
+		}
+	}
+	possible = {
+		ethics = {
+			NOR = {
+				text = civic_tooltip_not_egalitarian
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian
+			}
+			value = ethic_fanatic_xenophile
+		}
+	}
+	modifier = {
+		country_trade_attractiveness = 0.2
+		country_trust_cap_add = 1000
+		country_trust_growth = 1
+		planet_immigration_pull_mult = 10
+		pop_growth_from_immigration = 1
+		planet_crime_mult = -1
+		job_big_dick_per_pop = 0.1
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#色欲祭神
+civic_sacrifice_lustgod = {
+	description = civic_sacrifice_lustgod_description
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_sacrifice_lustgod.dds"
+	traits = {
+		trait = trait_DC_ethic_carnalism
+	}
+	possible = {
+		ethics = {
+			value = ethic_fanatic_spiritualist
+			NOR = {
+				text = civic_tooltip_not_egalitarian
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian
+			}
+		}
+	}
+	modifier = {
+		pop_cat_ruler_political_power = 0.77
+		pop_cat_worker_happiness = -0.07
+		pop_cat_slave_happiness = -0.77
+		pop_growth_speed = -0.21
+		planet_stability_add = -21
+		planet_jobs_unity_produces_mult = 0.77
+		leaders_cost_mult = 0.77
+		leader_age = 777
+		species_leader_exp_gain = 0.77
+		leader_skill_levels = 7
+		empire_size_penalty_mult = -0.21
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#绝媚娇娃
+civic_sex_baby = {
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			value = ethic_gestalt_consciousness
+		}
+	}
+	traits = {
+		trait = trait_sex_baby
+		trait = trait_DC_ethic_carnalism
+	}
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_sex_baby.dds"
+	possible = {
+		civics = {
+			NOT = {
+				value = civic_bereavement
+			}
+		}
+	}
+	modifier = {
+		planet_erotic_produces_mult = 0.33
+		planet_beauty_produces_mult = 0.33
+		colony_start_num_pops_add = 3
+		leader_age = 33
+		species_leader_exp_gain = 0.33
+		ship_anomaly_generation_chance_mult = 3.33
+		ship_anomaly_research_speed_mult = 3.33
+		science_ship_survey_speed = 0.33
+		shipclass_science_ship_disengage_mult = 3.33
+		ship_evasion_mult = 0.33
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#劣化丧女
+civic_bereavement = {
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			value = ethic_gestalt_consciousness
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_bereavement.dds"
+	description = civic_bereavement_description
+	modification = no
+	possible = {
+		civics = {
+			NOT = {
+				value = civic_sex_baby
+			}
+		}
+	}
+	modifier = {
+		planet_jobs_society_research_produces_mult = -0.05
+		planet_jobs_physics_research_produces_mult = -0.05
+		planet_jobs_engineering_research_produces_mult = -0.05
+	}
+	traits = {
+		trait = trait_DC_ethic_carnalism
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#深渊圣权
+civic_abyssal_ascendancy = {
+	modification = no
+	description = civic_abyssal_ascendancy_description
+	icon = "gfx/interface/icons/governments/civics/civic_abyssal_ascendancy.dds"
+	traits = {
+		trait = trait_DC_ethic_carnalism
+	}
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			value = ethic_fanatic_militarist
+		}
+	}
+	modifier = {
+		planet_army_build_speed_mult = 1
+		army_morale = 1
+		ship_speed_mult = 0.75
+		ship_interstellar_speed_mult = 1
+		starbase_shipyard_build_speed_mult = 1
+		country_naval_cap_mult = 0.2
+		country_war_exhaustion_mult = -0.4
+		country_claim_influence_cost_mult = -0.3
+		intel_decryption_add = 5
+		spy_network_daily_value_mult = 5
+		ship_sensor_range_add = 3
+		planet_dcyh_pops_militarist_unity_produces_add = 1
+		planet_dcyh_pops_militarist_alloys_produces_add = 0.5
+		planet_dcyh_pops_militarist_minerals_upkeep_add = 0.25
+		pop_ethic_militarist_attraction_mult = 1
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+#孕妓传统
+civic_pregnant_prostitute = {
+	modification = yes
+	description = civic_pregnant_prostitute_description
+	icon = "gfx/interface/icons/governments/civics/civic_pregnant_prostitute.dds"
+	traits = {
+		trait = trait_DC_ethic_carnalism
+	}
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Bitch
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+				value = STARSHIPGIRLS
+				value = LILY
+			}
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	modifier = {
+		trade_value_mult = 0.2
+		job_prostitute_per_pop = 0.1
+	}
+	random_weight = {
+		base = 50
+	}
+}
+
+civic_suc_galactic_sovereign = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_suc_galactic_sovereign.dds"
+	potential = {
+		civics = {
+			value = civic_suc_galactic_sovereign			# Added via event - this trigger prevents the civic from being picked by others
+		}
+	}
+	random_weight = {
+		base = 0
+	}
+	modifier = {
+		country_civics_influence_produces_add = 4
+		diplo_weight_mult = 1
+		envoys_add = 4
+		country_government_civic_points_add = 1
+		country_naval_cap_mult = 0.33
+		country_unity_produces_mult = 0.33
+	}
+}
+
+#fallen empire
+civic_suc_fe = {
+	icon = "gfx/interface/icons/governments/civics/civic_suc_fe.dds"
+	potential = {
+		country_type = {
+			value = fallen_empire
+		}
+		authority = {
+			value = auth_suc_fe
+		}
+	}
+	modifier = {
+		ships_upkeep_mult = -0.15
+		armies_upkeep_mult = -0.2
+		country_war_exhaustion_mult = 0.2
+		pop_growth_speed_reduction = 0.5
+		planet_max_buildings_add = 16
+	}
+	random_weight = {
+		base = 999999
+	}
+}

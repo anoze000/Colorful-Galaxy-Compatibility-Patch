@@ -1,0 +1,27 @@
+﻿l_simp_chinese:
+###############################
+ gov_HNwsg_country:0 "§R涅槃圣权-纵欲港区帝国§"
+ gov_HNwsg_country_desc:0 "§R从远古时代，甚至是宇宙创立之初，身为国家意志化身的提督将这个港区淫乱化，帝国女皇的舰娘则负责同提督本人做爱。§"
+ 
+ trait_HNWSG:0 "淫堕之女"
+ trait_HNWSG_desc:0 "漫长的时间中堕落的战舰少女们。"
+ 
+ RT_DRAGONEMPEROR_HNWsg:0 "淫世女皇"
+ 
+ Hport_UF_gray:0 "已安装多彩兼容补丁，现在拥有联合舰队，银河之上，或者是KDCstory&微械革命mod中的远星之歌起源，即可选择该政体"
+ requires_first_stage_ascension_perk_1:0 "$TRIGGER_FAIL$需要以下任一飞升：\n　　§Y战舰少女政体§!需要飞升：§Hproject- R§!\n　　§Y深海政体§!需要飞升：§H浴火重生§!\n　　§Y星舰少女政体§!需要飞升：§H银河共和国§!\n　　§Y幻想乡国家§!需要飞升：§H幻·想·突·破§!\n　　§Y红魔馆国家§!需要飞升：§H完美之王§!\n　　§Y灰烬战线mod§!需要飞升：§H新时代企划§!\n　　§Y约战mod§!需要飞升：§H幸福之道§!\n　　§Y少女前线(涅托)mod§!需要飞升：§H心识解放§!\n　　§Y碧蓝航线(三三版)mod§!需要飞升：§H认知觉醒§!\n　　§Y联合舰队§!需要飞升：§H超维革命§!\n　　§Y魅魔§!需要飞升：§H淫欲的赠礼§!\n　　§Y圣女§!需要飞升：§H神圣进化§!　　\n其他政体§H同时需要§!以下两项飞升：§H$ap_the_flesh_is_weak$§!和§H$ap_engineered_evolution$§!"
+
+ requires_mod_ap_mind_over_matter_str_1:0 "$TRIGGER_FAIL$需要§Y$ap_mind_over_matter$§!超凡飞升。\n若使用MOD战舰少女R：\n若拥有“战舰少女联盟制”，则需要§Y苍青幻影§!超凡飞升，或者§YProject-S§!超凡飞升。\n若拥有“深海舰队制度”，则需要§Y第一路线：缄默之声§!或§Y第二路线：破冰§!超凡飞升。\n若使用MOD星舰少女：\n若拥有“星舰联合政府制”，则需要§Y银河帝国§!超凡飞升。\n若使用MOD午餐肉(IMBA东方即special touhou species)mod：\n若使用幻想乡国家，则需要§Y幻·想·突·破§!超凡飞升。\n若使用红魔馆国家，则需要§Y完美之王§!超凡飞升。\n若使用多彩国家，则需要完成主体种族第二段飞升。"
+
+ requires_mod_ap_engineered_evolution_str_1:0 "$TRIGGER_FAIL$需要§Y$ap_engineered_evolution$§!超凡飞升。\n若使用MOD战舰少女R：\n若拥有“战舰少女联盟制”，则需要§Y苍青幻影§!超凡飞升。\n若拥有“深海舰队制度”，则需要§Y第一路线：缄默之声§!或§Y第二路线：破冰§!超凡飞升。\n若使用MOD星舰少女：\n若拥有“星舰联合政府制”，则需要§Y银河帝国§!超凡飞升。\n若使用MOD午餐肉(IMBA东方即special touhou species)mod：\n若使用幻想乡国家，则需要§Y幻·想·突·破§!超凡飞升。\n若使用红魔馆国家，则需要§Y完美之王§!超凡飞升。\n若使用多彩国家，则需要完成主体种族第二段飞升。"
+
+ building_SRA_produce_centre_prototype:0 "星规阵列生产中枢原型"
+ building_SRA_produce_centre_prototype_desc:0 "星规阵列生产中枢的原型，在生产极大量能量与矿物的同时，还能极大改善产业结构。\n不要问为什么原型会比正式版强。"
+ 
+ building_trade_port:0 "星际性奴贸易口岸"
+ building_trade_port_desc:0 "在经过我们国家最高等的奴隶调教师调教后，那些让人垂涎欲滴的娇艳绝色，不但在我们的国家广受欢迎，整个银河系都对其趋之若鹜。即使身边有绝色奴隶的大客户，也为了我们调教师惊人的技术，破费购买我们的奴隶。"
+
+ finish_synthetic_evolution_1:0 "$TRIGGER_FAIL$需要以下任一飞升：\n　　§Y战舰少女政体§!需要飞升：§Hproject- R§!\n　　§Y深海政体§!需要飞升：§H浴火重生§!\n　　§Y星舰少女政体§!需要飞升：§H银河共和国§!\n　　§Y幻想乡国家§!需要飞升：§H幻·想·突·破§!\n　　§Y红魔馆国家§!需要飞升：§H完美之王§!\n　　§Y灰烬战线mod§!需要飞升：§H新时代企划§!\n　　§Y约战mod§!需要飞升：§H幸福之道§!\n　　§Y少女前线(涅托)mod§!需要飞升：§H心识解放§!\n　　§Y联合舰队§!需要飞升：§H超维革命§!\　　n包括多彩原版的魅魔在内，其他具有魅魔特质的种族需要必须先完成§Y合成进化§!特殊工程"
+"
+
+

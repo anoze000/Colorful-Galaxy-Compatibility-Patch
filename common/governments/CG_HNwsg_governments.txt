@@ -1,0 +1,11 @@
+gov_HNwsg_country = {
+	ruler_title = RT_DRAGONEMPEROR_HNWsg
+	possible = {
+		has_authority = auth_warshipgirls
+		has_valid_civic = civic_Hport
+		has_valid_civic = civic_nirvana_empire_dragon
+	}
+	weight = {
+		base = 10000
+	}
+}

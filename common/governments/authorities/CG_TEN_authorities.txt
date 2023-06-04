@@ -1,0 +1,80 @@
+auth_parasite_mind = {
+	has_heir = yes
+	icon = "gfx/interface/icons/governments/authorities/auth_parasite_mind.png"
+	election_type = none
+	has_factions = no
+	has_agendas = yes
+	valid_for_released_vassal = no
+	potential = {
+		species_class = {
+			value = TEN
+		}
+	}
+	possible = {
+		species_archetype = {
+			value = TENTACLE
+		}
+	}
+	traits = {
+		trait = trait_DC_ethic_parasite_mind
+	}
+	country_modifier = {
+		planet_colony_development_speed_mult = 0.2
+		colony_start_num_pops_add = 1
+		pop_growth_speed = 0.05
+	}
+	tags = {
+		TEN_AND_PAR_MUST_USE_PARMIND
+		AUTH_PARASITE_MIND
+		AUTH_PARASITE_NO_FACTIONS
+	}
+	random_weight = {
+		modifier = {
+			factor = 0
+		}
+	}
+}
+
+auth_parasite_mind_hard = {
+	has_heir = yes
+	icon = "gfx/interface/icons/governments/authorities/auth_parasite_mind_hard.png"
+	election_type = none
+	has_factions = no
+	has_agendas = yes
+	valid_for_released_vassal = no
+	potential = {
+		species_class = {
+			value = TEN
+		}
+		always = no
+	}
+	possible = {
+		ethics = {
+			OR = {
+				value = ethic_xenophile
+				value = ethic_fanatic_xenophile
+			}
+		}
+		species_archetype = {
+			value = TENTACLE
+		}
+	}
+	traits = {
+		trait = trait_DC_ethic_parasite_mind_hard
+	}
+	country_modifier = {
+		colony_start_num_pops_add = 1
+		planet_jobs_produces_mult = 0.3
+	}
+	tags = {
+		TEN_AND_PAR_MUST_USE_PARMIND
+		AUTH_PARASITE_MIND
+		AUTH_PARASITE_NO_FACTIONS
+		AUTH_PARASITE_HARD
+	}
+	random_weight = {
+		modifier = {
+			factor = 0
+		}
+	}
+}

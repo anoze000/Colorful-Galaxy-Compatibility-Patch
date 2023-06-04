@@ -1,0 +1,64 @@
+WARSHIPGIRL = {
+	species_trait_points = 8
+	species_max_traits = 27
+	inherit_traits_from = {
+		CG_compatible_species_archetype
+	}
+}
+
+SHENHAI = {
+	species_trait_points = 11
+	species_max_traits = 24
+	inherit_traits_from = {
+		CG_compatible_species_archetype
+	}
+}
+
+UNITED_FLEET = {
+	species_trait_points = 16
+	species_max_traits = 47
+	inherit_traits_from = {
+		CG_compatible_species_archetype
+	}
+}
+
+STARSHIPGIRLS = {
+	species_trait_points = 16
+	species_max_traits = 47
+	inherit_traits_from = {
+		CG_compatible_species_archetype
+	}
+}
+
+NYTO = {
+	species_trait_points = 11
+	species_max_traits = 32
+	robotic = yes
+	inherit_traits_from = {
+		CG_compatible_species_archetype
+	}
+}
+
+EILD = {
+	species_trait_points = 54
+	species_max_traits = 79
+	inherit_traits_from = {
+		CG_compatible_species_archetype
+	}
+}
+
+LILY = {
+	species_trait_points = 11
+	species_max_traits = 46
+	inherit_traits_from = {
+		CG_compatible_species_archetype
+	}
+}
+
+Dolls = {
+	species_trait_points = 22
+	species_max_traits = 54
+	inherit_traits_from = {
+		CG_compatible_species_archetype
+	}
+}
