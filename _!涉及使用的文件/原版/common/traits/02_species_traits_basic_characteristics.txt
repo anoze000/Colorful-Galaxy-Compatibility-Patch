@@ -11,6 +11,7 @@
 trait_hive_mind = {
 	cost = 0
 	sorting_priority = 20
+
 	initial = no
 	randomized = no
 	forced_happiness = yes
@@ -23,19 +24,17 @@ trait_hive_mind = {
 	species_possible_merge_add = {
 		always = no
 	}
-	modifier = {
-		
-	}
+
+	modifier = {}
+
 	leader_age_min = 10
 	leader_age_max = 20
-	allowed_archetypes = {
-		BIOLOGICAL
-		LITHOID
-		Magical_Bitch
-	}
+
+	allowed_archetypes = { BIOLOGICAL LITHOID }
 	ai_weight = {
 		weight = 0
 	}
+
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_ruler_hive_mind.dds"
 }
 
@@ -55,9 +54,7 @@ trait_machine_unit = {
 	}
 	immortal_leaders = yes
 	icon = "gfx/interface/icons/traits/trait_machine_unit.dds"
-	allowed_archetypes = { 
-		MACHINE 
-	}
+	allowed_archetypes = { MACHINE }
 
 	forced_happiness = yes
 	modifier = {
@@ -68,6 +65,7 @@ trait_machine_unit = {
 trait_mechanical = {
 	cost = 0
 	sorting_priority = 20
+
 	initial = no
 	randomized = no
 	species_potential_add = {
@@ -80,12 +78,9 @@ trait_mechanical = {
 		always = no
 	}
 	immortal_leaders = yes
-	allowed_archetypes = {
-		ROBOT
-		LOVEMACHINE
-		YGWAWA
-		HOLYROBOT
-	}
+
+	allowed_archetypes = { ROBOT }
+
 	modifier = {
 		pop_environment_tolerance = 2.0
 	}
@@ -94,15 +89,7 @@ trait_mechanical = {
 trait_syncretic_proles = {
 	cost = 1
 	potential_crossbreeding_chance = 0.33
-	opposites = { 
-		"trait_intelligent" 
-		"trait_erudite" 
-		"trait_natural_engineers" 
-		"trait_natural_physicists" 
-		"trait_natural_sociologists" 
-		"trait_enslavement_resistance"
-		"trait_enslavement_struggle"
-	}
+	opposites = { "trait_intelligent" "trait_erudite" "trait_natural_engineers" "trait_natural_physicists" "trait_natural_sociologists" }
 	initial = no
 	randomized = no
 	species_potential_add = {
@@ -118,14 +105,7 @@ trait_syncretic_proles = {
 		always = no
 	}
 	icon = "gfx/interface/icons/traits/trait_primitive.dds"
-	allowed_archetypes = { 
-		BIOLOGICAL 
-		LITHOID 
-		Magical_Bitch
-		Magical_Girl
-		Lust_Girl
-		TENTACLE
-	}
+	allowed_archetypes = { BIOLOGICAL LITHOID }
 
 	custom_tooltip = TRAIT_SYNCRETIC_PROLES_EFFECT
 	modifier = {
@@ -160,9 +140,7 @@ trait_lithoid = {
 	leader_age_min = 27
 	leader_age_max = 38
 
-	allowed_archetypes = { 
-		LITHOID 
-	}
+	allowed_archetypes = { LITHOID }
 	ai_weight = {
 		weight = 0
 	}
@@ -195,7 +173,6 @@ trait_aquatic = {
 
 	allowed_planet_classes = {
 		pc_ocean
-		pc_dc_spore
 	}
 
 	species_possible_remove = {
@@ -204,18 +181,10 @@ trait_aquatic = {
 				exists = from
 			}
 			if = {
-				limit = { 
-					NOT = { 
-						from = { 
-							has_ascension_perk = ap_hydrocentric 
-						} 
-					} 
-				}
+				limit = { NOT = { from = { has_ascension_perk = ap_hydrocentric } } }
 				custom_tooltip = {
 					fail_text = trait_aquatic_remove_evolutionary_mastery
-					from = {
-						 has_tradition = tr_genetics_resequencing 
-					}
+					from = { has_tradition = tr_genetics_resequencing }
 				}
 			}
 			else = {
@@ -234,23 +203,13 @@ trait_aquatic = {
 	}
 	initial = yes
 
-	allowed_archetypes = { 
-		BIOLOGICAL 
-		LITHOID 
-		Magical_Bitch
-		Magical_Girl
-		Lust_Girl
-		TENTACLE
-	}
+	allowed_archetypes = { BIOLOGICAL LITHOID }
 
 	ai_weight = {
 		weight = 1
 		modifier = {
 			factor = 0
-			NOR = { 
-				has_trait = trait_pc_ocean_preference 
-				has_trait = pc_dc_spore_preference
-			}
+			NOT = { has_trait = trait_pc_ocean_preference }
 		}
 	}
 
@@ -260,10 +219,7 @@ trait_aquatic = {
 			exists = planet
 			planet = {
 				OR = {
-					OR = {
-						is_planet_class = pc_ocean
-						is_planet_class = pc_dc_spore
-					}
+					is_planet_class = pc_ocean
 					has_modifier = flooded_habitat
 				}
 			}
@@ -278,16 +234,11 @@ trait_aquatic = {
 			exists = planet
 			planet = {
 				OR = {
-					OR = {
-						is_planet_class = pc_ocean
-						is_planet_class = pc_dc_spore
-					}
+					is_planet_class = pc_ocean
 					has_modifier = flooded_habitat
 				}
 				exists = owner
-				owner = { 
-					has_ascension_perk = ap_hydrocentric 
-				}
+				owner = { has_ascension_perk = ap_hydrocentric }
 			}
 		}
 		pop_housing_usage_mult = -0.05
@@ -318,9 +269,7 @@ trait_aquatic = {
 				}
 				is_ideal = no
 				exists = owner
-				owner = { 
-					has_ascension_perk = ap_hydrocentric 
-				}
+				owner = { has_ascension_perk = ap_hydrocentric }
 			}
 		}
 		pop_housing_usage_mult = 0.15
@@ -344,9 +293,7 @@ trait_aquatic = {
 			}
 			is_ideal = no
 			exists = owner
-			owner = { 
-				has_ascension_perk = ap_hydrocentric 
-			}
+			owner = { has_ascension_perk = ap_hydrocentric }
 		}
 		pop_environment_tolerance = -0.1
 	}
@@ -358,7 +305,6 @@ trait_aquatic = {
 	}
 	modifier = {
 		pc_ocean_habitability = 0.2
-		pc_dc_spore_habitability = 0.2
 	}
 
 	icon = "gfx/interface/icons/traits/trait_aquatic.dds"
@@ -368,10 +314,7 @@ trait_aquatic = {
 			add = 1
 			from = {
 				OR = {
-					OR = {
-						is_planet_class = pc_ocean
-						is_planet_class = pc_dc_spore
-					}
+					is_planet_class = pc_ocean
 					has_modifier = flooded_habitat
 				}
 			}
@@ -393,12 +336,7 @@ trait_aquatic = {
 trait_necrophage = {
 	cost = 0
 	potential_crossbreeding_chance = 0
-	opposites = { 
-		"trait_plantoid_budding" 
-		"trait_lithoid_budding" 
-		"trait_advanced_budding" 
-		"trait_tiyanki" 
-	}
+	opposites = { "trait_plantoid_budding" "trait_lithoid_budding" "trait_advanced_budding" "trait_tiyanki" }
 	sorting_priority = 20
 
 	initial = no
@@ -415,14 +353,7 @@ trait_necrophage = {
 	forced_happiness = no
 	immortal_leaders = no
 
-	allowed_archetypes = { 
-		BIOLOGICAL 
-		LITHOID 
-		Magical_Bitch
-		Magical_Girl
-		Lust_Girl
-		TENTACLE
-	}
+	allowed_archetypes = { BIOLOGICAL LITHOID }
 	ai_weight = {
 		weight = 0
 	}
@@ -447,15 +378,7 @@ trait_necrophage = {
 trait_clone_soldier_infertile = {
 	cost = 0
 	potential_crossbreeding_chance = 0
-	opposites = { 
-		"trait_slow_breeders" 
-		"trait_rapid_breeders" 
-		"trait_plantoid_budding" 
-		"trait_lithoid_budding" 
-		"trait_advanced_budding" 
-		"trait_vat_grown" 
-		"trait_tiyanki" 
-	}
+	opposites = { "trait_slow_breeders" "trait_rapid_breeders" "trait_plantoid_budding" "trait_lithoid_budding" "trait_advanced_budding" "trait_vat_grown" "trait_tiyanki" }
 	sorting_priority = 20
 
 	initial = no
@@ -477,14 +400,7 @@ trait_clone_soldier_infertile = {
 	leader_age_min = 5
 	leader_age_max = 20
 
-	allowed_archetypes = { 
-		BIOLOGICAL 
-		LITHOID 
-		Magical_Bitch
-		Magical_Girl
-		Lust_Girl
-		TENTACLE
-	}
+	allowed_archetypes = { BIOLOGICAL LITHOID }
 	ai_weight = {
 		weight = 0
 	}
@@ -502,18 +418,10 @@ trait_clone_soldier_infertile = {
 	}
 }
 
-trait_clone_soldier_infertile_full_potential = {	
+trait_clone_soldier_infertile_full_potential = {
 	cost = 0
 	potential_crossbreeding_chance = 0
-	opposites = { 
-		"trait_slow_breeders" 
-		"trait_rapid_breeders" 
-		"trait_plantoid_budding" 
-		"trait_lithoid_budding" 
-		"trait_advanced_budding" 
-		"trait_vat_grown" 
-		"trait_tiyanki" 
-	}
+	opposites = { "trait_slow_breeders" "trait_rapid_breeders" "trait_plantoid_budding" "trait_lithoid_budding" "trait_advanced_budding" "trait_vat_grown" "trait_tiyanki" }
 	sorting_priority = 20
 
 	initial = no
@@ -535,14 +443,7 @@ trait_clone_soldier_infertile_full_potential = {
 	leader_age_min = 5
 	leader_age_max = 20
 
-	allowed_archetypes = { 
-		BIOLOGICAL 
-		LITHOID 
-		Magical_Bitch
-		Magical_Girl
-		Lust_Girl
-		TENTACLE
-	}
+	allowed_archetypes = { BIOLOGICAL LITHOID }
 	ai_weight = {
 		weight = 0
 	}
@@ -568,9 +469,7 @@ trait_clone_soldier_infertile_full_potential = {
 
 trait_clone_soldier_fertile = {
 	cost = 0
-	opposites = { 
-		"trait_vat_grown" 
-	}
+	opposites = { "trait_vat_grown" }
 	sorting_priority = 20
 
 	initial = no
@@ -589,14 +488,7 @@ trait_clone_soldier_fertile = {
 	immortal_leaders = no
 	infertile = no
 
-	allowed_archetypes = { 
-		BIOLOGICAL 
-		LITHOID 
-		Magical_Bitch
-		Magical_Girl
-		Lust_Girl
-		TENTACLE
-	}
+	allowed_archetypes = { BIOLOGICAL LITHOID }
 	ai_weight = {
 		weight = 0
 	}
@@ -618,11 +510,7 @@ trait_clone_soldier_fertile = {
 trait_cave_dweller = {
 	cost = 0
 	potential_crossbreeding_chance = 0
-	opposites = { 
-		"trait_plantoid_phototrophic" 
-		"trait_aquatic" 
-		"trait_advanced_phototrophic" 
-	}
+	opposites = { "trait_plantoid_phototrophic" "trait_aquatic" "trait_advanced_phototrophic" }
 	sorting_priority = 20
 
 	initial = no
@@ -640,14 +528,7 @@ trait_cave_dweller = {
 		always = no
 	}
 
-	allowed_archetypes = { 
-		BIOLOGICAL 
-		LITHOID 
-		Magical_Bitch
-		Magical_Girl
-		Lust_Girl
-		TENTACLE
-	}
+	allowed_archetypes = { BIOLOGICAL LITHOID }
 	ai_weight = {
 		weight = 0
 	}
@@ -664,15 +545,7 @@ trait_cave_dweller = {
 			exists = planet
 			planet = {
 				exists = growing_species
-				growing_species = { 
-					OR = {
-						is_archetype = BIOLOGICAL
-						is_archetype = Magical_Bitch
-						is_archetype = Magical_Girl
-						is_archetype = Lust_Girl
-						is_archetype = TENTACLE
-					} 
-				}
+				growing_species = { is_archetype = BIOLOGICAL }
 			}
 		}
 		pop_growth_speed = -0.20
@@ -683,15 +556,11 @@ trait_cave_dweller = {
 	assembly_score = {
 		modifier = {
 			add = 1.5
-			from = { 
-				has_mining_designation = yes 
-			}
+			from = { has_mining_designation = yes }
 		}
 		modifier = {
 			add = 0.5
-			from = { 
-				has_rural_designation = yes 
-			}
+			from = { has_rural_designation = yes }
 		}
 	}
 }
@@ -699,9 +568,7 @@ trait_cave_dweller = {
 trait_perfected_genes = {
 	cost = 0
 	potential_crossbreeding_chance = 0
-	opposites = { 
-		trait_fleeting trait_weak 
-		}
+	opposites = { trait_fleeting trait_weak }
 	sorting_priority = 20
 
 	initial = no
@@ -717,14 +584,7 @@ trait_perfected_genes = {
 	}
 	forced_happiness = no
 
-	allowed_archetypes = { 
-		BIOLOGICAL 
-		LITHOID 
-		Magical_Bitch
-		Magical_Girl
-		Lust_Girl
-		TENTACLE
-	}
+	allowed_archetypes = { BIOLOGICAL LITHOID }
 	ai_weight = {
 		weight = 0
 	}

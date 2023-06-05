@@ -256,6 +256,7 @@ building_SRA_plane_collector = {
 				}
 			}
 			living_tentacles = 200
+			Obscene_separation = 200
 		}
 		produces = {
 			trigger = {

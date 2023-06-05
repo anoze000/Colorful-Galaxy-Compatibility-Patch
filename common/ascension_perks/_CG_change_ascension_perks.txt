@@ -32,10 +32,13 @@ ap_holylight_god_blood = {
 		}
 	}
 	potential = {
-		has_country_flag = asceticism_flag
-		is_mechanical_empire = no
-		NOT = {
-			has_ascension_perk = ap_holylight_god_blood
+		is_pure_empire = yes
+		OR = {
+			is_mechanical_empire = no
+			is_dc_cor_archetype = yes
+		}
+		NOT = { 
+			has_ascension_perk = ap_holylight_god_blood 
 		}
 	}
 	modifier = {

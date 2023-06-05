@@ -2,22 +2,13 @@ trait_gray_origin = {
 	cost = 0
 	sorting_priority = 30
 	initial = no
-
 	randomized = no
-
-	species_potential_add = { 
-		always = no 
-	}
-	species_possible_remove = { 
-		always = no 
-	}
-	species_possible_merge_add = { 
-		always = no 
-	}
+	
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
 	species_possible_merge_remove = { 
-		FROM = { 
-			has_country_flag = gray_ascension_finish 
-		}
+		FROM = { has_country_flag = gray_ascension_finish }
 		has_trait = gray_trait_species_gray
 	}
 	icon = "gfx/interface/icons/traits/wg_gray.dds"
@@ -34,28 +25,12 @@ gray_trait_species_gray = {
 	randomized = no
 	advanced_trait = yes
 	allowed_archetypes = {
-		NANITES_CROP 
-		WARSHIPGIRL 
-		SHENHAI 
-		STARSHIPGIRLS 
-		KANMUSU KANSEN 
-		TOUHOUGIRLS 
-		NYTO 
-		Dolls
-		Magical_Bitch
-		Magical_Girl
-		UNITED_FLEET
+		NANITES_CROP WARSHIPGIRL SHENHAI STARSHIPGIRLS KANMUSU KANSEN TOUHOUGIRLS NYTO Dolls
 	}
-	species_potential_add = { 
-		always = no 
-	}
-	species_possible_remove = { 
-		always = no 
-	}
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
 	species_possible_merge_add = {
-		FROM = { 
-			has_country_flag = gray_ascension_finish 
-		}
+		FROM = { has_country_flag = gray_ascension_finish }
 		OR = {
 			has_trait = wsg_trait_warshipgirls
 			has_trait = wsg_trait_warshipgirls1
@@ -97,37 +72,19 @@ gray_trait_nano_assembly = {
 		has_trait = gray_trait_species_gray
 	}
 	allowed_archetypes = {
-		NANITES_CROP 
-		WARSHIPGIRL 
-		SHENHAI 
-		STARSHIPGIRLS 
-		KANMUSU 
-		KANSEN 
-		TOUHOUGIRLS 
-		NYTO 
-		Dolls
-		Magical_Bitch
-		Magical_Girl
-		UNITED_FLEET
+		NANITES_CROP WARSHIPGIRL SHENHAI STARSHIPGIRLS KANMUSU KANSEN TOUHOUGIRLS NYTO Dolls
 	}
 	icon="gfx/interface/icons/traits/gray_trait_nano_assembly.dds"
-	prerequisites = { 
-		"tech_gray_genetic_resequencing" 
-	}
+	prerequisites = { "tech_gray_genetic_resequencing" }
 	custom_tooltip = TRAIT_GRAY_NANO_ASSEMBLY_EFFECT
 	modifier = {
 		
 	}
 	triggered_planet_growth_habitability_modifier = {
-		potential = { 
-			exists = owner 
-		}
+		potential = { exists = owner }
 		planet_pop_assembly_organic_mult = 0.4
 	}
-	opposites = { 
-		"wsg_trait_neo" 
-		"wsg_trait_mass_assembly" 
-	}
+	opposites = { "wsg_trait_neo" "wsg_trait_mass_assembly" }
 }
 
 gray_trait_production_module = {
@@ -139,28 +96,12 @@ gray_trait_production_module = {
 		has_trait = gray_trait_species_gray
 	}
 	allowed_archetypes = {
-		NANITES_CROP 
-		WARSHIPGIRL 
-		SHENHAI 
-		STARSHIPGIRLS 
-		KANMUSU 
-		KANSEN 
-		TOUHOUGIRLS 
-		NYTO 
-		Dolls
-		Magical_Bitch
-		Magical_Girl
-		UNITED_FLEET
+		NANITES_CROP WARSHIPGIRL SHENHAI STARSHIPGIRLS KANMUSU KANSEN TOUHOUGIRLS NYTO Dolls
 	}
-	opposites = { 
-		"wsg_trait_overtime" 
-		"sh_trait_gear" 
-	}
+	opposites = { "wsg_trait_overtime" "sh_trait_gear" }
 	icon = "gfx/interface/icons/traits/gray_trait_production_module.dds"
 	custom_tooltip = TRAIT_GRAY_PRODUCTION_MODULE_EFFECT
-	prerequisites = { 
-		"tech_gray_genetic_resequencing" 
-	}
+	prerequisites = { "tech_gray_genetic_resequencing" }
 	modifier = {
 		planet_jobs_produces_mult = 0.45
 		pop_category_rulers_nanites_upkeep_add = 1
@@ -179,23 +120,10 @@ gray_trait_building_module = {
 		has_trait = gray_trait_species_gray
 	}
 	allowed_archetypes = {
-		NANITES_CROP 
-		WARSHIPGIRL 
-		SHENHAI 
-		STARSHIPGIRLS 
-		KANMUSU 
-		KANSEN 
-		TOUHOUGIRLS 
-		NYTO 
-		Dolls
-		Magical_Bitch
-		Magical_Girl
-		UNITED_FLEET
+		NANITES_CROP WARSHIPGIRL SHENHAI STARSHIPGIRLS KANMUSU KANSEN TOUHOUGIRLS NYTO Dolls
 	}
 	icon = "gfx/interface/icons/traits/gray_trait_building_module.dds"
-	prerequisites = { 
-		"tech_gray_genetic_resequencing" 
-	}
+	prerequisites = { "tech_gray_genetic_resequencing" }
 	custom_tooltip = TRAIT_GRAY_BUILDING_MODULE_EFFECT
 	modifier = {
 		pop_category_rulers_nanites_upkeep_add = 0.8
@@ -214,27 +142,11 @@ gray_trait_research_module = {
 		has_trait = gray_trait_species_gray
 	}
 	allowed_archetypes = {
-		NANITES_CROP 
-		WARSHIPGIRL 
-		SHENHAI 
-		STARSHIPGIRLS 
-		KANMUSU 
-		KANSEN 
-		TOUHOUGIRLS 
-		NYTO 
-		Dolls
-		Magical_Bitch
-		Magical_Girl
-		UNITED_FLEET
+		NANITES_CROP WARSHIPGIRL SHENHAI STARSHIPGIRLS KANMUSU KANSEN TOUHOUGIRLS NYTO Dolls
 	}
-	opposites = { 
-		"wsg_trait_knowledgeable" 
-		"sh_trait_talent" 
-	}
+	opposites = { "wsg_trait_knowledgeable" "sh_trait_talent" }
 	icon = "gfx/interface/icons/traits/gray_trait_research_module.dds"
-	prerequisites = { 
-		"tech_gray_genetic_resequencing" 
-	}
+	prerequisites = { "tech_gray_genetic_resequencing" }
 	custom_tooltip = TRAIT_GRAY_RESEARCH_MODULE_EFFECT
 	modifier = {
 		planet_jobs_engineering_research_produces_mult = 0.5
@@ -254,26 +166,13 @@ gray_trait_nanite_producer = {
 	randomized = no
 	advanced_trait = yes
 	icon = "gfx/interface/icons/traits/gray_trait_nanite_producer.dds"
-	prerequisites = { 
-		"tech_gray_genetic_resequencing" 
-	}
+	prerequisites = { "tech_gray_genetic_resequencing" }
 	custom_tooltip = TRAIT_GRAY_NANITES_PRODUCER_EFFECT
 	species_potential_add = {
 		has_trait = gray_trait_species_gray
 	}
 	allowed_archetypes = {
-		NANITES_CROP 
-		WARSHIPGIRL 
-		SHENHAI 
-		STARSHIPGIRLS 
-		KANMUSU 
-		KANSEN
-		TOUHOUGIRLS 
-		NYTO 
-		Dolls
-		Magical_Bitch
-		Magical_Girl
-		UNITED_FLEET
+		NANITES_CROP WARSHIPGIRL SHENHAI STARSHIPGIRLS KANMUSU KANSEN TOUHOUGIRLS NYTO Dolls
 	}
 	modifier = {
 		
@@ -291,19 +190,7 @@ gray_trait_raw_material_producer = {
 		has_trait = gray_trait_species_gray
 	}
 	allowed_archetypes = {
-		NANITES_CROP 
-		ROBOT 
-		WARSHIPGIRL 
-		SHENHAI 
-		STARSHIPGIRLS 
-		KANMUSU 
-		KANSEN 
-		TOUHOUGIRLS 
-		NYTO 
-		Dolls
-		Magical_Bitch
-		Magical_Girl
-		UNITED_FLEET
+		NANITES_CROP ROBOT WARSHIPGIRL SHENHAI STARSHIPGIRLS KANMUSU KANSEN TOUHOUGIRLS NYTO Dolls
 	}
 	custom_tooltip = TRAIT_GRAY_RAW_MATERIAL_PRODUCER_EFFECT
 	modifier = {
@@ -316,9 +203,6 @@ gray_trait_raw_material_producer = {
 		pop_category_slave_nanites_upkeep_add = 0.3
 	}
 	opposites = {
-		"wsg_trait_agrarian" 
-		"wsg_trait_ingenious" 
-		"wsg_trait_industrious" 
-		"sh_trait_worker"
+		"wsg_trait_agrarian" "wsg_trait_ingenious" "wsg_trait_industrious" "sh_trait_worker"
 	}
 }

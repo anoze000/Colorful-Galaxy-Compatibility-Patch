@@ -3,6 +3,10 @@
 @buildings_t3 = 3
 @buildings_t4 = 4
 
+@tier_2_capital_defense_armies = 4
+@tier_3_capital_defense_armies = 8
+@tier_4_capital_defense_armies = 16
+
 #############
 # Robot buildings
 #############
@@ -366,7 +370,9 @@ building_robot_assembly_complex = {
 	}
 }
 
-
+#############
+# Capital buildings
+#############
 building_capital = {
 	base_buildtime = @b2_time
 	capital = yes
@@ -402,8 +408,8 @@ building_capital = {
 
 	allow = {
 		OR = {
-			PR_trgr_plnt_HC_MORE = { 
-				HC = 10 
+			PR_prmt_trgr_plnt_HC = { 
+				MORE = 10 
 			}
 			num_pops >= 10
 		}
@@ -427,6 +433,11 @@ building_capital = {
 		planet_amenities_add = 5
 		planet_max_buildings_add = @buildings_t2
 		planet_max_branch_office_buildings_add = 1
+		defense_armies_add = @tier_2_capital_defense_armies
+	}
+
+	inline_script = {
+		script = buildings/on_all_capital_buildings
 	}
 
 	triggered_planet_modifier = {
@@ -551,13 +562,26 @@ building_capital = {
 			exists = owner
 			owner = { 
 				has_active_tradition = tr_cybernetics_organ_harvesting 
-			}
+				}
 			has_current_purge = yes
 			growing_species = { 
 				has_trait = trait_cybernetic 
 			}
 		}
 		pop_growth_speed = 0.10
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			is_capital = yes
+			owner = {
+				has_councilor = { 
+					COUNCILOR = "councilor_feudal_realm" 
+				} 
+			}
+		}
+		country_naval_cap_add = 1
+		mult = value:naval_cap_vassals_councilor_feudal_realm
 	}
 
 	resources = {
@@ -698,8 +722,8 @@ building_major_capital = {
 
 	allow = {
 		OR = {
-			PR_trgr_plnt_HC_MORE = { 
-				HC = 25 
+			PR_prmt_trgr_plnt_HC = { 
+				MORE = 25 
 			}
 			num_pops >= 25
 		}
@@ -728,6 +752,11 @@ building_major_capital = {
 		planet_amenities_add = 8
 		planet_max_buildings_add = @buildings_t3
 		planet_max_branch_office_buildings_add = 2
+		defense_armies_add = @tier_3_capital_defense_armies
+	}
+
+	inline_script = {
+		script = buildings/on_all_capital_buildings
 	}
 
 	triggered_planet_modifier = {
@@ -883,6 +912,19 @@ building_major_capital = {
 			}
 		}
 		pop_growth_speed = 0.10
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			is_capital = yes
+			owner = {
+				has_councilor = { 
+					COUNCILOR = "councilor_feudal_realm" 
+				} 
+			}
+		}
+		country_naval_cap_add = 1
+		mult = value:naval_cap_vassals_councilor_feudal_realm
 	}
 
 	resources = {
@@ -1056,8 +1098,8 @@ building_system_capital = {
 
 	allow = {
 		OR = {
-			PR_trgr_plnt_HC_MORE = { 
-				HC = 50 
+			PR_prmt_trgr_plnt_HC = { 
+				MORE = 50 
 			}
 			num_pops >= 50
 		}
@@ -1077,6 +1119,11 @@ building_system_capital = {
 		planet_amenities_add = 12
 		planet_max_buildings_add = @buildings_t4
 		planet_max_branch_office_buildings_add = 4
+		defense_armies_add = @tier_4_capital_defense_armies
+	}
+
+	inline_script = {
+		script = buildings/on_all_capital_buildings
 	}
 
 	triggered_planet_modifier = {
@@ -1094,7 +1141,9 @@ building_system_capital = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_active_tradition = tr_synthetics_finish }
+			owner = { 
+				has_active_tradition = tr_synthetics_finish 
+			}
 		}
 		job_roboticist_add = 1
 	}
@@ -1245,6 +1294,17 @@ building_system_capital = {
 		pop_growth_speed = 0.10
 	}
 
+	triggered_country_modifier = {
+		potential = {
+			is_capital = yes
+			owner = {
+				has_councilor = { COUNCILOR = "councilor_feudal_realm" } 
+			}
+		}
+		country_naval_cap_add = 1
+		mult = value:naval_cap_vassals_councilor_feudal_realm
+	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1344,6 +1404,12 @@ building_system_capital = {
 		text = job_unifier_effect_desc
 	}
 
+	upgrades = {
+		building_imperial_capital
+		building_ancient_palace
+		azur_building_mind_capital
+	}
+
 	#莉莉修改
 	triggered_planet_modifier = {
 		potential = {
@@ -1365,14 +1431,12 @@ building_system_capital = {
 		}
 		text = job_AL_head_majyo_effect_desc
 	}
-
-	upgrades = {
-		building_imperial_capital
-		building_ancient_palace
-		azur_building_mind_capital
-	}
 }
 
+
+#############
+# Habitat buildings
+#############
 building_hab_capital = {
 	capital = yes
 	can_build = no
@@ -1386,10 +1450,7 @@ building_hab_capital = {
 	category = government
 
 	potential = {
-		OR = {
-			FW_trgr_plnt_CLASS_habitat = yes
-			uses_habitat_capitals = yes
-		}
+		uses_habitat_capitals = yes
 		exists = owner
 		owner = { 
 			is_fallen_empire = no 
@@ -1420,6 +1481,10 @@ building_hab_capital = {
 		planet_housing_add = 3
 		planet_amenities_add = 3
 		planet_max_buildings_add = @buildings_t1
+	}
+
+	inline_script = {
+		script = buildings/on_all_capital_buildings
 	}
 
 	triggered_planet_modifier = {
@@ -1508,6 +1573,16 @@ building_hab_capital = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
+			owner = { has_civic = civic_dystopian_society }
+		}
+		modifier = {
+			job_enforcer_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
 			owner = { 
 				has_ascension_perk = ap_voidborn 
 			}
@@ -1566,6 +1641,17 @@ building_hab_capital = {
 			}
 		}
 		pop_growth_speed = 0.10
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				has_valid_civic = civic_dystopian_society
+			}
+		}
+		text = job_enforcer_effect_desc
 	}
 
 	triggered_desc = {
@@ -1708,8 +1794,8 @@ building_hab_major_capital = {
 
 	allow = {
 		OR = {
-			PR_trgr_plnt_HC_MORE = { 
-				HC = 10 
+			PR_prmt_trgr_plnt_HC = { 
+				MORE = 10 
 			}
 			num_pops >= 10
 		}
@@ -1735,6 +1821,11 @@ building_hab_major_capital = {
 		planet_amenities_add = 5
 		planet_max_buildings_add = @buildings_t2
 		planet_max_branch_office_buildings_add = 1
+		defense_armies_add = @tier_2_capital_defense_armies
+	}
+
+	inline_script = {
+		script = buildings/on_all_capital_buildings
 	}
 
 	triggered_planet_modifier = {
@@ -2186,8 +2277,8 @@ building_imperial_capital = {
 
 	allow = {
 		OR = {
-			PR_trgr_plnt_HC_MORE = { 
-				HC = 50 
+			PR_prmt_trgr_plnt_HC = { 
+				MORE = 50 
 			}
 			num_pops >= 50
 		}
@@ -2202,6 +2293,11 @@ building_imperial_capital = {
 		planet_amenities_add = 18
 		planet_max_buildings_add = 11
 		planet_max_branch_office_buildings_add = 4
+		defense_armies_add = @tier_4_capital_defense_armies
+	}
+
+	inline_script = {
+		script = buildings/on_all_capital_buildings
 	}
 
 	triggered_planet_modifier = {
@@ -2362,6 +2458,19 @@ building_imperial_capital = {
 		pop_growth_speed = 0.10
 	}
 
+	triggered_country_modifier = {
+		potential = {
+			is_capital = yes
+			owner = {
+				has_councilor = { 
+					COUNCILOR = "councilor_feudal_realm" 
+				} 
+			}
+		}
+		country_naval_cap_add = 1
+		mult = value:naval_cap_vassals_councilor_feudal_realm
+	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -2480,6 +2589,9 @@ building_holo_theatres = {
 		}
 		owner = { 
 			is_regular_empire = yes 
+			NOT = { 
+				has_valid_civic = civic_dystopian_society 
+			}
 		}
 		OR = {
 			owner = {
@@ -2506,6 +2618,9 @@ building_holo_theatres = {
 		OR = {
 			owner = { 
 				is_regular_empire = no 
+			}
+			owner = { 
+				has_valid_civic = civic_dystopian_society 
 			}
 			has_modifier = slave_colony
 		}
@@ -2559,7 +2674,9 @@ building_holo_theatres = {
 		trigger = {
 			exists = owner
 			owner = {
-				NOT = { has_valid_civic = civic_warrior_culture }
+				NOT = { 
+					has_valid_civic = civic_warrior_culture 
+				}
 			}
 		}
 		text = job_entertainer_effect_desc
@@ -2575,76 +2692,18 @@ building_holo_theatres = {
 		text = job_duelist_effect_desc
 	}
 	
-	#莉莉修改		
+	#莉莉修改
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = { 
-				has_origin= origin_AL_Sierlint 
-			}
-		}
-		modifier = {
-			job_AL_head_majyo_add = 3
-		}
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				NOR = { 
-					has_valid_civic = civic_warrior_culture 
-					has_origin = origin_AL_kanba
-				}
+				has_origin = origin_AL_kanba
 			}
 		}
 		modifier = {
 			job_entertainer_add = @b1_jobs
+			job_duelist_add = @b1_jobs
 		}
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				has_origin = origin_AL_kanba
-			}
-		}
-		modifier = {
-			job_AL_unicorn_add = @b1_jobs
-		}
-	}
-	
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = {
-				NOR = { 
-					has_valid_civic = civic_warrior_culture 
-					has_origin = origin_AL_kanba
-				}
-			}
-		}
-		text = job_entertainer_effect_desc
-	}
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = {
-				has_origin = origin_AL_kanba
-			}
-		}
-		text = job_AL_unicorn_effect_desc
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = {
-				has_origin= origin_AL_Sierlint
-			}
-		}
-		text = job_AL_head_majyo_effect_desc
 	}
 }
 
@@ -2660,6 +2719,26 @@ building_hyper_entertainment_forum = {
 
 	allow = {
 		has_upgraded_capital = yes
+		owner = {
+			NOT = { 
+				has_valid_civic = civic_dystopian_society 
+			}
+		}
+		OR = {
+			owner = {
+				NOT = { 
+					is_ai = yes 
+				}
+			}
+			AND = {
+				NOT = { 
+					has_available_jobs = entertainer 
+				}
+				NOT = { 
+					has_forbidden_jobs = entertainer 
+				}
+			}
+		}
 	}
 
 	destroy_trigger = {
@@ -2667,6 +2746,9 @@ building_hyper_entertainment_forum = {
 		OR = {
 			owner = { 
 				is_regular_empire = no 
+			}
+			owner = { 
+				has_valid_civic = civic_dystopian_society 
 			}
 			has_modifier = slave_colony
 		}
@@ -2740,33 +2822,15 @@ building_hyper_entertainment_forum = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = {
-				NOR = { 
-					has_valid_civic = civic_warrior_culture 
-					has_origin = origin_AL_kanba
-				}
+			owner = { 
+				has_origin = origin_AL_kanba 
 			}
 		}
 		modifier = {
 			job_entertainer_add = @b2_jobs
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				NOR = { 
-					has_valid_civic = civic_warrior_culture 
-					has_origin = origin_AL_kanba
-				}
-			}
-		}
-		modifier = {
 			job_duelist_add = @b2_jobs
 		}
 	}
-
 }
 
 building_clinic = {
@@ -2788,6 +2852,30 @@ building_clinic = {
 		NOT = { 
 			has_modifier = slave_colony 
 		}
+		OR = {
+			owner = {
+				OR = {
+					is_ai = no
+					has_valid_civic = civic_private_healthcare_corporate
+					prev = {
+						has_branch_office = yes
+						branch_office_owner = {
+							has_valid_civic = civic_private_healthcare_corporate
+						}
+					}
+				}
+			}
+			AND = {
+				NOT = { 
+					has_available_jobs = entertainer 
+				}
+				NOT = { 
+					has_forbidden_jobs = entertainer 
+				}
+				planet_stability < 50
+				free_amenities < 0
+			}
+		}
 	}
 
 	destroy_trigger = {
@@ -2805,10 +2893,14 @@ building_clinic = {
 			}
 			has_modifier = slave_colony
 			AND = {
-				buildings_stop_pop = yes
-				owner = { 
+				owner = {
 					is_ai = yes
+					NOT = { 
+						has_valid_civic = civic_private_healthcare_corporate 
+					}
 				}
+				planet_stability > 70
+				free_amenities > 20
 			}
 		}
 	}
@@ -2868,6 +2960,12 @@ building_clinic = {
 						country_event = { 
 							id = origin.4302 
 						}
+						modifier = {
+							factor = 0
+							planet.owner = {
+								 has_technology = tech_frontier_health 
+							}
+						}
 					}
 				}
 				20 = { # repaired
@@ -2905,18 +3003,18 @@ building_clinic = {
 			}
 		}
 	}
-
 }
 
+#警署
 building_precinct_house = {
 	base_buildtime = @b1_time
-	
+
 	category = government
-	
+
 	potential = {
 		owner = { 
 			is_regular_empire = yes 
-			NOT = { 
+			NOT = {
 				has_origin = origin_AL_sagamihara
 			} 
 		}
@@ -2924,33 +3022,25 @@ building_precinct_house = {
 			has_modifier = slave_colony 
 		}
 	}
-	
+
 	allow = {
 		hidden_trigger = {
 			OR = {
 				owner = { 
-					is_ai = no
+					is_ai = no 
 				}
 				AND = {
-					planet_crime > 15
-					NOR = {
-						AND = {
-							has_building = building_precinct_house
-							owner = { 
-								has_technology = tech_colonial_centralization 
-							}
-						}
-						has_building = building_hall_judgment
-						num_buildings = { 
-							type = building_precinct_house 
-							value = 3 
-						}
+					NOT = { 
+						has_forbidden_jobs = enforcer 
+					}
+					NOT = { 
+						has_available_jobs = enforcer 
 					}
 				}
 			}
 		}
 	}
-	
+
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -2969,11 +3059,11 @@ building_precinct_house = {
 			}#This way the AI gets to reclaim its building slots that it sunk into this expense
 		}
 	}
-	
+
 	planet_modifier = {
 		job_enforcer_add = 2
 	}
-	
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -2983,19 +3073,19 @@ building_precinct_house = {
 			energy = 2
 		}
 	}
-	
+
 	prerequisites = {
 		"tech_planetary_government"
 	}
-	
+
 	triggered_desc = {
 		text = job_enforcer_effect_desc
 	}
-	
+
 	show_tech_unlock_if = {
 		is_regular_empire = yes
 	}
-	
+
 	upgrades = {
 		building_hall_judgment
 	}
@@ -3078,8 +3168,6 @@ building_research_lab_1 = {
 
 	upgrades = {
 		"building_research_lab_2"
-		#   |PR转化|
-		PR_BLDN_Tech_lab_T2
 	}
 
 	prerequisites = {

@@ -1,0 +1,567 @@
+# ap_mind_over_matter = {
+# 	on_enabled = {
+# 		custom_tooltip = "mind_over_matter_tooltip"
+# 		hidden_effect = {
+# 			country_event = {
+# 				id = utopia.2600
+# 			}
+# 		}
+# 		add_research_option = tech_telepathy
+# 	}
+# 	possible = {
+# 		custom_tooltip = {
+# 			fail_text = "synthetic_empire_psionic_ascension"
+# 			NOT = {
+# 				has_trait = trait_mechanical
+# 			}
+# 		}
+# 		custom_tooltip = {
+# 			fail_text = "hive_mind_biological_ascension_only1"
+# 			NOT = {
+# 				has_authority = auth_hive_mind
+# 			}
+# 		}
+# 		custom_tooltip = {
+# 			fail_text = "requires_ascension_perks_1"
+# 			num_ascension_perks > 0
+# 		}
+# 		custom_tooltip = {
+# 			fail_text = "requires_technology_psionic_theory"
+# 			has_technology = tech_psionic_theory
+# 		}
+# 		custom_tooltip = {
+# 			fail_text = "requires_not_ap_engineered_evolution"
+# 			NOT = {
+# 				has_ascension_perk = ap_engineered_evolution
+# 			}
+# 		}
+# 		custom_tooltip = {
+# 			fail_text = "requires_not_ap_the_flesh_is_weak"
+# 			NOT = {
+# 				has_ascension_perk = ap_the_flesh_is_weak
+# 			}
+# 		}
+# 	}
+# 	potential = {
+# 		host_has_dlc = "Utopia"
+# 		NOR = {
+# 			is_ice_moon_country = yes
+# 			has_country_flag = council
+# 			has_ascension_perk = ap_mind_over_matter
+# 			has_authority = "auth_machine_intelligence"
+# 			has_authority = "auth_warshipgirls"
+# 			has_authority = "auth_shenhai"
+# 			has_authority = "auth_starshipgirls"
+# 		}
+# 		is_mechanical_empire = no
+# 		is_cyborg_empire = no
+# 	}
+# 	ai_weight = {
+# 		factor = 20
+# 		modifier = {
+# 			factor = 0.1
+# 			NOR = {
+# 				has_ethic = ethic_spiritualist
+# 				has_ethic = ethic_fanatic_spiritualist
+# 			}
+# 		}
+# 		modifier = {
+# 			factor = 0
+# 			num_owned_planets < 6
+# 		}
+# 		modifier = {
+# 			factor = 10
+# 			has_ascension_perk = ap_become_the_crisis
+# 		}
+# 	}
+# }
+# # ap_transcendence = {
+# # 	on_enabled = {
+# # 		custom_tooltip = "transcendence_tooltip"
+# # 		hidden_effect = {
+# # 			country_event = {
+# # 				id = utopia.2650
+# # 			}
+# # 		}
+# # 	}
+# # 	modifier = {
+# # 		intel_decryption_add = 2
+# # 		intel_encryption_add = 2
+# # 		add_base_country_intel = 10
+# # 	}
+# # 	possible = {
+# # 		custom_tooltip = {
+# # 			fail_text = "synthetic_empire_psionic_ascension"
+# # 			NOT = {
+# # 				has_trait = trait_mechanical
+# # 			}
+# # 		}
+# # 		custom_tooltip = {
+# # 			fail_text = "hive_mind_biological_ascension_only1"
+# # 			NOT = {
+# # 				has_authority = auth_hive_mind
+# # 			}
+# # 		}
+# # 		custom_tooltip = {
+# # 			fail_text = "requires_ascension_perks_2"
+# # 			num_ascension_perks > 1
+# # 		}
+# # 		custom_tooltip = {
+# # 			fail_text = "requires_ap_mind_over_matter"
+# # 			has_ascension_perk = ap_mind_over_matter
+# # 		}
+# # 	}
+# # 	potential = {
+# # 		host_has_dlc = "Utopia"
+# # 		NOR = {
+# # 			is_ice_moon_country = yes
+# # 			has_ascension_perk = ap_transcendence
+# # 			has_authority = "auth_machine_intelligence"
+# # 		}
+# # 		is_mechanical_empire = no
+# # 		is_cyborg_empire = no
+# # 	}
+# # 	ai_weight = {
+# # 		factor = 100
+# # 	}
+# # }
+# ap_the_flesh_is_weak = {
+# 	on_enabled = {
+# 		custom_tooltip = "flesh_is_weak_tooltip"
+# 		hidden_effect = {
+# 			country_event = {
+# 				id = utopia.2500
+# 			}
+# 		}
+# 	}
+# 	modifier = {
+# 		planet_pops_robotics_upkeep_mult = -0.1
+# 		planet_pop_assembly_mult = 0.1
+# 	}
+# 	possible = {
+# 		custom_tooltip = {
+# 			fail_text = "synthetic_empire_synthetic_ascension"
+# 			NOT = {
+# 				has_trait = trait_mechanical
+# 			}
+# 		}
+# 		custom_tooltip = {
+# 			fail_text = "hive_mind_biological_ascension_only2"
+# 			NOT = {
+# 				has_authority = auth_hive_mind
+# 			}
+# 		}
+# 		custom_tooltip = {
+# 			fail_text = "requires_ascension_perks_1"
+# 			num_ascension_perks > 0
+# 		}
+# 		custom_tooltip = {
+# 			fail_text = "requires_technology_droid_workers"
+# 			has_technology = tech_droid_workers
+# 		}
+# 		custom_tooltip = {
+# 			fail_text = "requires_not_ap_engineered_evolution"
+# 			NOT = {
+# 				has_ascension_perk = ap_engineered_evolution
+# 			}
+# 		}
+# 		custom_tooltip = {
+# 			fail_text = "requires_not_ap_mind_over_matter"
+# 			NOT = {
+# 				has_ascension_perk = ap_mind_over_matter
+# 			}
+# 		}
+# 	}
+# 	potential = {
+# 		host_has_dlc = "Utopia"
+# 		NOR = {
+# 			# is_ice_moon_country = yes
+# 			has_country_flag = dragon
+# 			has_country_flag = council
+# 			has_ascension_perk = ap_the_flesh_is_weak
+# 			has_authority = "auth_machine_intelligence"
+# 			has_authority = "auth_warshipgirls"
+# 			has_authority = "auth_shenhai"
+# 			has_authority = "auth_starshipgirls"
+# 		}
+# 		is_mechanical_empire = no
+# 	}
+# 	ai_weight = {
+# 		factor = 20
+# 		modifier = {
+# 			factor = 0.1
+# 			NOR = {
+# 				has_ethic = ethic_materialist
+# 				has_ethic = ethic_fanatic_materialist
+# 			}
+# 		}
+# 		modifier = {
+# 			factor = 0
+# 			num_owned_planets < 6
+# 		}
+# 		modifier = {
+# 			factor = 0
+# 			has_origin = origin_necrophage
+# 		}
+# 	}
+# }
+# # ap_synthetic_evolution = {
+# # 	on_enabled = {
+# # 		custom_tooltip = "synthetic_evolution_tooltip"
+# # 		if = {
+# # 			limit = {
+# # 				has_origin = origin_necrophage
+# # 				has_trait = trait_necrophage
+# # 			}
+# # 			custom_tooltip = disables_necrophage_features
+# # 		}
+# # 		hidden_effect = {
+# # 			country_event = {
+# # 				id = utopia.2550
+# # 			}
+# # 		}
+# # 	}
+# # 	modifier = {
+# # 		planet_jobs_robotic_produces_mult = 0.1
+# # 		ROBOT_species_trait_points_add = 1
+# # 		modify_species_cost_mult = -0.5
+# # 	}
+# # 	possible = {
+# # 		custom_tooltip = {
+# # 			fail_text = "synthetic_empire_synthetic_ascension"
+# # 			NOT = {
+# # 				has_trait = trait_mechanical
+# # 			}
+# # 		}
+# # 		custom_tooltip = {
+# # 			fail_text = "hive_mind_biological_ascension_only2"
+# # 			NOT = {
+# # 				has_authority = auth_hive_mind
+# # 			}
+# # 		}
+# # 		custom_tooltip = {
+# # 			fail_text = "requires_ascension_perks_2"
+# # 			num_ascension_perks > 1
+# # 		}
+# # 		custom_tooltip = {
+# # 			fail_text = "requires_technology_synthetic_workers"
+# # 			has_technology = tech_synthetic_workers
+# # 		}
+# # 		custom_tooltip = {
+# # 			fail_text = "requires_technology_synthetic_leaders"
+# # 			has_technology = tech_synthetic_leaders
+# # 		}
+# # 		custom_tooltip = {
+# # 			fail_text = "requires_ap_the_flesh_is_weak"
+# # 			has_ascension_perk = ap_the_flesh_is_weak
+# # 		}
+# # 		custom_tooltip = {
+# # 			fail_text = "requires_finished_cybernetics_project"
+# # 			NOT = {
+# # 				has_special_project = FLESH_IS_WEAK_PROJECT
+# # 			}
+# # 		}
+# # 	}
+# # 	potential = {
+# # 		host_has_dlc = "Utopia"
+# # 		NOR = {
+# # 			is_ice_moon_country = yes
+# # 			has_ascension_perk = ap_synthetic_evolution
+# # 			has_authority = "auth_machine_intelligence"
+# # 		}
+# # 		is_mechanical_empire = no
+# # 	}
+# # 	ai_weight = {
+# # 		factor = 100
+# # 	}
+# # }
+# @ap_engineered_evolution_POINTS = 3
+# @ap_engineered_evolution_COST_MULT = -0.25
+# ap_engineered_evolution = {
+# 	on_enabled = {
+# 		add_research_option = tech_gene_seed_purification
+# 		if = {
+# 			limit = {
+# 				has_origin = origin_clone_army
+# 				OR = {
+# 					has_trait = trait_clone_soldier_infertile
+# 					has_trait = trait_clone_soldier_infertile_full_potential
+# 				}
+# 			}
+# 			custom_tooltip = clone_soldier_locked_genes
+# 		}
+# 		hidden_effect = {
+# 			country_event = { id = utopia.2700 }
+# 		}
+# 	}
+# 	possible = {
+# 		custom_tooltip = {
+# 			fail_text = "synthetic_empire_biological_ascension"
+# 			NOT = {
+# 				has_trait = trait_mechanical
+# 			}
+# 		}
+# 		custom_tooltip = {
+# 			fail_text = "requires_ascension_perks_1"
+# 			num_ascension_perks > 0
+# 		}
+# 		custom_tooltip = {
+# 			fail_text = "requires_technology_gene_tailoring"
+# 			has_technology = tech_gene_tailoring
+# 		}
+# 		custom_tooltip = {
+# 			fail_text = "requires_not_ap_the_flesh_is_weak"
+# 			NOT = {
+# 				has_ascension_perk = ap_the_flesh_is_weak
+# 			}
+# 		}
+# 		custom_tooltip = {
+# 			fail_text = "requires_not_ap_mind_over_matter"
+# 			NOT = {
+# 				has_ascension_perk = ap_mind_over_matter
+# 			}
+# 		}
+# 	}
+# 	modifier = {
+# 		description = ap_engineered_evolution_modifier_desc
+# 		description_parameters = {
+# 			POINTS = @ap_engineered_evolution_POINTS
+# 			COST_MULT = @ap_engineered_evolution_COST_MULT
+# 		}
+# 		BIOLOGICAL_species_trait_points_add = @ap_engineered_evolution_POINTS
+# 		modify_species_cost_mult = @ap_engineered_evolution_COST_MULT
+# 	}
+# 	potential = {
+# 		host_has_dlc = "Utopia"
+# 		NOR = {
+# 			is_ice_moon_country = yes
+# 			has_country_flag = dragon
+# 			has_ascension_perk = ap_engineered_evolution
+# 			has_authority = "auth_machine_intelligence"
+# 			has_authority = "auth_warshipgirls"
+# 			has_authority = "auth_shenhai"
+# 			has_authority = "auth_starshipgirls"
+# 		}
+# 		is_mechanical_empire = no
+# 		is_cyborg_empire = no
+# 	}
+# 	ai_weight = {
+# 		factor = 15
+# 		modifier = {
+# 			factor = 0
+# 			num_owned_planets < 6
+# 		}
+# 		modifier = {
+# 			factor = 3
+# 			has_authority = auth_hive_mind
+# 		}
+# 	}
+# }
+# # @ap_evolutionary_mastery_POINTS = 3
+# # @ap_evolutionary_mastery_COST_MULT = -0.25
+# # ap_evolutionary_mastery = {
+# # 	on_enabled = {
+# # 		add_research_option = tech_genetic_resequencing
+# # 		hidden_effect = {
+# # 			country_event = {
+# # 				id = utopia.2703
+# # 			}
+# # 		}
+# # 	}
+# # 	possible = {
+# # 		custom_tooltip = {
+# # 			fail_text = "synthetic_empire_biological_ascension"
+# # 			NOT = {
+# # 				has_trait = trait_mechanical
+# # 			}
+# # 		}
+# # 		custom_tooltip = {
+# # 			fail_text = "requires_ascension_perks_2"
+# # 			num_ascension_perks > 1
+# # 		}
+# # 		custom_tooltip = {
+# # 			fail_text = "requires_technology_glandular_acclimation"
+# # 			has_technology = tech_glandular_acclimation
+# # 		}
+# # 		custom_tooltip = {
+# # 			fail_text = "requires_ap_engineered_evolution"
+# # 			has_ascension_perk = ap_engineered_evolution
+# # 		}
+# # 	}
+# # 	modifier = {
+# # 		description = ap_evolutionary_mastery_modifier_desc
+# # 		description_parameters = {
+# # 			POINTS = @ap_evolutionary_mastery_POINTS
+# # 			COST_MULT = @ap_evolutionary_mastery_COST_MULT
+# # 		}
+# # 		BIOLOGICAL_species_trait_points_add = @ap_evolutionary_mastery_POINTS
+# # 		modify_species_cost_mult = @ap_evolutionary_mastery_COST_MULT
+# # 	}
+# # 	potential = {
+# # 		host_has_dlc = "Utopia"
+# # 		NOR = {
+# # 			is_ice_moon_country = yes
+# # 			has_ascension_perk = ap_evolutionary_mastery
+# # 			has_authority = "auth_machine_intelligence"
+# # 		}
+# # 		is_mechanical_empire = no
+# # 		is_cyborg_empire = no
+# # 	}
+# # 	ai_weight = {
+# # 		factor = 100
+# # 	}
+# # }
+#化身天灾
+ap_become_the_crisis = {
+	potential = {
+		has_nemesis = yes
+		# NOT = {
+		# 	has_ascension_perk = ap_become_the_crisis
+		# }
+		NOR = {
+			has_ascension_perk = ap_become_the_crisis
+			has_origin = origin_slavers
+			has_authority = auth_shenhai
+			has_authority = auth_warshipgirls
+			has_authority = auth_starshipgirls
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
+		}
+		custom_tooltip = {
+			fail_text = "requires_independence"
+			or = {
+				has_country_flag = ICE_MOON_FUTA
+				has_country_flag = ICE_MOON_STAR
+				is_subject = no
+			}
+		}
+		custom_tooltip = {
+			fail_text = "must_not_be_custodian"
+			is_galactic_custodian = no
+		}
+		custom_tooltip = {
+			fail_text = "must_not_be_emperor"
+			is_galactic_emperor = no
+		}
+		NOR = {
+			has_ethic = ethic_xenophile
+			has_ethic = ethic_fanatic_xenophile
+			has_ethic = ethic_pacifist
+			has_ethic = ethic_fanatic_pacifist
+			has_civic = civic_machine_servitor
+		}
+	}
+	on_enabled = {
+		hidden_effect = {
+			set_ai_personality = became_the_crisis
+		}
+		activate_crisis_progression = yes
+	}
+	ai_weight = {
+		factor = 7.5
+		modifier = {
+			factor = 0
+			is_militarist = no
+			is_xenophobe = no
+			is_gestalt = no
+		}
+		modifier = {
+			factor = 0
+			is_nirvana_empire = yes
+		}
+		modifier = {
+			factor = 0
+			has_country_flag = ICE_MOON_FUTA_AI_Knights
+		}
+		modifier = {
+			factor = 10
+			OR = {
+				is_suc_country = yes
+				is_inn_country = yes
+			}
+		}
+		modifier = {
+			factor = 10
+			is_homicidal = yes
+		}
+		modifier = {
+			factor = 2
+			has_tradition = tr_supremacy_finish
+		}
+		modifier = {
+			factor = 0
+			galaxy_percentage < 0.1
+		}
+		modifier = {
+			factor = 2
+			galaxy_percentage > 0.2
+		}
+		modifier = {
+			factor = 0
+			count_playable_country = {
+				count > 1
+				limit = {
+					has_ascension_perk = ap_become_the_crisis
+				}
+			}
+		}
+	}
+}
+
+#杂交
+ap_xeno_compatibility = {
+	potential = {
+		host_has_dlc = "Megacorp"
+		NOT = {
+			has_ascension_perk = ap_xeno_compatibility
+		}
+		is_regular_empire = yes
+		xeno_compatibility_enabled = yes
+		is_ai = no
+	}
+	modifier = {
+		planet_immigration_pull_mult = 0.33
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "is_ICE_MOON_FUTA_or_xenophile"
+			OR = {
+				is_xenophile = yes
+				has_country_flag = ICE_MOON_FUTA
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_xeno_species"
+			any_owned_pop = {
+				NOR = {
+					is_same_species = root.owner
+					has_trait = trait_mechanical
+					has_trait = trait_machine_unit
+					has_trait = trait_hive_mind
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_technology_gene_tailoring"
+			has_technology = tech_gene_tailoring
+		}
+	}
+	on_enabled = {
+		custom_tooltip = "allow_crossbreeding"
+	}
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 2
+			has_ethic = ethic_xenophile
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_xenophile
+		}
+	}
+}

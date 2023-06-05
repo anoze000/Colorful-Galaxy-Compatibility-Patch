@@ -1,0 +1,166 @@
+### Federations Scripted Triggers
+nirvana_losing_defensive_war = {
+	optimize_memory
+	any_war = {
+		any_defender = {
+			is_same_value = root
+		}
+		any_attacker = {
+			OR = {
+				relative_power = {
+					who = root
+					category = fleet
+					value = overwhelming
+				}
+				relative_power = {
+					who = root
+					category = fleet
+					value = superior
+				}
+			}
+		}
+		defender_war_exhaustion > 0.3
+		attacker_war_exhaustion < 0.7
+	}
+}
+
+nirvana_losing_offensive_war = {
+	optimize_memory
+	any_war = {
+		any_attacker = {
+			is_same_value = root
+		}
+		any_defender = {
+			OR = {
+				relative_power = {
+					who = root
+					category = fleet
+					value = overwhelming
+				}
+				relative_power = {
+					who = root
+					category = fleet
+					value = superior
+				}
+			}
+		}
+		attacker_war_exhaustion > 0.4
+		defender_war_exhaustion < 0.7
+	}
+}
+
+nirvana_losing_defensive_war_combatant = {
+	optimize_memory
+	any_war = {
+		any_defender = {
+			is_same_value = root
+		}
+		any_attacker = {
+			is_same_value = prevprev
+			OR = {
+				relative_power = {
+					who = root
+					category = fleet
+					value = overwhelming
+				}
+				relative_power = {
+					who = root
+					category = fleet
+					value = superior
+				}
+			}
+		}
+		defender_war_exhaustion > 0.3
+		attacker_war_exhaustion < 0.7
+	}
+}
+
+nirvana_losing_offensive_war_combatant = {
+	optimize_memory
+	any_war = {
+		any_attacker = {
+			is_same_value = root
+		}
+		any_defender = {
+			is_same_value = prevprev
+			OR = {
+				relative_power = {
+					who = root
+					category = fleet
+					value = overwhelming
+				}
+				relative_power = {
+					who = root
+					category = fleet
+					value = superior
+				}
+			}
+		}
+		attacker_war_exhaustion > 0.4
+		defender_war_exhaustion < 0.7
+	}
+}
+
+is_ban_vanilla_ap_country = {
+	OR = {
+		has_authority = "auth_Arp_0"
+		has_civic = civic_AL_newearth
+		has_authority = auth_AL_pua_fall
+		has_authority = auth_AL_aggressive_fall
+		has_authority = "auth_machine_intelligence"
+		has_authority = "auth_warshipgirls"
+		has_authority = "auth_shenhai"
+		has_authority = "auth_starshipgirls"
+		has_authority = "auth_asharmdolls"
+		has_authority = "auth_united_fleet"
+		has_authority = "auth_commonwealth"
+		has_authority = "auth_kancolle"
+		has_authority = "auth_kan"
+		has_authority = "auth_GF_paradeus"
+		azurlane_default_govement_trigger = yes
+	}
+}
+
+is_ban_vanilla_ap_not_wsg_country = {
+	OR = {
+		has_authority = "auth_Arp_0"
+		has_civic = civic_AL_newearth
+		has_authority = auth_AL_pua_fall
+		has_authority = auth_AL_aggressive_fall
+		has_authority = "auth_machine_intelligence"
+		has_authority = "auth_starshipgirls"
+		has_authority = "auth_asharmdolls"
+		has_authority = "auth_commonwealth"
+		has_authority = "auth_kancolle"
+		has_authority = "auth_kan"
+		has_authority = "auth_GF_paradeus"
+	}
+}
+
+is_genetic_resequencing_country = {
+	OR = {
+		has_civic = civic_AL_newearth
+		has_authority = "auth_gensokyo"
+		has_authority = "auth_Arp_0"
+		has_authority = "auth_AL_pua_fall"
+		has_authority = "auth_AL_aggressive_fall"
+		has_authority = "auth_warshipgirls"
+		has_authority = "auth_shenhai"
+		has_authority = "auth_starshipgirls"
+		has_authority = "auth_asharmdolls"
+		has_authority = "auth_united_fleet"
+		has_authority = "auth_commonwealth"
+		has_authority = "auth_kancolle"
+		has_authority = "auth_kan"
+		has_authority = "auth_GF_paradeus"
+		is_species_class = "mahoshoujo"
+		azurlane_default_govement_trigger = yes
+	}
+}
+
+is_forbidden_ee_production_var = {
+	OR = { 
+		has_authority = auth_starshipgirls 
+		has_authority = auth_asharmdolls
+	}
+}

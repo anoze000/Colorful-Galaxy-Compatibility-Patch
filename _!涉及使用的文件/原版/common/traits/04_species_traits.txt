@@ -329,11 +329,9 @@ trait_talented = {
 	potential_crossbreeding_chance = 1.0
 	allowed_archetypes = { BIOLOGICAL LITHOID }
 	opposites = { "trait_nerve_stapled" }
-
 	slave_cost = {
 		energy = 500
 	}
-
 	modifier = {
 		negative_leader_traits_species = -1
 		leaders_upkeep_mult = -0.1
@@ -352,7 +350,7 @@ trait_quick_learners = {
 	opposites = { "trait_slow_learners" }
 	allowed_archetypes = { BIOLOGICAL LITHOID }
 	modifier = {
-		species_leader_exp_gain = 0.25
+		species_leader_exp_gain = 0.1
 	}
 	slave_cost = {
 		energy = 500
@@ -953,9 +951,7 @@ trait_latent_psionic = {
 	potential_crossbreeding_chance = 0.25
 	icon = "gfx/interface/icons/traits/trait_latent_psionic_species.dds"
 
-	opposites = { 
-		"trait_cybernetic" 
-	}
+	opposites = { "trait_cybernetic" }
 
 	initial = no
 	randomized = no
@@ -968,14 +964,7 @@ trait_latent_psionic = {
 	species_possible_merge_add = {
 		always = no
 	}
-	allowed_archetypes = { 
-		BIOLOGICAL 
-		LITHOID 
-		Magical_Bitch
-		Magical_Girl
-		Lust_Girl
-		TENTACLE
-	}
+	allowed_archetypes = { BIOLOGICAL LITHOID }
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.10
@@ -989,21 +978,15 @@ trait_latent_psionic = {
 	assembly_score = {
 		modifier = {
 			add = 0.5
-			from = { 
-				has_research_designation = yes 
-			}
+			from = { has_research_designation = yes }
 		}
 		modifier = {
 			add = 0.5
-			from = { 
-				has_unity_designation = yes 
-			}
+			from = { has_unity_designation = yes }
 		}
 		modifier = {
 			add = 0.5
-			from = { 
-				has_building = building_order_keep 
-			}
+			from = { has_building = building_order_keep }
 		}
 	}
 }
@@ -1092,14 +1075,7 @@ trait_survivor = {
 	species_potential_add = {
 		always = no
 	}
-	allowed_archetypes = { 
-		BIOLOGICAL 
-		LITHOID 
-		Magical_Bitch
-		Magical_Girl
-		Lust_Girl
-		TENTACLE
-	}
+	allowed_archetypes = { BIOLOGICAL LITHOID }
 	modifier = {
 		pc_nuked_habitability = 0.7
 		leader_age = 10
@@ -1380,23 +1356,14 @@ trait_void_dweller_1 = {
 		can_remove_beneficial_genetic_traits = yes
 	}
 	randomized = no
-	allowed_archetypes = { 
-		BIOLOGICAL 
-		LITHOID 
-		Magical_Bitch
-		Magical_Girl
-		Lust_Girl
-		TENTACLE
-	}
+	allowed_archetypes = { BIOLOGICAL LITHOID }
 	sorting_priority = 30
 	potential_crossbreeding_chance = 0.33
 	custom_tooltip_with_modifiers = void_dweller_trait_tooltip #unlike custom_tooltip, this shows in addition to the modifiers
 	triggered_pop_modifier = { #won't show in trait tooltips, use custom_tooltip/custom_tooltip_with_modifiers
 		potential = {
 			exists = planet
-			planet = { 
-				is_artificial = no 
-			}
+			planet = { is_artificial = no }
 		}
 		pop_happiness = -0.3
 	}
@@ -1415,16 +1382,12 @@ trait_void_dweller_1 = {
 	assembly_score = {
 		modifier = {
 			add = 1.5
-			from = { 
-				uses_district_set = habitat 
-			}
+			from = { uses_district_set = habitat }
 		}
 		modifier = {
 			subtract = 1.5
 			from = {
-				NOT = { 
-					uses_district_set = habitat 
-				}
+				NOT = { uses_district_set = habitat }
 			}
 		}
 	}
@@ -1559,9 +1522,7 @@ trait_lithoid_radiotrophic = {
 trait_zombie = {
 	cost = 0
 	potential_crossbreeding_chance = 0
-	opposites = { 
-		"trait_nerve_stapled" 
-	}
+	opposites = { "trait_nerve_stapled" }
 	initial = no
 	randomized = no
 	advanced_trait = no
@@ -1577,14 +1538,7 @@ trait_zombie = {
 	}
 	infertile = yes
 
-	allowed_archetypes = { 
-		BIOLOGICAL 
-		LITHOID 
-		Magical_Bitch
-		Magical_Girl
-		Lust_Girl
-		TENTACLE
-	}
+	allowed_archetypes = { BIOLOGICAL LITHOID }
 	modifier = {
 		planet_jobs_produces_mult = -0.25
 		planet_pops_upkeep_mult = -1

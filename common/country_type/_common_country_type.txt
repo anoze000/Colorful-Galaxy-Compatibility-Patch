@@ -21,8 +21,8 @@ default = {
 	ai = {
 		enabled = yes
 		declare_war = yes
-		min_navy_for_wars = 0.5
-		min_assault_armies_for_wars = @armies_for_declaring_war
+		min_navy_for_wars = 0.7		#_[sai/v=0.5]
+		min_assault_armies_for_wars = 0		#_[sai/v=@armies_for_declaring_war]
 		colonizer = yes
 		internal_policies = yes
 		modification = yes
@@ -41,11 +41,13 @@ default = {
 		}
 	}
 
-	#_[贸易路线开关]
+	##	贸易路线开关
 	trade_routes_available = {
 		NOR = {
-			has_global_flag = PF_flg_glbl_trade_ban	#_[贸易禁止]
-			AND = {#_[贸易优化]
+			#	贸易禁止
+			has_global_flag = PF_flg_glbl_trade_ban
+			#	贸易优化
+			AND = {
 				is_ai = yes
 				has_global_flag = PF_flg_glbl_trade_opt
 			}
@@ -197,6 +199,7 @@ fallen_empire = {
 		construction = no
 		starbase_upgrade = no
 		limited_construction = yes
+		ascension_perks = no
 		tech = no
 		modules = {
 			military_minister_module
@@ -288,6 +291,7 @@ awakened_fallen_empire = {
 		modification = no
 		government = no
 		construction = yes
+		ascension_perks = yes
 		tech = yes
 		traditions = yes #but no ascension perks!
 		modules = {

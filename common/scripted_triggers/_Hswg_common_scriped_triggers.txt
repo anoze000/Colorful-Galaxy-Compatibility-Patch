@@ -293,6 +293,26 @@ is_ban_vanilla_ap_country = {
 		has_authority = auth_AL_pua_fall
 		has_authority = auth_AL_aggressive_fall
 		has_authority = "auth_machine_intelligence"
+		has_authority = "auth_warshipgirls"
+		has_authority = "auth_shenhai"
+		has_authority = "auth_starshipgirls"
+		has_authority = "auth_asharmdolls"
+		has_authority = "auth_united_fleet"
+		has_authority = "auth_commonwealth"
+		has_authority = "auth_kancolle"
+		has_authority = "auth_kan"
+		has_authority = "auth_GF_paradeus"
+		azurlane_default_govement_trigger = yes
+	}
+}
+
+is_ban_vanilla_ap_not_wsg_country = {
+	OR = {
+		has_authority = "auth_Arp_0"
+		has_civic = civic_AL_newearth
+		has_authority = auth_AL_pua_fall
+		has_authority = auth_AL_aggressive_fall
+		has_authority = "auth_machine_intelligence"
 		has_authority = "auth_starshipgirls"
 		has_authority = "auth_asharmdolls"
 		has_authority = "auth_commonwealth"

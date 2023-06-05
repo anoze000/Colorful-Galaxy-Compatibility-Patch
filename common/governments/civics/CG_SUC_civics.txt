@@ -88,7 +88,7 @@ civic_semen_squeezing = {
 	}
 	modifier = {
 		planet_jobs_alloys_produces_mult = 0.25
-		country_command_limit_add = 20
+		command_limit_add = 20
 		army_damage_mult = 0.6
 		army_health = 0.7
 		army_morale_damage_mult = 0.85
@@ -362,7 +362,6 @@ civic_pleasure_neural_network = {
 		category_lust_research_speed_mult = 0.2
 		planet_erotic_produces_mult = 0.2
 		planet_lovejuicer_produces_mult = 0.2
-		planet_master_produces_mult = 0.1
 		planet_beauty_produces_mult = 0.1
 	}
 	traits = {

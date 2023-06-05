@@ -56,6 +56,9 @@ ap_hydrocentric = {
 	}
 }
 
+
+@ap_engineered_evolution_POINTS = 3
+@ap_engineered_evolution_COST_MULT = -0.25
 ap_engineered_evolution = {
 	on_enabled = {
 		custom_tooltip = "engineered_evolution_tooltip"
@@ -97,25 +100,29 @@ ap_engineered_evolution = {
 			fail_text = "requires_technology_gene_tailoring"
 			has_technology = tech_gene_tailoring
 		}
-		custom_tooltip = {
-			fail_text = "requires_not_ap_the_flesh_is_weak"
-			OR = {
-				gray_origin_ascension_perk_trigger = yes 
+		if = {
+			limit = {
+				NOT = { 
+					has_global_flag = time_ascension_paths 
+				}
+			}
+			custom_tooltip = {
+				fail_text = "requires_not_ap_the_flesh_is_weak"
 				NOT = {	
 					has_ascension_perk = ap_the_flesh_is_weak 
-				}
-			}	
-		}
-		custom_tooltip = {
-			fail_text = "requires_not_ap_organo_machine_interfacing"
-			NOT = { 
-				has_ascension_perk = ap_organo_machine_interfacing 
+				}	
 			}
-		}
-		custom_tooltip = {
-			fail_text = "requires_not_ap_mind_over_matter"
-			NOT = { 
-				has_ascension_perk = ap_mind_over_matter
+			custom_tooltip = {
+				fail_text = "requires_not_ap_organo_machine_interfacing"
+				NOT = { 
+					has_ascension_perk = ap_organo_machine_interfacing 
+				}
+			}
+			custom_tooltip = {
+				fail_text = "requires_not_ap_mind_over_matter"
+				NOT = { 
+					has_ascension_perk = ap_mind_over_matter
+				}
 			}
 		}
 		custom_tooltip = {
@@ -145,17 +152,34 @@ ap_engineered_evolution = {
 		has_utopia = yes
 		NOR = {
 			has_ascension_perk = ap_engineered_evolution
-			is_nirvana_empire_dragon = yes
-			is_ban_vanilla_ap_country = yes
+			has_authority = "auth_machine_intelligence"
 			has_origin = origin_shroudwalker_apprentice
+			is_nirvana_empire_dragon = yes
+			is_ban_vanilla_ap_not_wsg_country = yes
 			is_lily_goverments = yes
+			is_communist_country = yes
 			# GF
 			is_GF_authority = yes
-			is_communist_country = yes
+			# time
+			has_origin = origin_syncretic_evolution #基飞
+			has_origin = origin_pc_hive #基飞
+			has_origin = origin_mechanists #机飞
 		}
 		is_mechanical_empire = no
-		is_cyborg_empire = no
-
+		if = {
+			limit = {
+				NOT = { 
+					has_global_flag = time_ascension_paths 
+				}
+			}
+			NOR = {
+				has_origin = origin_shroudwalker_apprentice #灵飞
+				has_origin = origin_the_matrix #义飞
+				has_origin = origin_contract #锁灵飞
+				has_origin = origin_psionic #锁灵飞
+			}
+			is_cyborg_empire = no
+		}
 	}
 
 	ai_weight = {
@@ -187,7 +211,9 @@ ap_mind_over_matter = {
 	possible = {
 		custom_tooltip = {
 			fail_text = "synthetic_empire_psionic_ascension"
-			NOT = { has_trait = trait_mechanical }
+			NOT = { 
+				has_trait = trait_mechanical 
+			}
 		}
 		custom_tooltip = {
 			fail_text = "requires_ascension_perks_1"
@@ -197,17 +223,30 @@ ap_mind_over_matter = {
 			fail_text = "requires_technology_psionic_theory"
 			has_technology = tech_psionic_theory
 		}
-		custom_tooltip = {
-			fail_text = "requires_not_ap_engineered_evolution"
-			NOT = { has_ascension_perk = ap_engineered_evolution }
-		}
-		custom_tooltip = {
-			fail_text = "requires_not_ap_the_flesh_is_weak"
-			NOT = { has_ascension_perk = ap_the_flesh_is_weak }
+		if = {
+			limit = {
+				NOT = { 
+					has_global_flag = time_ascension_paths 
+				}
+			}
+			custom_tooltip = {
+				fail_text = "requires_not_ap_engineered_evolution"
+				NOT = { 
+					has_ascension_perk = ap_engineered_evolution 
+				}
+			}
+			custom_tooltip = {
+				fail_text = "requires_not_ap_the_flesh_is_weak"
+				NOT = { 
+					has_ascension_perk = ap_the_flesh_is_weak 
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = "requires_not_ap_synthetic_evolution"
-			NOT = { has_ascension_perk = ap_synthetic_evolution }
+			NOT = { 
+				has_ascension_perk = ap_synthetic_evolution 
+			}
 		}
 		custom_tooltip = {
 			fail_text = "requires_free_tradition_tree"
@@ -226,18 +265,33 @@ ap_mind_over_matter = {
 		NOR = {
 			has_ascension_perk = ap_mind_over_matter
 			has_origin = origin_shroudwalker_apprentice
+			has_authority = "auth_machine_intelligence"
 			is_nirvana_empire_council = yes
-			is_ban_vanilla_ap_country = yes
+			is_ban_vanilla_ap_not_wsg_country = yes
 			has_origin = origin_pd_shroud
 			has_origin = origin_techno_world
 			is_communist_country = yes
 			is_lily_goverments = yes
 			# GF
 			is_GF_authority = yes
+			# 时与空
+			has_origin = origin_shroudwalker_apprentice #灵飞
+			has_origin = origin_mechanists #机飞
 		}
 		is_gestalt = no
 		is_mechanical_empire = no
-		is_cyborg_empire = no
+		if = {
+			limit = {
+				NOT = { 
+					has_global_flag = time_ascension_paths 
+				}
+			}
+			NOR = {
+				has_origin = origin_syncretic_evolution #基飞
+				has_origin = origin_the_matrix #义飞
+			}
+			is_cyborg_empire = no
+		}
 	}
 
 	ai_weight = {
@@ -287,18 +341,24 @@ ap_the_flesh_is_weak = {
 			fail_text = "requires_technology_integrated_cybernetics"
 			has_technology = tech_integrated_cybernetics
 		}
-		custom_tooltip = {
-			fail_text = "requires_not_ap_engineered_evolution"
-			OR = {
-				gray_origin_ascension_perk_trigger = yes
+		if = {
+			limit = {
+				NOT = { 
+					has_global_flag = time_ascension_paths 
+				}
+			}
+			custom_tooltip = {
+				fail_text = "requires_not_ap_engineered_evolution"
 				NOT = { 
 					has_ascension_perk = ap_engineered_evolution 
 				}
 			}
-		}
-		custom_tooltip = {
-			fail_text = "requires_not_ap_mind_over_matter"
-			NOT = { has_ascension_perk = ap_mind_over_matter }
+			custom_tooltip = {
+				fail_text = "requires_not_ap_mind_over_matter"
+				NOT = { 
+					has_ascension_perk = ap_mind_over_matter 
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = "requires_not_ap_synthetic_evolution"
@@ -312,17 +372,30 @@ ap_the_flesh_is_weak = {
 
 	potential = {
 		has_utopia = yes
-		
+		if = {
+			limit = {
+				NOT = { has_global_flag = time_ascension_paths }
+			}
+			NOR = {
+				has_origin = origin_shroudwalker_apprentice #灵飞
+				has_origin = origin_syncretic_evolution #基飞
+				has_origin = origin_contract #锁灵飞
+				has_origin = origin_psionic #锁灵飞
+			}
+		}
 		NOR = {
 			has_ascension_perk = ap_the_flesh_is_weak
 			has_origin = origin_shroudwalker_apprentice
 			is_nirvana_empire = yes
-			is_ban_vanilla_ap_country = yes
+			is_ban_vanilla_ap_not_wsg_country = yes	
 			is_journalist_species = yes
 			is_communist_country = yes
 			is_lily_goverments = yes
 			# GF
 			is_GF_authority = yes
+			# 时与空
+			has_origin = origin_mechanists #机飞
+			has_origin = origin_the_matrix #义飞
 		}
 		is_gestalt = no
 		NOT = { 
@@ -426,6 +499,9 @@ ap_synthetic_evolution = {
 			fail_text = "requires_free_tradition_tree"
 			num_tradition_categories < 7
 		}
+		NOT = { 
+			has_ascension_perk = ap_become_the_gray 
+		}
 	}
 
 	potential = {
@@ -438,9 +514,18 @@ ap_synthetic_evolution = {
 			has_wg_and_uf_special_authority = yes
 			is_nirvana_empire = yes
 			has_ascension_perk = ap_become_the_gray
+			# lily
+			is_lily_goverments = yes
 			# GF
 			is_GF_authority = yes
 			is_communist_country = yes
+			# 时与空
+			has_origin = origin_shroudwalker_apprentice #灵飞
+			has_origin = origin_mechanists #机飞
+			has_origin = origin_syncretic_evolution #基飞
+			has_origin = origin_the_matrix #义飞
+			has_origin = origin_contract #锁灵飞
+			has_origin = origin_psionic #锁灵飞
 		}
 		is_gestalt = no
 		is_mechanical_empire = no
@@ -461,10 +546,7 @@ ap_synthetic_evolution = {
 		}
 		modifier = {
 			factor = 0
-			OR = {
-				has_origin = origin_necrophage
-				has_origin = origin_slavers
-			}
+			has_origin = origin_slavers
 		}
 	}
 }
@@ -473,9 +555,8 @@ ap_become_the_crisis = {
 	potential = {
 		has_nemesis = yes
 		has_wg_and_uf_special_authority = no
-		NOR = { 
+		NOT = { 
 			has_ascension_perk = ap_become_the_crisis 
-			has_origin = origin_slavers
 		}
 	}
 
@@ -537,6 +618,13 @@ ap_become_the_crisis = {
 		}
 		modifier = {
 			factor = 10
+			OR = {
+			   is_suc_country = yes
+			   is_inn_country = yes
+			}
+		}
+		modifier = {
+			factor = 10
 			is_homicidal = yes
 		}
 		modifier = {
@@ -553,7 +641,11 @@ ap_become_the_crisis = {
 		}
 		modifier = {
 			factor = 0
-			count_playable_country = {
+			num_ascension_perks >= 5
+		}
+		modifier = {
+			factor = 0
+			count_country = {
 				count > 1
 				limit = {
 					has_ascension_perk = ap_become_the_crisis
@@ -577,23 +669,41 @@ ap_organo_machine_interfacing = {
 			fail_text = "requires_technology_integrated_cybernetics"
 			has_technology = tech_integrated_cybernetics
 		}
-		custom_tooltip = {
-			fail_text = "requires_not_ap_engineered_evolution"
-			NOT = { has_ascension_perk = ap_engineered_evolution }
+		if = {
+			limit = {
+				NOT = { 
+					has_global_flag = time_ascension_paths 
+				}
+			}
+			custom_tooltip = {
+				fail_text = "requires_not_ap_engineered_evolution"
+				NOT = { 
+					has_ascension_perk = ap_engineered_evolution 
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = "requires_free_tradition_tree"
 			num_tradition_categories < 7
 		}
-		NOT = { has_ascension_perk = ap_become_the_gray }
+		NOT = { 
+			has_ascension_perk = ap_become_the_gray
+		}
 	}
 
 	potential = {
 		has_utopia = yes
-		is_communist_country = yes
+		if = {
+			limit = {
+				NOT = { has_global_flag = time_ascension_paths }
+			}
+			NOT = {
+				has_origin = origin_pc_hive #基飞
+			}
+		}
 		NOR = {
 			has_ascension_perk = ap_organo_machine_interfacing
-			has_origin = origin_pc_hive
+			is_communist_country = yes
 		}
 		has_authority = auth_hive_mind
 	}
