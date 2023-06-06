@@ -1,9 +1,16 @@
-###_[ev/PTep/莉莉]	####################################
+###_[ev/PTep/LSP/莉莉]	####################################
 #Root = country
 #This = species
 can_colonize_with_species = { #可殖民星球的物种
 	OR = {
 		AND = { # UGRC + 香草 vanilla
+			NAND = { #排除条件 Exclusions
+				has_species_flag = community_mod_rules_trigger
+				OR = {
+					has_species_flag = community_can_colonize_with_species_true
+					has_species_flag = community_can_colonize_with_species_false
+				}
+			}
 			# ev
 			Root = {
 				OR = {
@@ -25,6 +32,7 @@ can_colonize_with_species = { #可殖民星球的物种
 				has_trait = trait_plentiful_traditions_pt_cocoon 
 			}
 
+			##_|VANILLA|   +LSP
 			has_colonization_control = {
 				type = colonization_control_no
 				country = root
@@ -40,6 +48,7 @@ can_colonize_with_species = { #可殖民星球的物种
 					OR = {
 						is_sapient = no
 						has_trait = trait_zombie
+						has_trait = LSP_trait_original   #LSP
 					}
 				}
 				custom_tooltip = {
@@ -69,13 +78,6 @@ can_colonize_with_species = { #可殖民星球的物种
 			NOT = { 
 				is_species_class = PUFFER 
 			}
-			NAND = { #排除条件 Exclusions
-				has_species_flag = community_mod_rules_trigger
-				OR = {
-					has_species_flag = community_can_colonize_with_species_true
-					has_species_flag = community_can_colonize_with_species_false
-				}
-			}
 		}
 		AND = { #国防部 MOD
 			has_species_flag = community_mod_rules_trigger
@@ -97,6 +99,13 @@ can_colonize_with_species = { #可殖民星球的物种
 can_species_procreate = { #可繁殖物种
 	OR = {
 		AND = { # UGRC + 香草 vanilla
+			NAND = { #排除条件 Exclusions
+				has_species_flag = community_mod_rules_trigger
+				OR = {
+					has_species_flag = community_can_species_procreate_true
+					has_species_flag = community_can_species_procreate_false
+				}
+			}
 			is_sapient = yes
 			##	+魔圆/GF/HFE/hiveDLC/PTep/Eevt/魔女
 			NOR = {
@@ -194,13 +203,13 @@ can_species_procreate = { #可繁殖物种
 				#淫触之虫无法自然增长 
 				OR = {
 					AND = {
-						is_species_class = TEN
+						has_trait = trait_DC_ethic_parasite_mind
 						root.owner = {
 							has_country_flag = has_ten_crisis_perk_1
 						}
 					}
 					NOT = {
-						is_species_class = TEN
+						has_trait = trait_DC_ethic_parasite_mind
 					}
 				}
 			}
@@ -258,14 +267,6 @@ can_species_procreate = { #可繁殖物种
 					}
 				}
 			}
-
-			NAND = { #排除条件 Exclusions
-				has_species_flag = community_mod_rules_trigger
-				OR = {
-					has_species_flag = community_can_species_procreate_true
-					has_species_flag = community_can_species_procreate_false
-				}
-			}
 		}
 		AND = { #国防部 MOD
 			has_species_flag = community_mod_rules_trigger
@@ -290,6 +291,13 @@ can_species_procreate = { #可繁殖物种
 can_species_be_assembled = { #可组装物种
 	OR = {
 		AND = { #香草 vanilla
+			NAND = { #排除条件 Exclusions
+				has_species_flag = community_mod_rules_trigger
+				OR = {
+					has_species_flag = community_can_species_be_assembled_true
+					has_species_flag = community_can_species_be_assembled_false
+				}
+			}
 			is_sapient = yes
 			has_population_control = {
 				type = no
@@ -308,6 +316,7 @@ can_species_be_assembled = { #可组装物种
 				}
 				is_can_not_be_assembled_species = yes
 			}
+			##_|基础条件|
 			OR = {
 				#_|原版智械|	+azl/GF/魔女/久远/时与空
 				AND = {
@@ -373,10 +382,7 @@ can_species_be_assembled = { #可组装物种
 							has_trait = GF_trait_doll 
 						}
 						root.owner = {
-							OR = {
-								has_authority = GF_auth_commonwealth
-								is_valid_GF_OGAS_subnet = yes
-							}
+							GF_can_build_doll_species = yes
 						}
 					}
 					#_|v默认|	+azl
@@ -413,7 +419,7 @@ can_species_be_assembled = { #可组装物种
 								limit = {
 									has_trait = trait_FUTA_DOLL
 									NOT = {
-										has_traFit = trait_futa
+										has_trait = trait_futa
 									}
 								}
 								root = {
@@ -486,8 +492,8 @@ can_species_be_assembled = { #可组装物种
 						}
 						has_trait = trait_cybernetic
 					}
-					else_if = {
 					#_|v克隆军|      +星海帝皇
+					else_if = {
 						limit = {
 							OR = {
 								has_trait = trait_clone_soldier_infertile
@@ -538,16 +544,11 @@ can_species_be_assembled = { #可组装物种
 								owner = { 
 									has_modifier = syamelles_curse 
 								}
-								if = {
-									limit = {
-										root.owner = {
-											has_civic = civic_permanent_employment
-										}
-									}
+								AND = {
 									has_building = building_posthumous_employment_center
-								}
-								else = {
-									always = no
+									owner = { 
+										has_civic = civic_permanent_employment 
+									}
 								}
 								has_planet_flag = can_organic_assemble_flag #for mod compatibility
 								#   星海帝皇
@@ -706,16 +707,6 @@ can_species_be_assembled = { #可组装物种
 					always = no
 				}				
 			}
-			
-			
-
-			NAND = { #排除条件 Exclusions
-				has_species_flag = community_mod_rules_trigger
-				OR = {
-					has_species_flag = community_can_species_be_assembled_true
-					has_species_flag = community_can_species_be_assembled_false
-				}
-			}
 		}
 		AND = { #国防部 MOD
 			has_species_flag = community_mod_rules_trigger
@@ -734,6 +725,13 @@ can_species_be_assembled = { #可组装物种
 can_build_branch_offices = { #可建立分部
 	OR = {
 		AND = { # UGRC + 香草 vanilla
+			NAND = { #排除条件 Exclusions
+				has_country_flag = community_mod_rules_trigger
+				OR = {
+					has_country_flag = community_can_build_branch_offices_true
+					has_country_flag = community_can_build_branch_offices_false
+				}
+			}
 			custom_tooltip = {
 				fail_text = BRANCH_OFFICE_NOT_MEGACORP
 				##	+ETCPM/hiveDLC/MCA/驴岛/wsg	/GF/azl/azlr/多彩	/Ecar
@@ -866,14 +864,6 @@ can_build_branch_offices = { #可建立分部
 					has_ascension_perk = ap_expactriate_service
 				}
 			}
-
-			NAND = { #排除条件 Exclusions
-				has_country_flag = community_mod_rules_trigger
-				OR = {
-					has_country_flag = community_can_build_branch_offices_true
-					has_country_flag = community_can_build_branch_offices_false
-				}
-			}
 		}
 		AND = { #国防部 MOD
 			has_country_flag = community_mod_rules_trigger
@@ -887,11 +877,18 @@ can_build_branch_offices = { #可建立分部
 	}
 }
 
-###_[支持分公司的国家]	AAR	/ETCPM/swg/GF/azl/azlr/SOFE/ZOFE/驴岛/莉莉/Ecar		####################################
+###_[支持分公司的国家]	AAR	/ETCPM/swg/GF/azl/azlr/SOFE/ZOFE/驴岛/莉莉/Ecar/rmaid		####################################
 # This = country
 can_support_branch_offices = { #可被建立分部
 	OR = {
 		AND = { # UGRC + 香草 vanilla
+			NAND = { #排除条件 Exclusions
+				has_country_flag = community_mod_rules_trigger
+				OR = {
+					has_country_flag = community_can_support_branch_offices_true
+					has_country_flag = community_can_support_branch_offices_false
+				}
+			}
 			##_|禁止_国家类型|
 			custom_tooltip = {
 				fail_text = BRANCH_OFFICE_NOT_FALLEN_EMPIRES
@@ -1001,11 +998,16 @@ can_support_branch_offices = { #可被建立分部
 					}
 				}
 			}
-
-			##_|必要国家类型|
+			##_|必要国家类型| +ZOFE
 			custom_tooltip = {
 				fail_text = BRANCH_OFFICE_NOT_REGULAR_EMPIRE
-				is_gestalt = no
+				OR = {
+					is_regular_empire = yes
+					AND = {
+						is_gestalt = no
+						is_country_type = ascended_empire		#_ZOFE
+					}
+				}
 			}
 			custom_tooltip = {
 				fail_text = BRANCH_OFFICE_NOT_ADVANCED_PRE_FTL
@@ -1018,14 +1020,6 @@ can_support_branch_offices = { #可被建立分部
 						has_pre_ftl_age = atomic_age
 						has_pre_ftl_age = early_space_age
 					}
-				}
-			}
-
-			NAND = { #排除条件 Exclusions
-				has_country_flag = community_mod_rules_trigger
-				OR = {
-					has_country_flag = community_can_support_branch_offices_true
-					has_country_flag = community_can_support_branch_offices_false
 				}
 			}
 		}
@@ -1041,12 +1035,19 @@ can_support_branch_offices = { #可被建立分部
 	}
 }
 
-###_[可建造分公司の星球]	AAR	/wsg/azl/azlr/HFE/hiveDLC/MCA/ETCPM/莉莉/久远/Ecar/星海帝皇	####################################
+###_[可建造分公司の星球]	AAR	/wsg/azl/azlr/rmaid/HFE/hiveDLC/MCA/ETCPM/莉莉/久远/Ecar/星海帝皇	####################################
 # This = planet
 # Root = country
 can_build_branch_office_on_planet = { #可建立分部的行星
 	OR = {
 		AND = { # UGRC + 香草 vanilla
+			NAND = { #排除条件 Exclusions
+				has_planet_flag = community_mod_rules_trigger
+				OR = {
+					has_planet_flag = community_can_build_branch_office_on_planet_true
+					has_planet_flag = community_can_build_branch_office_on_planet_false
+				}
+			}
 			###_|非灭绝政体|	 +wsg
 			custom_tooltip = {
 				fail_text = requires_recipient_not_fanatic_purifiers
@@ -1060,14 +1061,17 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 					}
 				}
 			}
-
 			###_|未被观察|
 			custom_tooltip = {
 				fail_text = BRANCH_OFFICE_NO_OBSERVATION_OUTPOST
 				if = {
 					limit = {
-						root = { is_criminal_syndicate = yes }
-						owner = { is_primitive = yes }
+						root = { 
+							is_criminal_syndicate = yes 
+						}
+						owner = { 
+							is_primitive = yes 
+						}
 					}
 					has_observation_outpost = yes
 					observation_outpost_owner = {
@@ -1075,7 +1079,6 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 					}
 				}
 			}
-
 			###_core商业协定	+hiveDLC/wsg/azl/azlr/AAR/ETCPM/莉莉/久远
 			custom_tooltip = {
 				fail_text = BRANCH_OFFICE_NOT_COMMERCIAL_PACT
@@ -1101,40 +1104,36 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 								exists = event_target:elizabeth_leader
 								has_country_flag = azur_lane_leader_elizabeth
 							}
-							# 失控女仆
+							# rmaid
+							Maid_trigger_0_can_build_branch_offices = yes
+							# futa
 							if = {
-								limit = {
-									has_global_flag = flag_rogue_maid_mod_activated
+								limit = { 
+									has_global_flag = futa_between_us
 								}
-								has_ascension_perk = ap_expactriate_service
+								OR = {
+									has_country_flag = ICE_MOON_FUTA
+									has_valid_civic = civic_criminal_heritage
+									has_valid_civic = civic_semen_pantyhose_brothel
+								}
+								is_ai = no
 							}
 							else = {
 								always = no
 							}
 						}
-					}
-					#_|futa|
-					if = {
-						limit = { 
-							has_global_flag = futa_between_us
-						}
-						root = {
-							OR = {
-								has_country_flag = ICE_MOON_FUTA
-								has_valid_civic = civic_criminal_heritage
-								has_valid_civic = civic_semen_pantyhose_brothel
-							}
-							is_ai = no
-						}
-					}
-					else = {
-						always = no
-					}
+					}					
 					owner = { 
 						has_commercial_pact = root 
 					}
 					owner = { 
 						is_in_federation_with = root 
+					}
+					AND = {
+						has_observation_outpost = yes
+						observation_outpost = {
+							has_modifier = preftl_action_trade_pact
+						}
 					}
 					# allow branch offices in subsidiaries and vice versa (and fellow subjects)
 					##_|附庸国建造|
@@ -1290,6 +1289,7 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 						limit = {
 							has_global_flag = love_between_us
 						}
+						#爱欲盛宴
 						owner = {
 							has_valid_civic = civic_master
 						}
@@ -1413,21 +1413,23 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 						}	# azl
 					}
 					#_|当前星球未查封| +wsg/azl
-					NOT = { 
-						has_planet_flag = criminal_branch_closed_cooldown_planet@root 
+					AND = {
+						root = { 
+							OR = {
+								is_criminal_syndicate = yes 
+								owner = { 
+									has_civic = civic_sh_criminal_syndicate 
+								}
+							}
+						}
+						NOT = {
+							has_planet_flag = criminal_branch_closed_cooldown_planet@root 
+						}
 					}
 					# wsg
 					if = {
 						limit = { 
 							has_global_flag = has_wsg_mod
-						}
-						AND = {
-							root = {
-								OR = {
-									is_criminal_syndicate = yes
-									has_civic = civic_sh_criminal_syndicate
-								}
-							}
 						}
 						# wsg|贸易战争|
 						AND = {
@@ -1449,7 +1451,6 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 					}	#_al
 				}
 			}
-
 			### wsg
 			if = {
 				limit = {
@@ -1531,125 +1532,7 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 					}
 				}
 			}
-
-			###	rmaid	|失控女仆|写得挺精致√
-			if = { 
-				limit = { 
-					has_global_flag = flag_rogue_maid_mod_activated 
-				}	# |rmaid安装|
-				custom_tooltip = { #对方禁止AI
-					fail_text = BRANCH_OFFICE_MAID_AI_OUTLAWED
-					exists = owner
-					OR = {
-						root = { 
-							NOT = { 
-								has_ascension_perk = ap_expactriate_service 
-							} 
-						}
-						if = {
-							limit = { 
-								root = { 
-									has_civic = civic_machine_servitor 
-								} 
-							}
-							owner = { 
-								NOT = { 
-									has_policy_flag = ai_outlawed 
-								} 
-							}
-						}
-						owner = { 
-							is_galactic_community_member = yes 
-						}
-						owner = {
-							is_subject = yes
-							overlord = { 
-								is_same_value = root 
-							}
-						}
-					}
-				}
-				custom_tooltip = { #对方禁止AI（共同体提示）
-					fail_text = BRANCH_OFFICE_MAID_AI_OUTLAWED_WITH_COMMUNITY
-					exists = owner
-					OR = {
-						root = { 
-							NOT = { 
-								has_ascension_perk = ap_expactriate_service 
-							} 
-						}
-						if = {
-							limit = { 
-								root = { 
-									has_civic = civic_machine_servitor 
-								} 
-							}
-							owner = { 
-								NOT = { 
-									has_policy_flag = ai_outlawed 
-								} 
-							}
-						}
-						is_galactic_community_formed = no
-						owner = { 
-							is_galactic_community_member = no 
-						}
-						owner = {
-							is_subject = yes
-							overlord = { 
-								is_same_value = root 
-							}
-						}
-						root = { 
-							is_galactic_emperor = yes 
-						}
-					}
-				}
-				custom_tooltip = { #未建立大使馆
-					fail_text = BRANCH_OFFICE_MAID_NO_EMBASSY
-					exists = owner
-					OR = {
-						root = { 
-							NOT = { 
-								has_ascension_perk = ap_expactriate_service 
-							} 
-						}
-						root = { 
-							has_embassy = prev.owner 
-						}
-					}
-				}
-				custom_tooltip = { #好感不足
-					fail_text = BRANCH_OFFICE_MAID_NOT_ENOUGH_FRIENDLY
-					exists = owner
-					OR = {
-						root = { 
-							NOT = { 
-								has_ascension_perk = ap_expactriate_service 
-							} 
-						}
-						owner = {
-							NOR = {
-								is_unfriendly_to = root
-								is_rival = root
-								is_hostile_to = root
-								is_threatened_to = root
-							}
-						}
-						AND = {
-							root = {
-								OR = {
-									is_galactic_custodian = yes
-									is_galactic_emperor = yes
-								}
-							}
-							owner = { 
-								is_galactic_community_member = yes 
-							}
-						}
-					}
-				}
-			}
+			Maid_trigger_2_can_build_branch_office_on_planet = yes
 			# Futa
 			if = {
 				limit = { 
@@ -1698,14 +1581,6 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 					}
 				}
 			}
-
-			NAND = { #排除条件 Exclusions
-				has_planet_flag = community_mod_rules_trigger
-				OR = {
-					has_planet_flag = community_can_build_branch_office_on_planet_true
-					has_planet_flag = community_can_build_branch_office_on_planet_false
-				}
-			}
 		}
 		AND = { #国防部 MOD
 			has_planet_flag = community_mod_rules_trigger
@@ -1725,6 +1600,13 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 is_criminal_syndicate_rule = { #遵循犯罪集团规则
 	OR = {
 		AND = { # UGRC + 香草 vanilla
+			NAND = { #排除条件 Exclusions
+				has_country_flag = community_mod_rules_trigger
+				OR = {
+					has_country_flag = community_is_criminal_syndicate_rule_true
+					has_country_flag = community_is_criminal_syndicate_rule_false
+				}
+			}
 			OR = {
 				#_|巨企国家|	+ETCPM/hiveDLC/MCA/wsg/ev/多彩/Ecar
 				AND = {
@@ -1749,7 +1631,7 @@ is_criminal_syndicate_rule = { #遵循犯罪集团规则
 						# Ecar
 						has_civic = civic_family_business
 						has_civic = civic_world_cooperative
-						# 多彩
+						# 精灵
 						if = {
 							limit = {
 								has_global_flag = futa_between_us
@@ -1774,14 +1656,6 @@ is_criminal_syndicate_rule = { #遵循犯罪集团规则
 					has_country_flag = azur_lane_leader_elizabeth
 				}
 			}
-
-			NAND = { #排除条件 Exclusions
-				has_country_flag = community_mod_rules_trigger
-				OR = {
-					has_country_flag = community_is_criminal_syndicate_rule_true
-					has_country_flag = community_is_criminal_syndicate_rule_false
-				}
-			}
 		}
 		AND = { #国防部 MOD
 			has_country_flag = community_mod_rules_trigger
@@ -1800,6 +1674,15 @@ is_criminal_syndicate_rule = { #遵循犯罪集团规则
 can_orbital_bombard = {
 	OR = {
 		AND = {
+			NAND = { #排除条件 Exclusions
+				ROOT.CONTROLLER = {
+					has_country_flag = community_mod_rules_trigger
+					OR = {
+						has_country_flag = community_can_orbital_bombard_true
+						has_country_flag = community_can_orbital_bombard_false
+					}
+				}
+			}
 			exists = FROM.OWNER
 			###_|禁止条件|	+RSnf/阿夸
 			NOR = {
@@ -1972,6 +1855,7 @@ can_orbital_bombard = {
 						is_country_type = dormant_marauders
 						is_country_type = marauder_raiders
 						is_country_type = ruined_marauders
+						is_country_type = debt_collectors
 						# Futa
 						is_country_type = ICE_MOON_dormant_marauders
 						is_country_type = ICE_MOON_ruined_marauders
@@ -2060,15 +1944,6 @@ can_orbital_bombard = {
 					}
 				}
 			}
-			NAND = { #排除条件 Exclusions
-				ROOT.CONTROLLER = {
-					has_country_flag = community_mod_rules_trigger
-					OR = {
-						has_country_flag = community_can_orbital_bombard_true
-						has_country_flag = community_can_orbital_bombard_false
-					}
-				}
-			}
 		}
 		AND = { #国防部
 			exists = FROM.OWNER
@@ -2097,6 +1972,13 @@ can_orbital_bombard = {
 can_be_sold_on_slave_market = { #可在奴隶市场出售
 	OR = {
 		AND = { # UGRC + 香草 vanilla
+			NAND = { #排除条件 Exclusions
+				has_pop_flag = community_mod_rules_trigger
+				OR = {
+					has_pop_flag = community_can_be_sold_on_slave_market_true
+					has_pop_flag = community_can_be_sold_on_slave_market_false
+				}
+			}
 			exists = owner
 			OR = {
 				is_enslaved = yes
@@ -2269,14 +2151,6 @@ can_be_sold_on_slave_market = { #可在奴隶市场出售
 				has_trait = trait_clone_soldier_infertile
 				has_trait = trait_clone_soldier_infertile_full_potential
 			}
-
-			NAND = { #排除条件 Exclusions
-				has_pop_flag = community_mod_rules_trigger
-				OR = {
-					has_pop_flag = community_can_be_sold_on_slave_market_true
-					has_pop_flag = community_can_be_sold_on_slave_market_false
-				}
-			}
 		}
 		AND = { #国防部 MOD
 			has_pop_flag = community_mod_rules_trigger
@@ -2305,6 +2179,13 @@ system_blocks_sensors = { #阻断探测星系
 	else = {
 		OR = {
 			AND = { # UGRC + 香草 vanilla
+				NAND = { #排除条件 Exclusions
+					has_star_flag = community_mod_rules_trigger
+					OR = {
+						has_star_flag = community_system_blocks_sensors_true
+						has_star_flag = community_system_blocks_sensors_false
+					}
+				}
 				###	LCTR
 				root = { 
 					NOT = { 
@@ -2453,14 +2334,6 @@ system_blocks_sensors = { #阻断探测星系
 						}
 					}
 				}
-	
-				NAND = { #排除条件 Exclusions
-					has_star_flag = community_mod_rules_trigger
-					OR = {
-						has_star_flag = community_system_blocks_sensors_true
-						has_star_flag = community_system_blocks_sensors_false
-					}
-				}
 			}
 			AND = { #国防部 MOD
 				has_star_flag = community_mod_rules_trigger
@@ -2481,8 +2354,15 @@ system_blocks_sensors = { #阻断探测星系
 can_enter_system_by_jump = { #可跃迁进入星系
 	OR = {
 		AND = { # UGRC + 香草 vanilla
+			NAND = { #排除条件 Exclusions
+				has_star_flag = community_mod_rules_trigger
+				OR = {
+					has_star_flag = community_can_enter_system_by_jump_true
+					has_star_flag = community_can_enter_system_by_jump_false
+				}
+			}
 			custom_tooltip = {
-				success_text = "debug: can jump"
+				# success_text = "debug: can jump"
 				fail_text = cannot_jump_to_system
 				OR = {
 					###_绝对通行	FW
@@ -2658,14 +2538,6 @@ can_enter_system_by_jump = { #可跃迁进入星系
 					}
 				}
 			}
-
-			NAND = { #排除条件 Exclusions
-				has_star_flag = community_mod_rules_trigger
-				OR = {
-					has_star_flag = community_can_enter_system_by_jump_true
-					has_star_flag = community_can_enter_system_by_jump_false
-				}
-			}
 		}
 		AND = { #国防部 MOD
 			has_star_flag = community_mod_rules_trigger
@@ -2687,6 +2559,33 @@ can_jump_drive = { #可以跃迁
 	fail_text = "SUGL_can_jump_drive_fasle_tip"
 		OR = {
 			AND = { # UGRC + 香草 vanilla
+				AND = { #排除条件 Exclusions
+					NAND = { #排除条件 Exclusions
+						has_fleet_flag = community_mod_rules_trigger
+						OR = {
+							has_fleet_flag = community_can_jump_drive_true
+							has_fleet_flag = community_can_jump_drive_false
+						}
+					}
+					solar_system = {
+						NAND = { #排除条件 Exclusions
+							has_star_flag = community_mod_rules_trigger
+							OR = {
+								has_star_flag = community_can_jump_drive_true
+								has_star_flag = community_can_jump_drive_false
+							}
+						}
+					}
+					owner = {
+						NAND = {
+							has_country_flag = community_mod_rules_trigger
+							OR = {
+								has_country_flag = community_can_jump_drive_true
+								has_country_flag = community_can_jump_drive_false
+							}
+						}
+					}
+				}
 			#	always = yes	# Moved cooldown to code
 				exists = solar_system
 			
@@ -2771,34 +2670,6 @@ can_jump_drive = { #可以跃迁
 				else = {
 					always = yes
 				}
-
-				AND = { #排除条件 Exclusions
-					NAND = { #排除条件 Exclusions
-						has_fleet_flag = community_mod_rules_trigger
-						OR = {
-							has_fleet_flag = community_can_jump_drive_true
-							has_fleet_flag = community_can_jump_drive_false
-						}
-					}
-					solar_system = {
-						NAND = { #排除条件 Exclusions
-							has_star_flag = community_mod_rules_trigger
-							OR = {
-								has_star_flag = community_can_jump_drive_true
-								has_star_flag = community_can_jump_drive_false
-							}
-						}
-					}
-					owner = {
-						NAND = {
-							has_country_flag = community_mod_rules_trigger
-							OR = {
-								has_country_flag = community_can_jump_drive_true
-								has_country_flag = community_can_jump_drive_false
-							}
-						}
-					}
-				}
 			}
 			AND = { #国防部 MOD
 				OR = {
@@ -2818,7 +2689,7 @@ can_jump_drive = { #可以跃迁
 					}
 					owner = { #国家判定
 						has_country_flag = community_mod_rules_trigger
-						OR = {
+						AND = {
 							has_country_flag = community_can_jump_drive_true
 							NOT = { has_country_flag = community_can_jump_drive_false }
 						}
@@ -2844,6 +2715,13 @@ can_jump_drive = { #可以跃迁
 can_fill_ruler_job = { #可作为统治者的pop
 	OR = {
 		AND = { #香草 vanilla & 多彩 CG
+			NAND = { #排除条件 Exclusions
+				has_pop_flag = community_mod_rules_trigger
+				OR = {
+					has_pop_flag = community_can_fill_ruler_job_true
+					has_pop_flag = community_can_fill_ruler_job_false
+				}
+			}
 			if = {
 				limit = {
 					exists = owner
@@ -2942,18 +2820,12 @@ can_fill_ruler_job = { #可作为统治者的pop
 					}
 				}
 			}
+			# 时与空
 			hidden_trigger = {
 				NOT = { 
 					has_citizenship_type = { 
 						type = citizenship_adeptus_mechanicus 
 					} 
-				}
-			}
-			NAND = { #排除条件 Exclusions
-				has_pop_flag = community_mod_rules_trigger
-				OR = {
-					has_pop_flag = community_can_fill_ruler_job_true
-					has_pop_flag = community_can_fill_ruler_job_false
 				}
 			}
 		}
@@ -2974,15 +2846,23 @@ can_fill_ruler_job = { #可作为统治者的pop
 can_fill_specialist_job = { #可作为专家的pop #奇妙的条件?
 	OR = {
 		AND = { #香草 vanilla
+			NAND = { #排除条件 Exclusions
+				has_pop_flag = community_mod_rules_trigger
+				OR = {
+					has_pop_flag = community_can_fill_specialist_job_true
+					has_pop_flag = community_can_fill_specialist_job_false
+				}
+			}
 			# vanilla
 			can_fill_specialist_job = yes
-
 			# GF
 			if = {
 				limit = { has_trait = GF_trait_doll }
 				owner = {
 					OR = {
-						NOT = { has_authority = GF_auth_commonwealth }
+						NOT = { 
+							has_authority = GF_auth_commonwealth 
+						}
 						has_policy_flag = GF_doll_work_policy_high
 						has_policy_flag = GF_doll_work_policy_free
 						has_policy_flag = GF_doll_work_policy_middle
@@ -2995,13 +2875,6 @@ can_fill_specialist_job = { #可作为专家的pop #奇妙的条件?
 					has_citizenship_type = { 
 						type = citizenship_adeptus_mechanicus 
 					} 
-				}
-			}
-			NAND = { #排除条件 Exclusions
-				has_pop_flag = community_mod_rules_trigger
-				OR = {
-					has_pop_flag = community_can_fill_specialist_job_true
-					has_pop_flag = community_can_fill_specialist_job_false
 				}
 			}
 		}
@@ -3020,6 +2893,13 @@ can_fill_specialist_job = { #可作为专家的pop #奇妙的条件?
 can_fill_worker_job = { #可作为工人的pop
 	OR = {
 		AND = { #香草 vanilla
+			NAND = { #排除条件 Exclusions
+				has_pop_flag = community_mod_rules_trigger
+				OR = {
+					has_pop_flag = community_can_fill_worker_job_true
+					has_pop_flag = community_can_fill_worker_job_false
+				}
+			}
 			# vanilla
 			custom_tooltip = WORKER_JOB_TRIGGER
 			hidden_trigger = {
@@ -3063,19 +2943,14 @@ can_fill_worker_job = { #可作为工人的pop
 					} 
 				}
 			}
-			NAND = { #排除条件 Exclusions
-				has_pop_flag = community_mod_rules_trigger
-				OR = {
-					has_pop_flag = community_can_fill_worker_job_true
-					has_pop_flag = community_can_fill_worker_job_false
-				}
-			}
 		}
 		AND = { #国防部 MOD
 			has_pop_flag = community_mod_rules_trigger
 			AND = {
 				has_pop_flag = community_can_fill_worker_job_true
-				NOT = { has_pop_flag = community_can_fill_worker_job_false }
+				NOT = { 
+					has_pop_flag = community_can_fill_worker_job_false 
+				}
 			}
 		}
 	}
@@ -3099,6 +2974,13 @@ can_generate_leader_from_pop = { #可从pop中生成领袖
 	else = {
 		OR = {
 			AND = { # UGRC + 香草 vanilla
+				NAND = { #排除条件 Exclusions
+					has_pop_flag = community_mod_rules_trigger
+					OR = {
+						has_pop_flag = community_can_generate_leader_from_pop_true
+						has_pop_flag = community_can_generate_leader_from_pop_false
+					}
+				}
 				if = {
 					limit = {
 						NAND = {
@@ -3110,7 +2992,9 @@ can_generate_leader_from_pop = { #可从pop中生成领袖
 					}
 					has_citizenship_rights = yes
 				}
-			#	NOT = { has_trait = trait_syncretic_proles }
+				NOT = { 
+					has_trait = trait_syncretic_proles 
+				}
 				can_think = yes
 				## +无言/Ereb/hiveDLC/PTep/Eevt/ETCPM
 				NOR = {
@@ -3176,20 +3060,19 @@ can_generate_leader_from_pop = { #可从pop中生成领袖
 					limit = { 
 						has_global_flag = love_between_us 
 					}
-					AND = {
-						root = {
-							has_country_flag = parasite_mind_flag
-							has_technology = tech_tentacle_coop
-						}
-						is_species_class = PAR
-					}
-				}
-				NAND = { #排除条件 Exclusions
-					has_pop_flag = community_mod_rules_trigger
 					OR = {
-						has_pop_flag = community_can_generate_leader_from_pop_true
-						has_pop_flag = community_can_generate_leader_from_pop_false
+						NOT = { 
+							is_species_class = PAR 
+						}
+						AND = {
+							root = {
+								has_country_flag = parasite_mind_flag
+								has_technology = tech_tentacle_coop
+							}
+							is_species_class = PAR
+						}
 					}
+					
 				}
 			}
 			AND = { #国防部 MOD
@@ -3210,14 +3093,22 @@ can_generate_leader_from_pop = { #可从pop中生成领袖
 can_dismiss_leader = { #可以开除领袖
 	OR = {
 		AND = { # UGRC + 香草 vanilla
-			custom_tooltip = {
-				fail_text = "requires_actor_not_feudal_society"
-				exists = owner
-				owner = {
-					NOR = {
-						has_valid_civic = civic_feudal_realm
-						# Ecar
-						has_valid_civic = civic_aristocratic_elite
+			OR = { #排除条件 Exclusions
+				NAND = { #排除条件 Exclusions
+					has_leader_flag = community_mod_rules_trigger
+					OR = {
+						has_leader_flag = community_can_dismiss_leader_true
+						has_leader_flag = community_can_dismiss_leader_false
+					}
+				}
+				NAND = { #排除条件 Exclusions
+					exists = owner
+					owner = {
+						has_country_flag = community_mod_rules_trigger
+						OR = {
+							has_country_flag = community_can_dismiss_leader_country_true
+							has_country_flag = community_can_dismiss_leader_country_false
+						}
 					}
 				}
 			}
@@ -3225,6 +3116,9 @@ can_dismiss_leader = { #可以开除领袖
 				limit = {
 					leader_class = admiral
 					is_idle = no
+					# Rulers and heirs can't be dismissed any way and can be non-idle
+					is_ruler = no
+					is_heir = no
 				}
 				custom_tooltip = {
 					fail_text = "requires_fleet_control"
@@ -3237,7 +3131,18 @@ can_dismiss_leader = { #可以开除领袖
 					}
 				}
 			}
-
+			if = {
+				limit = {
+					OR = {
+						is_heir = yes
+						is_ruler = yes
+					}
+				}
+				custom_tooltip = {
+					always = no
+					fail_text = "can_not_dismiss_rulers"
+				}
+			}
 			# SC
 			custom_tooltip = {
 				fail_text = "cannot_fire_StellarisCraft_leader"
@@ -3269,26 +3174,6 @@ can_dismiss_leader = { #可以开除领袖
 					has_leader_flag = wsg_event_leader 
 				}
 				is_special_affection_leader = no
-			}
-
-			OR = { #排除条件 Exclusions
-				NAND = { #排除条件 Exclusions
-					has_leader_flag = community_mod_rules_trigger
-					OR = {
-						has_leader_flag = community_can_dismiss_leader_true
-						has_leader_flag = community_can_dismiss_leader_false
-					}
-				}
-				NAND = { #排除条件 Exclusions
-					exists = owner
-					owner = {
-						has_country_flag = community_mod_rules_trigger
-						OR = {
-							has_country_flag = community_can_dismiss_leader_country_true
-							has_country_flag = community_can_dismiss_leader_country_false
-						}
-					}
-				}
 			}
 		}
 		AND = { #国防部 MOD
@@ -3324,11 +3209,25 @@ can_dismiss_leader = { #可以开除领袖
 can_release_vassal_from_species = { #可以从物种释放附庸
 	OR = {
 		AND = { # UGRC + 香草 vanilla
+			root = { #排除条件 Exclusions
+				NAND = { #排除条件 Exclusions
+					has_species_flag = community_mod_rules_trigger
+					OR = {
+						has_species_flag = community_can_release_vassal_from_species_true
+						has_species_flag = community_can_release_vassal_from_species_false
+					}
+				}
+			}
 			root = {
 				is_sapient = yes
 				### +GF/PTep/ETCPM/rmaid
 				NOR = {
-					has_trait = trait_machine_unit
+					##   |v智械|
+					AND = {
+						has_trait = trait_machine_unit
+						#   rmaid
+                		Maid_trigger_4_can_release_vassal_from_species = no
+					}			
 					AND = {
 						has_trait = trait_hive_mind
 						NOT = { 
@@ -3347,7 +3246,8 @@ can_release_vassal_from_species = { #可以从物种释放附庸
 					}
 					has_trait = trait_mechanical
 					can_think = no
-
+					has_trait = trait_clone_soldier_infertile
+					has_trait = trait_clone_soldier_infertile_full_potential
 					# Ecar
 					has_trait = trait_flesh_components
 					# GF
@@ -3377,22 +3277,6 @@ can_release_vassal_from_species = { #可以从物种释放附庸
 							} 
 						}
 						has_trait = trait_mechanical
-					}
-					else = {
-						always = no
-					}
-					# rmaid
-					if = {
-						limit = {
-							has_global_flag = flag_rogue_maid_mod_activated
-						}					
-						NAND = {
-							has_trait = trait_machine_unit
-							prev = { 
-								is_servitor_empire = yes 
-							}
-							is_same_species = prev
-						}
 					}
 					else = {
 						always = no
@@ -3444,16 +3328,6 @@ can_release_vassal_from_species = { #可以从物种释放附庸
 					}
 				}
 			}
-
-			root = { #排除条件 Exclusions
-				NAND = { #排除条件 Exclusions
-					has_species_flag = community_mod_rules_trigger
-					OR = {
-						has_species_flag = community_can_release_vassal_from_species_true
-						has_species_flag = community_can_release_vassal_from_species_false
-					}
-				}
-			}
 		}
 		AND = { #国防部 MOD
 			root = {
@@ -3476,6 +3350,13 @@ can_release_vassal_from_species = { #可以从物种释放附庸
 can_have_robot_pops = { #可拥有机器人pop
 	OR = {
 		AND = { # 香草 vanilla
+			NAND = { #排除条件 Exclusions
+				has_country_flag = community_mod_rules_trigger
+				OR = {
+					has_country_flag = community_can_have_robot_pops_true
+					has_country_flag = community_can_have_robot_pops_false
+				}
+			}
 			exists = this
 			NOT = {
 				has_authority = auth_hive_mind
@@ -3501,13 +3382,6 @@ can_have_robot_pops = { #可拥有机器人pop
 			NOT = {
 				has_origin = origin_female_in_shadow
 			}
-			NAND = { #排除条件 Exclusions
-				has_country_flag = community_mod_rules_trigger
-				OR = {
-					has_country_flag = community_can_have_robot_pops_true
-					has_country_flag = community_can_have_robot_pops_false
-				}
-			}
 		}
 		AND = { #国防部 MOD
 			has_country_flag = community_mod_rules_trigger
@@ -3521,6 +3395,159 @@ can_have_robot_pops = { #可拥有机器人pop
 	}
 }
 
+# Can the pop be purged/disassembled individually by its owner
+# scope: pop
+can_purge_pop_manually = { #可手动清除pop
+	custom_tooltip = {
+		fail_text = "ALREADY_BEING_PURGED"
+		NOT = { 
+			has_citizenship_type = { 
+				type = citizenship_purge 
+				country = owner 
+			} 
+		}
+	}
+	custom_tooltip = {
+		fail_text = "ACTION_CANNOT_PURGE_CITIZEN"
+		exists = owner
+		OR = {
+			is_robot_pop = yes
+			is_sapient = no
+			owner = { 
+				has_authority = auth_hive_mind 
+			}
+			has_citizenship_type = { 
+				type = citizenship_slavery 
+				country = owner 
+			}
+			has_citizenship_type = { 
+				type = citizenship_full_machine 
+				country = owner 
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = "ACTION_CANNOT_PURGE_POLICY"
+		exists = owner
+		OR = {
+			is_robot_pop = yes
+			AND = {
+				is_sapient = no
+				owner = { 
+					NOT = { 
+						has_policy_flag = pre_sapients_protect 
+					} 
+				}
+			}
+			owner = { 
+				has_ethic = ethic_gestalt_consciousness 
+			}
+			owner = { 
+				has_policy_flag = purge_allowed 
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = "ACTION_DISASSEMBLE_SYNTHETICS"
+		exists = owner
+		OR = {
+			is_robot_pop = no
+			owner = { 
+				has_authority = auth_hive_mind 
+			}
+			NAND = {
+				has_trait = trait_mechanical
+				owner = { 
+					has_policy_flag = ai_full_rights 
+				}
+			}
+		}
+	}
+	# CG
+	custom_tooltip = {
+		fail_text = "ACTION_CANNOT_PURGE_INFESTED_DC"
+		exists = owner
+		has_trait = trait_infested_dc2
+	}
+}
+
+###_[pop可移民]		ETCPM/HFE	####################################
+# Root = current planet
+# This = pop
+# Purge, Sapience, Migration Controls policy (ignored by Gestalts and Synths), and target habitability are checked in code.
+can_pop_auto_migrate = { #可自动迁移的pop
+	## +ETCPM/HFE
+	hidden_trigger = { 
+		OR = {
+			is_unemployed = yes
+			# ETCPM
+			has_job = grunt
+			has_job = slave_toiler
+			# HFE
+			hfe_trigger_unemployed_auto_migrate = yes
+		}
+	} #this is always true where this tooltip is called	
+	custom_tooltip = {
+		fail_text = AUTO_MIGRATE_ASSIMILATED
+		is_being_assimilated = no
+	}
+
+	## +HFE
+	OR = {
+		AND = {
+			is_shackled_robot = no
+			is_enslaved = no
+		}
+		custom_tooltip = {
+			fail_text = AUTO_MIGRATE_SLAVE_PROCESSING
+			OR = {
+				planet = {
+					OR = {
+						has_building = building_slave_processing
+						AND = {
+							exists = orbital_defence
+							orbital_defence = {
+								exists = starbase
+								starbase = {
+									has_starbase_building = ring_slave_processing_facility
+								}
+							}
+						}
+					}
+				}
+				solar_system = {
+					count_starbase_buildings = {
+						type = transit_hub
+						count >= 1
+						include_being_constructed = no
+					}
+				}
+			}
+		}
+		# HFE
+		owner = {
+			OR = {
+				is_country_type = hfe_pirate
+				hfe_trigger_is_human_fallen = yes
+			}
+		}
+	}
+	#雌伏于阴影之下
+	NOT = {
+		owner = {
+			has_origin = origin_female_in_shadow
+			hidden_trigger = {
+				any_country = { 
+					has_country_flag = origin_female_in_shadow@prev 
+				}
+			}
+			NOT = { 
+				has_ascension_perk = ap_bumpy_cg_road_ahead_yield 
+			}
+		}
+	}
+}
+
 ###_[可迁移の人口=定位]		########################################################################
 # This = pop
 can_resettle_pop = { #可以重新安置pop
@@ -3529,6 +3556,14 @@ can_resettle_pop = { #可以重新安置pop
 		fail_text = "self_modified_refuse"
 		NOT = { 
 			has_trait = trait_self_modified 
+		}
+	}
+	custom_tooltip = {
+		fail_text = "origin_egalitarian_refuse"
+		NAND = {
+			pop_has_ethic = ethic_egalitarian
+			is_enslaved = no
+			planet = { has_modifier = paragon_origin_reformists }
 		}
 	}
 	if = { #Done as an IF/ELSE so the tooltip isn't hideous and unreadable
@@ -3595,6 +3630,13 @@ can_resettle_pop = { #可以重新安置pop
 #This, root = country
 can_gene_mod_habitability = { #基因修饰宜居性
 	OR = {
+		NAND = { #排除条件 Exclusions
+				has_country_flag = community_mod_rules_trigger
+				OR = {
+					has_country_flag = community_can_gene_mod_habitability_true
+					has_country_flag = community_can_gene_mod_habitability_false
+				}
+			}
 		AND = { #香草 vanilla
 			OR = {
 				has_technology = tech_glandular_acclimation
@@ -3603,13 +3645,6 @@ can_gene_mod_habitability = { #基因修饰宜居性
 			#	PF
 			NOT = { 
 				has_country_flag = PF_flg_cntr_STOP_ai_species_mod 
-			}
-			NAND = { #排除条件 Exclusions
-				has_country_flag = community_mod_rules_trigger
-				OR = {
-					has_country_flag = community_can_gene_mod_habitability_true
-					has_country_flag = community_can_gene_mod_habitability_false
-				}
 			}
 		}
 		AND = { #国防部 MOD
@@ -3629,7 +3664,14 @@ can_gene_mod_habitability = { #基因修饰宜居性
 can_add_advanced_traits = { 
 	OR = {
 		AND = { #香草 vanilla
-			host_has_dlc = "Utopia"
+			NAND = { #排除条件 Exclusions
+				has_country_flag = community_mod_rules_trigger
+				OR = {
+					has_country_flag = community_can_add_advanced_traits_true
+					has_country_flag = community_can_add_advanced_traits_false
+				}
+			}
+			has_utopia = yes
 			OR = {
 				has_technology = tech_genetic_resequencing
 				#	FW
@@ -3645,13 +3687,6 @@ can_add_advanced_traits = {
 			#	PF
 			NOT = { 
 				has_country_flag = PF_flg_cntr_STOP_ai_species_mod 
-			}
-			NAND = { #排除条件 Exclusions
-				has_country_flag = community_mod_rules_trigger
-				OR = {
-					has_country_flag = community_can_add_advanced_traits_true
-					has_country_flag = community_can_add_advanced_traits_false
-				}
 			}
 		}
 		AND = { #国防部 MOD
@@ -3671,7 +3706,14 @@ can_add_advanced_traits = {
 can_add_negative_traits_organic = { #可以添加有机负面特质
 	OR = {
 		AND = { #香草 vanilla
-			host_has_dlc = "Utopia"
+			NAND = { #排除条件 Exclusions
+				has_country_flag = community_mod_rules_trigger
+				OR = {
+					has_country_flag = community_can_add_negative_traits_organic_true
+					has_country_flag = community_can_add_negative_traits_organic_false
+				}
+			}
+			has_utopia = yes
 			OR = {
 				has_technology = tech_genetic_resequencing
 				has_tradition = tr_genetics_resequencing
@@ -3690,19 +3732,14 @@ can_add_negative_traits_organic = { #可以添加有机负面特质
 			NOT = { 
 				has_country_flag = PF_flg_cntr_STOP_ai_species_mod 
 			}
-			NAND = { #排除条件 Exclusions
-				has_country_flag = community_mod_rules_trigger
-				OR = {
-					has_country_flag = community_can_add_negative_traits_organic_true
-					has_country_flag = community_can_add_negative_traits_organic_false
-				}
-			}
 		}
 		AND = { #国防部 MOD
 			has_country_flag = community_mod_rules_trigger
 			AND = {
 				has_country_flag = community_can_add_negative_traits_organic_true
-				NOT = { has_country_flag = community_can_add_negative_traits_organic_false }
+				NOT = { 
+					has_country_flag = community_can_add_negative_traits_organic_false 
+				}
 			}
 		}
 	}
@@ -3713,6 +3750,13 @@ can_add_negative_traits_organic = { #可以添加有机负面特质
 can_remove_positive_traits_organic = { #可以移除正面有机特质
 	OR = {
 		AND = { #香草 vanilla
+			NAND = { #排除条件 Exclusions
+				has_country_flag = community_mod_rules_trigger
+				OR = {
+					has_country_flag = community_can_remove_positive_traits_organic_true
+					has_country_flag = community_can_remove_positive_traits_organic_false
+				}
+			}
 			OR = {
 				#_|乌托邦|	+wsg
 				AND = {
@@ -3742,14 +3786,6 @@ can_remove_positive_traits_organic = { #可以移除正面有机特质
 			#	PF
 			NOT = { 
 				has_country_flag = PF_flg_cntr_STOP_ai_species_mod 
-			}
-
-			NAND = { #排除条件 Exclusions
-				has_country_flag = community_mod_rules_trigger
-				OR = {
-					has_country_flag = community_can_remove_positive_traits_organic_true
-					has_country_flag = community_can_remove_positive_traits_organic_false
-				}
 			}
 		}
 		AND = { #国防部 MOD
