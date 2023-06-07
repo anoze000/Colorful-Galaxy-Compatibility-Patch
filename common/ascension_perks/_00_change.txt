@@ -717,6 +717,116 @@ ap_organo_machine_interfacing = {
 	}
 }
 
+ap_organo_machine_interfacing_assimilator = {
+	on_enabled = {
+		custom_tooltip = "organo_machine_interfacing_tooltip"
+		add_research_option = tech_integrated_cybernetics
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_1"
+			num_ascension_perks > 0
+		}
+		custom_tooltip = {
+			fail_text = "requires_assimilated_pops"
+			check_variable = {
+				which = num_assimilated_pops
+				value >= 30
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_global_flag = time_ascension_paths
+				}
+			}
+			custom_tooltip = {
+				fail_text = "requires_not_ap_synthetic_age"
+				NOT = { 
+					has_ascension_perk = ap_synthetic_age 
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_free_tradition_tree"
+			num_tradition_categories < 7
+		}
+	}
+
+	potential = {
+		has_utopia = yes
+		NOR = {
+			has_ascension_perk = ap_organo_machine_interfacing_assimilator
+			has_origin = origin_reassembler #义飞/机飞
+			is_communist_country = yes
+		}
+		has_civic = civic_machine_assimilator
+	}
+
+	ai_weight = {
+		factor = 20
+		modifier = {
+			factor = 0
+			num_owned_planets < 10
+		}
+	}
+}
+
+ap_synthetic_age = {
+	on_enabled = {
+		custom_tooltip = "synthetic_age_tooltip"
+		add_research_option = tech_binary_motivators
+	}
+
+	potential = {
+		has_synthethic_dawn = yes
+		has_authority = auth_machine_intelligence
+		NOR = {
+			has_ascension_perk = ap_synthetic_age
+			has_origin = origin_reassembler
+		}
+	}
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_technology_robomodding"
+			OR = {
+				has_technology = tech_robomodding_m
+				has_technology = tech_robomodding
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_1"
+			num_ascension_perks > 0
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_global_flag = time_ascension_paths
+				}
+			}
+			custom_tooltip = {
+				fail_text = "requires_not_ap_organo_machine_interfacing"
+				NOT = { 
+					has_ascension_perk = ap_organo_machine_interfacing_assimilator 
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_free_tradition_tree"
+			num_tradition_categories < 7
+		}
+	}
+
+	ai_weight = {
+		factor = 20
+		modifier = {
+			factor = 0
+			num_owned_planets < 10
+		}
+	}
+}
+
 # ban ai 使用原版的理想城
 ap_arcology_project = {
 	potential = {
