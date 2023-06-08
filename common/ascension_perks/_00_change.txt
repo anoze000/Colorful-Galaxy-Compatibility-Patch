@@ -8,6 +8,7 @@ ap_hydrocentric = {
 			has_trait = trait_pc_ocean_preference
 			has_trait = trait_DC_ethic_asceticism
 			has_trait = trait_DC_ethic_carnalism
+			has_trait = trait_DC_ethic_parasite_mind
 		}
 	}
 	possible = {

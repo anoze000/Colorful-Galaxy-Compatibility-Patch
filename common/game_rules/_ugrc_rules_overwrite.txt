@@ -798,7 +798,10 @@ can_build_branch_offices = { #可建立分部
 							has_global_flag = love_between_us
 						}
 						OR = {
-							has_authority = auth_brothel #淫渊企业
+							#淫渊企业
+							has_authority = auth_brothel 
+							#破灭之光
+							has_origin = origin_INN_destruction_light
 							AND = {
 								has_authority = auth_united_fleet
 								has_valid_civic = civic_Hport
@@ -969,18 +972,30 @@ can_support_branch_offices = { #可被建立分部
 						# 驴岛
 						has_civic = civic_business_union
 						# wsg
-						AND = {
-							has_authority = auth_warshipgirls
-							NOT = { 
-								has_valid_civic = civic_master
-							}			#_[多彩]
-						}
-
-						AND = {
-							has_authority = auth_shenhai
-							OR = {
-								has_country_flag = pantsu_shop_origin
-								has_civic = civic_sh_criminal_syndicate
+						if = {
+							limit = {
+								has_global_flag = has_wsg_mod
+							}
+							AND ={
+								OR ={
+									has_authority = auth_warshipgirls
+									AND = {
+										has_authority = auth_shenhai
+										OR = {
+											has_country_flag = pantsu_shop_origin
+											has_civic = civic_sh_criminal_syndicate
+										}
+									}
+								}
+								# 多彩
+								if = {
+									limit = {
+										has_global_flag = love_between_us
+									}
+									NOT = { 
+										has_valid_civic = civic_master
+									}
+								}
 							}
 						}
 						# GF
@@ -993,8 +1008,19 @@ can_support_branch_offices = { #可被建立分部
 						has_valid_civic = civic_sofe_inner_strength
 						# ark
 						has_civic = civic_city_enterprise
-						# 多彩玩法拓展
-						has_valid_civic = civic_corruption_syndicate # 罪企
+						# 多彩
+						if = {
+							limit = {
+								has_global_flag = love_between_us
+							}
+							#破灭之光
+							has_origin = origin_INN_destruction_light
+							# 多彩玩法拓展
+							has_valid_civic = civic_corruption_syndicate # 罪企
+						}
+						else = {
+							always = no
+						}
 					}
 				}
 			}
@@ -1290,9 +1316,17 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 							has_global_flag = love_between_us
 						}
 						#爱欲盛宴
-						owner = {
-							has_valid_civic = civic_master
+						OR = {
+							#爱欲盛宴
+							owner = {
+								has_valid_civic = civic_master
+							}
+							#破灭之光
+							root = { 
+								has_origin = origin_INN_destruction_light 
+							}
 						}
+						
 					}
 					else = {
 						always = no
