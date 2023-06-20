@@ -128,7 +128,9 @@ country_event = {
 					}
 				}
 			}
-			create_common_ground_member_1 = yes
+			create_common_ground_member = { 
+				NUM = 1 
+			}
 			create_colony = {
 				owner = event_target:fed_member_1
 			}
@@ -239,9 +241,11 @@ country_event = {
 					}
 				}
 			}
-			create_common_ground_member_2 = yes
-			create_colony = {
-				owner = event_target:fed_member_2
+			create_common_ground_member = { 
+				NUM = 2 
+			}
+			create_colony = { 
+				owner = event_target:fed_member_2 
 			}
 			generate_start_deposits_and_blockers = yes
 			generate_start_buildings_and_districts = yes
@@ -397,13 +401,13 @@ country_event = {
 		set_federation_leader = root
 		if = {
 			limit = {
-				count_playable_country = {
-					limit = {
-						is_ai = no
-					}
-					count > 1
-				}
 				is_ai = no
+				count_playable_country = { 
+					limit = { 
+						is_ai = no 
+					} 
+					count > 1 
+				}
 			}
 			save_event_target_as = dc_fed_leader
 			every_playable_country = {
