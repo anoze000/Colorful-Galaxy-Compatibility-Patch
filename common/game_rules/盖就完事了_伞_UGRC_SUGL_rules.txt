@@ -1,21 +1,24 @@
 ###_++++ z fw universial 游戏规则 范用兼容框架	############################################################################################################
 #_引用[script trigger]必须有placeholder, 且always = no
 
-#_list		可宿敌/允许宣称/星球生存/产生领袖/释放附庸/发动战争/可殖民/环境改造
-#			殖民人口/殖民物种/自由思潮/有幸福度
-#			可敌对/物种组装/轨道轰炸/全图视野
+#_list		可宿敌/允许宣称
+#			星球生存/UGRC参选/UGRC产生领袖/UGRC军事领袖
+#			释放附庸/发动战争/可殖民/环境改造/殖民人口/殖民物种/自由思潮
+#			UGRC幸福感/可敌对	/UGRC可繁殖
+#			物种组装/轨道轰炸/全图视野
 #_定位符	地面入侵通知
 #			RULE轨道维修/产生残骸/星系管制/可跃迁/占领军/传感屏蔽/星系跃迁限制
 #_定位符	可迁移の人口
 #			产生犯罪
-#			强制减少物种
-#			可建造分公司国家/支持分公司的国家/可建造分公司の星球		/杂交许可
+#			UGRC犯罪/强制灭绝
+#			国家可建公司/国家支持公司/星球支持公司	/UGRC罪企
+#			杂交许可
 #			银河市场/星海议会/星海帝国
 #			pop可移民/星球可移民
 #			基因修饰^
 #			解雇领袖/交易领袖/交易舰队	/地改候选	/空间站建设许可
 
-#_flg		UGRC标签
+#_tag		UGRC标签
 #_trgr		其他堕落/巨企国家
 
 
@@ -428,20 +431,19 @@ should_surrender_planets_to = { #应该吧轰炸的行星拥有者交给到目�
 ### should_abduct_pop
 
 
-###_|星球生存|	GF/HFE/hiveDLC/PDew/GF/时与空/LSP	####################################
+###_|星球生存|	GF/HFE/hiveDLC/PDew/GF/时与空/LSP/thl	####################################
 #Root = planet
 #This = species
 species_can_live_on_planet = { #物种可生活在行星
 	exists = root #somehow this appeared in the error log. No idea how!
 	##_|v机械世界|	+GF
-	NAND = {
-		root = {
-			OR = {
-				is_planet_class = pc_machine
-				is_planet_class = pc_GF_sf_machine
-			}
+	if = { 
+		limit = { 
+			root = { 
+				is_planet_class = pc_machine 
+			} 
 		}
-		NOR = {
+		OR = {
 			has_trait = trait_machine_unit
 			has_trait = trait_mechanical
 			AND = {
@@ -457,9 +459,11 @@ species_can_live_on_planet = { #物种可生活在行星
 		}
 	}
 	##_|v蜂巢世界|
-	if = {
-		limit = {
-			root = { is_planet_class = pc_hive }
+	else_if = { 
+		limit = { 
+			root = { 
+				is_planet_class = pc_hive 
+			} 
 		}
 		OR = {
 			has_trait = trait_hive_mind
@@ -486,7 +490,7 @@ species_can_live_on_planet = { #物种可生活在行星
 	}
 	##	PDew
 	if = { limit = { has_global_flag = planetarydiversity }
-		UGRC_trgr_spcs_PD_plnt_livable = yes	# |UGRC条件_PD可居住|
+		UGRC_trgr_spcs_PD_plnt_habitable = yes	# |UGRC条件_PD可居住|
 	}
 	##	时与空
 	TIME_RULE_trgr_spcs_CAN_live_on_planet = yes
@@ -497,6 +501,8 @@ species_can_live_on_planet = { #物种可生活在行星
 			has_species_flag = LSP_flag_original@root
 		}
 	}
+	##	thl
+	THL_trgr_spcs_RULE_can_live_on_planet = yes
 }
 
 ### can_vote_in_democratic_election
@@ -534,7 +540,7 @@ should_pay_for_leader_upkeep = { #应当支付领袖维护
 }
 
 
-###_|产生领袖|	FW/GF/无言/Ereb/hiveDLC/PTep/Eevt/ETCPM/莉莉/Ecar/rmaid/魔女
+###_|UGRC产生领袖|	FW/GF/无言/Ereb/hiveDLC/PTep/Eevt/ETCPM/莉莉/Ecar/rmaid/魔女
 #Checks whether any leaders (scientists etc) can be formed from this pop
 #Root = country
 #This = pop
@@ -847,8 +853,6 @@ can_release_vassal_from_species = { #可以从物种释放附庸
 
 					# Ecar
 					has_trait = trait_flesh_components
-					# GF
-					has_trait = GF_trait_doll
 					# PTep
 					has_trait = trait_plentiful_traditions_pt_cocoon
 					# Eevt/ETCPM
@@ -1450,11 +1454,15 @@ can_terraform_planet = { #可改造星球
 			has_deposit = d_heart_of_the_overmind
 		}
 	}
-	#_|PD|
-#	NOT = { root = { has_origin = origin_pd_tree_of_life } }
+	##	PD
 	custom_tooltip = {
 		fail_text = "requires_actor_not_pdtol"
 		root = { NOT = { has_origin = origin_pd_tree_of_life } }
+	}
+	##	东方领袖
+	custom_tooltip = {
+		fail_text = "sakura_planet_no_terraform"
+		NOT = { has_planet_flag = sakura_planet }
 	}
 }
 
