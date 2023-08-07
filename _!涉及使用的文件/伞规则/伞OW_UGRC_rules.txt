@@ -1,21 +1,24 @@
 ###_++++ z fw universial 游戏规则 范用兼容框架	############################################################################################################
 #_引用[script trigger]必须有placeholder, 且always = no
 
-#_list		可宿敌/允许宣称/星球生存/产生领袖/释放附庸/发动战争/可殖民/环境改造
-#			殖民人口/殖民物种/自由思潮/有幸福度
-#			可敌对/物种组装/轨道轰炸/全图视野
+#_list		可宿敌/允许宣称
+#			星球生存/UGRC参选/UGRC产生领袖/UGRC军事领袖
+#			释放附庸/发动战争/可殖民/环境改造/殖民人口/殖民物种/自由思潮
+#			UGRC幸福感/可敌对	/UGRC可繁殖
+#			物种组装/轨道轰炸/全图视野
 #_定位符	地面入侵通知
-#			RULE轨道维修/产生残骸/星系管制/可跃迁/占领军/传感屏蔽/星系跃迁限制
+#			UGRC修理/产生残骸	/UGRC星系管制/可跃迁/占领军
+#			UGRC传感器/跃迁管制
 #_定位符	可迁移の人口
-#			产生犯罪
-#			强制减少物种
-#			可建造分公司国家/支持分公司的国家/可建造分公司の星球		/杂交许可
+#			UGRC犯罪/强制灭绝
+#			国家可建公司/国家支持公司/星球支持公司	/UGRC罪企
+#			杂交许可
 #			银河市场/星海议会/星海帝国
 #			pop可移民/星球可移民
 #			基因修饰^
 #			解雇领袖/交易领袖/交易舰队	/地改候选	/空间站建设许可
 
-#_flg		UGRC标签
+#_tag		UGRC标签
 #_trgr		其他堕落/巨企国家
 
 
@@ -43,7 +46,6 @@
 #_[pkman]	伊布帝国v1.22								<210501>
 #_[驴岛]	明日方舟									<210522>
 #_[无言]	不明mod
-#_[多彩]	love_between_us
 #_[失落帝国历史]
 #_[魔圆]	Madoka Magica NEW							<200807>
 #_[TAC]		深渊协议									<200807>
@@ -57,11 +59,15 @@
 #_[SRA]		星规阵列									<220821>
 #_[ARP]		苍蓝钢铁的奇葩								<220826>
 #_[时与空]												<221227>
+#_[thl]	东方领袖										<230720>
+
+#_[多彩]	love_between_us
+#_[精灵]	ELF_species
 
 #_[MEM]													<210618>
 #_[ACOT]												<210420>
 #_[SOFE]	始源										<210420>
-#_[ZOFE]	巅峰
+#_[ZOFE]	巅峰					
 #_[AOT]		Acquisition of Technology					<201104>	ACOT+zofe兼容
 #_[EE]		永恒										<200804>
 #_[bwm]		LEX Temp Fix								<210420>
@@ -187,7 +193,7 @@ can_add_claim = {
 					}
 				}
 			}
-
+			
 			# ETCPM
 			AND = {
 				has_global_flag = expanded_pops_active
@@ -220,7 +226,7 @@ can_add_claim = {
 					#	EE
 					is_country_type = eternal_empire
 					#	SOFE
-					is_country_type = sbtg_stellarborne_empire_active
+					is_country_type = sbtg_stellarborne_empire_active	
 					is_country_type = sofe_light_seeker
 				}
 			}
@@ -371,20 +377,14 @@ can_get_claim_from_lost_system = {
 ### should_abduct_pop
 
 
-###_|星球生存|	GF/HFE/hiveDLC/PDew/GF/时与空/LSP	####################################
+###_|星球生存|	GF/HFE/hiveDLC/PDew/GF/时与空/thl	####################################
 #Root = planet
 #This = species
 species_can_live_on_planet = {
 	exists = root #somehow this appeared in the error log. No idea how!
 	##_|v机械世界|	+GF
-	NAND = {
-		root = {
-			OR = {
-				is_planet_class = pc_machine
-				is_planet_class = pc_GF_sf_machine
-			}
-		}
-		NOR = {
+	if = { limit = { root = { is_planet_class = pc_machine } }
+		OR = {
 			has_trait = trait_machine_unit
 			has_trait = trait_mechanical
 			AND = {
@@ -400,10 +400,7 @@ species_can_live_on_planet = {
 		}
 	}
 	##_|v蜂巢世界|
-	if = {
-		limit = {
-			root = { is_planet_class = pc_hive }
-		}
+	else_if = { limit = { root = { is_planet_class = pc_hive } }
 		OR = {
 			has_trait = trait_hive_mind
 			AND = { #Necrophage Hive Mind can have Necrophytes
@@ -429,96 +426,33 @@ species_can_live_on_planet = {
 	}
 	##	PDew
 	if = { limit = { has_global_flag = planetarydiversity }
-		UGRC_trgr_spcs_PD_plnt_livable = yes	# |UGRC条件_PD可居住|
+		UGRC_trgr_spcs_PD_plnt_habitable = yes	# |UGRC条件_PD可居住|
 	}
 	##	时与空
 	TIME_RULE_trgr_spcs_CAN_live_on_planet = yes
-	##	LSP
-	if = { limit = { has_trait = LSP_trait_original }
-		custom_tooltip = {
-			fail_text = LSP_failtips_original
-			has_species_flag = LSP_flag_original@root
-		}
-	}
+	##	thl
+	THL_trgr_spcs_RULE_can_live_on_planet = yes
 }
 
 
-### can_vote_in_democratic_election
+###_|UGRC参选|	####################################	UGRC定制	提升不大|384|17%|
+#Note: this is also used in pop faction support calculations
+#Root = country
+#This = pop
+can_vote_in_democratic_election = {
+	has_pop_flag = UGRC_flg_pop_RULE_can_vote	# |UGRC标签|
+}
+
+
 ### should_pay_for_leader_upkeep
 
 
-###_|产生领袖|	FW/GF/无言/Ereb/hiveDLC/PTep/Eevt/ETCPM/莉莉/Ecar/rmaid/魔女
+###_|UGRC产生领袖|	FW/GF/无言/Ereb/hiveDLC/PTep/Eevt/ETCPM/莉莉/Ecar/rmaid/魔女
 #Checks whether any leaders (scientists etc) can be formed from this pop
 #Root = country
 #This = pop
 can_generate_leader_from_pop = {
-	if = {
-		limit = {
-			NAND = {
-				has_trait = GF_trait_doll
-				root = { has_authority = GF_auth_commonwealth }
-			}
-		}
-		has_citizenship_rights = yes
-	}
-#	NOT = { has_trait = trait_syncretic_proles }
-	can_think = yes
-	## +无言/Ereb/hiveDLC/PTep/Eevt/ETCPM
-	NOR = {
-		has_trait = trait_syncretic_proles
-
-		# 无言
-		has_trait = trait_protoss_probe
-		# Ecar
-		has_trait = trait_flesh_components
-		# Ereb
-		has_trait = trait_slave_gene
-		# hiveDLC
-		root = { has_origin = origin_hive_overmind }
-		# PTep
-		has_trait = trait_plentiful_traditions_pt_cocoon
-		# Eevt/ETCPM
-		has_trait = trait_memorex_comatos
-		has_trait = trait_infested_basic
-		# 莉莉
-		has_trait = trait_AL_puffer
-		# 魔女
-		has_trait = trait_servitude
-	}
-	## +GF/魔女
-	OR = {
-		is_robot_pop = no
-		root = {
-			OR = {
-				has_technology = tech_synthetic_leaders
-				has_authority = auth_machine_intelligence
-				is_mechanical_empire = yes
-				#	GF
-				has_policy_flag = GF_doll_right_full
-				has_policy_flag = GF_doll_right_limited
-				#	魔女
-				has_technology = tech_dummy_leaders
-			}
-		}
-	}
-	OR = {
-		is_same_species = root
-		root = {
-			NAND = {
-				has_origin = origin_necrophage
-				has_trait = trait_necrophage
-			}
-		}
-	}
-
-	##	rmaid
-	if = {
-		limit = {
-			has_global_flag = flag_rogue_maid_mod_activated
-			root = { has_civic = civic_machine_servitor }
-		}
-		is_same_species = root
-	}
+	has_pop_flag = UGRC_flg_pop_RULE_can_generate_leader	# |UGRC标签|
 }
 
 
@@ -526,36 +460,11 @@ can_generate_leader_from_pop = {
 ###	can_create_espionage_asset_from_species
 
 
-###_[GF/hiveDLC]	####################################
+###_|UGRC军事领袖|	####################################	GF/hiveDLC
 #Root = country
 #This = pop
 can_generate_military_leader_from_pop = {
-	can_be_military_leader = yes
-	# +GF
-	OR = {
-		is_robot_pop = no
-		root = {
-			OR = {
-				has_technology = tech_synthetic_leaders
-				has_authority = auth_machine_intelligence
-				is_mechanical_empire = yes
-				# GF
-				has_policy_flag = GF_doll_right_full
-				has_policy_flag = GF_doll_right_limited
-			}
-		}
-	}
-	OR = {
-		is_same_species = root
-		root = {
-			NAND = {
-				has_origin = origin_necrophage
-				has_trait = trait_necrophage
-			}
-		}
-	}
-	# hiveDLC
-	NOT = { root = { has_origin = origin_hive_overmind } }
+	has_pop_flag = UGRC_flg_pop_RULE_can_generate_military_leader	# |UGRC标签|
 }
 
 
@@ -605,7 +514,7 @@ can_release_vassal = {
 }
 
 
-###_|释放附庸物种|	GF/PTep/ETCPM/Eevt/Ecar/rmaid	####################################
+###_|释放附庸|	GF/PTep/ETCPM/Eevt/Ecar/rmaid	####################################
 #Root = species
 #This = country
 can_release_vassal_from_species = {
@@ -632,8 +541,6 @@ can_release_vassal_from_species = {
 
 			# Ecar
 			has_trait = trait_flesh_components
-			# GF
-			has_trait = GF_trait_doll
 			# PTep
 			has_trait = trait_plentiful_traditions_pt_cocoon
 			# Eevt/ETCPM
@@ -645,7 +552,7 @@ can_release_vassal_from_species = {
 				has_trait = trait_mechanical
 			}
 		}
-
+		
 		# ETCPM	##################
 		if = {
 			limit = {
@@ -777,7 +684,7 @@ can_take_hostile_actions = {
 					is_country_type = ascended_empire	# ZOFE
 				}
 				NOT = {
-					has_policy_flag = interference_aggressive
+					has_policy_flag = interference_aggressive	  
 				}
 			}
 			is_primitive = yes
@@ -851,7 +758,7 @@ can_take_hostile_actions = {
 			always = no
 		}
 	}
-
+	
 	# ACOT/SOFE	######################################################
 	else_if = {
 		limit = {
@@ -984,7 +891,7 @@ can_take_hostile_actions = {
 			always = no
 		}
 	}
-
+	
 	else = {
 		always = yes
 	}
@@ -1036,7 +943,7 @@ can_declare_war = {
 			is_at_war = no
 		}
 	}
-
+	
 	##	S_tnatc
 	if = {
 		limit = { has_global_flag = nyblax_no_wars }
@@ -1062,7 +969,7 @@ can_declare_war = {
 #This = planet
 can_colonize_planet = {
 	#always = yes
-
+	
 	##	LSP
 	custom_tooltip = {
 		fail_text = LSP_failtips_country_solitary
@@ -1089,7 +996,7 @@ can_colonize_outside_borders = {
 }
 
 
-###_[环境改造]		RSnf/PD	####################################
+###_|环境改造|		RSnf/PD/thl	####################################
 #Root = country
 #This = planet
 can_terraform_planet = {
@@ -1125,7 +1032,7 @@ can_terraform_planet = {
 		}
 	}
 
-	# RSnf
+	##	RSnf
 	custom_tooltip = {
 		fail_text = NO_TERRAFORM_HOLLOW_WORLD
 		NOT = { is_planet_class = pc_hollow }
@@ -1137,11 +1044,15 @@ can_terraform_planet = {
 			has_deposit = d_heart_of_the_overmind
 		}
 	}
-	#_|PD|
-#	NOT = { root = { has_origin = origin_pd_tree_of_life } }
+	##	PD
 	custom_tooltip = {
 		fail_text = "requires_actor_not_pdtol"
 		root = { NOT = { has_origin = origin_pd_tree_of_life } }
+	}
+	##	东方领袖
+	custom_tooltip = {
+		fail_text = "sakura_planet_no_terraform"
+		NOT = { has_planet_flag = sakura_planet }
 	}
 }
 
@@ -1169,7 +1080,7 @@ can_colonize_with_pop = {
 	NOT = { has_trait = trait_plentiful_traditions_pt_cocoon }
 	# 魔圆
 	NOT = { has_trait = trait_mahoshoujo }
-
+	
 	has_colonization_control = {
 		type = colonization_control_no
 		country = root
@@ -1215,7 +1126,7 @@ can_colonize_with_species = {
 	}
 	##_|PTep|
 	NOT = { has_trait = trait_plentiful_traditions_pt_cocoon }
-
+	
 	##_|VANILLA|	+LSP
 	has_colonization_control = {
 		type = colonization_control_no
@@ -1251,7 +1162,7 @@ can_colonize_with_species = {
 }
 
 
-###	|自由思潮|	+SC	####################################
+###	|自由思潮|	+SC	####################################	无需优化提升不大|384|17%|
 #	pop_has_random_ethics = {
 #		exists = from
 #		NOR = {
@@ -1264,77 +1175,19 @@ can_colonize_with_species = {
 #		}
 #	}
 
-###_|有幸福度|	wsg/PTep/Eevt/无言/Ecar/魔女	####################################
+
+###_|UGRC幸福感|	wsg/PTep/Eevt/无言/Ecar/魔女/thl	####################################
 # Root = Species
 # From = Country
 # This = Species
 species_has_happiness = {
-	NOR = {
-		has_trait = trait_machine_unit
-		has_trait = trait_hive_mind
-		can_think = no
-		# Ecar
-		has_trait = trait_flesh_components
-		# wsg
-		has_trait = sh_trait_shenhai
-		has_trait = sh_trait_shenhai1
-		has_trait = sh_trait_shenhai2
-		has_trait = sh_trait_silent
-		has_trait = sh_trait_silent1
-		# PTep
-		has_trait = trait_plentiful_traditions_pt_cocoon
-		# Eevt
-		has_trait = trait_memorex_comatos
-		# 无言
-		has_trait = trait_protoss_probe
-
-		#	+|魔女|
-		AND = {
-			has_trait = trait_mechanical
-			OR = {
-				NOT = { exists = from }
-				from = { has_authority = auth_machine_intelligence }
-				from = {
-					NOR = {
-						has_technology = tech_synthetic_workers
-						has_technology = tech_dummy_leaders	# 魔女
-					}
-				}
-				from = { has_policy_flag = ai_outlawed }
-			}
-		}
-		AND = {
-			has_trait = trait_cybernetic
-			exists = from
-			from = {
-				has_authority = auth_machine_intelligence
-				has_civic = civic_machine_assimilator # Assimilator empire
-			}
-		}
-
-		#	魔女
-		has_trait = trait_servitude
-		AND = { has_trait = trait_dummy
-			OR = {
-				NOT = { exists = from }
-				from = {
-					NOR = {
-						has_technology = tech_synthetic_workers
-						has_technology = tech_dummy_leaders
-						has_origin = origin_garbage_princesses
-						has_country_flag = synthetic_empire
-					}
-				}
-				from = { has_policy_flag = ai_outlawed }
-			}
-		}
-	}
+	has_species_flag = UGRC_flg_spcs_RULE_happiness_ENABLE@from
 }
 
 
 
 
-###_[可敌对]	ACOT/SOFE	####################################
+###_|可敌对|	ACOT/SOFE	####################################
 #Root = country, us
 #This = country, them
 #This rule is a condition for determining if a country is hostile towards another. not to be confused with can_take_hostile_action
@@ -1380,39 +1233,17 @@ can_be_hostile_towards = {
 }
 
 
-###_|允许繁殖|	GF/HFE/hiveDLC/PTep/Eevt/多彩/魔女		####################################
+###_|UGRC可繁殖|	GF/HFE/hiveDLC/PTep/Eevt/多彩/魔女/精灵		####################################	|-45%|
 # Checks if a pop can procreate
 # This = Species
 # Root = Planet
 can_species_procreate = {
-	is_sapient = yes
-	##	+魔圆/GF/HFE/hiveDLC/PTep/Eevt/魔女
-	NOR = {
-		has_trait = trait_machine_unit
-		has_trait = trait_mechanical
-		#	魔圆
-		has_trait = trait_mahoshoujo
-		#	GF
-		has_trait = GF_trait_doll
-		#	HFE
-		has_trait = hfe_species_trait_brainworm
-		#	hiveDLC
-		has_trait = trait_hive_mind_overlord
-		#	PTep
-		has_trait = trait_plentiful_traditions_pt_cocoon
-		#	Eevt
-		has_trait = trait_memorex_comatos
-		#	魔女
-		has_trait = trait_dummy
+	has_species_flag = UGRC_flg_spcs_RULE_procreate_ENABLE	# |UGRC标签|
+
+	if = { limit = { root = { has_modifier = slave_colony } }
+		has_citizenship_type = { type = citizenship_slavery country = root.owner }
 	}
-	NAND = {
-		root = { has_modifier = slave_colony }
-		NOT = { has_citizenship_type = { type = citizenship_slavery country = root.owner } }
-	}
-	if = {
-		limit = {
-			has_trait = trait_necrophage
-		}
+	if = { limit = { has_trait = trait_necrophage }
 		NOT = {
 			root = {
 				any_owned_species = {
@@ -1422,67 +1253,56 @@ can_species_procreate = {
 			}
 		}
 	}
-	NOT = { has_species_flag = nivlac_no_procreation }
 
 	##################################################
 	#	HFE
-	NAND = {
-		hfe_trigger_population_procreate_housing_block_enabled = yes
-		root = { free_housing <= -1 }
-	}
-	#	多彩
-	if = { limit = { has_global_flag = love_between_us }
-		NOR = {
-			has_trait = trait_DC_ethic_parasite_mind_hard
-			has_trait = trait_LOW_FUTA
-			has_trait = trait_fei_ji_bei
-		#	has_trait = trait_lust_toy_futa
-			has_trait = wawa_trait_FUTA
-			root = { is_planet_class = pc_futa_ring_world }
-		}
+	if = { limit = { hfe_trigger_population_procreate_housing_block_enabled = yes }
+		root = { free_housing > -1 }
 	}
 	#	魔女
-	if = { limit = { has_trait = trait_reanimated_materials }
-		root = {
-			num_assigned_jobs = {
-				job = matter_reanimator
-				value > 0
-			}
-			NOR = { # make sure elaina always grow first
-				has_building = building_possibility_portal
-				has_building = building_dimensional_instrument
-				has_deposit = d_mysterious_portal
-			}
-			owner = {
-				NOT = {
-					has_deficit = consumer_goods
-				}
-			}
-		}
-	}
-	if = { limit = { has_trait = trait_houki }
-		root.owner = {
-			has_country_flag = newbirth_houki
-			NOT = { has_country_flag = max_houki_number_reached }
-		}
-	}
-	if = {
-		limit = {
-			OR = {
-				has_trait = trait_witch
-				has_trait = trait_victorika
-				has_trait = trait_elaina_descendant
-			}
-		}
-		OR = {
-			root.owner = {
-				has_ascension_perk = ap_xeno_compatibility
-			}
+	if = { limit = { has_species_flag = UGRC_flg_spcs_RULE_procreate_DUMMY }
+		if = { limit = { has_trait = trait_reanimated_materials }
 			root = {
-				OR = {
+				num_assigned_jobs = {
+					job = matter_reanimator
+					value > 0
+				}
+				NOR = { # make sure elaina always grow first
 					has_building = building_possibility_portal
 					has_building = building_dimensional_instrument
 					has_deposit = d_mysterious_portal
+				}
+				owner = {
+					NOT = {
+						has_deficit = consumer_goods
+					}
+				}
+			}
+		}
+		if = { limit = { has_trait = trait_houki }
+			root.owner = {
+				has_country_flag = newbirth_houki
+				NOT = { has_country_flag = max_houki_number_reached }
+			}
+		}
+		if = {
+			limit = { 
+				OR = {
+					has_trait = trait_witch
+					has_trait = trait_victorika
+					has_trait = trait_elaina_descendant
+				}
+			}
+			OR = {
+				root.owner = {
+					has_ascension_perk = ap_xeno_compatibility
+				}
+				root = {
+					OR = {
+						has_building = building_possibility_portal
+						has_building = building_dimensional_instrument
+						has_deposit = d_mysterious_portal
+					}
 				}
 			}
 		}
@@ -1494,8 +1314,7 @@ can_species_procreate = {
 
 ###_[物种组装]
 #_|基础trgr|	原版智械/原版克隆|is_organic_species|
-#_|特殊trgr|	UGRC组装物种/WSG物种
-#_|MOD物种|		微械/时与空/久远/azl/azlr/GF/PTep/SC	/hiveDLC/多彩/魔女	/EE
+#_|MOD物种|		wsg/莉莉/swg/kc/DAL/微械/时与空/久远/azl/azlr/GF/PTep/SC/thl	/hiveDLC/多彩/魔女/精灵	/EE
 # Checks if a pop can be assembled
 # This = Species
 # Root = Planet
@@ -1507,7 +1326,7 @@ can_species_be_assembled = {
 	}
 	##_|基础条件|
 	OR = {
-		#_|原版智械|	+azl/GF/魔女/久远
+		#_|原版组装|	+azl/GF/魔女/久远/时与空
 		AND = {
 			is_robotic = yes	# 含|是wsg物种|
 			NOR = {
@@ -1519,7 +1338,7 @@ can_species_be_assembled = {
 			#	魔女
 			if = { limit = { has_trait = trait_dummy }
 				if = { limit = { root.owner = { has_origin = origin_garbage_princesses } }
-					root = {
+					root = { 
 						OR = {
 							has_building = building_enigmatic_assembly_plant
 							num_assigned_jobs = {
@@ -1556,16 +1375,20 @@ can_species_be_assembled = {
 			#	GF
 			else_if = { limit = { has_trait = GF_trait_doll }
 				root.owner = {
-					GF_can_build_doll_species = yes
+					OR = {
+						has_authority = GF_auth_commonwealth
+						is_valid_GF_OGAS_subnet = yes
+					}
 				}
+			}
+			#	thl
+			else_if = { limit = { has_trait = trait_thl_doll }
+				THL_trgr_spcs_RULE_doll_assembly = yes
 			}
 			#_|v默认|	+azl
 			else = {
 				root = {
-					check_modifier_value = {
-						modifier = planet_pop_assembly_add
-						value > 0
-					}
+					check_modifier_value = { modifier = planet_pop_assembly_add	value > 0 }
 					owner = {
 						NOR = {# 这类mod国家不组装机器人
 							# azl
@@ -1577,7 +1400,7 @@ can_species_be_assembled = {
 				}
 			}
 		}
-		#_|原版克隆|
+		#_|原版克隆|	+Ecar/星海皇帝/thl
 		AND = {
 			is_organic_species = yes
 			#_|v蜂群|	+Ecar
@@ -1637,35 +1460,45 @@ can_species_be_assembled = {
 					}
 				}
 			}
-			#_|通用|=|存在克隆+特殊spcs|		+FW/星海帝皇/Ecar
+			#_|通用|=|存在克隆+特殊spcs|		+FW/星海帝皇/Ecar/thl
 			else = {
 				root = {
-					OR = {
-						#	vanilla
-						has_building = building_clone_vats	# 提供|planet_pop_assembly_organic_add|
-						has_modifier = tiyanki_trophy
-						owner = { has_modifier = syamelles_curse }
-						AND = {
-							has_building = building_posthumous_employment_center
-							owner = { has_civic = civic_permanent_employment }
-						}
-						has_planet_flag = can_organic_assemble_flag #for mod compatibility
-
-						#	星海帝皇
-						has_building = building_clone_guard_clone_vat
-						#	FW
-						check_modifier_value = { modifier = planet_pop_assembly_organic_add value > 0 }
-						#	Ecar
-						has_building = building_advanced_clone_vats
-					}
+					#	FW	|全能条件|
+					check_modifier_value = { modifier = planet_pop_assembly_organic_add value > 0 }
+					#OR = {
+					#	#	vanilla
+					#	has_building = building_clone_vats	# |ap_engineered_evolution/tr_genetics_adopt|
+					#	has_modifier = tiyanki_trophy
+					#	owner = { has_modifier = syamelles_curse }
+					#	AND = {
+					#		has_building = building_posthumous_employment_center
+					#		owner = { has_civic = civic_permanent_employment }
+					#	}
+					#	has_planet_flag = can_organic_assemble_flag #for mod compatibility
+					#	
+					#	#	FW
+					#	check_modifier_value = { modifier = planet_pop_assembly_organic_add value > 0 }
+					#	#	星海帝皇
+					#	has_building = building_clone_guard_clone_vat
+					#	#	Ecar
+					#	has_building = building_advanced_clone_vats
+					#	#	thl
+					#	THL_trgr_plnt_RULE_can_assembly_organic = yes
+					#}
 				}
 			}
 		}
-		#	UGRC组装物种
-		UGRC_trgr_spcs_ASSEMBLY = yes
-		#	WSG物种/wsg
-		UGRC_trgr_spcs_WSG = yes
-
+		is_archetype = LILY						# 莉莉
+		is_archetype = STARSHIPGIRLS			# swg
+		is_archetype = KANMUSU					# kc
+		is_archetype = DATEALIVE				# DAL
+		is_archetype = DPURIFIER				# SC|净化者|
+		is_archetype = ASCENDED					# EE
+		#	wsg
+		is_archetype = WARSHIPGIRL
+		is_archetype = SHENHAI
+		is_archetype = UNITED_FLEET
+		is_archetype = NANITES_CROP
 		#	久远
 		KZ_VOY_trgr_plnt_CLONE = yes
 		#	azl/azlr
@@ -1686,10 +1519,8 @@ can_species_be_assembled = {
 			has_trait = trait_plentiful_traditions_pt_cocoon
 			root.owner = { has_ascension_perk = ap_total_assimilation }
 		}
-		#	SC
-		is_archetype = DPURIFIER	# 净化者
-		#	EE
-		is_archetype = ASCENDED
+		#	精灵
+		ELF_species_assembled_rules = yes
 	}
 
 	##	微械
@@ -1752,9 +1583,11 @@ can_species_be_assembled = {
 			}
 		}
 	}
+	##	精灵
+	ELF_can_not_be_assembled_species = yes
 	##	久远
-	else_if = {
-		limit = {
+	if = {
+		limit = { 
 			OR = {
 				has_trait = trait_KZ_VOY_sub_terran_dragon
 				has_trait = trait_KZ_VOY_sub_terran_dragon_SP
@@ -1767,24 +1600,27 @@ can_species_be_assembled = {
 
 
 
-###_[轨道轰炸]	FW/AUP/ev/wsg/swg/阿夸/古代帝国/失落帝国历史/多彩/TAC/SRA	/ACOT/SOFE/bwm/HFE/Giga/Ehof/RSnf/MEM/SSNI	#########
+###_[轨道轰炸]	FW/AUP/ev/wsg/swg/阿夸/古代帝国/失落帝国历史/多彩/精灵/TAC/SRA	/ACOT/SOFE/bwm/HFE/Giga/Ehof/RSnf/MEM/SSNI/久远/thl	#########
 #This rule is a condition for bombarding planets
 #Root = fleet, potential attacker
 #From = planet, potential target
 can_orbital_bombard = {
 	exists = FROM.OWNER
-	###_|禁止条件|	+RSnf/阿夸
+	###_|禁止条件|	+RSnf/阿夸/精灵
 	NOR = {
 		any_controlled_ship = {
 			is_ship_size = colossus
 		}
-		# RSnf
-		FROM = { is_planet_class = pc_hollow }
-		# 阿夸
-		FROM.OWNER = { is_country_type = kuat_fire_base_hositle }
-		FROM = { has_planet_flag = enable_kuat_shield }
+		FROM = {
+			OR = {
+				is_planet_class = pc_hollow		# RSnf
+				is_ELF_can_not_be_orbital_bombard_planet = yes	# 精灵
+				OWNER = { is_country_type = kuat_fire_base_hositle }	# 阿夸
+				has_planet_flag = enable_kuat_shield
+			}
+		}
 	}
-	##_|特殊星球|	FW/MOP_M
+	##_|特殊星球|	FW/MOP_M/精灵
 	#	此类星球只在特定情况下允许轨道轰炸
 	NAND = {
 		FROM = { has_building = building_training_bomboardment }	# MOP_M
@@ -1810,10 +1646,11 @@ can_orbital_bombard = {
 						}
 					}
 				}
+				is_ELF_can_orbital_bombard_country_type = yes	# 精灵
 			}
 		}
 	}
-
+	
 	###_|基本条件|
 	OR = {
 		AND = {
@@ -1870,7 +1707,7 @@ can_orbital_bombard = {
 				is_country_type = ten_crisis_empire				# 多彩
 			}
 		}
-		##_|可以轰炸|	+ev/wsg/swg/阿夸/古代帝国/失落帝国历史/多彩		/bwm/ACOT/SOFE/MEM/SRA/SSNI
+		##_|可以轰炸|	+ev/wsg/swg/阿夸/古代帝国/失落帝国历史	/bwm/ACOT/SOFE/MEM/SRA/SSNI/久远/多彩/精灵/thl
 		ROOT.CONTROLLER = {
 			OR = {
 				#	VANILLA
@@ -1896,7 +1733,6 @@ can_orbital_bombard = {
 				is_country_type = ev_leviathans_crisis			# ev
 				is_country_type = afk_crisis_country			# swg
 				is_country_type = LsE_fallen_empire				# 失落帝国历史
-				is_country_type = ten_crisis_empire				# 多彩
 				#	wsg
 				is_country_type = wg_crisis_country
 				is_khan_country_type = yes
@@ -1904,7 +1740,7 @@ can_orbital_bombard = {
 				ag_can_do_orbital_bombardment_country = yes
 				#	阿夸
 				kuat_can_do_bombarment_country = yes
-
+				
 				is_country_type = mem_ancestor_guardian			# bwm
 				is_country_type = original_empire				# SOFE
 				#	ACOT
@@ -1920,6 +1756,14 @@ can_orbital_bombard = {
 				SRA_can_do_orbital_bombardment_country = yes
 				#	SSNI
 				is_country_type = sentinel_hostile_expansion
+				#	久远
+				KZ_VOY_can_unconditional_bombarment_country = yes
+				#	多彩
+				is_country_type = ten_crisis_empire
+				#	精灵
+				is_ELF_can_orbital_bombard_country_type = yes
+				#	thl
+				is_country_type = koishi_berserk_fleet
 			}
 		}
 		#_星球所有者轰炸被其他阵营占据的星球	-SOFE<去掉了此项>
@@ -1939,7 +1783,7 @@ can_orbital_bombard = {
 ###	can_planet_support_orbital_station
 
 
-###_[全图视野]	FW/LCTR/SOFE/涅槃	####################################
+###_[全图视野]	FW/LCTR/SOFE/涅槃/久远	####################################
 # Check if full sensor range in entire galaxy
 # root: country
 has_full_sensor_range = {
@@ -1948,9 +1792,11 @@ has_full_sensor_range = {
 		has_megastructure = spy_orb_4
 		has_megastructure = spy_orb_restored
 		has_megastructure = sofe_omega_spy_orb_center				# SOFE
+		has_country_flag = PF_flg_cntr_SENSOR_opt_AI				#_|PF|AI传感优化
 		has_country_flag = FW_flg_cntr_CHT_orrery_ON				#_|FW|璀璨星图
 		has_country_flag = FW_flg_cntr_CHT_beacon_ON				#_|FW|永恒星炬
 		has_country_flag = LCTR_flg_cntr_RELIC_activated_full		#_|LCTR|暗能量传感器
+		KZ_VOY_has_full_sensor_range = yes							# 久远
 	#	AND = { is_ai = yes		has_country_flag = nirvana }		# 涅槃
 	#	has_country_flag = ai_dragon								# 涅槃
 	#	has_country_flag = ai_council								# 涅槃
@@ -1978,7 +1824,7 @@ show_notification_for_ground_combat = {
 ###	fleet_uses_templates
 
 
-###_[RULE轨道维修]	UGRC标签
+###_|UGRC修理|	####################################
 #_mod	ZOFE/ACOT/AOT/莉莉
 # this = starbase, megastructure OR planet
 can_orbitable_repair_ships = {
@@ -2015,7 +1861,7 @@ can_orbitable_repair_ships = {
 # this = ship
 # root = country that kills ship
 can_spawn_debris = {
-	root = {
+	root = { 
 		OR = {
 			is_country_type = default
 			is_country_type = default_ev		# EV
@@ -2039,7 +1885,7 @@ can_spawn_debris = {
 		## +EV/失落帝国历史/swg/hiveDLC/twinks	/wsg/SOFE
 		NOR = {#_阵营限制
 			has_ascension_perk = ap_enigmatic_engineering
-
+			
 			is_country_type = default_ev					# EV
 			is_country_type = LsE_fallen_empire				# 失落帝国历史
 			is_country_type = afk_crisis_country			# swg
@@ -2058,161 +1904,134 @@ can_spawn_debris = {
 }
 
 
-###_|星系管制|	AUP/ZOFE/SOFE/EE/TAC	####################################
+###_|UGRC星系管制|	AUP/ZOFE/ev/SOFE/EE/TAC	####################################	|检测cntr|-55%,|单flag@root|-88%
 # this = system
 # root = country
 # Determines if AI-controlled empires should restrict (and thus avoid) a system
 # Used by regular empires, fallen empires & crises
 ai_should_restrict_system = {
-	OR = {
-		##_|强力帝国避开|	+ZOFE/EE/AUP
-		AND = {
-			root = {
+	ROOT = {
+		##	|普通|
+		if = { limit = { has_country_flag = UGRC_flg_cntr_RULE_restrict_DEFAULT }
+			prev = {
 				OR = {
-					is_country_type = fallen_empire
-					is_country_type = lost_empire		# ZOFE
-					is_country_type = eternal_empire	# EE
-				}
-			}
-			exists = owner
-			## +AUP
-			owner = {
-				OR = {
-					is_country_type = awakened_marauders
-					is_country_type = dormant_marauders		# AUP
+					has_star_flag = UGRC_flg_sstm_RESTRICT_mod_AG_zeta
+					has_star_flag = UGRC_flg_sstm_RESTRICT_mod_TAC
 				}
 			}
 		}
-		##_|掠夺者避开|	+AUP/ZOFE/SOFE/EE
-		AND = {
-			root = {
+		##	|掠夺者|
+		else_if = {
+			limit = {
 				OR = {
-					is_country_type = awakened_marauders
-					is_country_type = marauder_raiders		# AUP
+					is_country_type = awakened_marauders 
+					is_country_type = marauder_raiders
 				}
 			}
-			exists = owner
-			owner = {
+			prev = {
 				OR = {
-					is_country_type = fallen_empire
-					is_country_type = lost_empire		# ZOFE
+					has_star_flag = UGRC_flg_sstm_RESTRICT_vanilla_GUARDIAN_fortress
+					has_star_flag = UGRC_flg_sstm_RESTRICT_vanilla_GUARDIAN
+					has_star_flag = UGRC_flg_sstm_RESTRICT_mod_AG_zeta
+					has_star_flag = UGRC_flg_sstm_RESTRICT_mod_TAC
+					has_star_flag = UGRC_flg_sstm_RESTRICT_vanilla_WILDLIFE
+					AND = {
+						exists = owner
+						owner = {
+							OR = {
+								has_country_flag = UGRC_flg_cntr_RULE_restrict_FALLEN
+								#	|强力帝国|
+								is_country_type = eternal_empire	# EE
+								is_progenitor_empires = yes			# SOFE
+							}
+						}
+					}
+				}
+			}
+		}
+		##	|堕落帝国|
+		else_if = { limit = { has_country_flag = UGRC_flg_cntr_RULE_restrict_FALLEN }
+			prev = {
+				OR = {
+					has_star_flag = UGRC_flg_sstm_RESTRICT_vanilla_GUARDIAN_fortress
+					has_star_flag = UGRC_flg_sstm_RESTRICT_vanilla_GUARDIAN
+					has_star_flag = UGRC_flg_sstm_RESTRICT_mod_AG_zeta
+					has_star_flag = UGRC_flg_sstm_RESTRICT_mod_TAC
+					has_star_flag = UGRC_flg_sstm_RESTRICT_vanilla_WILDLIFE
+					#	掠夺者
+					AND = {
+						exists = owner
+						owner = { 
+							OR = {
+								is_country_type = awakened_marauders 
+								is_country_type = dormant_marauders		# AUP
+							}
+						}
+					}
+				}
+			}
+		}
+		##	|觉醒帝国|
+		else_if = { limit = { has_country_flag = UGRC_flg_cntr_RULE_restrict_AFE }
+			prev = {
+				OR = {
+					has_star_flag = UGRC_flg_sstm_RESTRICT_vanilla_GUARDIAN_fortress
+					has_star_flag = UGRC_flg_sstm_RESTRICT_mod_AG_zeta
+					has_star_flag = UGRC_flg_sstm_RESTRICT_mod_TAC
+					has_star_flag = UGRC_flg_sstm_RESTRICT_vanilla_WILDLIFE
+				}
+			}
+		}
+		##	|强力帝国|
+		else_if = {
+			limit = {
+				OR = {
 					is_country_type = eternal_empire	# EE
 					is_progenitor_empires = yes			# SOFE
 				}
 			}
-		}
-		##_|避开boss星系|	+AUP/ZOFE/SOFE/EE
-		AND = {
-			root = {
+			prev = {
 				OR = {
-					is_country_type = fallen_empire
-					is_country_type = awakened_marauders
-					is_country_type = marauder_raiders	# AUP
-					is_country_type = lost_empire		# ZOFE
-					is_country_type = eternal_empire	# EE
-				}
-			}
-			has_star_flag = guardian
-			any_fleet_in_system = {
-				exists = owner
-				owner = {
-					OR = {
-						is_guardian_country = yes
-						is_country_type = sbtg_sentinel_active		# SOFE=守门人
+					has_star_flag = UGRC_flg_sstm_RESTRICT_vanilla_GUARDIAN_fortress
+					has_star_flag = UGRC_flg_sstm_RESTRICT_mod_AG_zeta
+					has_star_flag = UGRC_flg_sstm_RESTRICT_mod_TAC
+					has_star_flag = UGRC_flg_sstm_RESTRICT_vanilla_WILDLIFE
+					AND = {
+						exists = owner
+						owner = {
+							OR = {
+								is_country_type = awakened_marauders 
+								is_country_type = dormant_marauders		# AUP
+							}
+						}
 					}
 				}
 			}
 		}
-		##_|避开神秘堡垒|
-		AND = {
-			root = {
+		##	|天灾|
+		else_if = {
+			limit = {
 				OR = {
 					is_crisis_faction = yes
-					is_country_type = awakened_fallen_empire
-				}
-			}
-			has_star_flag = guardian
-			any_fleet_in_system = {
-				exists = owner
-				owner = {
-					is_country_type = guardian_fortress
-				}
-			}
-		}
-
-		##	AUP		|避开野怪家园|
-		AND = {
-			root = {
-				OR = {
-					is_country_type = fallen_empire
-					is_country_type = awakened_marauders
-					is_country_type = marauder_raiders
 					is_country_type = original_empire	# SOFE
-					is_country_type = eternal_empire	# EE
 				}
 			}
-			OR = {
-				AND = {#_水晶
-					has_star_flag = crystal_home_system
-					any_fleet_in_system = {
-						exists = owner
-						owner = { is_country_type = crystal }
-					}
-				}
-				AND = {#_阿米巴
-					has_star_flag = amoeba_home_system
-					any_fleet_in_system = {
-						exists = owner
-						owner = { is_country_type = amoeba_garrison }
-					}
-				}
-				AND = {#_矿蜂
-					has_star_flag = drone_home_system
-					any_fleet_in_system = {
-						exists = owner
-						owner = { is_country_type = drone }
-					}
-				}
-			}
-		}
-		##	古代帝国
-		AND = {
-			OR = {
-				has_star_flag = ag_zeta_crisis_psionic_storm_system
-				has_star_flag = ag_zeta_crisis_psionic_singularity_system
-			}
-			root = {
+			prev = {
 				OR = {
-					is_country_type = default
-					is_country_type = fallen_empire
-					is_country_type = awakened_fallen_empire
-					is_crisis_faction = yes
-					is_country_type = awakened_marauders
-					is_country_type = ag_ancient_psi_guardian
+					has_star_flag = UGRC_flg_sstm_RESTRICT_vanilla_GUARDIAN_fortress
+					has_star_flag = UGRC_flg_sstm_RESTRICT_mod_AG_zeta
+					has_star_flag = UGRC_flg_sstm_RESTRICT_mod_TAC
 				}
 			}
 		}
-		##	SOFE		普通帝国避开始源
-		AND = {
-			root = { is_country_type = default }
-			exists = owner
-			owner = { is_country_type = original_empire }
-		}
-		##	TAC
-		AND = {
-			OR = {
-				has_star_flag = AI_system1
-				has_star_flag = AI_system2
-				has_star_flag = AI_system3
-				has_star_flag = AI_system4
-			}
-			root = {
+		##	|古代守望|
+		else_if = {
+			limit = { is_country_type = ag_ancient_psi_guardian }
+			prev = {
 				OR = {
-					is_country_type = default
-					is_country_type = fallen_empire
-					is_country_type = awakened_fallen_empire
-					is_country_type = awakened_marauders
-					is_country_type = ag_ancient_psi_guardian
+					has_star_flag = UGRC_flg_sstm_RESTRICT_vanilla_GUARDIAN_fortress
+					has_star_flag = UGRC_flg_sstm_RESTRICT_mod_AG_zeta
+					has_star_flag = UGRC_flg_sstm_RESTRICT_mod_TAC
 				}
 			}
 		}
@@ -2232,7 +2051,7 @@ ai_should_restrict_system = {
 can_jump_drive = {
 #	always = yes	# Moved cooldown to code
 	exists = solar_system
-
+	
 	# FW
 	if = {
 		limit = {
@@ -2312,7 +2131,7 @@ can_spawn_occupation_armies = {
 		is_country_type = default
 		is_country_type = fallen_empire
 		is_country_type = awakened_fallen_empire
-
+		
 		#	|其他堕落|
 		#	ev
 		is_country_type = fallen_empire_ev
@@ -2336,91 +2155,25 @@ can_spawn_occupation_armies = {
 }
 
 
-###_[传感屏蔽]	####################################
-#_mod	LCTR	/RS	/Sexp/S_tnatc/WS/wsg/古代帝国/SMCO/莉莉
+###_|UGRC传感器|	####################################
+##_|UGRC传感屏蔽|	RS	/Sexp/S_tnatc/WS/wsg/古代帝国/SMCO/莉莉/thl
 # this = system
 # root = country
 system_blocks_sensors = {
-	###	LCTR
-	root = { NOT = { has_country_flag = LCTR_flg_cntr_RELIC_activated } }
+	NOT = { has_star_flag = UGRC_flg_sstm_RULE_blocks_sensors_IGNORE@root }	# |UGRC传感穿透|预留给一些暂时开图的功能
+	has_star_flag = UGRC_flg_sstm_RULE_blocks_sensors@root	# |UGRC传感阻碍|83%|
 
-	###	VANILLA
-	OR = {
-		##_|星云|	+Sexp/RS
-		AND = {
-			OR = {
-				is_inside_nebula = yes
-				has_modifier = space_storm
-				has_modifier = zroni_storm
-				#	|RS|
-				is_star_class = sc_collapsar
-				is_star_class = sc_p_purple
-				is_star_class = sc_p_green
-				is_star_class = sc_p_red
-			}
-			ROOT = { NOT = { has_technology = tech_ariphaos_sensors_nebula } }	# Sexp
-		}
-		##_|封印星系|	+Sexp
-		AND = {
-			OR = {
-				has_star_flag = lcluster
-				has_star_flag = sealed_system
-			}
-			ROOT = { NOT = { has_technology = tech_ariphaos_sensors_sealed } }	# Sexp
-		}
-
-		##	Sexp
-		AND = { has_global_flag = ariphaos_sensors_installed
-			AND = {
-				OR = {
-					is_star_class = sc_binary_2
-					is_star_class = sc_neutron_star
-				}
-				ROOT = { NOT = { has_technology = tech_sensors_4 } }
-			}
-			AND = {
-				OR = {
-					is_star_class = sc_binary_1
-					is_star_class = sc_pulsar
-				}
-				ROOT = { NOT = { has_technology = tech_ariphaos_sensors_pulsar } }
-			}
-			AND = {
-				has_natural_wormhole = yes
-				ROOT = { NOT = { has_technology = tech_ariphaos_sensors_wormhole } }
-			}
-			AND = {
-				is_star_class = sc_black_hole
-				ROOT = { NOT = { has_technology = tech_ariphaos_sensors_black_hole } }
-			}
-			AND = {
-				exists = starbase
-				starbase = { has_starbase_building = ariphaos_sensors_jammer_starbase }
-				ROOT = { NOT = { has_technology = tech_ariphaos_sensors_jammed } }
-			}
-		}
-		#	S_tnatc
-		AND = { exists = space_owner
-			space_owner = { has_relic = r_invisibility_rune }
-			NOT = { root = { is_same_empire = prev.space_owner } }
-		}
-		#	WS
-		is_ws_system = yes
-		#	wsg
-		has_star_flag = wg_sealed_system
-		has_star_flag = wg_psionic_systems
-		#	古代帝国
-		has_star_flag = ag_no_sensor_system
-		#	SMCO
-		has_star_flag = bok_globules
-		has_star_flag = star_flag_GAPS_sealed_system
-		#	莉莉
-		has_star_flag = Uberzain
-	}
+#	OR = {
+#		is_inside_nebula = yes
+#		has_modifier = space_storm
+#		has_modifier = zroni_storm
+#		has_star_flag = lcluster
+#		has_star_flag = sealed_system
+#	}
 }
 
 
-###_[星系跃迁限制]	FW/AAR	/古代帝国/wsg/阿夸/SOFE/Giga/Ehof/seooc/多彩/TAC/莉莉	####################################
+###_[跃迁管制]	FW/AAR	/古代帝国/wsg/阿夸/SOFE/Giga/Ehof/seooc/多彩/TAC/莉莉	####################################
 # Root = country attempting to target system for movement
 # This = system being targeted
 can_enter_system_by_jump = {
@@ -2445,7 +2198,7 @@ can_enter_system_by_jump = {
 					has_country_flag = wtmnb_order						# |多彩|wtmnb
 				}
 			}
-
+			
 			###_基础条件
 			AND = {
 				##_Sealed system
@@ -2481,7 +2234,7 @@ can_enter_system_by_jump = {
 					has_star_flag = ag_kae_e_area_system
 					AND = {
 						has_global_flag = starkillerbase_not_passed
-						has_star_flag = starkiller_system
+						has_star_flag = starkiller_system	
 					}
 					#	SOFE
 					has_star_flag = outercluster
@@ -2496,7 +2249,7 @@ can_enter_system_by_jump = {
 					has_star_flag = nep_Krahen_cluster
 					has_star_flag = nep_Scrus_cluster
 					AND = {
-						has_global_flag = nep_not_pass_Aemethms
+						has_global_flag = nep_not_pass_Aemethms 
 						OR = {
 							has_star_flag = nep_dragon_system
 							has_star_flag = nep_heptagram_cluster
@@ -2597,17 +2350,13 @@ can_resettle_pop = {
 ### is_new_colony
 
 
-###_[产生犯罪]	UGRC标签	####################################
+###_|UGRC犯罪|	####################################	|-50%|
 # This = pop
-##_|UGRC物种无罪|	wsg/swg/kc/adf/PTep
 pop_generates_crime = {
-	is_sapient = yes
-	is_non_sapient_robot = no
-	is_being_assimilated = no
-
-	#	|UGRC物种无罪|
-	exists = species
-	NOT = { species = { has_species_flag = UGRC_flg_spcs_RULE_pop_generates_crime_NO } }
+	has_pop_flag = UGRC_flg_pop_RULE_generates_crime	# |UGRC标签|	wsg/swg/kc/adf/PTep
+#	is_sapient = yes
+#	is_non_sapient_robot = no
+#	is_being_assimilated = no
 }
 
 
@@ -2619,7 +2368,7 @@ pop_generates_crime = {
 ###	can_force_decline_species
 
 
-###_|强制减少物种|	魔女
+###_|强制灭绝|	####################################	魔女
 ## If this returns true, the species will be set to decline even if it is not being purged
 # This = species
 # From = planet
@@ -2687,16 +2436,16 @@ should_force_decline_species = {
 
 
 
-###_[可建造分公司国家]	ETCPM/wsg/GF/azl/azlr/hiveDLC/驴岛/多彩/莉莉/久远/星海帝皇/Ecar/rmaid/ARP	####################################
+###_|国家可建公司|	ETCPM/wsg/GF/azl/azlr/hiveDLC/驴岛/精灵/莉莉/久远/星海帝皇/Ecar/rmaid/ARP	####################################
 # This = country
 can_build_branch_offices = {
 	custom_tooltip = {
 		fail_text = BRANCH_OFFICE_NOT_MEGACORP
-		##	+ETCPM/hiveDLC/MCA/驴岛/wsg	/GF/azl/azlr/多彩	/Ecar
+		##	+ETCPM/hiveDLC/MCA/驴岛/wsg	/GF/azl/azlr/精灵	/Ecar
 		OR = {
 			has_authority = auth_corporate
 			has_civic = civic_galactic_sovereign_megacorp
-
+			
 			#	ETCPM
 			has_authority = auth_private
 			#	hiveDLC
@@ -2728,8 +2477,8 @@ can_build_branch_offices = {
 				exists = event_target:elizabeth_leader
 				has_country_flag = azur_lane_leader_elizabeth
 			}
-			#	多彩
-			has_authority = auth_brothel
+			#	精灵
+			is_ELF_can_build_branch_offices = yes
 			#	莉莉
 			has_authority = auth_AL_democratic
 			has_authority = auth_AL_arsenal
@@ -2746,7 +2495,7 @@ can_build_branch_offices = {
 				OR = {
 					has_civic = civic_family_business
 					has_civic = civic_world_cooperative
-					has_valid_civic = civic_state_owned_enterprises
+					has_valid_civic = civic_state_owned_enterprises	
 					has_valid_civic = civic_corporate_dominion
 					has_valid_civic = civic_underworld_society
 					has_valid_civic = civic_merchant_guilds
@@ -2767,7 +2516,7 @@ can_build_branch_offices = {
 }
 
 
-###_[支持分公司的国家]	AAR	/ETCPM/swg/GF/azl/azlr/SOFE/ZOFE/驴岛/莉莉/Ecar/rmaid		####################################
+###_|国家支持公司|	AAR	/ETCPM/swg/GF/azl/azlr/SOFE/ZOFE/驴岛/莉莉/Ecar/rmaid		####################################
 # This = country
 can_support_branch_offices = {
 	##_|禁止_国家类型|
@@ -2776,7 +2525,7 @@ can_support_branch_offices = {
 		NOR = {
 			is_country_type = fallen_empire
 			is_country_type = awakened_fallen_empire
-
+			
 			## 禁止所有|堕落帝国|	############
 			# ev
 			is_country_type = fallen_empire_ev
@@ -2798,7 +2547,7 @@ can_support_branch_offices = {
 			is_country_type = eternal_empire
 			# 莉莉
 			is_country_type = al_fallen_empire
-
+			
 			## 禁止其他|特殊国家|	############
 			# azlr
 			has_authority = auth_azur_dictatorial
@@ -2815,9 +2564,9 @@ can_support_branch_offices = {
 			AND = {
 				has_global_flag = ideological_revolution	# |Ecar激活|
 				OR = {
+					has_valid_civic = civic_criminal_heritage
 					has_tradition = tr_future_economy
 					has_civic = civic_world_cooperative
-					has_valid_civic = civic_criminal_heritage
 					has_civic = civic_galactic_megacorp
 					has_civic = civic_galactic_sovereign
 					has_civic = civic_galactic_sovereign_megacorp
@@ -2831,7 +2580,7 @@ can_support_branch_offices = {
 			NOR = {
 				has_authority = auth_corporate
 				has_civic = civic_galactic_sovereign_megacorp
-
+				
 				#_|巨企国家|	ETCPM/hiveDLC/MCA/驴岛/wsg
 				# ETCPM
 				has_authority = auth_private
@@ -2845,7 +2594,7 @@ can_support_branch_offices = {
 				has_civic = civic_business_union
 				# wsg
 				has_authority = auth_warshipgirls
-
+				
 				AND = {
 					has_authority = auth_shenhai
 					OR = {
@@ -2862,7 +2611,7 @@ can_support_branch_offices = {
 			}
 		}
 	}
-
+	
 	##_|必要国家类型|
 	custom_tooltip = {
 		fail_text = BRANCH_OFFICE_NOT_REGULAR_EMPIRE
@@ -2884,11 +2633,11 @@ can_support_branch_offices = {
 }
 
 
-###_[可建造分公司の星球]	AAR	/wsg/azl/azlr/rmaid/HFE/hiveDLC/MCA/ETCPM/莉莉/久远/Ecar/星海帝皇	####################################
+###_|星球支持公司|	AAR	/wsg/azl/azlr/rmaid/HFE/hiveDLC/MCA/ETCPM/莉莉/久远/Ecar/星海帝皇/精灵	####################################
 # This = planet
 # Root = country
 can_build_branch_office_on_planet = {
-
+	
 	###_|非灭绝政体|
 	custom_tooltip = {
 		fail_text = requires_recipient_not_fanatic_purifiers
@@ -2914,7 +2663,7 @@ can_build_branch_office_on_planet = {
 			}
 		}
 	}
-	###_core商业协定	+hiveDLC/wsg/azl/azlr/AAR/ETCPM/莉莉/久远/rmaid
+	###_core商业协定	+hiveDLC/wsg/azl/azlr/AAR/ETCPM/莉莉/久远/rmaid/精灵
 	custom_tooltip = {
 		fail_text = BRANCH_OFFICE_NOT_COMMERCIAL_PACT
 		exists = owner
@@ -2923,25 +2672,27 @@ can_build_branch_office_on_planet = {
 			root = {
 				OR = {
 					is_criminal_syndicate = yes
-
-					# hiveDLC
+					
+					#	hiveDLC
 					has_valid_civic = civic_mutualistic_behavior
-					# wsg
+					#	wsg
 					has_civic = civic_sh_criminal_syndicate
-					# azl
+					#	azl
 					has_authority = auth_azur_lane_1
-					# 莉莉
+					#	莉莉
 					has_authority = auth_AL_democratic
 					has_authority = auth_AL_arsenal
-					# 久远
+					#	久远
 					KZ_VOY_can_build_branch_offices = yes
-					# azlr
+					#	azlr
 					AND = {
 						exists = event_target:elizabeth_leader
 						has_country_flag = azur_lane_leader_elizabeth
 					}
-					# rmaid
+					#	rmaid
 					Maid_trigger_0_can_build_branch_offices = yes
+					#	精灵
+					is_ELF_can_force_build_branch_offices_on_planet = yes
 				}
 			}
 			owner = { has_commercial_pact = root }
@@ -2978,7 +2729,7 @@ can_build_branch_office_on_planet = {
 					OR = {
 						has_authority = auth_corporate
 						has_civic = civic_galactic_sovereign_megacorp
-
+						
 						# |wsg|	=宗主必然建造
 						has_authority = auth_warshipgirls
 					}
@@ -2992,8 +2743,8 @@ can_build_branch_office_on_planet = {
 				root = { has_modifier = imperial_charter }
 				owner = { is_galactic_community_member = yes }
 			}
-
-
+			
+			
 			# ETCPM
 			AND = {
 				has_global_flag = expanded_pops_active
@@ -3199,6 +2950,7 @@ can_build_branch_office_on_planet = {
 			}
 		}
 	}
+	
 	hidden_trigger = {
 		### MCA
 		if = { limit = { has_global_flag = using_mod_more_corporate_authorities }
@@ -3213,54 +2965,39 @@ can_build_branch_office_on_planet = {
 		}
 		###	rmaid	|失控女仆|写得挺精致√
 		Maid_trigger_2_can_build_branch_office_on_planet = yes
+		### 精灵
+		ELF_can_build_branch_office_on_planet_rules = yes
 	}
 }
 
 
-###_[ETCPM/hiveDLC/MCA/wsg/ev/azlr/多彩/Ecar]	####################################
+###_|UGRC罪企|	ETCPM/hiveDLC/MCA/wsg/ev/azlr/精灵/Ecar	####################################
 # This = country
 # Checked by is_criminal_syndicate trigger
 is_criminal_syndicate_rule = {
+	#	|政体|
 	OR = {
-		#_|巨企国家|	+ETCPM/hiveDLC/MCA/wsg/ev/多彩/Ecar
-		AND = {
-			OR = {
-				has_authority = auth_corporate
-				has_valid_civic = civic_galactic_sovereign_megacorp
+		has_authority = auth_corporate
+		has_valid_civic = civic_galactic_sovereign_megacorp
+		#	UGRC
+		has_country_flag = UGRC_flg_cntr_RULE_criminal_syndicate
 
-				# ETCPM
-				has_authority = auth_private
-				# hiveDLC
-				has_valid_civic = civic_mutualistic_behavior
-				has_valid_civic = civic_machine_trading
-				# MCA
-				has_authority = auth_corporate_fiefdom
-				has_authority = auth_cooperative
-				# wsg
-				has_authority = auth_warshipgirls
-				# 多彩
-				has_authority = auth_brothel
-				# Ecar
-				has_civic = civic_family_business
-				has_civic = civic_world_cooperative
-			}
-			OR = {
-				has_valid_civic = civic_criminal_heritage
-
-				has_valid_civic = civic_ev_criminal_ship	# ev
-				has_valid_civic = civic_semen_pantyhose_brothel		# 多彩
-			}
-		}
+		#	wsg
+		has_authority = auth_warshipgirls
+	}
+	#	|国策|
+	OR = {
+		has_valid_civic = civic_criminal_heritage
+		#	UGRC
+		has_country_flag = UGRC_flg_cntr_RULE_criminal_syndicate
 		
-		##	wsg
-		has_civic = civic_sh_criminal_syndicate
 		#	Ecar
-		has_valid_civic = civic_underworld_society
-		#	azlr
-		AND = {
-			exists = event_target:elizabeth_leader
-			has_country_flag = azur_lane_leader_elizabeth
-		}
+		has_civic = civic_family_business
+		has_civic = civic_world_cooperative
+		#	wsg
+		has_civic = civic_sh_criminal_syndicate
+		#	ev
+		has_valid_civic = civic_ev_criminal_ship
 	}
 }
 
@@ -3269,17 +3006,22 @@ is_criminal_syndicate_rule = {
 # This = planet
 can_crossbreed_species_on_planet = {
 	exists = owner
-	#_|PF|开关
+	#	|PF|开关
 	NOT = { has_global_flag = PF_flg_glbl_Hybrid_no }
-	# wsg/SC	禁止ntr
+	#	wsg/SC	禁止ntr
 	any_owned_species = {
-		# wsg
-		has_wg_traits = no
-		UGRC_trgr_spcs_WSG = no
-		# SC
-		UGRC_trgr_spcs_SC = no
+		NOR = {
+			#	wsg
+			has_wg_traits = yes
+			is_archetype = WARSHIPGIRL
+			is_archetype = SHENHAI
+			is_archetype = UNITED_FLEET
+			is_archetype = NANITES_CROP
+			#	SC
+			UGRC_trgr_spcs_SC = yes
+		}
 	}
-
+	
 	AND = {
 		# +Ecar
 		owner = {
@@ -3307,20 +3049,27 @@ can_crossbreed_species = {
 	NOR = {
 		is_subspecies = root
 		root = { is_subspecies = prev }
-	}
-
-	# wsg	禁止ntr
-	has_wg_traits = no
-	UGRC_trgr_spcs_WSG = no
-	# SC
-	UGRC_trgr_spcs_SC = no
-
-	root = {
-		# wsg	禁止ntr
-		has_wg_traits = no
-		UGRC_trgr_spcs_WSG = no
+		#	wsg	|禁止ntr|
+		has_wg_traits = yes
+		is_archetype = WARSHIPGIRL
+		is_archetype = SHENHAI
+		is_archetype = UNITED_FLEET
+		is_archetype = NANITES_CROP
 		# SC
 		UGRC_trgr_spcs_SC = no
+	}
+
+	root = {
+		NOR = {
+			#	wsg	|禁止ntr|
+			has_wg_traits = yes
+			is_archetype = WARSHIPGIRL
+			is_archetype = SHENHAI
+			is_archetype = UNITED_FLEET
+			is_archetype = NANITES_CROP
+			# SC
+			UGRC_trgr_spcs_SC = no
+		}
 	}
 }
 
@@ -3353,7 +3102,7 @@ can_crossbreed_species = {
 can_use_galactic_market = {
 	OR = {
 		is_country_type = default
-
+		
 		#	ev
 		AND = {
 			is_country_type = default_ev
@@ -3371,7 +3120,7 @@ can_use_galactic_market = {
 		has_civic = civic_fanatic_purifiers
 		has_civic = civic_hive_devouring_swarm
 		has_civic = civic_machine_terminator
-
+		
 		#	UR
 		has_country_flag = dark_side
 	}
@@ -3437,7 +3186,7 @@ can_be_sold_on_slave_market = {
 		has_trait = trait_servitude
 		has_trait = trait_reanimated_materials
 	}
-
+	
 	##	+AUP	############################################
 	OR ={
 		ariphaos_patch_slaves_expel = yes	# AUP
@@ -3500,7 +3249,7 @@ can_be_part_of_galactic_community = {
 			has_civic = civic_fanatic_purifiers
 			has_civic = civic_hive_devouring_swarm
 			has_civic = civic_machine_terminator
-
+			
 			# UR
 			has_country_flag = dark_side
 		}
@@ -3517,7 +3266,7 @@ can_be_part_of_galactic_community = {
 			overlord = { has_been_declared_crisis = no }
 		}
 	}
-
+	
 	##	wsg
 	custom_tooltip = { #焚飞齐宣王被踢出共同体
 		fail_text = "community_declared_crisis_failtext"
@@ -3548,7 +3297,7 @@ can_be_part_of_galactic_empire = {
 			has_civic = civic_fanatic_purifiers
 			has_civic = civic_hive_devouring_swarm
 			has_civic = civic_machine_terminator
-
+			
 			# UR
 			has_country_flag = dark_side
 		}
@@ -3565,7 +3314,7 @@ can_be_part_of_galactic_empire = {
 			overlord = { has_been_declared_crisis = no }
 		}
 	}
-
+	
 	##	wsg
 	custom_tooltip = { #焚飞齐宣王被踢出共同体
 		fail_text = "community_declared_crisis_failtext"
@@ -3611,11 +3360,11 @@ can_be_part_of_galactic_council = {
 		has_civic = civic_fanatic_purifiers
 		has_civic = civic_hive_devouring_swarm
 		has_civic = civic_machine_terminator
-
+		
 		# UR
 		has_country_flag = dark_side
 	}
-
+	
 	##	wsg
 	custom_tooltip = {#焚飞齐宣王被踢出共同体
 		fail_text = "community_declared_crisis_failtext"
@@ -3725,7 +3474,7 @@ can_planet_auto_migrate = {
 				is_country_type = awakened_original_empire
 				#	EE
 				is_country_type = eternal_empire
-				#	ev
+				#	ev				
 				is_country_type = default_ev
 				#	HFE
 				is_country_type = hfe_pirate
@@ -3733,7 +3482,7 @@ can_planet_auto_migrate = {
 			}
 		}
 	}
-
+	
 	##	伞优化
 	custom_tooltip = {
 		fail_text = UGRC_failtips_PF_VAM
@@ -3742,7 +3491,7 @@ can_planet_auto_migrate = {
 	##	产业革命
 	custom_tooltip = {
 		fail_text = UGRC_failtips_PR_planet
-		NOT = { has_planet_flag = PR_flg_plnt_ASCENDED }
+		NOT = { has_planet_flag = PR_flg_plnt_VALID }
 	}
 }
 
@@ -3827,7 +3576,7 @@ can_remove_positive_traits_organic = {
 		}
 		#_|科技|
 		has_technology = tech_epigenetic_triggers
-
+		
 		#_|mod|
 		has_country_flag = FW_flg_cntr_CHT_genemodding	# FW
 		is_nirvana_empire = yes	#	涅槃
@@ -3945,19 +3694,6 @@ can_trade_leader = {
 			has_specialist_subject_leader_trait = yes
 			has_specialist_subject_leader_trait_maid = yes	# rmaid
 			has_leader_flag = tradable_leader	# 多彩
-
-			#	GF
-			AND = {
-				# 是机械领袖
-				species = { is_robotic = yes }
-				# 必须为少前政体附庸
-				ROOT = { is_valid_GF_OGAS_subnet = yes }
-				# 少前政体必须为宗主
-				FROM = {
-					is_overlord_to = ROOT
-					has_authority = GF_auth_commonwealth
-				}
-			}
 		}
 	}
 	##_|同类政体|	+多彩
@@ -3998,7 +3734,22 @@ can_trade_leader = {
 				}
 			}
 		}
+		#	GF
+		AND = {
+			# 是机械领袖
+			species = { is_robotic = yes }
+			# 必须为少前政体附庸
+			ROOT = {
+				is_valid_GF_OGAS_subnet = yes
+			}
+			# 少前政体必须为宗主
+			FROM = {
+				is_overlord_to = ROOT
+				has_authority = GF_auth_commonwealth
+			}
+		}
 	}
+	##	|国家类型|	+ZOFE
 	# The overlord can't be a fallen or awakened empire.
 	ROOT = {
 		NAND = {
@@ -4012,7 +3763,7 @@ can_trade_leader = {
 			}
 		}
 	}
-	NOR = {
+	NOR = { 
 		has_trait = leader_trait_fotd_scientist
 		has_trait = leader_trait_fotd_admiral
 	}
