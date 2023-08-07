@@ -1840,14 +1840,15 @@ can_orbital_bombard = {
 								is_hostile = prev 
 							}
 						}
-		
-						is_country_type = mem_ancestor_guardian			# bwm
-						is_country_type = original_empire				# SOFE
-						is_country_type = compound_empire				# Giga/Ehof
-						is_country_type = void_lifeforms_1				# Giga/ACOT
-						is_country_type = void_lifeforms_2				# Giga/ACOT
-						is_country_type = katzenartig_imperium			# Giga/ACOT
-						if = {											# 古代帝国	安装=|has_ancient_empire_mod|
+						
+						has_country_flag = UGRC_flg_cntr_RULE_can_be_bombed	# UGRC
+						is_country_type = mem_ancestor_guardian				# bwm
+						is_country_type = original_empire					# SOFE
+						is_country_type = compound_empire					# Giga/Ehof
+						is_country_type = void_lifeforms_1					# Giga/ACOT
+						is_country_type = void_lifeforms_2					# Giga/ACOT
+						is_country_type = katzenartig_imperium				# Giga/ACOT
+						if = {												# 古代帝国	安装=|has_ancient_empire_mod|
 							limit = {
 								has_global_flag = has_ancient_empire_mod 
 							}
@@ -1902,7 +1903,8 @@ can_orbital_bombard = {
 								is_hostile = prev 
 							}
 						}
-		
+						
+						has_country_flag = UGRC_flg_cntr_RULE_can_bomb	# UGRC
 						is_country_type = mercenary_fleet				# Teif
 						is_country_type = ev_leviathans_crisis			# ev
 						is_country_type = afk_crisis_country			# swg
