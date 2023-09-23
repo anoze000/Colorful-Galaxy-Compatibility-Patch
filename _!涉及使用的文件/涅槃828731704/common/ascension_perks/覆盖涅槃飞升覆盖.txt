@@ -45,8 +45,8 @@ ap_mind_over_matter = {
 			has_ascension_perk = ap_mind_over_matter
 			is_nirvana_empire_council = yes
 			is_ban_vanilla_ap_not_wsg_country = yes
-			has_origin = origin_pd_shroud
-			has_origin = origin_techno_world
+			# has_origin = origin_pd_shroud
+			# has_origin = origin_techno_world
 		}
 		is_gestalt = no
 		is_mechanical_empire = no
@@ -115,10 +115,10 @@ ap_the_flesh_is_weak = {
 			fail_text = "requires_not_shroudwalker_apprentice"
 			NOT = { has_ascension_perk = ap_synthetic_evolution }
 		}
-		custom_tooltip = {
-			fail_text = "requires_not_shroudwalker_apprentice"
-			NOT = { has_origin = origin_pd_shroud }
-		}
+		# custom_tooltip = {
+		# 	fail_text = "requires_not_shroudwalker_apprentice"
+		# 	NOT = { has_origin = origin_pd_shroud }
+		# }
 		custom_tooltip = {
 			fail_text = "requires_free_tradition_tree"
 			num_tradition_categories < 79
@@ -176,16 +176,16 @@ ap_engineered_evolution = {
 			}
 			custom_tooltip = clone_soldier_locked_genes
 		}
-		if = {
-			limit = {
-				has_origin = origin_techno_world
-				OR = {
-					has_trait = trait_organic_fourschildren
-					has_trait = trait_organic_fourschildren_2
-				}
-			}
-			custom_tooltip = fourschildren_locked_genes
-		}
+		# if = {
+		# 	limit = {
+		# 		has_origin = origin_techno_world
+		# 		OR = {
+		# 			has_trait = trait_organic_fourschildren
+		# 			has_trait = trait_organic_fourschildren_2
+		# 		}
+		# 	}
+		# 	custom_tooltip = fourschildren_locked_genes
+		# }
 	}
 	possible = {
 		custom_tooltip = {
@@ -223,10 +223,10 @@ ap_engineered_evolution = {
 			fail_text = "requires_free_tradition_tree"
 			num_tradition_categories < 79
 		}
-		custom_tooltip = {
-			fail_text = "requires_not_shroudwalker_apprentice"
-			NOT = { has_origin = origin_pd_shroud }
-		}
+		# custom_tooltip = {
+		# 	fail_text = "requires_not_shroudwalker_apprentice"
+		# 	NOT = { has_origin = origin_pd_shroud }
+		# }
 		NOR = { 
 			has_ascension_perk = ap_become_the_gray
 			has_ascension_perk = ap_mahoshoujo1 

@@ -1,3 +1,65 @@
+building_SRA_world_machine_chaos = {
+	base_buildtime = 480
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	category = government
+	icon = building_SRA_world_machine
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_country_type = faction_SRA_RE_End_2_country
+				has_civic = civic_SRARociviaEmpire
+				is_country_type = faction_SRA_Chief_country
+				has_civic = civic_SRAtechnology
+				has_country_flag = StellarRegulator_Array_tech_permit
+			}
+		}
+	}
+	prerequisites = { tech_SRA_T4_hidden_tech }
+	planet_modifier = {
+		planet_max_buildings_add = -1000
+		planet_max_districts_mult = -10
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			NOR = {
+				owner = { is_hive_empire = yes }
+				owner = { is_machine_empire = yes }
+			}
+		}
+		modifier = {
+			job_SRA_world_machine_job_per_pop = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			OR = {
+				owner = { is_hive_empire = yes }
+				owner = { is_machine_empire = yes }
+			}
+		}
+		modifier = {
+			job_SRA_world_machine_drone_per_pop = 1
+		}
+	}
+	convert_to = {
+		building_hive_major_capital
+		building_machine_major_capital
+		building_major_capital
+	}
+	country_modifier = {
+		country_naval_cap_add = 10000
+		country_resource_max_add = 8000000
+	}
+	upgrades = { }
+}
 building_SRA_world_machine = {
 	base_buildtime = 480
 	capital = yes
@@ -12,7 +74,9 @@ building_SRA_world_machine = {
 		exists = owner
 		owner = {
 			OR = {
+				is_country_type = faction_SRA_RE_End_2_country
 				has_civic = civic_SRARociviaEmpire
+				is_country_type = faction_SRA_Chief_country
 				has_civic = civic_SRAtechnology
 				has_country_flag = StellarRegulator_Array_tech_permit
 			}
@@ -20,24 +84,12 @@ building_SRA_world_machine = {
 	}
 	prerequisites = { tech_SRA_T4_hidden_tech }
 	planet_modifier = {
-		pop_amenities_usage_mult = -1
-		pop_amenities_usage_no_happiness_mult = -1
-		pop_housing_usage_mult = -1
-		planet_pops_upkeep_mult = -1
-		pop_happiness = 1
-		planet_crime_mult = -1
-		planet_orbital_bombardment_damage = -1
-		planet_army_build_speed_mult = 1
-		planet_crime_add = -100
-		planet_amenities_add = 100
-		planet_stability_add = 100
-		planet_housing_add = 100
 		planet_max_buildings_add = -1000
 		planet_max_districts_mult = -10
 	    pop_growth_speed = -20
 		planet_pop_assembly_organic_mult = -20
 		planet_pop_assembly_mult = -20
-		defense_armies_add = 10
+		planet_resettlement_unemployed_mult = 2.00
 	}
 	convert_to = {
 		building_hive_major_capital
@@ -47,78 +99,6 @@ building_SRA_world_machine = {
 	country_modifier = {
 		country_naval_cap_add = 100
 		country_resource_max_add = 80000
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			NOR = {
-				owner = { is_hive_empire = yes }
-				owner = { is_machine_empire = yes }
-			}
-		}
-		modifier = {
-			job_SRA_world_machine_job_add = 10
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			OR = {
-				owner = { is_hive_empire = yes }
-				owner = { is_machine_empire = yes }
-			}
-		}
-		modifier = {
-			job_SRA_world_machine_drone_add = 10
-		}
-	}
-	resources = {
-		category = planet_technician
-		produces = {
-			energy = 20
-			multiplier = planet.SRA_world_machine_produces
-		}
-		produces = {
-			trigger = { owner = { has_technology = tech_SRA_T3_Composite_Crystal_Lattice } }
-			energy = 20
-			multiplier = planet.SRA_world_machine_produces
-		}
-	}
-	resources = {
-		category = planet_miners
-		produces = {
-			minerals = 10
-			multiplier = planet.SRA_world_machine_produces
-		}
-		produces = {
-			trigger = { owner = { has_technology = tech_SRA_T3_Composite_Crystal_Lattice } }
-			minerals = 10
-			multiplier = planet.SRA_world_machine_produces
-		}
-	}
-	resources = {
-		category = planet_farmers
-		produces = {
-			food = 2
-			multiplier = planet.SRA_world_machine_produces
-		}
-		produces = {
-			trigger = { owner = { has_technology = tech_SRA_T3_Composite_Crystal_Lattice } }
-			food = 2
-			multiplier = planet.SRA_world_machine_produces
-		}
-	}
-	resources = {
-		category = planet_metallurgists
-		produces = {
-			alloys = 40
-			multiplier = planet.SRA_world_machine_produces
-		}
-		produces = {
-			trigger = { owner = { has_technology = tech_SRA_T3_Composite_Crystal_Lattice } }
-			alloys = 40
-			multiplier = planet.SRA_world_machine_produces
-		}
 	}
 	resources = {
 		category = planet_artisans
@@ -153,6 +133,127 @@ building_SRA_world_machine = {
 		}
 	}
 	resources = {
+		category = planet_metallurgists
+		produces = {
+			alloys = 40
+			multiplier = planet.SRA_world_machine_produces
+		}
+		produces = {
+			trigger = { owner = { has_technology = tech_SRA_T3_Composite_Crystal_Lattice } }
+			alloys = 40
+			multiplier = planet.SRA_world_machine_produces
+		}
+	}
+	upgrades = { }
+}
+building_SRA_world_machine_A = {
+	base_buildtime = 480
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 1
+	category = government
+	icon = building_SRA_world_machine
+	potential = {
+		exists = owner
+		has_building = building_SRA_world_machine
+	}
+	prerequisites = { tech_SRA_T4_hidden_tech }
+	planet_modifier = {
+		pop_amenities_usage_mult = -1
+		pop_amenities_usage_no_happiness_mult = -1
+		pop_housing_usage_mult = -1
+		planet_pops_upkeep_mult = -1
+		pop_happiness = 1
+		planet_crime_mult = -1
+		planet_crime_add = -1000
+		planet_amenities_add = 1000
+		planet_stability_add = 1000
+		planet_housing_add = 1000
+	}
+	resources = {
+		category = planet_miners
+		produces = {
+			minerals = 10
+			multiplier = planet.SRA_world_machine_produces
+		}
+		produces = {
+			trigger = { owner = { has_technology = tech_SRA_T3_Composite_Crystal_Lattice } }
+			minerals = 10
+			multiplier = planet.SRA_world_machine_produces
+		}
+	}
+	resources = {
+		category = planet_farmers
+		produces = {
+			food = 2
+			multiplier = planet.SRA_world_machine_produces
+		}
+		produces = {
+			trigger = { owner = { has_technology = tech_SRA_T3_Composite_Crystal_Lattice } }
+			food = 2
+			multiplier = planet.SRA_world_machine_produces
+		}
+	}
+	resources = {
+		category = planet_technician
+		produces = {
+			energy = 20
+			multiplier = planet.SRA_world_machine_produces
+		}
+		produces = {
+			trigger = { owner = { has_technology = tech_SRA_T3_Composite_Crystal_Lattice } }
+			energy = 20
+			multiplier = planet.SRA_world_machine_produces
+		}
+	}
+	upgrades = { }
+}
+building_SRA_world_machine_B = {
+	base_buildtime = 480
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 2
+	category = government
+	icon = building_SRA_world_machine
+	potential = {
+		exists = owner
+		has_building = building_SRA_world_machine
+	}
+	prerequisites = { tech_SRA_T4_hidden_tech }
+	planet_modifier = {
+		planet_orbital_bombardment_damage = -1
+		planet_army_build_speed_mult = 1
+		defense_armies_add = 10
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			NOR = {
+				owner = { is_hive_empire = yes }
+				owner = { is_machine_empire = yes }
+			}
+		}
+		modifier = {
+			job_SRA_world_machine_job_add = 10
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			OR = {
+				owner = { is_hive_empire = yes }
+				owner = { is_machine_empire = yes }
+			}
+		}
+		modifier = {
+			job_SRA_world_machine_drone_add = 10
+		}
+	}
+	resources = {
 		category = planet_researchers
 		produces = {
 			physics_research = 40
@@ -172,7 +273,6 @@ building_SRA_world_machine = {
 	}
 	upgrades = { }
 }
-
 building_SRA_control_centre = {
 	base_buildtime = 100
 	can_build = no
@@ -191,6 +291,7 @@ building_SRA_control_centre = {
 			OR = {
 				has_civic = civic_SRAtechnology
 				has_civic = civic_SRARociviaEmpire
+				is_country_type = faction_SRA_Chief_country
 		    }
 		}
 	}
@@ -213,7 +314,7 @@ building_SRA_control_centre = {
 		}
 		produces = {
 			influence = 5
-			minor_artifacts = 5
+			minor_artifacts = 50
 		}
 		upkeep = {
 			energy = 100
@@ -248,6 +349,7 @@ building_SRA_databank = {
 					OR = {
 						has_civic = civic_SRAtechnology
 						has_civic = civic_SRARociviaEmpire
+						is_country_type = faction_SRA_Chief_country
 					}
 				}
 			}
@@ -332,6 +434,7 @@ building_SRA_foundry = {
 					OR = {
 						has_civic = civic_SRAtechnology
 						has_civic = civic_SRARociviaEmpire
+						is_country_type = faction_SRA_Chief_country
 					}
 				}
 			}
@@ -425,6 +528,7 @@ building_SRA_ground_yards = {
 					OR = {
 						has_civic = civic_SRAtechnology
 						has_civic = civic_SRARociviaEmpire
+						is_country_type = faction_SRA_Chief_country
 					}
 				}
 			}
@@ -468,6 +572,7 @@ building_SRA_ground_yards = {
 		planet_jobs_produces_mult = 0.2
 		planet_amenities_mult = 0.50
 		trade_value_mult = 0.50
+		defense_armies_add = 5
 	}
 	resources = {
 		category = planet_buildings
@@ -493,6 +598,7 @@ building_SRA_ground_yards = {
 				OR = {
 					has_civic = civic_SRAtechnology
 					has_civic = civic_SRARociviaEmpire
+					is_country_type = faction_SRA_Chief_country
 				}
 			}
 		}
@@ -527,6 +633,7 @@ building_SRA_produce_centre = {
 					OR = {
 						has_civic = civic_SRAtechnology
 						has_civic = civic_SRARociviaEmpire
+						is_country_type = faction_SRA_Chief_country
 					}
 				}
 			}
@@ -607,21 +714,21 @@ building_SRA_plane_collector = {
 				has_civic = civic_SRAtechnology
 				has_civic = civic_SRARociviaEmpire
 			}
-			OR = {
-				has_authority = auth_shenhai
-				has_authority = auth_warshipgirls
-				has_authority = auth_united_fleet
-				has_authority = auth_starshipgirls
-				AND = {
-					has_global_flag = acot_activated
-					has_technology = tech_dark_matter_power_core
-				}
-				is_cg_empire = yes
-				has_technology = GE_tech_reactor
-				has_technology = tech_KZ_VOY_dilithium_magic
-				has_technology = tech_KZ_VOY_dilithium_Resonating
-				has_technology = tc_tech_arcane_research
-			}
+			# OR = {
+			# 	has_authority = auth_shenhai
+			# 	has_authority = auth_warshipgirls
+			# 	has_authority = auth_united_fleet
+			# 	has_authority = auth_starshipgirls
+			# 	AND = {
+			# 		has_global_flag = acot_activated
+			# 		has_technology = tech_dark_matter_power_core
+			# 	}
+			# 	is_cg_empire = yes
+			# 	has_technology = GE_tech_reactor
+			# 	has_technology = tech_KZ_VOY_dilithium_magic
+			# 	has_technology = tech_KZ_VOY_dilithium_Resonating
+			# 	has_technology = tc_tech_arcane_research
+			# }
 		}
 	}
 	resources = {
@@ -700,16 +807,6 @@ building_SRA_plane_collector = {
 			acot_sr_light_matter = 4000
 		}
 		produces = {
-			trigger = { owner = { has_technology = tech_dark_matter_power_core_pe } }
-			#Acquisition of Technology
-			aot_sr_runic_power = 4000
-		}
-		produces = {
-			trigger = { owner = { has_technology = tech_dark_matter_power_core_theta } }
-			#Secret of the Shroud
-			sm_sr_perfect_runic_energy = 4000
-		}
-		produces = {
 			trigger = { owner = { is_cg_empire = yes } }
 			#Colorful Galaxy
 			sr_beauty = 200
@@ -720,11 +817,6 @@ building_SRA_plane_collector = {
 			sr_ten = 200
 			living_tentacles = 200
 			Obscene_separation = 200
-		}
-		produces = {
-			trigger = { owner = { has_technology = GE_tech_reactor } }
-			#蔷薇少女
-			sr_void_core = 200
 		}
 		#兽耳娘
 		produces = {
@@ -739,17 +831,17 @@ building_SRA_plane_collector = {
 			KZ_VOY_hyperstructure_alloys = 2000
 		}
 		#ThaumStellar
-		produces = {
-			trigger = { owner = { has_technology = tc_tech_arcane_research } }
-			tc_essences = 2000
-			tc_thaumium = 2000
-			tc_element_shard = 2000
-			tc_knowledge_fragment = 2000
-		}
-		produces = {
-			trigger = { owner = { has_technology = tc_tech_eldritch_minor } }
-			tc_void_metal = 2000
-		}
+		# produces = {
+		# 	trigger = { owner = { has_technology = tc_tech_arcane_research } }
+		# 	tc_essences = 2000
+		# 	tc_thaumium = 2000
+		# 	tc_element_shard = 2000
+		# 	tc_knowledge_fragment = 2000
+		# }
+		# produces = {
+		# 	trigger = { owner = { has_technology = tc_tech_eldritch_minor } }
+		# 	tc_void_metal = 2000
+		# }
 	}
 	resources = {
 		category = planet_buildings
@@ -763,7 +855,74 @@ building_SRA_plane_collector = {
 		}
 	}
 }
-
+building_SRA_Fortress = {
+	base_buildtime = 320
+	icon = building_SRA_Fortress
+	can_build = yes
+	can_demolish = yes
+	category = army
+	position_priority = 3
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				has_civic = civic_SRAtechnology
+				has_civic = civic_SRARociviaEmpire
+				is_country_type = faction_SRA_Chief_country
+			}
+		}
+	}
+	country_modifier = {
+		country_naval_cap_add = 1000
+	}
+	planet_modifier = {
+		planet_orbital_bombardment_damage = -0.75
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			job_soldier_add = 8
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_warrior_drone_add = 8
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 800
+			alloys = 200
+		}
+		upkeep = {
+			energy = 200
+			alloys = 100
+		}
+	}
+	
+	prerequisites = { tech_SRA_T4_Armies }
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 5
+			owner = {
+				OR = {
+					has_civic = civic_SRAtechnology
+					has_civic = civic_SRARociviaEmpire
+					is_country_type = faction_SRA_Chief_country
+				}
+			}
+		}
+	}
+}
 
 building_SRA_T3_Crystal_Node = {
 	base_buildtime = 320
@@ -778,6 +937,7 @@ building_SRA_T3_Crystal_Node = {
 			OR = {
 				has_civic = civic_SRAtechnology
 				has_civic = civic_SRARociviaEmpire
+				is_country_type = faction_SRA_Chief_country
 			}
 		}
 	}
@@ -810,6 +970,7 @@ building_SRA_T3_Crystal_Node = {
 				OR = {
 					has_civic = civic_SRAtechnology
 					has_civic = civic_SRARociviaEmpire
+					is_country_type = faction_SRA_Chief_country
 				}
 			}
 		}
@@ -828,6 +989,7 @@ building_SRA_T3_Storage = {
 			OR = {
 				has_civic = civic_SRAtechnology
 				has_civic = civic_SRARociviaEmpire
+				is_country_type = faction_SRA_Chief_country
 			}
 		}
 	}
@@ -854,6 +1016,7 @@ building_SRA_T3_Storage = {
 				OR = {
 					has_civic = civic_SRAtechnology
 					has_civic = civic_SRARociviaEmpire
+					is_country_type = faction_SRA_Chief_country
 				}
 			}
 		}
@@ -872,6 +1035,7 @@ building_SRA_T3_Planet_Mobilization = {
 			OR = {
 				has_civic = civic_SRAtechnology
 				has_civic = civic_SRARociviaEmpire
+				is_country_type = faction_SRA_Chief_country
 			}
 		}
 	}
@@ -901,6 +1065,7 @@ building_SRA_T3_Planet_Mobilization = {
 				OR = {
 					has_civic = civic_SRAtechnology
 					has_civic = civic_SRARociviaEmpire
+					is_country_type = faction_SRA_Chief_country
 				}
 			}
 		}
@@ -919,6 +1084,7 @@ building_SRA_T3_Recovery_Nest = {
 			OR = {
 				has_civic = civic_SRAtechnology
 				has_civic = civic_SRARociviaEmpire
+				is_country_type = faction_SRA_Chief_country
 			}
 		}
 	}
@@ -950,6 +1116,7 @@ building_SRA_T3_Recovery_Nest = {
 				OR = {
 					has_civic = civic_SRAtechnology
 					has_civic = civic_SRARociviaEmpire
+					is_country_type = faction_SRA_Chief_country
 				}
 			}
 		}
@@ -969,6 +1136,7 @@ building_SRA_T3_Singularity_Controller = {
 			OR = {
 				has_civic = civic_SRAtechnology
 				has_civic = civic_SRARociviaEmpire
+				is_country_type = faction_SRA_Chief_country
 			}
 		}
 	}
@@ -985,11 +1153,11 @@ building_SRA_T3_Singularity_Controller = {
 			sr_dark_matter = 50
 		}
 		produces = {
-			sr_dark_matter = 10
+			sr_dark_matter = 40
 		}
 		upkeep = {
-			energy = 80
-			minerals = 80
+			energy = 200
+			minerals = 200
 		}
 	}
 	
@@ -1002,6 +1170,7 @@ building_SRA_T3_Singularity_Controller = {
 				OR = {
 					has_civic = civic_SRAtechnology
 					has_civic = civic_SRARociviaEmpire
+					is_country_type = faction_SRA_Chief_country
 				}
 			}
 		}
@@ -1022,6 +1191,7 @@ building_SRA_T3_Psychic_Beacon = {
 			OR = {
 				has_civic = civic_SRAtechnology
 				has_civic = civic_SRARociviaEmpire
+				is_country_type = faction_SRA_Chief_country
 			}
 		}
 	}
@@ -1057,6 +1227,7 @@ building_SRA_T3_Psychic_Beacon = {
 				OR = {
 					has_civic = civic_SRAtechnology
 					has_civic = civic_SRARociviaEmpire
+					is_country_type = faction_SRA_Chief_country
 				}
 			}
 		}
@@ -1076,6 +1247,7 @@ building_SRA_RE_foundry = {
 			OR = {
 				has_civic = civic_SRAtechnology
 				has_civic = civic_SRARociviaEmpire
+				is_country_type = faction_SRA_Chief_country
 			}
 			NOT = { has_country_flag = SRA_RE_buliding_hidden }
 		}
@@ -1146,6 +1318,7 @@ building_SRA_RE_research_institute = {
 			OR = {
 				has_civic = civic_SRAtechnology
 				has_civic = civic_SRARociviaEmpire
+				is_country_type = faction_SRA_Chief_country
 			}
 			NOT = { has_country_flag = SRA_RE_buliding_hidden }
 		}
@@ -1219,6 +1392,7 @@ building_SRA_RE_alloys = {
 			OR = {
 				has_civic = civic_SRAtechnology
 				has_civic = civic_SRARociviaEmpire
+				is_country_type = faction_SRA_Chief_country
 			}
 			NOT = { has_country_flag = SRA_RE_buliding_hidden }
 		}
@@ -1292,6 +1466,7 @@ building_SRA_RE_factory = {
 			OR = {
 				has_civic = civic_SRAtechnology
 				has_civic = civic_SRARociviaEmpire
+				is_country_type = faction_SRA_Chief_country
 			}
 			NOT = { has_country_flag = SRA_RE_buliding_hidden }
 		}

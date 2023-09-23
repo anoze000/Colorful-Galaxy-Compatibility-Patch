@@ -405,6 +405,11 @@ civic_holylight_convict = {
 			NOT = {
 				value = ethic_gestalt_consciousness
 			}
+			origin = {
+				NOT = { 
+					value = origin_INN_destruction_light 
+					}
+			}
 		}
 	}
 	traits = {
@@ -422,6 +427,11 @@ civic_holylight_convict = {
 		spy_network_daily_value_mult = 0.25
 		envoys_add = 2
 		country_war_exhaustion_mult = -0.25
+		country_starbase_capacity_add = 5
+		shipclass_starbase_damage_mult = 1
+		starbase_upgrade_cost_mult = -0.5
+		shipclass_military_station_damage_mult = 1
+		starbase_defense_platform_capacity_add = 10
 	}
 	random_weight = {
 		base = 50
@@ -463,6 +473,11 @@ civic_loving_virgin = {
 		}
 		authority = {
 			value = auth_corporate
+		}
+		origin = {
+			NOT = { 
+				value = origin_INN_destruction_light 
+				}
 		}
 	}
 	modifier = {
@@ -539,6 +554,9 @@ civic_help_weak = {
 	possible = {
 		ethics = {
 			value = ethic_fanatic_egalitarian
+		}
+		origin = {
+			NOT = { value = origin_INN_destruction_light }
 		}
 	}
 	modifier = {

@@ -56,21 +56,7 @@ ap_power_of_heaven = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_mod_ap_mind_over_matter_str"
-			OR = {
-				has_ascension_perk = ap_mind_over_matter
-				has_ascension_perk = ap_toho4
-				has_ascension_perk = ap_hm4
-				has_ascension_perk = ap_mist
-				has_ascension_perk = ap_shenhai_silent
-				has_ascension_perk = ap_shenhai_icebreaking
-				has_ascension_perk = ap_galactic_empire
-				has_ascension_perk = ap_lustgod_tentacle_symbiosis
-				has_ascension_perk = ap_TARDIS
-				has_ascension_perk = ap_project_s
-				has_ascension_perk = ap_uf_2
-				has_ascension_perk = ap_become_the_gray
-				has_ascension_perk = ap_GF_nyto_resurrection
-			}
+			is_ap_mind_over_matter_str = yes
 		}
 	}
 	potential = {
@@ -138,21 +124,7 @@ ap_power_of_multiverse = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_mod_ap_engineered_evolution_str"
-			OR = {
-				has_ascension_perk = ap_engineered_evolution
-				has_ascension_perk = ap_toho4
-				has_ascension_perk = ap_hm4
-				has_ascension_perk = ap_mist
-				has_ascension_perk = ap_shenhai_silent
-				has_ascension_perk = ap_shenhai_icebreaking
-				has_ascension_perk = ap_galactic_empire
-				has_ascension_perk = ap_lustgod_tentacle_symbiosis
-				has_ascension_perk = ap_TARDIS
-				has_ascension_perk = ap_project_s
-				has_ascension_perk = ap_uf_2
-				has_ascension_perk = ap_become_the_gray
-				has_ascension_perk = ap_GF_nyto_resurrection
-			}
+			is_ap_engineered_evolution_str = yes
 		}
 	}
 	potential = {

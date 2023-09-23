@@ -483,12 +483,26 @@ building_capital = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				has_authority = auth_corporate 
+			owner = {
+				is_megacorp = yes
+				is_worker_coop_empire = no
 			}
 		}
 		modifier = {
 			job_executive_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				is_worker_coop_empire = yes
+			}
+		}
+		modifier = {
+			job_steward_add = 3
 		}
 	}
 
@@ -657,11 +671,24 @@ building_capital = {
 		trigger = {
 			exists = owner
 			owner = {
-				has_authority = auth_corporate
+				is_megacorp = yes
+				is_worker_coop_empire = no
 			}
 		}
 		text = job_executive_effect_desc
 	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				is_worker_coop_empire = yes
+			}
+		}
+		text = job_steward_effect_desc
+	}
+
 	triggered_desc = {
 		text = job_enforcer_effect_desc
 	}
@@ -802,8 +829,9 @@ building_major_capital = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				has_authority = auth_corporate 
+			owner = {
+				is_megacorp = yes
+				is_worker_coop_empire = no
 			}
 		}
 		modifier = {
@@ -811,6 +839,18 @@ building_major_capital = {
 		}
 	}
 
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				is_worker_coop_empire = yes
+			}
+		}
+		modifier = {
+			job_steward_add = 4
+		}
+	}
 
 	triggered_planet_modifier = {
 		potential = {
@@ -1007,10 +1047,22 @@ building_major_capital = {
 		trigger = {
 			exists = owner
 			owner = {
-				has_authority = auth_corporate
+				is_megacorp = yes
+				is_worker_coop_empire = no
 			}
 		}
 		text = job_executive_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				is_worker_coop_empire = yes
+			}
+		}
+		text = job_steward_effect_desc
 	}
 
 	triggered_desc = {
@@ -1169,8 +1221,9 @@ building_system_capital = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				has_authority = auth_corporate 
+			owner = {
+				is_megacorp = yes
+				is_worker_coop_empire = no
 			}
 		}
 		modifier = {
@@ -1178,6 +1231,18 @@ building_system_capital = {
 		}
 	}
 
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				is_worker_coop_empire = yes
+			}
+		}
+		modifier = {
+			job_steward_add = 6
+		}
+	}
 
 	triggered_planet_modifier = {
 		potential = {
@@ -1378,13 +1443,25 @@ building_system_capital = {
 		trigger = {
 			exists = owner
 			owner = {
-				has_authority = auth_corporate
+				is_megacorp = yes
+				is_worker_coop_empire = no
 			}
 		}
 		text = job_executive_effect_desc
 	}
 	triggered_desc = {
 		text = job_enforcer_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				is_worker_coop_empire = yes
+			}
+		}
+		text = job_steward_effect_desc
 	}
 
 	triggered_desc = {
@@ -1487,6 +1564,10 @@ building_hab_capital = {
 		script = buildings/on_all_capital_buildings
 	}
 
+	inline_script = {
+		script = buildings/on_all_habitat_capital_buildings
+	}
+
 	triggered_planet_modifier = {
 		modifier = { 
 			planet_stability_add = 1 
@@ -1510,18 +1591,6 @@ building_hab_capital = {
 		potential = {
 			exists = owner
 			owner = { 
-				has_active_tradition = tr_prosperity_void_works 
-			}
-		}
-		modifier = {
-			planet_max_buildings_add = 1
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { 
 				has_active_tradition = tr_synthetics_finish 
 			}
 		}
@@ -1532,9 +1601,8 @@ building_hab_capital = {
 		potential = {
 			exists = owner
 			owner = {
-				NOR = {
+				NOT = {
 					has_authority = auth_corporate
-					has_origin = origin_void_dwellers
 				}
 				is_regular_empire = yes
 			}
@@ -1547,9 +1615,7 @@ building_hab_capital = {
 			exists = owner
 			owner = {
 				has_authority = auth_corporate
-				NOT = { 
-					has_origin = origin_void_dwellers 
-				}
+				is_worker_coop_empire = no
 			}
 		}
 		modifier = {
@@ -1561,12 +1627,12 @@ building_hab_capital = {
 		potential = {
 			exists = owner
 			owner = {
-				has_origin = origin_void_dwellers
-				is_regular_empire = yes
+				has_authority = auth_corporate
+				is_worker_coop_empire = yes
 			}
 		}
 		modifier = {
-			job_colonist_add = 2
+			job_steward_add = 2
 		}
 	}
 
@@ -1579,18 +1645,6 @@ building_hab_capital = {
 		}
 		modifier = {
 			job_enforcer_add = 1
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { 
-				has_ascension_perk = ap_voidborn 
-			}
-		}
-		modifier = {
-			planet_max_buildings_add = 2
 		}
 	}
 
@@ -1612,7 +1666,7 @@ building_hab_capital = {
 				is_machine_empire = yes 
 			}
 		}
-		job_coordinator_add = 1
+		job_evaluator_add = 1
 		job_replicator_add = 1
 		job_maintenance_drone_add = 2
 		planet_amenities_add = 3
@@ -1660,20 +1714,8 @@ building_hab_capital = {
 		trigger = {
 			exists = owner
 			owner = {
-				has_origin = origin_void_dwellers
-				is_regular_empire = yes
-			}
-		}
-		text = job_colonist_effect_desc
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = {
-				NOR = {
+				NOT = {
 					has_authority = auth_corporate
-					has_origin = origin_void_dwellers
 				}
 				is_regular_empire = yes
 			}
@@ -1695,10 +1737,8 @@ building_hab_capital = {
 		trigger = {
 			exists = owner
 			owner = {
-				has_authority = auth_corporate
-				NOT = { 
-					has_origin = origin_void_dwellers 
-				}
+				is_megacorp = yes
+				is_worker_coop_empire = no
 			}
 		}
 		text = job_executive_effect_desc
@@ -1711,7 +1751,7 @@ building_hab_capital = {
 				is_machine_empire = yes 
 			}
 		}
-		text = job_coordinator_effect_desc
+		text = job_evaluator_effect_desc
 	}
 
 	triggered_desc = {
@@ -1830,6 +1870,10 @@ building_hab_major_capital = {
 		script = buildings/on_all_capital_buildings
 	}
 
+	inline_script = {
+		script = buildings/on_all_habitat_capital_buildings
+	}
+
 	triggered_planet_modifier = {
 		modifier = { planet_stability_add = 1 }
 		mult = modifier:habitat_stability_add
@@ -1850,16 +1894,6 @@ building_hab_major_capital = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_active_tradition = tr_prosperity_void_works }
-		}
-		modifier = {
-			planet_max_buildings_add = 1
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
 			owner = { is_hive_empire = yes }
 		}
 		job_synapse_drone_add = 3
@@ -1871,7 +1905,7 @@ building_hab_major_capital = {
 			exists = owner
 			owner = { is_machine_empire = yes }
 		}
-		job_coordinator_add = 2
+		job_evaluator_add = 2
 		job_replicator_add = 1
 		job_maintenance_drone_add = 3
 		planet_amenities_add = 3
@@ -1939,10 +1973,27 @@ building_hab_major_capital = {
 		potential = {
 			NOT = { has_planet_flag = toxic_knights_habitat }
 			exists = owner
-			owner = { has_authority = auth_corporate }
+			owner = {
+				has_authority = auth_corporate
+				is_worker_coop_empire = no
+			}
 		}
 		modifier = {
 			job_executive_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			NOT = { has_planet_flag = toxic_knights_habitat }
+			exists = owner
+			owner = {
+				has_authority = auth_corporate
+				is_worker_coop_empire = yes
+			}
+		}
+		modifier = {
+			job_steward_add = 3
 		}
 	}
 
@@ -2012,16 +2063,6 @@ building_hab_major_capital = {
 			owner = { is_regular_empire = yes }
 		}
 		job_enforcer_add = 1
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_ascension_perk = ap_voidborn }
-		}
-		modifier = {
-			planet_max_buildings_add = 2
-		}
 	}
 
 	triggered_planet_modifier = {
@@ -2166,6 +2207,7 @@ building_hab_major_capital = {
 			exists = owner
 			owner = {
 				has_authority = auth_corporate
+				is_worker_coop_empire = no
 			}
 			OR = {
 				NOT = { has_planet_flag = toxic_knights_habitat }
@@ -2173,6 +2215,21 @@ building_hab_major_capital = {
 			}
 		}
 		text = job_executive_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				has_authority = auth_corporate
+				is_worker_coop_empire = yes
+			}
+			OR = {
+				NOT = { has_planet_flag = toxic_knights_habitat }
+				NOT = { owner = { has_origin = origin_toxic_knights } }
+			}
+		}
+		text = job_steward_effect_desc
 	}
 
 	triggered_desc = {
@@ -2188,7 +2245,7 @@ building_hab_major_capital = {
 			exists = owner
 			owner = { is_machine_empire = yes }
 		}
-		text = job_coordinator_effect_desc
+		text = job_evaluator_effect_desc
 	}
 
 	triggered_desc = {
@@ -2345,12 +2402,26 @@ building_imperial_capital = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				has_authority = auth_corporate 
+			owner = {
+				has_authority = auth_corporate
+				is_worker_coop_empire = no
 			}
 		}
 		modifier = {
 			job_executive_add = 6
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_authority = auth_corporate
+				is_worker_coop_empire = yes
+			}
+		}
+		modifier = {
+			job_steward_add = 9
 		}
 	}
 
@@ -2546,13 +2617,25 @@ building_imperial_capital = {
 		trigger = {
 			exists = owner
 			owner = {
-				has_authority = auth_corporate
+				is_megacorp = yes
+				is_worker_coop_empire = no
 			}
 		}
 		text = job_executive_effect_desc
 	}
 	triggered_desc = {
 		text = job_enforcer_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				is_worker_coop_empire = yes
+			}
+		}
+		text = job_steward_effect_desc
 	}
 
 	#莉莉修改

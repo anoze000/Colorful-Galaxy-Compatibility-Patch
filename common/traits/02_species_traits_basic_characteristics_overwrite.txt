@@ -11,6 +11,7 @@
 trait_hive_mind = {
 	cost = 0
 	sorting_priority = 20
+
 	initial = no
 	randomized = no
 	forced_happiness = yes
@@ -23,11 +24,14 @@ trait_hive_mind = {
 	species_possible_merge_add = {
 		always = no
 	}
+
 	modifier = {
-		
+
 	}
+
 	leader_age_min = 10
 	leader_age_max = 20
+
 	allowed_archetypes = {
 		BIOLOGICAL
 		LITHOID
@@ -36,6 +40,7 @@ trait_hive_mind = {
 	ai_weight = {
 		weight = 0
 	}
+
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_ruler_hive_mind.dds"
 }
 
@@ -68,6 +73,7 @@ trait_machine_unit = {
 trait_mechanical = {
 	cost = 0
 	sorting_priority = 20
+
 	initial = no
 	randomized = no
 	species_potential_add = {
@@ -80,12 +86,14 @@ trait_mechanical = {
 		always = no
 	}
 	immortal_leaders = yes
+
 	allowed_archetypes = {
 		ROBOT
 		LOVEMACHINE
 		YGWAWA
 		HOLYROBOT
 	}
+
 	modifier = {
 		pop_environment_tolerance = 2.0
 	}
@@ -100,8 +108,6 @@ trait_syncretic_proles = {
 		"trait_natural_engineers" 
 		"trait_natural_physicists" 
 		"trait_natural_sociologists" 
-		"trait_enslavement_resistance"
-		"trait_enslavement_struggle"
 	}
 	initial = no
 	randomized = no
@@ -177,6 +183,18 @@ trait_lithoid = {
 		army_health = 0.5
 		leader_age = 50
 	}
+	triggered_planet_growth_habitability_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				OR = {
+					has_modifier = lithoid_crater
+					has_deposit = d_lithoid_crater
+				}
+			}
+		}
+		pop_environment_tolerance = 0.5
+	}
 }
 
 trait_aquatic = {
@@ -195,7 +213,6 @@ trait_aquatic = {
 
 	allowed_planet_classes = {
 		pc_ocean
-		pc_dc_spore
 	}
 
 	species_possible_remove = {
@@ -205,7 +222,7 @@ trait_aquatic = {
 			}
 			if = {
 				limit = { 
-					NOT = { 
+					NOT = {
 						from = { 
 							has_ascension_perk = ap_hydrocentric 
 						} 
@@ -213,8 +230,8 @@ trait_aquatic = {
 				}
 				custom_tooltip = {
 					fail_text = trait_aquatic_remove_evolutionary_mastery
-					from = {
-						 has_tradition = tr_genetics_resequencing 
+					from = { 
+						has_tradition = tr_genetics_resequencing 
 					}
 				}
 			}
@@ -316,11 +333,11 @@ trait_aquatic = {
 				owner = { 
 					has_ascension_perk = ap_hydrocentric 
 				}
+				is_ideal = no
 				NOR = {
 					has_climate = wet
 					has_modifier = flooded_habitat
 				}
-				is_ideal = no
 			}
 		}
 		pop_housing_usage_mult = 0.15
@@ -502,7 +519,7 @@ trait_clone_soldier_infertile = {
 	}
 }
 
-trait_clone_soldier_infertile_full_potential = {	
+trait_clone_soldier_infertile_full_potential = {
 	cost = 0
 	potential_crossbreeding_chance = 0
 	opposites = { 
@@ -664,7 +681,7 @@ trait_cave_dweller = {
 			exists = planet
 			planet = {
 				exists = growing_species
-				growing_species = { 
+				growing_species = { 							
 					OR = {
 						is_archetype = BIOLOGICAL
 						is_archetype = Magical_Bitch
@@ -701,7 +718,7 @@ trait_perfected_genes = {
 	potential_crossbreeding_chance = 0
 	opposites = { 
 		trait_fleeting trait_weak 
-		}
+	}
 	sorting_priority = 20
 
 	initial = no
