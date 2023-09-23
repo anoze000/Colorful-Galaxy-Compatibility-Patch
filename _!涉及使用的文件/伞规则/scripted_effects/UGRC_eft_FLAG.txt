@@ -1,0 +1,929 @@
+###	UGRC标签EFT
+
+#	UGRC安装自检
+#	UGRC轨道维修标签DB		---UGRC修理|若pdx修复轨道维修的优化问题,禁用|
+#	UGRC全局星系标签DB	/UGRC星系标签DB
+#	UGRC全局国家标签DB
+#	UGRC全局人口标签DB	/UGRC物种标签DB/UGRC人口标签DB
+
+
+
+
+###	UGRC安装自检	################################################################################################################################################################
+#_evt	<ugrc开局>
+#_eft	<FW_MOD安装自检>
+UGRC_eft_npc0_INSTALL_DB = {
+	set_global_flag = UGRC_installed
+}
+
+
+
+
+
+
+###	UGRC轨道维修标签DB	################################################################################################################################################################
+#_evt	<ugrc开局框架/ugrc开局延时	/ugrc读档框架	/ugrc年检框架	/ugrc入轨/ugrc星基失效循环	/ugrc巨构建设>
+##_list		星基/巨构
+##_问题spot		如果出现<舰队入轨>将本|维修轨道|DB变成|无维修轨道|,会不会造成舰队指令卡主的问题?
+UGRC_eft_mix_RULE_can_orbitable_repair_ships_DB = {
+	optimize_memory	#内存
+
+	##	|星基|	+AAR/ZOFE/ACOT/AOT/莉莉
+	if = {
+		limit = { is_scope_type = starbase
+			NOT = { has_starbase_flag = UGRC_flg_sb_RULE_can_orbitable_repair_ships_CD }
+			fleet = { is_disabled = no }	# 未失效
+		}
+		#	设置触发CD
+		set_timed_starbase_flag = { flag = UGRC_flg_sb_RULE_can_orbitable_repair_ships_CD days = 7 }
+		#	添加
+		if = {
+			limit = {
+				OR = {
+					has_starbase_size >= starbase_starport
+					has_starbase_size = juggernaut
+					has_starbase_size = enclave_mercenary_station
+					#	AAR
+					#has_starbase_size = AAR_ship_juggernaut
+					#	ZOFE
+					has_starbase_size = fe_goliath
+					#	ACOT
+					has_starbase_size >= ls_starbase_starport
+					has_starbase_size = origin_super_citadel_playable
+					has_starbase_size = origin_super_citadel
+					has_starbase_size >= acot_precusor_starbase
+					has_starbase_size >= acot_precusor_sigma_starbase
+					has_starbase_size >= acot_precusor_phanon_starcitadel
+					has_starbase_size >= precursor_colossus
+					has_starbase_size >= acot_star_commander
+					#	AOT
+					has_starbase_size = ascended_juggernaut
+					has_starbase_size = precursor_juggernaut
+					#	莉莉
+					has_starbase_size = lily_super_college_ship
+					has_starbase_size = lily_college_ship
+				}
+			}
+			#	|UGRC维修轨道|添加
+			set_variable = { which = UGRC_var_all_RULE_can_orbitable_repair_ships value = 1 }
+		}
+		#	清除
+		else_if = { limit = { is_variable_set = UGRC_var_all_RULE_can_orbitable_repair_ships }
+			clear_variable = UGRC_var_all_RULE_can_orbitable_repair_ships
+		}
+	}
+	##	|巨构|	+ACOT
+	else_if = {
+		limit = { is_scope_type = megastructure
+			NOT = { has_megastructure_flag = UGRC_flg_mega_RULE_can_orbitable_repair_ships_CD }
+		}
+		#	设置触发CD
+		set_timed_megastructure_flag = { flag = UGRC_flg_mega_RULE_can_orbitable_repair_ships_CD days = 7 }
+		#	添加
+		if = {
+			limit = {
+				OR = {
+					is_megastructure_type = mega_shipyard_1
+					is_megastructure_type = mega_shipyard_2
+					is_megastructure_type = mega_shipyard_3
+					# ACOT
+					is_megastructure_type = acot_precursor_colossus_base
+					is_megastructure_type = acot_precursor_colossus_stage_two
+					is_megastructure_type = acot_amerigo
+					is_megastructure_type = acot_amerigo_ae
+					is_megastructure_type = acot_amerigo_se
+					is_megastructure_type = acot_amerigo_oe
+					is_megastructure_type = acot_phanon_master_reactor_sphere
+				}
+			}
+			#	|UGRC维修轨道|添加
+			set_variable = { which = UGRC_var_all_RULE_can_orbitable_repair_ships value = 1 }
+		}
+		#	清除
+		else_if = { limit = { is_variable_set = UGRC_var_all_RULE_can_orbitable_repair_ships }
+			clear_variable = UGRC_var_all_RULE_can_orbitable_repair_ships
+		}
+	}
+}
+
+
+
+
+###	UGRC全局星系标签DB	################################################################################################################################################################
+#_evt	<ugrc开局框架/ugrc开局延时	/ugrc读档框架	/ugrc年检框架>
+UGRC_eft_glbl_RULE_sstm_flg_DB = {
+	#	UGRC星系标签DB
+	every_system = {
+		UGRC_eft_sstm_RULE_flg_DB = yes
+	}
+}
+
+###	UGRC星系标签DB	################################################################################
+#_eft	<UGRC全局星系标签DB>
+#_list	UGRC传感器/UGRC星系管制
+#_国家	PC/普通帝国/
+UGRC_eft_sstm_RULE_flg_DB = {
+	optimize_memory	#内存
+
+	##	UGRC传感器	####################	简单阻碍	/S_tnatc	/Sexp激活/Sexp无
+	#	INIT
+	if = { limit = { has_star_flag = UGRC_flg_sstm_RULE_flg_blocks_sensors_SET }
+		remove_star_flag = UGRC_flg_sstm_RULE_flg_blocks_sensors_SET
+		every_country = {
+			limit = { prev = { has_star_flag = UGRC_flg_sstm_RULE_blocks_sensors@prev } }
+			prev = { remove_star_flag = UGRC_flg_sstm_RULE_blocks_sensors@prev }
+		}
+	}
+	#	简单阻碍
+	if = {
+		limit = {
+			OR = {
+				#	WS
+				is_ws_system = yes
+				#	wsg
+				has_star_flag = wg_sealed_system
+				has_star_flag = wg_psionic_systems
+				#	古代帝国
+				has_star_flag = ag_no_sensor_system
+				#	SMCO
+				has_star_flag = bok_globules
+				has_star_flag = star_flag_GAPS_sealed_system
+				#	莉莉
+				has_star_flag = Uberzain
+				#	thl
+				has_modifier = tengu_storm
+				has_modifier = bat_swarm
+				has_modifier = red_fog
+			}
+		}
+		every_country = {
+			limit = { OR = { is_ai = no		is_country_type = default } }
+			prev = {
+				set_star_flag = UGRC_flg_sstm_RULE_flg_blocks_sensors_SET
+				set_star_flag = UGRC_flg_sstm_RULE_blocks_sensors@prev
+			}
+		}
+	}
+	#	S_tnatc
+	else_if = {
+		limit = { exists = space_owner		space_owner = { has_relic = r_invisibility_rune } }
+		every_country = {
+			limit = {
+				OR = { is_ai = no		is_country_type = default }
+				NOT = { is_same_value = prev.space_owner }
+			}
+			prev = {
+				set_star_flag = UGRC_flg_sstm_RULE_flg_blocks_sensors_SET
+				set_star_flag = UGRC_flg_sstm_RULE_blocks_sensors@prev
+			}
+		}
+	}
+	#	|Sexp激活|复杂计算
+	else_if = {
+		limit = { has_global_flag = ariphaos_sensors_installed }
+		#	vanilla|星云|
+		if = {
+			limit = {
+				OR = {
+					is_inside_nebula = yes
+					has_modifier = space_storm
+					has_modifier = zroni_storm
+					is_star_class = sc_collapsar	# RS
+					is_star_class = sc_p_purple
+					is_star_class = sc_p_green
+					is_star_class = sc_p_red
+				}
+			}
+			every_country = {
+				limit = {
+					OR = { is_ai = no		is_country_type = default }
+					NOT = { has_technology = tech_ariphaos_sensors_nebula }
+				}
+				prev = {
+					set_star_flag = UGRC_flg_sstm_RULE_flg_blocks_sensors_SET
+					set_star_flag = UGRC_flg_sstm_RULE_blocks_sensors@prev
+				}
+			}
+		}
+		#	vanilla|封印星系|
+		if = {
+			limit = {
+				OR = {
+					has_star_flag = lcluster
+					has_star_flag = sealed_system
+				}
+			}
+			every_country = {
+				limit = {
+					OR = { is_ai = no		is_country_type = default }
+					NOT = { has_technology = tech_ariphaos_sensors_sealed }
+				}
+				prev = {
+					set_star_flag = UGRC_flg_sstm_RULE_flg_blocks_sensors_SET
+					set_star_flag = UGRC_flg_sstm_RULE_blocks_sensors@prev
+				}
+			}
+		}
+		#	|虫洞|
+		if = {
+			limit = { has_natural_wormhole = yes }
+			every_country = {
+				limit = {
+					OR = { is_ai = no		is_country_type = default }
+					NOT = { has_technology = tech_ariphaos_sensors_wormhole }
+				}
+				prev = {
+					set_star_flag = UGRC_flg_sstm_RULE_flg_blocks_sensors_SET
+					set_star_flag = UGRC_flg_sstm_RULE_blocks_sensors@prev
+				}
+			}
+		}
+		#	|星际基地|
+		if = {
+			limit = { exists = starbase		starbase = { has_starbase_building = ariphaos_sensors_jammer_starbase } }
+			every_country = {
+				limit = {
+					OR = { is_ai = no		is_country_type = default }
+					NOT = { has_technology = tech_ariphaos_sensors_jammed }
+				}
+				prev = {
+					set_star_flag = UGRC_flg_sstm_RULE_flg_blocks_sensors_SET
+					set_star_flag = UGRC_flg_sstm_RULE_blocks_sensors@prev
+				}
+			}
+		}
+		#	|星系类型|
+		if = {#中子星
+			limit = {
+				OR = {
+					is_star_class = sc_binary_2
+					is_star_class = sc_neutron_star
+				}
+			}
+			every_country = {
+				limit = {
+					OR = { is_ai = no		is_country_type = default }
+					NOT = { has_technology = tech_sensors_4 }
+				}
+				prev = {
+					set_star_flag = UGRC_flg_sstm_RULE_flg_blocks_sensors_SET
+					set_star_flag = UGRC_flg_sstm_RULE_blocks_sensors@prev
+				}
+			}
+		}
+		else_if = {#脉冲星
+			limit = {
+				OR = {
+					is_star_class = sc_binary_1
+					is_star_class = sc_pulsar
+				}
+			}
+			every_country = {
+				limit = {
+					OR = { is_ai = no		is_country_type = default }
+					NOT = { has_technology = tech_ariphaos_sensors_pulsar }
+				}
+				prev = {
+					set_star_flag = UGRC_flg_sstm_RULE_flg_blocks_sensors_SET
+					set_star_flag = UGRC_flg_sstm_RULE_blocks_sensors@prev
+				}
+			}
+		}
+		else_if = {#黑洞
+			limit = {
+				OR = {
+					is_star_class = sc_black_hole
+				}
+			}
+			every_country = {
+				limit = {
+					OR = { is_ai = no		is_country_type = default }
+					NOT = { has_technology = tech_ariphaos_sensors_black_hole }
+				}
+				prev = {
+					set_star_flag = UGRC_flg_sstm_RULE_flg_blocks_sensors_SET
+					set_star_flag = UGRC_flg_sstm_RULE_blocks_sensors@prev
+				}
+			}
+		}
+	}
+	#	|Sexp无|简单阻碍
+	else_if = {
+		limit = {
+			OR = {
+				#	vanilla|星云|
+				is_inside_nebula = yes
+				has_modifier = space_storm
+				has_modifier = zroni_storm
+				is_star_class = sc_collapsar	# RS
+				is_star_class = sc_p_purple
+				is_star_class = sc_p_green
+				is_star_class = sc_p_red
+				#	vanilla|封印星系|
+				has_star_flag = lcluster
+				has_star_flag = sealed_system
+			}
+		}
+		every_country = {
+			limit = { OR = { is_ai = no		is_country_type = default } }
+			prev = {
+				set_star_flag = UGRC_flg_sstm_RULE_flg_blocks_sensors_SET
+				set_star_flag = UGRC_flg_sstm_RULE_blocks_sensors@prev
+			}
+		}
+	}
+
+
+	##	UGRC星系管制	####################	TAC/古代帝国	/野生保护/神秘堡垒/利维坦
+	#	TAC
+	if = {
+		limit = {
+			OR = {
+				has_star_flag = AI_system1
+				has_star_flag = AI_system2
+				has_star_flag = AI_system3
+				has_star_flag = AI_system4
+			}
+		}
+		set_star_flag = UGRC_flg_sstm_RESTRICT_mod_TAC
+	}
+	else_if = { limit = { has_star_flag = UGRC_flg_sstm_RESTRICT_mod_TAC }
+		remove_star_flag = UGRC_flg_sstm_RESTRICT_mod_TAC
+	}
+	#	古代帝国
+	if = {
+		limit = {
+			OR = {
+				has_star_flag = ag_zeta_crisis_psionic_storm_system
+				has_star_flag = ag_zeta_crisis_psionic_singularity_system
+			}
+		}
+		set_star_flag = UGRC_flg_sstm_RESTRICT_mod_AG_zeta
+	}
+	else_if = { limit = { has_star_flag = UGRC_flg_sstm_RESTRICT_mod_AG_zeta }
+		remove_star_flag = UGRC_flg_sstm_RESTRICT_mod_AG_zeta
+	}
+	#	野生保护
+	if = {
+		limit = {
+			OR = {
+				AND = { has_star_flag = crystal_home_system		any_fleet_in_system = { exists = owner		owner = { is_country_type = crystal } } }
+				AND = { has_star_flag = amoeba_home_system		any_fleet_in_system = { exists = owner		owner = { is_country_type = amoeba_garrison } } }
+				AND = { has_star_flag = drone_home_system		any_fleet_in_system = { exists = owner		owner = { is_country_type = drone } } }
+			}
+		}
+		set_star_flag = UGRC_flg_sstm_RESTRICT_vanilla_WILDLIFE
+	}
+	else_if = { limit = { has_star_flag = UGRC_flg_sstm_RESTRICT_vanilla_WILDLIFE }
+		remove_star_flag = UGRC_flg_sstm_RESTRICT_vanilla_WILDLIFE
+	}
+	#	神秘堡垒
+	if = {
+		limit = { has_star_flag = guardian		any_fleet_in_system = { exists = owner		owner = { is_country_type = guardian_fortress } } }
+		set_star_flag = UGRC_flg_sstm_RESTRICT_vanilla_GUARDIAN_fortress
+	}
+	else_if = { limit = { has_star_flag = UGRC_flg_sstm_RESTRICT_vanilla_GUARDIAN_fortress }
+		remove_star_flag = UGRC_flg_sstm_RESTRICT_vanilla_GUARDIAN_fortress
+	}
+	#	利维坦
+	if = {
+		limit = {
+			has_star_flag = guardian
+			exists = owner
+			OR = {
+				any_fleet_in_system = { exists = owner		owner = { is_guardian_country = yes } }
+				any_fleet_in_system = { exists = owner		owner = { is_country_type = sbtg_sentinel_active } }	# SOFE
+			}
+		}
+		set_star_flag = UGRC_flg_sstm_RESTRICT_vanilla_GUARDIAN
+	}
+	else_if = { limit = { has_star_flag = UGRC_flg_sstm_RESTRICT_vanilla_GUARDIAN }
+		remove_star_flag = UGRC_flg_sstm_RESTRICT_vanilla_GUARDIAN
+	}
+}
+
+
+
+
+
+
+###	UGRC全局国家标签DB	################################################################################################################################################################
+#_evt	<ugrc开局框架/ugrc开局延时	/ugrc读档框架	/ugrc年检框架>
+#_list	UGRC幸福感/UGRC星系管制		/UGRC罪企
+UGRC_eft_glbl_RULE_cntr_flg_DB = {
+	every_country = {
+		##	UGRC幸福感		####################
+		if = { limit = { num_pops > 0 }
+			#	vanilla|无情机器|
+			if = {
+				limit = {
+					OR = {
+						has_authority = auth_machine_intelligence
+						NOR = {
+							has_technology = tech_synthetic_workers
+							has_technology = tech_dummy_leaders	# 魔女
+							has_technology = tech_sapient_dolls	# thl
+						}
+						has_policy_flag = ai_outlawed
+					}
+				}
+				set_country_flag = UGRC_flg_cntr_RULE_happiness_DISABLE_robot
+			}
+			else = {
+				remove_country_flag = UGRC_flg_cntr_RULE_happiness_DISABLE_robot
+			}
+			#	vanilla|无情同化|
+			if = {
+				limit = {
+					has_authority = auth_machine_intelligence
+					has_civic = civic_machine_assimilator # Assimilator empire
+				}
+				set_country_flag = UGRC_flg_cntr_RULE_happiness_DISABLE_cybernetic
+			}
+			else = {
+				remove_country_flag = UGRC_flg_cntr_RULE_happiness_DISABLE_cybernetic
+			}
+
+			#	mod|魔女|
+			if = {
+				limit = {
+					OR = {
+						NOR = { 
+							has_technology = tech_synthetic_workers 
+							has_technology = tech_dummy_leaders
+							has_origin = origin_garbage_princesses
+							has_country_flag = synthetic_empire
+						} 
+						has_policy_flag = ai_outlawed
+					}
+				}
+				set_country_flag = UGRC_flg_cntr_RULE_happiness_DISABLE_dummy
+			}
+			else = {
+				remove_country_flag = UGRC_flg_cntr_RULE_happiness_DISABLE_dummy
+			}
+		}
+
+
+		##	UGRC星系管制	####################
+		remove_country_flag = UGRC_flg_cntr_RULE_restrict_DEFAULT
+		remove_country_flag = UGRC_flg_cntr_RULE_restrict_FALLEN
+		remove_country_flag = UGRC_flg_cntr_RULE_restrict_AFE
+		if = {
+			limit = {
+				OR = {
+					is_country_type = default
+					is_country_type = default_ev	# ev
+					is_country_type = ascended_empire	# ZOFE
+				}
+			}
+			set_country_flag = UGRC_flg_cntr_RULE_restrict_DEFAULT
+		}
+		else_if = {
+			limit = {
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = fallen_empire_ev	# ev
+					is_country_type = kuat_fallen_empire	# kuat
+					is_country_type = LsE_fallen_empire	# adf
+					is_country_type = lost_empire		# ZOFE
+					is_country_type = al_fallen_empire	# AL
+				}
+			}
+			set_country_flag = UGRC_flg_cntr_RULE_restrict_FALLEN
+		}
+		else_if = {
+			limit = {
+				OR = {
+					is_country_type = awakened_fallen_empire
+					is_country_type = awakened_fallen_empire_ev	# ev
+					is_country_type = kuat_awakened_fallen_empire	# kuat
+				}
+			}
+			set_country_flag = UGRC_flg_cntr_RULE_restrict_AFE
+		}
+
+
+		##	UGRC罪企	####################
+		if = {
+			limit = {
+				num_pops > 0
+				OR = {
+					AND = {
+						#	|政体|
+						OR = {
+							has_authority = auth_corporate
+							has_valid_civic = civic_galactic_sovereign_megacorp
+					
+							#	wsg
+							has_authority = auth_warshipgirls
+						}
+						#	|国策|
+						OR = {
+							has_valid_civic = civic_criminal_heritage
+							
+							#	Ecar
+							has_civic = civic_family_business
+							has_civic = civic_world_cooperative
+							#	wsg
+							has_civic = civic_sh_criminal_syndicate
+							#	ev
+							has_valid_civic = civic_ev_criminal_ship
+						}
+					}
+				
+					#	hiveDLC
+					has_valid_civic = civic_mutualistic_behavior
+					has_valid_civic = civic_machine_trading
+					#	MCA
+					has_authority = auth_corporate_fiefdom
+					has_authority = auth_cooperative
+					#	ETCPM
+					has_authority = auth_private
+					#	Ecar
+					has_valid_civic = civic_underworld_society
+					#	azlr
+					AND = {
+						exists = event_target:elizabeth_leader
+						has_country_flag = azur_lane_leader_elizabeth
+					}
+					#	精灵
+					is_ELF_criminal_syndicate_rule = yes
+				}
+			}
+			set_country_flag = UGRC_flg_cntr_RULE_criminal_syndicate
+		}
+		else_if = { limit = { has_country_flag = UGRC_flg_cntr_RULE_criminal_syndicate }
+			remove_country_flag = UGRC_flg_cntr_RULE_criminal_syndicate
+		}
+	}
+}
+
+
+
+
+
+
+###	UGRC全局人口标签DB	################################################################################################################################################################
+#_evt	<ugrc开局框架/ugrc开局延时	/ugrc读档框架	/ugrc年检框架>
+UGRC_eft_glbl_RULE_pop_flg_DB = {
+	##	UGRC物种标签DB
+	every_galaxy_species = {
+		UGRC_eft_spcs_RULE_flg_DB = yes
+	}
+
+	##	UGRC人口标签DB
+	#	|长间隔触发|
+	if = { limit = { NOT = { has_global_flag = UGRC_flg_glbl_RULE_pop_flg_db_CD } }
+		set_timed_global_flag = { flag = UGRC_flg_glbl_RULE_pop_flg_db_CD	days = 720 }
+		every_galaxy_pop = {
+			limit = { exists = owner }
+			UGRC_eft_pop_RULE_flg_DB_cd = yes
+		}
+	}
+	#	|每年触发|
+	else = {
+		every_galaxy_pop = {
+			limit = { exists = owner }
+			UGRC_eft_pop_RULE_flg_DB = yes
+		}
+	}
+}
+
+###	UGRC物种标签DB	################################################################################
+#_eft	<UGRC全局人口标签DB>
+#_list	UGRC幸福感/UGRC可繁殖/UGRC犯罪	/UGRC产生领袖
+UGRC_eft_spcs_RULE_flg_DB = {
+	optimize_memory	#内存
+
+	##	|UGRC幸福感|	####################	wsg/PTep/Eevt/无言/Ecar/魔女
+	#	INTI
+	if = { limit = { has_species_flag = UGRC_flg_spcs_RULE_happiness_SET }
+		remove_species_flag = UGRC_flg_spcs_RULE_happiness_SET
+		every_country = {
+			limit = {
+				num_pops > 0
+				prev = { has_species_flag = UGRC_flg_spcs_RULE_happiness_ENABLE@prev }
+			}
+			prev = { remove_species_flag = UGRC_flg_spcs_RULE_happiness_ENABLE@prev }
+		}
+	}
+	#	添加flg
+	if = {
+		#	|基本条件|
+		limit = {
+			NOR = {
+				#	vanilla
+				has_trait = trait_machine_unit
+				has_trait = trait_hive_mind
+				can_think = no
+
+				#	Ecar
+				has_trait = trait_flesh_components
+				#	wsg
+				has_trait = sh_trait_shenhai
+				has_trait = sh_trait_shenhai1
+				has_trait = sh_trait_shenhai2
+				has_trait = sh_trait_silent
+				has_trait = sh_trait_silent1
+				#	PTep
+				has_trait = trait_plentiful_traditions_pt_cocoon
+				#	Eevt
+				has_trait = trait_memorex_comatos
+				#	无言
+				has_trait = trait_protoss_probe
+				#	魔女
+				has_trait = trait_servitude
+			}
+		}
+		set_species_flag = UGRC_flg_spcs_RULE_happiness_SET
+		every_country = { limit = { num_pops > 0 }
+			prev = { set_species_flag = UGRC_flg_spcs_RULE_happiness_ENABLE@prev }
+		}
+		#	vanilla|智械|排除
+		if = { limit = { has_trait = trait_mechanical }
+			every_country = {
+				limit = {
+					has_country_flag = UGRC_flg_cntr_RULE_happiness_DISABLE_robot
+					prev = { has_species_flag = UGRC_flg_spcs_RULE_happiness_ENABLE@prev }
+				}
+				prev = { remove_species_flag = UGRC_flg_spcs_RULE_happiness_ENABLE@prev }
+			}
+		}
+		#	vanilla|同化|排除
+		if = { limit = { has_trait = trait_cybernetic }
+			every_country = {
+				limit = {
+					has_country_flag = UGRC_flg_cntr_RULE_happiness_DISABLE_cybernetic
+					prev = { has_species_flag = UGRC_flg_spcs_RULE_happiness_ENABLE@prev }
+				}
+				prev = { remove_species_flag = UGRC_flg_spcs_RULE_happiness_ENABLE@prev }
+			}
+		}
+		#	mod|thl|排除
+		if = { limit = { has_trait = trait_thl_doll }
+			every_country = {
+				limit = { NOT = { has_technology = tech_sapient_dolls } }
+				prev = { remove_species_flag = UGRC_flg_spcs_RULE_happiness_ENABLE@prev }
+			}
+		}
+		#	vanilla|魔女|排除
+		if = { limit = { has_trait = trait_dummy }
+			every_country = {
+				limit = {
+					has_country_flag = UGRC_flg_cntr_RULE_happiness_DISABLE_dummy
+					prev = { has_species_flag = UGRC_flg_spcs_RULE_happiness_ENABLE@prev }
+				}
+				prev = { remove_species_flag = UGRC_flg_spcs_RULE_happiness_ENABLE@prev }
+			}
+		}
+	}
+
+
+	##	|UGRC可繁殖|	####################
+	if = {
+		limit = {
+			is_sapient = yes
+			##	+魔圆/GF/HFE/hiveDLC/PTep/Eevt/魔女/精灵
+			NOR = {
+				has_trait = trait_machine_unit
+				has_trait = trait_mechanical
+				#	魔圆
+				has_trait = trait_mahoshoujo
+				#	GF
+				has_trait = GF_trait_doll
+				#	HFE
+				has_trait = hfe_species_trait_brainworm
+				#	hiveDLC
+				has_trait = trait_hive_mind_overlord
+				#	PTep
+				has_trait = trait_plentiful_traditions_pt_cocoon
+				#	Eevt
+				has_trait = trait_memorex_comatos
+				#	魔女
+				has_trait = trait_dummy
+				#	多彩
+				has_trait = trait_DC_ethic_parasite_mind_hard
+				has_trait = wawa_trait_FUTA
+				#	精灵
+				ELF_species_procreate_rules = yes
+			}
+			NOT = { has_species_flag = nivlac_no_procreation }
+		}
+		set_species_flag = UGRC_flg_spcs_RULE_procreate_ENABLE
+	}
+	else = {
+		remove_species_flag = UGRC_flg_spcs_RULE_procreate_ENABLE
+	}
+	#	魔女
+	if = {
+		limit = {
+			OR = {
+				has_trait = trait_reanimated_materials
+				has_trait = trait_houki
+				has_trait = trait_witch
+				has_trait = trait_victorika
+				has_trait = trait_elaina_descendant
+			}
+		}
+		set_species_flag = UGRC_flg_spcs_RULE_procreate_DUMMY
+	}
+	else = {
+		remove_species_flag = UGRC_flg_spcs_RULE_procreate_DUMMY
+	}
+
+
+	##	|UGRC犯罪|	####################	wsg/swg/kc/adf/PTep
+	if = {
+		limit = {
+			OR = {
+				#	wsg/swg
+				is_archetype = WARSHIPGIRL
+				is_archetype = SHENHAI
+				is_archetype = UNITED_FLEET
+				is_archetype = NANITES_CROP
+				has_wg_traits = yes
+				has_trait = sh_trait_silent
+				has_trait = trait_intelligent_galo
+				#	kc
+				has_trait = kancolle_trait_kanmusu
+				has_trait = kancolle_trait_kanmusu1
+				has_trait = kancolle_trait_kanmusu2
+				#	adf
+				has_trait = adf_trait_dolls
+				#	PTep
+				has_trait = trait_plentiful_traditions_pt_cocoon
+			}
+		}
+		if = { limit = { NOT = { has_species_flag = UGRC_flg_species_RULE_no_crime } }
+			set_species_flag = UGRC_flg_species_RULE_no_crime
+		}
+	}
+	else_if = { limit = { has_species_flag = UGRC_flg_species_RULE_no_crime }
+		remove_species_flag = UGRC_flg_species_RULE_no_crime
+	}
+
+
+	##	|UGRC产生领袖|	####################	+无言/Ereb/hiveDLC/PTep/Eevt/ETCPM
+	if = {
+		limit = {
+			can_think = yes
+			NOR = {
+				#	vanilla
+				has_trait = trait_syncretic_proles
+		
+				#	无言
+				has_trait = trait_protoss_probe
+				#	Ecar
+				has_trait = trait_flesh_components
+				#	Ereb
+				has_trait = trait_slave_gene
+				#	PTep
+				has_trait = trait_plentiful_traditions_pt_cocoon
+				#	Eevt/ETCPM
+				has_trait = trait_memorex_comatos
+				has_trait = trait_infested_basic
+				#	莉莉
+				has_trait = trait_AL_puffer
+				#	魔女
+				has_trait = trait_servitude
+				#	GF
+				has_trait = GF_trait_doll
+			}
+		}
+		set_species_flag = UGRC_flg_spcs_RULE_can_generate_leader
+	}
+	else = {
+		remove_species_flag = UGRC_flg_spcs_RULE_can_generate_leader
+	}
+}
+
+###	UGRC人口标签DB	################################################################################
+#_eft	<UGRC全局人口标签DB>
+#_list	UGRC参选/UGRC犯罪
+UGRC_eft_pop_RULE_flg_DB = {
+	optimize_memory	#内存
+
+	##	|UGRC参选|	####################	can_vote_in_democratic_election
+	#_list	vanilla
+	if = {
+		limit = {
+			has_citizenship_rights = yes
+			is_sapient = yes
+			is_enslaved = no
+			is_being_purged = no
+		}
+		set_pop_flag = UGRC_flg_pop_RULE_can_vote
+	}
+	else = {
+		remove_pop_flag = UGRC_flg_pop_RULE_can_vote
+	}
+
+
+	##	|UGRC犯罪|	####################	pop_generates_crime
+	#_list	wsg/swg/kc/adf/PTep
+	if = {
+		limit = {
+			exists = planet
+			is_sapient = yes
+			is_non_sapient_robot = no
+			is_being_assimilated = no
+			NOT = { species = { has_species_flag = UGRC_flg_species_RULE_no_crime } }
+		}
+		set_pop_flag = UGRC_flg_pop_RULE_generates_crime
+	}
+	else_if = { limit = { has_pop_flag = UGRC_flg_pop_RULE_generates_crime }
+		remove_pop_flag = UGRC_flg_pop_RULE_generates_crime
+	}
+}
+#_eft	<UGRC全局人口标签DB>
+#_list	UGRC产生领袖/UGRC军事领袖
+UGRC_eft_pop_RULE_flg_DB_cd = {
+	optimize_memory	#内存
+
+	UGRC_eft_pop_RULE_flg_DB = yes	# |每年触发|
+
+	##	|UGRC产生领袖|	####################
+	if = {
+		limit = {
+			has_citizenship_rights = yes
+			species = { has_species_flag = UGRC_flg_spcs_RULE_can_generate_leader }
+			#	hiveDLC
+			NOT = { owner = { has_origin = origin_hive_overmind } }
+			#	|机器人| +GF/魔女
+			OR = {
+				is_robot_pop = no
+				owner = {
+					OR = {
+						has_technology = tech_synthetic_leaders
+						has_authority = auth_machine_intelligence
+						is_mechanical_empire = yes
+						
+						has_technology = tech_mind_plus	# GF
+						has_technology = tech_dummy_leaders	# 魔女
+					}
+				}
+			}
+			#	|主物种|
+			OR = {
+				is_same_species = owner
+				owner = {
+					OR = {
+						#	V死灵
+						NAND = {
+							has_origin = origin_necrophage
+							has_trait = trait_necrophage
+						}
+						#	rmaid
+						NAND = {
+							has_civic = civic_machine_servitor
+							has_global_flag = flag_rogue_maid_mod_activated
+						}
+					}
+				}
+			}
+		}
+		set_pop_flag = UGRC_flg_pop_RULE_can_generate_leader
+	}
+	else = {
+		remove_pop_flag = UGRC_flg_pop_RULE_can_generate_leader
+	}
+
+
+	##	|UGRC军事领袖|	####################
+	if = {
+		limit = {
+			can_be_military_leader = yes
+			#	|机器人|	+GF
+			OR = {
+				is_robot_pop = no
+				owner = {
+					OR = {
+						has_technology = tech_synthetic_leaders
+						has_authority = auth_machine_intelligence
+						is_mechanical_empire = yes
+						has_technology = tech_mind_plus	# GF
+					}
+				}
+				has_trait = GF_trait_doll	# GF
+			}
+			#	|主物种|
+			OR = {
+				is_same_species = owner
+				owner = {
+					NAND = {
+						has_origin = origin_necrophage
+						has_trait = trait_necrophage
+					}
+				}
+			}
+			#	hiveDLC
+			NOT = { owner = { has_origin = origin_hive_overmind } }
+		}
+		set_pop_flag = UGRC_flg_pop_RULE_can_generate_military_leader
+	}
+	else = {
+		remove_pop_flag = UGRC_flg_pop_RULE_can_generate_military_leader
+	}
+}
+

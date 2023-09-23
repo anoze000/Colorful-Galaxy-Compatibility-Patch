@@ -133,7 +133,10 @@ is_valid_rival = {
 				}
 				AND = {
 					relative_power = { who = prev value >= inferior }
-					relative_power = { who = prev value <= superior }
+					OR = {
+						relative_power = { who = prev value <= superior }
+						prev = { has_policy_flag = diplo_stance_animosity }
+					}
 				}
 			}
 		}
@@ -141,7 +144,7 @@ is_valid_rival = {
 }
 
 
-###_|允许宣称|		ev	/ZOFE/SOFE/EE/ETCPM	####################################
+###_|允许宣称|		ev	/ZOFE/SOFE/EE/ETCPM	/AAR	####################################
 # Root = claimer
 # This = system
 can_add_claim = {
@@ -299,10 +302,16 @@ can_add_claim = {
 			}
 		}
 	}
-	#	ETCPM
+
+	##	ETCPM
 	custom_tooltip = {
 		fail_text = CANNOT_ADD_CLAIM_ASSIMILATOR
 		NOT = { root = { has_valid_civic = civic_infestation } }
+	}
+	##	AAR
+	custom_tooltip = {
+		fail_text = AAR_failtip_PREROGATIVE_no_claim
+		NOT = { has_star_flag = AAR_flg_sstm_NO_claim@ROOT }	# |AAR禁止宣称|
 	}
 }
 
@@ -392,7 +401,10 @@ species_can_live_on_planet = {
 				exists = root.owner
 				root.owner = {
 					has_authority = auth_machine_intelligence
-					has_civic = civic_machine_assimilator # Assimilator empire
+					OR = {
+						has_civic = civic_machine_assimilator # Assimilator empire
+						has_ascension_perk = ap_mechromancy
+					}
 				}
 			}
 			#	GF
@@ -972,7 +984,7 @@ can_colonize_planet = {
 	
 	##	LSP
 	custom_tooltip = {
-		fail_text = LSP_failtips_country_solitary
+		fail_text = LSP_failtip_country_solitary
 		hidden_trigger = {
 			exists = root
 			root = { NOT = { has_country_flag = LSP_flag_country_solitary } }
@@ -1177,11 +1189,11 @@ can_colonize_with_species = {
 
 
 ###_|UGRC幸福感|	wsg/PTep/Eevt/无言/Ecar/魔女/thl	####################################
-# Root = Species
+# Root = Species	可能是当前物种的主物种
 # From = Country
-# This = Species
+# This = Species	当前物种的真实scope
 species_has_happiness = {
-	has_species_flag = UGRC_flg_spcs_RULE_happiness_ENABLE@from
+	has_species_flag = UGRC_flg_spcs_RULE_happiness_ENABLE@from		# 改为<@root.from>不会报错,但是子物种无法检测到flag
 }
 
 
@@ -1314,7 +1326,7 @@ can_species_procreate = {
 
 ###_[物种组装]
 #_|基础trgr|	原版智械/原版克隆|is_organic_species|
-#_|MOD物种|		wsg/莉莉/swg/kc/DAL/微械/时与空/久远/azl/azlr/GF/PTep/SC/thl	/hiveDLC/多彩/魔女/精灵	/EE
+#_|MOD物种|		wsg/莉莉/swg/kc/DAL/微械/时与空/久远/azl/azlr/GF/PTep/SC/thl	/hiveDLC/魔女/多彩/精灵	/EE
 # Checks if a pop can be assembled
 # This = Species
 # Root = Planet
@@ -1521,6 +1533,64 @@ can_species_be_assembled = {
 		}
 		#	精灵
 		ELF_species_assembled_rules = yes
+		#	多彩
+		AND = { has_global_flag = love_between_us	# |安装|
+			OR = {
+				#雌伏于阴影之下起源 允许孤雌生殖物种组装
+				AND = {
+					has_trait = trait_suc_parthenogenesis
+					root = {
+						owner = { has_origin = origin_female_in_shadow }
+					}
+				}
+				#允许播种者组装
+				has_trait = trait_sowing_and_breeding
+				#Y触之虫组装Y奴
+				AND = {
+					is_species_class = PAR
+					root = {
+						owner = { has_country_flag = parasite_mind_flag }
+						any_owned_pop = { has_job = ten_nest_worker }
+					}
+				}
+				#虫与自然组装
+				AND = {
+					OR = {
+						is_species_class = TEN
+						is_species_class = PAR
+					}
+					root = { owner = { has_valid_civic = civic_parasite_and_nature } }
+				}
+				#Y触圣女组装Y触造物
+				AND = {
+					is_species_class = Magical_Tentacle
+					root = {
+						owner = { has_country_flag = abstinence_flag }
+						any_owned_pop = { has_job = procreate_doll }
+					}
+				}
+				#圣光创造圣女
+				AND = {
+					has_trait = trait_DC_ethic_asceticism
+					root = {
+						OR = {
+							has_building = building_holylight_clone_vats
+							has_building = building_world_tree_0
+							has_building = building_world_tree_1
+							has_building = building_world_tree_2
+							has_building = building_world_tree_3
+							has_building = building_world_tree_4
+							has_building = building_world_tree_5
+							AND = {
+								exists = owner
+								has_holding = { holding = holding_world_tree owner = owner.overlord }
+							}
+							owner = { has_origin = origin_INN_destruction_light }
+						}
+					}
+				}
+			}
+		}
 	}
 
 	##	微械
@@ -1529,59 +1599,6 @@ can_species_be_assembled = {
 	NAND = {
 		has_trait = trait_machine_central
 		root.owner = { has_valid_civic = civic_machine_replicators }
-	}
-	##	多彩
-	if = { limit = { has_global_flag = love_between_us }
-		OR = {
-			AND = {
-				OR = {
-					is_robotic = yes
-					is_species_class = RBQ
-					is_species_class = SGPC
-				}
-				root = {
-					has_building = building_robot_assembly_plant
-				}
-			}
-			AND = {
-				is_species_class = Magical_Tentacle
-				root = {
-					OR = {
-						has_building = building_tentacle_seedbed
-						has_building = building_tentacle_seedbed2
-						has_building = building_spawning_sanctuary
-					}
-				}
-			}
-			AND = {
-				is_robotic = yes
-				has_trait = wawa_trait_FUTA
-				ROOT = {
-					owner = {
-						has_country_flag = wawa_FUTA_alow
-					}
-					OR = {
-						is_planet_class = pc_futa_ring_world
-						has_building = building_futa_wawa
-					}
-				}
-			}
-			AND = {
-				is_organic_species = yes
-				ROOT = {
-					NOR = {
-						is_planet_class = pc_futa_ring_world
-						has_building = building_futa_wawa
-					}
-				}
-				root = {
-					check_modifier_value = {
-						modifier = planet_pop_assembly_organic_add
-						value > 0
-					}
-				}
-			}
-		}
 	}
 	##	精灵
 	ELF_can_not_be_assembled_species = yes
@@ -2046,7 +2063,7 @@ ai_should_restrict_system = {
 ###	has_extra_council_position
 
 ###_[可跃迁]	FW/古代帝国/seooc/莉莉	####################################
-#_|通用禁行|	多彩
+#_|通用禁行|	精灵
 # THIS = Fleet
 can_jump_drive = {
 #	always = yes	# Moved cooldown to code
@@ -2067,7 +2084,7 @@ can_jump_drive = {
 		}
 		always = yes
 	}
-	#_|通用禁行|	多彩
+	#_|通用禁行|	精灵
 	else_if = { limit = { solar_system = { has_star_flag = ELF_Singularity_System } }
 		always = no
 	}
@@ -2173,7 +2190,7 @@ system_blocks_sensors = {
 }
 
 
-###_[跃迁管制]	FW/AAR	/古代帝国/wsg/阿夸/SOFE/Giga/Ehof/seooc/多彩/TAC/莉莉	####################################
+###_[跃迁管制]	FW/AAR	/古代帝国/wsg/阿夸/SOFE/Giga/Ehof/seooc/多彩/精灵/TAC/莉莉	####################################
 # Root = country attempting to target system for movement
 # This = system being targeted
 can_enter_system_by_jump = {
@@ -2256,14 +2273,23 @@ can_enter_system_by_jump = {
 						}
 					}
 					#	|多彩|
-					has_star_flag = ELF_Singularity_System
-					AND = {
-						has_global_flag = love_between_us
+					AND = { has_global_flag = love_between_us	# |安装|
 						OR = {
 							has_star_flag = ten_crisis_system
 							any_neighbor_system = { has_star_flag = ten_crisis_system }
+							AND = {
+								exists = event_target:holylight_god_heaven_empire 
+								OR = {
+									has_star_flag = SUC_lustgod_ring_world_system
+									has_star_flag = init_sample_of_death
+									has_star_flag = init_sample_of_prosperity
+									has_star_flag = init_INN_holylight_god_system2
+								}
+							}
 						}
 					}
+					#	|精灵|
+					has_star_flag = ELF_Singularity_System
 					has_star_flag = wtmnb_star_11th		# wtmnb
 					#	TAC
 				#	has_star_flag = AI_system1
@@ -3485,12 +3511,12 @@ can_planet_auto_migrate = {
 	
 	##	伞优化
 	custom_tooltip = {
-		fail_text = UGRC_failtips_PF_VAM
+		fail_text = UGRC_failtip_PF_VAM
 		NOT = { has_global_flag = PF_flg_VAM_disabled }
 	}
 	##	产业革命
 	custom_tooltip = {
-		fail_text = UGRC_failtips_PR_planet
+		fail_text = UGRC_failtip_PR_planet
 		NOT = { has_planet_flag = PR_flg_plnt_VALID }
 	}
 }
@@ -3615,6 +3641,13 @@ can_modify_organic_portraits = {
 ###_[解雇领袖]	SC/Ecar	####################################
 # this = leader
 can_dismiss_leader = {
+	custom_tooltip = {
+		fail_text = "requires_actor_not_feudal_society"
+		exists = owner
+		owner = {
+			NOT = { has_valid_civic = civic_feudal_realm }
+		}
+	}
 	if = {
 		limit = {
 			leader_class = admiral
@@ -3695,6 +3728,7 @@ can_trade_leader = {
 			has_specialist_subject_leader_trait_maid = yes	# rmaid
 			has_leader_flag = tradable_leader	# 多彩
 		}
+		is_heir = no
 	}
 	##_|同类政体|	+多彩
 	# The subject and overlord must both be regular empires, machine intelligences or hive-minds.
