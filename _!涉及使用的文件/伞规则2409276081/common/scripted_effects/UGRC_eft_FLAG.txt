@@ -726,10 +726,10 @@ UGRC_eft_spcs_RULE_flg_DB = {
 				has_trait = trait_elaina_descendant
 			}
 		}
-		set_species_flag = UGRC_flg_spcs_RULE_procreate_DUMMY
+		set_species_flag = UGRC_flg_spcs_RULE_wv
 	}
 	else = {
-		remove_species_flag = UGRC_flg_spcs_RULE_procreate_DUMMY
+		remove_species_flag = UGRC_flg_spcs_RULE_wv
 	}
 
 
@@ -787,8 +787,6 @@ UGRC_eft_spcs_RULE_flg_DB = {
 				has_trait = trait_AL_puffer
 				#	魔女
 				has_trait = trait_servitude
-				#	GF
-				has_trait = GF_trait_doll
 			}
 		}
 		set_species_flag = UGRC_flg_spcs_RULE_can_generate_leader
@@ -859,7 +857,7 @@ UGRC_eft_pop_RULE_flg_DB_cd = {
 						has_authority = auth_machine_intelligence
 						is_mechanical_empire = yes
 						
-						has_technology = tech_mind_plus	# GF
+						GF_allow_doll_leaders = yes	# GF
 						has_technology = tech_dummy_leaders	# 魔女
 					}
 				}
@@ -902,10 +900,9 @@ UGRC_eft_pop_RULE_flg_DB_cd = {
 						has_technology = tech_synthetic_leaders
 						has_authority = auth_machine_intelligence
 						is_mechanical_empire = yes
-						has_technology = tech_mind_plus	# GF
+						GF_allow_doll_leaders_military = yes	# GF
 					}
 				}
-				has_trait = GF_trait_doll	# GF
 			}
 			#	|主物种|
 			OR = {

@@ -408,10 +408,10 @@ building_capital = {
 
 	allow = {
 		OR = {
-			PR_prmt_trgr_plnt_HC = { 
+			PR_prmt_trgr_HC = { 
 				MORE = 10 
 			}
-			num_pops >= 10
+			num_sapient_pops >= 10
 		}
 	}
 
@@ -460,6 +460,16 @@ building_capital = {
 			}
 		}
 		job_roboticist_add = 1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				has_valid_civic = civic_private_healthcare_corporate 
+			}
+		}
+		job_healthcare_add = 1
 	}
 
 	triggered_planet_modifier = {
@@ -695,6 +705,16 @@ building_capital = {
 
 	triggered_desc = {
 		trigger = {
+			exists = owner
+			owner = { 
+				has_valid_civic = civic_private_healthcare_corporate 
+			}
+		}
+		text = job_healthcare_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
 			has_modifier = payback_unified_purpose
 		}
 		text = job_unifier_effect_desc
@@ -749,7 +769,7 @@ building_major_capital = {
 
 	allow = {
 		OR = {
-			PR_prmt_trgr_plnt_HC = { 
+			PR_prmt_trgr_HC = { 
 				MORE = 25 
 			}
 			num_pops >= 25
@@ -1071,6 +1091,16 @@ building_major_capital = {
 
 	triggered_desc = {
 		trigger = {
+			exists = owner
+			owner = { 
+				has_valid_civic = civic_private_healthcare_corporate 
+			}
+		}
+		text = job_healthcare_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
 			exists = owner.federation
 			owner.federation = { 
 				has_federation_perk = culture_workers_1 
@@ -1150,7 +1180,7 @@ building_system_capital = {
 
 	allow = {
 		OR = {
-			PR_prmt_trgr_plnt_HC = { 
+			PR_prmt_trgr_HC = { 
 				MORE = 50 
 			}
 			num_pops >= 50
@@ -1198,6 +1228,16 @@ building_system_capital = {
 			}
 		}
 		job_roboticist_add = 1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				has_valid_civic = civic_private_healthcare_corporate 
+			}
+		}
+		job_healthcare_add = 1
 	}
 
 	triggered_planet_modifier = {
@@ -1359,17 +1399,6 @@ building_system_capital = {
 		pop_growth_speed = 0.10
 	}
 
-	triggered_country_modifier = {
-		potential = {
-			is_capital = yes
-			owner = {
-				has_councilor = { COUNCILOR = "councilor_feudal_realm" } 
-			}
-		}
-		country_naval_cap_add = 1
-		mult = value:naval_cap_vassals_councilor_feudal_realm
-	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1465,6 +1494,20 @@ building_system_capital = {
 	}
 
 	triggered_desc = {
+		text = job_enforcer_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				has_valid_civic = civic_private_healthcare_corporate 
+			}
+		}
+		text = job_healthcare_effect_desc
+	}
+
+	triggered_desc = {
 		trigger = {
 			exists = owner.federation
 			owner.federation = { 
@@ -1538,6 +1581,10 @@ building_hab_capital = {
 		building_hab_fe_capital
 	}
 
+	prerequisites = {
+		"tech_habitat_1"
+	}
+
 	resources = {
 		category = planet_buildings_hab_capital
 		upkeep = {
@@ -1595,6 +1642,16 @@ building_hab_capital = {
 			}
 		}
 		job_roboticist_add = 1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				has_valid_civic = civic_private_healthcare_corporate 
+			}
+		}
+		job_healthcare_add = 1
 	}
 
 	triggered_planet_modifier = {
@@ -1747,6 +1804,27 @@ building_hab_capital = {
 	triggered_desc = {
 		trigger = {
 			exists = owner
+			owner = {
+				is_megacorp = yes
+				is_worker_coop_empire = yes
+			}
+		}
+		text = job_steward_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				has_valid_civic = civic_private_healthcare_corporate 
+			}
+		}
+		text = job_healthcare_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
 			owner = { 
 				is_machine_empire = yes 
 			}
@@ -1830,13 +1908,17 @@ building_hab_major_capital = {
 		owner = { is_fallen_empire = no }
 	}
 
+	prerequisites = {
+		"tech_habitat_2"
+	}
+
 	convert_to = {
 		building_hab_fe_capital
 	}
 
 	allow = {
 		OR = {
-			PR_prmt_trgr_plnt_HC = { 
+			PR_prmt_trgr_HC = { 
 				MORE = 10 
 			}
 			num_pops >= 10
@@ -1862,8 +1944,9 @@ building_hab_major_capital = {
 		planet_housing_add = 5
 		planet_amenities_add = 5
 		planet_max_buildings_add = @buildings_t2
-		planet_max_branch_office_buildings_add = 1
+		planet_max_branch_office_buildings_add = 2
 		defense_armies_add = @tier_2_capital_defense_armies
+		pop_environment_tolerance = 0.10
 	}
 
 	inline_script = {
@@ -1894,7 +1977,9 @@ building_hab_major_capital = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = { 
+				is_hive_empire = yes 
+			}
 		}
 		job_synapse_drone_add = 3
 		planet_amenities_add = 3
@@ -1903,12 +1988,18 @@ building_hab_major_capital = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = { 
+				is_machine_empire = yes 
+			}
 		}
 		job_evaluator_add = 2
 		job_replicator_add = 1
 		job_maintenance_drone_add = 3
 		planet_amenities_add = 3
+	}
+
+	triggered_desc = {
+		text = building_hab_major_capital_tooltip
 	}
 
 	triggered_planet_modifier = {
@@ -1930,6 +2021,16 @@ building_hab_major_capital = {
 			owner = { has_active_tradition = tr_synthetics_finish }
 		}
 		job_roboticist_add = 1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				has_valid_civic = civic_private_healthcare_corporate 
+			}
+		}
+		job_healthcare_add = 1
 	}
 
 	triggered_planet_modifier = {
@@ -2243,6 +2344,14 @@ building_hab_major_capital = {
 	triggered_desc = {
 		trigger = {
 			exists = owner
+			owner = { has_valid_civic = civic_private_healthcare_corporate }
+		}
+		text = job_healthcare_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
 			owner = { is_machine_empire = yes }
 		}
 		text = job_evaluator_effect_desc
@@ -2281,6 +2390,10 @@ building_hab_major_capital = {
 			}
 		}
 		text = job_culture_worker_effect_desc
+	}
+
+	upgrades = {
+		"building_hab_system_capital"
 	}
 
 	#莉莉修改
@@ -2329,15 +2442,15 @@ building_imperial_capital = {
 		building_hive_major_capital
 		building_machine_system_capital
 		building_system_capital
-		building_hab_major_capital
+		building_hab_system_capital
 		building_ancient_control_center
 		building_ancient_palace
 	}
 
 	allow = {
 		OR = {
-			PR_prmt_trgr_plnt_HC = { 
-				MORE = 50 
+			PR_prmt_trgr_HC = { 
+				MORE = 50
 			}
 			num_pops >= 50
 		}
@@ -2357,6 +2470,13 @@ building_imperial_capital = {
 
 	inline_script = {
 		script = buildings/on_all_capital_buildings
+	}
+
+	triggered_desc = {
+		trigger = {
+			has_planet_flag = habitat
+		}
+		text = building_hab_system_capital_tooltip
 	}
 
 	triggered_planet_modifier = {
@@ -2379,6 +2499,16 @@ building_imperial_capital = {
 			}
 		}
 		job_roboticist_add = 1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				has_valid_civic = civic_private_healthcare_corporate 
+			}
+		}
+		job_healthcare_add = 1
 	}
 
 	triggered_planet_modifier = {
@@ -2531,19 +2661,6 @@ building_imperial_capital = {
 		pop_growth_speed = 0.10
 	}
 
-	triggered_country_modifier = {
-		potential = {
-			is_capital = yes
-			owner = {
-				has_councilor = { 
-					COUNCILOR = "councilor_feudal_realm" 
-				} 
-			}
-		}
-		country_naval_cap_add = 1
-		mult = value:naval_cap_vassals_councilor_feudal_realm
-	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -2623,9 +2740,6 @@ building_imperial_capital = {
 		}
 		text = job_executive_effect_desc
 	}
-	triggered_desc = {
-		text = job_enforcer_effect_desc
-	}
 
 	triggered_desc = {
 		trigger = {
@@ -2636,6 +2750,18 @@ building_imperial_capital = {
 			}
 		}
 		text = job_steward_effect_desc
+	}
+
+	triggered_desc = {
+		text = job_enforcer_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { has_valid_civic = civic_private_healthcare_corporate }
+		}
+		text = job_healthcare_effect_desc
 	}
 
 	#莉莉修改
@@ -2925,7 +3051,12 @@ building_clinic = {
 	category = amenity
 
 	potential = {
+		exists = owner
+		# rule out Thrall-Worlds
+		NOT = { has_modifier = slave_colony }
+		# check the empire is valid
 		owner = {
+			# rule out gestalts and pre-FTL societies
 			OR = {
 				is_regular_empire = yes
 				AND = {
@@ -2933,9 +3064,6 @@ building_clinic = {
 					is_country_type = primitive
 				}
 			}
-		}
-		NOT = { 
-			has_modifier = slave_colony 
 		}
 		OR = {
 			owner = {
@@ -3205,6 +3333,11 @@ building_research_lab_1 = {
 		}
 	}
 
+	inline_script = {
+		script = jobs/researchers_add
+		AMOUNT = @b1_jobs
+	}
+
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -3214,30 +3347,6 @@ building_research_lab_1 = {
 		}
 		modifier = {
 			job_researcher_add = @b1_jobs
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { 
-				is_hive_empire = yes 
-			}
-		}
-		modifier = {
-			job_brain_drone_add = @b1_jobs
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { 
-				is_machine_empire = yes 
-			}
-		}
-		modifier = {
-			job_calculator_add = @b1_jobs
 		}
 	}
 

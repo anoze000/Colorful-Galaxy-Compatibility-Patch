@@ -99,20 +99,10 @@ ap_engineered_evolution = {
 		
 			}
 		}
-		if = { # 时与空允许基飞义飞更早
-			limit = { 
-				has_global_flag = time_mod_active
-			}
-			custom_tooltip = {
-				fail_text = "requires_ascension_perks_1"
-				num_ascension_perks > 0
-			}
-		}
-		else = {
-			custom_tooltip = {
-				fail_text = "requires_ascension_perks_2"
+		# 允许基飞义飞更早
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_2"
 				num_ascension_perks > 1
-			}
 		}
 		if = {
 			limit = {
@@ -215,11 +205,6 @@ ap_engineered_evolution = {
 		}
 		modifier = {
 			factor = 10
-			has_global_flag = time_mod_active
-		}
-		modifier = {
-			factor = 0.2
-			num_ascension_perks < 2
 			has_global_flag = time_mod_active
 		}
 		modifier = {
@@ -394,20 +379,10 @@ ap_the_flesh_is_weak = {
 			fail_text = "synthetic_empire_synthetic_ascension"
 			NOT = { has_trait = trait_mechanical }
 		}
-		if = { # 时与空允许基飞义飞更早
-			limit = { 
-				has_global_flag = time_mod_active
-			}
-			custom_tooltip = {
-				fail_text = "requires_ascension_perks_1"
-				num_ascension_perks > 0
-			}
-		}
-		else = {
-			custom_tooltip = {
-				fail_text = "requires_ascension_perks_2"
+		# 允许基飞义飞更早
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_2"
 				num_ascension_perks > 1
-			}
 		}
 		if = {
 			limit = {
@@ -498,11 +473,6 @@ ap_the_flesh_is_weak = {
 		}
 		modifier = {
 			factor = 10
-			has_global_flag = time_mod_active
-		}
-		modifier = {
-			factor = 0.2
-			num_ascension_perks < 2
 			has_global_flag = time_mod_active
 		}
 	}
@@ -649,20 +619,10 @@ ap_organo_machine_interfacing = {
 		}
 	}
 	possible = {
-		if = { # 时与空允许基飞义飞更早
-			limit = { 
-				has_global_flag = time_mod_active
-			}
-			custom_tooltip = {
-				fail_text = "requires_ascension_perks_1"
-				num_ascension_perks > 0
-			}
-		}
-		else = {
-			custom_tooltip = {
-				fail_text = "requires_ascension_perks_2"
+		# 允许基飞义飞更早
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_2"
 				num_ascension_perks > 1
-			}
 		}
 		if = {
 			limit = {
@@ -716,10 +676,6 @@ ap_organo_machine_interfacing = {
 			factor = 10
 			has_global_flag = time_mod_active
 		}
-		modifier = {
-			factor = 0.2
-			num_ascension_perks < 2
-		}
 	}
 }
 
@@ -735,20 +691,10 @@ ap_organo_machine_interfacing_assimilator = {
 		}
 	}
 	possible = {
-		if = { # 时与空允许基飞义飞更早
-			limit = { 
-				has_global_flag = time_mod_active
-			}
-			custom_tooltip = {
-				fail_text = "requires_ascension_perks_1"
-				num_ascension_perks > 0
-			}
-		}
-		else = {
-			custom_tooltip = {
-				fail_text = "requires_ascension_perks_2"
+		# 允许基飞义飞更早
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_2"
 				num_ascension_perks > 1
-			}
 		}
 		custom_tooltip = {
 			fail_text = "requires_assimilated_pops"
@@ -798,10 +744,6 @@ ap_organo_machine_interfacing_assimilator = {
 		modifier = {
 			factor = 10
 			has_global_flag = time_mod_active
-		}
-		modifier = {
-			factor = 0.2
-			num_ascension_perks < 2
 		}
 	}
 }
@@ -870,10 +812,12 @@ ap_synthetic_age = {
 ap_become_the_crisis = {
 	potential = {
 		has_nemesis = yes
-		has_wg_and_uf_special_authority = no
-		NOT = { 
-			has_ascension_perk = ap_become_the_crisis 
+		NOR = {
+			is_crisis_country = yes
+			has_ascension_perk = ap_defender_of_the_galaxy
+			has_country_flag = situation_ap_time_give_up
 		}
+		has_wg_and_uf_special_authority = no
 	}
 
 	possible = {
@@ -925,8 +869,11 @@ ap_become_the_crisis = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_not_abandoned_by_god"
-			NOT = { 
-				has_origin = origin_abandoned_by_god 
+			OR = {
+				NOT = { 
+					has_origin = origin_abandoned_by_god 
+				}
+				has_technology = tech_psionic_theory
 			}
 		}
 		NOR = {
@@ -946,61 +893,178 @@ ap_become_the_crisis = {
 	}
 
 	ai_weight = {
-		factor = 7.5
+		factor = 5
+		modifier = {
+			factor = 1.5
+			NOT = {
+				has_global_flag = time_mod_active
+			}
+		}
 		modifier = {
 			factor = 0
 			is_militarist = no
 			is_xenophobe = no
 			is_gestalt = no
-			is_nirvana_empire = yes
-		}
-		modifier = {
-			factor = 0
-			is_nirvana_empire = yes
-		}
-		modifier = {
-			factor = 0
-			has_country_flag = ICE_MOON_FUTA_AI_Knights
-		}
-		modifier = {
-			factor = 10
-			OR = {
-			   is_suc_country = yes
-			   is_inn_country = yes
+			NOT = {
+				has_global_flag = time_mod_active
 			}
 		}
 		modifier = {
 			factor = 10
 			is_homicidal = yes
+			NOT = {
+				has_global_flag = time_mod_active
+			}
 		}
 		modifier = {
 			factor = 2
 			has_tradition = tr_supremacy_finish
+			NOT = {
+				has_global_flag = time_mod_active
+			}
 		}
 		modifier = {
 			factor = 0
 			galaxy_percentage < 0.1
+			NOT = {
+				has_global_flag = time_mod_active
+			}
 		}
 		modifier = {
 			factor = 2
 			galaxy_percentage > 0.2
+			NOT = {
+				has_global_flag = time_mod_active
+			}
 		}
 		modifier = {
 			factor = 0
-			num_ascension_perks >= 5
-		}
-		modifier = {
-			factor = 0
-			count_country = {
+			count_playable_country = {
 				count > 1
 				limit = {
 					has_ascension_perk = ap_become_the_crisis
 				}
 			}
+			NOT = {
+				has_global_flag = time_mod_active
+			}
 		}
 		modifier = {
 			factor = 0
 			blocks_disruptive_gameplay = yes
+			NOT = {
+				has_global_flag = time_mod_active
+			}
+		}
+		modifier = {
+			factor = 2
+			has_ethic = ethic_militarist
+			has_global_flag = time_mod_active
+		}
+		modifier = {
+			factor = 4
+			has_ethic = ethic_fanatic_militarist
+			has_global_flag = time_mod_active
+		}
+		modifier = {
+			factor = 2
+			has_ethic = ethic_xenophobe
+			has_global_flag = time_mod_active
+		}
+		modifier = {
+			factor = 4
+			has_ethic = ethic_fanatic_xenophobe
+			has_global_flag = time_mod_active
+		}
+		modifier = {
+			factor = 0.5
+			has_origin = origin_tree_of_life
+			has_global_flag = time_mod_active
+		}
+		modifier = {
+			factor = 2
+			has_valid_civic = civic_hive_strength_of_legions
+			has_global_flag = time_mod_active
+		}
+		modifier = {
+			factor = 0.5
+			has_government = gov_machine_research
+			has_global_flag = time_mod_active
+		}
+		modifier = {
+			factor = 2
+			has_valid_civic = civic_machine_warbots
+			has_global_flag = time_mod_active
+		}
+		modifier = {
+			factor = 100
+			is_homicidal = yes
+			has_global_flag = time_mod_active
+		}
+		modifier = {
+			factor = 2
+			has_tradition = tr_supremacy_finish
+			has_global_flag = time_mod_active
+		}
+		modifier = {
+			factor = 0.5
+			galaxy_percentage < 0.05
+			has_global_flag = time_mod_active
+		}
+		modifier = {
+			factor = 2
+			galaxy_percentage > 0.1
+			has_global_flag = time_mod_active
+		}
+		modifier = {
+			factor = 2
+			galaxy_percentage > 0.2
+			has_global_flag = time_mod_active
+		}
+		modifier = {
+			factor = 0.75
+			count_playable_country = {
+				count = 1
+				limit = {
+					is_crisis_country = yes
+				}
+			}
+			has_global_flag = time_mod_active
+		}
+		modifier = {
+			factor = 0.5
+			count_playable_country = {
+				count = 2
+				limit = {
+					is_crisis_country = yes
+				}
+			}
+			has_global_flag = time_mod_active
+		}
+		modifier = {
+			factor = 0.25
+			count_playable_country = {
+				count >= 3
+				limit = {
+					is_crisis_country = yes
+				}
+			}
+			has_global_flag = time_mod_active
+		}
+		modifier = {
+			factor = 0
+			has_country_flag = normal_wonder_country_35
+			has_global_flag = time_mod_active
+		}
+		modifier = {
+			factor = 100
+			has_country_flag = crazy_wonder_country_35
+			has_global_flag = time_mod_active
+		}
+		modifier = {
+			factor = 100
+			has_global_flag = dark_forest
+			has_global_flag = time_mod_active
 		}
 	}
 }

@@ -23,7 +23,7 @@ trait_gray_origin = {
 	icon = "gfx/interface/icons/traits/wg_gray.dds"
 	modifier = {
 		pop_environment_tolerance = 0.2
-		leader_age = 20
+		leader_lifespan_add = 20
 	}
 }
 

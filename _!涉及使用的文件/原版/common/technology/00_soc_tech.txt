@@ -2243,22 +2243,6 @@ tech_gene_tailoring = {
 			POINTS = @tech_gene_tailoring_POINTS
 		}
 		BIOLOGICAL_species_trait_points_add = @tech_gene_tailoring_POINTS
-		WARSHIPGIRL_species_trait_points_add = @tech_gene_tailoring_POINTS
-		SHENHAI_species_trait_points_add = @tech_gene_tailoring_POINTS
-		WHORE_species_trait_points_add = @tech_gene_tailoring_POINTS
-		INNOCENTSHOJO_species_trait_points_add = @tech_gene_tailoring_POINTS
-		STARSHIPGIRLS_species_trait_points_add = @tech_gene_tailoring_POINTS
-		TOUHOUGIRLS_species_trait_points_add = @tech_gene_tailoring_POINTS
-		Dolls_species_trait_points_add = @tech_gene_tailoring_POINTS
-		UNITED_FLEET_species_trait_points_add = @tech_gene_tailoring_POINTS
-		NYTO_species_trait_points_add = @tech_gene_tailoring_POINTS
-		Lust_Girl_species_trait_points_add = @tech_gene_tailoring_POINTS
-		Magical_Bitch_species_trait_points_add = @tech_gene_tailoring_POINTS
-		Magical_Girl_species_trait_points_add = @tech_gene_tailoring_POINTS
-		LOVEMACHINE_species_trait_points_add = @tech_gene_tailoring_POINTS
-		TENTACLE_species_trait_points_add = @tech_gene_tailoring_POINTS
-		PARASITE_species_trait_points_add = @tech_gene_tailoring_POINTS
-		YGWAWA_species_trait_points_add = @tech_gene_tailoring_POINTS
 	}
 
 	feature_flags = {
@@ -2604,22 +2588,6 @@ tech_gene_expressions = {
 			POINTS = @tech_gene_expressions_POINTS
 		}
 		BIOLOGICAL_species_trait_points_add = @tech_gene_expressions_POINTS
-		WARSHIPGIRL_species_trait_points_add = @tech_gene_expressions_POINTS
-		SHENHAI_species_trait_points_add = @tech_gene_expressions_POINTS
-		WHORE_species_trait_points_add = @tech_gene_expressions_POINTS
-		INNOCENTSHOJO_species_trait_points_add = @tech_gene_expressions_POINTS
-		STARSHIPGIRLS_species_trait_points_add = @tech_gene_expressions_POINTS
-		TOUHOUGIRLS_species_trait_points_add = @tech_gene_expressions_POINTS
-		Dolls_species_trait_points_add = @tech_gene_expressions_POINTS
-		UNITED_FLEET_species_trait_points_add = @tech_gene_expressions_POINTS
-		NYTO_species_trait_points_add = @tech_gene_expressions_POINTS
-		Lust_Girl_species_trait_points_add = @tech_gene_expressions_POINTS
-		Magical_Bitch_species_trait_points_add = @tech_gene_expressions_POINTS
-		Magical_Girl_species_trait_points_add = @tech_gene_expressions_POINTS
-		LOVEMACHINE_species_trait_points_add = @tech_gene_expressions_POINTS
-		TENTACLE_species_trait_points_add = @tech_gene_expressions_POINTS
-		PARASITE_species_trait_points_add = @tech_gene_expressions_POINTS
-		YGWAWA_species_trait_points_add = @tech_gene_expressions_POINTS
 	}
 
 	potential = {
