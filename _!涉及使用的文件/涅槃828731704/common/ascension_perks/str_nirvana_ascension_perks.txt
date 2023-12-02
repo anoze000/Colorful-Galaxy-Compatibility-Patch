@@ -168,29 +168,30 @@ ap_god_of_heaven = {
 			fail_text = "mod_requires_ap_power_of_heaven"
 			has_ascension_perk = ap_power_of_heaven
 		}
-		custom_tooltip = {
-			fail_text = "mod_requires_hundred_years"
-			OR = {
-				has_origin = origin_kuat_apocalyptic
-				AND = { years_passed >= 50 is_ai = yes }
-				AND = { years_passed >= 75 is_ai = no }
-			}
-		}
+		# custom_tooltip = {
+		# 	fail_text = "mod_requires_hundred_years"
+		# 	OR = {
+		# 		has_origin = origin_kuat_apocalyptic
+		# 		AND = { years_passed >= 50 is_ai = yes }
+		# 		AND = { years_passed >= 75 is_ai = no }
+		# 	}
+		# }
 	}
 	potential = {
 		is_nirvana_empire_dragon = yes
 		NOT = { has_ascension_perk = ap_god_of_heaven }
 	}
 	ai_weight = {
-		factor = 1
+		weight = 0
 		modifier = {
-			factor = 100
+			set = 100
 			OR = {
+				years_passed >= 50
 				has_global_flag = wg_crisis_insane
 				has_global_flag = afk_crisis_real
 			}
 		}
-		modifier = { factor = 5 end_game_years_passed >= 5 }
+		#modifier = { factor = 5 end_game_years_passed >= 5 }
 	}
 }
 
@@ -228,28 +229,29 @@ ap_god_of_multiverse = {
 			fail_text = "mod_requires_ap_power_of_multiverse"
 			has_ascension_perk = ap_power_of_multiverse
 		}
-		custom_tooltip = {
-			fail_text = "mod_requires_hundred_years"
-			OR = {
-				has_origin = origin_kuat_apocalyptic
-				AND = { years_passed >= 50 is_ai = yes }
-				AND = { years_passed >= 75 is_ai = no }
-			}
-		}
+		# custom_tooltip = {
+		# 	fail_text = "mod_requires_hundred_years"
+		# 	OR = {
+		# 		has_origin = origin_kuat_apocalyptic
+		# 		AND = { years_passed >= 50 is_ai = yes }
+		# 		AND = { years_passed >= 75 is_ai = no }
+		# 	}
+		# }
 	}
 	potential = {
 		is_nirvana_empire_council = yes
 		NOT = { has_ascension_perk = ap_god_of_multiverse }
 	}
 	ai_weight = {
-		factor = 1
+		weight = 0
 		modifier = {
-			factor = 100
+			set = 100
 			OR = {
+				years_passed >= 50
 				has_global_flag = wg_crisis_insane
 				has_global_flag = afk_crisis_real
 			}
 		}
-		modifier = { factor = 5 end_game_years_passed >= 5 }
+		#modifier = { factor = 5 end_game_years_passed >= 5 }
 	}
 }

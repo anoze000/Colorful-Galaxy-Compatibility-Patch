@@ -22,7 +22,7 @@ can_vote_in_democratic_election = {
 }
 
 
-###_|UGRC产生领袖|	FW/GF/无言/Ereb/hiveDLC/PTep/Eevt/ETCPM/莉莉/Ecar/rmaid/魔女
+###_|UGRC产生领袖|	FW/GF/无言/Ereb/hiveDLC/PTep/Eevt/ETCPM/莉莉/Ecar/rmaid/wv
 #Checks whether any leaders (scientists etc) can be formed from this pop
 #Root = country
 #This = pop
@@ -49,12 +49,10 @@ can_generate_leader_from_pop = {
 		has_trait = trait_infested_basic
 		# 莉莉
 		has_trait = trait_AL_puffer
-		# 魔女
+		# wv
 		has_trait = trait_servitude
-		# GF
-		has_trait = GF_trait_doll
 	}
-	## +GF/魔女
+	## +GF/wv
 	OR = {
 		is_robot_pop = no
 		root = {
@@ -63,8 +61,8 @@ can_generate_leader_from_pop = {
 				has_authority = auth_machine_intelligence
 				is_mechanical_empire = yes
 				#	GF
-				has_technology = tech_mind_plus
-				#	魔女
+				GF_allow_doll_leaders = yes
+				#	wv
 				has_technology = tech_dummy_leaders
 			}
 		}
@@ -104,11 +102,9 @@ can_generate_military_leader_from_pop = {
 				has_authority = auth_machine_intelligence
 				is_mechanical_empire = yes
 				# GF
-				has_technology = tech_mind_plus
+				GF_allow_doll_leaders_military = yes
 			}
 		}
-		# GF
-		has_trait = GF_trait_doll
 	}
 	OR = {
 		is_same_species = root
@@ -124,14 +120,14 @@ can_generate_military_leader_from_pop = {
 }
 
 
-###_|UGRC幸福感|	wsg/PTep/Eevt/无言/Ecar/魔女/thl	####################################
+###_|UGRC幸福感|	wsg/PTep/Eevt/无言/Ecar/wv/thl	####################################
 # Root = Species
 # From = Country
 # This = Species
 species_has_happiness = {
 	NOR = {
 		
-		##_|机器人|	+魔女/thl
+		##_|机器人|	+wv/thl
 		AND = {
 			has_trait = trait_mechanical
 			OR = {
@@ -140,7 +136,7 @@ species_has_happiness = {
 				from = {
 					NOR = {
 						has_technology = tech_synthetic_workers
-						has_technology = tech_dummy_leaders	# 魔女
+						has_technology = tech_dummy_leaders	# wv
 						has_technology = tech_sapient_dolls	# thl
 					}
 				}
@@ -161,13 +157,13 @@ species_has_happiness = {
 			}
 		}
 
-		#	魔女
+		#	wv
 		AND = {
 			has_trait = trait_dummy
 			OR = {
 				NOT = { exists = from }
 				from = { 
-					NOR = { 
+					NOR = {
 						has_technology = tech_synthetic_workers 
 						has_technology = tech_dummy_leaders
 						has_origin = origin_garbage_princesses
@@ -181,13 +177,13 @@ species_has_happiness = {
 }
 
 
-###_|UGRC可繁殖|	GF/HFE/hiveDLC/PTep/Eevt/多彩/魔女/精灵		####################################
+###_|UGRC可繁殖|	GF/HFE/hiveDLC/PTep/Eevt/多彩/wv/精灵		####################################
 # Checks if a pop can procreate
 # This = Species
 # Root = Planet
 can_species_procreate = {
 	is_sapient = yes
-	##	+魔圆/GF/HFE/hiveDLC/PTep/Eevt/魔女/精灵
+	##	+魔圆/GF/HFE/hiveDLC/PTep/Eevt/wv/精灵
 	NOR = {
 		has_trait = trait_machine_unit
 		has_trait = trait_mechanical
@@ -203,7 +199,7 @@ can_species_procreate = {
 		has_trait = trait_plentiful_traditions_pt_cocoon
 		#	Eevt
 		has_trait = trait_memorex_comatos
-		#	魔女
+		#	wv
 		has_trait = trait_dummy
 		#	多彩
 		has_trait = trait_DC_ethic_parasite_mind_hard
@@ -236,7 +232,7 @@ can_species_procreate = {
 		hfe_trigger_population_procreate_housing_block_enabled = yes
 		root = { free_housing <= -1 }
 	}
-	#	魔女
+	#	wv
 	if = { limit = { has_trait = trait_reanimated_materials }
 		root = {
 			num_assigned_jobs = {

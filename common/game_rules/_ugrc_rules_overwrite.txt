@@ -2117,9 +2117,9 @@ can_species_be_assembled = { #可组装物种
 					#	久远
 					else_if = { 
 						limit = { 
-							has_trait = trait_KZ_VOY_magic_puppet 
+							has_trait = trait_KZ_VOY_magic_doll
 						}
-						KZ_VOY_can_assemble_magic_puppet = yes
+						KZ_VOY_can_assemble_magic_doll = yes
 					}
 					#	GF
 					else_if = { 
@@ -2451,8 +2451,8 @@ can_species_be_assembled = { #可组装物种
 			if = {
 				limit = { 
 					OR = {
-						has_trait = trait_KZ_VOY_sub_terran_dragon
-						has_trait = trait_KZ_VOY_sub_terran_dragon_SP
+						has_trait = trait_KZ_VOY_terranoid_dragon
+						has_trait = trait_KZ_VOY_terranoid_dragon_SP
 					}
 				}
 				KZ_VOY_trgr_plnt_CLONE = yes

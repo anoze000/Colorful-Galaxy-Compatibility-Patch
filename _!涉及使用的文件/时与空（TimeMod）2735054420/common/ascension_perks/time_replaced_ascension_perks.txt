@@ -29,10 +29,9 @@ ap_engineered_evolution = {
 			fail_text = "synthetic_empire_biological_ascension"
 			NOT = { has_trait = trait_mechanical }
 		}
-		# 允许基飞义飞更早
 		custom_tooltip = {
-			fail_text = "requires_ascension_perks_1"
-			num_ascension_perks > 0
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
 		}
 		if = {
 			limit = {
@@ -84,10 +83,6 @@ ap_engineered_evolution = {
 	ai_weight = {
 		factor = 150
 		modifier = {
-			factor = 0.2
-			num_ascension_perks < 2
-		}
-		modifier = {
 			factor = 3
 			has_authority = auth_hive_mind
 		}
@@ -104,10 +99,9 @@ ap_the_flesh_is_weak = {
 			fail_text = "synthetic_empire_synthetic_ascension"
 			NOT = { has_trait = trait_mechanical }
 		}
-		# 允许基飞义飞更早
 		custom_tooltip = {
-			fail_text = "requires_ascension_perks_1"
-			num_ascension_perks > 0
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
 		}
 		if = {
 			limit = {
@@ -152,10 +146,6 @@ ap_the_flesh_is_weak = {
 	ai_weight = {
 		factor = 200
 		modifier = {
-			factor = 0.2
-			num_ascension_perks < 2
-		}
-		modifier = {
 			factor = 0.5
 			NOR = {
 				has_ethic = ethic_materialist
@@ -178,10 +168,9 @@ ap_organo_machine_interfacing = {
 		}
 	}
 	possible = {
-		# 允许基飞义飞更早
 		custom_tooltip = {
-			fail_text = "requires_ascension_perks_1"
-			num_ascension_perks > 0
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
 		}
 		if = {
 			limit = {
@@ -211,10 +200,6 @@ ap_organo_machine_interfacing = {
 
 	ai_weight = {
 		factor = 200
-		modifier = {
-			factor = 0.2
-			num_ascension_perks < 2
-		}
 	}
 }
 
@@ -231,10 +216,9 @@ ap_organo_machine_interfacing_assimilator = {
 		}
 	}
 	possible = {
-		# 允许基飞义飞更早
 		custom_tooltip = {
-			fail_text = "requires_ascension_perks_1"
-			num_ascension_perks > 0
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
 		}
 		custom_tooltip = {
 			fail_text = "requires_assimilated_pops"
@@ -264,10 +248,6 @@ ap_organo_machine_interfacing_assimilator = {
 
 	ai_weight = {
 		factor = 200
-		modifier = {
-			factor = 0.2
-			num_ascension_perks < 2
-		}
 	}
 }
 
@@ -343,6 +323,7 @@ ap_synthetic_evolution = {
 			has_origin = origin_contract #锁灵飞
 			has_origin = origin_psionic #锁灵飞
 			has_origin = origin_blessed_by_god #锁灵飞
+			has_origin = origin_adeptus_mechanicus #禁机飞
 			has_wg_and_uf_special_authority = yes #舰R
 		}
 		is_gestalt = no
@@ -379,7 +360,7 @@ ap_mind_over_matter = {
 					has_origin = origin_blessed_by_god
 				}
 				random_list = {
-					3 = {
+					2 = {
 					}
 					1 = {
 						country_event = { id = origin_blessed_by_god.10 }
@@ -448,7 +429,7 @@ ap_mind_over_matter = {
 		}
 		modifier = {
 			factor = 5
-			has_ascension_perk = ap_become_the_crisis
+			is_crisis_country = yes
 		}
 	}
 }
@@ -502,9 +483,8 @@ ap_synthetic_age = {
 ap_become_the_crisis = {
 	potential = {
 		NOR = {
+			is_crisis_country = yes
 			has_ascension_perk = ap_defender_of_the_galaxy
-			has_ascension_perk = ap_become_the_crisis
-			has_country_flag = time_crisis_country
 			has_country_flag = situation_ap_time_give_up
 		}
 		has_wg_special_authority = no #舰R
@@ -545,7 +525,10 @@ ap_become_the_crisis = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_not_abandoned_by_god"
-			NOT = { has_origin = origin_abandoned_by_god }
+			OR = {
+				NOT = { has_origin = origin_abandoned_by_god }
+				has_technology = tech_psionic_theory
+			}
 		}
 		NOR = {
 			has_ethic = ethic_xenophile
@@ -622,10 +605,7 @@ ap_become_the_crisis = {
 			count_playable_country = {
 				count = 1
 				limit = {
-					OR = {
-						has_ascension_perk = ap_become_the_crisis
-						has_country_flag = time_crisis_country
-					}
+					is_crisis_country = yes
 				}
 			}
 		}
@@ -634,10 +614,7 @@ ap_become_the_crisis = {
 			count_playable_country = {
 				count = 2
 				limit = {
-					OR = {
-						has_ascension_perk = ap_become_the_crisis
-						has_country_flag = time_crisis_country
-					}
+					is_crisis_country = yes
 				}
 			}
 		}
@@ -646,10 +623,7 @@ ap_become_the_crisis = {
 			count_playable_country = {
 				count >= 3
 				limit = {
-					OR = {
-						has_ascension_perk = ap_become_the_crisis
-						has_country_flag = time_crisis_country
-					}
+					is_crisis_country = yes
 				}
 			}
 		}
@@ -731,9 +705,10 @@ ap_defender_of_the_galaxy = {
 
 	potential = {
 		NOR = {
+			is_homicidal = yes
+			is_crisis_country = yes
 			has_ascension_perk = ap_defender_of_the_galaxy
-			has_ascension_perk = ap_become_the_crisis
-			has_country_flag = time_crisis_country
+			has_origin = origin_abandoned_by_god
 			has_country_flag = situation_ap_time_finished
 			has_global_flag = dark_forest
 		}
