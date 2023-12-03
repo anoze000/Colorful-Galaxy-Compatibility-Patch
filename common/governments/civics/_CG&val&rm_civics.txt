@@ -1,0 +1,943 @@
+#civic_example = {
+#	playable = {}								# AND trigger, no scope; use this to prevent the civic from being selectable by the player (UI)
+#	potential = {}								# requirements list, see ../readme_requirements.txt
+#	possible = {}								# requirements list, see ../readme_requirements.txt
+#	pickable_at_start = yes / no				# default: yes
+#	modification = { add = {} remove = {} } | yes/no # Can be a set of two triggers, add to check if can be added later under certain conditions, remove to check if can be removed later under certain conditions
+#												# default: yes, set to no to prevent adding or removing this after creation of the empire
+#	random_weight = { base = 5 }				# scriptable weight for randomizing a civic
+#												# Note: If omitted, a default weight of 1 is used
+#												# Also note: after game start, AI selection of new civics uses the below weight instead
+#
+#	ai_weight = { base = 5 }					# scriptable weight for AI picking civics in-game (when unlocking a new slot).
+#												# Note: If omitted, a default weight of 1 is used. Not needed when "modification = no"
+#
+#   alternate_civic_version = civic_key			# Key of the civic that will try to replace the current one during a government reform if the current civic is locked (ex: corporate version of the civic that will replace it when attempting to reform to Megacorporation)
+#												# Note: if no replacement civic is indicated, it fallback to non-moddable civics behaviour, i.e. you can't change authority
+#
+#	modifier = {}								# modifier added to the country if the civic is selected and valid
+#	can_build_ruler_ship = yes / no				# default: no
+#	traits = { trait = ... }					# default: empty; trait set to enforce on the primary species. They cannot be removed, but more can be added if points/picks permit
+#	has_secondary_species = {					# default: none; if present, will enable secondary species customization in empire designer and will create secondary species & pops at galaxy generation time (see empire_init_create_capital_secondary_pops)
+#		traits = { trait = ... }					# default: empty; trait set to enforce on the secondary species. They cannot be removed, but more can be added if points/picks permit
+#	}
+#}
+#失控女仆
+civic_machine_servitor = {
+	potential = { 
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}			 
+		} 
+	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_machine_terminator
+				value = civic_machine_assimilator
+				value = civic_machine_warbots
+				value = civic_machine_toxic_baths
+			}
+		}
+		origin = {
+			NOT = {
+				value = origin_machine
+			}
+		}
+	}
+	modification = no
+	random_weight = {
+		base = 10
+		modifier = {
+			factor = 0
+			NOT = { host_has_dlc = "Synthetic Dawn Story Pack" }
+		}
+		modifier = {
+			# civic has no effect after galaxy generation, disable for random generation
+			factor = 0
+			has_global_flag = game_started
+		}
+	}
+	description = civic_tooltip_machine_servitor_effects
+	traits = {
+		trait = trait_machine_maid
+	}
+	modifier = {
+		councilor_gestalt_governor_exp_gain = @gestalt_civic_node_xp_rate
+		pop_growth_speed_reduction = -0.4
+		empire_size_bio_trophy_mult = -0.3
+	}
+	has_secondary_species = {	# see game_start.11
+		title = civic_machine_servitor_secondary_species
+	}
+	swap_type = {
+		trigger = { is_ai = yes }
+		description = civic_tooltip_machine_servitor_effects
+		modifier = {
+			planet_resettlement_unemployed_mult = 20
+			planet_building_refund_mult = 0.5
+		}
+	}
+}
+
+#精工技艺
+civic_machine_crafters = {
+	potential = { 
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}			 
+		} 
+	}
+	possible = {
+		civics = {
+			NOT = {
+				value = civic_machine_toxic_baths
+			}
+		}
+	}
+	modifier = {
+		councilor_gestalt_scientist_exp_gain = @gestalt_civic_node_xp_rate
+		planet_pop_assemblers_upkeep_mult = 0.1
+		MACHINE_species_trait_points_add = 1
+	}
+	playable = {
+		host_has_dlc = "Synthetic Dawn Story Pack"
+		host_has_dlc = "Humanoids Species Pack"
+	}
+	ai_playable = {
+		host_has_dlc = "Synthetic Dawn Story Pack"
+		host_has_dlc = "Humanoids Species Pack"
+	}
+	description = "civic_machine_crafters_effects"
+	random_weight = {
+		base = 2
+		modifier = {
+			factor = 2
+			has_civic = civic_machine_servitor
+		}
+	}
+}
+
+#乐土机械
+civic_machine_paradise_lost = {
+	#modification = no
+	potential = { 
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}			 
+		} 
+	}
+	possible = {
+		civics = {
+			OR = {
+				value = civic_machine_servitor
+				value = civic_machine_assimilator
+			}
+		}
+		origin = {
+			NOR = {
+				value = origin_shattered_ring
+				value = origin_machine
+				value = origin_doomsday
+				#value = origin_remnants
+			}
+		}
+	}
+	playable = {
+		host_has_dlc = "Synthetic Dawn Story Pack"
+		host_has_dlc = "Plantoids Species Pack"
+		civic_ingame_unpickable = yes
+	}
+	ai_playable = {
+		host_has_dlc = "Synthetic Dawn Story Pack"
+		host_has_dlc = "Plantoids Species Pack"
+		civic_ingame_ai_unpickable = yes
+	}
+	random_weight = {
+		base = 1
+		modifier = {
+			factor = 3
+			has_civic = civic_machine_servitor
+		}
+		modifier = {
+			set = 0
+			has_global_flag = game_started
+		}
+	}
+	description = "civic_tooltip_machine_paradise_lost_effects"
+	modifier = {
+		councilor_gestalt_governor_exp_gain = @gestalt_civic_node_xp_rate
+	}
+}
+
+#医疗器械
+civic_machine_healthcare = {
+	playable = { host_has_dlc = "Galactic Paragons" }
+	ai_playable = { host_has_dlc = "Galactic Paragons" }
+	random_weight = {
+		base = 4
+	}
+	description = "civic_tooltip_civic_machine_healthcare_effects_both"
+	potential = { 
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}			 
+		} 
+	}
+	possible = {
+		civics = {
+			OR = {
+				value = civic_machine_servitor
+				value = civic_machine_assimilator
+			}
+			NOR = {
+				value = civic_machine_toxic_baths
+			}
+		}
+	}
+	modifier = {
+		category_biology_research_speed_mult = 0.25
+		leader_lifespan_add = 20
+		pop_environment_tolerance = 0.1
+		pop_growth_speed = 0.1
+		councilor_gestalt_scientist_exp_gain = @gestalt_civic_node_xp_rate
+	}
+}
+
+#监护矩阵继业者
+civic_custodian_directives_successor = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_custodian_directives.dds"
+	potential = {
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence 
+				value = auth_lust_skynet
+			}	
+		}
+		civics = { value = civic_custodian_directives_successor }
+	}
+	random_weight = { base = 0 }
+	description = civic_custodian_directives_successor_effects
+	modifier = {
+		damage_vs_country_type_ai_empire_mult = 0.25
+		country_government_civic_points_add = 1
+	}
+	swap_type = {
+		trigger = { NOT = { has_global_flag = ancient_caretakers_annexed } }
+		description = civic_custodian_directives_successor_not_activated_effects
+		modifier = {
+			damage_vs_country_type_ai_empire_mult = -0.25
+		}
+	}
+}
+
+###########
+# Lustful Robutts #
+###########
+
+# Nurture Protocols (Maintenance Protocols - Removed in base game since 3.10, consider also removing this)
+civic_lv_machine_nurture_protocols = {
+	description = "civic_tooltip_lv_machine_nurture_protocols_effects"
+	potential = {
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence 
+				value = auth_lust_skynet
+			}	
+		}
+	}
+	modifier = {
+		councilor_gestalt_cognitive_exp_gain = @gestalt_civic_node_xp_rate
+	}
+	random_weight = { base = @civic_default_random_weight }
+	ai_weight = { 
+		base = @ai_civic_default_base_weight 
+	}
+}
+###########
+
+
+civic_machine_terminator = {
+	potential = {
+		authority = {
+			OR = {
+				value = auth_ancient_machine_intelligence
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}
+		}
+	}
+	starting_colony = pc_nuked # Changes homeworld class regardless of what is picked for empire
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_machine_servitor
+				value = civic_machine_assimilator
+				value = civic_machine_memorialist
+				value = civic_machine_exploration_protocol
+			}
+		}
+		origin = {
+			NOR = {
+				value = origin_common_ground
+				value = origin_hegemon
+			}
+		}
+	}
+	modification = no
+	random_weight = {
+		base = @civic_default_random_weight
+		modifier = {
+			factor = 0
+			NOT = { host_has_dlc = "Synthetic Dawn Story Pack" }
+		}
+		modifier = {
+			factor = 0
+			blocks_disruptive_gameplay = yes
+		}
+	}
+	description = civic_tooltip_machine_terminator_effects
+	modifier = {
+		councilor_gestalt_legion_exp_gain = @gestalt_civic_node_xp_rate
+		country_starbase_influence_cost_mult = -0.3
+		ship_weapon_damage = 0.25
+		starbase_shipyard_build_cost_mult = -0.15
+		country_naval_cap_mult = 0.33
+	}
+}
+
+civic_machine_assimilator = {
+	potential = { 
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}			 
+		} 
+	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_machine_servitor
+				value = civic_machine_terminator
+				value = civic_machine_memorialist
+				value = civic_machine_exploration_protocol
+			}
+		}
+	}
+	modification = no
+	random_weight = {
+		base = @civic_default_random_weight
+		modifier = {
+			factor = 0
+			NOT = { host_has_dlc = "Synthetic Dawn Story Pack" }
+		}
+		modifier = {
+			# civic has no effect after galaxy generation, disable for random generation
+			factor = 0
+			has_global_flag = game_started
+		}
+		modifier = {
+			factor = 0
+			blocks_disruptive_gameplay = yes
+		}
+	}
+	description = civic_tooltip_machine_assimilator_effects
+	has_secondary_species = {	# see game_start.11
+		title = civic_machine_assimilator_secondary_species
+		traits = {
+			trait = trait_cybernetic
+		}
+	}
+	modifier = {
+		councilor_gestalt_growth_exp_gain = @gestalt_civic_node_xp_rate
+	}
+}
+
+civic_machine_builder = {
+	description = "civic_tooltip_functional_architecture_effects"
+	potential = { 
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}			 
+		} 
+	}
+	random_weight = { base = @civic_default_random_weight }
+	ai_weight = {
+		base = @ai_civic_default_base_weight
+	}
+	modifier = {
+		councilor_gestalt_growth_exp_gain = @gestalt_civic_node_xp_rate
+		planet_structures_cost_mult = -0.15
+		planet_max_buildings_add = 1
+	}
+}
+
+civic_machine_factory_overclock = {
+	icon = "gfx/interface/icons/governments/civics/civic_machine_factory_overclock.dds"
+	potential = { 
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}			 
+		} 
+	}
+	random_weight = { base = @civic_default_random_weight }
+	ai_weight = {
+		base = @ai_civic_default_base_weight
+	}
+	modifier = {
+		councilor_gestalt_regulatory_exp_gain = @gestalt_civic_node_xp_rate
+		country_official_cap_add = 1
+		country_commander_cap_add = 1
+		country_scientist_cap_add = 1
+	}
+}
+
+civic_machine_unitary_cohesion = {
+	potential = { 
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}			 
+		} 
+	}
+	random_weight = { base = @civic_default_random_weight }
+	ai_weight = {
+		base = @ai_civic_default_base_weight
+	}
+	modifier = {
+		councilor_gestalt_regulatory_exp_gain = @gestalt_civic_node_xp_rate
+		country_unity_produces_mult = 0.15
+	}
+}
+
+civic_machine_rockbreakers = {
+	potential = { 
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}			 
+		} 
+	}
+	random_weight = { base = @civic_default_random_weight }
+	ai_weight = {
+		base = @ai_civic_default_base_weight
+	}
+	modifier = {
+		councilor_gestalt_cognitive_exp_gain = @gestalt_civic_node_xp_rate
+		planet_miners_minerals_produces_add = 1
+	}
+}
+
+civic_machine_zero_waste_protocols = {
+	potential = { 
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}			 
+		} 
+	}
+	random_weight = { base = @civic_default_random_weight }
+	ai_weight = {
+		base = @ai_civic_default_base_weight
+	}
+	modifier = {
+		councilor_gestalt_regulatory_exp_gain = @gestalt_civic_node_xp_rate
+		planet_pops_robotics_upkeep_mult = -0.10
+	}
+}
+
+civic_machine_built_to_last = {
+	potential = {
+		authority = {
+			value = auth_ancient_machine_intelligence
+		}
+	}
+	random_weight = { base = @civic_default_random_weight }
+	ai_weight = {
+		base = @ai_civic_default_base_weight
+	}
+	modifier = {
+		councilor_gestalt_growth_exp_gain = @gestalt_civic_node_xp_rate
+		pop_amenities_usage_no_happiness_mult = -0.15
+	}
+}
+
+civic_machine_ota_updates = {
+	potential = { 
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}			 
+		} 
+	}
+	random_weight = { base = @civic_default_random_weight }
+	ai_weight = {
+		base = @ai_civic_default_base_weight
+	}
+	description = civic_machine_ota_updates_effect
+	modifier = {
+		councilor_gestalt_legion_exp_gain = @gestalt_civic_node_xp_rate
+		empire_size_pops_mult = -0.20
+		country_edict_fund_add = 25
+	}
+}
+
+civic_machine_warbots = {
+	potential = {
+		authority = {
+			OR = {
+				value = auth_ancient_machine_intelligence
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}
+		}
+	}
+	possible = {
+		civics = {
+			NOT = {
+				value = civic_machine_servitor
+			}
+		}
+	}
+	random_weight = { base = @civic_default_random_weight }
+	ai_weight = { 
+		base = @ai_civic_default_base_weight 
+		modifier = {
+			factor = @ai_civic_personality_match_factor
+			OR = {
+				has_ai_personality = exterminators
+			}
+		}
+	}
+	description = civic_tooltip_machine_warbots_effects
+	modifier = {
+		councilor_gestalt_admiral_exp_gain = @gestalt_civic_node_xp_rate
+		army_damage_mult = 0.2
+		armies_upkeep_mult = -0.2
+	}
+}
+
+civic_machine_introspective = {
+	potential = { 
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}			 
+		} 
+	}
+	random_weight = { base = @civic_default_random_weight }
+	ai_weight = {
+		base = @ai_civic_default_base_weight
+		modifier = {
+			factor = @ai_civic_personality_match_factor
+			OR = {
+			}
+		}
+		modifier = {
+			factor = @ai_civic_personality_mismatch_factor
+			OR = {
+				has_ai_personality = exterminators
+			}
+		}
+	}
+	modifier = {
+		councilor_gestalt_cognitive_exp_gain = @gestalt_civic_node_xp_rate
+		country_engineering_tech_research_speed = 0.20
+		intel_encryption_add = 1
+	}
+}
+
+civic_machine_delegated_functions = {
+	potential = { 
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}			 
+		} 
+	}
+	random_weight = { base = @civic_default_random_weight }
+	ai_weight = {
+		base = @ai_civic_default_base_weight
+		modifier = {
+			factor = @ai_civic_personality_match_factor
+			OR = {
+			}
+		}
+		modifier = {
+			factor = @ai_civic_personality_mismatch_factor
+			OR = {
+				has_ai_personality = exterminators
+			}
+		}
+	}
+	modifier = {
+		councilor_gestalt_regulatory_exp_gain = @gestalt_civic_node_xp_rate
+		country_leader_pool_size = 1
+		envoys_add = 1
+	}
+}
+
+civic_machine_predictive_analysis = {
+	potential = { 
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}			 
+		} 
+	}
+	random_weight = { base = @civic_default_random_weight }
+	ai_weight = {
+		base = @ai_civic_default_base_weight
+	}
+	modifier = {
+		councilor_gestalt_cognitive_exp_gain = @gestalt_civic_node_xp_rate
+		num_tech_alternatives_add = 1
+		intel_decryption_add = 1
+	}
+}
+
+civic_machine_replication = {
+	potential = { 
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}			 
+		} 
+	}
+	random_weight = { base = @civic_default_random_weight }
+	ai_weight = {
+		base = @ai_civic_default_base_weight
+	}
+	modifier = {
+		councilor_gestalt_growth_exp_gain = @gestalt_civic_node_xp_rate
+		planet_pop_assembly_mult = 0.20
+	}
+}
+
+civic_machine_maintenance_protocols = {
+	potential = { 
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}			 
+		} 
+	}
+	random_weight = { base = @civic_default_random_weight }
+	ai_weight = {
+		base = @ai_civic_default_base_weight
+	}
+	description = civic_tooltip_machine_maintenance_protocols_effects
+	modifier = {
+		councilor_gestalt_growth_exp_gain = @gestalt_civic_node_xp_rate
+	}
+}
+
+civic_machine_memorialist = {
+	playable = { host_has_dlc = "Necroids Species Pack" }
+	description = "civic_tooltip_memorialist_gestalt_effects"
+	potential = {
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence 
+				value = auth_lust_skynet
+			}
+		}
+	}
+	random_weight = { base = @civic_default_random_weight }
+	ai_weight = {
+		base = @ai_civic_default_base_weight
+	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_machine_terminator
+				value = civic_machine_assimilator
+			}
+		}
+	}
+	modifier = {
+		councilor_gestalt_cognitive_exp_gain = @gestalt_civic_node_xp_rate
+	}
+}
+
+civic_machine_catalytic_processing = {
+	playable = { host_has_dlc = "Plantoids Species Pack" }
+	ai_playable = { host_has_dlc = "Plantoids Species Pack" }
+	description = "civic_tooltip_machine_catalytic_processing_effects"
+	potential = {
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence 
+				value = auth_lust_skynet
+			}
+		}
+	}
+	possible = {
+		origin = { NOT = { value = origin_machine } }
+	}
+	random_weight = { base = @civic_default_random_weight }
+	ai_weight = {
+		base = 0		# Too dangerous to switch mid-game
+	}
+	modifier = {
+		councilor_gestalt_cognitive_exp_gain = @gestalt_civic_node_xp_rate
+	}
+}
+
+civic_machine_toxic_baths = {
+	playable = { has_toxoids = yes }
+	ai_playable = { has_toxoids = yes }
+	description = "civic_tooltip_machine_toxic_baths_effects"
+	potential = {
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence 
+				value = auth_lust_skynet
+			}
+		}
+	}
+	possible = {
+		origin = { NOT = { value = origin_life_seeded } }
+		civics = {
+			NOR = {
+				value = civic_machine_servitor
+				value = civic_machine_crafters
+				value = civic_machine_paradise_lost
+			}
+		}
+	}
+	random_weight = {
+		base = @civic_uncommon_random_weight
+	}
+	ai_weight = { 
+		base = @ai_civic_uncommon_base_weight 
+	}
+	modifier = {
+		councilor_gestalt_governor_exp_gain = @gestalt_civic_node_xp_rate
+	}
+}
+
+civic_machine_ascensionists = {
+	playable = {
+		OR = {
+			host_has_dlc = "Utopia"
+			has_astral_planes_dlc = yes
+		}
+	}
+	ai_playable = {
+		OR = {
+			host_has_dlc = "Utopia"
+			has_astral_planes_dlc = yes
+		}
+	}
+	potential = {
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence 
+				value = auth_lust_skynet
+			}
+		}
+	}
+	description = "civic_tooltip_ascensionists_effects"
+	modifier = {
+		councilor_gestalt_regulatory_exp_gain = @gestalt_civic_node_xp_rate
+		planetary_ascension_effect_mult = 0.25
+		planetary_ascension_cost_mult = -0.1
+		tradition_cost_empire_size_mult = -0.25
+	}
+	random_weight = {
+		base = @civic_uncommon_random_weight
+	}
+	ai_weight = {
+		base = @ai_civic_uncommon_base_weight
+		modifier = {
+			factor = @ai_civic_personality_mismatch_factor
+			OR = {
+				has_ai_personality = exterminators
+			}
+		}
+	}
+}
+
+civic_machine_exploration_protocol = {
+	playable = {
+		has_first_contact_dlc = yes
+	}
+
+	ai_playable = {
+		has_first_contact_dlc = yes
+	}
+
+	description = "civic_machine_exploration_protocol_effects"
+	modification = no
+	potential = {
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence 
+				value = auth_lust_skynet
+			}
+		}
+	}
+
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_machine_terminator
+				value = civic_machine_assimilator
+			}
+		}
+	}
+
+	modifier = {
+		councilor_gestalt_admiral_exp_gain = @gestalt_civic_node_xp_rate
+		first_contact_speed_mult = 0.2
+		station_observers_unity_produces_add = 3
+	}
+
+	swap_type = {
+		description = "civic_machine_exploration_protocol_effects_maid"
+
+		trigger = { #No scope in empire creation but still checked. Otherwise, country scope is valid and the latter condition is checked
+			AND = {
+				is_scope_valid = yes
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+	}
+
+	random_weight = {
+		base = 0
+	}
+}
+
+civic_machine_hyperspace_specialty = {
+	playable = { has_astral_planes_dlc = yes }
+	ai_playable = { has_astral_planes_dlc = yes }
+	description = "civic_machine_hyperspace_specialty_effects"
+	potential = {
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence 
+				value = auth_lust_skynet
+			}
+		}
+	}
+	possible = {
+		civics = { NOT = { value = civic_machine_exploration_protocol } }
+	}
+	modifier = {
+		planet_sensor_range_add = 2
+		ship_speed_mult = 0.1
+		country_physics_tech_research_speed = 0.15
+		councilor_gestalt_cognitive_exp_gain = @gestalt_civic_node_xp_rate
+	}
+}
+
+civic_memory_vault_machine = {
+	playable = { host_has_dlc = "Galactic Paragons" }
+	ai_playable = { host_has_dlc = "Galactic Paragons" }
+	random_weight = {
+		base = 4
+	}
+	description = "civic_tooltip_memory_vault_machine_effects"
+	potential = {
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence 
+				value = auth_lust_skynet
+			}
+		}
+	}
+	possible = {
+	}
+	modifier = {
+		restored_node_bonus_skill = 1
+		councilor_gestalt_cognitive_exp_gain = @gestalt_civic_node_xp_rate
+		councilor_skill_add = 1
+		leader_initial_skill = 1
+	}
+}
+
+civic_machine_upkeep_twister = {
+	playable = { host_has_dlc = "Galactic Paragons" }
+	ai_playable = { host_has_dlc = "Galactic Paragons" }
+	random_weight = {
+		base = 4
+	}
+	description = "civic_tooltip_machine_upkeep_twister_effects"
+	potential = {
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence 
+				value = auth_lust_skynet
+			}
+		}
+	}
+	possible = {
+	}
+	modifier = {
+		leader_trait_selection_options_add = 1
+		councilor_gestalt_regulatory_exp_gain = @gestalt_civic_node_xp_rate
+	}
+}
+
+civic_machine_sovereign_guardianship = {
+	playable = { has_astral_planes_dlc = yes }
+	ai_playable = { has_astral_planes_dlc = yes }
+	description = "civic_machine_sovereign_guardianship_effects"
+	potential = {
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence 
+				value = auth_lust_skynet
+			}
+		}
+	}
+	possible = {
+		civics = {
+			NOT = { value = civic_machine_terminator }
+		}
+	}
+
+	modification = no
+
+	modifier = {
+		empire_size_colonies_mult = 1
+		empire_size_systems_mult = 1.50
+		empire_size_pops_mult = -0.50
+		empire_size_districts_mult = -0.50
+		diplo_weight_mult = 0.2
+		councilor_gestalt_regulatory_exp_gain = @gestalt_civic_node_xp_rate
+		planet_soldiers_unity_produces_add = @sovereign_guardianship_soldier_unity
+	}
+
+	random_weight = {
+		base = @civic_rare_random_weight
+	}
+	ai_weight = {
+		base = @civic_rare_random_weight
+	}
+}

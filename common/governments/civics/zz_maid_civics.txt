@@ -1,0 +1,159 @@
+#精工技艺
+civic_machine_crafters = {
+	potential = {
+		authority = {
+			OR = {
+				value = auth_ancient_machine_intelligence
+				value = auth_machine_intelligence
+			}
+		}
+	}
+	possible = {
+		civics = {
+			NOT = {
+				value = civic_machine_toxic_baths
+			}
+		}
+	}
+	modifier = {
+		councilor_gestalt_scientist_exp_gain = @gestalt_civic_node_xp_rate
+		planet_pop_assemblers_upkeep_mult = 0.1
+		MACHINE_species_trait_points_add = 1
+	}
+	playable = {
+		host_has_dlc = "Synthetic Dawn Story Pack"
+		host_has_dlc = "Humanoids Species Pack"
+	}
+	ai_playable = {
+		host_has_dlc = "Synthetic Dawn Story Pack"
+		host_has_dlc = "Humanoids Species Pack"
+	}
+	description = "civic_machine_crafters_effects"
+	random_weight = {
+		base = 2
+		modifier = {
+			factor = 2
+			has_civic = civic_machine_servitor
+		}
+	}
+}
+
+#乐土机械
+civic_machine_paradise_lost = {
+	#modification = no
+	potential = {
+		authority = {
+			OR = {
+				value = auth_ancient_machine_intelligence
+				value = auth_machine_intelligence
+			}
+		}
+	}
+	possible = {
+		civics = {
+			OR = {
+				value = civic_machine_servitor
+				value = civic_machine_assimilator
+			}
+		}
+		origin = {
+			NOR = {
+				value = origin_shattered_ring
+				value = origin_machine
+				value = origin_doomsday
+				#value = origin_remnants
+			}
+		}
+	}
+	playable = {
+		host_has_dlc = "Synthetic Dawn Story Pack"
+		host_has_dlc = "Plantoids Species Pack"
+		civic_ingame_unpickable = yes
+	}
+	ai_playable = {
+		host_has_dlc = "Synthetic Dawn Story Pack"
+		host_has_dlc = "Plantoids Species Pack"
+		civic_ingame_ai_unpickable = yes
+	}
+	random_weight = {
+		base = 1
+		modifier = {
+			factor = 3
+			has_civic = civic_machine_servitor
+		}
+		modifier = {
+			set = 0
+			has_global_flag = game_started
+		}
+	}
+	description = "civic_tooltip_machine_paradise_lost_effects"
+	modifier = {
+		councilor_gestalt_governor_exp_gain = @gestalt_civic_node_xp_rate
+	}
+}
+
+#医疗器械
+civic_machine_healthcare = {
+	playable = { host_has_dlc = "Galactic Paragons" }
+	ai_playable = { host_has_dlc = "Galactic Paragons" }
+	random_weight = {
+		base = 4
+	}
+	description = "civic_tooltip_civic_machine_healthcare_effects_both"
+	potential = {
+		authority = {
+			OR = {
+				value = auth_ancient_machine_intelligence
+				value = auth_machine_intelligence
+			}
+		}
+	}
+	possible = {
+		civics = {
+			OR = {
+				value = civic_machine_servitor
+				value = civic_machine_assimilator
+			}
+			NOR = {
+				value = civic_machine_toxic_baths
+			}
+		}
+	}
+	modifier = {
+		category_biology_research_speed_mult = 0.25
+		leader_lifespan_add = 20
+		pop_environment_tolerance = 0.1
+		pop_growth_speed = 0.1
+		councilor_gestalt_scientist_exp_gain = @gestalt_civic_node_xp_rate
+	}
+}
+
+#监护矩阵继业者
+civic_custodian_directives_successor = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_custodian_directives.dds"
+	potential = {
+		authority = {
+			OR = {
+				value = auth_ancient_machine_intelligence
+				value = auth_machine_intelligence
+			}
+		}
+		civics = { 
+			value = civic_custodian_directives_successor 
+		}
+	}
+	random_weight = { base = 0 }
+	description = civic_custodian_directives_successor_effects
+	modifier = {
+		damage_vs_country_type_ai_empire_mult = 0.25
+		country_government_civic_points_add = 1
+	}
+	swap_type = {
+		trigger = { NOT = { has_global_flag = ancient_caretakers_annexed } }
+		description = civic_custodian_directives_successor_not_activated_effects
+		modifier = {
+			damage_vs_country_type_ai_empire_mult = -0.25
+		}
+	}
+}
