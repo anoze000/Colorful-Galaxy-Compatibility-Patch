@@ -1,22 +1,22 @@
 WARSHIPGIRL = {
-	species_trait_points = 8
-	species_max_traits = 27
+	species_trait_points = 3
+	species_max_traits = 7
 	inherit_traits_from = {
 		CG_compatible_species_archetype
 	}
 }
 
 SHENHAI = {
-	species_trait_points = 11
-	species_max_traits = 24
+	species_trait_points = 4
+	species_max_traits = 6
 	inherit_traits_from = {
 		CG_compatible_species_archetype
 	}
 }
 
 UNITED_FLEET = {
-	species_trait_points = 16
-	species_max_traits = 47
+	species_trait_points = 6
+	species_max_traits = 12
 	inherit_traits_from = {
 		CG_compatible_species_archetype
 	}
@@ -31,8 +31,8 @@ STARSHIPGIRLS = {
 }
 
 NYTO = {
-	species_trait_points = 11
-	species_max_traits = 32
+	species_trait_points = 4
+	species_max_traits = 8
 	robotic = yes
 	inherit_traits_from = {
 		CG_compatible_species_archetype
@@ -40,24 +40,32 @@ NYTO = {
 }
 
 EILD = {
-	species_trait_points = 54
-	species_max_traits = 79
-	inherit_traits_from = {
-		CG_compatible_species_archetype
-	}
+	species_trait_points = 20
+	species_max_traits = 20
 }
 
 LILY = {
-	species_trait_points = 11
-	species_max_traits = 46
+	species_trait_points = 4
+	species_max_traits = 12
 	inherit_traits_from = {
 		CG_compatible_species_archetype
 	}
 }
 
+PUFFER = {
+	species_trait_points = 1
+	species_max_traits = 7
+}
+
+HUGE = {
+	species_trait_points = @al_trait_points
+	species_max_traits = @al_max_traits
+	uses_modifiers = no
+}
+
 Dolls = {
-	species_trait_points = 22
-	species_max_traits = 54
+	species_trait_points = 8
+	species_max_traits = 14
 	inherit_traits_from = {
 		CG_compatible_species_archetype
 	}
