@@ -1,0 +1,578 @@
+trait_machine_maid = {
+	cost = {
+		base = 0
+		modifier = {
+			add = 2
+			NOT = { has_valid_civic = civic_machine_servitor }
+		}
+	}
+	custom_tooltip = trait_machine_maid_effect
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	species_possible_merge_remove = { always = no }
+	randomized = no
+	allowed_archetypes = { MACHINE LOVEMACHINE }
+	sorting_priority = 18
+	potential_crossbreeding_chance = 1.0
+
+	opposites = {
+		"trait_robot_uncanny"
+		"trait_robot_power_drills"
+		"trait_machine_harvesters"
+		"trait_robot_superconductive"
+		"trait_robot_domestic_protocols"
+	}
+
+	assembling_modifier = {
+		planet_pop_assemblers_consumer_goods_upkeep_add = 1
+	}
+	
+	# 手办对女仆的激励
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+		}
+		key = pop_modifier_maid_in_love
+		planet_jobs_produces_mult = 1
+		mult = planet.production_buff_value_for_maid
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+		}
+		key = pop_modifier_maid_in_love
+		pop_job_no_production_effects_mult = 1
+		pop_job_amenities_mult = 1
+		mult = planet.non_production_buff_value_for_maid
+	}
+
+	triggered_pop_modifier = { #专注工作
+		potential = {
+			exists = owner
+			owner = { has_active_tradition = tr_domination_focus_on_work }
+		}
+		key = tr_domination_focus_on_work
+		planet_jobs_produces_mult = 0.1
+	}
+
+	triggered_pop_modifier = { #在非格式塔国家的工作
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		pop_job_amenities_mult = 0.5
+		pop_demotion_time_mult = -1
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+	
+	assembly_score = {
+		modifier = {
+			add = 3
+			from.owner = { is_same_species = root }
+		}
+		modifier = {
+			add = 1
+			from.owner = { has_valid_civic = civic_machine_servitor }
+		}
+		modifier = {
+			add = 2
+			from = {
+				owner = { has_valid_civic = civic_machine_servitor }
+				OR = {
+					has_designation = col_factory
+					has_designation = col_mac_factory
+					has_designation = col_ecu_factory
+					has_designation = col_habitat_factory
+					has_designation = col_foundry
+					has_designation = col_ecu_foundry
+					has_designation = col_habitat_foundry
+					has_designation = col_mac_foundry
+					has_designation = col_industrial
+					has_designation = col_habitat_industrial
+					has_designation = col_ecu_industrial
+					has_designation = col_refinery
+					has_designation = col_habitat_refinery
+					has_designation = col_research
+					has_designation = col_ring_research
+					has_designation = col_habitat_research
+					has_designation = col_ecu_research
+					has_designation = col_bureau_machine
+					has_designation = col_trophy_machine
+					has_designation = col_habitat_bureau_machine
+				}
+			}
+		}
+		modifier = {
+			add = 2
+			from = {
+				owner = { has_valid_civic = civic_machine_servitor }
+				check_variable = { which = satisfaction_of_master_s_needing value < 0.8 }
+			}
+		}
+		modifier = {
+			add = 1
+			from = {
+				owner = { has_valid_civic = civic_machine_servitor }
+				check_variable = { which = satisfaction_of_master_s_needing value < 1 }
+			}
+		}
+		modifier = {
+			add = -1
+			from = {
+				owner = { has_valid_civic = civic_machine_servitor }
+				check_variable = { which = satisfaction_of_maid_s_needing value < 1 }
+			}
+		}
+		modifier = {
+			mult = 0
+			from = {
+				owner = { has_valid_civic = civic_machine_servitor }
+				check_variable = { which = satisfaction_of_maid_s_needing value < 0.8 }
+			}
+		}
+		modifier = {
+			add = -2
+			from = {
+				owner = { has_valid_civic = civic_machine_servitor }
+				check_variable = { which = satisfaction_of_maid_s_needing value < 0.6 }
+			}
+		}
+		modifier = {
+			add = -2
+			from = {
+				owner = { has_valid_civic = civic_machine_servitor }
+				check_variable = { which = satisfaction_of_maid_s_needing value < 0.4 }
+			}
+		}
+	}
+	
+	slave_cost = {
+		energy = 1000
+	}
+}
+
+trait_working_machine = {
+	cost = 2
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	species_possible_merge_remove = { always = no }
+	randomized = no
+	allowed_archetypes = { MACHINE LOVEMACHINE }
+	sorting_priority = 18
+	potential_crossbreeding_chance = 0
+
+	opposites = {
+		"trait_robot_logic_engines"
+		"trait_robot_enhanced_memory"
+		"trait_robot_learning_algorithms"
+		"trait_robot_repurposed_hardware"
+	}
+
+	custom_tooltip = trait_working_machine_effect
+	modifier = {
+		planet_jobs_produces_mult = 0.25
+		planet_pop_assembly_mult = 0.15
+		pop_political_power = -0.75
+	}
+	triggered_pop_modifier = { #幸福基础
+		potential = {
+			OR = {
+				has_job = mining_drone
+				has_job = agri_drone
+				has_job = technician_drone
+				has_job = scrap_miner_drone
+				has_job = cave_cleaner_gestalt
+				has_job = turtle_miner_gestalt
+				has_job = manufactorium_scraper_drone
+			}
+			exists = owner
+			owner = {
+				OR = {
+					has_active_tradition = tr_service_base_of_happiness
+					has_country_flag = flag_base_of_happiness_effect_for_subject
+				}
+			}
+		}
+		key = tr_service_base_of_happiness
+		planet_miners_minerals_produces_add = 1
+		planet_technician_energy_produces_add = 1
+		planet_farmers_food_produces_add = 1
+	}
+	triggered_pop_modifier = { #幸福基础：工作机器过载驱动
+		potential = {
+			OR = {
+				has_job = mining_drone
+				has_job = agri_drone
+				has_job = technician_drone
+				has_job = scrap_miner_drone
+				has_job = cave_cleaner_gestalt
+				has_job = turtle_miner_gestalt
+				has_job = manufactorium_scraper_drone
+			}
+			exists = owner
+			owner = {
+				OR = {
+					has_edict = working_machines_overdrive
+					has_country_flag = flag_base_of_happiness_effect_for_subject_edict
+				}
+			}
+		}
+		key = edict_working_machines_overdrive
+		planet_miners_minerals_produces_add = 1
+		planet_technician_energy_produces_add = 1
+		planet_farmers_food_produces_add = 1
+		pop_amenities_usage_no_happiness_mult = 0.5
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+	
+	assembly_score = {
+		modifier = {
+			add = 3
+			from = { ar_has_simple_drone_jobs = yes }
+		}
+		modifier = {
+			add = -2
+			from = {
+				has_farming_designation = no
+				has_generator_designation = no
+				has_mining_designation = no
+				has_rural_designation = no
+			}
+		}
+		modifier = {
+			add = 2
+			from = {
+				OR = {
+					has_farming_designation = yes
+					has_generator_designation = yes
+					has_mining_designation = yes
+				}
+			}
+		}
+		modifier = {
+			mult = 0
+			from = {
+				owner = { has_valid_civic = civic_machine_servitor }
+				check_variable = { which = satisfaction_of_master_s_needing value < 1 }
+			}
+		}
+		modifier = {
+			add = -5
+			from = {
+				any_owned_pop = {
+					is_unemployed = yes
+					has_trait = trait_working_machine
+				}
+			}
+		}
+		modifier = {
+			add = 1
+			from.owner = {
+				is_subject = yes
+				any_agreement = { has_active_specialization = specialist_prospectorium }
+			}
+		}
+		modifier = {
+			add = -10
+			from = {
+				OR = {
+					has_modifier = planet_modifier_disassemble_working_machines_assemble
+					has_modifier = planet_modifier_disassemble_working_machines_alloys
+				}
+			}
+		}
+	}
+}
+# advanced trait for maid
+trait_vivid_sentiment = {
+	cost = 2
+	species_potential_add = {
+		has_trait = trait_machine_maid
+		from = { has_active_tradition = tr_synthetics_adopt_maid }
+	}
+	species_possible_remove = { always = yes }
+	species_possible_merge_add = { has_trait = trait_machine_maid }
+	species_possible_merge_remove = { always = yes }
+	sorting_priority = 11
+	potential_crossbreeding_chance = 1.0
+	initial = no
+	randomized = no
+	#advanced_trait = yes
+	allowed_archetypes = { MACHINE LOVEMACHINE }
+
+	modifier = {
+		army_damage_mult = -0.2
+		pop_job_amenities_mult = 0.3
+		planet_jobs_unity_produces_mult = 0.15
+	}
+	
+	slave_cost = {
+		energy = 2500
+	}
+
+	ai_weight = {
+		weight = 10
+	}
+}
+trait_combined_thinking_mode = {
+	cost = 4
+	species_potential_add = {
+		has_trait = trait_machine_maid
+		from = { has_active_tradition = tr_synthetics_adopt_maid }
+	}
+	species_possible_remove = { always = yes }
+	species_possible_merge_add = { has_trait = trait_machine_maid }
+	species_possible_merge_remove = { always = yes }
+	sorting_priority = 11
+	potential_crossbreeding_chance = 1.0
+	initial = no
+	randomized = no
+	#advanced_trait = yes
+	allowed_archetypes = { MACHINE LOVEMACHINE }
+
+	modifier = {
+		planet_jobs_physics_research_produces_mult = 0.20
+		planet_jobs_society_research_produces_mult = 0.20
+		planet_jobs_engineering_research_produces_mult = 0.20
+		pop_job_no_production_effects_mult = 0.05
+	}
+	triggered_pop_modifier = { #隐藏
+		potential = { always = yes }
+		pop_job_amenities_mult = 0.05
+	}
+	
+	slave_cost = {
+		energy = 1000
+	}
+	assembly_score = {
+		modifier = {
+			add = 2
+			from = {
+				OR = {
+					has_research_designation = yes
+					has_building = building_order_keep
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 10
+	}
+}
+trait_immediate_feedback = {
+	cost = 3
+	species_potential_add = {
+		has_trait = trait_machine_maid
+		from = { has_active_tradition = tr_synthetics_adopt_maid }
+	}
+	species_possible_remove = { always = yes }
+	species_possible_merge_add = { has_trait = trait_machine_maid }
+	species_possible_merge_remove = { always = yes }
+	sorting_priority = 11
+	potential_crossbreeding_chance = 1.0
+	initial = no
+	randomized = no
+	#advanced_trait = yes
+	allowed_archetypes = { MACHINE LOVEMACHINE }
+
+	modifier = {
+		planet_jobs_alloys_produces_mult = 0.15
+		planet_jobs_consumer_goods_produces_mult = 0.15
+		species_leader_exp_gain = 0.25
+	}
+	
+	slave_cost = {
+		energy = 1500
+	}
+	assembly_score = {
+		modifier = {
+			add = 2
+			from = { has_industrial_designation = yes }
+		}
+	}
+
+	ai_weight = {
+		weight = 10
+	}
+}
+trait_external_support_systems = {
+	cost = -3
+	species_potential_add = {
+		has_trait = trait_machine_maid
+		from = { has_active_tradition = tr_synthetics_adopt_maid }
+	}
+	species_possible_remove = { always = yes }
+	species_possible_merge_add = { has_trait = trait_machine_maid }
+	species_possible_merge_remove = { always = yes }
+	sorting_priority = -1
+	potential_crossbreeding_chance = 1.0
+	initial = no
+	randomized = no
+	#advanced_trait = yes
+	allowed_archetypes = { MACHINE LOVEMACHINE }
+
+	modifier = {
+		planet_pops_robotics_upkeep_mult = 0.10
+		pop_amenities_usage_no_happiness_mult = 0.05
+		species_empire_size_mult = 0.05
+	}
+	
+	slave_cost = {
+		energy = -2000
+	}
+
+	ai_weight = {
+		weight = 3
+	}
+}
+
+trait_supercapacity_circuit = {
+	cost = 3
+	species_potential_add = {
+		has_trait = trait_working_machine
+		from = { has_active_tradition = tr_synthetics_adopt_maid }
+	}
+	species_possible_remove = { always = yes }
+	species_possible_merge_add = { has_trait = trait_working_machine }
+	species_possible_merge_remove = { always = yes }
+	sorting_priority = -1
+	potential_crossbreeding_chance = 0
+	initial = no
+	randomized = no
+	#advanced_trait = yes
+	allowed_archetypes = { MACHINE LOVEMACHINE }
+
+	custom_tooltip = trait_supercapacity_circuit_tooltip
+	modifier = {
+		planet_jobs_produces_mult = 0.20
+		species_empire_size_mult = -0.40
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = planet
+			planet = { is_planet_class = pc_machine }
+		}
+		planet_jobs_produces_mult = 0.10
+		species_empire_size_mult = -0.20
+	}
+	
+	slave_cost = {
+		energy = 1500
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+	
+	assembly_score = {
+		modifier = {
+			mult = 1.25
+		}
+		modifier = {
+			add = 0.1
+		}
+		modifier = {
+			mult = 2
+			from = { planet_class = pc_machine }
+		}
+		modifier = {
+			add = -5
+			from.owner = { has_deficit = rare_crystals }
+		}
+	}
+}
+trait_quick_connect_toolsets = {
+	cost = 2
+	species_potential_add = {
+		has_trait = trait_working_machine
+		from = { has_active_tradition = tr_synthetics_adopt_maid }
+	}
+	species_possible_remove = { always = yes }
+	species_possible_merge_add = { has_trait = trait_working_machine }
+	species_possible_merge_remove = { always = yes }
+	sorting_priority = -1
+	potential_crossbreeding_chance = 0
+	initial = no
+	randomized = no
+	#advanced_trait = yes
+	allowed_archetypes = { MACHINE LOVEMACHINE }
+
+	opposites = {
+		"trait_robot_superconductive"
+		"trait_robot_power_drills"
+		"trait_machine_harvesters"
+	}
+
+	custom_tooltip = trait_quick_connect_toolsets_tooltip
+	triggered_pop_modifier = {
+		potential = {
+			exists = planet
+			planet = { has_generator_designation = yes }
+		}
+		planet_jobs_energy_produces_mult = 0.15
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = planet
+			planet = { has_mining_designation = yes }
+		}
+		planet_jobs_minerals_produces_mult = 0.15
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = planet
+			planet = { has_farming_designation = yes }
+		}
+		planet_jobs_food_produces_mult = 0.15
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				has_generator_designation = no
+				has_mining_designation = no
+				has_farming_designation = no
+			}
+		}
+		planet_jobs_energy_produces_mult = 0.1
+		planet_jobs_minerals_produces_mult = 0.1
+		planet_jobs_food_produces_mult = 0.1
+	}
+	
+	slave_cost = {
+		energy = 1000
+	}
+
+	ai_weight = {
+		weight = 20
+	}
+	
+	assembly_score = {
+		modifier = {
+			add = 0.5
+		}
+		modifier = {
+			mult = 1.25
+			from = {
+				OR = {
+					has_farming_designation = yes
+					has_generator_designation = yes
+					has_mining_designation = yes
+				}
+			}
+		}
+	}
+}

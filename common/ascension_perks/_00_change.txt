@@ -762,7 +762,10 @@ ap_synthetic_age = {
 
 	potential = {
 		has_synthethic_dawn = yes
-		has_authority = auth_machine_intelligence
+		OR ={
+			has_authority = auth_machine_intelligence
+			has_authority = auth_lust_skynet
+		}
 		NOR = {
 			has_ascension_perk = ap_synthetic_age
 			has_origin = origin_reassembler
