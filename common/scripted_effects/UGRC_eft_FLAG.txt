@@ -731,6 +731,18 @@ UGRC_eft_spcs_RULE_flg_DB = {
 				ELF_species_procreate_rules = yes
 			}
 			NOT = { has_species_flag = nivlac_no_procreation }
+			if = {
+				limit = {
+					has_global_flag = love_between_us
+				}
+				OR = {
+					AND = {
+						has_trait = trait_DC_ethic_parasite_mind
+						root.owner = { has_country_flag = has_ten_crisis_perk_1 }
+					}
+					NOT = { has_trait = trait_DC_ethic_parasite_mind }
+				}
+			}
 		}
 		set_species_flag = UGRC_flg_spcs_RULE_procreate_ENABLE
 	}
