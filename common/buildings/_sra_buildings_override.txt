@@ -19,8 +19,8 @@ building_SRA_produce_centre_prototype = {
 			planet_decision_enact_speed_mult = 1.0
 			planet_jobs_produces_mult = 1
 			planet_jobs_upkeep_mult = -1
-			planet_max_buildings_add = 30
-			planet_max_branch_office_buildings_add = 30
+			planet_max_buildings_add = 50
+			planet_max_branch_office_buildings_add = 50
 		}
 	}
 	

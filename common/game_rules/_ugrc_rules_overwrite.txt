@@ -4007,8 +4007,9 @@ can_resettle_pop = { #可以重新安置pop
 					has_country_flag = origin_female_in_shadow@prev 
 				}
 			}
-			NOT = { 
-				has_ascension_perk = ap_bumpy_cg_road_ahead_yield 
+			NOR = {
+				has_ascension_perk = ap_bumpy_cg_road_ahead_yield
+				has_ascension_perk = ap_bumpy_cg_road_ahead_coexistence
 			}
 		}
 	}
