@@ -9,18 +9,31 @@ building_SRA_world_machine_chaos = {
 	category = government
 	icon = building_SRA_world_machine
 	potential = {
-		exists = owner
-		owner = {
-			OR = {
-				is_country_type = faction_SRA_RE_End_2_country
-				has_civic = civic_SRARociviaEmpire
-				is_country_type = faction_SRA_Chief_country
-				has_civic = civic_SRAtechnology
-				has_country_flag = StellarRegulator_Array_tech_permit
-			}
-		}
+		is_planet_class = pc_SRA_chaos_star_habitable
 	}
 	prerequisites = { tech_SRA_T4_hidden_tech }
+	resources = {
+		category = planet_jobs
+		produces = {
+			energy = 20000
+			minerals = 20000
+			food = 20000
+			alloys = 80000
+			consumer_goods = 40000
+			rare_crystals = 8000
+			exotic_gases = 8000
+			volatile_motes = 8000
+			sr_dark_matter = 5000
+			sr_living_metal = 5000
+			sr_zro = 5000
+			nanites = 5000
+			astral_threads = 5000
+			physics_research = 80000
+			society_research = 80000
+			engineering_research = 80000
+			unity = 40000
+		}
+	}
 	planet_modifier = {
 		planet_max_buildings_add = -1000
 		planet_max_districts_mult = -10
@@ -101,38 +114,6 @@ building_SRA_world_machine = {
 		country_resource_max_add = 80000
 	}
 	resources = {
-		category = planet_artisans
-		produces = {
-			consumer_goods = 2
-			multiplier = planet.SRA_world_machine_produces
-		}
-		produces = {
-			trigger = { owner = { has_technology = tech_SRA_T3_Composite_Crystal_Lattice } }
-			consumer_goods = 2
-			multiplier = planet.SRA_world_machine_produces
-		}
-	}
-	resources = {
-		category = planet_chemists
-		produces = {
-			rare_crystals = 0.1
-			exotic_gases = 0.1
-			volatile_motes = 0.1
-			multiplier = planet.SRA_world_machine_produces
-		}
-		produces = {
-			trigger = { owner = { has_technology = tech_SRA_T3_Composite_Crystal_Lattice } }
-			rare_crystals = 0.1
-			exotic_gases = 0.1
-			volatile_motes = 0.1
-			sr_dark_matter = 0.1
-			sr_living_metal = 0.1
-			sr_zro = 0.1
-			nanites = 0.1
-			multiplier = planet.SRA_world_machine_produces
-		}
-	}
-	resources = {
 		category = planet_metallurgists
 		produces = {
 			alloys = 40
@@ -162,7 +143,6 @@ building_SRA_world_machine_A = {
 	prerequisites = { tech_SRA_T4_hidden_tech }
 	planet_modifier = {
 		pop_amenities_usage_mult = -1
-		pop_amenities_usage_no_happiness_mult = -1
 		pop_housing_usage_mult = -1
 		planet_pops_upkeep_mult = -1
 		pop_happiness = 1
@@ -171,6 +151,39 @@ building_SRA_world_machine_A = {
 		planet_amenities_add = 1000
 		planet_stability_add = 1000
 		planet_housing_add = 1000
+	}
+	resources = {
+		category = planet_artisans
+		produces = {
+			consumer_goods = 2
+			multiplier = planet.SRA_world_machine_produces
+		}
+		produces = {
+			trigger = { owner = { has_technology = tech_SRA_T3_Composite_Crystal_Lattice } }
+			consumer_goods = 2
+			multiplier = planet.SRA_world_machine_produces
+		}
+	}
+	resources = {
+		category = planet_chemists
+		produces = {
+			rare_crystals = 0.1
+			exotic_gases = 0.1
+			volatile_motes = 0.1
+			multiplier = planet.SRA_world_machine_produces
+		}
+		produces = {
+			trigger = { owner = { has_technology = tech_SRA_T3_Composite_Crystal_Lattice } }
+			rare_crystals = 0.1
+			exotic_gases = 0.1
+			volatile_motes = 0.1
+			sr_dark_matter = 0.1
+			sr_living_metal = 0.1
+			sr_zro = 0.1
+			nanites = 0.1
+			astral_threads = 0.1
+			multiplier = planet.SRA_world_machine_produces
+		}
 	}
 	resources = {
 		category = planet_miners
@@ -492,6 +505,7 @@ building_SRA_foundry = {
 			sr_living_metal = 500
 			sr_zro = 500
 			nanites = 500
+			astral_threads = 500
 		}
 		upkeep = {
 		}
@@ -1149,11 +1163,12 @@ building_SRA_T3_Singularity_Controller = {
 		category = planet_buildings
 		cost = {
 			minerals = 2000
-			alloys = 500
-			sr_dark_matter = 50
+			alloys = 2000
+			sr_dark_matter = 500
 		}
 		produces = {
 			sr_dark_matter = 40
+			astral_threads = 40
 		}
 		upkeep = {
 			energy = 200

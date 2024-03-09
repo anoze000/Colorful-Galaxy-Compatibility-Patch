@@ -1,7 +1,10 @@
 ap_power_of_heaven = {
 	on_enabled = {
 		custom_tooltip = "power_of_heaven_tooltip"
-		hidden_effect = { set_country_flag = str_nirvana_awakened }
+		hidden_effect = { 
+			set_country_flag = str_nirvana_awakened 
+			country_event = { id = str_origin.10106 days = 1 }
+		}
 		add_research_option = tech_celestial_lance
 		add_research_option = tech_celestial_beam
 		add_research_option = tech_celestial_laser
@@ -73,7 +76,10 @@ ap_power_of_heaven = {
 ap_power_of_multiverse = {
 	on_enabled = {
 		custom_tooltip = "power_of_multiverse_tooltip"
-		hidden_effect = { set_country_flag = str_nirvana_awakened }
+		hidden_effect = { 
+			set_country_flag = str_nirvana_awakened 
+			country_event = { id = str_origin.10106 days = 1 }
+		}
 		add_research_option = tech_multiverse_artillery
 		add_research_option = tech_multiverse_cannon
 		add_research_option = tech_multiverse_omega

@@ -17,7 +17,6 @@
 #			pop可移民/星球可移民
 #			基因修饰^
 #			解雇领袖/交易领袖/交易舰队	/地改候选	/空间站建设许可
-#			UGRC星隙
 
 #_tag		UGRC标签
 #_trgr		其他堕落/巨企国家
@@ -45,16 +44,14 @@
 #_[adf]		AshArms灰烬战线								<210420>
 #_|涅槃|	Nirvana Empire Project						<220921>
 #_[pkman]	伊布帝国v1.22								<210501>
-#_[驴岛]	明日方舟									<210522>
-#_[无言]	不明mod
-#_[失落帝国历史]
+#_|驴岛|	明日方舟									<240206>
 #_[魔圆]	Madoka Magica NEW							<200807>
 #_[TAC]		深渊协议									<200807>
 #_[SC]		stellarisCraft								<220329>
 #_[莉莉]	AL突击莉莉									<220404>
 #_[久远]	KZ_VOY										<220411>
 #_[星海帝皇]											<220414>
-#_[Ecar]	华章更多思潮								<220416>
+#_[ECI]	华章更多思潮									<220416>
 #_[rmaid/MECR]	失控女仆	rogue maid					<220624>
 #_|wv|		魔女之旅-星海旅人							<231119>
 #_[SRA]		星规阵列									<220821>
@@ -62,6 +59,8 @@
 #_[时与空]												<221227>
 #_[thl]	东方领袖										<230720>
 #_|涅托|												<231127>
+#_[无言]	不明mod
+#_[失落帝国历史]
 
 #_[多彩]	love_between_us
 #_[精灵]	ELF_species
@@ -466,7 +465,7 @@ can_vote_in_democratic_election = {
 ### should_pay_for_leader_upkeep
 
 
-###_|UGRC产生领袖|	FW/GF/无言/Ereb/hiveDLC/PTep/Eevt/ETCPM/莉莉/Ecar/rmaid/wv
+###_|UGRC产生领袖|	FW/GF/无言/Ereb/hiveDLC/PTep/Eevt/ETCPM/莉莉/ECI/rmaid/wv
 #Checks whether any leaders (scientists etc) can be formed from this pop
 #Root = country
 #This = pop
@@ -533,7 +532,7 @@ can_release_vassal = {
 }
 
 
-###_|释放附庸|	GF/PTep/ETCPM/Eevt/Ecar/rmaid/wv	####################################
+###_|释放附庸|	GF/PTep/ETCPM/Eevt/ECI/rmaid/wv	####################################
 #Root = species
 #This = country
 can_release_vassal_from_species = {
@@ -560,7 +559,7 @@ can_release_vassal_from_species = {
 			has_trait = trait_clone_soldier_infertile
 			has_trait = trait_clone_soldier_infertile_full_potential
 
-			#	Ecar
+			#	ECI
 			has_trait = trait_flesh_components
 			#	PTep
 			has_trait = trait_plentiful_traditions_pt_cocoon
@@ -640,7 +639,7 @@ can_release_vassal_from_species = {
 ###	can_modify_species
 
 
-###_[Ecar/ETCPM]	####################################
+###_[ECI/ETCPM]	####################################
 #This = country, suject
 #Root = country, overlord
 #From = target solar system
@@ -648,11 +647,11 @@ can_release_vassal_from_species = {
 subject_can_expand = {
 	# Exalted domination totally disallow vassal expansion
 	NOT = { has_global_flag = has_exalted_domination_mod }
-	#_|宗主条件|	+Ecar/ETCPM
+	#_|宗主条件|	+ECI/ETCPM
 	root = {
 		OR = {
 			has_valid_civic = civic_feudal_realm
-			# Ecar
+			# ECI
 			has_valid_civic = civic_aristocratic_elite
 			has_valid_civic = civic_coalition_government
 			has_valid_civic = civic_altruism
@@ -1214,7 +1213,7 @@ can_colonize_with_species = {
 #	}
 
 
-###_|UGRC幸福感|	wsg/PTep/Eevt/无言/Ecar/wv/thl	####################################
+###_|UGRC幸福感|	wsg/PTep/Eevt/无言/ECI/wv/thl	####################################
 # Root = Species	可能是当前物种的主物种
 # From = Country
 # This = Species	当前物种的真实scope
@@ -1352,7 +1351,7 @@ can_species_procreate = {
 
 ###_[物种组装]
 #_|基础trgr|	原版智械/原版克隆|is_organic_species|
-#_|MOD物种|		wsg/莉莉/swg/kc/DAL/微械/时与空/久远/azl/azlr/GF/PTep/SC/thl	/hiveDLC/wv/多彩/精灵	/EE
+#_|MOD物种|		wsg/莉莉/adf/swg/kc/DAL/微械/时与空/久远/azl/azlr/GF/PTep/SC/thl	/hiveDLC/wv/多彩/精灵	/EE
 # Checks if a pop can be assembled
 # This = Species
 # Root = Planet
@@ -1436,16 +1435,15 @@ can_species_be_assembled = {
 				}
 			}
 		}
-		#_|原版克隆|	+Ecar/星海皇帝/thl	/wv
+		#_|原版克隆|	+ECI/星海皇帝/thl	/wv
 		AND = {
 			is_organic_species = yes
-			#_|v蜂群|	+Ecar
+			#_|v蜂群|	+ECI
 			if = {
 				limit = {
 					OR = {
 						has_trait = trait_hive_mind
-						# Ecar
-						has_trait = trait_psionic_link
+						has_trait = trait_psionic_link	# ECI
 					}
 				}
 				root.owner = { is_hive_empire = yes }
@@ -1551,7 +1549,7 @@ can_species_be_assembled = {
 					}
 				}
 			}
-			#_|通用|=|存在克隆+特殊spcs|		+FW/星海帝皇/Ecar/thl
+			#_|通用|=|存在克隆+特殊spcs|		+FW/星海帝皇/ECI/thl
 			else = {
 				root = {
 					#	FW	|全能条件|
@@ -1571,7 +1569,7 @@ can_species_be_assembled = {
 					#	check_modifier_value = { modifier = planet_pop_assembly_organic_add value > 0 }
 					#	#	星海帝皇
 					#	has_building = building_clone_guard_clone_vat
-					#	#	Ecar
+					#	#	ECI
 					#	has_building = building_advanced_clone_vats
 					#	#	thl
 					#	THL_trgr_plnt_RULE_can_assembly_organic = yes
@@ -1580,6 +1578,7 @@ can_species_be_assembled = {
 			}
 		}
 		is_archetype = LILY						# 莉莉
+		is_archetype = Dolls					# adf
 		is_archetype = STARSHIPGIRLS			# swg
 		is_archetype = KANMUSU					# kc
 		is_archetype = DATEALIVE				# DAL
@@ -2255,7 +2254,7 @@ can_spawn_occupation_armies = {
 
 
 ###_|UGRC传感器|	####################################
-##_|UGRC传感屏蔽|	RS	/Sexp/S_tnatc/WS/wsg/古代帝国/SMCO/莉莉/thl
+##_|UGRC传感屏蔽|	RS	/Sexp/S_tnatc/WS/wsg/古代帝国/SMCO/莉莉/thl/驴岛
 # this = system
 # root = country
 system_blocks_sensors = {
@@ -2272,7 +2271,7 @@ system_blocks_sensors = {
 }
 
 
-###_[跃迁管制]	FW/AAR	/古代帝国/wsg/阿夸/SOFE/Giga/Ehof/seooc/多彩/精灵/TAC/莉莉	####################################
+###_[跃迁管制]	FW/AAR	/古代帝国/wsg/阿夸/SOFE/Giga/Ehof/seooc/多彩/精灵/TAC/莉莉/驴岛	####################################
 # Root = country attempting to target system for movement
 # This = system being targeted
 can_enter_system_by_jump = {
@@ -2373,19 +2372,10 @@ can_enter_system_by_jump = {
 					#	|精灵|
 					has_star_flag = ELF_Singularity_System
 					has_star_flag = wtmnb_star_11th		# wtmnb
-					#	TAC
-				#	has_star_flag = AI_system1
-				#	has_star_flag = AI_system2
-				#	has_star_flag = AI_system3
-				#	has_star_flag = AI_system4
-				#	this = {
-				#		OR = {
-				#			has_megastructure = AIgate_opened
-				#			has_megastructure = AIgate_opened_02
-				#		}
-				#	}
 					#	莉莉
 					has_star_flag = al_huge_home_bed
+					#	驴岛
+					has_star_flag = ark_isolated
 				}
 			}
 		}
@@ -2558,12 +2548,12 @@ should_force_decline_species = {
 
 
 
-###_|国家可建公司|	ETCPM/wsg/GF/azl/azlr/hiveDLC/驴岛/精灵/莉莉/久远/星海帝皇/Ecar/rmaid/ARP	####################################
+###_|国家可建公司|	ETCPM/wsg/GF/azl/azlr/hiveDLC/驴岛/精灵/莉莉/久远/星海帝皇/ECI/rmaid/ARP	####################################
 # This = country
 can_build_branch_offices = {
 	custom_tooltip = {
 		fail_text = BRANCH_OFFICE_NOT_MEGACORP
-		##	+ETCPM/hiveDLC/MCA/驴岛/wsg	/GF/azl/azlr/精灵	/Ecar
+		##	+ETCPM/hiveDLC/MCA/驴岛/wsg	/GF/azl/azlr/精灵	/ECI
 		OR = {
 			has_authority = auth_corporate
 			has_civic = civic_galactic_sovereign_megacorp
@@ -2606,39 +2596,21 @@ can_build_branch_offices = {
 			has_authority = auth_AL_arsenal
 			#	久远
 			KZ_VOY_can_build_branch_offices = yes
-			#	星海帝皇	=|义军同盟|
+			#	星海帝皇	|义军同盟|
 			is_country_type = rebel_allience
 			#	ARP
 			has_authority = auth_Arp_0
-
-			#_|Ecar|
-			AND = {
-				has_global_flag = ideological_revolution	# |Ecar激活|
-				OR = {
-					has_civic = civic_family_business
-					has_civic = civic_world_cooperative
-					has_valid_civic = civic_state_owned_enterprises	
-					has_valid_civic = civic_corporate_dominion
-					has_valid_civic = civic_underworld_society
-					has_valid_civic = civic_merchant_guilds
-					has_valid_civic = civic_state_monopoly
-					has_valid_civic = civic_machine_financial_investment
-					has_active_tradition = tr_future_economy_soc
-					AND = {
-						has_ethic = ethic_fanatic_capitalism
-						has_active_tradition = tr_future_economy
-					}
-				}
-			}
-
-			#	rmaid		=|外派服务飞升|
+			#	rmaid		|外派服务飞升|
 			Maid_trigger_0_can_build_branch_offices = yes
+
+			#	ECI		|全部可建|
+			has_global_flag = ideological_revolution	# |ECI激活|
 		}
 	}
 }
 
 
-###_|国家支持公司|	AAR	/ETCPM/swg/GF/azl/azlr/SOFE/ZOFE/驴岛/莉莉/Ecar/rmaid		####################################
+###_|国家支持公司|	AAR	/ETCPM/swg/GF/azl/azlr/SOFE/ZOFE/驴岛/莉莉/ECI/rmaid		####################################
 # This = country
 can_support_branch_offices = {
 	##_|禁止_国家类型|
@@ -2675,27 +2647,18 @@ can_support_branch_offices = {
 			has_authority = auth_azur_dictatorial
 		}
 	}
-	##_|禁止_巨企| +AAR		/ETCPM/hiveDLC/MCA/驴岛/wsg		/GF/azl/SOFE	/Ecar
+	##_|禁止_巨企| +AAR		/ETCPM/hiveDLC/MCA/驴岛/wsg		/GF/azl/SOFE	/ECI
 	custom_tooltip = {
 		fail_text = BRANCH_OFFICE_NOT_ON_MEGACORP_PLANET
 		OR = {
-			## 特殊允许|企业政府|	############
-			# AAR
+			##	特殊允许|企业政府|	############
+			#	AAR
 			is_subject_with_preset = { PRESET = AAR_SBJ_subsidiary }
-			# Ecar
-			AND = {
-				has_global_flag = ideological_revolution	# |Ecar激活|
-				OR = {
-					has_valid_civic = civic_criminal_heritage
-					has_tradition = tr_future_economy
-					has_civic = civic_world_cooperative
-					has_civic = civic_galactic_megacorp
-					has_civic = civic_galactic_sovereign
-					has_civic = civic_galactic_sovereign_megacorp
-					has_civic = civic_galactic_sovereign_people
-				}
+			#	ECI	|巨企|
+			AND = { has_global_flag = ideological_revolution	# |ECI激活|
+				is_eci_megacorp = yes
 			}
-			# rmaid
+			#	rmaid
 			Maid_trigger_1_can_support_branch_offices = yes
 
 			## 禁止所有|企业政府|	############
@@ -2704,19 +2667,18 @@ can_support_branch_offices = {
 				has_civic = civic_galactic_sovereign_megacorp
 				
 				#_|巨企国家|	ETCPM/hiveDLC/MCA/驴岛/wsg
-				# ETCPM
+				#	ETCPM
 				has_authority = auth_private
-				# hiveDLC
+				#	hiveDLC
 				has_valid_civic = civic_mutualistic_behavior
 				has_valid_civic = civic_machine_trading
-				# MCA
+				#	MCA
 				has_authority = auth_corporate_fiefdom
 				has_authority = auth_cooperative
-				# 驴岛
+				#	驴岛
 				has_civic = civic_business_union
-				# wsg
+				#	wsg
 				has_authority = auth_warshipgirls
-				
 				AND = {
 					has_authority = auth_shenhai
 					OR = {
@@ -2724,11 +2686,11 @@ can_support_branch_offices = {
 						has_civic = civic_sh_criminal_syndicate
 					}
 				}
-				# GF
+				#	GF
 				has_civic = GF_civic_GK
-				# azl
+				#	azl
 				has_authority = auth_azur_lane_1
-				# SOFE
+				#	SOFE
 				has_valid_civic = civic_sofe_inner_strength
 			}
 		}
@@ -2755,7 +2717,7 @@ can_support_branch_offices = {
 }
 
 
-###_|星球支持公司|	AAR	/wsg/azl/azlr/rmaid/HFE/hiveDLC/MCA/ETCPM/莉莉/久远/Ecar/星海帝皇/精灵	####################################
+###_|星球支持公司|	AAR	/wsg/azl/azlr/rmaid/HFE/hiveDLC/MCA/ETCPM/莉莉/久远/ECI/星海帝皇/精灵	####################################
 # This = planet
 # Root = country
 can_build_branch_office_on_planet = {
@@ -2867,17 +2829,17 @@ can_build_branch_office_on_planet = {
 			}
 			
 			
-			# ETCPM
+			##	ETCPM
 			AND = {
 				has_global_flag = expanded_pops_active
 				owner = { has_country_flag = cb_markets_opened@root }
 			}
-			# HFE
+			##	HFE
 			AND = {
 				has_global_flag = hfe_installed
 				root = { exists = overlord		overlord = { is_country = prevprev.owner } }	#_this的owner
 			}
-			# azl	=|自我建造|
+			##	azl	=|自我建造|
 			AND = {
 				has_global_flag = azurlane_KuRUMiiii	# |azl激活|
 				owner = {
@@ -2890,7 +2852,7 @@ can_build_branch_office_on_planet = {
 				}
 			}
 
-			# wsg	=|贸易战争|
+			##	wsg	=|贸易战争|
 			AND = {
 				owner = { has_country_flag = lose_wg_shop_war }
 				root = {
@@ -2900,33 +2862,12 @@ can_build_branch_office_on_planet = {
 					}
 				}
 			}
-			# Ecar	=|自我建造|
+			##	ECI	|自我建造|
 			AND = {
-				has_global_flag = ideological_revolution	# |Ecar激活|
-				owner = {
-					is_same_value = root	# <建造者>和<接受者>相同
-					OR = {
-						has_active_tradition = tr_future_economy_soc
-						has_civic = civic_state_owned_enterprises
-						has_civic = civic_world_cooperative
-						AND = {
-							has_active_tradition = tr_future_economy
-							OR = {
-								has_ethic = ethic_fanatic_capitalism
-								has_authority = auth_corporate
-								has_civic = civic_galactic_sovereign_megacorp
-								has_civic = civic_family_business
-								has_valid_civic = civic_underworld_society
-								has_valid_civic = civic_corporate_dominion
-								has_valid_civic = civic_merchant_guilds
-								has_valid_civic = civic_state_monopoly
-								has_valid_civic = civic_beacon_of_liberty
-							}
-						}
-					}
-				}
+				has_global_flag = ideological_revolution	# |ECI激活|
+				owner = { is_same_value = root }	# <建造者>和<接受者>相同
 			}
-			# 星海帝皇	=|义军同盟|
+			##	星海帝皇	=|义军同盟|
 			AND = {
 				root = { is_country_type = rebel_allience }
 				owner = { is_galactic_emperor = yes }
@@ -3054,24 +2995,6 @@ can_build_branch_office_on_planet = {
 			}
 		}
 	}
-	### Ecar
-	custom_tooltip = {
-		fail_text = BRANCH_OFFICE_NOT_REFORM_AND_OPENING_UP
-		NAND = {
-			has_global_flag = ideological_revolution	# Ecar激活
-			exists = owner
-			root = {
-				OR = {
-					has_valid_civic = civic_state_owned_enterprises
-					has_active_tradition = tr_future_economy_soc
-				}
-			}
-			NOR = {
-				root = { has_policy_flag = reform_and_opening_up }
-				owner = { is_same_value = root }
-			}
-		}
-	}
 	
 	hidden_trigger = {
 		### MCA
@@ -3093,7 +3016,7 @@ can_build_branch_office_on_planet = {
 }
 
 
-###_|UGRC罪企|	ETCPM/hiveDLC/MCA/wsg/ev/azlr/精灵/Ecar	####################################
+###_|UGRC罪企|	ETCPM/hiveDLC/MCA/wsg/ev/azlr/精灵/ECI	####################################
 # This = country
 # Checked by is_criminal_syndicate trigger
 is_criminal_syndicate_rule = {
@@ -3113,7 +3036,8 @@ is_criminal_syndicate_rule = {
 		#	UGRC
 		has_country_flag = UGRC_flg_cntr_RULE_criminal_syndicate
 		
-		#	Ecar
+		#	ECI
+		has_civic = civic_underworld_society
 		has_civic = civic_family_business
 		has_civic = civic_world_cooperative
 		#	wsg
@@ -3124,7 +3048,7 @@ is_criminal_syndicate_rule = {
 }
 
 
-###_|杂交许可|	wsg/PF/SC/Ecar	####################################
+###_|杂交许可|	wsg/PF/SC/ECI	####################################
 # This = planet
 can_crossbreed_species_on_planet = {
 	exists = owner
@@ -3145,11 +3069,11 @@ can_crossbreed_species_on_planet = {
 	}
 	
 	AND = {
-		# +Ecar
+		# +ECI
 		owner = {
 			OR = {
 				has_ascension_perk = ap_xeno_compatibility
-				# Ecar
+				# ECI
 				AND = {
 					has_valid_civic = civic_liberty_of_libido
 					has_ascension_perk = ap_evolutionary_mastery
@@ -3223,7 +3147,7 @@ can_crossbreed_species = {
 
 
 
-###_[银河市场]		ev/ZOFE/SOFE/EE/UR	####################################
+###_[银河市场]		ev/ZOFE/SOFE/EE/UR/ECI	####################################
 # This = country
 can_use_galactic_market = {
 	OR = {
@@ -3249,6 +3173,11 @@ can_use_galactic_market = {
 		
 		#	UR
 		has_country_flag = dark_side
+        #	ECI
+        AND = {
+            has_ethic = ethic_gestalt_consciousness
+            NOT = {  has_tradition = tr_future_economy }
+        }
 	}
 }
 
@@ -3741,7 +3670,7 @@ can_modify_organic_portraits = {
 ### dismiss_leader_cost
 
 
-###_[解雇领袖]	SC/Ecar	####################################
+###_[解雇领袖]	SC/ECI	####################################
 # this = leader
 can_dismiss_leader = {
 	if = {
@@ -3795,7 +3724,7 @@ can_dismiss_leader = {
 		fail_text = "cannot_fire_StellarisCraft_leader"
 		NOT = { has_leader_flag = StellarisCraft_event_leader }
 	}
-	# Ecar
+	# ECI
 	custom_tooltip = {
 		fail_text = "requires_actor_not_coalition_government_society"
 		exists = owner
@@ -3966,4 +3895,9 @@ can_trade_fleet = {
 ###	can_interact_with_astral_rift	# 优化价值不高,以最高代价,最多提升42%
 ###	can_explore_astral_rift
 ###	can_leader_explore_astral_rift
+
+#	3.11
+###	can_ai_assign_governor
+###	should_ai_support_galactic_empire
+###	should_ai_undermine_galactic_empire
 

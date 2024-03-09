@@ -363,28 +363,7 @@ can_generate_leader_from_pop = { #可从pop中生成领袖
 				}
 			}
 			#
-			has_citizenship_rights = yes
-			NOT = { has_trait = trait_syncretic_proles }
-			can_think = yes
-			OR = {
-				is_robot_pop = no
-				root = {
-					OR = {
-						has_technology = tech_synthetic_leaders
-						has_authority = auth_machine_intelligence
-						is_mechanical_empire = yes
-					}
-				}
-			}
-			OR = {
-				is_same_species = root
-				root = {
-					NAND = {
-						has_origin = origin_necrophage
-						has_trait = trait_necrophage
-					}
-				}
-			}
+			can_be_leader = yes
 		}
 		AND = { #国防部 MOD
 			has_pop_flag = community_mod_rules_trigger
@@ -471,27 +450,8 @@ can_generate_military_leader_from_pop = { #可从pop创建军事领袖
 				}
 			}
 			#
+			can_be_leader = yes
 			can_be_military_leader = yes
-			OR = {
-				is_robot_pop = no
-				root = {
-					OR = {
-						has_technology = tech_synthetic_leaders
-						has_authority = auth_machine_intelligence
-						is_mechanical_empire = yes
-					}
-				}
-			}
-			OR = {
-				is_same_species = root
-				root = {
-					NAND = {
-						has_origin = origin_necrophage
-						has_trait = trait_necrophage
-					}
-				}
-			}
-
 		}
 		AND = { #国防部 MOD
 			has_pop_flag = community_mod_rules_trigger
@@ -1771,14 +1731,8 @@ can_leader_get_council_trait = { #领袖可以获得委员会特质
 				}
 			}
 			#
-			OR = {
-				NAND = {
-					exists = owner
-					owner = { is_gestalt = yes }
-					is_councilor = no
-				}
-				has_leader_flag = restored_node
-			}
+			# See 03_scripted_triggers_paragon.txt
+			can_leader_get_council_trait_trigger = yes
 		}
 		AND = { #国防部 MOD
 			has_leader_flag = community_mod_rules_trigger
@@ -1811,7 +1765,13 @@ can_leader_get_normal_trait = { #领袖可以获得普通特质
 						has_leader_flag = restored_node
 					}
 				}
-				is_ruler = yes
+				AND = {
+					is_ruler = yes
+					exists = owner
+					owner = {
+						is_autocracy = yes
+					}
+				}
 				is_heir = yes
 			}
 		}
@@ -1872,6 +1832,10 @@ can_leader_get_destiny_trait = { #领袖可以获得命运特质
 			NAND = {
 				exists = owner
 				owner = { is_gestalt = yes }
+			}
+			exists = owner
+			owner = {
+				is_crisis_faction = no
 			}
 		}
 		AND = { #国防部 MOD
@@ -3880,6 +3844,8 @@ can_trade_leader = { #可交易的领导者
 					}
 				}
 			}
+			# Can't trade gestalt nodes
+			is_gestalt_node = no
 			# The overlord can't be a fallen or awakened empire.
 			ROOT = {
 				NAND = {
@@ -4875,17 +4841,36 @@ can_trade_favor = { #可交易好感
 # FROM = Astral Rift checked
 can_interact_with_astral_rift = { #可与星界裂缝互动
 	OR = {
-		from = {
-			is_surveyed = { who = prev status = yes }
+		AND = { #香草 vanilla
+			NAND = { #排除条件 Exclusions
+				has_country_flag = community_mod_rules_trigger
+				OR = {
+					has_country_flag = community_can_interact_with_astral_rift_true
+					has_country_flag = community_can_interact_with_astral_rift_false
+				}
+			}
+			#
+			OR = {
+				from = {
+					is_surveyed = { who = prev status = yes }
+				}
+				intel_level = {
+					level >= low
+					system = from.solar_system
+				}
+				from = {
+					exists = explorer
+					explorer = {
+						is_same_value = prevprev
+					}
+				}
+			}
 		}
-		intel_level = {
-			level >= low
-			system = from.solar_system
-		}
-		from = {
-			exists = explorer
-			explorer = {
-				is_same_value = prevprev
+		AND = { #国防部 MOD
+			has_country_flag = community_mod_rules_trigger
+			AND = {
+				has_country_flag = community_can_interact_with_astral_rift_true
+				NOT = { has_country_flag = community_can_interact_with_astral_rift_false }
 			}
 		}
 	}
@@ -4894,9 +4879,36 @@ can_interact_with_astral_rift = { #可与星界裂缝互动
 # THIS = country
 # FROM = Astral Rift checked
 can_explore_astral_rift = { #可探索星界裂缝
-	has_technology = tech_rift_sphere
-	hidden_trigger = {
-		is_astral_rift_pool_empty = no
+	OR = {
+		AND = { #香草 vanilla
+			NAND = { #排除条件 Exclusions
+				has_country_flag = community_mod_rules_trigger
+				OR = {
+					has_country_flag = community_can_explore_astral_rift_true
+					has_country_flag = community_can_explore_astral_rift_false
+				}
+			}
+			#
+			has_technology = tech_rift_sphere
+			hidden_trigger = {
+				OR = {
+					is_astral_rift_pool_empty = no
+					AND = {
+						exists = from.explorer
+						from.explorer = {
+							is_same_value = prevprev
+						}
+					}
+				}
+			}
+		}
+		AND = { #国防部 MOD
+			has_country_flag = community_mod_rules_trigger
+			AND = {
+				has_country_flag = community_can_explore_astral_rift_true
+				NOT = { has_country_flag = community_can_explore_astral_rift_false }
+			}
+		}
 	}
 }
 
@@ -4909,25 +4921,171 @@ can_leader_explore_astral_rift = { #领袖可探索星界裂缝
 			NAND = { #排除条件 Exclusions
 				has_leader_flag = community_mod_rules_trigger
 				OR = {
-					has_leader_flag = community_can_leader_explore_astral_rift_true
-					has_leader_flag = community_can_leader_explore_astral_rift_false
+					has_leader_flag = community_can_explore_astral_rift_true
+					has_leader_flag = community_can_explore_astral_rift_false
 				}
 			}
 			#
-			custom_tooltip = {
-				fail_text = "CANNOT_EXPLORE_WITH_COUNCIL_LEADER"
-				is_councilor = no
-			}
-			custom_tooltip = {
-				fail_text = "CANNOT_EXPLORE_WITH_HEIR_LEADER"
-				is_heir = no
+			OR = {
+				AND = { #香草 vanilla
+					NAND = { #排除条件 Exclusions
+						has_leader_flag = community_mod_rules_trigger
+						OR = {
+							has_leader_flag = community_can_leader_explore_astral_rift_true
+							has_leader_flag = community_can_leader_explore_astral_rift_false
+						}
+					}
+					#
+					custom_tooltip = {
+						fail_text = "CANNOT_EXPLORE_WITH_COUNCIL_LEADER"
+						is_councilor = no
+					}
+					custom_tooltip = {
+						fail_text = "CANNOT_EXPLORE_WITH_HEIR_LEADER"
+						is_heir = no
+					}
+				}
+				AND = { #国防部 MOD
+					has_leader_flag = community_mod_rules_trigger
+					AND = {
+						has_leader_flag = community_can_leader_explore_astral_rift_true
+						NOT = { has_leader_flag = community_can_leader_explore_astral_rift_false }
+					}
+				}
 			}
 		}
 		AND = { #国防部 MOD
 			has_leader_flag = community_mod_rules_trigger
 			AND = {
-				has_leader_flag = community_can_leader_explore_astral_rift_true
-				NOT = { has_leader_flag = community_can_leader_explore_astral_rift_false }
+				has_leader_flag = community_can_explore_astral_rift_true
+				NOT = { has_leader_flag = community_can_explore_astral_rift_false }
+			}
+		}
+	}
+}
+
+# FROM = country of the ai (in case it's relevant)
+# THIS = planet
+# this determines if the planet is allowed to receive a governor at all, and isn't called for a specific candidate
+can_ai_assign_governor = { #控制AI是否可分配星球总督
+	OR = {
+		AND = { #香草 vanilla
+			NAND = { #排除条件 Exclusions
+				has_planet_flag = community_mod_rules_trigger
+				OR = {
+					has_planet_flag = community_can_ai_assign_governor_true
+					has_planet_flag = community_can_ai_assign_governor_false
+				}
+			}
+			#
+			OR = {
+				is_sector_capital = yes
+				is_capital = yes
+			}
+			num_pops >= 1	# replaces the MINIMUM_POPS_TO_CONSIDER_GOVERNOR define
+			NOT = {
+				exists = leader
+			}
+		}
+		AND = { #国防部 MOD
+			has_planet_flag = community_mod_rules_trigger
+			AND = {
+				has_planet_flag = community_can_ai_assign_governor_true
+				NOT = { has_planet_flag = community_can_ai_assign_governor_false }
+			}
+		}
+	}
+}
+
+# if the galactic community exists, is a galactic empire, and the country is part of it
+# the ai will call this to see if it should set its delegate to strengthn it
+# It is guaranteed that the galactic community exists, is an empire, and the country is part of it
+# when this rule is called
+# THIS = Country
+# FROM = Galactic Emperor (Country)
+should_ai_support_galactic_empire = { #控制AI是否支持银河帝国
+	OR = {
+		is_galactic_emperor = yes
+		AND = {
+			NOT = {
+				FROM = {
+					is_overlord_to = prev
+				}
+			}
+			imperial_authority <= 0.75
+			is_part_of_galactic_council = yes
+			opinion = {
+				who = FROM
+				value >= 300	# value defined as "GOOD" in for opinion 00_defines.txt
+			}
+		}
+		AND = {
+			NOT = {
+				FROM = {
+					is_overlord_to = prev
+				}
+			}
+			imperial_authority <= 0.75
+			opinion = {
+				who = FROM
+				value >= 750	# value define as "EXCELLENT" for opinion in 00_defines.txt
+			}
+		}
+		AND = {
+			# Subjects of the Galactic Emperor that are loyal or cannot vote
+			# should support the Imperium
+			FROM = {
+				is_overlord_to = prev
+			}
+			OR = {
+				has_loyalty >= 0
+				NOT = {
+					any_agreement = {
+						has_term_value = {
+							term = subject_diplomacy
+							value = subject_can_do_diplomacy
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# if the galactic community exists, is a galactic empire, and the country is part of it
+# and if it didn't decided to strengthen the empire,
+# the ai will call this to see if it should set its delegate to undermine it
+# if the ai neither wants to support nor undermine the galactic empire, it will just keep
+# its emissary as a standard delegate
+# It is guaranteed that the galactic community exists, is an empire, and the country is part of it
+# when this rule is called
+# THIS = Country
+# FROM = Galactic Emperor (Country)
+should_ai_undermine_galactic_empire = {
+	is_galactic_emperor = no
+	imperial_authority >= 0.25
+	OR = {
+		AND = {
+			NOT = {
+				FROM = {
+					is_overlord_to = prev
+				}
+			}
+			opinion = {
+				who = FROM
+				value <= -300	# value defined as "POOR" for opinion in 00_defines.txt
+			}
+		}
+		AND = {
+			FROM = {
+				is_overlord_to = prev
+			}
+			has_loyalty < 0
+			any_agreement = {
+				has_term_value = {
+					term = subject_diplomacy
+					value = subject_can_do_diplomacy
+				}
 			}
 		}
 	}

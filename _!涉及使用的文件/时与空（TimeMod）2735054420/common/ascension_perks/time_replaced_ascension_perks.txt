@@ -2,6 +2,17 @@
 # ASCENSION PATHS
 #################
 
+@ascension_path_base_weight_low = 1500
+@ascension_path_base_weight_middle = 2000
+@ascension_path_base_weight_high = 3000
+@ascension_path_synergy_weight = 2
+@ascension_path_anti_synergy_weight = 0.5
+
+# 基飞：1500，蜂巢3000
+# 义飞：2000，同化4000，非唯物非蜂巢非同化1000
+# 机飞：2000，极端唯物4000，非唯物1000，同化1000，唯心等0
+# 灵飞：3000，灾飞等6000，非唯心非唯物1500，唯物750
+
 # 基飞
 ap_engineered_evolution = {
 	on_enabled = {
@@ -81,10 +92,13 @@ ap_engineered_evolution = {
 	}
 
 	ai_weight = {
-		factor = 150
+		factor = @ascension_path_base_weight_low
 		modifier = {
-			factor = 3
-			has_authority = auth_hive_mind
+			factor = @ascension_path_synergy_weight
+			OR = {
+				has_authority = auth_hive_mind
+				has_engineered_evolution_synergy = yes
+			}
 		}
 	}
 }
@@ -144,13 +158,10 @@ ap_the_flesh_is_weak = {
 	}
 
 	ai_weight = {
-		factor = 200
+		factor = @ascension_path_base_weight_middle
 		modifier = {
-			factor = 0.5
-			NOR = {
-				has_ethic = ethic_materialist
-				has_ethic = ethic_fanatic_materialist
-			}
+			factor = @ascension_path_anti_synergy_weight
+			has_flesh_is_weak_anti_synergy = yes
 		}
 	}
 }
@@ -199,7 +210,7 @@ ap_organo_machine_interfacing = {
 	}
 
 	ai_weight = {
-		factor = 200
+		factor = @ascension_path_base_weight_middle
 	}
 }
 
@@ -247,7 +258,11 @@ ap_organo_machine_interfacing_assimilator = {
 	}
 
 	ai_weight = {
-		factor = 200
+		factor = @ascension_path_base_weight_middle
+		modifier = {
+			factor = @ascension_path_synergy_weight
+			has_organo_machine_interfacing_assimilator_synergy = yes
+		}
 	}
 }
 
@@ -331,19 +346,23 @@ ap_synthetic_evolution = {
 	}
 
 	ai_weight = {
-		factor = 200
+		factor = @ascension_path_base_weight_middle
 		modifier = {
-			factor = 0.1
-			NOR = {
-				has_ethic = ethic_materialist
+			factor = @ascension_path_synergy_weight
+			OR = {
+				has_synthetic_evolution_synergy = yes
 				has_ethic = ethic_fanatic_materialist
 			}
 		}
 		modifier = {
+			factor = @ascension_path_anti_synergy_weight
+			has_synthetic_evolution_anti_synergy = yes
+		}
+		modifier = {
 			factor = 0
 			OR = {
-				has_origin = origin_necrophage
-				has_origin = origin_slavers
+				blocks_ai_synthetic_evolution = yes
+				is_spiritualist = yes
 			}
 		}
 	}
@@ -405,8 +424,8 @@ ap_mind_over_matter = {
 			NOR = {
 				has_origin = origin_syncretic_evolution #基飞
 				has_origin = origin_the_matrix #义飞
+				is_cyborg_empire = yes
 			}
-			is_cyborg_empire = no
 		}
 		NOR = {
 			has_ascension_perk = ap_mind_over_matter
@@ -419,17 +438,21 @@ ap_mind_over_matter = {
 	}
 
 	ai_weight = {
-		factor = 500
+		factor = @ascension_path_base_weight_high
 		modifier = {
-			factor = 0.2
-			NOR = {
-				has_ethic = ethic_spiritualist
-				has_ethic = ethic_fanatic_spiritualist
+			factor = @ascension_path_synergy_weight
+			OR = {
+				has_mind_over_matter_synergy = yes
+				is_crisis_country = yes
 			}
 		}
 		modifier = {
-			factor = 5
-			is_crisis_country = yes
+			factor = @ascension_path_anti_synergy_weight
+			has_mind_over_matter_anti_synergy = yes
+		}
+		modifier = {
+			factor = @ascension_path_anti_synergy_weight
+			is_materialist = yes
 		}
 	}
 }
@@ -472,7 +495,11 @@ ap_synthetic_age = {
 	}
 
 	ai_weight = {
-		factor = 200
+		factor = @ascension_path_base_weight_middle
+		modifier = {
+			factor = @ascension_path_anti_synergy_weight
+			has_synthetic_age_anti_synergy = yes
+		}
 	}
 }
 
@@ -629,6 +656,10 @@ ap_become_the_crisis = {
 		}
 		modifier = {
 			factor = 0
+			blocks_disruptive_gameplay = yes
+		}
+		modifier = {
+			factor = 0
 			has_country_flag = normal_wonder_country_35
 		}
 		modifier = {
@@ -717,6 +748,19 @@ ap_defender_of_the_galaxy = {
 	ai_weight = {
 		factor = 20
 		modifier = {
+			factor = 5
+			OR = {
+				has_crisis = yes
+				any_country = {
+					relative_power = {
+						who = prev
+						value > equivalent
+					}
+					is_crisis_country = yes
+				}
+			}
+		}
+		modifier = {
 			factor = 0
 			NOR = {
 				is_xenophile = yes
@@ -725,12 +769,7 @@ ap_defender_of_the_galaxy = {
 				any_country = {
 					OR = {
 						has_crisis_level = crisis_level_5
-						is_country_type = swarm
-						is_country_type = extradimensional
-						is_country_type = extradimensional_2
-						is_country_type = extradimensional_3
-						is_country_type = ai_empire
-						is_country_type = gray_goo
+						is_crisis_faction = yes
 					}
 				}
 			}
@@ -748,12 +787,7 @@ ap_defender_of_the_galaxy = {
 				any_country = {
 					OR = {
 						has_crisis_level = crisis_level_5
-						is_country_type = swarm
-						is_country_type = extradimensional
-						is_country_type = extradimensional_2
-						is_country_type = extradimensional_3
-						is_country_type = ai_empire
-						is_country_type = gray_goo
+						is_crisis_faction = yes
 					}
 				}
 			}

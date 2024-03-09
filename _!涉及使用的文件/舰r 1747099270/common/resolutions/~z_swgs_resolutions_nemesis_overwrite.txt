@@ -28,6 +28,10 @@ resolution_custodian_form_empire = {
 
 	effect = {
 		if = {
+			limit = { has_wg_and_uf_authority = yes }
+			custom_tooltip = resolution_custodian_form_empire_wg_tooltip
+		}
+		else_if = {
 			limit = { is_gestalt = no }
 			custom_tooltip = resolution_custodian_form_empire_tooltip
 		}
@@ -51,10 +55,16 @@ resolution_custodian_form_empire = {
 
 	potential = {
 		has_nemesis = yes
-		has_emperor_auth_trigger = no
 		is_galactic_custodian = yes
 		is_active_resolution = "resolution_custodian_perpetual_custodianship"
 		has_galactic_emperor = no
+		OR = {
+			has_emperor_auth_trigger = no
+			AND = {
+				has_wg_and_uf_authority = yes
+				NOT = { has_ascension_perk = ap_wsg_galactic_empire }
+			}
+		}
 	}
 
 	allow = {

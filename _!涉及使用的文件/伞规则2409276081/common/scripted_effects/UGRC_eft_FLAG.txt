@@ -93,6 +93,7 @@ UGRC_eft_mix_RULE_can_orbitable_repair_ships_DB = {
 					is_megastructure_type = acot_amerigo_ae
 					is_megastructure_type = acot_amerigo_se
 					is_megastructure_type = acot_amerigo_oe
+					is_megastructure_type = acot_amerigo_pe
 					is_megastructure_type = acot_phanon_master_reactor_sphere
 				}
 			}
@@ -154,6 +155,8 @@ UGRC_eft_sstm_RULE_flg_DB = {
 				has_modifier = tengu_storm
 				has_modifier = bat_swarm
 				has_modifier = red_fog
+				#	驴岛
+				has_star_flag = ark_isolated
 			}
 		}
 		every_country = {
@@ -522,7 +525,8 @@ UGRC_eft_glbl_RULE_cntr_flg_DB = {
 						OR = {
 							has_valid_civic = civic_criminal_heritage
 							
-							#	Ecar
+							#	ECI
+							has_civic = civic_underworld_society
 							has_civic = civic_family_business
 							has_civic = civic_world_cooperative
 							#	wsg
@@ -540,8 +544,6 @@ UGRC_eft_glbl_RULE_cntr_flg_DB = {
 					has_authority = auth_cooperative
 					#	ETCPM
 					has_authority = auth_private
-					#	Ecar
-					has_valid_civic = civic_underworld_society
 					#	azlr
 					AND = {
 						exists = event_target:elizabeth_leader
@@ -596,7 +598,7 @@ UGRC_eft_glbl_RULE_pop_flg_DB = {
 UGRC_eft_spcs_RULE_flg_DB = {
 	optimize_memory	#内存
 
-	##	|UGRC幸福感|	####################	wsg/PTep/Eevt/无言/Ecar/魔女
+	##	|UGRC幸福感|	####################	wsg/PTep/Eevt/无言/ECI/魔女
 	#	INTI
 	if = { limit = { has_species_flag = UGRC_flg_spcs_RULE_happiness_SET }
 		remove_species_flag = UGRC_flg_spcs_RULE_happiness_SET
@@ -618,7 +620,7 @@ UGRC_eft_spcs_RULE_flg_DB = {
 				has_trait = trait_hive_mind
 				can_think = no
 
-				#	Ecar
+				#	ECI
 				has_trait = trait_flesh_components
 				#	wsg
 				has_trait = sh_trait_shenhai
@@ -684,7 +686,7 @@ UGRC_eft_spcs_RULE_flg_DB = {
 	if = {
 		limit = {
 			is_sapient = yes
-			##	+魔圆/GF/HFE/hiveDLC/PTep/Eevt/魔女/精灵
+			##	+魔圆/GF/HFE/hiveDLC/PTep/Eevt/魔女/精灵/adf/swg
 			NOR = {
 				has_trait = trait_machine_unit
 				has_trait = trait_mechanical
@@ -707,6 +709,10 @@ UGRC_eft_spcs_RULE_flg_DB = {
 				has_trait = wawa_trait_FUTA
 				#	精灵
 				ELF_species_procreate_rules = yes
+				#	adf
+				is_archetype = Dolls
+				#	swg
+				is_archetype = STARSHIPGIRLS
 			}
 			NOT = { has_species_flag = nivlac_no_procreation }
 		}
@@ -774,7 +780,7 @@ UGRC_eft_spcs_RULE_flg_DB = {
 		
 				#	无言
 				has_trait = trait_protoss_probe
-				#	Ecar
+				#	ECI
 				has_trait = trait_flesh_components
 				#	Ereb
 				has_trait = trait_slave_gene
@@ -891,6 +897,7 @@ UGRC_eft_pop_RULE_flg_DB_cd = {
 	##	|UGRC军事领袖|	####################
 	if = {
 		limit = {
+			has_pop_flag = UGRC_flg_pop_RULE_can_generate_leader	# |can_be_leader|
 			can_be_military_leader = yes
 			#	|机器人|	+GF
 			OR = {

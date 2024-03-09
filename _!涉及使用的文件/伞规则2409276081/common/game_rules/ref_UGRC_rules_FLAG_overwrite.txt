@@ -22,11 +22,13 @@ can_vote_in_democratic_election = {
 }
 
 
-###_|UGRC产生领袖|	FW/GF/无言/Ereb/hiveDLC/PTep/Eevt/ETCPM/莉莉/Ecar/rmaid/wv
+###_|UGRC产生领袖|	FW/GF/无言/Ereb/hiveDLC/PTep/Eevt/ETCPM/莉莉/ECI/rmaid/wv
 #Checks whether any leaders (scientists etc) can be formed from this pop
 #Root = country
 #This = pop
 can_generate_leader_from_pop = {
+#	can_be_leader = yes		# 3.11	已融入下述内容
+
 	has_citizenship_rights = yes
 #	NOT = { has_trait = trait_syncretic_proles }
 	can_think = yes
@@ -36,7 +38,7 @@ can_generate_leader_from_pop = {
 
 		# 无言
 		has_trait = trait_protoss_probe
-		# Ecar
+		# ECI
 		has_trait = trait_flesh_components
 		# Ereb
 		has_trait = trait_slave_gene
@@ -92,6 +94,7 @@ can_generate_leader_from_pop = {
 #Root = country
 #This = pop
 can_generate_military_leader_from_pop = {
+	can_be_leader = yes		# 3.11		收束于|UGRC_flg_pop_RULE_can_generate_leader|
 	can_be_military_leader = yes
 	# +GF
 	OR = {
@@ -120,7 +123,7 @@ can_generate_military_leader_from_pop = {
 }
 
 
-###_|UGRC幸福感|	wsg/PTep/Eevt/无言/Ecar/wv/thl	####################################
+###_|UGRC幸福感|	wsg/PTep/Eevt/无言/ECI/wv/thl	####################################
 # Root = Species
 # From = Country
 # This = Species
@@ -177,7 +180,7 @@ species_has_happiness = {
 }
 
 
-###_|UGRC可繁殖|	GF/HFE/hiveDLC/PTep/Eevt/多彩/wv/精灵		####################################
+###_|UGRC可繁殖|	GF/HFE/hiveDLC/PTep/Eevt/多彩/wv/精灵/adf/swg		####################################
 # Checks if a pop can procreate
 # This = Species
 # Root = Planet
@@ -206,6 +209,10 @@ can_species_procreate = {
 		has_trait = wawa_trait_FUTA
 		#	精灵
 		ELF_species_procreate_rules = yes
+		#	adf
+		is_archetype = Dolls
+		#	swg
+		is_archetype = STARSHIPGIRLS
 	}
 	NAND = {
 		root = { has_modifier = slave_colony }
@@ -233,47 +240,49 @@ can_species_procreate = {
 		root = { free_housing <= -1 }
 	}
 	#	wv
-	if = { limit = { has_trait = trait_reanimated_materials }
-		root = {
-			num_assigned_jobs = {
-				job = matter_reanimator
-				value > 0
-			}
-			NOR = { # make sure elaina always grow first
-				has_building = building_possibility_portal
-				has_building = building_dimensional_instrument
-				has_deposit = d_mysterious_portal
-			}
-			owner = {
-				NOT = {
-					has_deficit = consumer_goods
-				}
-			}
-		}
-	}
-	if = { limit = { has_trait = trait_houki }
-		root.owner = {
-			has_country_flag = newbirth_houki
-			NOT = { has_country_flag = max_houki_number_reached }
-		}
-	}
-	if = {
-		limit = { 
-			OR = {
-				has_trait = trait_witch
-				has_trait = trait_victorika
-				has_trait = trait_elaina_descendant
-			}
-		}
-		OR = {
-			root.owner = {
-				has_ascension_perk = ap_xeno_compatibility
-			}
+	if = { limit = { has_species_flag = UGRC_flg_spcs_RULE_wv }
+		if = { limit = { has_trait = trait_reanimated_materials }
 			root = {
-				OR = {
+				num_assigned_jobs = {
+					job = matter_reanimator
+					value > 0
+				}
+				NOR = { # make sure elaina always grow first
 					has_building = building_possibility_portal
 					has_building = building_dimensional_instrument
 					has_deposit = d_mysterious_portal
+				}
+				owner = {
+					NOT = {
+						has_deficit = consumer_goods
+					}
+				}
+			}
+		}
+		if = { limit = { has_trait = trait_houki }
+			root.owner = {
+				has_country_flag = newbirth_houki
+				NOT = { has_country_flag = max_houki_number_reached }
+			}
+		}
+		if = {
+			limit = { 
+				OR = {
+					has_trait = trait_witch
+					has_trait = trait_victorika
+					has_trait = trait_elaina_descendant
+				}
+			}
+			OR = {
+				root.owner = {
+					has_ascension_perk = ap_xeno_compatibility
+				}
+				root = {
+					OR = {
+						has_building = building_possibility_portal
+						has_building = building_dimensional_instrument
+						has_deposit = d_mysterious_portal
+					}
 				}
 			}
 		}
@@ -475,7 +484,7 @@ ai_should_restrict_system = {
 
 
 ###_|UGRC传感器|	####################################
-##_|UGRC传感屏蔽|	RS	/Sexp/S_tnatc/WS/wsg/古代帝国/SMCO/莉莉/thl
+##_|UGRC传感屏蔽|	RS	/Sexp/S_tnatc/WS/wsg/古代帝国/SMCO/莉莉/thl/驴岛
 # this = system
 # root = country
 system_blocks_sensors = {
@@ -555,6 +564,8 @@ system_blocks_sensors = {
 		has_modifier = tengu_storm
 		has_modifier = bat_swarm
 		has_modifier = red_fog
+		#	驴岛
+		has_star_flag = ark_isolated
 	}
 }
 
@@ -602,6 +613,7 @@ can_orbitable_repair_ships = {
 				is_megastructure_type = acot_amerigo_ae
 				is_megastructure_type = acot_amerigo_se
 				is_megastructure_type = acot_amerigo_oe
+				is_megastructure_type = acot_amerigo_pe
 				is_megastructure_type = acot_phanon_master_reactor_sphere
 			}
 		}
@@ -609,7 +621,7 @@ can_orbitable_repair_ships = {
 }
 
 
-###_|UGRC罪企|	ETCPM/hiveDLC/MCA/wsg/ev/azlr/精灵/Ecar	####################################
+###_|UGRC罪企|	ETCPM/hiveDLC/MCA/wsg/ev/azlr/精灵/ECI	####################################
 # This = country
 # Checked by is_criminal_syndicate trigger
 is_criminal_syndicate_rule = {
@@ -627,7 +639,8 @@ is_criminal_syndicate_rule = {
 			OR = {
 				has_valid_civic = civic_criminal_heritage
 				
-				#	Ecar
+				#	ECI
+				has_civic = civic_underworld_society
 				has_civic = civic_family_business
 				has_civic = civic_world_cooperative
 				#	wsg
@@ -645,8 +658,6 @@ is_criminal_syndicate_rule = {
 		has_authority = auth_cooperative
 		#	ETCPM
 		has_authority = auth_private
-		#	Ecar
-		has_valid_civic = civic_underworld_society
 		#	azlr
 		AND = {
 			exists = event_target:elizabeth_leader

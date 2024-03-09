@@ -1,7 +1,10 @@
+@ascension_path_base_weight = 100
+@ascension_path_synergy_weight = 2
+@ascension_path_anti_synergy_weight = 0.5
+
 ap_mind_over_matter = {
 	on_enabled = {
 		custom_tooltip = "mind_over_matter_tooltip"
-		add_research_option = tech_telepathy
 	}
 	possible = {
 		custom_tooltip = {
@@ -9,12 +12,8 @@ ap_mind_over_matter = {
 			NOT = { has_trait = trait_mechanical }
 		}
 		custom_tooltip = {
-			fail_text = "requires_ascension_perks_1"
-			num_ascension_perks > 0
-		}
-		custom_tooltip = {
-			fail_text = "requires_technology_psionic_theory"
-			has_technology = tech_psionic_theory
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
 		}
 		custom_tooltip = {
 			fail_text = "requires_not_ap_engineered_evolution"
@@ -48,21 +47,14 @@ ap_mind_over_matter = {
 	}
 
 	ai_weight = {
-		factor = 100
+		factor = @ascension_path_base_weight
 		modifier = {
-			factor = 0.1
-			NOR = {
-				has_ethic = ethic_spiritualist
-				has_ethic = ethic_fanatic_spiritualist
-			}
+			factor = @ascension_path_synergy_weight
+			has_mind_over_matter_synergy = yes
 		}
 		modifier = {
-			factor = 0
-			num_owned_planets < 6
-		}
-		modifier = {
-			factor = 10
-			has_ascension_perk = ap_become_the_crisis
+			factor = @ascension_path_anti_synergy_weight
+			has_mind_over_matter_anti_synergy = yes
 		}
 	}
 }
@@ -70,7 +62,6 @@ ap_mind_over_matter = {
 ap_the_flesh_is_weak = {
 	on_enabled = {
 		custom_tooltip = "flesh_is_weak_tooltip"
-		add_research_option = tech_neuro_quantum_links
 	}
 	possible = {
 		custom_tooltip = {
@@ -78,12 +69,8 @@ ap_the_flesh_is_weak = {
 			NOT = { has_trait = trait_mechanical }
 		}
 		custom_tooltip = {
-			fail_text = "requires_ascension_perks_1"
-			num_ascension_perks > 0
-		}
-		custom_tooltip = {
-			fail_text = "requires_technology_integrated_cybernetics"
-			has_technology = tech_integrated_cybernetics
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
 		}
 		custom_tooltip = {
 			fail_text = "requires_not_ap_engineered_evolution"
@@ -107,7 +94,7 @@ ap_the_flesh_is_weak = {
 		has_utopia = yes
 		NOR = {
 			has_ascension_perk = ap_the_flesh_is_weak
-			has_origin = origin_shroudwalker_apprentice			
+			has_origin = origin_shroudwalker_apprentice
 			is_lily_goverments = yes
 			has_country_flag = wg_psi_country
 		}
@@ -115,17 +102,10 @@ ap_the_flesh_is_weak = {
 	}
 
 	ai_weight = {
-		factor = 20
+		factor = @ascension_path_base_weight
 		modifier = {
-			factor = 0.5
-			NOR = {
-				has_ethic = ethic_materialist
-				has_ethic = ethic_fanatic_materialist
-			}
-		}
-		modifier = {
-			factor = 0
-			num_owned_planets < 6
+			factor = @ascension_path_anti_synergy_weight
+			has_flesh_is_weak_anti_synergy = yes
 		}
 	}
 }
@@ -135,7 +115,6 @@ ap_the_flesh_is_weak = {
 ap_engineered_evolution = {
 	on_enabled = {
 		custom_tooltip = "engineered_evolution_tooltip"
-		add_research_option = tech_gene_seed_purification
 		if = {
 			limit = {
 				has_origin = origin_clone_army
@@ -153,12 +132,8 @@ ap_engineered_evolution = {
 			NOT = { has_trait = trait_mechanical }
 		}
 		custom_tooltip = {
-			fail_text = "requires_ascension_perks_1"
-			num_ascension_perks > 0
-		}
-		custom_tooltip = {
-			fail_text = "requires_technology_gene_tailoring"
-			has_technology = tech_gene_tailoring
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
 		}
 		custom_tooltip = {
 			fail_text = "requires_not_ap_the_flesh_is_weak"
@@ -196,14 +171,10 @@ ap_engineered_evolution = {
 	}
 
 	ai_weight = {
-		factor = 15
+		factor = @ascension_path_base_weight
 		modifier = {
-			factor = 0
-			num_owned_planets < 6
-		}
-		modifier = {
-			factor = 3
-			has_authority = auth_hive_mind
+			factor = @ascension_path_synergy_weight
+			has_engineered_evolution_synergy = yes
 		}
 	}
 }
@@ -211,10 +182,6 @@ ap_engineered_evolution = {
 ap_synthetic_evolution = {
 	on_enabled = {
 		custom_tooltip = "synthetic_evolution_tooltip"
-		add_research_option = tech_synthetic_leaders
-		hidden_effect = {
-			country_event = { id = utopia.2545  }
-		}
 		if = {
 			limit = {
 				has_origin = origin_necrophage
@@ -255,12 +222,8 @@ ap_synthetic_evolution = {
 			NOT = { has_trait = trait_mechanical }
 		}
 		custom_tooltip = {
-			fail_text = "requires_ascension_perks_1"
-			num_ascension_perks > 0
-		}
-		custom_tooltip = {
-			fail_text = "requires_technology_synthetic_workers"
-			has_technology = tech_synthetic_workers
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
 		}
 		custom_tooltip = {
 			fail_text = "requires_not_ap_engineered_evolution"
@@ -294,21 +257,103 @@ ap_synthetic_evolution = {
 	}
 
 	ai_weight = {
-		factor = 20
+		factor = @ascension_path_base_weight
 		modifier = {
-			factor = 0.1
+			factor = @ascension_path_synergy_weight
+			has_synthetic_evolution_synergy = yes
+		}
+		modifier = {
+			factor = @ascension_path_anti_synergy_weight
+			has_synthetic_evolution_anti_synergy = yes
+		}
+		modifier = {
+			factor = 0
+			blocks_ai_synthetic_evolution = yes
+		}
+	}
+}
+
+ap_become_the_crisis = {
+	potential = {
+		has_nemesis = yes
+		NOR = {
+			has_ascension_perk = ap_become_the_crisis
+			has_origin = origin_slavers
+			is_lily_goverments = yes
+		}
+	}
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
+		}
+		custom_tooltip = {
+			fail_text = "requires_independence"
+			is_subject = no
+		}
+		custom_tooltip = {
+			fail_text = "must_not_be_custodian"
+			is_galactic_custodian = no
+		}
+		custom_tooltip = {
+			fail_text = "must_not_be_emperor"
+			is_galactic_emperor = no
+		}
+		NOR = {
+			has_ethic = ethic_xenophile
+			has_ethic = ethic_fanatic_xenophile
+			has_ethic = ethic_pacifist
+			has_ethic = ethic_fanatic_pacifist
+			has_civic = civic_machine_servitor
+		}
+	}
+
+	on_enabled = {
+		hidden_effect = {
+			set_ai_personality = became_the_crisis
+		}
+		activate_crisis_progression = yes
+	}
+
+	ai_weight = {
+		factor = 7.5
+		modifier = {
+			factor = 0
 			NOR = {
-				has_ethic = ethic_materialist
-				has_ethic = ethic_fanatic_materialist
+				is_militarist = yes
+				is_xenophobe = yes
+				is_gestalt = yes
+			}
+		}
+		modifier = {
+			factor = 10
+			is_homicidal = yes
+		}
+		modifier = {
+			factor = 2
+			has_tradition = tr_supremacy_finish
+		}
+		modifier = {
+			factor = 0
+			galaxy_percentage < 0.1
+		}
+		modifier = {
+			factor = 2
+			galaxy_percentage > 0.2
+		}
+		modifier = {
+			factor = 0
+			count_playable_country = {
+				count > 1
+				limit = {
+					has_ascension_perk = ap_become_the_crisis
+				}
 			}
 		}
 		modifier = {
 			factor = 0
-			num_owned_planets < 6
-		}
-		modifier = {
-			factor = 0
-			has_origin = origin_necrophage
+			blocks_disruptive_gameplay = yes
 		}
 	}
 }
