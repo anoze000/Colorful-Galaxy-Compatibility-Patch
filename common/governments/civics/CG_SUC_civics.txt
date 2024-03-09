@@ -16,9 +16,7 @@ civic_flirtatious_regime = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	possible = {
@@ -37,9 +35,7 @@ civic_flirtatious_regime = {
 	}
 	icon = "gfx/interface/icons/governments/civics/civic_flirtatious_regime.dds"
 	modification = yes
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 	modifier = {
 		country_base_influence_produces_add = 1
 		pop_factions_unity_produces_mult = 1
@@ -72,9 +68,7 @@ civic_semen_squeezing = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	possible = {
@@ -99,9 +93,7 @@ civic_semen_squeezing = {
 		ship_weapon_damage = 0.25
 		planet_building_complex_industry_start_build_speed_mult = 1
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #性爱自由
@@ -123,9 +115,7 @@ civic_sex_freedom = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	possible = {
@@ -145,9 +135,7 @@ civic_sex_freedom = {
 		planet_crime_mult = -0.3
 		pop_amenities_usage_mult = -0.3
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #情色万物
@@ -165,9 +153,7 @@ civic_sex_everything = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	icon = "gfx/interface/icons/governments/civics/civic_sex_everything.dds"
@@ -192,9 +178,7 @@ civic_sex_everything = {
 		planet_pops_society_research_produces_mult = 0.25
 		planet_pops_engineering_research_produces_mult = 0.25
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #至尊女族
@@ -214,9 +198,7 @@ civic_fanatic_feminism = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	possible = {
@@ -244,9 +226,7 @@ civic_fanatic_feminism = {
 		trait = trait_enslavement_resistance
 		trait = trait_DC_ethic_carnalism
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #堕淫圣教
@@ -264,9 +244,7 @@ civic_Religion = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	icon = "gfx/interface/icons/governments/civics/civic_Religion.dds"
@@ -288,9 +266,7 @@ civic_Religion = {
 		planet_stability_add = 7
 		pop_happiness = 0.07
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #共享高潮
@@ -314,9 +290,7 @@ civic_collective_climax = {
 	icon = "gfx/interface/icons/governments/civics/civic_collective_climax.dds"
 	possible = {
 		civics = {
-			NOT = {
-				value = civic_pleasure_neural_network
-			}
+			NOT = { value = civic_pleasure_neural_network }
 		}
 	}
 	modifier = {
@@ -327,9 +301,7 @@ civic_collective_climax = {
 	traits = {
 		trait = trait_DC_ethic_carnalism
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #快感神经网络
@@ -353,9 +325,7 @@ civic_pleasure_neural_network = {
 	icon = "gfx/interface/icons/governments/civics/civic_pleasure_neural_network.dds"
 	possible = {
 		civics = {
-			NOT = {
-				value = civic_collective_climax
-			}
+			NOT = { value = civic_collective_climax }
 		}
 	}
 	modifier = {
@@ -367,9 +337,7 @@ civic_pleasure_neural_network = {
 	traits = {
 		trait = trait_DC_ethic_carnalism
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #苗床生殖
@@ -392,8 +360,6 @@ civic_seedbed_reproduction = {
 	}
 	icon = "gfx/interface/icons/governments/civics/civic_seedbed_reproduction.dds"
 	modification = yes
-	possible = {
-	}
 	modifier = {
 		planet_pops_food_upkeep_mult = 2
 		pop_growth_speed = 1
@@ -401,9 +367,7 @@ civic_seedbed_reproduction = {
 	traits = {
 		trait = trait_DC_ethic_carnalism
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #饕餮盛宴
@@ -426,14 +390,10 @@ civic_gluttonous_feast = {
 	}
 	icon = "gfx/interface/icons/governments/civics/civic_gluttonous_feast.dds"
 	description = civic_gluttonous_feast_description
-	possible = {
-	}
 	traits = {
 		trait = trait_DC_ethic_carnalism
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #淫欲义务
@@ -451,9 +411,7 @@ civic_lust_duty = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	icon = "gfx/interface/icons/governments/civics/civic_lust_duty.dds"
@@ -473,9 +431,7 @@ civic_lust_duty = {
 	modifier = {
 		country_love_juice_upkeep_mult = -0.2
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #爱液压榨
@@ -493,9 +449,7 @@ civic_love_juice_squeeze = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	icon = "gfx/interface/icons/governments/civics/civic_love_juice_squeeze.dds"
@@ -515,9 +469,7 @@ civic_love_juice_squeeze = {
 	traits = {
 		trait = trait_DC_ethic_carnalism
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #乱交派对
@@ -535,9 +487,7 @@ civic_group_sex = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	icon = "gfx/interface/icons/governments/civics/civic_group_sex.dds"
@@ -553,9 +503,7 @@ civic_group_sex = {
 	traits = {
 		trait = trait_DC_ethic_carnalism
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #淫花精灵
@@ -582,9 +530,7 @@ civic_garden_world = {
 	traits = {
 		trait = trait_DC_ethic_carnalism
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #大脑重塑
@@ -616,9 +562,7 @@ civic_brain_remodeling = {
 	traits = {
 		trait = trait_DC_ethic_carnalism
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #爱欲盛宴
@@ -637,9 +581,7 @@ civic_master = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	icon = "gfx/interface/icons/governments/civics/civic_master.dds"
@@ -663,9 +605,7 @@ civic_master = {
 		pop_growth_from_immigration = 0.5
 		planet_immigration_pull_mult = 0.5
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #性奴传统
@@ -689,9 +629,7 @@ civic_slave_tradition = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	possible = {
@@ -707,9 +645,7 @@ civic_slave_tradition = {
 		}
 	}
 	icon = "gfx/interface/icons/governments/civics/civic_slave_tradition.dds"
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 	modifier = {
 		planet_jobs_slave_produces_mult = 0.1
 		pop_category_rulers_consumer_goods_upkeep_add = 1
@@ -739,9 +675,7 @@ civic_appease_regulations = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	possible = {
@@ -754,9 +688,7 @@ civic_appease_regulations = {
 		}
 	}
 	icon = "gfx/interface/icons/governments/civics/civic_appease_regulations.dds"
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 	modifier = {
 		diplo_weight_mult = 0.3
 		country_subject_power_penalty_mult = -0.25
@@ -790,9 +722,7 @@ civic_lust_guro = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	possible = {
@@ -813,9 +743,7 @@ civic_lust_guro = {
 		country_naval_cap_add = 100
 		planet_beauty_produces_mult = -10
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #全民性奴
@@ -836,9 +764,7 @@ civic_all_slave = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	traits = {
@@ -868,9 +794,7 @@ civic_all_slave = {
 		planet_jobs_unity_produces_mult = 0.2
 		pop_government_ethic_attraction = 1
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #生化机奸
@@ -891,9 +815,7 @@ civic_mechanical_intercourse = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	traits = {
@@ -904,14 +826,12 @@ civic_mechanical_intercourse = {
 			value = ethic_fanatic_materialist
 		}
 		civics = {
-			NOT = {
-				value = civic_penis_craving
-			}
+			NOT = { value = civic_penis_craving }
 		}
 	}
 	modifier = {
 		leader_lifespan_add = -20
-		planet_jobs_organic_produces_mult = -0.6
+		planet_jobs_organics_produces_mult = -0.6
 		planet_lovejuicer_organic_produces_mult = 0.6
 		planet_erotic_organic_produces_mult = 0.6
 		planet_beauty_organic_produces_mult = 0.6
@@ -920,9 +840,7 @@ civic_mechanical_intercourse = {
 		planet_max_buildings_add = 1
 		job_full_time_sex_toy_per_pop = 0.2
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #疯狂脑虫
@@ -941,9 +859,7 @@ civic_crazy_brain = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	icon = "gfx/interface/icons/governments/civics/civic_crazy_brain.dds"
@@ -964,9 +880,7 @@ civic_crazy_brain = {
 		diplo_weight_mult = -0.99
 		country_war_exhaustion_mult = 1
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #肉棒渴求
@@ -984,9 +898,7 @@ civic_penis_craving = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	modification = yes
@@ -1019,9 +931,7 @@ civic_penis_craving = {
 		planet_crime_mult = -1
 		job_big_dick_per_pop = 0.1
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #色欲祭神
@@ -1040,9 +950,7 @@ civic_sacrifice_lustgod = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	modification = no
@@ -1072,9 +980,7 @@ civic_sacrifice_lustgod = {
 		species_leader_exp_gain = 0.77
 		empire_size_penalty_mult = -0.21
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #绝媚娇娃
@@ -1103,9 +1009,7 @@ civic_sex_baby = {
 	icon = "gfx/interface/icons/governments/civics/civic_sex_baby.dds"
 	possible = {
 		civics = {
-			NOT = {
-				value = civic_bereavement
-			}
+			NOT = { value = civic_bereavement }
 		}
 	}
 	modifier = {
@@ -1120,9 +1024,7 @@ civic_sex_baby = {
 		shipclass_science_ship_disengage_mult = 3.33
 		ship_evasion_mult = 0.33
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #劣化丧女
@@ -1148,9 +1050,7 @@ civic_bereavement = {
 	modification = no
 	possible = {
 		civics = {
-			NOT = {
-				value = civic_sex_baby
-			}
+			NOT = { value = civic_sex_baby }
 		}
 	}
 	modifier = {
@@ -1161,9 +1061,7 @@ civic_bereavement = {
 	traits = {
 		trait = trait_DC_ethic_carnalism
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #深渊圣权
@@ -1187,9 +1085,7 @@ civic_abyssal_ascendancy = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	possible = {
@@ -1214,9 +1110,7 @@ civic_abyssal_ascendancy = {
 		planet_dcyh_pops_militarist_minerals_upkeep_add = 0.25
 		pop_ethic_militarist_attraction_mult = 1
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #孕妓传统
@@ -1240,18 +1134,14 @@ civic_pregnant_prostitute = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	modifier = {
 		trade_value_mult = 0.2
 		job_prostitute_per_pop = 0.1
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 civic_suc_galactic_sovereign = {
@@ -1262,9 +1152,7 @@ civic_suc_galactic_sovereign = {
 			value = civic_suc_galactic_sovereign			# Added via event - this trigger prevents the civic from being picked by others
 		}
 	}
-	random_weight = {
-		base = 0
-	}
+	random_weight = { base = 0 }
 	modifier = {
 		country_civics_influence_produces_add = 4
 		diplo_weight_mult = 1
@@ -1293,7 +1181,5 @@ civic_suc_fe = {
 		pop_growth_speed_reduction = 0.5
 		planet_max_buildings_add = 16
 	}
-	random_weight = {
-		base = 999999
-	}
+	random_weight = { base = 999999 }
 }

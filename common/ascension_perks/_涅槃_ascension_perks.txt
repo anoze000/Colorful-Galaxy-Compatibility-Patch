@@ -3,6 +3,7 @@ ap_power_of_heaven = {
 		custom_tooltip = "power_of_heaven_tooltip"
 		hidden_effect = { 
 			set_country_flag = str_nirvana_awakened 
+			country_event = { id = str_origin.10106 days = 1 }
 		}
 		add_research_option = tech_celestial_lance
 		add_research_option = tech_celestial_beam
@@ -90,7 +91,7 @@ ap_power_of_heaven = {
 				has_ascension_perk = ap_uf_2
 				has_ascension_perk = ap_become_the_gray
 				has_ascension_perk = ap_GF_nyto_resurrection
-				has_ascension_perk = ap_lustgod_perfect_idiosom
+				has_ascension_perk = ap_lustgod_perfect_idiosoma
 				has_ascension_perk = ap_pure_ascension
 				has_ascension_perk = ap_ten_fenhua
 				has_ascension_perk = ap_our_future
@@ -116,6 +117,7 @@ ap_power_of_multiverse = {
 		custom_tooltip = "power_of_multiverse_tooltip"
 		hidden_effect = { 
 			set_country_flag = str_nirvana_awakened 
+			country_event = { id = str_origin.10106 days = 1 }
 		}
 		add_research_option = tech_multiverse_artillery
 		add_research_option = tech_multiverse_cannon
@@ -197,7 +199,7 @@ ap_power_of_multiverse = {
 				has_ascension_perk = ap_uf_2
 				has_ascension_perk = ap_become_the_gray
 				has_ascension_perk = ap_GF_nyto_resurrection
-				has_ascension_perk = ap_lustgod_perfect_idiosom
+				has_ascension_perk = ap_lustgod_perfect_idiosoma
 				has_ascension_perk = ap_pure_ascension
 				has_ascension_perk = ap_ten_fenhua
 				has_ascension_perk = ap_our_future

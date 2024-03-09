@@ -26,9 +26,7 @@ civic_sage_worshipping = {
 		}
 	}
 	icon = "gfx/interface/icons/governments/civics/civic_sage_worshipping.dds"
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 	modifier = {
 		all_technology_research_speed = 0.15
 		planet_decision_enact_speed_mult = 0.25
@@ -66,9 +64,7 @@ civic_pure_white_eden = {
 		}
 	}
 	icon = "gfx/interface/icons/governments/civics/civic_pure_white_eden.dds"
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 	modifier = {
 		planet_jobs_unity_produces_mult = 0.1
 		empire_size_pops_mult = -0.1
@@ -107,15 +103,11 @@ civic_jihad_inherit = {
 			}
 		}
 		origin = {
-			NOT = {
-				value = origin_INN_world_tree
-			}
+			NOT = { value = origin_INN_world_tree }
 		}
 	}
 	icon = "gfx/interface/icons/governments/civics/civic_jihad_inherit.dds"
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 	description = civic_jihad_inherit_description
 	modifier = {
 		country_claim_influence_cost_mult = -0.3
@@ -162,9 +154,7 @@ civic_glorious_aristocracy = {
 		}
 	}
 	icon = "gfx/interface/icons/governments/civics/civic_glorious_aristocracy.dds"
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 	modifier = {
 		pop_factions_unity_produces_mult = 0.5
 		leaders_cost_mult = -0.5
@@ -172,7 +162,6 @@ civic_glorious_aristocracy = {
 		edicts_upkeep_mult = -0.2
 		planet_jobs_ruler_produces_mult = 0.1
 		planet_jobs_specialist_produces_mult = 0.1
-		subject_tribute_mult = 0.25
 	}
 }
 
@@ -204,9 +193,7 @@ civic_pure_racial = {
 		}
 	}
 	icon = "gfx/interface/icons/governments/civics/civic_pure_racial.dds"
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 	modifier = {
 		planet_stability_add = 5
 		planet_jobs_unity_produces_mult = 0.1
@@ -244,11 +231,12 @@ civic_platonic_love = {
 				value = ethic_fanatic_xenophile
 			}
 		}
+		origin = {
+			NOT = { value = origin_INN_destruction_light }
+		}
 	}
 	icon = "gfx/interface/icons/governments/civics/civic_platonic_love.dds"
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 	modifier = {
 		pop_growth_speed = 0.2
 		diplo_weight_mult = 0.3
@@ -270,6 +258,9 @@ civic_punish_for_sodom = {
 			value = ethic_fanatic_xenophobe
 			value = ethic_spiritualist
 		}
+		origin = {
+			NOT = { value = origin_INN_destruction_light }
+		}
 	}
 	traits = {
 		trait = trait_DC_ethic_asceticism
@@ -289,9 +280,7 @@ civic_punish_for_sodom = {
 		}
 	}
 	icon = "gfx/interface/icons/governments/civics/civic_punish_for_sodom.dds"
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #圣树启灵
@@ -326,9 +315,7 @@ civic_holy_tree = {
 		}
 	}
 	icon = "gfx/interface/icons/governments/civics/civic_holy_tree.dds"
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #神爱世人
@@ -358,11 +345,12 @@ civic_god_loves_people = {
 				value = ethic_fanatic_egalitarian
 			}
 		}
+		origin = {
+			NOT = { value = origin_INN_destruction_light }
+		}
 	}
 	icon = "gfx/interface/icons/governments/civics/civic_god_loves_people.dds"
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 civic_inn_galactic_sovereign = {
@@ -373,9 +361,7 @@ civic_inn_galactic_sovereign = {
 			value = civic_inn_galactic_sovereign			# Added via event - this trigger prevents the civic from being picked by others
 		}
 	}
-	random_weight = {
-		base = 0
-	}
+	random_weight = { base = 0 }
 	modifier = {
 		country_civics_influence_produces_add = 4
 		diplo_weight_mult = 1
@@ -402,14 +388,7 @@ civic_holylight_convict = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
-			origin = {
-				NOT = { 
-					value = origin_INN_destruction_light 
-					}
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	traits = {
@@ -420,6 +399,9 @@ civic_holylight_convict = {
 	possible = {
 		ethics = {
 			value = ethic_fanatic_pacifist
+		}
+		origin = {
+			NOT = { value = origin_INN_destruction_light }
 		}
 	}
 	modifier = {
@@ -433,9 +415,7 @@ civic_holylight_convict = {
 		shipclass_military_station_damage_mult = 1
 		starbase_defense_platform_capacity_add = 10
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 #慈爱圣母
@@ -458,9 +438,7 @@ civic_loving_virgin = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	possible = {
@@ -475,18 +453,14 @@ civic_loving_virgin = {
 			value = auth_corporate
 		}
 		origin = {
-			NOT = { 
-				value = origin_INN_destruction_light 
-				}
+			NOT = { value = origin_INN_destruction_light }
 		}
 	}
 	modifier = {
 		trade_value_mult = 0.2
 		job_loving_virgin_per_pop = 0.1
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 civic_holylight_usual = {
@@ -504,9 +478,7 @@ civic_holylight_usual = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	traits = {
@@ -523,9 +495,7 @@ civic_holylight_usual = {
 		planet_pops_unity_produces_add = 0.5
 		planet_pops_upkeep_mult = -0.25
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }
 
 civic_help_weak = {

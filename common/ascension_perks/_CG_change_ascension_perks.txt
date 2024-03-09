@@ -4,14 +4,8 @@ ap_holylight_god_blood = {
 		add_research_option = tech_pc_holylight_city
 		add_research_option = tech_beauty_theory
 		hidden_effect = {
-			country_event = {
-				id = mind_break.4
-			}
-			country_event = {
-				id = CG_chain.200
-				days = 180
-				random = 30
-			}
+			country_event = { id = mind_break.4 }
+			country_event = { id = CG_chain.200 days = 180 random = 30 }
 		}
 	}
 	possible = {
@@ -37,9 +31,7 @@ ap_holylight_god_blood = {
 			is_mechanical_empire = no
 			is_dc_cor_archetype = yes
 		}
-		NOT = { 
-			has_ascension_perk = ap_holylight_god_blood 
-		}
+		NOT = { has_ascension_perk = ap_holylight_god_blood }
 	}
 	modifier = {
 		BIOLOGICAL_species_trait_points_add = 2
@@ -52,8 +44,6 @@ ap_holylight_god_blood = {
 		planet_jobs_produces_mult = 0.1
 		country_unity_produces_mult = 0.1
 	}
-	ai_weight = {
-		factor = 500
-	}
+	ai_weight = { factor = 500 }
 }
 

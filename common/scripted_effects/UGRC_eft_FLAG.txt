@@ -93,6 +93,7 @@ UGRC_eft_mix_RULE_can_orbitable_repair_ships_DB = {
 					is_megastructure_type = acot_amerigo_ae
 					is_megastructure_type = acot_amerigo_se
 					is_megastructure_type = acot_amerigo_oe
+					is_megastructure_type = acot_amerigo_pe
 					is_megastructure_type = acot_phanon_master_reactor_sphere
 				}
 			}
@@ -154,6 +155,8 @@ UGRC_eft_sstm_RULE_flg_DB = {
 				has_modifier = tengu_storm
 				has_modifier = bat_swarm
 				has_modifier = red_fog
+				#	驴岛
+				has_star_flag = ark_isolated
 			}
 		}
 		every_country = {
@@ -510,43 +513,28 @@ UGRC_eft_glbl_RULE_cntr_flg_DB = {
 				num_pops > 0
 				OR = {
 					AND = {
-						NOR = {
-							has_country_flag = ICE_MOON_FUTA_AI
-							has_country_flag = ICE_MOON_FUTA
-						}
-
+						#	|政体|
 						OR = {
 							has_authority = auth_corporate
 							has_valid_civic = civic_galactic_sovereign_megacorp
-
-							# ETCPM
-							has_authority = auth_private
-							# hiveDLC
-							has_valid_civic = civic_mutualistic_behavior
-							has_valid_civic = civic_machine_trading
-							# MCA
-							has_authority = auth_corporate_fiefdom
-							has_authority = auth_cooperative
-							# wsg
+					
+							#	wsg
 							has_authority = auth_warshipgirls
-							# Ecar
-							has_civic = civic_family_business
-							has_civic = civic_world_cooperative
-						}							
+						}
+						#	|国策|
 						OR = {
 							has_valid_civic = civic_criminal_heritage
-							has_valid_civic = civic_ev_criminal_ship	# ev
-							has_valid_civic = civic_corruption_syndicate	# 多彩玩法拓展
-							has_valid_civic = civic_semen_pantyhose_brothel # 精灵
 						}
 					}
 				
+					#	hiveDLC
+					has_valid_civic = civic_mutualistic_behavior
+					has_valid_civic = civic_machine_trading
+					#	MCA
+					has_authority = auth_corporate_fiefdom
+					has_authority = auth_cooperative
 					#	ETCPM
 					has_authority = auth_private
-					#	Ecar
-					has_valid_civic = civic_underworld_society
-					# |wsg|额外
-					has_civic = civic_sh_criminal_syndicate
 					#	azlr
 					AND = {
 						exists = event_target:elizabeth_leader
@@ -558,10 +546,7 @@ UGRC_eft_glbl_RULE_cntr_flg_DB = {
 			}
 			set_country_flag = UGRC_flg_cntr_RULE_criminal_syndicate
 		}
-		else_if = { 
-			limit = { 
-				has_country_flag = UGRC_flg_cntr_RULE_criminal_syndicate 
-			}
+		else_if = { limit = { has_country_flag = UGRC_flg_cntr_RULE_criminal_syndicate }
 			remove_country_flag = UGRC_flg_cntr_RULE_criminal_syndicate
 		}
 	}
@@ -604,7 +589,7 @@ UGRC_eft_glbl_RULE_pop_flg_DB = {
 UGRC_eft_spcs_RULE_flg_DB = {
 	optimize_memory	#内存
 
-	##	|UGRC幸福感|	####################	wsg/PTep/Eevt/无言/Ecar/魔女
+	##	|UGRC幸福感|	####################	wsg/PTep/Eevt/无言/ECI/魔女
 	#	INTI
 	if = { limit = { has_species_flag = UGRC_flg_spcs_RULE_happiness_SET }
 		remove_species_flag = UGRC_flg_spcs_RULE_happiness_SET
@@ -626,7 +611,7 @@ UGRC_eft_spcs_RULE_flg_DB = {
 				has_trait = trait_hive_mind
 				can_think = no
 
-				#	Ecar
+				#	ECI
 				has_trait = trait_flesh_components
 				#	wsg
 				has_trait = sh_trait_shenhai
@@ -692,9 +677,10 @@ UGRC_eft_spcs_RULE_flg_DB = {
 	if = {
 		limit = {
 			is_sapient = yes
-			##	+魔圆/GF/HFE/hiveDLC/PTep/Eevt/魔女/精灵
+			##	+魔圆/GF/HFE/hiveDLC/PTep/Eevt/魔女/精灵/adf/swg
 			NOR = {
 				has_trait = trait_machine_unit
+				has_trait = trait_mechanical
 				#	vanilla + umd
 				AND = {
 					has_trait = trait_mechanical
@@ -726,15 +712,21 @@ UGRC_eft_spcs_RULE_flg_DB = {
 				#	Eevt
 				has_trait = trait_memorex_comatos
 				#	魔女
-				has_trait = trait_dummy	
+				has_trait = trait_dummy
 				#	精灵
 				ELF_species_procreate_rules = yes
+				#	adf
+				is_archetype = Dolls
+				#	swg
+				is_archetype = STARSHIPGIRLS
 			}
 			NOT = { has_species_flag = nivlac_no_procreation }
+  			#	多彩
 			if = {
 				limit = {
 					has_global_flag = love_between_us
 				}
+				#淫触之虫无法自然增长
 				OR = {
 					AND = {
 						has_trait = trait_DC_ethic_parasite_mind
@@ -760,10 +752,10 @@ UGRC_eft_spcs_RULE_flg_DB = {
 				has_trait = trait_elaina_descendant
 			}
 		}
-		set_species_flag = UGRC_flg_spcs_RULE_procreate_DUMMY
+		set_species_flag = UGRC_flg_spcs_RULE_wv
 	}
 	else = {
-		remove_species_flag = UGRC_flg_spcs_RULE_procreate_DUMMY
+		remove_species_flag = UGRC_flg_spcs_RULE_wv
 	}
 
 
@@ -808,7 +800,7 @@ UGRC_eft_spcs_RULE_flg_DB = {
 		
 				#	无言
 				has_trait = trait_protoss_probe
-				#	Ecar
+				#	ECI
 				has_trait = trait_flesh_components
 				#	Ereb
 				has_trait = trait_slave_gene
@@ -936,6 +928,7 @@ UGRC_eft_pop_RULE_flg_DB_cd = {
 	##	|UGRC军事领袖|	####################
 	if = {
 		limit = {
+			has_pop_flag = UGRC_flg_pop_RULE_can_generate_leader	# |can_be_leader|
 			can_be_military_leader = yes
 			#	|机器人|	+GF
 			OR = {
@@ -969,4 +962,3 @@ UGRC_eft_pop_RULE_flg_DB_cd = {
 		remove_pop_flag = UGRC_flg_pop_RULE_can_generate_military_leader
 	}
 }
-

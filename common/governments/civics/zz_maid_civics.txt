@@ -1,12 +1,72 @@
-#精工技艺
-civic_machine_crafters = {
-	potential = {
-		authority = {
+#失控女仆
+civic_machine_servitor = {
+	potential = { 
+		authority = { 
 			OR = {
-				value = auth_ancient_machine_intelligence
 				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}			 
+		} 
+	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_machine_terminator
+				value = civic_machine_assimilator
+				value = civic_machine_warbots
+				value = civic_machine_toxic_baths
 			}
 		}
+		origin = {
+			NOT = {
+				value = origin_machine
+			}
+		}
+	}
+	modification = no
+	random_weight = {
+		base = 10
+		modifier = {
+			factor = 0
+			NOT = { host_has_dlc = "Synthetic Dawn Story Pack" }
+		}
+		modifier = {
+			# civic has no effect after galaxy generation, disable for random generation
+			factor = 0
+			has_global_flag = game_started
+		}
+	}
+	description = civic_tooltip_machine_servitor_effects
+	traits = {
+		trait = trait_machine_maid
+	}
+	modifier = {
+		councilor_gestalt_governor_exp_gain = @gestalt_civic_node_xp_rate
+		pop_growth_speed_reduction = -0.4
+		empire_size_bio_trophy_mult = -0.3
+	}
+	has_secondary_species = {	# see game_start.11
+		title = civic_machine_servitor_secondary_species
+	}
+	swap_type = {
+		trigger = { is_ai = yes }
+		description = civic_tooltip_machine_servitor_effects
+		modifier = {
+			planet_resettlement_unemployed_mult = 20
+			planet_building_refund_mult = 0.5
+		}
+	}
+}
+
+#精工技艺
+civic_machine_crafters = {
+	potential = { 
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}			 
+		} 
 	}
 	possible = {
 		civics = {
@@ -41,13 +101,13 @@ civic_machine_crafters = {
 #乐土机械
 civic_machine_paradise_lost = {
 	#modification = no
-	potential = {
-		authority = {
+	potential = { 
+		authority = { 
 			OR = {
-				value = auth_ancient_machine_intelligence
 				value = auth_machine_intelligence
-			}
-		}
+				value = auth_lust_skynet
+			}			 
+		} 
 	}
 	possible = {
 		civics = {
@@ -100,13 +160,13 @@ civic_machine_healthcare = {
 		base = 4
 	}
 	description = "civic_tooltip_civic_machine_healthcare_effects_both"
-	potential = {
-		authority = {
+	potential = { 
+		authority = { 
 			OR = {
-				value = auth_ancient_machine_intelligence
 				value = auth_machine_intelligence
-			}
-		}
+				value = auth_lust_skynet
+			}			 
+		} 
 	}
 	possible = {
 		civics = {
@@ -133,15 +193,13 @@ civic_custodian_directives_successor = {
 	modification = no
 	icon = "gfx/interface/icons/governments/civics/civic_custodian_directives.dds"
 	potential = {
-		authority = {
+		authority = { 
 			OR = {
-				value = auth_ancient_machine_intelligence
-				value = auth_machine_intelligence
-			}
+				value = auth_machine_intelligence 
+				value = auth_lust_skynet
+			}	
 		}
-		civics = { 
-			value = civic_custodian_directives_successor 
-		}
+		civics = { value = civic_custodian_directives_successor }
 	}
 	random_weight = { base = 0 }
 	description = civic_custodian_directives_successor_effects

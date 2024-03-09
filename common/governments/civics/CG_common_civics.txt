@@ -15,9 +15,7 @@ civic_systematic_cultivation = {
 			}
 		}
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
 	icon = "gfx/interface/icons/governments/civics/civic_systematic_cultivation.dds"
@@ -25,7 +23,5 @@ civic_systematic_cultivation = {
 	modifier = {
 		planet_beauty_produces_mult = 0.2
 	}
-	random_weight = {
-		base = 50
-	}
+	random_weight = { base = 50 }
 }

@@ -13,14 +13,9 @@ ap_become_the_gray = {
 		#}
 
 		if = {
-			limit = { 
-				NOT = { 
-					has_country_flag = origin_gray_country 
-				}
-			}
+			limit = { NOT = { has_country_flag = origin_gray_country }}
 			has_technology = tech_TMR_nanite_productor
-		} 
-		else = {
+		} else = {
 			custom_tooltip = {
 				fail_text = "must_finish_gray_storyline"
 				has_country_flag = origin_gray_country
@@ -35,6 +30,7 @@ ap_become_the_gray = {
 			fail_text = "requires_technology_synthetic_workers"
 			has_technology = tech_synthetic_workers
 		}
+
 		# if = {
 		# 	limit = { has_authority = auth_warshipgirls }
 		# 	has_ascension_perk = ap_project_r
@@ -81,39 +77,19 @@ ap_become_the_gray = {
 		# }
 		custom_tooltip = {
 			fail_text = "requires_not_ap_the_flesh_is_weak"
-			NOT = { 
-				has_ascension_perk = ap_the_flesh_is_weak 
-			}
+			NOT = { has_ascension_perk = ap_the_flesh_is_weak }
 		}
 		custom_tooltip = {
 			fail_text = "requires_not_ap_organo_machine_interfacing"
-			NOT = { 
-				has_ascension_perk = ap_organo_machine_interfacing 
-			}
-		}
-		custom_tooltip = {
-			fail_text = "requires_not_ap_mind_over_matter"
-			NOT = { 
-				has_ascension_perk = ap_mind_over_matter 
-			}
+			NOT = { has_ascension_perk = ap_organo_machine_interfacing }
 		}
 		custom_tooltip = {
 			fail_text = "requires_not_ap_synthetic_evolution"
-			NOT = { 
-				has_ascension_perk = ap_synthetic_evolution 
-			}
-		}
-		custom_tooltip = {
-			fail_text = "requires_not_ap_synthetic_evolution"
-			NOT = { 
-				has_ascension_perk = ap_engineered_evolution 
-			}
+			NOT = { has_ascension_perk = ap_synthetic_evolution }
 		}
 		custom_tooltip = {
 			fail_text = "synthetic_empire_biological_ascension"
-			NOT = { 
-				has_trait = trait_mechanical 
-			}
+			NOT = { has_trait = trait_mechanical }
 		}
 	}
 	modifier = {
@@ -121,24 +97,24 @@ ap_become_the_gray = {
 		WARSHIPGIRL_species_trait_picks_add = 2
 		SHENHAI_species_trait_points_add = 10
 		SHENHAI_species_trait_picks_add = 2
-		STARSHIPGIRLS_species_trait_points_add = 10
+	    STARSHIPGIRLS_species_trait_points_add = 10
 		STARSHIPGIRLS_species_trait_picks_add = 2
-		LILY_species_trait_points_add = 10
-		LILY_species_trait_picks_add = 2
-		KANSEN_species_trait_points_add = 10
+	    LILY_species_trait_points_add = 10
+	    LILY_species_trait_picks_add = 2
+	    KANSEN_species_trait_points_add = 10
 		KANSEN_species_trait_picks_add = 2
-		TOUHOUGIRLS_species_trait_points_add = 10
+	    TOUHOUGIRLS_species_trait_points_add = 10
 		TOUHOUGIRLS_species_trait_picks_add = 2
-		NYTO_species_trait_points_add = 10
+	    NYTO_species_trait_points_add = 10
 		NYTO_species_trait_picks_add = 2
-		KANMUSU_species_trait_points_add = 10
+	    KANMUSU_species_trait_points_add = 10
 		KANMUSU_species_trait_picks_add = 2
-		Dolls_species_trait_points_add = 10
+	    Dolls_species_trait_points_add = 10
 		Dolls_species_trait_picks_add = 2
-		DATEALIVE_species_trait_points_add = 10
+	    DATEALIVE_species_trait_points_add = 10
 		DATEALIVE_species_trait_picks_add = 2
 		BIOLOGICAL_species_trait_points_add = 10
-      	BIOLOGICAL_species_trait_picks_add = 2
+		BIOLOGICAL_species_trait_picks_add = 2
 		UNITED_FLEET_species_trait_points_add = 10
 		UNITED_FLEET_species_trait_picks_add = 2
 		Lust_Girl_species_trait_points_add = 10
@@ -151,13 +127,8 @@ ap_become_the_gray = {
 
 	on_enabled = {
 		custom_tooltip = ap_become_the_gray_tooltip
-		give_technology = { 
-			tech = tech_gray_genetic_resequencing 
-			message = yes
-		}
-		country_event = { 
-			id = gray_origin.2100 
-		}
+		give_technology = { tech = tech_gray_genetic_resequencing message = yes }
+		country_event = { id = gray_origin.2100 }
 	}
 	
 	potential = {
