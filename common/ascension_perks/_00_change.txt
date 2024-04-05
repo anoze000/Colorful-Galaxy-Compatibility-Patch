@@ -68,6 +68,10 @@ ap_engineered_evolution = {
 			fail_text = "requires_not_ap_synthetic_evolution"
 			NOT = { has_ascension_perk = ap_synthetic_evolution }
 		}
+		custom_tooltip = {
+			fail_text = "requires_free_tradition_tree"
+			num_tradition_categories < 7
+		}
 	}
 
 	potential = {

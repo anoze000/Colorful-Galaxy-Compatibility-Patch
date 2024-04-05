@@ -3092,6 +3092,7 @@ can_purge_pop_manually = { #可手动清除pop
 			}
 		}
 	}
+	#多彩
 	custom_tooltip = {
 		fail_text = "ACTION_CANNOT_PURGE_INFESTED_DC"
 		exists = owner
@@ -4597,8 +4598,6 @@ can_support_branch_offices = { #可被建立分部
 							limit = {
 								has_global_flag = love_between_us
 							}
-							#淫渊企业
-							has_authority = auth_brothel
 							#破灭之光
 							has_origin = origin_INN_destruction_light
 							#迭起兴衰
