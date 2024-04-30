@@ -4593,6 +4593,9 @@ can_support_branch_offices = { #可被建立分部
 								}
 							}
 						}
+						else = {
+							always = no
+						}
 						# 多彩
 						if = {
 							limit = {
