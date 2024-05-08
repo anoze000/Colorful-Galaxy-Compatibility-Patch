@@ -116,12 +116,12 @@ building_SRA_world_machine = {
 	resources = {
 		category = planet_metallurgists
 		produces = {
-			alloys = 40
+			alloys = 20
 			multiplier = planet.SRA_world_machine_produces
 		}
 		produces = {
 			trigger = { owner = { has_technology = tech_SRA_T3_Composite_Crystal_Lattice } }
-			alloys = 40
+			alloys = 20
 			multiplier = planet.SRA_world_machine_produces
 		}
 	}
@@ -349,7 +349,6 @@ building_SRA_databank = {
 			OR = {
 				custom_tooltip = {
 					fail_text = "SRA_need_building_core"
-					exists = owner
 					owner = {
 						check_variable = {
 							which = building_SRA_databank_counter
@@ -434,7 +433,6 @@ building_SRA_foundry = {
 			OR = {
 				custom_tooltip = {
 					fail_text = "SRA_need_building_core"
-					exists = owner
 					owner = {
 						check_variable = {
 							which = building_SRA_foundry_counter
@@ -453,6 +451,7 @@ building_SRA_foundry = {
 			}
 		}
 	}
+
 
 	on_queued = {
 		owner = {
@@ -493,11 +492,11 @@ building_SRA_foundry = {
 	resources = {
 		category = planet_buildings
 		produces = {
-			energy = 2000
+			energy = 4000
 			minerals = 2000
 			food = 2000
-			alloys = 8000
-			consumer_goods = 4000
+			alloys = 4000
+			consumer_goods = 800
 			rare_crystals = 800
 			exotic_gases = 800
 			volatile_motes = 800
@@ -529,7 +528,6 @@ building_SRA_ground_yards = {
 			OR = {
 				custom_tooltip = {
 					fail_text = "SRA_need_building_core"
-					exists = owner
 					owner = {
 						check_variable = {
 							which = building_SRA_ground_yards_counter
@@ -634,7 +632,6 @@ building_SRA_produce_centre = {
 			OR = {
 				custom_tooltip = {
 					fail_text = "SRA_need_building_core"
-					exists = owner
 					owner = {
 						check_variable = {
 							which = building_SRA_produce_centre_counter

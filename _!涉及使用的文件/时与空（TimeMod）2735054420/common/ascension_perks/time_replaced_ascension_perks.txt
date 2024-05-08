@@ -65,30 +65,18 @@ ap_engineered_evolution = {
 			fail_text = "requires_not_ap_synthetic_evolution"
 			NOT = { has_ascension_perk = ap_synthetic_evolution }
 		}
+		# 魔女之旅
+		custom_tooltip = {
+			fail_text = "requires_not_ap_matters_all_have_minds"
+			NOR = { 
+				has_ascension_perk = ap_matters_all_have_minds
+				has_tradition = tr_objects_wv_adopt 
+			}
+		}	
 	}
 
 	potential = {
-		if = {
-			limit = {
-				NOT = { has_global_flag = time_ascension_paths }
-			}
-			NOR = {
-				has_origin = origin_shroudwalker_apprentice #灵飞
-				has_origin = origin_the_matrix #义飞
-				has_origin = origin_contract #锁灵飞
-				has_origin = origin_psionic #锁灵飞
-				has_origin = origin_blessed_by_god #锁灵飞
-			}
-			is_cyborg_empire = no
-		}
-		NOR = {
-			has_ascension_perk = ap_engineered_evolution
-			has_authority = "auth_machine_intelligence"
-			has_origin = origin_syncretic_evolution #基飞
-			has_origin = origin_pc_hive #基飞
-			has_origin = origin_mechanists #机飞
-		}
-		is_mechanical_empire = no
+		ap_engineered_evolution_potential = yes
 	}
 
 	ai_weight = {
@@ -137,24 +125,7 @@ ap_the_flesh_is_weak = {
 	}
 
 	potential = {
-		if = {
-			limit = {
-				NOT = { has_global_flag = time_ascension_paths }
-			}
-			NOR = {
-				has_origin = origin_shroudwalker_apprentice #灵飞
-				has_origin = origin_syncretic_evolution #基飞
-				has_origin = origin_contract #锁灵飞
-				has_origin = origin_psionic #锁灵飞
-				has_origin = origin_blessed_by_god #锁灵飞
-			}
-		}
-		NOR = {
-			has_ascension_perk = ap_the_flesh_is_weak
-			has_origin = origin_mechanists #机飞
-			has_origin = origin_the_matrix #义飞
-		}
-		is_gestalt = no
+		ap_the_flesh_is_weak_potential = yes
 	}
 
 	ai_weight = {
@@ -195,18 +166,7 @@ ap_organo_machine_interfacing = {
 	}
 
 	potential = {
-		if = {
-			limit = {
-				NOT = { has_global_flag = time_ascension_paths }
-			}
-			NOT = {
-				has_origin = origin_pc_hive #基飞
-			}
-		}
-		NOT = {
-			has_ascension_perk = ap_organo_machine_interfacing
-		}
-		has_authority = auth_hive_mind
+		ap_organo_machine_interfacing_potential = yes
 	}
 
 	ai_weight = {
@@ -231,13 +191,6 @@ ap_organo_machine_interfacing_assimilator = {
 			fail_text = "requires_ascension_perks_2"
 			num_ascension_perks > 1
 		}
-		custom_tooltip = {
-			fail_text = "requires_assimilated_pops"
-			check_variable = {
-				which = num_assimilated_pops
-				value >= 30
-			}
-		}
 		if = {
 			limit = {
 				NOT = { has_global_flag = time_ascension_paths }
@@ -250,11 +203,7 @@ ap_organo_machine_interfacing_assimilator = {
 	}
 
 	potential = {
-		NOR = {
-			has_ascension_perk = ap_organo_machine_interfacing_assimilator
-			has_origin = origin_reassembler #义飞/机飞
-		}
-		has_civic = civic_machine_assimilator
+		ap_organo_machine_interfacing_assimilator_potential = yes
 	}
 
 	ai_weight = {
@@ -328,21 +277,7 @@ ap_synthetic_evolution = {
 	}
 
 	potential = {
-		NOR = {
-			has_ascension_perk = ap_synthetic_evolution
-			has_authority = "auth_machine_intelligence"
-			has_origin = origin_shroudwalker_apprentice #灵飞
-			has_origin = origin_mechanists #机飞
-			has_origin = origin_syncretic_evolution #基飞
-			has_origin = origin_the_matrix #义飞
-			has_origin = origin_contract #锁灵飞
-			has_origin = origin_psionic #锁灵飞
-			has_origin = origin_blessed_by_god #锁灵飞
-			has_origin = origin_adeptus_mechanicus #禁机飞
-			has_wg_and_uf_special_authority = yes #舰R
-		}
-		is_gestalt = no
-		is_mechanical_empire = no
+		ap_synthetic_evolution_potential = yes
 	}
 
 	ai_weight = {
@@ -414,27 +349,15 @@ ap_mind_over_matter = {
 			fail_text = "requires_not_ap_synthetic_evolution"
 			NOT = { has_ascension_perk = ap_synthetic_evolution }
 		}
+		# 魔女之旅
+		custom_tooltip = {
+			fail_text = "requires_not_ap_synthetic_psychics_hal"
+			NOT = { has_ascension_perk = ap_synthetic_psychics_hal }
+		}
 	}
 
 	potential = {
-		if = {
-			limit = {
-				NOT = { has_global_flag = time_ascension_paths }
-			}
-			NOR = {
-				has_origin = origin_syncretic_evolution #基飞
-				has_origin = origin_the_matrix #义飞
-				is_cyborg_empire = yes
-			}
-		}
-		NOR = {
-			has_ascension_perk = ap_mind_over_matter
-			has_origin = origin_shroudwalker_apprentice #灵飞
-			has_origin = origin_abandoned_by_god #禁灵飞
-			has_origin = origin_mechanists #机飞
-		}
-		is_gestalt = no
-		is_mechanical_empire = no
+		ap_mind_over_matter_potential = yes
 	}
 
 	ai_weight = {
@@ -460,7 +383,18 @@ ap_mind_over_matter = {
 # 智械机飞
 ap_synthetic_age = {
 	on_enabled = {
-		custom_tooltip = "synthetic_age_tooltip"
+		if = {
+			limit = {
+				has_machine_age_dlc = no
+			}
+			custom_tooltip = "synthetic_age_tooltip"
+		}
+		else = {
+			custom_tooltip = "synthetic_age_tooltip_machine_age"
+			hidden_effect = {
+				country_event = { id = machine_age.4000 }
+			}
+		}
 		# 腐化主脑
 		if = {
 			limit = {
@@ -471,11 +405,7 @@ ap_synthetic_age = {
 	}
 
 	potential = {
-		has_authority = auth_machine_intelligence
-		NOR = {
-			has_ascension_perk = ap_synthetic_age
-			has_origin = origin_reassembler #义飞/机飞
-		}
+		ap_synthetic_age_potential = yes
 	}
 
 	possible = {
@@ -504,23 +434,26 @@ ap_synthetic_age = {
 }
 
 #################
-# 化身天灾
+# 星海天罚
 #################
 
 ap_become_the_crisis = {
 	potential = {
 		NOR = {
 			is_crisis_country = yes
+			has_ascension_perk = ap_beyond_infinity
 			has_ascension_perk = ap_defender_of_the_galaxy
-			has_country_flag = situation_ap_time_give_up
+			has_origin = origin_slavers
+			has_origin = origin_white_hole
+			has_country_flag = unlock_tradition_hope
 		}
 		has_wg_special_authority = no #舰R
 	}
 
 	possible = {
 		custom_tooltip = {
-			fail_text = "requires_ascension_perks_2"
-			num_ascension_perks > 1
+			fail_text = "requires_ascension_perks_3"
+			num_ascension_perks > 2
 		}
 		custom_tooltip = {
 			fail_text = "requires_independence"
@@ -552,10 +485,7 @@ ap_become_the_crisis = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_not_abandoned_by_god"
-			OR = {
-				NOT = { has_origin = origin_abandoned_by_god }
-				has_technology = tech_psionic_theory
-			}
+			NOT = { has_origin = origin_abandoned_by_god }
 		}
 		NOR = {
 			has_ethic = ethic_xenophile
@@ -570,25 +500,34 @@ ap_become_the_crisis = {
 		hidden_effect = {
 			set_ai_personality = became_the_crisis
 		}
-		activate_crisis_progression = yes
+		activate_crisis_progression = nemesis_path
+		if = {
+			limit = {
+				is_same_value = event_target:dimension_traveler_owner
+			}
+			custom_tooltip = dimension_traveler_may_leave
+			hidden_effect = {
+				country_event = { id = dimension_traveler.68 }
+			}
+		}
 	}
 
 	ai_weight = {
-		factor = 5
+		factor = 2
 		modifier = {
-			factor = 2
+			factor = 5
 			has_ethic = ethic_militarist
 		}
 		modifier = {
-			factor = 4
+			factor = 10
 			has_ethic = ethic_fanatic_militarist
 		}
 		modifier = {
-			factor = 2
+			factor = 5
 			has_ethic = ethic_xenophobe
 		}
 		modifier = {
-			factor = 4
+			factor = 10
 			has_ethic = ethic_fanatic_xenophobe
 		}
 		modifier = {
@@ -596,7 +535,7 @@ ap_become_the_crisis = {
 			has_origin = origin_tree_of_life
 		}
 		modifier = {
-			factor = 2
+			factor = 5
 			has_valid_civic = civic_hive_strength_of_legions
 		}
 		modifier = {
@@ -604,7 +543,7 @@ ap_become_the_crisis = {
 			has_government = gov_machine_research
 		}
 		modifier = {
-			factor = 2
+			factor = 5
 			has_valid_civic = civic_machine_warbots
 		}
 		modifier = {
@@ -648,7 +587,16 @@ ap_become_the_crisis = {
 		modifier = {
 			factor = 0.25
 			count_playable_country = {
-				count >= 3
+				count = 3
+				limit = {
+					is_crisis_country = yes
+				}
+			}
+		}
+		modifier = {
+			factor = 0.1
+			count_playable_country = {
+				count >= 4
 				limit = {
 					is_crisis_country = yes
 				}
@@ -657,6 +605,154 @@ ap_become_the_crisis = {
 		modifier = {
 			factor = 0
 			blocks_disruptive_gameplay = yes
+		}
+		modifier = {
+			factor = 0
+			num_ascension_perks > 10 # 避免飞升槽太多时，AI总会点到灾飞的情况
+			NOR = {
+				is_homicidal = yes
+				has_country_flag = crazy_wonder_country_35
+				has_global_flag = dark_forest
+			}
+		}
+		modifier = {
+			factor = 0
+			has_country_flag = normal_wonder_country_35
+		}
+		modifier = {
+			factor = 100
+			has_country_flag = crazy_wonder_country_35
+		}
+		modifier = {
+			factor = 100
+			has_global_flag = dark_forest
+		}
+	}
+}
+
+#################
+# 宇宙创生
+#################
+
+ap_cosmogenesis = {
+	potential = {
+		NOR = {
+			is_crisis_country = yes
+			has_ascension_perk = ap_beyond_infinity
+			has_ascension_perk = ap_defender_of_the_galaxy
+			has_origin = origin_slavers
+			has_origin = origin_white_hole
+			has_country_flag = unlock_tradition_hope
+		}
+		has_wg_special_authority = no #舰R
+	}
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_3"
+			num_ascension_perks > 2
+		}
+		custom_tooltip = {
+			fail_text = "requires_independence"
+			is_subject = no
+		}
+		custom_tooltip = {
+			fail_text = "must_not_be_custodian"
+			is_galactic_custodian = no
+		}
+		custom_tooltip = {
+			fail_text = "must_not_be_emperor"
+			is_galactic_emperor = no
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_psionic"
+			NOT = { has_origin = origin_psionic }
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_nanites"
+			NOT = { has_origin = origin_nanites }
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_manifesti"
+			NOT = { has_origin = origin_manifesti }
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_blessed_by_god"
+			NOT = { has_origin = origin_blessed_by_god }
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_abandoned_by_god"
+			NOT = { has_origin = origin_abandoned_by_god }
+		}
+	}
+
+	on_enabled = {
+		activate_crisis_progression = cosmogenesis_path
+		if = {
+			limit = {
+				is_same_value = event_target:dimension_traveler_owner
+			}
+			custom_tooltip = dimension_traveler_may_leave
+			hidden_effect = {
+				country_event = { id = dimension_traveler.68 }
+			}
+		}
+	}
+
+	ai_weight = {
+		factor = 7.5
+		modifier = {
+			factor = 0
+			OR = {
+				is_egalitarian = yes
+				is_xenophile = yes
+			}
+		}
+		modifier = {
+			factor = 2
+			has_tradition = tr_discovery_finish
+		}
+		modifier = {
+			factor = 2
+			has_ascension_perk = ap_technological_ascendancy
+		}
+		modifier = {
+			factor = 2
+			has_ascension_perk = ap_enigmatic_engineering
+		}
+		modifier = {
+			factor = 2
+			vassals > 0
+			any_subject = {
+				any_agreement = {
+					has_active_specialization = specialist_scholarium
+				}
+			}
+		}
+		modifier = {
+			factor = 10
+			has_country_flag = whisperers_covenant_confirmed
+		}
+		modifier = {
+			factor = 0.5
+			galaxy_percentage < 0.05
+		}
+		modifier = {
+			factor = 2
+			galaxy_percentage > 0.1
+		}
+		modifier = {
+			factor = 2
+			galaxy_percentage > 0.2
+		}
+		modifier = {
+			factor = 0
+			num_ascension_perks > 10 # 避免飞升槽太多时，AI总会点到灾飞的情况
+			NOR = {
+				is_homicidal = yes
+				has_country_flag = crazy_wonder_country_35
+				has_global_flag = dark_forest
+			}
 		}
 		modifier = {
 			factor = 0
@@ -684,8 +780,13 @@ ap_defender_of_the_galaxy = {
 			num_ascension_perks > 2
 		}
 	}
+	custom_tooltip = ap_defender_of_the_galaxy_modifier_desc
+	
 	modifier = {
-		description = ap_defender_of_the_galaxy_modifier_desc
+		damage_vs_country_type_synth_queen_mult = 0.5
+		damage_vs_country_type_awakened_synth_queen_mult = 0.5
+		damage_vs_country_type_synth_queen_convoys_mult = 0.5
+		damage_vs_country_type_synth_queen_outposts_mult = 0.5
 		damage_vs_country_type_swarm_mult = 0.5
 		damage_vs_country_type_extradimensional_mult = 0.5
 		damage_vs_country_type_extradimensional_2_mult = 0.5
@@ -738,10 +839,13 @@ ap_defender_of_the_galaxy = {
 		NOR = {
 			is_homicidal = yes
 			is_crisis_country = yes
+			is_potential_crisis_country = yes
 			has_ascension_perk = ap_defender_of_the_galaxy
-			has_origin = origin_abandoned_by_god
-			has_country_flag = situation_ap_time_finished
 			has_global_flag = dark_forest
+		}
+		OR = {
+			has_ascension_perk = ap_beyond_infinity
+			NOT = { has_country_flag = unlock_tradition_end }
 		}
 	}
 
@@ -769,6 +873,7 @@ ap_defender_of_the_galaxy = {
 				any_country = {
 					OR = {
 						has_crisis_level = crisis_level_5
+						has_crisis_level = crisis_cosmogenesis_level_5
 						is_crisis_faction = yes
 					}
 				}
@@ -787,6 +892,7 @@ ap_defender_of_the_galaxy = {
 				any_country = {
 					OR = {
 						has_crisis_level = crisis_level_5
+						has_crisis_level = crisis_cosmogenesis_level_5
 						is_crisis_faction = yes
 					}
 				}

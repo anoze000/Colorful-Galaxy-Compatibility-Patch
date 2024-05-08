@@ -164,8 +164,6 @@ is_ban_vanilla_ap_not_wsg_country = {
 		has_authority = auth_AL_pua_fall
 		has_authority = auth_AL_aggressive_fall
 		has_authority = "auth_machine_intelligence"
-		has_authority = "auth_starshipgirls"
-		has_authority = "auth_asharmdolls"
 		has_authority = "auth_commonwealth"
 		has_authority = "auth_kancolle"
 		has_authority = "auth_kan"
@@ -248,7 +246,7 @@ has_any_ai_target_danger_megastructure = {
 	}
 }
 
-is_forbidden_ee_production_var = {
+str_is_forbidden_ee_production_var = {
 	OR = { 
 		has_authority = auth_starshipgirls 
 		has_authority = auth_asharmdolls

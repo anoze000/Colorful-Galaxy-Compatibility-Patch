@@ -1,0 +1,695 @@
+
+# This = Species
+# Root = Planet
+can_species_be_assembled = {
+	is_sapient = yes
+	NOT = {
+		has_trait = trait_exd
+	}
+	NOT = {
+		AND = {
+			has_trait = trait_mechanical
+			root.owner = { is_individual_machine = yes }
+		}
+	}
+	NOT = {
+		AND = {
+			has_virtual_species_trait = yes
+			root.owner = {
+				is_fallen_empire = no
+				has_active_tradition = tr_virtuality_finish
+			}
+		}
+	}
+	OR = {
+		is_archetype = LILY 
+		is_archetype = WARSHIPGIRL
+		is_archetype = SHENHAI
+		is_archetype = NANITES_CROP
+		is_archetype = UNITED_FLEET
+		is_archetype = STARSHIPGIRLS
+		is_archetype = KANMUSU
+		is_archetype = DATEALIVE
+		is_archetype = NYTO
+		is_archetype = Dolls
+		is_archetype = KANMUSU
+		AND = {
+			is_robotic = yes
+			root = {
+				check_modifier_value = {
+					modifier = planet_pop_assembly_add
+					value > 0
+				}
+				owner = {
+					NOT = { has_country_flag = synth_assembly_stopped }
+				}
+			}
+		}
+		AND = {
+			is_organic_species = yes
+			if = {
+				limit = {
+					root.owner = { is_hive_empire = yes }
+				}
+				has_trait = trait_hive_mind
+			}
+			else_if = {
+				limit = { has_budding_trait = yes }
+				root = {
+					any_owned_species = { is_exact_same_species = prevprev }
+				}
+			}
+			else_if = {
+				limit = { has_trait = trait_tiyanki }
+				root = {
+					any_owned_species = { is_exact_same_species = prevprev }
+				}
+			}
+			else_if = {
+				limit = { has_trait = trait_tiyanki }
+				root = {
+					any_owned_species = { is_exact_same_species = prevprev }
+				}
+			}
+			else_if = {
+				limit = {
+					OR = {
+						has_trait = trait_clone_soldier_infertile
+						has_trait = trait_clone_soldier_infertile_full_potential
+					}
+				}
+				root = {
+					# Event 'clones.3' should cover this, but extra safety check.
+					has_building = building_clone_army_clone_vat
+					NOT = {
+						check_variable = {
+							which = clone_pops_missing
+							value = 0
+						}
+					}
+				}
+			}
+			else = {
+				root = {
+					OR = {
+						has_building = building_clone_vats
+						has_modifier = tiyanki_trophy
+						owner = { has_modifier = syamelles_curse }
+						AND = {
+							has_building = building_posthumous_employment_center
+							owner = { has_civic = civic_permanent_employment }
+						}
+						has_planet_flag = can_organic_assemble_flag #for mod compatibility
+					}
+				}
+			}
+		}
+	}
+	has_population_control = {
+		type = no
+		country = root.owner
+	}
+}
+
+# this = system
+# root = country
+system_blocks_sensors = {
+	OR = {
+		is_inside_nebula = yes
+		has_modifier = space_storm
+		has_modifier = zroni_storm
+		has_modifier = queen_scorn_storm
+		has_star_flag = lcluster
+		has_star_flag = sealed_system
+		AND = {
+			exists = sector
+			sector.sector_capital = {
+				exists = leader
+				leader = {
+					OR = {
+						has_trait = leader_trait_AL_Rareskill_Uberzain
+						has_trait = leader_trait_AL_Rareskill_UberzainS
+						has_trait = leader_trait_AL_Rareskill_UberzainEX
+					}
+				}
+			}
+		}
+	}
+}
+
+
+# this = starbase, megastructure or planet
+#哪些可以维修船
+can_orbitable_repair_ships = {
+	OR = {
+		AND = {
+			is_scope_type = starbase
+			OR = {
+				has_starbase_size >= starbase_starport
+				has_starbase_size = juggernaut
+				has_starbase_size = enclave_mercenary_station
+				has_starbase_size = lily_super_college_ship
+				has_starbase_size = lily_college_ship
+			}
+			fleet = {
+				is_disabled = no
+			}
+		}
+		AND = {
+			is_scope_type = megastructure
+			OR = {
+				is_megastructure_type = mega_shipyard_1
+				is_megastructure_type = mega_shipyard_2
+				is_megastructure_type = mega_shipyard_3
+				is_megastructure_type = college_ship_creater_3
+			}
+		}
+	}
+}
+
+# This = country
+can_build_branch_offices = {
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_NOT_MEGACORP
+		#_+wsg/gsf/fq/ark
+		OR = {
+			has_authority = auth_corporate
+			has_civic = civic_galactic_sovereign_megacorp
+			has_authority = auth_warshipgirls	#_wsg
+			AND = {
+				has_authority = auth_shenhai
+				OR = {
+					has_country_flag = pantsu_shop_origin
+					has_civic = civic_sh_criminal_syndicate
+				}
+			}
+			has_civic = civic_gk				#_gsf
+            has_valid_civic = civic_mutualistic_behavior	#_fq
+			has_civic = civic_city_enterprise	#_ark
+			has_authority = auth_AL_democratic 	#_al
+			#淫渊企业
+			has_authority = auth_brothel
+		}
+	}
+}
+
+# This = country
+can_support_branch_offices = {
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_NOT_FALLEN_EMPIRES
+		NOR = {
+			is_country_type = al_fallen_empire
+			is_country_type = al_fallen_empire_no_ai
+			is_country_type = fallen_empire
+			is_country_type = awakened_fallen_empire
+		}
+	}
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_NOT_ON_MEGACORP_PLANET
+		NOR = {
+			has_authority = auth_corporate
+			has_civic = civic_galactic_sovereign_megacorp
+			has_authority = auth_warshipgirls			#_wsg
+			AND = {
+				has_authority = auth_shenhai
+				OR = {
+					has_country_flag = pantsu_shop_origin
+					has_civic = civic_sh_criminal_syndicate
+				}
+			}
+			has_civic = civic_gk						#_gsf
+			has_valid_civic = civic_sofe_inner_strength	#_SOFE
+			has_civic = civic_city_enterprise			#_ark
+			is_country_type = huge_country #al
+		}
+	}
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_NOT_REGULAR_EMPIRE
+		is_gestalt = no
+	}
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_NOT_ADVANCED_PRE_FTL
+		if = {
+			limit = {
+				is_primitive = yes
+				is_gestalt = no
+			}
+			OR = {
+				has_pre_ftl_age = atomic_age
+				has_pre_ftl_age = early_space_age
+			}
+		}
+	}
+}
+
+# This = planet
+# Root = country
+can_build_branch_office_on_planet = {
+	#_swg
+	custom_tooltip = {
+		fail_text = requires_recipient_not_warshipgirls
+		exists = owner
+		owner = {
+			NOR = {
+				has_authority = auth_warshipgirls
+				AND = {
+					has_authority = auth_shenhai
+					OR = {
+						has_country_flag = pantsu_shop_origin
+						has_civic = civic_sh_criminal_syndicate
+					}
+				}
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = requires_recipient_not_fanatic_purifiers
+		exists = owner
+		owner = {
+			OR = {
+				is_same_species = root
+				NOT = { has_civic = civic_fanatic_purifiers }
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_NO_OBSERVATION_OUTPOST
+		if = {
+			limit = {
+				root = { is_criminal_syndicate = yes }
+				owner = { is_primitive = yes }
+			}
+			has_observation_outpost = yes
+			observation_outpost_owner = {
+				is_same_value = root
+			}
+		}
+	}
+	#_+[fq/swg/azl]
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_NOT_COMMERCIAL_PACT
+		exists = owner
+		OR = {
+			root = { is_criminal_syndicate = yes }
+			owner = { has_commercial_pact = root }
+			owner = { is_in_federation_with = root }
+			root = { has_valid_civic = civic_mutualistic_behavior }	#_fq
+			root = { has_authority = auth_AL_democratic }	#_al
+			AND = {
+				has_observation_outpost = yes
+				observation_outpost = {
+					has_modifier = preftl_action_trade_pact
+				}
+			}
+			AND = {
+				owner = {
+					has_country_flag = lose_wg_shop_war
+				}
+				root = { OR = {
+					has_country_flag = pantsu_shop_origin
+					has_civic = civic_sh_criminal_syndicate
+				}}
+			}
+			# allow branch offices in subsidiaries and vice versa
+			root = {
+				is_subject = yes
+				OR = {
+					has_authority = auth_corporate
+					has_civic = civic_galactic_sovereign_megacorp
+				}
+				overlord = {
+					OR = {
+						is_same_value = prevprev.owner
+						is_same_value = prevprev.owner.overlord
+					}
+				}
+			}
+			owner = {
+				is_subject = yes
+				overlord = {
+					OR = {
+						is_same_value = root
+						is_same_value = root.overlord
+					}
+					OR = {
+						has_authority = auth_corporate
+						has_civic = civic_galactic_sovereign_megacorp
+						#_+swg
+						has_authority = auth_warshipgirls
+					}
+				}
+			}
+			AND = {
+				root = { has_civic = civic_galactic_sovereign_megacorp }
+				owner = { is_galactic_community_member = yes }
+			}
+			AND = {
+				root = { has_modifier = imperial_charter }
+				owner = { is_galactic_community_member = yes }
+			}
+			#_[hfe]
+			AND = {
+				has_global_flag = hfe_installed
+				root = { overlord = { is_country = prevprev.owner } }
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_MEGACORP_OVERLORD
+		exists = owner
+		# failure message for having a corporate overlord
+
+		if = {
+			limit = {
+				OR = {
+					# Not valid if you aren't a subject.
+					root = {
+						is_subject = no
+					}
+					# Or if your overlord isn't a megacorp.
+					root = {
+						is_subject = yes
+						overlord = {
+							NOR = {
+								has_authority = auth_corporate
+								has_civic = civic_galactic_sovereign_megacorp
+							}
+						}
+					}
+				}
+			}
+			always = yes
+		}
+		else = {
+			AND = {
+				root = {
+					is_subject = yes
+					overlord = {
+						OR = {
+							has_authority = auth_corporate
+							has_civic = civic_galactic_sovereign_megacorp
+						}
+					}
+				}
+				owner = {
+					OR = {
+						is_subject = no
+						AND = {
+							is_subject = yes
+							overlord = { NOT = { is_same_value = root.overlord } }
+						}
+					}
+				}
+			}
+		}
+	}
+	#_	+azl
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_CRIMINAL_HERITAGE_HAS_TRUCE
+		exists = owner
+		OR = {
+			root = {
+				is_criminal_syndicate = no
+				NOT = { has_civic = civic_sh_criminal_syndicate }
+			}
+			owner = {
+				NOR = {
+					has_truce = root
+					is_at_war_with = root
+				}
+			}
+			AND = {
+				owner = { has_country_flag = lose_wg_shop_war }
+				root = { OR = {
+					has_country_flag = pantsu_shop_origin
+					has_civic = civic_sh_criminal_syndicate
+				}}
+			}
+			root = { has_authority = auth_AL_democratic }	#_al
+		}
+	}
+	#_	+azl
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_CRIMINAL_COOLDOWN
+		exists = owner
+		OR = {
+			root = { is_criminal_syndicate = no }
+			AND = {
+				owner = { has_country_flag = lose_wg_shop_war }
+				root = { OR = {
+					has_country_flag = pantsu_shop_origin
+					has_civic = civic_sh_criminal_syndicate
+				}}
+			}
+			AND = {
+				root = { OR = {
+					is_criminal_syndicate = yes
+					has_civic = civic_sh_criminal_syndicate
+				}}
+				NOT = { has_planet_flag = criminal_branch_closed_cooldown_planet@root }
+			}
+			root = { has_authority = auth_AL_democratic }	#_al
+		}
+	}
+}
+
+
+
+###_[z_fw/teif/ag/wsg/kuat/sofe/giga/ehof/seooc]	##################
+# Root = country attempting to target system for movement
+# This = system being targeted
+can_enter_system_by_jump = {
+	custom_tooltip = {
+		fail_text = cannot_jump_to_system
+		OR = {
+			AND = {
+				#_Sealed system
+				OR = {
+					NOR = {
+						has_star_flag = sealed_system
+						has_star_flag = fallen_sol_system	#_teif
+					}
+					AND = {
+						root = { has_country_flag = entered_sealed_system }
+						has_star_flag = sealed_system
+					}
+				}
+				#_特殊星系	+[wsg/ag/kuat/sofe/giga/ehof]
+				NOR = {
+					has_star_flag = lcluster
+					has_star_flag = wg_sealed_system			#_wsg
+					has_star_flag = wg_psionic_systems			#_wsg
+					has_star_flag = ag_no_jump_in_system		#_ag
+					ag_is_kuat_system = yes						#_狡猾人
+					has_star_flag = outercluster				#_SOFE	外星门
+					has_star_flag = ehof_compound_system		#_[giga]
+					has_star_flag = giga_core_03				#_[giga]
+					cohesive_system = yes						#_[giga]
+					urmazin_system = yes						#_[giga]
+					everchanging_system = yes					#_[giga]
+					katzen_jump_blocked_system = yes			#_[giga]
+					has_star_flag = nep_Krahen_cluster			#_seooc
+					has_star_flag = nep_Scrus_cluster			#_seooc
+
+					has_star_flag = al_huge_home_bed            #al
+					AND = {#_[kuat]
+						has_global_flag = starkillerbase_not_passed
+						has_star_flag = starkiller_system	
+					}
+					AND = {#_seooc
+						has_global_flag = nep_not_pass_Aemethms 
+						OR = {
+							has_star_flag = nep_dragon_system
+							has_star_flag = nep_heptagram_cluster
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# THIS = Fleet
+can_jump_drive = {
+	custom_tooltip = {
+		fail_text = AL_cannot_start_jump
+		exists = solar_system
+		NOT = {
+			solar_system = {
+				exists = starbase
+				starbase = {
+					has_starbase_building = AL_AntiFTL
+					owner = { is_hostile = prevprevprev.owner }
+				}
+			}
+		}
+	}
+}
+
+
+#河豚没有领袖
+#Checks whether any leaders (scientists etc) can be formed from this pop
+#Root = country
+#This = pop
+can_generate_leader_from_pop = {
+	has_citizenship_rights = yes
+	NOR = {
+		has_trait = trait_syncretic_proles
+		has_trait = trait_nerve_stapled
+		has_trait = trait_zombie
+		# 无言
+		has_trait = trait_protoss_probe
+		# Ereb
+		has_trait = trait_slave_gene
+		# hiveDLC
+		root = { has_origin = origin_hive_overmind }
+		# PTep
+		has_trait = trait_plentiful_traditions_pt_cocoon
+		# Eevt/ETCPM
+		has_trait = trait_memorex_comatos
+		has_trait = trait_infested_basic
+		#莉莉
+		has_trait = trait_AL_puffer
+	}
+	can_think = yes
+	OR = {
+		is_robot_pop = no
+		root = {
+			OR = {
+				has_technology = tech_synthetic_leaders
+				has_authority = auth_machine_intelligence
+				is_mechanical_empire = yes
+			}
+		}
+		# gsf
+		root = { has_technology = tech_mind_plus }
+	}
+	OR = {
+		is_same_species = root
+		root = {
+			NAND = {
+				has_origin = origin_necrophage
+				has_trait = trait_necrophage
+			}
+		}
+	}
+	#淫触之虫，拥有思维寄生科技后，允许次级物种生成领袖
+	OR = {
+		NOT = {
+			is_species_class = PAR
+		}
+		AND = {
+			root = {
+				has_country_flag = parasite_mind_flag
+				has_technology = tech_tentacle_coop
+			}
+			is_species_class = PAR
+		}
+	}
+}
+
+#Root = country
+#This = species
+can_colonize_with_species = {
+	has_colonization_control = {
+		type = colonization_control_no
+		country = root
+	}
+	OR = {
+		NOT = { has_trait = trait_self_modified }
+		is_same_species = root
+	}
+	if = {
+		limit = {
+			OR = {
+				is_sapient = no
+				has_trait = trait_zombie
+			}
+		}
+		custom_tooltip = {
+			always = no
+		}
+	}
+	else_if = {
+		limit = { has_trait = trait_hive_mind }
+		root = { is_hive_empire = yes }
+	}
+	else = {
+		always = yes
+	}
+	#河豚不能自己殖民
+	NOT = { is_species_class = PUFFER }
+}
+
+# this = leader
+
+can_dismiss_leader = {
+	custom_tooltip = {
+		fail_text = "requires_not_special_lily_leader"
+		NOT = { has_leader_flag = AL_special_lily_leader }
+	}
+	if = {
+		limit = {
+			leader_class = commander
+			is_idle = no
+			# Rulers and heirs can't be dismissed any way and can be non-idle
+			is_ruler = no
+			is_heir = no
+		}
+		custom_tooltip = {
+			fail_text = "requires_fleet_control"
+			exists = fleet
+			fleet = {
+				controller = {
+					is_same_value = prev.owner
+					is_same_value = prevprev.owner
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				is_heir = yes
+				is_ruler = yes
+			}
+		}
+		custom_tooltip = {
+			always = no
+			fail_text = "can_not_dismiss_rulers"
+		}
+	}
+
+	if = {
+		limit = {
+			leader_class = scientist
+		}
+		custom_tooltip = {
+			fail_text = "can_not_dismiss_rift_explorer"
+			NAND = {
+				exists = fleet
+				fleet = {
+					has_fleet_order = explore_astral_rift_fleet_order
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			leader_class = commander
+		}
+		custom_tooltip = {
+			fail_text = "no_dismissing_tacs"
+			NOT = { has_trait = leader_trait_tactical_algorithms }
+		}
+	}
+}
+
+#This, root = country
+can_modify_organic_portraits = {
+	has_utopia = yes
+	OR = {
+		has_tradition = tr_genetics_enhanced_expression
+		is_lily_goverments = yes
+	}
+}

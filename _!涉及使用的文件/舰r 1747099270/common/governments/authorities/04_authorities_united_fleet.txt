@@ -5,7 +5,7 @@ auth_united_fleet = {
 	can_reform = no
 	valid_for_released_vassal = no
 	ruler_council_position = councilor_ruler_warshipgirls
-	has_agendas = yes
+	#has_agendas = yes
 	
 	has_agendas = yes
 	
