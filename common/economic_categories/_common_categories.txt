@@ -308,21 +308,21 @@ ships = {
 			}
 		}
 	}
-	triggered_upkeep_modifier = {
-		key = ship_corvette
-		use_parent_icon = yes
-		modifier_types = {
-			mult
-			add
-		}
-		trigger = {
-			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
-			OR = {
-				is_ship_size = corvette
-				is_ship_size = offspring_corvette
-			}
-		}
-	}
+	#triggered_upkeep_modifier = {
+	#	key = ship_corvette
+	#	use_parent_icon = yes
+	#	modifier_types = {
+	#		mult
+	#		add
+	#	}
+	#	trigger = {
+	#		is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+	#		OR = {
+	#			is_ship_size = corvette
+	#			is_ship_size = offspring_corvette
+	#		}
+	#	}
+	#}
 
 	triggered_cost_modifier = {
 		key = ship_destroyer
@@ -340,21 +340,21 @@ ships = {
 			}
 		}
 	}
-	triggered_upkeep_modifier = {
-		key = ship_destroyer
-		use_parent_icon = yes
-		modifier_types = {
-			mult
-			add
-		}
-		trigger = {
-			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
-			OR = {
-				is_ship_size = destroyer
-				is_ship_size = offspring_destroyer
-			}
-		}
-	}
+	#triggered_upkeep_modifier = {
+	#	key = ship_destroyer
+	#	use_parent_icon = yes
+	#	modifier_types = {
+	#		mult
+	#		add
+	#	}
+	#	trigger = {
+	#		is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+	#		OR = {
+	#			is_ship_size = destroyer
+	#			is_ship_size = offspring_destroyer
+	#		}
+	#	}
+	#}
 
 	triggered_cost_modifier = {
 		key = ship_cruiser
@@ -371,21 +371,21 @@ ships = {
 			}
 		}
 	}
-	triggered_upkeep_modifier = {
-		key = ship_cruiser
-		use_parent_icon = yes
-		modifier_types = {
-			mult
-			add
-		}
-		trigger = {
-			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
-			OR = {
-				is_ship_size = cruiser
-				is_ship_size = offspring_cruiser
-			}
-		}
-	}
+	#triggered_upkeep_modifier = {
+	#	key = ship_cruiser
+	#	use_parent_icon = yes
+	#	modifier_types = {
+	#		mult
+	#		add
+	#	}
+	#	trigger = {
+	#		is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+	#		OR = {
+	#			is_ship_size = cruiser
+	#			is_ship_size = offspring_cruiser
+	#		}
+	#	}
+	#}
 
 	triggered_cost_modifier = {
 		key = ship_battleship
@@ -417,6 +417,21 @@ ships = {
 			}
 		}
 	}
+	#triggered_upkeep_modifier = {
+	#	key = ship_battleship
+	#	use_parent_icon = yes
+	#	modifier_types = {
+	#		add
+	#	}
+	#
+	#	trigger = {
+	#		is_scope_valid = yes
+	#		OR = {
+	#			is_ship_size = battleship
+	#			is_ship_size = offspring_battleship
+	#		}
+	#	}
+	#}
 
 	triggered_cost_modifier = {
 		key = ship_titan
@@ -430,18 +445,18 @@ ships = {
 			is_ship_size = titan
 		}
 	}
-	triggered_upkeep_modifier = {
-		key = ship_titan
-		use_parent_icon = yes
-		modifier_types = {
-			mult
-			add
-		}
-		trigger = {
-			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
-			is_ship_size = titan
-		}
-	}
+	#triggered_upkeep_modifier = {
+	#	key = ship_titan
+	#	use_parent_icon = yes
+	#	modifier_types = {
+	#		mult
+	#		add
+	#	}
+	#	trigger = {
+	#		is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+	#		is_ship_size = titan
+	#	}
+	#}
 
 	#niviran
 	triggered_cost_modifier = {
@@ -1667,7 +1682,6 @@ stations = {
 	}
 
 	parent = country
-	modifier_category = deposit #it applies to the planet
 }
 
 station_gatherers = {
@@ -2137,6 +2151,15 @@ planet_buildings_hab_capital = {
 	modifier_category = planet
 }
 
+planet_buildings_clone_vats = {
+	parent = planet_buildings
+
+	generate_mult_modifiers = {
+		upkeep
+	}
+	modifier_category = planet
+}
+
 planet_branch_office_buildings = {
 	parent = planets
 	generate_mult_modifiers = {
@@ -2465,6 +2488,16 @@ planet_jobs = {
 	}
 
 	triggered_produces_modifier = {
+		key = planet_virtual_jobs
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			has_virtual_species_trait = yes
+		}
+	}
+
+	triggered_produces_modifier = {
 		key = habitat_jobs
 		modifier_types = {
 			mult
@@ -2507,6 +2540,38 @@ planet_jobs = {
 					has_job_category = worker
 				}
 				is_pop_category = simple_drone
+			}
+		}
+	}
+
+	triggered_produces_modifier = {
+		key = planet_jobs_cyborg_worker
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			has_trait = trait_cybernetic
+			OR = {
+				is_pop_category = worker
+				AND = {
+					is_pop_category = slave # Yes, slave should count towards both worker and slave
+					has_job_category = worker
+				}
+				is_pop_category = simple_drone
+			}
+		}
+	}
+
+	triggered_produces_modifier = {
+		key = planet_jobs_robot_worker
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			OR = {
+				is_pop_category = worker
+				is_pop_category = simple_drone
+				is_pop_category = robot_servant
 			}
 		}
 	}
@@ -2966,6 +3031,23 @@ planet_livestock = {
 	}
 }
 
+planet_organic_batteries = {
+	parent = planet_jobs_productive
+	modifier_category = pop
+	# Inherited Modifiers
+	triggered_produces_modifier = {
+		key = planet_technician
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			always = yes
+		}
+		use_parent_icon = yes
+	}
+}
+
 planet_technician = {
 	parent = planet_jobs_productive
 	generate_add_modifiers = {
@@ -3020,6 +3102,7 @@ planet_executives = {
 
 planet_managers = {
 	parent = planet_administrators
+	modifier_category = pop
 	generate_add_modifiers = {
 		produces
 		upkeep
@@ -3027,6 +3110,16 @@ planet_managers = {
 	generate_mult_modifiers = {
 		produces
 		upkeep
+	}
+	triggered_produces_modifier = {
+		key = planet_administrators
+		modifier_types = {
+			add
+		}
+		trigger = {
+			always = yes
+		}
+		use_parent_icon = yes
 	}
 	modifier_category = pop
 }
@@ -3276,6 +3369,7 @@ planet_knights = {
 
 planet_priests = {
 	parent = planet_administrators
+	modifier_category = pop
 	generate_mult_modifiers = {
 		produces
 		upkeep
@@ -3284,7 +3378,17 @@ planet_priests = {
 		produces
 		upkeep
 	}
-	modifier_category = pop
+	# Inherited Modifiers
+	triggered_produces_modifier = {
+		key = planet_administrators
+		modifier_types = {
+			add
+		}
+		trigger = {
+			always = yes
+		}
+		use_parent_icon = yes
+	}
 }
 
 planet_enforcers = {
@@ -3319,6 +3423,7 @@ planet_traders = {
 }
 
 planet_telepaths = {
+	modifier_category = pop
 	parent = planet_administrators
 	generate_add_modifiers = {
 		produces
@@ -3328,7 +3433,17 @@ planet_telepaths = {
 		produces
 		upkeep
 	}
-	modifier_category = pop
+	# Inherited Modifiers
+	triggered_produces_modifier = {
+		key = planet_administrators
+		modifier_types = {
+			add
+		}
+		trigger = {
+			always = yes
+		}
+		use_parent_icon = yes
+	}
 }
 
 planet_doctors = {
@@ -3341,6 +3456,15 @@ planet_doctors = {
 		produces
 		upkeep
 	}
+	modifier_category = pop
+}
+
+planet_augmentors = {
+	parent = planet_jobs_productive
+	generate_mult_modifiers = {
+		upkeep
+	}
+	modifier_category = pop
 }
 
 planet_refiners = {
@@ -3409,6 +3533,20 @@ planet_bath_attendants_hive = {
 planet_bath_attendants_machine = {
 	icon = "job_bath_attendant"
 	parent = planet_jobs
+}
+
+planet_bath_attendants_individual_machine = {
+	icon = "job_bath_attendant"
+	parent = planet_jobs
+}
+
+planet_neural_chips = {
+	icon = "job_neural_chip"
+	parent = planet_jobs_productive
+	generate_add_modifiers = {
+		produces
+	}
+	modifier_category = pop
 }
 
 planet_pops = {

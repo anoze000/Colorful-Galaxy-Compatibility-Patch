@@ -36,7 +36,7 @@ default = {
 			military_minister_module
 			foreign_minister_module
 			interior_minister_module
-			mercenary_buyer_minister_module
+			mercenary_buyer_minister_module	# 禁止会导致玩家也无法创建佣兵
 			enclave_founder_minister_module
 		}
 	}
@@ -70,11 +70,6 @@ default = {
 	resources = {
 		category = country_base
 		produces = {
-			trigger	= {
-				NOT = {
-					has_global_flag = nirvana_empire_start
-				}
-			}
 			energy = 20
 			minerals = 20
 			physics_research = 10
@@ -83,34 +78,6 @@ default = {
 			influence = 3
 			unity = 5
 			alloys = 5
-		}
-		produces = {
-			trigger	= {
-				has_global_flag = nirvana_empire_start
-				is_ai = no
-			}
-			energy = 50
-			minerals = 50
-			physics_research = 40
-			society_research = 40
-			engineering_research = 40
-			influence = 5
-			unity = 10
-			alloys = 10
-		}
-		produces = {
-			trigger	= {
-				has_global_flag = nirvana_empire_start
-				is_ai = yes
-			}
-			energy = 75
-			minerals = 75
-			physics_research = 75
-			society_research = 75
-			engineering_research = 75
-			influence = 10
-			unity = 50
-			alloys = 50
 		}
 		produces = {
 			trigger = {
@@ -123,21 +90,61 @@ default = {
 		}
 		produces = {
 			trigger = {
-				OR = {
-					is_regular_empire = yes
-					is_hive_empire = yes
+				OR = { #Either
+					# You're a non-lithoid non-individual machine, regular empire or hive mind
+					AND = {
+						is_individual_machine = no
+						is_lithoid_empire = no
+						OR = {
+							is_regular_empire = yes
+							is_hive_empire = yes
+						}
+					}
+					# You are a lithoid empire with a non-lithoid subspecies
+					AND = {
+						is_lithoid_empire = yes
+						has_country_flag = non_lithoid_subspecies
+					}
+					# Or a machine empire with a non-lithoid secondary species
+					AND = {
+						has_country_flag = non_lithoid_subspecies
+						is_machine_empire = yes
+					}
+					# Or an individual machine with a non-lithoid species
+					AND = {
+						is_individual_machine = yes
+						has_country_flag = non_lithoid_subspecies
+					}
 				}
-				is_lithoid_empire = no
 			}
 			food = 10
 		}
 		produces = {
 			trigger = {
+				# Either
 				OR = {
-					is_regular_empire = yes
-					is_hive_empire = yes
+					# You're a lithoid regular empire or hive mind
+					AND = {
+						is_lithoid_empire = yes
+						OR = {
+							is_regular_empire = yes
+							is_hive_empire = yes
+						}
+					}
+					# Or a machine empire with a lithoid secondary species
+					AND = {
+						has_country_flag = lithoid_subspecies
+						is_machine_empire = yes
+					}
+					# Or a machine empire with no secondary species
+					AND = {
+						is_machine_empire = yes
+						NOR = {
+							has_country_flag = lithoid_subspecies
+							has_country_flag = non_lithoid_subspecies
+						}
+					}
 				}
-				is_lithoid_empire = yes
 			}
 			minerals = 10
 		}
@@ -146,7 +153,6 @@ default = {
 				is_machine_empire = yes
 			}
 			energy = 10
-			minerals = 10
 		}
 		produces = {
 			trigger = {
@@ -166,7 +172,7 @@ default = {
 			influence = 50
 		}
 	}
-}
+}	
 
 fallen_empire = {
 	scaled_difficulty_bonuses = 1.0	# scales to setting
@@ -199,7 +205,6 @@ fallen_empire = {
 		construction = no
 		starbase_upgrade = no
 		limited_construction = yes
-		ascension_perks = no
 		tech = no
 		modules = {
 			military_minister_module
@@ -223,6 +228,7 @@ fallen_empire = {
 				action_offer_trade_deal
 				action_cancel_trade_deal
 				action_insult
+				action_make_claims_diplomacy_view
 				action_negotiate_existing_agreement
 			}
 			can_send = {
@@ -287,11 +293,9 @@ awakened_fallen_empire = {
 		min_assault_armies_for_wars = @armies_for_declaring_war
 		colonizer = yes
 		internal_policies = yes
-		starbase_upgrade = no
 		modification = no
 		government = no
 		construction = yes
-		ascension_perks = yes
 		tech = yes
 		traditions = yes #but no ascension perks!
 		modules = {

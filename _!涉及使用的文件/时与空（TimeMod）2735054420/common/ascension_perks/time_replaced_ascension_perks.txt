@@ -688,15 +688,6 @@ ap_cosmogenesis = {
 
 	on_enabled = {
 		activate_crisis_progression = cosmogenesis_path
-		if = {
-			limit = {
-				is_same_value = event_target:dimension_traveler_owner
-			}
-			custom_tooltip = dimension_traveler_may_leave
-			hidden_effect = {
-				country_event = { id = dimension_traveler.68 }
-			}
-		}
 	}
 
 	ai_weight = {

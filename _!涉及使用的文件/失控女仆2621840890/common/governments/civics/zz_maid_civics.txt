@@ -1,0 +1,195 @@
+#失控女仆
+civic_machine_servitor = {
+	potential = { authority = { value = auth_machine_intelligence } }
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_machine_terminator
+				value = civic_machine_assimilator
+				value = civic_machine_warbots
+				value = civic_machine_toxic_baths
+			}
+		}
+		origin = {
+			NOT = {
+				value = origin_machine
+			}
+		}
+	}
+	modification = no
+	random_weight = {
+		base = 10
+		modifier = {
+			factor = 0
+			NOT = { host_has_dlc = "Synthetic Dawn Story Pack" }
+		}
+		modifier = {
+			# civic has no effect after galaxy generation, disable for random generation
+			factor = 0
+			has_global_flag = game_started
+		}
+	}
+	description = civic_tooltip_machine_servitor_effects
+	traits = {
+		trait = trait_machine_maid
+	}
+	modifier = {
+		councilor_gestalt_growth_exp_gain = @gestalt_civic_node_xp_rate
+		#pop_growth_speed_reduction = -0.3
+		pop_growth_speed_reduction_display = -0.3
+		empire_size_bio_trophy_mult = -0.3
+	}
+	has_secondary_species = {	# see game_start.11
+		title = civic_machine_servitor_secondary_species
+	}
+	swap_type = {
+		trigger = { is_ai = yes }
+		description = civic_tooltip_machine_servitor_effects
+		modifier = {
+			planet_resettlement_unemployed_mult = 20
+			planet_building_refund_mult = 0.5
+		}
+	}
+}
+
+#精工技艺
+civic_machine_crafters = {
+	potential = { authority = { value = auth_machine_intelligence } }
+	possible = {
+		civics = {
+			NOT = {
+				value = civic_machine_toxic_baths
+			}
+		}
+	}
+	modifier = {
+		councilor_gestalt_cognitive_exp_gain = @gestalt_civic_node_xp_rate
+		planet_pop_assemblers_upkeep_mult = 0.1
+		MACHINE_species_trait_points_add = 1
+	}
+	playable = {
+		host_has_dlc = "Synthetic Dawn Story Pack"
+		host_has_dlc = "Humanoids Species Pack"
+	}
+	ai_playable = {
+		host_has_dlc = "Synthetic Dawn Story Pack"
+		host_has_dlc = "Humanoids Species Pack"
+	}
+	description = "civic_machine_crafters_effects"
+	random_weight = {
+		base = 2
+		modifier = {
+			factor = 2
+			has_civic = civic_machine_servitor
+		}
+	}
+}
+
+#乐土机械
+civic_machine_paradise_lost = {
+	playable = {
+		host_has_dlc = "Synthetic Dawn Story Pack"
+		host_has_dlc = "Plantoids Species Pack"
+	}
+	ai_playable = {
+		host_has_dlc = "Synthetic Dawn Story Pack"
+		host_has_dlc = "Plantoids Species Pack"
+	}
+	random_weight = {
+		base = 1
+		modifier = {
+			factor = 3
+			has_civic = civic_machine_servitor
+		}
+		modifier = {
+			set = 0
+			has_global_flag = game_started
+		}
+	}
+	description = "civic_tooltip_machine_paradise_lost_effects"
+	modification = {
+		add = {
+			custom_tooltip = {
+				has_country_flag = idyllic_bloom
+			}
+		}
+		remove = {
+			always = yes
+		}
+	}
+	potential = { authority = { value = auth_machine_intelligence } }
+	possible = {
+		civics = {
+			OR = {
+				value = civic_machine_servitor
+				value = civic_machine_assimilator
+			}
+			NOT = {
+				value = civic_machine_toxic_baths
+			}
+		}
+		origin = {
+			NOR = {
+				value = origin_shattered_ring
+				value = origin_machine
+				value = origin_doomsday
+				#value = origin_remnants
+			}
+		}
+	}
+	modifier = {
+		councilor_gestalt_growth_exp_gain = @gestalt_civic_node_xp_rate
+	}
+}
+
+#医疗器械
+civic_machine_healthcare = {
+	playable = { host_has_dlc = "Galactic Paragons" }
+	ai_playable = { host_has_dlc = "Galactic Paragons" }
+	random_weight = {
+		base = 4
+	}
+	description = "civic_tooltip_civic_machine_healthcare_effects_both"
+	potential = { authority = { value = auth_machine_intelligence } }
+	possible = {
+		civics = {
+			OR = {
+				value = civic_machine_servitor
+				value = civic_machine_assimilator
+			}
+			NOR = {
+				value = civic_machine_toxic_baths
+			}
+		}
+	}
+	modifier = {
+		category_biology_research_speed_mult = 0.25
+		leader_lifespan_add = 15
+		pop_environment_tolerance = 0.1
+		pop_growth_speed = 0.1
+		councilor_gestalt_cognitive_exp_gain = @gestalt_civic_node_xp_rate
+	}
+}
+
+#监护矩阵继业者
+civic_custodian_directives_successor = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_custodian_directives.dds"
+	potential = {
+		authority = { value = auth_machine_intelligence }
+		civics = { value = civic_custodian_directives_successor }
+	}
+	random_weight = { base = 0 }
+	description = civic_custodian_directives_successor_effects
+	modifier = {
+		damage_vs_country_type_ai_empire_mult = 0.25
+		country_government_civic_points_add = 1
+	}
+	swap_type = {
+		trigger = { NOT = { has_global_flag = ancient_caretakers_annexed } }
+		description = civic_custodian_directives_successor_not_activated_effects
+		modifier = {
+			damage_vs_country_type_ai_empire_mult = -0.25
+		}
+	}
+}

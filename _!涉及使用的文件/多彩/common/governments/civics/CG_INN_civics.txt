@@ -1,0 +1,512 @@
+#虔心崇圣
+civic_sage_worshipping = {
+	traits = {
+		trait = trait_DC_ethic_asceticism
+	}
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Girl
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_sage_worshipping.dds"
+	random_weight = { base = 50 }
+	modifier = {
+		all_technology_research_speed = 0.15
+		planet_decision_enact_speed_mult = 0.25
+		planet_jobs_unity_produces_mult = 0.2
+		country_edict_fund_add = 100
+	}
+}
+
+#圣白伊甸
+civic_pure_white_eden = {
+	modification = yes
+	traits = {
+		trait = trait_DC_ethic_asceticism
+	}
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Girl
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_pacifist
+				value = ethic_pacifist
+				value = ethic_fanatic_pacifist
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_pure_white_eden.dds"
+	random_weight = { base = 50 }
+	modifier = {
+		planet_jobs_unity_produces_mult = 0.1
+		empire_size_pops_mult = -0.1
+		planet_jobs_produces_mult = 0.1
+		shipclass_starbase_build_speed_mult = 0.25
+		pop_amenities_usage_mult = -0.3
+		planet_crime_add = -50
+	}
+}
+
+#圣战传承
+civic_jihad_inherit = {
+	modification = no
+	traits = {
+		trait = trait_DC_ethic_asceticism
+	}
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Girl
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+		}
+		origin = {
+			NOT = { value = origin_INN_world_tree }
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_jihad_inherit.dds"
+	random_weight = { base = 50 }
+	description = civic_jihad_inherit_description
+	modifier = {
+		country_claim_influence_cost_mult = -0.3
+		shipclass_military_build_speed_mult = 0.2
+		ships_cost_mult = -0.05
+		ship_fire_rate_mult = 0.1
+		ship_weapon_damage = 0.1
+		ship_hull_mult = 0.2
+		ship_armor_mult = 0.2
+		ship_shield_mult = 0.2
+		country_naval_cap_add = 40
+		command_limit_add = 20
+		planet_army_build_speed_mult = 0.5
+		intel_decryption_add = 5
+		ship_sensor_range_add = 3
+	}
+}
+
+#荣光贵族
+civic_glorious_aristocracy = {
+	traits = {
+		trait = trait_DC_ethic_asceticism
+	}
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Girl
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_glorious_aristocracy.dds"
+	random_weight = { base = 50 }
+	modifier = {
+		pop_factions_unity_produces_mult = 0.5
+		leaders_cost_mult = -0.5
+		leaders_upkeep_mult = -0.5
+		edicts_upkeep_mult = -0.2
+		planet_jobs_ruler_produces_mult = 0.1
+		planet_jobs_specialist_produces_mult = 0.1
+	}
+}
+
+#纯粹之族
+civic_pure_racial = {
+	traits = {
+		trait = trait_DC_ethic_asceticism
+	}
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Girl
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_xenophobe
+				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_pure_racial.dds"
+	random_weight = { base = 50 }
+	modifier = {
+		planet_stability_add = 5
+		planet_jobs_unity_produces_mult = 0.1
+		planet_pop_assembly_organic_mult = 0.2
+		country_edict_fund_add = 50
+		pop_citizen_happiness = 0.1
+		pop_cat_slave_happiness = -0.2
+	}
+}
+
+#柏拉图之恋
+civic_platonic_love = {
+	modification = no
+	traits = {
+		trait = trait_DC_ethic_asceticism
+	}
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Girl
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_xenophile
+				value = ethic_xenophile
+				value = ethic_fanatic_xenophile
+			}
+		}
+		origin = {
+			NOT = { value = origin_INN_destruction_light }
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_platonic_love.dds"
+	random_weight = { base = 50 }
+	modifier = {
+		pop_growth_speed = 0.2
+		diplo_weight_mult = 0.3
+		pop_happiness = 0.1
+		diplo_action_acceptance_add = 10
+		envoys_add = 5
+		country_trust_growth = 0.5
+		country_trust_cap_add = 100
+	}
+}
+
+#索多玛之罚
+civic_punish_for_sodom = {
+	possible = {
+		civics = {
+			value = civic_fanatic_purifiers
+		}
+		ethics = {
+			value = ethic_fanatic_xenophobe
+			value = ethic_spiritualist
+		}
+		origin = {
+			NOT = { value = origin_INN_destruction_light }
+		}
+	}
+	traits = {
+		trait = trait_DC_ethic_asceticism
+	}
+	description = civic_punish_for_sodom_description
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Girl
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_punish_for_sodom.dds"
+	random_weight = { base = 50 }
+}
+
+#圣树启灵
+civic_holy_tree = {
+	description = civic_holy_tree_description
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Girl
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+			}
+		}
+	}
+	traits = {
+		trait = trait_DC_ethic_asceticism
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_pacifist
+				value = ethic_pacifist
+				value = ethic_fanatic_pacifist
+			}
+		}
+		origin = {
+			value = origin_INN_world_tree
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_holy_tree.dds"
+	random_weight = { base = 50 }
+}
+
+#神爱世人
+civic_god_loves_people = {
+	description = civic_god_loves_people_description
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Girl
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+			}
+		}
+	}
+	traits = {
+		trait = trait_DC_ethic_asceticism
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_egalitarian
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian
+			}
+		}
+		origin = {
+			NOT = { value = origin_INN_destruction_light }
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_god_loves_people.dds"
+	random_weight = { base = 50 }
+}
+
+civic_inn_galactic_sovereign = {
+	modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_inn_galactic_sovereign.dds"
+	potential = {
+		civics = {
+			value = civic_inn_galactic_sovereign			# Added via event - this trigger prevents the civic from being picked by others
+		}
+	}
+	random_weight = { base = 0 }
+	modifier = {
+		country_civics_influence_produces_add = 4
+		diplo_weight_mult = 1
+		envoys_add = 4
+		country_government_civic_points_add = 1
+		country_naval_cap_mult = 0.33
+		country_unity_produces_mult = 0.33
+	}
+}
+
+#断罪
+civic_holylight_convict = {
+	modification = no
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Girl
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+			}
+		}
+		ethics = {
+			NOT = { value = ethic_gestalt_consciousness }
+		}
+	}
+	traits = {
+		trait = trait_DC_ethic_asceticism
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_holylight_convict.dds"
+	description = civic_holylight_convict_description
+	possible = {
+		ethics = {
+			value = ethic_fanatic_pacifist
+		}
+		origin = {
+			NOT = { value = origin_INN_destruction_light }
+		}
+	}
+	modifier = {
+		spy_network_value_mult = 0.25
+		spy_network_daily_value_mult = 0.25
+		envoys_add = 2
+		country_war_exhaustion_mult = -0.25
+		country_starbase_capacity_add = 5
+		shipclass_starbase_damage_mult = 1
+		starbase_upgrade_cost_mult = -0.5
+		shipclass_military_station_damage_mult = 1
+		starbase_defense_platform_capacity_add = 10
+	}
+	random_weight = { base = 50 }
+}
+
+#慈爱圣母
+civic_loving_virgin = {
+	modification = yes
+	icon = "gfx/interface/icons/governments/civics/civic_loving_virgin.dds"
+	traits = {
+		trait = trait_DC_ethic_asceticism
+	}
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Girl
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+			}
+		}
+		ethics = {
+			NOT = { value = ethic_gestalt_consciousness }
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_xenophile
+				value = ethic_xenophile
+				value = ethic_fanatic_xenophile
+			}
+		}
+		authority = {
+			value = auth_corporate
+		}
+		origin = {
+			NOT = { value = origin_INN_destruction_light }
+		}
+	}
+	modifier = {
+		trade_value_mult = 0.2
+		job_loving_virgin_per_pop = 0.1
+	}
+	random_weight = { base = 50 }
+}
+
+civic_holylight_usual = {
+	modification = no
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Girl
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+			}
+		}
+		ethics = {
+			NOT = { value = ethic_gestalt_consciousness }
+		}
+	}
+	traits = {
+		trait = trait_DC_ethic_asceticism
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_holylight_usual.dds"
+	description = civic_holylight_usual_description
+	possible = {
+		ethics = {
+			value = ethic_fanatic_spiritualist
+		}
+	}
+	modifier = {
+		planet_pops_unity_produces_add = 0.5
+		planet_pops_upkeep_mult = -0.25
+	}
+	random_weight = { base = 50 }
+}
+
+civic_help_weak = {
+	modification = no
+	potential = {
+		species_archetype = {
+			OR = {
+				value = Magical_Girl
+				value = WARSHIPGIRL
+				value = SHENHAI
+				value = NYTO
+				value = UNITED_FLEET
+			}
+		}
+		ethics = {
+			NOT = { value = ethic_gestalt_consciousness }
+		}
+	}
+	traits = {
+		trait = trait_DC_ethic_asceticism
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_help_weak.dds"
+	description = civic_help_weak_description
+	possible = {
+		ethics = {
+			value = ethic_fanatic_egalitarian
+		}
+		origin = {
+			NOT = { value = origin_INN_destruction_light }
+		}
+	}
+	modifier = {
+		planet_stability_add = 10
+		planet_crime_add = -10
+		empire_size_pops_mult = 0.1
+	}
+	random_weight = { base = 50 }
+}

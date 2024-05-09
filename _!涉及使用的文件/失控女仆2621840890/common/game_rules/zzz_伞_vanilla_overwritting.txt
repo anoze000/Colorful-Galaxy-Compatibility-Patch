@@ -1,0 +1,161 @@
+#改动：
+#仅防御战争政策的条件下：允许监护矩阵继任者使用遏制威胁CB宣战
+# used scripted_triggers: 
+# Maid_trigger_3_can_declare_war
+# Maid_trigger_4_can_release_vassal_from_species
+
+# ^_^
+
+
+###_|发动战争|	ZOFE/SOFE/S_tnatc/ETCPM/SSNI	####################################
+#Root = country, attacker
+#This = country, targetA
+#This rule is a condition for declaring war
+can_declare_war = {
+	#_+ZOFE/SOFE/ETCPM
+	custom_tooltip = {
+		fail_text = "ACTION_DECLARE_WAR_OVERLORD_ON_SUBJECT"
+		NOT = {
+			has_overlord = ROOT
+		}
+	}
+	if = { ##################################### maid
+		limit = {
+			exists = root
+			ROOT = {
+				has_policy_flag = no_wars
+				OR = {
+					is_subject = no
+					overlord = {
+						is_same_value = root
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "CAN_DECLARE_WAR_POLICY"
+			OR = {
+				#	rmaid	=|监护矩阵继任者使用遏制威胁CB|
+				Maid_trigger_3_can_declare_war = yes
+			}
+		}
+	}
+	# SOFE	清除?
+	if = {
+		limit = {
+			exists = root
+			ROOT = {
+				is_ai = yes
+			}
+		}
+		ROOT = {
+			is_at_war = no
+		}
+	}
+	
+	##	S_tnatc
+	if = {
+		limit = { has_global_flag = nyblax_no_wars }
+		custom_tooltip = {
+			text = "NYBLAX_NO_WARS"
+			always = no
+		}
+	}
+	##	SSNI
+	if = {
+		limit = {
+			use_for_game_mode_survival = yes
+		}
+		custom_tooltip = {
+			fail_text = "WAR_BLOCKED_FOR_SURVIVAL"
+			always = no
+		}
+	}
+}
+
+#按照类似始祖蜂巢的格式改写了机械体规则：允许机械体在满足特定条件之一的情况下被释放附庸
+
+###_|释放附庸物种|	GF/PTep/ETCPM/Eevt/Ecar/rmaid	####################################
+#Root = species
+#This = country
+can_release_vassal_from_species = {
+	root = {
+		is_sapient = yes
+		### +GF/PTep/ETCPM/rmaid
+		NOR = {
+			AND = { #满足特定条件允许以机械体种族释放附庸
+				has_trait = trait_machine_unit
+				NOR = {
+					# rmaid
+					Maid_trigger_4_can_release_vassal_from_species = yes
+					# Expanded Traits, Civics, Pops, and More
+					NOT = { prev.this = { has_origin = origin_master_computer } }
+				}
+			}
+			AND = { #满足特定条件允许以蜂巢种族释放附庸
+				has_trait = trait_hive_mind
+				NOR = {
+					prev.this = { has_origin = origin_progenitor_hive }
+				}
+			}
+			AND = {
+				NOT = { has_trait = trait_hive_mind }
+				prev.this = { has_authority = auth_hive_mind }
+			}
+			has_trait = trait_mechanical
+			can_think = no
+
+			# Ecar
+			has_trait = trait_flesh_components
+			# GF
+			has_trait = trait_doll
+			# PTep
+			has_trait = trait_plentiful_traditions_pt_cocoon
+			# Eevt/ETCPM
+			has_trait = trait_memorex_comatos
+			has_trait = trait_infested_basic
+			AND = {
+				has_global_flag = expanded_pops_active
+				prev = { NOT = { has_technology = tech_synthetic_leaders } }
+				has_trait = trait_mechanical
+			}
+		}
+		
+		# ETCPM	##################
+		if = {
+			limit = {
+				has_global_flag = expanded_pops_active
+				prev = {
+					OR = {
+						has_valid_civic = civic_fanatic_purifiers
+						has_valid_civic = civic_machine_assimilator
+						has_valid_civic = civic_hive_devouring_swarm
+					}
+				}
+			}
+			is_same_species = prev
+		}
+		if = {
+			limit = {
+				has_global_flag = expanded_pops_active
+				prev = { has_authority = auth_machine_intelligence }
+			}
+			OR = {
+				has_trait = trait_machine_unit
+				has_citizenship_rights = yes
+				has_citizenship_type = { type = citizenship_limited }
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = expanded_pops_active
+				prev = { has_authority = auth_hive_mind }
+			}
+			OR = {
+				has_trait = trait_hive_mind
+				has_citizenship_rights = yes
+				has_citizenship_type = { type = citizenship_limited }
+			}
+		}
+	}
+}

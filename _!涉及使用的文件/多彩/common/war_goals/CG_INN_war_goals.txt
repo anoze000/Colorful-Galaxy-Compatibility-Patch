@@ -1,0 +1,50 @@
+wg_inn_holy_punishment = {
+    casus_belli = cb_inn_holy_punishment
+    hide_if_no_cb = yes
+    galactic_empire_joins_defender = {
+        From = { allows_slavery = yes }
+        imperial_authority >= 30
+    }
+    allowed_peace_offers = {
+        status_quo
+        surrender
+        demand_surrender
+    }
+    surrender_acceptance = -100
+    war_exhaustion = 0.75
+    potential = { From = { is_country_type = default } }
+    possible = {
+        custom_tooltip = {
+            fail_text = cannot_use_against_emperor
+            OR = {
+                From = { is_galactic_emperor = no }
+                is_galactic_community_member = no
+            }
+        }
+        custom_tooltip = {
+            fail_text = pax_galactica_active
+            NAND = {
+                is_active_resolution = resolution_emperor_pax_galactica
+                is_galactic_community_member = yes
+                From = { is_galactic_community_member = yes }
+            }
+        }
+    }
+    on_accept = {
+        From = {
+            set_policy = {
+                policy = slavery
+                option = slavery_not_allowed
+                cooldown = yes
+            }
+            every_subject = {
+                set_policy = {
+                    policy = slavery
+                    option = slavery_not_allowed
+                    cooldown = yes
+                }
+            }
+        }
+    }
+    ai_weight = { weight = 5 }
+}

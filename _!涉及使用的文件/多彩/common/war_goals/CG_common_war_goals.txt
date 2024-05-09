@@ -1,0 +1,57 @@
+wg_declare_CG_rbq = {
+	casus_belli = cb_event
+	allowed_peace_offers = {
+		surrender
+		demand_surrender
+	}
+	surrender_acceptance = -100
+	war_exhaustion = 0.25
+	set_defender_wargoal = wg_CG_rbq_humiliation
+	on_accept = {
+		custom_tooltip = wg_declare_CG_rbq
+		set_timed_country_flag = { flag = wg_declare_CG_rbq_attack_winner days = 30 }
+		hidden_effect = {
+			country_event = { id = CG_diplo.0097 days = 1 }
+			from = {
+				country_event = { id = CG_diplo.0097 days = 2 }
+			}
+		}
+	}
+	potential = { always = no }
+	possible = { always = no }
+	ai_weight = { weight = 100 }
+}
+
+wg_CG_rbq_humiliation = {
+	casus_belli = cb_rbq_humiliation
+	hide_if_no_cb = yes
+	allowed_peace_offers = {
+		surrender
+		demand_surrender
+	}
+	surrender_acceptance = -25
+	potential = { always = no }
+	possible = { always = no }
+	on_accept = {
+		custom_tooltip = wg_humiliation_accept
+		hidden_effect = {
+			add_resource = {
+				influence = 100
+			}
+			from = {
+				add_modifier = { modifier = humiliated days = 3600 }
+				if = {
+					limit = { has_policy_flag = diplo_stance_supremacist }
+					set_policy = {
+						policy = diplomatic_stance
+						option = diplo_stance_belligerent
+						cooldown = yes
+					}
+					prev = { set_country_flag = humble_pie_achievement }
+				}
+			}
+			country_event = { id = CG_diplo.0098 }
+		}
+	}
+	ai_weight = { weight = 100 }
+}

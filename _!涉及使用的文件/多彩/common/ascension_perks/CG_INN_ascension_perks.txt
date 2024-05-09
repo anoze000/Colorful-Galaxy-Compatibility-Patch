@@ -1,0 +1,170 @@
+#圣光解封
+ap_holy_light_remove_seal = {
+	on_enabled = {
+		custom_tooltip = "holy_light_remove_seal_text"
+		hidden_effect = { country_event = { id = mind_break.1 } }
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_1"
+			OR = {
+				num_ascension_perks > 0
+				is_ai = yes
+			}
+		}
+		OR = {
+			has_trait = trait_forbidden_lust
+			has_origin = origin_INN_destruction_light
+		}
+		NOR = {
+			has_ascension_perk = ap_the_flesh_is_weak
+			has_ascension_perk = ap_synthetic_evolution
+		}
+		custom_tooltip = {
+			fail_text = "requires_pure_policy_flag"
+			OR = {
+				has_policy_flag = lust_forbidden
+				is_ai = yes
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_tech_holylight_deep_research"
+			OR = {
+				has_technology = tech_holylight_deep_research
+				is_ai = yes
+			}
+		}
+	}
+	potential = {
+		is_pure_empire = yes
+		OR = {
+			is_mechanical_empire = no
+			is_dc_cor_archetype = yes
+		}
+		NOT = { has_ascension_perk = ap_holy_light_remove_seal }
+	}
+	modifier = {
+		planet_jobs_holylight_crystal_produces_mult = 0.1
+	}
+	ai_weight = { factor = 500 }
+}
+
+#圣光 1段 羔羊圣血
+ap_holylight_god_blood = {
+	on_enabled = {
+		add_research_option = tech_pc_holylight_city
+		add_research_option = tech_beauty_theory
+		hidden_effect = {
+			country_event = { id = mind_break.4 }
+			country_event = { id = CG_chain.200 days = 180 random = 30 }
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_trait_mind_evolution"
+			has_country_flag = has_ap_pure_ascension
+		}
+		NOR = {
+			has_ascension_perk = ap_the_flesh_is_weak
+			has_ascension_perk = ap_synthetic_evolution
+		}
+		custom_tooltip = {
+			fail_text = "requires_pure_policy_flag"
+			OR = {
+				has_policy_flag = lust_forbidden
+				is_ai = yes
+			}
+		}
+	}
+	potential = {
+		is_pure_empire = yes
+		OR = {
+			is_mechanical_empire = no
+			is_dc_cor_archetype = yes
+		}
+		NOT = { has_ascension_perk = ap_holylight_god_blood }
+	}
+	modifier = {
+		BIOLOGICAL_species_trait_points_add = 2
+		Magical_Girl_species_trait_points_add = 2
+		planet_jobs_produces_mult = 0.1
+		country_unity_produces_mult = 0.1
+	}
+	ai_weight = { factor = 500 }
+}
+
+#出谷之路
+ap_holylight_god_way = {
+	on_enabled = {
+		hidden_effect = { country_event = { id = mind_break.5 } }
+		add_research_option = tech_holylight_god_mother
+	}
+	possible = {
+		has_ascension_perk = ap_holylight_god_blood
+		NOR = {
+			has_ascension_perk = ap_the_flesh_is_weak
+			has_ascension_perk = ap_synthetic_evolution
+		}
+		custom_tooltip = {
+			fail_text = "requires_pure_policy_flag"
+			OR = {
+				has_policy_flag = lust_forbidden
+				is_ai = yes
+			}
+		}
+	}
+	modifier = {
+		planet_holyclergy_produces_mult = 0.2
+		planet_jobs_unity_produces_mult = 0.2
+		country_naval_cap_mult = 0.3
+	}
+	potential = {
+		is_pure_empire = yes
+		OR = {
+			is_mechanical_empire = no
+			is_dc_cor_archetype = yes
+		}
+		NOT = { has_ascension_perk = ap_holylight_god_way }
+	}
+	ai_weight = { factor = 500 }
+}
+
+#圣光 3段 趋光逐神
+ap_holylight_god_light = {
+	on_enabled = {
+		custom_tooltip = "ap_holylight_god_light_modifier_tooltip"
+		hidden_effect = { country_event = { id = mind_break.6 } }
+		add_research_option = tech_holylight_god_kingdom
+		add_research_option = tech_repeat_box_physics_5
+		add_research_option = tech_repeat_box_engineering_5
+	}
+	possible = {
+		has_ascension_perk = ap_holylight_god_way
+		NOR = {
+			has_ascension_perk = ap_the_flesh_is_weak
+			has_ascension_perk = ap_synthetic_evolution
+		}
+		custom_tooltip = {
+			fail_text = "requires_pure_policy_flag"
+			OR = {
+				has_policy_flag = lust_forbidden
+				is_ai = yes
+			}
+		}
+	}
+	modifier = {
+		all_technology_research_speed = 0.2
+		num_tech_alternatives_add = 1
+		pop_resettlement_cost_mult = -0.25
+		country_resource_max_add = 1000000
+	}
+	potential = {
+		is_pure_empire = yes
+		OR = {
+			is_mechanical_empire = no
+			is_dc_cor_archetype = yes
+		}
+		NOT = { has_ascension_perk = ap_holylight_god_light }
+	}
+	ai_weight = { factor = 500 }
+}

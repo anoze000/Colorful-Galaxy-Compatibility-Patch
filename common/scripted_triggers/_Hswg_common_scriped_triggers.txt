@@ -1,32 +1,59 @@
+# 碳基物种（仅有多彩使用）
 is_carbon_based = {
 	OR = {
-		is_species_class = TBHUMAM
-		is_species_class = CPHUM
-		is_species_class = TBPLANT
-		is_species_class = TBVAMPIRE
-		is_species_class = TBCAT
-		is_species_class = TBDOG
-		is_species_class = TBVILLAIN
-		is_species_class = NECROID
-		is_species_class = AQUATIC
+		is_KZ_VOY_organic_species = yes
 		species = {
 			OR = {
-				is_archetype = BIOLOGICAL # original trigger did not include pre-sapient classes
-
-				is_archetype = WARSHIPGIRL				#_wsg
+				# 香草
+				is_archetype = BIOLOGICAL				# original trigger did not include pre-sapient classes
+				# 多彩
+				is_archetype = Magical_Bitch
+				is_archetype = PARASITE
+				is_archetype = Magical_Girl
+				is_archetype = MONSTER
+				is_archetype = TENTACLE
+				is_archetype = Lust_Girl
+				is_archetype = Erotic_Creation
+				# 多彩联动
+				is_archetype = NYTO						# 捏托
+				is_archetype = EILD
+				is_archetype = WARSHIPGIRL				# wsg
 				is_archetype = SHENHAI
 				is_archetype = UNITED_FLEET
-				is_archetype = NANITES_CROP
-
+				# 多彩兼容
 				is_archetype = LILY						# 突击莉莉
 				is_archetype = STARSHIPGIRLS			# swg
+				is_archetype = Dolls					#_灰烬
+				# 其他mod中的已确认有机大类
 				is_archetype = KANMUSU					# kc
 				is_archetype = DATEALIVE				# DAL
-
+				is_archetype = TOUHOUGIRLS
 				is_archetype = KANSEN					#_|azl|
-				is_archetype = Dolls					#_灰烬
 				is_archetype = POKEMON					#_[pkman]	[伊布帝国v1.22]=2398450274
-				is_archetype = SCARLET_DOLL				#_[sklt]	[斯卡雷特帝国]=2208079856
+				is_archetype = Schale					#_|碧蓝档案|
+				is_archetype = ELF						#_|带刺|
+				is_archetype = WV_OBJECT				#_|魔女|
+			}
+		}
+	}
+}
+
+# 有机物种
+#_MOD	|wsg/swg/kc/adf/pkman/ETCPM/带刺/azl/涅托/DAL/碧蓝档案/魔女	/SC/EE|
+##_scopes	<pop/spcs>
+##	牵扯[物种组装]无法通过给flg解决
+is_organic_species = {
+	OR  = {
+		is_carbon_based = yes
+		is_KZ_VOY_organic_species = yes
+		species = {
+			OR = {
+				# 原本
+				is_archetype = LITHOID #石头人
+				is_archetype = PRESAPIENT #前智能
+				# 确认为非碳基有机生命
+				is_archetype = NANITES_CROP  #微械
+				# 以下不确定是否碳基
 				is_archetype = HUMANOID					#_[ETCPM]
 				is_archetype = MAMMALIAN
 				is_archetype = REPTILIAN
@@ -41,39 +68,19 @@ is_carbon_based = {
 				is_archetype = half_aberration
 				is_archetype = half_perfect
 				is_archetype = half_amalgamated
-				is_archetype = ELF						#_[带刺]
-			
-				is_archetype = NYTO						#_|涅托|
-				is_archetype = EILD
-
-			#	is_archetype = KZ_VOY_TERRANOID			#_|久远|
-				is_KZ_VOY_organic_species = yes
-			#	is_archetype = DKHALAI					#_|SC|
-			#	is_archetype = DNERAZIM
-				is_archetype = ASCENDED					#_|EE|
-				is_archetype = Schale					#_|碧蓝档案|
-
-				is_archetype = Magical_Bitch
-				is_archetype = Magical_Girl
-				is_archetype = MONSTER
-				is_archetype = TENTACLE
-				is_archetype = PARASITE
-				is_archetype = Lust_Girl
-				is_archetype = Erotic_Creation
 			}
-		}
+		}	
 	}
 }
 
 is_inorganic_species = {
 	species = {
 		OR = {
-			is_archetype = LITHOID
-			is_archetype = YGWAWA
 			is_archetype = LOVEMACHINE
 			is_archetype = HOLYROBOT
 			is_archetype = ROBOT
 			is_archetype = MACHINE
+			is_archetype = YGWAWA
 		}
 	}
 }
@@ -108,7 +115,7 @@ is_dcyh_pop = {
 			#突击莉莉
 			is_archetype = LILY
 			#灰烬战线
-			is_archetype = Dolls
+			is_archetype = Dolls	
 		}
 	}
 }
@@ -211,7 +218,6 @@ is_canbe_sex_slave = {
 				}
 			}
 			OR = {
-				has_wg_traits = no
 				has_trait = trait_DC_ethic_carnalism
 				has_trait = trait_DC_ethic_asceticism
 			}			
@@ -229,133 +235,16 @@ is_canbe_sex_slave = {
 	}
 }
 
-is_organic_species = {
-	species = {
-		OR = {
-			is_archetype = BIOLOGICAL # original trigger did not include pre-sapient classes
-			is_archetype = LITHOID
-
-			is_archetype = WARSHIPGIRL				#_wsg
-			is_archetype = SHENHAI
-			is_archetype = UNITED_FLEET
-			is_archetype = NANITES_CROP
-
-			is_archetype = LILY						# 突击莉莉
-			is_archetype = STARSHIPGIRLS			# swg
-			is_archetype = KANMUSU					# kc
-			is_archetype = DATEALIVE				# DAL
-
-			is_archetype = KANSEN					#_|azl|
-			is_archetype = Dolls					#_灰烬
-			is_archetype = POKEMON					#_[pkman]	[伊布帝国v1.22]=2398450274
-			is_archetype = SCARLET_DOLL				#_[sklt]	[斯卡雷特帝国]=2208079856
-			is_archetype = HUMANOID					#_[ETCPM]
-			is_archetype = MAMMALIAN
-			is_archetype = REPTILIAN
-			is_archetype = AVIAN
-			is_archetype = ARTHROPOID
-			is_archetype = MOLUSCOID
-			is_archetype = FUNGOID
-			is_archetype = PLANTOID
-			is_archetype = NECROID
-			is_archetype = half_species
-			is_archetype = half_species_special
-			is_archetype = half_aberration
-			is_archetype = half_perfect
-			is_archetype = half_amalgamated
-			is_archetype = ELF						#_[带刺]
-			
-			is_archetype = NYTO						#_|涅托|
-			is_archetype = EILD
-
-		#	is_archetype = KZ_VOY_TERRANOID			#_|久远|
-			is_KZ_VOY_organic_species = yes
-		#	is_archetype = DKHALAI					#_|SC|
-		#	is_archetype = DNERAZIM
-			is_archetype = ASCENDED					#_|EE|
-			is_archetype = Schale					#_|碧蓝档案|
-
-			is_archetype = Magical_Bitch			#_|多彩|
-			is_archetype = Magical_Girl
-			is_archetype = MONSTER
-			is_archetype = TENTACLE
-			is_archetype = PARASITE
-			is_archetype = Lust_Girl
-			is_archetype = Erotic_Creation
-		}
-	}
-}
-
 is_ban_vanilla_ap_country = {
-	OR = {
+	OR = {	
 		has_authority = "auth_Arp_0"
-		has_civic = civic_AL_newearth
-		has_authority = auth_AL_pua_fall
-		has_authority = auth_AL_aggressive_fall
 		has_authority = "auth_machine_intelligence"
-		has_authority = "auth_warshipgirls"
-		has_authority = "auth_shenhai"
 		has_authority = "auth_starshipgirls"
 		has_authority = "auth_asharmdolls"
-		has_authority = "auth_united_fleet"
 		has_authority = "auth_commonwealth"
 		has_authority = "auth_kancolle"
 		has_authority = "auth_kan"
 		has_authority = "auth_GF_paradeus"
 		azurlane_default_govement_trigger = yes
-	}
-}
-
-is_ban_vanilla_ap_not_wsg_country = {
-	OR = {
-		has_authority = "auth_Arp_0"
-		has_civic = civic_AL_newearth
-		has_authority = auth_AL_pua_fall
-		has_authority = auth_AL_aggressive_fall
-		has_authority = "auth_machine_intelligence"
-		has_authority = "auth_starshipgirls"
-		has_authority = "auth_asharmdolls"
-		has_authority = "auth_commonwealth"
-		has_authority = "auth_kancolle"
-		has_authority = "auth_kan"
-		has_authority = "auth_GF_paradeus"
-	}
-}
-
-has_wg_and_uf_special_authority = {
-	OR = {
-		has_authority = auth_shenhai
-		has_authority = auth_warshipgirls
-		has_authority = auth_united_fleet
-	}
-}
-
-UGRC_trgr_spcs_WSG = {
-	OR = {
-		is_archetype = WARSHIPGIRL
-		is_archetype = SHENHAI
-		is_archetype = UNITED_FLEET
-		is_archetype = NANITES_CROP
-	}
-}
-
-UGRC_trgr_spcs_ASSEMBLY = {
-	OR = {
-		is_archetype = LILY						# 莉莉
-		is_archetype = STARSHIPGIRLS			# swg
-		is_archetype = KANMUSU					# kc
-		is_archetype = DATEALIVE				# DAL
-	}
-}
-
-is_futa_country = {
-	optimize_memory
-	custom_tooltip_fail = {
-		text = is_futa_country_txt
-		OR = {
-			has_country_flag = ICE_MOON_FUTA
-			has_country_flag = ICE_MOON_FUTA_AI
-			# has_country_flag = ICE_MOON_CD_LOST_AI
-		}
 	}
 }

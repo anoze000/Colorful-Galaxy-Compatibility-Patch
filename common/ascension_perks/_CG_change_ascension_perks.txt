@@ -34,13 +34,16 @@ ap_holylight_god_blood = {
 		NOT = { has_ascension_perk = ap_holylight_god_blood }
 	}
 	modifier = {
-		BIOLOGICAL_species_trait_points_add = 2
-		Magical_Girl_species_trait_points_add = 2
+		Magical_Girl_trait_points_add = 2
+		NYTO_species_trait_points_add = 2
+		EILD_species_trait_points_add = 2
 		WARSHIPGIRL_species_trait_points_add = 2
 		SHENHAI_species_trait_points_add = 2
-		NYTO_species_trait_points_add = 2
-		STARSHIPGIRLS_species_trait_points_add = 2
 		UNITED_FLEET_species_trait_points_add = 2
+		LILY_species_trait_points_add = 2
+		STARSHIPGIRLS_species_trait_points_add = 2
+		Dolls_species_trait_points_add = 2
+		TOUHOUGIRLS_species_trait_points_add = 2
 		planet_jobs_produces_mult = 0.1
 		country_unity_produces_mult = 0.1
 	}

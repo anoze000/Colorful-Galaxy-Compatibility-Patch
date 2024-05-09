@@ -1,0 +1,23 @@
+is_KZ_VOY_organic_species = { always = no }
+
+has_wg_and_uf_special_authority = { always = no }
+
+azurlane_default_govement_trigger = { always = no }
+
+is_lily_goverments = { always = no }
+
+is_communist_country = { always = no }
+
+is_futa_country = { always = no }
+
+is_GF_authority = { always = no }
+
+is_nirvana_empire_dragon = { always = no }
+
+is_nirvana_empire_council = { always = no }
+
+is_nirvana_empire = { always = no }
+
+Maid_trigger_0_can_build_branch_offices = { always = no }
+
+is_zofe_compatible = { always = no }

@@ -259,10 +259,6 @@ resolution_declare_crisis = {
 		NOT = { 
 			has_country_flag = declared_crisis 
 		}
-		NOR = {
-			is_wg_fallen_empire = yes
-			is_sh_fallen_empire = yes
-		}
 	}
 
 	modifier = {
@@ -543,7 +539,6 @@ resolution_galacticreforms_nominate_custodian = {
 		is_country_type = default
 		is_galactic_community_member = yes
 		is_part_of_galactic_council = yes
-		is_same_value = from
 		custom_tooltip = {
 			fail_text = "nominate_other_custodian_requires_independence"
 			is_subject = no

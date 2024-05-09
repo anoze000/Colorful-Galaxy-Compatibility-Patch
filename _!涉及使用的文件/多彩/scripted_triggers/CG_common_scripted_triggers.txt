@@ -1,0 +1,492 @@
+is_carbon_based = {
+	OR = {
+		species = {
+			OR = {
+				is_archetype = BIOLOGICAL				# original trigger did not include pre-sapient classes
+				is_archetype = NYTO
+				is_archetype = EILD
+				is_archetype = WARSHIPGIRL
+				is_archetype = SHENHAI
+				is_archetype = UNITED_FLEET
+			}
+		}
+		is_species_class = Magical_Bitch
+		is_species_class = PAR
+		is_species_class = Magical_Girl
+		is_species_class = MWN
+		is_species_class = TEN
+		is_species_class = Lust_Girl
+		is_species_class = Magical_Tentacle
+	}
+}
+
+is_inorganic_species = {
+	OR = {
+		is_species_class = RBQ
+		is_species_class = SGPC
+		is_species_class = ROBOT
+		is_species_class = MACHINE
+	}
+}
+
+#是DC和与DC联动物种
+is_dcyh_pop = {
+	OR = {
+		is_species_class = Magical_Bitch
+		is_species_class = Magical_Girl
+		is_species_class = Lust_Girl
+		is_species_class = TEN
+		is_species_class = PAR
+		is_species_class = RBQ
+		is_species_class = YGWW
+		is_species_class = SGPC
+		is_species_class = MWN
+		#涅托
+		species = {
+			OR = {
+				is_archetype = NYTO
+				is_archetype = EILD
+			}
+		}
+		#舰R
+		species = {
+			OR = {
+				is_archetype = WARSHIPGIRL
+				is_archetype = SHENHAI
+				is_archetype = UNITED_FLEET
+			}
+		}
+	}
+}
+
+#是与DC有联动的物种
+is_dc_cor_archetype = {
+	species = {
+		OR = {
+			#舰R
+			is_archetype = WARSHIPGIRL
+			is_archetype = SHENHAI
+			is_archetype = UNITED_FLEET
+			#涅托
+			is_archetype = NYTO
+		}
+	}
+}
+
+#是丑陋物种
+is_ugly_pop = {
+	NOR = {
+		#DC附属物种
+		is_species_class = RBQ
+		is_species_class = SGPC
+		is_species_class = YGWW
+		is_species_class = PAR
+		is_species_class = MWN
+		#DC和联动物种
+		is_species_class = Magical_Bitch
+		is_species_class = Magical_Girl
+		is_species_class = Lust_Girl
+		is_species_class = TEN
+		species = {
+			OR = {
+				is_archetype = WARSHIPGIRL
+				is_archetype = SHENHAI
+				is_archetype = UNITED_FLEET
+				is_archetype = NYTO
+				
+				is_archetype = ROBOT
+				is_archetype = MACHINE
+				is_archetype = LITHOID
+			}
+		}
+	}
+}
+
+#能否做性奴
+is_canbe_sex_slave = {
+	OR = {
+		is_species_class = PAR
+		is_species_class = Magical_Bitch
+		is_species_class = Magical_Girl
+		is_species_class = MWN
+		is_species_class = Lust_Girl
+		species = {
+			OR = {
+				is_archetype = WARSHIPGIRL
+				is_archetype = SHENHAI
+				is_archetype = UNITED_FLEET
+				is_archetype = NYTO
+			}
+		}
+		AND = {
+			OR = {
+				is_species_class = RBQ
+				is_species_class = YGWW
+			}
+			has_trait = trait_cyber_RBQ
+		}
+	}
+}
+
+is_cg_empire = {
+	OR = {
+		has_country_flag = carnalism_flag
+		has_country_flag = parasite_mind_flag
+		has_country_flag = lust_skynet_flag
+		has_country_flag = asceticism_flag
+		has_country_flag = abstinence_flag
+	}
+}
+
+is_lust_empire = {
+	owner = { has_country_flag = carnalism_flag }
+}
+
+is_pure_empire = {
+	owner = { has_country_flag = asceticism_flag }
+}
+
+is_lbm_empire = {
+	owner = { has_country_flag = lust_skynet_flag }
+}
+
+is_ten_empire = {
+	owner = { has_country_flag = parasite_mind_flag }
+}
+
+is_sos_empire = {
+	owner = { has_country_flag = abstinence_flag }
+}
+
+is_has_lust_trait = {
+	OR = {
+		has_trait = trait_forever_naughty
+		has_trait = trait_sex_addiction
+		has_trait = trait_all_slave
+		has_trait = trait_soul_flesh_link
+		has_trait = trait_animal_partner
+		has_trait = trait_cortex_biochip
+		has_trait = trait_sexual_pleasure_increase
+		has_trait = trait_lust_missionary
+		has_trait = trait_broken_fleshtoilet
+		has_trait = trait_sexual_liquid_flower
+		has_trait = trait_transformed_perfect_body
+		has_trait = trait_lust_inn
+		has_trait = trait_lust_toy
+		has_trait = trait_cyber_RBQ
+		has_trait = trait_biochemical_doll
+		has_trait = trait_bereavement
+		has_trait = trait_bereavement_body
+		has_trait = trait_bereavement_genitals
+		has_trait = trait_want_bereavement
+		has_trait = trait_sensitive_delicatebody
+		has_trait = trait_utmost_sensitive
+		has_trait = trait_ultradimensional_pleasure
+	}
+}
+
+is_has_pure_trait = {
+	OR = {
+		has_trait = trait_heartless_shojo
+		has_trait = trait_zealot_shojo
+		has_trait = trait_virtuous
+		has_trait = trait_inner_peace
+		has_trait = trait_forbidden_lust
+		has_trait = trait_chaste_warrior_women
+		has_trait = trait_highbrow
+		has_trait = trait_the_vestal
+		has_trait = trait_holy_suc
+	}
+}
+
+is_a_fool = {
+	OR = {
+		has_trait = trait_heartless_shojo
+		has_trait = trait_broken_fleshtoilet
+		has_trait = trait_brain_broken
+		has_trait = trait_zombie
+	}
+}
+
+is_very_beautiful = {
+	OR = {
+		has_trait = trait_beautiful		#仙姿玉色
+		has_trait = trait_coquettish		#丰姿怡丽
+		has_trait = trait_transformed_perfect_body		#改造尤物
+	}
+}
+
+has_DC_framework_trait = {
+	OR = {
+		has_trait = trait_DC_ethic_carnalism		#淫欲之吻
+		has_trait = trait_DC_ethic_parasite_mind		#拟态
+		has_trait = trait_DC_ethic_parasite_mind_hard		#淫虫意志
+		has_trait = trait_DC_ethic_asceticism		#纯净之心
+		has_trait = trait_DC_ethic_lust_skynet		#情欲天网
+		has_trait = trait_DC_ethic_abstinence		#圣触之心
+	}
+}
+
+is_has_depraved_trait = {
+	OR = {
+		has_trait = trait_Lust_Girl_Obscene_Symbiosis
+		has_trait = trait_lost_wisdom
+		has_trait = trait_seedbed_remodel
+		has_trait = trait_desire_intolerable
+		has_trait = trait_tentacle_train
+		has_trait = trait_remodel_sequela
+		has_trait = trait_stout_tentacle
+		has_trait = trait_docile_clever
+		has_trait = trait_eternity_wisdom
+		has_trait = trait_toilet_seedbed
+		has_trait = trait_tentacle_slave
+		has_trait = trait_terror_tentacle
+		has_trait = trait_gentle_hardworking
+	}
+}
+
+can_destroy_planet_with_PLANET_KILLER_SUC1 = {
+	custom_tooltip = {
+		fail_text = is_not_a_habitable_planet_or_megastructure
+		OR = {
+			is_a_habitable_planet_megastructure = yes
+			is_planet_class = pc_ai
+		}
+	}
+	custom_tooltip = {
+		fail_text = is_not_hostile_or_primitive
+		OR = {
+			planet_is_hostile_or_crisis = yes
+			AND = {
+				exists = owner
+				owner = { is_country_type = primitive }
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = is_shielded
+		NOR = {
+			is_planet_class = pc_shielded
+			is_planet_class = pc_ringworld_shielded
+			is_planet_class = pc_habitat_shielded
+		}
+	}
+	custom_tooltip = {
+		fail_text = is_pc_love_juice
+		NOT = { is_planet_class = pc_love_juice }
+	}
+	custom_tooltip = {
+		fail_text = sick_species_suc
+		NOT = {
+			AND = {
+				exists = owner
+				owner = { is_country_type = primitive }
+			}
+		}
+	}
+}
+
+can_destroy_planet_with_PLANET_KILLER_SUC2 = {
+	is_colony = yes
+	custom_tooltip = {
+		fail_text = is_not_hostile_or_primitive
+		OR = {
+			planet_is_hostile_or_crisis = yes
+			AND = {
+				exists = owner
+				owner = { is_country_type = primitive }
+			}
+		}
+	}
+}
+
+can_destroy_planet_with_PLANET_KILLER_INN1 = {
+	custom_tooltip = {
+		fail_text = is_not_a_habitable_planet_or_megastructure
+		OR = {
+			is_a_habitable_planet_megastructure = yes
+			is_planet_class = pc_ai
+		}
+	}
+	custom_tooltip = {
+		fail_text = is_not_hostile
+		OR = { planet_is_hostile_or_crisis = yes }
+	}
+	custom_tooltip = {
+		fail_text = is_shielded
+		NOR = {
+			is_planet_class = pc_shielded
+			is_planet_class = pc_ringworld_shielded
+			is_planet_class = pc_habitat_shielded
+		}
+	}
+	custom_tooltip = {
+		fail_text = is_pc_love_juice
+		NOT = { is_planet_class = pc_love_juice }
+	}
+	custom_tooltip = {
+		fail_text = sick_species_inn
+		NOT = {
+			AND = {
+				exists = owner
+				owner = { is_country_type = primitive }
+			}
+		}
+	}
+}
+
+can_destroy_planet_with_PLANET_KILLER_TEN = {
+	NOR = {
+		is_planet_class = pc_love_juice
+		is_planet_class = pc_dc_spore
+		is_planet_class = pc_ten_prostitution
+		is_star = yes
+	}
+}
+
+# 能否作为天灾星球
+can_planet_be_crisis = {
+	NOR = {
+		solar_system = {
+			has_star_flag = CG_crisis_star_1
+			has_star_flag = CG_crisis_star_2
+			has_star_flag = CG_crisis_star_3
+			has_star_flag = CG_crisis_star_4
+		}
+	}
+	OR = {
+		# No owner or neighbors
+		NOR = {
+			solar_system = {
+				any_neighbor_system = { exists = space_owner }
+				exists = space_owner
+			}
+		}
+		# Owned but not by fallen empire
+		AND = {
+			exists = space_owner
+			space_owner = {
+				NOR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+				}
+			}
+		}
+	}
+	# No neighboring fallen empires
+	NOT = {
+		solar_system = {
+			any_neighbor_system = {
+				exists = space_owner
+				space_owner = {
+					OR = {
+						is_country_type = fallen_empire
+						is_country_type = awakened_fallen_empire
+					}
+				}
+			}
+		}
+	}
+}
+
+choose_elysia_special_gift = {
+	OR = {
+		has_country_flag = pastparadise_draw2
+		has_country_flag = pastparadise_draw3
+		has_country_flag = pastparadise_draw4
+		has_country_flag = pastparadise_draw5
+		has_country_flag = pastparadise_draw6
+		has_country_flag = pastparadise_draw7
+		has_country_flag = pastparadise_draw8
+		has_country_flag = pastparadise_draw9
+	}
+}
+
+#能否作为DC附庸国
+is_cg_vassal_species = {
+	OR = {
+		is_species_class = YGWW
+		is_species_class = RBQ
+		is_species_class = SGPC
+		is_species_class = TEN
+		is_species_class = PAR
+		is_species_class = Magical_Tentacle
+		has_trait = trait_heartless_shojo
+		has_trait = trait_lust_inn
+		has_trait = trait_broken_fleshtoilet
+		has_trait = trait_transformed_perfect_body
+		has_trait = trait_holy_suc
+	}
+}
+
+can_build_carnalism_common_buildings = {
+	NOR = {
+		has_modifier = resort_colony
+		has_modifier = slave_colony
+	}
+	owner = { has_country_flag = carnalism_flag }
+}
+
+can_build_carnalism_resort_buildings = {
+	NOT = { has_modifier = slave_colony }
+	owner = { has_country_flag = carnalism_flag }
+}
+
+can_build_carnalism_slave_buildings = {
+	NOT = { has_modifier = resort_colony }
+	owner = { has_country_flag = carnalism_flag }
+}
+
+can_fill_cg_lustgod_jobs = {
+	has_trait = trait_DC_ethic_carnalism
+}
+
+can_fill_cg_holylight_jobs = {
+	OR = {
+		AND = {
+			owner = { has_origin = origin_INN_world_tree }
+			is_same_species = owner_main_species
+		}
+		AND = {
+			owner = { NOT = { has_origin = origin_INN_world_tree } }
+			is_has_lust_trait = no
+		}
+		has_trait = trait_holy_robot
+	}
+}
+
+is_lust_power_service_species = {
+	OR = {
+		is_carbon_based = yes
+		is_lithoid = yes
+		has_trait = trait_cyber_RBQ
+		has_trait = trait_deep_emotion
+	}
+}
+
+is_dcyh_origin = {
+	OR = {
+		has_origin = origin_erotic_tradition
+		has_origin = origin_lusttoy_heritage
+		has_origin = origin_female_in_shadow
+		has_origin = origin_INN_world_tree
+		has_origin = origin_INN_dragon_knight
+		has_origin = origin_INN_destruction_light
+		has_origin = origin_space_spore
+		has_origin = origin_deep_cave_noise
+	}
+}
+
+is_dcyh_leader = {
+	OR = {
+		has_trait = leader_trait_governor_star_dc_leader
+		has_trait = leader_trait_scientist_star_dc_leader
+		has_trait = leader_trait_admiral_star_dc_leader
+	}
+}
+
+is_situation_cg_leviathan_biological = {
+	OR = {
+		has_situation_flag = celebration_cg_monkfish
+	}
+}

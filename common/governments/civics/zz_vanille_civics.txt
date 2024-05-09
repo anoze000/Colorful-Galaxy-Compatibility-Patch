@@ -1,0 +1,128 @@
+civic_natural_design = {
+	modification = no
+	playable = { has_machine_age_dlc = yes }
+	ai_playable = { has_machine_age_dlc = yes }
+	random_weight = {
+		base = @civic_rare_random_weight
+	}
+	potential = {
+		species_archetype = { NOT = { value = MACHINE } }
+		ethics = {
+			NOT = { value = ethic_gestalt_consciousness }
+		}
+		authority = {
+			NOT = { value = auth_corporate }
+		}
+	}
+	possible = {
+		origin = {
+			NOR = {
+				value = origin_overtuned
+				value = origin_shroudwalker_apprentice
+				value = origin_cybernetic_creed
+				value = origin_synthetic_fertility
+			}
+		}
+	}
+	modifier = {
+	    BIOLOGICAL_species_trait_points_add = 2
+		Magical_Bitch_species_trait_points_add = 2
+		PARASITE_species_trait_points_add = 2
+		Magical_Girl_trait_points_add = 2
+		MONSTER_species_trait_points_add = 2
+		TENTACLE_species_trait_points_add = 2
+		Lust_Girl_species_trait_points_add = 2
+		Erotic_Creation_species_trait_points_add = 2
+		NYTO_species_trait_points_add = 2
+		EILD_species_trait_points_add = 2
+		WARSHIPGIRL_species_trait_points_add = 2
+		SHENHAI_species_trait_points_add = 2
+		UNITED_FLEET_species_trait_points_add = 2
+		LILY_species_trait_points_add = 2
+		STARSHIPGIRLS_species_trait_points_add = 2
+		Dolls_species_trait_points_add = 2
+		TOUHOUGIRLS_species_trait_points_add = 2
+		BIOLOGICAL_species_trait_picks_add = 2
+		Magical_Bitch_species_trait_picks_add = 2
+		PARASITE_trait_picks_add = 2
+		Magical_Girl_trait_picks_add = 2
+		MONSTER_species_trait_picks_add = 2
+		TENTACLE_species_trait_picks_add = 2
+		Lust_Girl_species_trait_picks_add = 2
+		Erotic_Creation_species_trait_picks_add = 2
+		NYTO_species_trait_picks_add = 2
+		EILD_species_trait_picks_add = 2
+		WARSHIPGIRL_species_trait_picks_add = 2
+		SHENHAI_species_trait_picks_add = 2
+		UNITED_FLEET_species_trait_picks_add = 2
+		LILY_species_trait_picks_add = 2
+		STARSHIPGIRLS_species_trait_picks_add = 2
+		Dolls_species_trait_picks_add = 2
+		TOUHOUGIRLS_species_trait_picks_add = 2
+		planet_researchers_society_research_produces_add = 0.5
+	}
+	description = civic_tooltip_natural_design_effects
+	negative_description = civic_tooltip_natural_design_negative_effects
+}
+
+civic_hive_natural_design = {
+	modification = no
+	playable = { has_machine_age_dlc = yes }
+	ai_playable = { has_machine_age_dlc = yes }
+	random_weight = {
+		base = @civic_rare_random_weight
+	}
+	potential = {
+		authority = {
+			value = auth_hive_mind
+		}
+	}
+	possible = {
+		origin = {
+			NOT = {
+				value = origin_overtuned
+			}
+		}
+	}
+	modifier = {
+		councilor_gestalt_growth_exp_gain = @gestalt_civic_node_xp_rate
+		BIOLOGICAL_species_trait_points_add = 2
+		Magical_Bitch_species_trait_points_add = 2
+		PARASITE_species_trait_points_add = 2
+		Magical_Girl_trait_points_add = 2
+		MONSTER_species_trait_points_add = 2
+		TENTACLE_species_trait_points_add = 2
+		Lust_Girl_species_trait_points_add = 2
+		Erotic_Creation_species_trait_points_add = 2
+		NYTO_species_trait_points_add = 2
+		EILD_species_trait_points_add = 2
+		WARSHIPGIRL_species_trait_points_add = 2
+		SHENHAI_species_trait_points_add = 2
+		UNITED_FLEET_species_trait_points_add = 2
+		LILY_species_trait_points_add = 2
+		STARSHIPGIRLS_species_trait_points_add = 2
+		Dolls_species_trait_points_add = 2
+		TOUHOUGIRLS_species_trait_points_add = 2
+		BIOLOGICAL_species_trait_picks_add = 2
+		Magical_Bitch_species_trait_picks_add = 2
+		PARASITE_trait_picks_add = 2
+		Magical_Girl_trait_picks_add = 2
+		MONSTER_species_trait_picks_add = 2
+		TENTACLE_species_trait_picks_add = 2
+		Lust_Girl_species_trait_picks_add = 2
+		Erotic_Creation_species_trait_picks_add = 2
+		NYTO_species_trait_picks_add = 2
+		EILD_species_trait_picks_add = 2
+		WARSHIPGIRL_species_trait_picks_add = 2
+		SHENHAI_species_trait_picks_add = 2
+		UNITED_FLEET_species_trait_picks_add = 2
+		LILY_species_trait_picks_add = 2
+		STARSHIPGIRLS_species_trait_picks_add = 2
+		Dolls_species_trait_picks_add = 2
+		TOUHOUGIRLS_species_trait_picks_add = 2
+		planet_researchers_society_research_produces_add = 0.5
+	}
+
+	description = civic_hive_tooltip_natural_design_effects
+	negative_description = civic_hive_tooltip_natural_design_negative_effects
+}

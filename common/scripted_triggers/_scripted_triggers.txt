@@ -1,0 +1,17 @@
+#this = species, from = country
+can_change_habitability_preference = {
+	hidden_trigger = { exists = from }
+	custom_tooltip = {
+		text = requires_technology_glandular_acclimation
+		from = {
+			OR = {
+				has_technology = tech_glandular_acclimation
+				has_country_flag = FW_flg_cntr_CHT_genemodding	# FW
+			}
+			#PF
+			NOT = { 
+				has_country_flag = PF_flg_cntr_STOP_ai_species_mod 
+			}
+		}
+	}
+}
