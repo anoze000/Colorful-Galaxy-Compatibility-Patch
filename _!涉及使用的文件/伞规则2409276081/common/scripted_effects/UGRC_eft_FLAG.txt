@@ -191,6 +191,7 @@ UGRC_eft_sstm_RULE_flg_DB = {
 					is_inside_nebula = yes
 					has_modifier = space_storm
 					has_modifier = zroni_storm
+					has_modifier = queen_scorn_storm
 					is_star_class = sc_collapsar	# RS
 					is_star_class = sc_p_purple
 					is_star_class = sc_p_green
@@ -318,6 +319,7 @@ UGRC_eft_sstm_RULE_flg_DB = {
 				is_inside_nebula = yes
 				has_modifier = space_storm
 				has_modifier = zroni_storm
+				has_modifier = queen_scorn_storm
 				is_star_class = sc_collapsar	# RS
 				is_star_class = sc_p_purple
 				is_star_class = sc_p_green
@@ -417,7 +419,7 @@ UGRC_eft_glbl_RULE_cntr_flg_DB = {
 	every_country = {
 		##	UGRC幸福感		####################
 		if = { limit = { num_pops > 0 }
-			#	vanilla|无情机器|
+			##	vanilla|无情机器|
 			if = {
 				limit = {
 					OR = {
@@ -435,11 +437,19 @@ UGRC_eft_glbl_RULE_cntr_flg_DB = {
 			else = {
 				remove_country_flag = UGRC_flg_cntr_RULE_happiness_DISABLE_robot
 			}
-			#	vanilla|无情同化|
+			#	vanilla|无情合成|
 			if = {
 				limit = {
-					has_authority = auth_machine_intelligence
-					has_civic = civic_machine_assimilator # Assimilator empire
+					OR = {
+						AND = {
+							has_authority = auth_machine_intelligence
+							has_civic = civic_machine_assimilator # Assimilator empire
+						}
+						AND = {
+							has_authority = auth_democratic
+							has_country_flag = cyber_collectivist
+						}
+					}
 				}
 				set_country_flag = UGRC_flg_cntr_RULE_happiness_DISABLE_cybernetic
 			}
@@ -447,7 +457,7 @@ UGRC_eft_glbl_RULE_cntr_flg_DB = {
 				remove_country_flag = UGRC_flg_cntr_RULE_happiness_DISABLE_cybernetic
 			}
 
-			#	mod|魔女|
+			##	mod|魔女|
 			if = {
 				limit = {
 					OR = {
@@ -575,7 +585,7 @@ UGRC_eft_glbl_RULE_pop_flg_DB = {
 	}
 
 	##	UGRC人口标签DB
-	#	|长间隔触发|
+	#	[CD触发]含instant	=参选/犯罪/产生领袖
 	if = { limit = { NOT = { has_global_flag = UGRC_flg_glbl_RULE_pop_flg_db_CD } }
 		set_timed_global_flag = { flag = UGRC_flg_glbl_RULE_pop_flg_db_CD	days = 720 }
 		every_galaxy_pop = {
@@ -583,11 +593,11 @@ UGRC_eft_glbl_RULE_pop_flg_DB = {
 			UGRC_eft_pop_RULE_flg_DB_cd = yes
 		}
 	}
-	#	|每年触发|
+	#	[立刻触发]	=参选/犯罪
 	else = {
 		every_galaxy_pop = {
 			limit = { exists = owner }
-			UGRC_eft_pop_RULE_flg_DB = yes
+			UGRC_eft_pop_RULE_flg_DB_instant = yes
 		}
 	}
 }
@@ -616,7 +626,6 @@ UGRC_eft_spcs_RULE_flg_DB = {
 		limit = {
 			NOR = {
 				#	vanilla
-				has_trait = trait_machine_unit
 				has_trait = trait_hive_mind
 				can_think = no
 
@@ -639,11 +648,22 @@ UGRC_eft_spcs_RULE_flg_DB = {
 			}
 		}
 		set_species_flag = UGRC_flg_spcs_RULE_happiness_SET
+		#	init排除
 		every_country = { limit = { num_pops > 0 }
 			prev = { set_species_flag = UGRC_flg_spcs_RULE_happiness_ENABLE@prev }
 		}
-		#	vanilla|智械|排除
-		if = { limit = { has_trait = trait_mechanical }
+		##	vanilla|智械|排除
+		if = { limit = { has_trait = trait_machine_unit }
+			every_country = {
+				limit = {
+					has_authority = auth_machine_intelligence
+					prev = { has_species_flag = UGRC_flg_spcs_RULE_happiness_ENABLE@prev }
+				}
+				prev = { remove_species_flag = UGRC_flg_spcs_RULE_happiness_ENABLE@prev }
+			}
+		}
+		#	vanilla|机器人|排除
+		else_if = { limit = { has_trait = trait_mechanical }
 			every_country = {
 				limit = {
 					has_country_flag = UGRC_flg_cntr_RULE_happiness_DISABLE_robot
@@ -653,7 +673,7 @@ UGRC_eft_spcs_RULE_flg_DB = {
 			}
 		}
 		#	vanilla|同化|排除
-		if = { limit = { has_trait = trait_cybernetic }
+		else_if = { limit = { has_trait = trait_cybernetic }
 			every_country = {
 				limit = {
 					has_country_flag = UGRC_flg_cntr_RULE_happiness_DISABLE_cybernetic
@@ -662,14 +682,14 @@ UGRC_eft_spcs_RULE_flg_DB = {
 				prev = { remove_species_flag = UGRC_flg_spcs_RULE_happiness_ENABLE@prev }
 			}
 		}
-		#	mod|thl|排除
+		##	mod|thl|排除
 		if = { limit = { has_trait = trait_thl_doll }
 			every_country = {
 				limit = { NOT = { has_technology = tech_sapient_dolls } }
 				prev = { remove_species_flag = UGRC_flg_spcs_RULE_happiness_ENABLE@prev }
 			}
 		}
-		#	vanilla|魔女|排除
+		#	mod|魔女|排除
 		if = { limit = { has_trait = trait_dummy }
 			every_country = {
 				limit = {
@@ -690,6 +710,7 @@ UGRC_eft_spcs_RULE_flg_DB = {
 			NOR = {
 				has_trait = trait_machine_unit
 				has_trait = trait_mechanical
+				has_trait = trait_limited_cybernetic
 				#	魔圆
 				has_trait = trait_mahoshoujo
 				#	GF
@@ -715,6 +736,7 @@ UGRC_eft_spcs_RULE_flg_DB = {
 				is_archetype = STARSHIPGIRLS
 			}
 			NOT = { has_species_flag = nivlac_no_procreation }
+			has_cybernetic_creed_trait = no
 		}
 		set_species_flag = UGRC_flg_spcs_RULE_procreate_ENABLE
 	}
@@ -770,7 +792,7 @@ UGRC_eft_spcs_RULE_flg_DB = {
 	}
 
 
-	##	|UGRC产生领袖|	####################	+无言/Ereb/hiveDLC/PTep/Eevt/ETCPM
+	##	|UGRC产生领袖|物种条件	####################	+无言/Ereb/hiveDLC/PTep/Eevt/ETCPM
 	if = {
 		limit = {
 			can_think = yes
@@ -805,7 +827,7 @@ UGRC_eft_spcs_RULE_flg_DB = {
 ###	UGRC人口标签DB	################################################################################
 #_eft	<UGRC全局人口标签DB>
 #_list	UGRC参选/UGRC犯罪
-UGRC_eft_pop_RULE_flg_DB = {
+UGRC_eft_pop_RULE_flg_DB_instant = {
 	optimize_memory	#内存
 
 	##	|UGRC参选|	####################	can_vote_in_democratic_election
@@ -845,16 +867,14 @@ UGRC_eft_pop_RULE_flg_DB = {
 UGRC_eft_pop_RULE_flg_DB_cd = {
 	optimize_memory	#内存
 
-	UGRC_eft_pop_RULE_flg_DB = yes	# |每年触发|
+	UGRC_eft_pop_RULE_flg_DB_instant = yes	# |每年触发|
 
-	##	|UGRC产生领袖|	####################
+	##	|UGRC产生领袖|人口条件	####################	V同步追踪	|can_be_leader|	/00_scripted_triggers.txt	<root>替换为<owner>
 	if = {
 		limit = {
+			species = { has_species_flag = UGRC_flg_spcs_RULE_can_generate_leader }	# |物种条件|通过
 			has_citizenship_rights = yes
-			species = { has_species_flag = UGRC_flg_spcs_RULE_can_generate_leader }
-			#	hiveDLC
-			NOT = { owner = { has_origin = origin_hive_overmind } }
-			#	|机器人| +GF/魔女
+			##	|机器人| +GF/魔女
 			OR = {
 				is_robot_pop = no
 				owner = {
@@ -862,52 +882,10 @@ UGRC_eft_pop_RULE_flg_DB_cd = {
 						has_technology = tech_synthetic_leaders
 						has_authority = auth_machine_intelligence
 						is_mechanical_empire = yes
+						is_individual_machine = yes
 						
 						GF_allow_doll_leaders = yes	# GF
 						has_technology = tech_dummy_leaders	# 魔女
-					}
-				}
-			}
-			#	|主物种|
-			OR = {
-				is_same_species = owner
-				owner = {
-					OR = {
-						#	V死灵
-						NAND = {
-							has_origin = origin_necrophage
-							has_trait = trait_necrophage
-						}
-						#	rmaid
-						NAND = {
-							has_civic = civic_machine_servitor
-							has_global_flag = flag_rogue_maid_mod_activated
-						}
-					}
-				}
-			}
-		}
-		set_pop_flag = UGRC_flg_pop_RULE_can_generate_leader
-	}
-	else = {
-		remove_pop_flag = UGRC_flg_pop_RULE_can_generate_leader
-	}
-
-
-	##	|UGRC军事领袖|	####################
-	if = {
-		limit = {
-			has_pop_flag = UGRC_flg_pop_RULE_can_generate_leader	# |can_be_leader|
-			can_be_military_leader = yes
-			#	|机器人|	+GF
-			OR = {
-				is_robot_pop = no
-				owner = {
-					OR = {
-						has_technology = tech_synthetic_leaders
-						has_authority = auth_machine_intelligence
-						is_mechanical_empire = yes
-						GF_allow_doll_leaders_military = yes	# GF
 					}
 				}
 			}
@@ -921,8 +899,56 @@ UGRC_eft_pop_RULE_flg_DB_cd = {
 					}
 				}
 			}
+			##	rmaid
+			if = {
+				limit = {
+					has_global_flag = flag_rogue_maid_mod_activated
+					owner = { has_civic = civic_machine_servitor }
+				}
+				is_same_species = owner
+			}
 			#	hiveDLC
 			NOT = { owner = { has_origin = origin_hive_overmind } }
+		}
+		set_pop_flag = UGRC_flg_pop_RULE_can_generate_leader
+	}
+	else = {
+		remove_pop_flag = UGRC_flg_pop_RULE_can_generate_leader
+	}
+
+
+	##	|UGRC军事领袖|	####################	
+	if = {
+		limit = {
+			##	|can_be_leader|
+			has_pop_flag = UGRC_flg_pop_RULE_can_generate_leader
+
+			##	|can_be_military_leader|	V同步追踪	/00_scripted_triggers.txt
+			is_enslaved = no
+			is_sapient = yes
+			#	|机器人|	+GF
+			OR = {
+				is_robot_pop = no
+				owner = {
+					OR = {
+						has_policy_flag = ai_full_rights
+						has_authority = auth_machine_intelligence
+						is_individual_machine = yes
+						GF_allow_doll_leaders_military = yes	# GF
+					}
+				}
+			}
+			OR = {
+				AND = { # MIs only accept Fully Integrated leaders
+					owner = { has_authority = auth_machine_intelligence }
+					has_citizenship_type = { type = citizenship_full_machine country = owner }
+					has_military_service_type = { type = military_service_full }
+				}
+				AND = { # non-MIs accept whatever
+					NOT = { owner = { has_authority = auth_machine_intelligence } }
+					has_military_service_type = { type = military_service_full }
+				}
+			}
 		}
 		set_pop_flag = UGRC_flg_pop_RULE_can_generate_military_leader
 	}

@@ -552,12 +552,7 @@ species_can_live_on_planet = { #物种可生活在行星
 	hidden_trigger = {
 		exists = root #somehow this appeared in the error log. No idea how!
 		##_|v机械世界|	+GF
-		if = { 
-			limit = { 
-				root = { 
-					is_planet_class = pc_machine 
-				} 
-			}
+		if = { limit = { root = { is_planet_class = pc_machine } }
 			OR = {
 				has_trait = trait_machine_unit
 				has_trait = trait_mechanical
@@ -577,12 +572,7 @@ species_can_live_on_planet = { #物种可生活在行星
 			}
 		}
 		##_|v蜂巢世界|
-		else_if = { 
-			limit = { 
-				root = { 
-					is_planet_class = pc_hive 
-				} 
-			}
+		else_if = { limit = { root = { is_planet_class = pc_hive } }
 			OR = {
 				has_trait = trait_hive_mind
 				AND = { #Necrophage Hive Mind can have Necrophytes
@@ -590,47 +580,12 @@ species_can_live_on_planet = { #物种可生活在行星
 					root.owner = {
 						is_hive_empire = yes
 						has_origin = origin_necrophage
-						prev = { 
-							species_can_be_necrophaged = yes 
-						}
+						prev = { species_can_be_necrophaged = yes }
 					}
 				}
 			}
 		}
-		##	GF 神秘机械星球
-		NAND = {
-			root = { is_planet_class = pc_GF_sf_machine }
-			is_robotic = no
-		}
-		##	HFE
-		NAND = {
-			exists = root.controller
-			root.controller = { 
-				is_country_type = hfe_plague_zombie 
-			}
-		}
-		##	hiveDLC
-		NAND = {
-			has_trait = trait_digital
-			root = { 
-				NOT = { 
-					is_planet_class = pc_matryoshka 
-				} 
-			}
-		}
-		##	PDew
-		if = { 
-			limit = { 
-				has_global_flag = planetarydiversity 
-			}
-			UGRC_trgr_spcs_PD_plnt_habitable = yes	# |UGRC条件_PD可居住|
-		}
-		##	时与空
-		TIME_RULE_trgr_spcs_CAN_live_on_planet = yes
-		##	thl
-		THL_trgr_spcs_RULE_can_live_on_planet = yes
 	}
-	
 	if = {
 		limit = {
 			exists = root.owner
@@ -649,6 +604,30 @@ species_can_live_on_planet = { #物种可生活在行星
 			}
 		}
 	}
+
+	##	GF 神秘机械星球
+	NAND = {
+		root = { is_planet_class = pc_GF_sf_machine }
+		is_robotic = no
+	}
+	##	HFE
+	NAND = {
+		exists = root.controller
+		root.controller = { is_country_type = hfe_plague_zombie }
+	}
+	##	hiveDLC
+	NAND = {
+		has_trait = trait_digital
+		root = { NOT = { is_planet_class = pc_matryoshka } }
+	}
+	##	PDew
+	if = { limit = { has_global_flag = planetarydiversity }
+		UGRC_trgr_spcs_PD_plnt_habitable = yes	# |UGRC条件_PD可居住|
+	}
+	##	时与空
+	TIME_RULE_trgr_spcs_CAN_live_on_planet = yes
+	##	thl
+	THL_trgr_spcs_RULE_can_live_on_planet = yes
 }
 
 
@@ -1820,7 +1799,7 @@ can_colonize_with_pop = { #可殖民星球的pop
 				}
 			}
 			#
-			# ev
+			##	ev
 			if = { 
 				limit = { 
 					root = { 
@@ -1834,15 +1813,15 @@ can_colonize_with_pop = { #可殖民星球的pop
 					}
 				}
 			}
-			# PTep
+			#	PTep
 			NOT = { 
 				has_trait = trait_plentiful_traditions_pt_cocoon 
 			}
-			# 魔圆
+			#	魔圆
 			NOT = { 
 				has_trait = trait_mahoshoujo 
 			}
-			# vanilla
+			##	V	####################
 			has_colonization_control = {
 				type = colonization_control_no
 				country = root
@@ -2247,13 +2226,11 @@ can_species_be_assembled = { #可组装物种
 					root.owner = { is_individual_machine = yes }
 				}
 			}
-			NOT = {
-				AND = {
-					has_virtual_species_trait = yes
-					root.owner = {
-						is_fallen_empire = no
-						has_active_tradition = tr_virtuality_finish
-					}
+			NAND = {
+				has_virtual_species_trait = yes
+				root.owner = {
+					is_fallen_empire = no
+					has_active_tradition = tr_virtuality_finish
 				}
 			}
 			has_population_control = {
@@ -3548,6 +3525,10 @@ ai_should_restrict_system = { #AI限制系统
 				}
 			}
 		}
+		##	|其他|	都不禁止
+		else = {
+			always = no
+		}
 	}
 }
 
@@ -3954,6 +3935,7 @@ system_blocks_sensors = { #阻断探测星系
 			#	is_inside_nebula = yes
 			#	has_modifier = space_storm
 			#	has_modifier = zroni_storm
+			#	has_modifier = queen_scorn_storm
 			#	has_star_flag = lcluster
 			#	has_star_flag = sealed_system
 			#}
@@ -4605,7 +4587,7 @@ should_force_decline_species = { #应该被强制灭绝的物种
 							}
 						}
 					}
-					#	wv
+					##	wv	####################
 					custom_tooltip = {
 						success_text = OBJ_MASTER_FORCE_DECLINE
 						has_trait = trait_reanimated_materials
@@ -4651,12 +4633,12 @@ should_force_decline_species = { #应该被强制灭绝的物种
 							colony_type = col_GF_nyto_capital 
 						}
 					}
-				}
-				# This slowly kills off the Syntheic Fertility Species
-				custom_tooltip = {
-					success_text = PATHOGENIC_GENES_FORCE_DECLINE
-					exists = this
-					has_trait = trait_pathogenic_genes
+					# This slowly kills off the Syntheic Fertility Species
+					custom_tooltip = {
+						success_text = PATHOGENIC_GENES_FORCE_DECLINE
+						exists = this
+						has_trait = trait_pathogenic_genes
+					}
 				}
 			}
 		}
@@ -4971,7 +4953,7 @@ can_support_branch_offices = { #可被建立分部
 }
 
 
-###_|星球支持公司|	AAR	/wsg/azl/azlr/rmaid/HFE/hiveDLC/MCA/ETCPM/莉莉/久远/ECI/星海帝皇/精灵	####################################
+###_|星球支持公司|	AAR	/wsg/azl/azlr/rmaid/HFE/hiveDLC/MCA/ETCPM/莉莉/久远/ECI/星海帝皇/精灵/驴岛	####################################
 # This = planet
 # Root = country
 can_build_branch_office_on_planet = { #可建立分部的行星
@@ -5016,7 +4998,7 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 					}
 				}
 			}
-			###_core商业协定	+hiveDLC/wsg/azl/azlr/AAR/ETCPM/莉莉/久远/rmaid/精灵
+			###_core商业协定	+hiveDLC/wsg/azl/azlr/AAR/ETCPM/莉莉/久远/rmaid/精灵/驴岛
 			custom_tooltip = {
 				fail_text = BRANCH_OFFICE_NOT_COMMERCIAL_PACT
 				exists = owner
@@ -5045,6 +5027,8 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 							Maid_trigger_0_can_build_branch_offices = yes
 							#	精灵
 							is_ELF_can_force_build_branch_offices_on_planet = yes
+							#	驴岛
+							has_civic = civic_business_union
 						}
 					}
 					owner = { 
@@ -5361,6 +5345,7 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 					}	#_al
 				}
 			}
+			###	无分部世界
 			custom_tooltip = {
 				fail_text = NO_BRANCH_OFFICE_ON_NANITE_WORLD
 				NOT = { is_planet_class = pc_gray_goo }
@@ -5834,7 +5819,7 @@ can_be_sold_on_slave_market = { #可在奴隶市场出售
 				has_trait = trait_reanimated_materials
 			}
 			
-			##	+AUP	############################################
+			##	VANILLA	############################################	+AUP
 			OR ={
 				ariphaos_patch_slaves_expel = yes	# AUP
 				ROOT = { 
@@ -6370,7 +6355,7 @@ can_planet_receive_auto_migration = { #可接受自动迁移的行星
 
 
 ###_[基因修饰]	####################################
-###_|宜居改造|	+FW/PF
+###_|宜居改造|	+PF
 #This, root = country
 can_gene_mod_habitability = { #基因修饰宜居性
 	OR = {
@@ -6499,8 +6484,8 @@ can_remove_positive_traits_organic = { #可以移除正面有机特质
 						has_utopia = yes
 						OR = {
 							has_tradition = tr_genetics_resequencing
-							has_tradition = tr_cybernetics_integrated_anatomy
-							has_tradition = tr_cybernetics_assimilator_integrated_anatomy
+							has_active_tradition = tr_cybernetics_integrated_anatomy
+							has_active_tradition = tr_cybernetics_assimilator_integrated_anatomy
 							has_wsg_genemodding_tech = yes	# wsg
 							has_tradition = tr_objects_wv_integrated_physiology	# wv
 						}
@@ -7404,10 +7389,12 @@ can_trade_leader = { #可交易的领导者
 					has_specialist_subject_leader_trait = yes
 					has_specialist_subject_leader_trait_maid = yes	# rmaid
 					has_leader_flag = tradable_leader	# 反正不是多彩
+					GF_can_trade_robotic_leader = yes   # GF
 				}
 				is_councilor = no
 				is_heir = no
 			}
+			##_|战术算法|
 			OR = {
 				AND = { # Either from subject to Overlord
 					ROOT = {
@@ -7430,6 +7417,7 @@ can_trade_leader = { #可交易的领导者
 					}
 				}
 			}
+			##_|同类政体|	+反正不是多彩
 			# The subject and overlord must both be regular empires, machine intelligences or hive-minds.
 			OR = {
 				AND = {
