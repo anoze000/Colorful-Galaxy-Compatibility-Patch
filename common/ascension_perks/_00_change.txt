@@ -627,12 +627,6 @@ ap_synthetic_age = {
 	on_enabled = {
 		if = {
 			limit = {
-				has_machine_age_dlc = no
-			}
-			custom_tooltip = "synthetic_age_tooltip"
-		}
-		else_if = {
-			limit = {
 				has_global_flag = time_ascension_paths 
 			}
 			custom_tooltip = "synthetic_age_tooltip_machine_age"
@@ -646,6 +640,9 @@ ap_synthetic_age = {
 				}
 				custom_tooltip = can_cure_corrupt_brain
 			}
+		}
+		else = {
+			custom_tooltip = "synthetic_age_tooltip"
 		}
 	}
 
@@ -689,14 +686,6 @@ ap_synthetic_age = {
 		custom_tooltip = {
 			fail_text = "requires_free_tradition_tree"
 			num_tradition_categories < @max_tradition_trees
-		}
-	}
-
-	custom_tooltip = {
-		test = "synthetic_age_tooltip"
-		has_machine_age_dlc = yes
-		NOT = {
-			has_global_flag = time_ascension_paths 
 		}
 	}
 

@@ -385,15 +385,15 @@ ap_synthetic_age = {
 	on_enabled = {
 		if = {
 			limit = {
-				has_machine_age_dlc = no
+				has_machine_age_dlc = yes
 			}
-			custom_tooltip = "synthetic_age_tooltip"
-		}
-		else = {
 			custom_tooltip = "synthetic_age_tooltip_machine_age"
 			hidden_effect = {
 				country_event = { id = machine_age.4000 }
 			}
+		}
+		else = {
+			custom_tooltip = "synthetic_age_tooltip"
 		}
 		# 腐化主脑
 		if = {
@@ -439,15 +439,7 @@ ap_synthetic_age = {
 
 ap_become_the_crisis = {
 	potential = {
-		NOR = {
-			is_crisis_country = yes
-			has_ascension_perk = ap_beyond_infinity
-			has_ascension_perk = ap_defender_of_the_galaxy
-			has_origin = origin_slavers
-			has_origin = origin_white_hole
-			has_country_flag = unlock_tradition_hope
-		}
-		has_wg_special_authority = no #舰R
+		forbid_become_the_crisis = no
 	}
 
 	possible = {
@@ -636,15 +628,7 @@ ap_become_the_crisis = {
 
 ap_cosmogenesis = {
 	potential = {
-		NOR = {
-			is_crisis_country = yes
-			has_ascension_perk = ap_beyond_infinity
-			has_ascension_perk = ap_defender_of_the_galaxy
-			has_origin = origin_slavers
-			has_origin = origin_white_hole
-			has_country_flag = unlock_tradition_hope
-		}
-		has_wg_special_authority = no #舰R
+		forbid_cosmogenesis = no
 	}
 
 	possible = {

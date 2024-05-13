@@ -1,0 +1,211 @@
+can_be_leader = {
+	has_citizenship_rights = yes
+	NOT = { has_trait = trait_syncretic_proles }
+	can_think = yes
+	OR = {
+		is_robot_pop = no
+		root = {
+			OR = {
+				has_technology = tech_synthetic_leaders
+				has_authority = auth_machine_intelligence
+				is_mechanical_empire = yes
+
+				#欲望机械
+				has_trait = trait_DC_ethic_lust_skynet
+			}
+		}
+	}
+	OR = {
+		is_same_species = root
+		root = {
+			NAND = {
+				has_origin = origin_necrophage
+				has_trait = trait_necrophage
+			}
+		}
+	}
+	#淫触之虫，拥有思维寄生科技后，允许次级物种生成领袖
+	OR = {
+		NOT = { is_species_class = PAR }
+		AND = {
+			root = {
+				has_country_flag = parasite_mind_flag
+				has_technology = tech_tentacle_coop
+			}
+			is_species_class = PAR
+		}
+	}
+}
+
+can_be_military_leader = {
+	OR = {
+		is_enslaved = no
+		owner = { has_valid_civic = civic_all_slave }
+	}
+	is_sapient = yes
+	OR = {
+		is_robot_pop = no
+		owner = { has_policy_flag = ai_full_rights }
+		owner = { has_authority = auth_machine_intelligence }
+	}
+	OR = {
+		AND = {
+			# MIs only accept Fully Integrated leaders
+			owner = { has_authority = auth_machine_intelligence }
+			has_citizenship_type = { type = citizenship_full_machine }
+			has_military_service_type = { type = military_service_full }
+		}
+		AND = {
+			# non-MIs accept whatever
+			NOT = { owner = { has_authority = auth_machine_intelligence } }
+			has_military_service_type = { type = military_service_full }
+		}
+		is_lbm_empire = yes
+	}
+}
+
+complex_specialist_job_check_trigger = {
+	hidden_trigger = {
+		exists = owner
+		OR = {
+			owner = { has_valid_civic = civic_all_slave }
+			NOT = { has_trait = trait_mechanical }
+			AND = {
+				owner = { has_technology = tech_droid_workers }
+				owner = { NOT = { has_policy_flag = ai_outlawed } }
+			}
+		}
+	}
+}
+
+entertainer_job_check_trigger = {
+	custom_tooltip = SPECIALIST_JOB_TRIGGER
+	hidden_trigger = {
+		exists = owner
+		OR = {
+			is_enslaved = no
+			has_slavery_type = { type = slavery_domestic }
+			owner = { has_valid_civic = civic_all_slave }
+		}
+		is_being_purged = no
+		is_being_assimilated = no
+		NOT = { has_trait = trait_syncretic_proles }
+		can_think = yes
+		OR = {
+			NOT = { has_trait = trait_mechanical }
+			owner = { has_technology = tech_droid_workers }
+		}
+		NOT = { has_citizenship_type = { type = citizenship_organic_trophy country = owner } }
+		if = {
+			limit = { divinity_right_to_work_job_check_trigger_exempt = no }
+			divinity_right_to_work_job_check_trigger_specialist = yes
+		}
+	}
+}
+
+battle_thrall_job_check_trigger = {
+	custom_tooltip = BATTLE_THRALL_JOB_TRIGGER
+	hidden_trigger = {
+		exists = owner
+		OR = {
+			is_enslaved = no
+			has_slavery_type = { type = slavery_military }
+			owner = { has_valid_civic = civic_all_slave }
+		}
+		is_being_purged = no
+		is_being_assimilated = no
+		NOT = { has_trait = trait_syncretic_proles }
+		can_think = yes
+		NOT = { has_military_service_type = { type = military_service_none } }
+		OR = {
+			NOT = { has_trait = trait_mechanical }
+			owner = { has_technology = tech_droid_workers }
+		}
+		NOT = { has_citizenship_type = { type = citizenship_organic_trophy country = owner } }
+		if = {
+			limit = { divinity_right_to_work_job_check_trigger_exempt = no }
+			divinity_right_to_work_job_check_trigger_specialist = yes
+		}
+	}
+}
+
+is_organic_species = {
+	species = {
+		OR = {
+			is_archetype = BIOLOGICAL
+			is_archetype = LITHOID
+			is_archetype = NYTO
+			is_species_class = Magical_Bitch
+			is_species_class = PAR
+			is_species_class = Magical_Girl
+			is_species_class = Lust_Girl
+			is_species_class = Magical_Tentacle
+			is_species_class = MWN
+			is_species_class = TEN
+			is_archetype = WARSHIPGIRL
+			is_archetype = SHENHAI
+			is_archetype = UNITED_FLEET
+		}
+	}
+}
+
+can_fill_specialist_job_trigger = {
+	custom_tooltip = SPECIALIST_JOB_TRIGGER
+	hidden_trigger = {
+		OR = {
+			NOT = { has_ethic = ethic_gestalt_consciousness }
+			AND = {
+				exists = owner
+				owner = {
+					is_gestalt = yes
+					OR = {
+						has_country_flag = carnalism_flag
+						has_country_flag = asceticism_flag
+					}
+				}
+				is_being_purged = no
+				is_enslaved = no
+				is_being_assimilated = no
+			}
+		}
+		exists = owner
+		OR = {
+			is_enslaved = no
+			has_slavery_type = { type = slavery_indentured }
+			owner = { has_valid_civic = civic_all_slave }
+		}
+		is_being_purged = no
+		is_being_assimilated = no
+		NOT = { has_trait = trait_syncretic_proles }
+		can_think = yes
+		OR = {
+			NOT = { has_trait = trait_mechanical }
+			owner = { has_technology = tech_droid_workers }
+		}
+		NOT = { has_citizenship_type = { type = citizenship_organic_trophy country = owner } }
+		if = {
+			limit = { divinity_right_to_work_job_check_trigger_exempt = no }
+			divinity_right_to_work_job_check_trigger_specialist = yes
+		}
+	}
+}
+
+is_robot_empire = {
+	OR = {
+		owner_species = {
+			OR = {
+				has_trait = trait_mechanical
+				has_trait = trait_DC_ethic_lust_skynet
+			}
+		}
+		has_country_flag = synthetic_empire
+		has_authority = auth_machine_intelligence
+	}
+}
+
+is_machine_empire = {
+	OR = {
+		has_authority = auth_machine_intelligence
+		owner_species = { has_trait = trait_DC_ethic_lust_skynet }
+	}
+}

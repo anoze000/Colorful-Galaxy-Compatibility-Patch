@@ -21,3 +21,31 @@ is_nirvana_empire = { always = no }
 Maid_trigger_0_can_build_branch_offices = { always = no }
 
 is_zofe_compatible = { always = no }
+
+TIME_RULE_trgr_spcs_CAN_live_on_planet = {
+	always = yes
+}
+
+TIME_RULE_trgr_CAN_spcs_be_assembled = {
+	always = yes
+}
+
+TIME_RULE_trgr_CAN_orbital_bombard = {
+	always = yes
+}
+
+TIME_RULE_trgr_CAN_fill_drone_job = {
+	always = yes
+}
+
+TIME_RULE_trgr_CAN_fill_ruler_job = {
+	always = yes
+}
+
+TIME_RULE_trgr_CAN_fill_specialist_job = {
+	always = yes
+}
+
+TIME_RULE_trgr_CAN_fill_worker_job = {
+	always = yes
+}

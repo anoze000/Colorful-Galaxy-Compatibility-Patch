@@ -920,6 +920,7 @@ UGRC_eft_pop_RULE_flg_DB_cd = {
 						is_individual_machine = yes
 						GF_allow_doll_leaders = yes	# GF
 						has_technology = tech_dummy_leaders	# 魔女
+						has_trait = trait_DC_ethic_lust_skynet # 多彩欲望机械
 					}
 				}
 			}
@@ -954,10 +955,6 @@ UGRC_eft_pop_RULE_flg_DB_cd = {
 					is_species_class = PAR
 				}
 			}
-			OR = {
-				root = { NOT = { has_civic = civic_machine_servitor } }
-				is_same_species = root.species
-			}
 		}
 		set_pop_flag = UGRC_flg_pop_RULE_can_generate_leader
 	}
@@ -972,8 +969,11 @@ UGRC_eft_pop_RULE_flg_DB_cd = {
 			##	|can_be_leader|
 			has_pop_flag = UGRC_flg_pop_RULE_can_generate_leader
 
-			##	|can_be_military_leader|	V同步追踪	/00_scripted_triggers.txt
-			is_enslaved = no
+			##	|can_be_military_leader|	V同步追踪+多彩	/00_scripted_triggers.txt
+			OR = {
+				is_enslaved = no
+				owner = { has_valid_civic = civic_all_slave }
+			}
 			is_sapient = yes
 			#	|机器人|	+GF
 			OR = {
@@ -984,6 +984,7 @@ UGRC_eft_pop_RULE_flg_DB_cd = {
 						has_authority = auth_machine_intelligence
 						is_individual_machine = yes
 						GF_allow_doll_leaders_military = yes	# GF
+						owner = { has_authority = auth_GF_paradeus } # 捏托
 					}
 				}
 				has_trait = GF_trait_doll	# GF
@@ -998,6 +999,7 @@ UGRC_eft_pop_RULE_flg_DB_cd = {
 					NOT = { owner = { has_authority = auth_machine_intelligence } }
 					has_military_service_type = { type = military_service_full }
 				}
+				is_lbm_empire = yes
 			}
 		}
 		set_pop_flag = UGRC_flg_pop_RULE_can_generate_military_leader
