@@ -6868,31 +6868,9 @@ can_fill_ruler_job = { #可作为统治者的pop
 				custom_tooltip = {
 					text = RULER_JOB_NECROPHAGE_TRIGGER
 					has_trait = trait_necrophage
-					OR = {
-						is_enslaved = no
-						owner = { 
-							has_valid_civic = civic_all_slave 
-						}
-					}
-					is_being_purged = no
-					is_being_assimilated = no
-				}
-			}
-			else_if = {
-				limit = {
-					exists = owner
-					owner = {
-						is_gestalt = yes
-						has_country_flag = carnalism_flag
-					}
-					is_being_purged = no
 					is_enslaved = no
+					is_being_purged = no
 					is_being_assimilated = no
-					NOT = { 
-						has_citizenship_type = { 
-							type = citizenship_organic_trophy 
-						} 
-					}
 				}
 			}
 			else = {

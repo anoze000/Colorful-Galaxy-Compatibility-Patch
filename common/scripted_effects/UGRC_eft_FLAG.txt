@@ -757,7 +757,30 @@ UGRC_eft_spcs_RULE_flg_DB = {
 				is_archetype = STARSHIPGIRLS
 			}
 			NOT = { has_species_flag = nivlac_no_procreation }
-			has_cybernetic_creed_trait = no
+			if = {
+				limit = {
+					has_cybernetic_creed_trait = yes
+				}
+				NOT = {
+					root = {
+						any_owned_species = {
+							has_population_control = { country = root.owner type = no }
+							has_cybernetic_creed_trait = no
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_cybernetic_creed_trait = no
+				}
+				root = {
+					any_owned_species = {
+						has_population_control = { country = root.owner type = no }
+						has_cybernetic_creed_trait = no
+					}
+				}
+			}
   			#	多彩
 			if = {
 				limit = {

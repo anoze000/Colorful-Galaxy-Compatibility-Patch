@@ -789,7 +789,7 @@ civic_all_slave = {
 		}
 	}
 	modifier = {
-		country_pop_enslaved_mult = 10
+		country_pop_enslaved_mult = 0.95
 		pop_cat_slave_political_power = 10
 		planet_jobs_unity_produces_mult = 0.2
 		pop_government_ethic_attraction = 1
