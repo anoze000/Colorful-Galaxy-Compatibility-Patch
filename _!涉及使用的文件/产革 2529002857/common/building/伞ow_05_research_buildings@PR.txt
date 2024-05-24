@@ -21,7 +21,6 @@ building_research_lab_1 = {
 			has_planet_flag = PR_flg_plnt_VALID	# |PR转化|
 			has_modifier = resort_colony
 			has_modifier = slave_colony
-			has_modifier = crucible_colony
 		}
 	}
 
@@ -30,7 +29,6 @@ building_research_lab_1 = {
 			has_planet_flag = PR_flg_plnt_VALID	# |PR转化|
 			has_modifier = resort_colony
 			has_modifier = slave_colony
-			has_modifier = crucible_colony
 		}
 	}
 
@@ -78,7 +76,6 @@ building_research_lab_2 = {
 			has_planet_flag = PR_flg_plnt_VALID	# |PR转化|
 			has_modifier = resort_colony
 			has_modifier = slave_colony
-			has_modifier = crucible_colony
 		}
 	}
 
@@ -128,7 +125,6 @@ building_research_lab_3 = {
 			has_planet_flag = PR_flg_plnt_VALID	# |PR转化|
 			has_modifier = resort_colony
 			has_modifier = slave_colony
-			has_modifier = crucible_colony
 		}
 	}
 
@@ -211,7 +207,6 @@ building_institute = {
 		NOR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
-			has_modifier = crucible_colony
 		}
 		exists = owner
 		owner = { is_regular_empire = yes }
@@ -222,7 +217,6 @@ building_institute = {
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
-			has_modifier = crucible_colony
 			owner = { is_regular_empire = no }
 		}
 	}
@@ -299,7 +293,6 @@ building_supercomputer = {
 		NOR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
-			has_modifier = crucible_colony
 		}
 	}
 
@@ -312,7 +305,6 @@ building_supercomputer = {
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
-			has_modifier = crucible_colony
 			owner = { is_regular_empire = yes }
 		}
 	}
@@ -391,7 +383,6 @@ building_archaeostudies_faculty = {
 		NOR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
-			has_modifier = crucible_colony
 		}
 		exists = owner
 	}
@@ -401,7 +392,6 @@ building_archaeostudies_faculty = {
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
-			has_modifier = crucible_colony
 		}
 	}
 
@@ -469,7 +459,6 @@ building_vultaum_reality_computer = {
 		NOR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
-			has_modifier = crucible_colony
 		}
 	}
 
@@ -482,7 +471,6 @@ building_vultaum_reality_computer = {
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
-			has_modifier = crucible_colony
 		}
 	}
 

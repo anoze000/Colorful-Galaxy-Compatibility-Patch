@@ -4,7 +4,10 @@ can_release_vassal_from_species = {
 	root = {
 		is_sapient = yes
 		NOR = {
-			has_trait = trait_machine_unit
+			AND = {
+				has_trait = trait_machine_unit
+				prev.this = { is_individual_machine = no }
+			}
 			AND = {
 				has_trait = trait_hive_mind
 				NOT = { prev.this = { has_origin = origin_progenitor_hive } }
@@ -31,6 +34,7 @@ can_species_procreate = {
 	NOR = {
 		has_trait = trait_machine_unit
 		has_trait = trait_mechanical
+		has_trait = trait_limited_cybernetic
 	}
 	NAND = {
 		root = { has_modifier = slave_colony }
@@ -48,6 +52,7 @@ can_species_procreate = {
 		}
 	}
 	NOT = { has_species_flag = nivlac_no_procreation }
+	has_cybernetic_creed_trait = no
 
 	#淫触之虫无法自然增长 
 	OR = {
@@ -65,11 +70,27 @@ can_species_procreate = {
 can_species_be_assembled = {
 	is_sapient = yes
 	NOT = { has_trait = trait_exd }
+	NOT = {
+		AND = {
+			has_trait = trait_mechanical
+			root.owner = { is_individual_machine = yes }
+		}
+	}
+	NOT = {
+		AND = {
+			has_virtual_species_trait = yes
+			root.owner = {
+				is_fallen_empire = no
+				has_active_tradition = tr_virtuality_finish
+			}
+		}
+	}
 	OR = {
 		AND = {
 			is_robotic = yes
 			root = {
 				check_modifier_value = { modifier = planet_pop_assembly_add value > 0 }
+				owner = { NOT = { has_country_flag = synth_assembly_stopped } }
 			}
 		}
 		AND = {
@@ -89,15 +110,6 @@ can_species_be_assembled = {
 				root = {
 					any_owned_species = { is_exact_same_species = prevprev }
 				}
-			}
-			else_if = {
-				limit = {
-					root.owner = {
-						has_tradition = tr_cybernetics_assembly_standards
-						has_policy_flag = roboticist_output_build_cyborgs
-					}
-				}
-				has_trait = trait_cybernetic
 			}
 			else_if = {
 				limit = {
@@ -143,7 +155,7 @@ can_species_be_assembled = {
 		AND = {
 			is_species_class = PAR
 			root = {
-				owner = { has_country_flag = parasite_mind_flag }
+				is_ten_empire = yes
 				any_owned_pop = { has_job = ten_nest_worker }
 			}
 		}
@@ -159,7 +171,7 @@ can_species_be_assembled = {
 		AND = {
 			is_species_class = Magical_Tentacle
 			root = {
-				owner = { has_country_flag = abstinence_flag }
+				is_sos_empire = yes
 				any_owned_pop = { has_job = procreate_doll }
 			}
 		}
@@ -242,10 +254,14 @@ can_orbital_bombard = {
 				is_country_type = dormant_marauders
 				is_country_type = marauder_raiders
 				is_country_type = ruined_marauders
+				is_country_type = debt_collectors
 				is_country_type = gray_goo
 				is_country_type = vol
 				AND = {
-					is_country_type = awakened_marauders
+					OR = {
+						is_country_type = awakened_marauders
+						is_country_type = formless
+					}
 					FROM.CONTROLLER = { is_hostile = prev }
 				}
 			}
@@ -337,6 +353,9 @@ can_enter_system_by_jump = {
 		# L-Cluster
 		NOT = { has_star_flag = lcluster }
 
+		# Formless system
+		NOT = { has_star_flag = formless_system }
+
 		# 淫触之虫母星系
 		NOR = {
 			has_star_flag = ten_crisis_system
@@ -363,12 +382,28 @@ can_resettle_pop = {
 		fail_text = "self_modified_refuse"
 		NOT = { has_trait = trait_self_modified }
 	}
+	# Pathogenic Pops Can't Resettle
+	custom_tooltip = {
+		fail_text = "pathogenic_genes_warning"
+		NOT = { has_trait = trait_pathogenic_genes }
+	}
 	custom_tooltip = {
 		fail_text = "origin_egalitarian_refuse"
 		NAND = {
 			pop_has_ethic = ethic_egalitarian
 			is_enslaved = no
 			planet = { has_modifier = paragon_origin_reformists }
+		}
+	}
+	custom_tooltip = {
+		fail_text = "no_resettling_apps"
+		if = {
+			limit = { has_virtual_species_trait = yes }
+			exists = owner
+			owner = {
+				is_fallen_empire = no
+				NOT = { has_active_tradition = tr_virtuality_finish }
+			}
 		}
 	}
 	if = { #Done as an IF/ELSE so the tooltip isn't hideous and unreadable
@@ -394,8 +429,56 @@ can_resettle_pop = {
 	}
 	else_if = {
 		limit = {
-			owner = { is_gestalt = yes }
+			planet = {
+				is_capital = yes
+				num_pops < 2
+			}
+			NOT = {
+				owner = {
+					any_owned_planet = {
+						is_capital = no
+						NOT = { is_planet_class = pc_cosmogenesis_world }
+					}
+				}
+			}
 		}
+		custom_tooltip = {
+			fail_text = "no_abandon_capital_for_unviable_planet"
+			always = no
+		}
+	}
+	else_if = {
+		limit = {
+			planet = {
+				is_planet_class = pc_cosmogenesis_world
+				owner = { has_ascension_perk = ap_cosmogenesis }
+				num_pops < 2
+			}
+		}
+		custom_tooltip = {
+			fail_text = "no_unfueled_lathe"
+			always = no
+		}
+	}
+	else_if = {
+		limit = {
+			planet = {
+				has_deposit = d_genesis_preserve
+				count_owned_pop = { limit = { is_sapient = yes } count < 2 }
+			}
+			owner = { is_guided_sapience_empire = yes }
+		}
+		custom_tooltip = {
+			fail_text = "no_abandon_genesis_preserve"
+			always = no
+		}
+	}
+	else_if = {
+		limit = { owner = { has_ascension_perk = ap_cosmogenesis } }
+		always = yes
+	}
+	else_if = {
+		limit = { owner = { is_gestalt = yes } }
 		always = yes
 	}
 	else = {
@@ -404,6 +487,7 @@ can_resettle_pop = {
 			owner = { has_policy_flag = resettlement_allowed }
 		}
 	}
+
 	#雌伏于阴影之下
 	NOT = {
 		owner = {
@@ -569,9 +653,7 @@ can_build_branch_office_on_planet = {
 			limit = {
 				OR = {
 					# Not valid if you aren't a subject.
-					root = {
-						is_subject = no
-					}
+					root = { is_subject = no }
 					# Or if your overlord isn't a megacorp.
 					root = {
 						is_subject = yes
@@ -633,6 +715,10 @@ can_build_branch_office_on_planet = {
 			}
 		}
 	}
+	custom_tooltip = {
+		fail_text = NO_BRANCH_OFFICE_ON_NANITE_WORLD
+		NOT = { is_planet_class = pc_gray_goo }
+	}
 }
 
 # ROOT = country
@@ -647,29 +733,25 @@ can_be_sold_on_slave_market = {
 	OR = {
 		ROOT = { is_ai = no }
 		has_citizenship_rights = no
+		is_on_slave_market = yes	# pops that were already on the market should stay there
 		AND = {
 			is_unemployed = yes
-			planet = {
-				num_unemployed > 3
-			}
+			planet = { num_unemployed > 3 }
 		}
 	}
 	if = {
-		limit = {
-			has_global_flag = organic_slave_trade_banned_flag
-		}
+		limit = { has_global_flag = organic_slave_trade_banned_flag }
 		is_organic_species = no
 	}
 	if = {
-		limit = {
-			has_global_flag = sentient_slave_trade_banned_flag
-		}
+		limit = { has_global_flag = sentient_slave_trade_banned_flag }
 		is_sapient = no
 	}
 	NOR = {
 		# Since they can't reproduce, they die out too fast for anyone to want to buy them.
 		has_trait = trait_clone_soldier_infertile
 		has_trait = trait_clone_soldier_infertile_full_potential
+		has_virtual_species_trait = yes
 	}
 	#被淫触之虫感染的人口无法贩卖
 	can_infest_pops_dc = no
@@ -683,6 +765,18 @@ can_pop_auto_migrate = {
 	custom_tooltip = {
 		fail_text = AUTO_MIGRATE_ASSIMILATED
 		is_being_assimilated = no
+	}
+	custom_tooltip = {
+		fail_text = AUTO_MIGRATE_VIRTUALITY
+		if = {
+			limit = {
+				has_virtual_species_trait = yes
+				exists = owner
+				owner = { is_fallen_empire = no }
+			}
+			exists = owner
+			owner = { NOT = { has_active_tradition = tr_virtuality_finish } }
+		}
 	}
 	if = {
 		limit = {
@@ -744,25 +838,9 @@ can_fill_ruler_job = {
 		custom_tooltip = {
 			text = RULER_JOB_NECROPHAGE_TRIGGER
 			has_trait = trait_necrophage
-			OR = {
-				is_enslaved = no
-				owner = { has_valid_civic = civic_all_slave }
-			}
-			is_being_purged = no
-			is_being_assimilated = no
-		}
-	}
-	else_if = {
-		limit = {
-			exists = owner
-			owner = {
-				is_gestalt = yes
-				has_country_flag = carnalism_flag
-			}
-			is_being_purged = no
 			is_enslaved = no
+			is_being_purged = no
 			is_being_assimilated = no
-			NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
 		}
 	}
 	else = {
@@ -776,8 +854,13 @@ can_fill_ruler_job = {
 			}
 			is_being_purged = no
 			is_being_assimilated = no
-			NOT = { has_trait = trait_syncretic_proles }
-			can_think = yes
+			# Rule out Traits for servitude & lack of free will
+			NOR = {
+				has_trait = trait_syncretic_proles
+				has_trait = trait_zombie
+				has_trait = trait_nerve_stapled
+			}
+			# Rule out Machine Pops, unless they're rendered sapient
 			OR = {
 				NOT = { has_trait = trait_mechanical }
 				AND = {
@@ -785,7 +868,9 @@ can_fill_ruler_job = {
 					owner = { has_policy_flag = ai_full_rights }
 				}
 			}
-			NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+			# Rule out Organic Trophies
+			NOT = { has_citizenship_type = { type = citizenship_organic_trophy country = owner } }
+			# Rule out violations of the 'Right to Work' Resolution (prioritises organic workers)
 			if = {
 				limit = {
 					divinity_right_to_work_job_check_trigger_exempt = no

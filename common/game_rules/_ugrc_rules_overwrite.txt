@@ -2611,7 +2611,7 @@ can_species_be_assembled = { #可组装物种
 							is_species_class = PAR
 							root = {
 								owner = { 
-									has_country_flag = parasite_mind_flag 
+									is_ten_empire = yes 
 								}
 								any_owned_pop = { 
 									has_job = ten_nest_worker 
@@ -2635,7 +2635,7 @@ can_species_be_assembled = { #可组装物种
 							is_species_class = Magical_Tentacle
 							root = {
 								owner = { 
-									has_country_flag = abstinence_flag 
+									is_sos_empire = yes
 								}
 								any_owned_pop = { 
 									has_job = procreate_doll 
@@ -2681,6 +2681,7 @@ can_species_be_assembled = { #可组装物种
 			ELF_can_not_be_assembled_species = yes
 			##  时与空
 			TIME_RULE_trgr_CAN_spcs_be_assembled = yes
+			BETTER_ASCENSION_TRAITS_RULE_trgr_CAN_spcs_be_assembled = yes
 			##	久远
 			if = {
 				limit = { 
@@ -2755,6 +2756,10 @@ can_orbital_bombard = { #可以轨道轰炸
 						is_country_type = swarm
 						is_country_type = ai_empire
 						is_country_type = cybrex_empire
+						is_country_type = synth_queen
+						is_country_type = awakened_synth_queen
+						is_country_type = synth_queen_convoys
+						is_country_type = synth_queen_outposts
 						is_country_type = gray_goo
 						is_country_type = dormant_marauders
 						is_country_type = marauder_raiders
@@ -2862,6 +2867,10 @@ can_orbital_bombard = { #可以轨道轰炸
 						is_country_type = swarm
 						is_country_type = ai_empire
 						is_country_type = cybrex_empire					# <aup去除了此项>
+						is_country_type = synth_queen
+						is_country_type = awakened_synth_queen
+						is_country_type = synth_queen_convoys
+						is_country_type = synth_queen_outposts
 						is_country_type = dormant_marauders
 						is_country_type = marauder_raiders
 						is_country_type = ruined_marauders
@@ -5206,9 +5215,7 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 					limit = {
 						OR = {
 							# Not valid if you aren't a subject.
-							root = {
-								is_subject = no
-							}
+							root = { is_subject = no }
 							# Or if your overlord isn't a megacorp.
 							root = {
 								is_subject = yes

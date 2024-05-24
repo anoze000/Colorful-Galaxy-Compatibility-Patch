@@ -90,7 +90,7 @@ can_generate_leader_from_pop = {
 }
 
 
-###_|UGRC军事领袖|	####################################	GF/hiveDLC
+###_|UGRC军事领袖|	####################################	nyto
 #Root = country
 #This = pop
 can_generate_military_leader_from_pop = {
@@ -105,8 +105,7 @@ can_generate_military_leader_from_pop = {
 		owner = { has_policy_flag = ai_full_rights }
 		owner = { has_authority = auth_machine_intelligence }
 		owner = { is_individual_machine = yes }
-
-		root = { GF_allow_doll_leaders_military = yes }	# GF
+		owner = { has_authority = auth_GF_paradeus }	# nyto
 	}
 	OR = {
 		AND = { # MIs only accept Fully Integrated leaders

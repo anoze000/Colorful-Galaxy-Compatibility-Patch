@@ -163,6 +163,7 @@ can_species_be_assembled = {
 		country = root.owner
 	}
 	TIME_RULE_trgr_CAN_spcs_be_assembled = yes
+	BETTER_ASCENSION_TRAITS_RULE_trgr_CAN_spcs_be_assembled = yes
 }
 
 #This rule is a condition for bombarding planets

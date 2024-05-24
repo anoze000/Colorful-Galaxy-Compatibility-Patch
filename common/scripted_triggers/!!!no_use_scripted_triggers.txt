@@ -49,3 +49,7 @@ TIME_RULE_trgr_CAN_fill_specialist_job = {
 TIME_RULE_trgr_CAN_fill_worker_job = {
 	always = yes
 }
+
+BETTER_ASCENSION_TRAITS_RULE_trgr_CAN_spcs_be_assembled = {
+	always = yes
+}

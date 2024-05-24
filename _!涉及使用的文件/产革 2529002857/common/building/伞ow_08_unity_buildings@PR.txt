@@ -1,7 +1,7 @@
 #	PR转化
 
 
-#################
+##################
 # Unity buildings
 ##################
 
@@ -270,7 +270,7 @@ building_bureaucratic_1 = {
 
 	base_buildtime = @b1_time
 
-	#exempt_from_ai_planet_specialization = no
+	exempt_from_ai_planet_specialization = no
 
 	category = unity
 
@@ -601,24 +601,7 @@ building_bureaucratic_3 = {
 		}
 	}
 
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = {
-				is_megacorp = no
-				is_worker_coop_empire = no
-			}
-		}
-		text = job_bureaucrat_effect_desc
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner.federation
-			owner.federation = { has_federation_perk = all_the_priests_2 }
-		}
-		job_high_priest_add = 1
-	}
+	inline_script = buildings/job_high_priest_variants_add_saintly_hierarchy
 
 	triggered_planet_modifier = {
 		potential = {
@@ -666,14 +649,6 @@ building_bureaucratic_3 = {
 		text = job_steward_effect_desc
 	}
 
-	triggered_desc = {
-		trigger = {
-			exists = owner.federation
-			owner.federation = { has_federation_perk = all_the_priests_2 }
-		}
-		text = job_high_priest_effect_desc
-	}
-
 	prerequisites = {
 		"tech_galactic_bureaucracy"
 	}
@@ -688,6 +663,7 @@ building_bureaucratic_3 = {
 ##################
 # Spiritualists
 ##################
+
 building_temple = {
 	#	|PR转化|
 	icon = PR_building_CULT_output_SPIRITUAL_1
@@ -695,7 +671,7 @@ building_temple = {
 
 	base_buildtime = @b1_time
 
-	#exempt_from_ai_planet_specialization = no
+	exempt_from_ai_planet_specialization = no
 
 	category = unity
 
@@ -927,26 +903,13 @@ building_sacred_nexus = {
 		pop_ethic_spiritualist_attraction_mult = 0.15
 	}
 
+	# Add Priest & High Priest Jobs
 	inline_script = {
 		script = jobs/priests_add
 		AMOUNT = @b3_jobs
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner.federation
-			owner.federation = { has_federation_perk = all_the_priests_2 }
-		}
-		job_high_priest_add = 1
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner.federation
-			owner.federation = { has_federation_perk = all_the_priests_2 }
-		}
-		text = job_high_priest_effect_desc
-	}
+	inline_script = buildings/job_high_priest_variants_add_saintly_hierarchy
 
 	prerequisites = {
 		"tech_consecration_fields"
@@ -973,9 +936,9 @@ building_uplink_node = {
 	exempt_from_ai_planet_specialization = yes
 
 	base_buildtime = @b1_time
-	#icon = building_autochthon_monument
+	icon = building_autochthon_monument
 
-	#exempt_from_ai_planet_specialization = no
+	exempt_from_ai_planet_specialization = no
 
 	category = unity
 
@@ -1045,7 +1008,7 @@ building_network_junction = {
 
 	base_buildtime = @b2_time
 	can_build = no
-	#icon = building_heritage_site
+	icon = building_heritage_site
 
 	category = unity
 
@@ -1121,7 +1084,7 @@ building_system_conflux = {
 
 	base_buildtime = @b3_time
 	can_build = no
-	#icon = building_hypercomms_forum
+	icon = building_hypercomms_forum
 
 	category = unity
 
@@ -1197,7 +1160,7 @@ building_hive_node = {
 
 	base_buildtime = @b1_time
 
-	#exempt_from_ai_planet_specialization = no
+	exempt_from_ai_planet_specialization = no
 
 	category = unity
 
@@ -1695,21 +1658,9 @@ building_sacrificial_temple_3 = {
 
 	triggered_desc = { text = job_mortal_initiate_effect_desc }
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner.federation
-			owner.federation = { has_federation_perk = all_the_priests_2 }
-		}
-		job_high_priest_add = 1
-	}
+	inline_script = buildings/job_high_priest_variants_add_saintly_hierarchy
 
-	triggered_desc = {
-		trigger = {
-			exists = owner.federation
-			owner.federation = { has_federation_perk = all_the_priests_2 }
-		}
-		text = job_high_priest_effect_desc
-	}
+
 
 	prerequisites = {
 		"tech_consecration_fields"
@@ -1729,7 +1680,7 @@ building_galactic_memorial_1 = {
 	#	|PR转化|
 	icon = PR_building_CULT_core_MEMORIALIST_1
 	exempt_from_ai_planet_specialization = yes
-	
+
 	base_buildtime = @b1_time
 	base_cap_amount = 1
 	category = unity
@@ -2113,10 +2064,10 @@ building_simulation_1 = {
 	#	|PR转化|
 	icon = PR_building_CULT_core_MACHINE_1
 	exempt_from_ai_planet_specialization = yes
-	
+
 	base_buildtime = @b1_time
 	base_cap_amount = 1
-	#icon = building_holo_theatres
+	icon = building_holo_theatres
 
 	category = unity
 
@@ -2194,7 +2145,7 @@ building_simulation_2 = {
 
 	base_buildtime = @b2_time
 	can_build = no
-	#icon = building_hyper_entertainment_forum
+	icon = building_hyper_entertainment_forum
 
 	category = unity
 
@@ -2276,7 +2227,7 @@ building_simulation_3 = {
 
 	base_buildtime = @b3_time
 	can_build = no
-	#icon = building_citadel_of_faith
+	icon = building_citadel_of_faith
 
 	category = unity
 
@@ -2356,10 +2307,10 @@ building_corporate_monument = {
 	#	|PR转化|
 	icon = PR_building_CULT_core_CORP_1
 	exempt_from_ai_planet_specialization = yes
-	
+
 	base_buildtime = @b1_time
 	base_cap_amount = 1
-	#icon = building_autochthon_monument
+	icon = building_autochthon_monument
 
 	category = unity
 
@@ -2437,7 +2388,7 @@ building_corporate_site = {
 
 	base_buildtime = @b2_time
 	can_build = no
-	#icon = building_heritage_site
+	icon = building_heritage_site
 
 	category = unity
 
@@ -2517,7 +2468,7 @@ building_corporate_forum = {
 
 	base_buildtime = @b3_time
 	can_build = no
-	#icon = building_hypercomms_forum
+	icon = building_hypercomms_forum
 
 	category = unity
 
@@ -2594,10 +2545,10 @@ building_sensorium_1 = {
 	#	|PR转化|
 	icon = PR_building_CULT_core_HIVE_1
 	exempt_from_ai_planet_specialization = yes
-	
+
 	base_buildtime = @b1_time
 	base_cap_amount = 1
-	#icon = building_holo_theatres
+	icon = building_holo_theatres
 
 	category = unity
 
@@ -2675,7 +2626,7 @@ building_sensorium_2 = {
 
 	base_buildtime = @b2_time
 	can_build = no
-	#icon = building_hyper_entertainment_forum
+	icon = building_hyper_entertainment_forum
 
 	category = unity
 
@@ -2757,7 +2708,7 @@ building_sensorium_3 = {
 
 	base_buildtime = @b3_time
 	can_build = no
-	#icon = building_citadel_of_faith
+	icon = building_citadel_of_faith
 
 	category = unity
 
@@ -2918,9 +2869,6 @@ building_autocurating_vault = {
 			has_ringworld_output_boost = yes
 		}
 		planet_administrators_unity_produces_add = 1
-		planet_managers_unity_produces_add = 1
-		planet_priests_unity_produces_add = 1
-		planet_telepaths_unity_produces_add = 1
 	}
 
 	country_modifier = {
@@ -3060,14 +3008,49 @@ building_citadel_of_faith = {
 		}
 	}
 
+	# Add bonus High Priest OR Tech Hierophant Jobs
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOT = { has_origin = origin_cybernetic_creed }
+			}
+		}
+		job_high_priest_add = 2
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				NOT = { has_origin = origin_cybernetic_creed }
+			}
+		}
+		text = job_high_priest_effect_desc
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_origin = origin_cybernetic_creed
+			}
+		}
+		job_technophant_add = 2
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				has_origin = origin_cybernetic_creed
+			}
+		}
+		text = job_technophant_effect_desc
+	}
+
 	triggered_planet_modifier = {
 		potential = {
 			has_ringworld_output_boost = yes
 		}
 		planet_administrators_unity_produces_add = 1
-		planet_managers_unity_produces_add = 1
-		planet_priests_unity_produces_add = 1
-		planet_telepaths_unity_produces_add = 1
 	}
 
 	country_modifier = {
@@ -3076,16 +3059,12 @@ building_citadel_of_faith = {
 	}
 
 	planet_modifier = {
-		job_high_priest_add = 1
 		pop_ethic_spiritualist_attraction_mult = 0.20
+		planet_administrators_produces_mult = 0.15
 	}
 
 	prerequisites = {
 		"tech_transcendent_faith"
-	}
-
-	triggered_desc = {
-		text = job_high_priest_effect_desc
 	}
 }
 
@@ -3171,9 +3150,6 @@ building_corporate_vault = {
 			has_ringworld_output_boost = yes
 		}
 		planet_administrators_unity_produces_add = 1
-		planet_managers_unity_produces_add = 1
-		planet_priests_unity_produces_add = 1
-		planet_telepaths_unity_produces_add = 1
 	}
 
 	country_modifier = {
@@ -3337,7 +3313,7 @@ building_organic_sanctuary = {
 	#	|PR转化|
 	icon = PR_building_CULT_sanctuary_1
 	exempt_from_ai_planet_specialization = yes
-	
+
 	base_buildtime = @b1_time
 
 	category = unity
@@ -3466,7 +3442,7 @@ building_organic_paradise = {
 
 	base_buildtime = @b2_time
 	can_build = no
-	#icon = building_paradise_dome
+	icon = building_paradise_dome
 
 	category = unity
 
@@ -3566,7 +3542,7 @@ building_organic_paradise = {
 building_league_offices = {
 	#	|PR转化|
 	exempt_from_ai_planet_specialization = yes
-	
+
 	base_buildtime = @b2_time
 	empire_limit = {
 		base = 1
@@ -3614,8 +3590,10 @@ building_league_offices = {
 
 	planet_modifier = {
 		planet_administrators_unity_produces_add = 1
-		planet_managers_unity_produces_add = 1
-		planet_priests_unity_produces_add = 1
+	}
+
+	triggered_desc = {
+		text = building_league_offices_effect
 	}
 
 	triggered_planet_modifier = {
@@ -3634,6 +3612,21 @@ building_league_offices = {
 		}
 	}
 
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				is_spiritualist = no
+				is_megacorp = no
+				is_worker_coop_empire = no
+				has_make_spiritualist_perk = no
+			}
+		}
+		text = job_bureaucrat_effect_desc
+	}
+
+	# Spiritualist Ethics: add Priest OR Tech Priest Jobs
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -3643,6 +3636,7 @@ building_league_offices = {
 					is_spiritualist = yes
 					has_make_spiritualist_perk = yes
 				}
+				NOT = { has_origin = origin_cybernetic_creed }
 			}
 		}
 		modifier = {
@@ -3650,6 +3644,52 @@ building_league_offices = {
 		}
 	}
 
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+				NOT = { has_origin = origin_cybernetic_creed }
+				OR = {
+					is_spiritualist = yes
+					has_make_spiritualist_perk = yes
+				}
+			}
+		}
+		text = job_priest_effect_desc
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					is_spiritualist = yes
+					has_make_spiritualist_perk = yes
+				}
+				has_origin = origin_cybernetic_creed
+			}
+		}
+		modifier = {
+			job_haruspex_add = 2
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				OR = {
+					is_spiritualist = yes
+					has_make_spiritualist_perk = yes
+				}
+				has_origin = origin_cybernetic_creed
+			}
+		}
+		text = job_haruspex_effect_desc
+	}
+
+	# (Spiritualist) Corporate Authority: add Prosperity Preacher Jobs
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -3666,6 +3706,21 @@ building_league_offices = {
 		}
 	}
 
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				OR = {
+					is_spiritualist = yes
+					has_make_spiritualist_perk = yes
+				}
+			}
+		}
+		text = job_preacher_effect_desc
+	}
+
+	# (Non-Spiritualist) Corporate Authority: add Manager Jobs
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -3681,6 +3736,20 @@ building_league_offices = {
 		}
 	}
 
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				is_worker_coop_empire = no
+				is_spiritualist = no
+				has_make_spiritualist_perk = no
+			}
+		}
+		text = job_manager_effect_desc
+	}
+
+	# (Worker Coop) Corporate Authority: add Steward Jobs
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -3695,85 +3764,6 @@ building_league_offices = {
 		}
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_hive_empire = yes }
-		}
-		modifier = {
-			job_synapse_drone_add = 2
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_machine_empire = yes }
-		}
-		modifier = {
-			job_coordinator_add = 2
-		}
-	}
-
-	triggered_desc = {
-		text = building_league_offices_effect
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = {
-				is_regular_empire = yes
-				is_spiritualist = no
-				is_megacorp = no
-				is_worker_coop_empire = no
-				has_make_spiritualist_perk = no
-			}
-		}
-		text = job_bureaucrat_effect_desc
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = {
-				is_megacorp = no
-				OR = {
-					is_spiritualist = yes
-					has_make_spiritualist_perk = yes
-				}
-			}
-		}
-		text = job_priest_effect_desc
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = {
-				is_megacorp = yes
-				OR = {
-					is_spiritualist = yes
-					has_make_spiritualist_perk = yes
-				}
-			}
-		}
-		text = job_preacher_effect_desc
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = {
-				is_megacorp = yes
-				is_worker_coop_empire = no
-				is_spiritualist = no
-				has_make_spiritualist_perk = no
-			}
-		}
-		text = job_manager_effect_desc
-	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -3786,12 +3776,33 @@ building_league_offices = {
 		text = job_steward_effect_desc
 	}
 
+	# Gestalt Authorities: add Synapse/Coordinator Jobs
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_synapse_drone_add = 2
+		}
+	}
+
 	triggered_desc = {
 		trigger = {
 			exists = owner
 			owner = { is_machine_empire = yes }
 		}
 		text = job_coordinator_effect_desc
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		modifier = {
+			job_coordinator_add = 2
+		}
 	}
 
 	triggered_desc = {
