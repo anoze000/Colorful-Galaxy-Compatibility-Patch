@@ -31,6 +31,7 @@ building_deployment_post = {
 			is_fallen_empire = no
 		}
 		uses_habitat_capitals = no
+		NOT = { is_planet_class = pc_cosmogenesis_world }
 	}
 
 	convert_to = {
@@ -38,6 +39,7 @@ building_deployment_post = {
 		building_colony_shelter
 		building_ancient_control_center
 		building_ancient_palace
+		building_deployment_post_nanotech
 	}
 
 	planet_modifier = {
@@ -65,21 +67,11 @@ building_deployment_post = {
 
 	triggered_planet_modifier = {
 		potential = {
-			has_designation = col_crucible
+			has_modifier = gestation_colony
 		}
 		modifier = {
 			job_replicator_add = -1
-			job_crucible_drone_add = 2
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_active_tradition = tr_synthetics_finish_machine }
-		}
-		modifier = {
-			job_replicator_add = 1
+			job_gestation_drone_add = 2
 		}
 	}
 
@@ -87,17 +79,8 @@ building_deployment_post = {
 		script = maid_buildings_change/maid_capital_building_jobs_and_modifiers_normal
 		JOB = 1
 	}
-	#兼容更多思潮无限 comp with ECI
-	triggered_country_modifier = {
-		potential = {
-			is_ECI_activated = yes
-		}
-		modifier = {
-			country_resource_max_add = 2500
-		}
-	}
 
-	resources = { #
+	resources = {
 		category = planet_buildings
 		upkeep = {
 			energy = 1
@@ -114,31 +97,26 @@ building_deployment_post = {
 
 	triggered_desc = {
 		trigger = {
-			NOT = { has_designation = col_crucible }
+			NOT = { has_modifier = gestation_colony }
 		}
 		text = job_replicator_effect_desc
 	}
 
 	triggered_desc = {
 		trigger = {
-			has_designation = col_crucible
+			has_modifier = gestation_colony
 		}
-		text = job_crucible_drone_effect_desc
+		text = job_gestation_drone_effect_desc
 	}
 
 	triggered_desc = {
 		text = job_maintenance_drone_effect_desc
 	}
 
-	triggered_desc = { #
-		trigger = {
-			exists = owner
-			owner = { NOT = { has_civic = civic_machine_servitor } }
-		}
+	triggered_desc = {
 		text = job_patrol_drone_effect_desc
 	}
 }
-
 ###################################### Administrative Array 1
 building_machine_capital = {
 	base_buildtime = @b2_time
@@ -165,6 +143,7 @@ building_machine_capital = {
 			is_fallen_empire = no
 		}
 		uses_habitat_capitals = no
+		NOT = { is_planet_class = pc_cosmogenesis_world }
 	}
 
 	destroy_trigger = {
@@ -177,6 +156,7 @@ building_machine_capital = {
 		building_colony_shelter
 		building_ancient_control_center
 		building_ancient_palace
+		building_machine_capital_nanotech
 	}
 
 	allow = { #
@@ -223,21 +203,11 @@ building_machine_capital = {
 
 	triggered_planet_modifier = {
 		potential = {
-			has_designation = col_crucible
+			has_modifier = gestation_colony
 		}
 		modifier = {
 			job_replicator_add = -1
-			job_crucible_drone_add = 2
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_active_tradition = tr_synthetics_finish_machine }
-		}
-		modifier = {
-			job_replicator_add = 1
+			job_gestation_drone_add = 2
 		}
 	}
 
@@ -251,22 +221,13 @@ building_machine_capital = {
 			planet_jobs_productive_produces_mult = 0.1
 		}
 	}
-	
+
 	inline_script = { ############ 女仆调整修正
 		script = maid_buildings_change/maid_capital_building_jobs_and_modifiers_normal
 		JOB = 1
 	}
-	#兼容更多思潮无限 comp with ECI
-	triggered_country_modifier = {
-		potential = {
-			is_ECI_activated = yes
-		}
-		modifier = {
-			country_resource_max_add = 5000
-		}
-	}
 
-	resources = { #
+	resources = {
 		category = planet_buildings
 		cost = {
 			minerals = @b2_minerals
@@ -286,23 +247,19 @@ building_machine_capital = {
 
 	triggered_desc = {
 		trigger = {
-			NOT = { has_designation = col_crucible }
+			NOT = { has_modifier = gestation_colony }
 		}
 		text = job_replicator_effect_desc
 	}
 
 	triggered_desc = {
 		trigger = {
-			has_designation = col_crucible
+			has_modifier = gestation_colony
 		}
-		text = job_crucible_drone_effect_desc
+		text = job_gestation_drone_effect_desc
 	}
 
-	triggered_desc = { #
-		trigger = {
-			exists = owner
-			owner = { NOT = { has_civic = civic_machine_servitor } }
-		}
+	triggered_desc = {
 		text = job_patrol_drone_effect_desc
 	}
 
@@ -310,7 +267,6 @@ building_machine_capital = {
 		text = job_maintenance_drone_effect_desc
 	}
 }
-
 ###################################### Planetary Processor 2
 building_machine_major_capital = {
 	base_buildtime = @b3_time
@@ -339,10 +295,10 @@ building_machine_major_capital = {
 		building_major_capital
 		building_ancient_control_center
 		building_ancient_palace
+		building_machine_major_capital_nanotech
 	}
 
 	allow = { #
-		
 		inline_script = { ############ 女仆调整需求
 			script = maid_buildings_change/maid_capital_building_upgrade_allow_num_pops
 			ORIGINAL = 25
@@ -386,21 +342,11 @@ building_machine_major_capital = {
 
 	triggered_planet_modifier = {
 		potential = {
-			has_designation = col_crucible
+			has_modifier = gestation_colony
 		}
 		modifier = {
 			job_replicator_add = -1
-			job_crucible_drone_add = 2
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_active_tradition = tr_synthetics_finish_machine }
-		}
-		modifier = {
-			job_replicator_add = 1
+			job_gestation_drone_add = 2
 		}
 	}
 
@@ -425,22 +371,13 @@ building_machine_major_capital = {
 			planet_jobs_productive_produces_mult = 0.1
 		}
 	}
-
+	
 	inline_script = { ############ 女仆调整修正
 		script = maid_buildings_change/maid_capital_building_jobs_and_modifiers_normal
 		JOB = 2
 	}
-	#兼容更多思潮无限 comp with ECI
-	triggered_country_modifier = {
-		potential = {
-			is_ECI_activated = yes
-		}
-		modifier = {
-			country_resource_max_add = 7500
-		}
-	}
 
-	resources = { #
+	resources = {
 		category = planet_buildings
 		cost = {
 			minerals = @b3_minerals
@@ -456,23 +393,19 @@ building_machine_major_capital = {
 
 	triggered_desc = {
 		trigger = {
-			NOT = { has_designation = col_crucible }
+			NOT = { has_modifier = gestation_colony }
 		}
 		text = job_replicator_effect_desc
 	}
 
 	triggered_desc = {
 		trigger = {
-			has_designation = col_crucible
+			has_modifier = gestation_colony
 		}
-		text = job_crucible_drone_effect_desc
+		text = job_gestation_drone_effect_desc
 	}
 
-	triggered_desc = { #
-		trigger = {
-			exists = owner
-			owner = { NOT = { has_civic = civic_machine_servitor } }
-		}
+	triggered_desc = {
 		text = job_patrol_drone_effect_desc
 	}
 
@@ -480,7 +413,6 @@ building_machine_major_capital = {
 		"building_machine_system_capital"
 	}
 }
-
 ###################################### Primary Nexus 3
 building_machine_system_capital = {
 	base_buildtime = @b4_time
@@ -510,6 +442,7 @@ building_machine_system_capital = {
 		building_machine_major_capital
 		building_ancient_control_center
 		building_ancient_palace
+		building_machine_system_capital_nanotech
 	}
 
 	allow = { #
@@ -572,21 +505,11 @@ building_machine_system_capital = {
 
 	triggered_planet_modifier = {
 		potential = {
-			has_designation = col_crucible
+			has_modifier = gestation_colony
 		}
 		modifier = {
 			job_replicator_add = -1
-			job_crucible_drone_add = 2
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_active_tradition = tr_synthetics_finish_machine }
-		}
-		modifier = {
-			job_replicator_add = 1
+			job_gestation_drone_add = 2
 		}
 	}
 
@@ -622,22 +545,13 @@ building_machine_system_capital = {
 			planet_jobs_productive_produces_mult = 0.1
 		}
 	}
-
+	
 	inline_script = { ############ 女仆调整修正
 		script = maid_buildings_change/maid_capital_building_jobs_and_modifiers_normal
 		JOB = 3
 	}
-	#兼容更多思潮无限 comp with ECI
-	triggered_country_modifier = {
-		potential = {
-			is_ECI_activated = yes
-		}
-		modifier = {
-			country_resource_max_add = 10000
-		}
-	}
-	
-	resources = { #
+
+	resources = {
 		category = planet_buildings
 		cost = {
 			minerals = @b4_minerals
@@ -657,16 +571,12 @@ building_machine_system_capital = {
 
 	triggered_desc = {
 		trigger = {
-			has_designation = col_crucible
+			has_modifier = gestation_colony
 		}
-		text = job_crucible_drone_effect_desc
+		text = job_gestation_drone_effect_desc
 	}
 
-	triggered_desc = { #
-		trigger = {
-			exists = owner
-			owner = { NOT = { has_civic = civic_machine_servitor } }
-		}
+	triggered_desc = {
 		text = job_patrol_drone_effect_desc
 	}
 
@@ -674,7 +584,6 @@ building_machine_system_capital = {
 		"building_imperial_machine_capital"
 	}
 }
-
 ###################################### Imperial Center 4
 building_imperial_machine_capital = {
 	base_buildtime = @b4_time
@@ -771,21 +680,11 @@ building_imperial_machine_capital = {
 
 	triggered_planet_modifier = {
 		potential = {
-			has_designation = col_crucible
+			has_modifier = gestation_colony
 		}
 		modifier = {
 			job_replicator_add = -1
-			job_crucible_drone_add = 2
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_active_tradition = tr_synthetics_finish_machine }
-		}
-		modifier = {
-			job_replicator_add = 1
+			job_gestation_drone_add = 2
 		}
 	}
 
@@ -821,22 +720,13 @@ building_imperial_machine_capital = {
 			planet_jobs_productive_produces_mult = 0.1
 		}
 	}
-
+	
 	inline_script = { ############ 女仆调整修正
 		script = maid_buildings_change/maid_capital_building_jobs_and_modifiers_normal
 		JOB = 5
 	}
-	#兼容更多思潮无限 comp with ECI
-	triggered_country_modifier = {
-		potential = {
-			is_ECI_activated = yes
-		}
-		modifier = {
-			country_resource_max_add = 15000
-		}
-	}
 
-	resources = { #
+	resources = {
 		category = planet_buildings
 		cost = {
 			minerals = @b4_minerals
@@ -856,16 +746,12 @@ building_imperial_machine_capital = {
 
 	triggered_desc = {
 		trigger = {
-			has_designation = col_crucible
+			has_modifier = gestation_colony
 		}
-		text = job_crucible_drone_effect_desc
+		text = job_gestation_drone_effect_desc
 	}
 
-	triggered_desc = { #
-		trigger = {
-			exists = owner
-			owner = { NOT = { has_civic = civic_machine_servitor } }
-		}
+	triggered_desc = {
 		text = job_patrol_drone_effect_desc
 	}
 }

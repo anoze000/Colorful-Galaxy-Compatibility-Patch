@@ -80,12 +80,13 @@
 #_[AUP]		~~Ariphaos Unofficial Patch					<210420>
 #_[Sexp]	Sensor Expansion							<211029>
 
-#_[HFE]		Human Fallen Empires						<200807>	glbl_flg	[hfe_installed]
+#_[HFE]		Human Fallen Empires						<230109>	glbl_flg	[hfe_installed]
 #_[hiveDLC]	Hive DLC: Forgotten Queens					<210420>	glbl_flg	[complex_hive]
 #_[MOP_M]	Masters of the Planet - Main				<210505>	trigger可能略有耗能
 #_[UR]		Underground Realms							<210420>
 #_[MCA]		More Corporate Authorities for 3.x			<210501>
 #_[致命风暴]	A Deadly Tempest						<211029>
+#_|SCFE|			Inny Forgotten Empires 3.12				<240521>
 
 #_[Giga]												<201205>
 #_[Ehof]	Event Horizon Offset Facility				<200805>
@@ -545,7 +546,7 @@ should_abduct_pop = { #应该绑架pop
 }
 
 
-###_|星球生存|	GF/HFE/hiveDLC/PDew/GF/时与空/thl	####################################
+###_|星球生存|	GF/hiveDLC/PDew/GF/时与空/thl	####################################	决定宜居度
 #Root = planet
 #This = species
 species_can_live_on_planet = { #物种可生活在行星
@@ -586,12 +587,11 @@ species_can_live_on_planet = { #物种可生活在行星
 			}
 		}
 	}
+	#	V克隆大军
 	if = {
 		limit = {
 			exists = root.owner
-			root.owner = {
-				has_origin = origin_clone_army
-			}
+			root.owner = { has_origin = origin_clone_army }
 			OR = {
 				has_trait = trait_clone_soldier_infertile
 				has_trait = trait_clone_soldier_infertile_full_potential
@@ -607,13 +607,8 @@ species_can_live_on_planet = { #物种可生活在行星
 
 	##	GF 神秘机械星球
 	NAND = {
-		root = { is_planet_class = pc_GF_sf_machine }
 		is_robotic = no
-	}
-	##	HFE
-	NAND = {
-		exists = root.controller
-		root.controller = { is_country_type = hfe_plague_zombie }
+		root = { is_planet_class = pc_GF_sf_machine }	
 	}
 	##	hiveDLC
 	NAND = {
@@ -1724,7 +1719,7 @@ can_colonize_outside_borders = { #可殖民境外星球
 }
 
 
-###_|环境改造|		RSnf/PD/thl	####################################
+###_|环境改造|		RSnf/PD/thl/SCFE	####################################
 #Root = country
 #This = planet
 can_terraform_planet = { #可改造星球
@@ -1772,16 +1767,21 @@ can_terraform_planet = { #可改造星球
 			has_deposit = d_heart_of_the_overmind
 		}
 	}
-	##	PD
+	#	PD
 	custom_tooltip = {
 		fail_text = "requires_actor_not_pdtol"
 		root = { NOT = { has_origin = origin_pd_tree_of_life } }
 	}
-	##	东方领袖
+	#	东方领袖
 	custom_tooltip = {
 		fail_text = "sakura_planet_no_terraform"
 		NOT = { has_planet_flag = sakura_planet }
 	}
+	#	SCFE
+    custom_tooltip = {
+        fail_text = scfe_cant_terraform_special_planet
+        NOT = { has_planet_flag = cant_terraform_planet }
+    }
 }
 
 
@@ -2073,8 +2073,10 @@ can_species_procreate = { #可繁殖物种
 					has_species_flag = community_can_species_procreate_false
 				}
 			}
-			#
-			has_species_flag = UGRC_flg_spcs_RULE_procreate_ENABLE	# |UGRC标签|
+			#	否决条件
+			NOT = { has_species_flag = UGRC_flg_spcs_RULE_procreate_DISABLE }	# |UGRC标签|
+
+			##	V其他
 			if = {
 				limit = {
 					has_trait = trait_necrophage
@@ -2116,18 +2118,31 @@ can_species_procreate = { #可繁殖物种
 					}
 				}
 			}
-
-			##################################################
-			#	HFE
-			if = { 
-				limit = { 
-					hfe_trigger_population_procreate_housing_block_enabled = yes 
-				}
-				root = { 
-					free_housing > -1 
+			#	V机械教			局势"situation_cybernetic_creed_cyberization"进入|阶段3|才会有如下特质
+			if = { limit = { root.owner = { has_country_flag = cyber_creed_stop_intro_events } }
+				OR = {
+					AND = { has_species_flag = UGRC_flg_spcs_RULE_procreate_CREED	# |has_cybernetic_creed_trait|局势开始
+						NOT = {
+							root = {
+								any_owned_species = {
+									NOT = { has_species_flag = UGRC_flg_spcs_RULE_procreate_CREED }
+									has_population_control = { country = root.owner	type = no }
+								}
+							}
+						}
+					}
+					AND = { NOT = { has_species_flag = UGRC_flg_spcs_RULE_procreate_CREED }
+						root = {
+							any_owned_species = {
+								NOT = { has_species_flag = UGRC_flg_spcs_RULE_procreate_CREED }
+								has_population_control = { country = root.owner	type = no }
+							}
+						}
+					}
 				}
 			}
-			#	wv
+
+			##	wv
 			if = { 
 				limit = { 
 					has_species_flag = UGRC_flg_spcs_RULE_procreate_DUMMY 
@@ -2692,6 +2707,8 @@ can_species_be_assembled = { #可组装物种
 				}
 				KZ_VOY_trgr_plnt_CLONE = yes
 			}
+			##	rmaid
+			Maid_trigger_5_can_species_be_assembled = yes
 		}
 		AND = { #国防部 MOD
 			has_species_flag = community_mod_rules_trigger
@@ -3889,7 +3906,7 @@ can_jump_drive = { #可以跃迁
 }
 
 
-###_|占领军|	ev/阿夸/HFE/致命风暴	/ZOFE/SOFE/EE	####################################
+###_|占领军|	ev/阿夸/致命风暴	/ZOFE/SOFE/EE	####################################
 # this = country
 can_spawn_occupation_armies = { #可以产生占领陆军
 	OR = {
@@ -3904,8 +3921,6 @@ can_spawn_occupation_armies = { #可以产生占领陆军
 		is_country_type = kuat_fallen_empire
 		is_country_type = kuat_awakened_fallen_empire
 		is_country_type = awakened_return_kuat_empire
-		#	HFE	hfe_civic_egypt_fury|国策|决定是否是afe
-		is_country_type = human_fallen_empire
 		#	致命风暴	|afe|
 		is_country_type = awakened_gate_builders
 		#	ZOFE
@@ -3962,7 +3977,7 @@ system_blocks_sensors = { #阻断探测星系
 }
 
 
-###_[跃迁管制]	FW/AAR	/古代帝国/wsg/阿夸/SOFE/Giga/Ehof/seooc/多彩/精灵/TAC/莉莉/驴岛	####################################
+###_|跃迁管制|	FW/AAR	/古代帝国/wsg/阿夸/SOFE/Giga/Ehof/seooc/多彩/精灵/TAC/莉莉/驴岛/SCFE	####################################
 # Root = country attempting to target system for movement
 # This = system being targeted
 can_enter_system_by_jump = { #可跃迁进入星系
@@ -4088,6 +4103,9 @@ can_enter_system_by_jump = { #可跃迁进入星系
 							has_star_flag = al_huge_home_bed
 							#	驴岛
 							has_star_flag = ark_isolated
+							#	SCFE
+							has_star_flag = formless_system
+							AND = { has_star_flag = scfe_shaded_colony_system		root = { scfe_can_jump_in_shaded_system = no } }
 						}
 					}
 				}
@@ -4662,8 +4680,7 @@ should_force_decline_species = { #应该被强制灭绝的物种
 }
 
 
-###_|国家可建公司|	ETCPM/wsg/GF/azl/azlr/hiveDLC/驴岛/精灵/莉莉/久远/星海帝皇/ECI/rmaid/ARP	####################################
-# This = country
+###_|国家可建公司|	ETCPM/wsg/GF/azl/azlr/hiveDLC/驴岛/精灵/莉莉/久远/星海帝皇/ECI/rmaid/ARP/HFE	##################################### This = country
 can_build_branch_offices = { #可建立分部
 	OR = {
 		AND = { #香草 vanilla
@@ -4767,6 +4784,8 @@ can_build_branch_offices = { #可建立分部
 					Maid_trigger_0_can_build_branch_offices = yes
 					#	ECI		|全部可建|
 					has_global_flag = ideological_revolution	# |ECI激活|
+					#	HFE
+					is_country_type = hfe_pirate
 					#_|共产星际|
 					AND = {
 						OR = {
@@ -4819,8 +4838,6 @@ can_support_branch_offices = { #可被建立分部
 					is_country_type = kuat_fallen_empire
 					is_country_type = kuat_awakened_fallen_empire
 					is_country_type = awakened_return_kuat_empire
-					# HFE	hfe_civic_egypt_fury|国策|决定是否是afe
-					is_country_type = human_fallen_empire
 					# 致命风暴	|afe|
 					is_country_type = awakened_gate_builders
 					# ZOFE
@@ -5115,20 +5132,7 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 						always = no
 					}
 					##	HFE
-					if = {
-						limit = {
-							has_global_flag = hfe_installed
-						}
-						root = { 
-							exists = overlord		
-							overlord = { 
-								is_country = prevprev.owner 
-							} 
-						}	#_this的owner
-					}
-					esle = {
-						always = no
-					}
+					root = { is_country_type = hfe_pirate		is_forced_friendly = prev.owner }
 					##	azl	=|自我建造|
 					if = {
 						limit = {
@@ -6187,10 +6191,12 @@ can_pop_auto_migrate = { #可自动迁移的pop
 		}
 	}
 	## +HFE
-	OR = {
-		AND = {
-			is_shackled_robot = no
-			is_enslaved = no
+	if = {
+		limit = {
+			OR = {
+				is_shackled_robot = yes
+				is_enslaved = yes
+			}
 		}
 		custom_tooltip = {
 			fail_text = AUTO_MIGRATE_SLAVE_PROCESSING
@@ -6218,13 +6224,6 @@ can_pop_auto_migrate = { #可自动迁移的pop
 				}
 			}
 		}
-		# HFE
-		owner = {
-			OR = {
-				is_country_type = hfe_pirate
-				hfe_trigger_is_human_fallen = yes
-			}
-		}
 	}
 	#雌伏于阴影之下
 	NOT = {
@@ -6239,7 +6238,7 @@ can_pop_auto_migrate = { #可自动迁移的pop
 }
 
 
-###_[星球可移民]	伞优化/产业革命	/ETCPM/ZOFE/EE/ev/HFE/PDhab	####################################
+###_[星球可移民]	伞优化/产业革命	/ETCPM/ZOFE/EE/ev/PDhab	####################################
 # This = planet
 # Checked before can_pop_auto_migrate to save performance
 can_planet_auto_migrate = { #可自动迁移的行星
@@ -6275,6 +6274,7 @@ can_planet_auto_migrate = { #可自动迁移的行星
 				fail_text = AUTO_MIGRATE_ONLY_HAS_ONE_POP
 				num_sapient_pops > 1 
 			}
+			##	+ZOFE/EE/ev
 			hidden_trigger = {
 				exists = owner
 				owner = {
@@ -6289,9 +6289,6 @@ can_planet_auto_migrate = { #可自动迁移的行星
 						is_country_type = eternal_empire
 						#	ev				
 						is_country_type = default_ev
-						#	HFE
-						is_country_type = hfe_pirate
-						hfe_trigger_is_human_fallen = yes
 					}
 				}
 			}

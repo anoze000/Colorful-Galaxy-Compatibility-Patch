@@ -5,11 +5,14 @@ building_sentinel_posts = {
 
 	category = government
 
-	potential = { #
+	potential = {
 		exists = owner
 		owner = {
 			is_gestalt = yes
-			NOT = { has_valid_civic = civic_machine_servitor }
+		}
+		OR = {
+			owner = { NOT = { has_valid_civic = civic_machine_servitor } }
+			is_planet_class = pc_machine
 		}
 	}
 
@@ -31,11 +34,13 @@ building_sentinel_posts = {
 		owner = {
 			OR = {
 				is_gestalt = no
-				has_valid_civic = civic_machine_servitor
+				AND = {
+					has_valid_civic = civic_machine_servitor
+					prev = { NOT = { is_planet_class = pc_machine } }
+				}
 			}
 		}
 	}
-
 	convert_to = { #
 		building_maintenance_depot
 	}
@@ -218,6 +223,47 @@ building_commercial_megaplex = {
 					value >= 10
 				}
 			}
+		}
+	}
+}
+
+# has_tradition -> has_active_tradition = tr_nanotech_2
+building_nanotech_cauldron = {
+	base_buildtime = @b2_time
+
+	category = manufacturing
+
+	potential = {
+		exists = owner
+		owner = { has_active_tradition = tr_nanotech_2 }
+		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = slave_colony }
+	}
+
+	allow = {
+		always = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			NOT = { owner = { has_active_tradition = tr_nanotech_2 } }
+			has_modifier = slave_colony
+			has_modifier = resort_colony
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @b3_minerals
+		}
+		upkeep = {
+			nanites = 3
+			energy = 30
+		}
+		produces = {
+			alloys = 15
 		}
 	}
 }

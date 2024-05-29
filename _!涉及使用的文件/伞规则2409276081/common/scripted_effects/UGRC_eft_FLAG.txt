@@ -703,6 +703,7 @@ UGRC_eft_spcs_RULE_flg_DB = {
 
 
 	##	|UGRC可繁殖|	####################
+	#	V否决条件
 	if = {
 		limit = {
 			is_sapient = yes
@@ -736,14 +737,20 @@ UGRC_eft_spcs_RULE_flg_DB = {
 				is_archetype = STARSHIPGIRLS
 			}
 			NOT = { has_species_flag = nivlac_no_procreation }
-			has_cybernetic_creed_trait = no
 		}
-		set_species_flag = UGRC_flg_spcs_RULE_procreate_ENABLE
+		remove_species_flag = UGRC_flg_spcs_RULE_procreate_DISABLE
 	}
 	else = {
-		remove_species_flag = UGRC_flg_spcs_RULE_procreate_ENABLE
+		set_species_flag = UGRC_flg_spcs_RULE_procreate_DISABLE
 	}
-	#	魔女
+	#	V机械教
+	if = { limit = { has_cybernetic_creed_trait = yes }
+		set_species_flag = UGRC_flg_spcs_RULE_procreate_CREED
+	}
+	else = {
+		remove_species_flag = UGRC_flg_spcs_RULE_procreate_CREED
+	}
+	##	mod|魔女
 	if = {
 		limit = {
 			OR = {

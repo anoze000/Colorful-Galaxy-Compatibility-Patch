@@ -11,8 +11,10 @@ civic_machine_servitor = {
 			}
 		}
 		origin = {
-			NOT = {
+			NOR = {
 				value = origin_machine
+				value = origin_subterranean_machines
+				value = origin_post_apocalyptic_machines
 			}
 		}
 	}
@@ -63,9 +65,9 @@ civic_machine_crafters = {
 		}
 	}
 	modifier = {
-		councilor_gestalt_cognitive_exp_gain = @gestalt_civic_node_xp_rate
 		planet_pop_assemblers_upkeep_mult = 0.1
 		MACHINE_species_trait_points_add = 1
+		councilor_gestalt_cognitive_exp_gain = @gestalt_civic_node_xp_rate
 	}
 	playable = {
 		host_has_dlc = "Synthetic Dawn Story Pack"
@@ -81,6 +83,10 @@ civic_machine_crafters = {
 		modifier = {
 			factor = 2
 			has_civic = civic_machine_servitor
+		}
+		modifier = {
+			factor = 1.5
+			has_civic = civic_machine_obsessional_directive
 		}
 	}
 }
@@ -133,6 +139,8 @@ civic_machine_paradise_lost = {
 				value = origin_shattered_ring
 				value = origin_machine
 				value = origin_doomsday
+				value = origin_void_machines
+				value = origin_subterranean_machines
 				#value = origin_remnants
 			}
 		}

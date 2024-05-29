@@ -352,30 +352,31 @@ building_ancient_cryo_chamber = {
 	category = government
 
 	potential = {
-		exists = owner
-		owner = { is_fallen_machine_empire = yes }
 	}
-
-	destroy_trigger = {
-		always = no
+	upgrades = {
+		building_repaired_cryo_chamber
 	}
 
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = @b2_minerals
+			alloys = @b2_minerals
 		}
 		upkeep = {
-			energy = 10
-		}
-		produces = {
-			trigger = { owner = { is_fallen_machine_empire = no } }
-			society_research = 75
+			sr_living_metal = 1
+			energy = 50
 		}
 	}
 
-	upgrades = {
-		building_repair_the_ancient_cryo_chamber
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_fallen_empire = no
+			}
+		}
+		BIOLOGICAL_species_trait_picks_add = 1
+		BIOLOGICAL_species_trait_points_add = 1
 	}
 
 	triggered_desc = {
