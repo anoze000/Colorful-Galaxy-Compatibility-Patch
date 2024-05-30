@@ -1,0 +1,28 @@
+#	AVB
+building_hab_major_capital_override = { potential = { always = no } allow = { always = no } }
+building_resort_major_capital_override = { potential = { always = no } allow = { always = no } }
+building_slave_major_capital_override = { potential = { always = no } allow = { always = no } }
+building_system_capital_override = { potential = { always = no } allow = { always = no } }
+building_machine_system_capital_override = { potential = { always = no } allow = { always = no } }
+building_hive_major_capital_override = { potential = { always = no } allow = { always = no } }
+#	mrpg
+building_minor_capital = { potential = { always = no } allow = { always = no } }
+building_machine_minor_capital = { potential = { always = no } allow = { always = no } }
+building_hive_core_2 = { potential = { always = no } allow = { always = no } }
+building_hive_core_3 = { potential = { always = no } allow = { always = no } }
+#	ECI
+building_hab_system_capital = { potential = { always = no } allow = { always = no } }
+#	多彩
+holding_world_tree = { potential = { always = no } allow = { always = no } }
+building_holylight_clone_vats = { potential = { always = no } allow = { always = no } }
+building_world_tree_0 = { potential = { always = no } allow = { always = no } }
+building_world_tree_1 = { potential = { always = no } allow = { always = no } }
+building_world_tree_2 = { potential = { always = no } allow = { always = no } }
+building_world_tree_3 = { potential = { always = no } allow = { always = no } }
+building_world_tree_4 = { potential = { always = no } allow = { always = no } }
+building_world_tree_5 = { potential = { always = no } allow = { always = no } }
+building_world_tree_6 = { potential = { always = no } allow = { always = no } }
+#	MOP_M
+building_training_bomboardment = { potential = { always = no } allow = { always = no } }
+
+

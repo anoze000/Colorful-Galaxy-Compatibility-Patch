@@ -1,0 +1,327 @@
+######################################
+###     Robutt/Feminine Traits     ###
+######################################
+#
+# Note: All traits were made with the intention of adding events/other things relating to them
+# eventually, even if not stated on the traits themselves. Also, all traits can and probably
+# will change again! These are not final effects or values at all.
+#
+# The following categories are more for organizational purposes than anything else:
+# Psychological  - Mentality or mind altering effects.
+# Physical       - Body parts or other physical attributes.
+#
+###
+
+############
+# Positive #
+############
+
+# Psychological #
+
+# Maternal Chip
+trait_lv_maternal_chip_cyborg = {
+	cost = {
+		base = 3
+		modifier = {
+			add = -3
+			has_country_flag = lv_cheat_mode
+		}
+		modifier = {
+			mult = 0
+			owner = { has_valid_civic = civic_augmentation_bazaars }
+		}
+	}
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	custom_tooltip = trait_lv_maternal_chip_cyborg_effect
+	
+	opposites = {
+		trait_lv_paternal_chip_cyborg
+	}
+	
+	initial = no
+	species_potential_add = {
+		can_add_cybernetic_traits = yes
+	}
+	species_possible_remove = {
+		can_remove_cybernetic_traits = yes
+	}
+	randomized = no
+	category = cyborg
+	
+	modifier = {
+		# Protective
+		army_defense_health_mult = 0.1
+		army_defense_morale_mult = 0.1
+		army_defense_damage_mult = 0.1
+		# Nurturing
+		planet_jobs_food_produces_mult = 0.15
+		pop_housing_usage_mult = -0.15
+		pop_resettlement_cost_mult = -0.25
+	}
+	
+	slave_cost = {
+		energy = 150
+	}
+}
+
+# Physical #
+
+# Synth Womb
+trait_lv_lushtech_synthetic_womb_cyborg = {
+	cost = {
+		base = 3
+		modifier = {
+			add = -3
+			has_country_flag = lv_cheat_mode
+		}
+		modifier = {
+			mult = 0
+			owner = { has_valid_civic = civic_augmentation_bazaars }
+		}
+	}
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	custom_tooltip = trait_lv_lushtech_synthetic_womb_cyborg_effect
+	
+	opposites = {
+		trait_lv_custom_fleshlight_slot
+		trait_lv_sex_dolls_cyborg
+	}
+	
+	initial = no
+	species_potential_add = {
+		can_add_cybernetic_traits = yes
+	}
+	species_possible_remove = {
+		can_remove_cybernetic_traits = yes
+	}
+	randomized = no
+	category = cyborg
+	
+	modifier = {
+		# Perfect breeders
+		pop_happiness = 0.1
+		planet_jobs_unity_produces_mult = 0.15
+		pop_resettlement_cost_mult = -0.25
+		# Fragile
+		army_health = -0.25
+		planet_pops_cyborgs_upkeep_mult = 0.5
+		# Sex Jobs Output +15% (nanites)
+		pop_job_amenities_mult = 0.15
+		pop_job_trade_mult = 0.15
+		planet_lv_sex_jobs_produces_mult = 0.15
+		planet_lv_sex_jobs_nanites_produces_add = 0.05
+	}
+	
+	slave_cost = {
+		energy = 250
+	}
+}
+
+# Breast Augmenters
+trait_lv_breast_augmenters_cyborg = {
+	cost = {
+		base = 1
+		modifier = {
+			add = -1
+			has_country_flag = lv_cheat_mode
+		}
+		modifier = {
+			mult = 0
+			owner = { has_valid_civic = civic_augmentation_bazaars }
+		}
+	}
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	custom_tooltip = trait_lv_breast_augmenters_cyborg_effect
+	
+	opposites = {
+		trait_lv_synth_breasts_cyborg
+		trait_lv_sex_dolls_cyborg
+	}
+	
+	initial = no
+	species_potential_add = {
+		can_add_cybernetic_traits = yes
+	}
+	species_possible_remove = {
+		can_remove_cybernetic_traits = yes
+	}
+	randomized = no
+	category = cyborg
+	
+	modifier = {
+		# Fun to play with
+		pop_housing_usage_mult = -0.1
+		species_empire_size_mult = -0.05
+		# Sex Jobs Output +5%
+		pop_job_amenities_mult = 0.05
+		pop_job_trade_mult = 0.05
+		planet_lv_sex_jobs_produces_mult = 0.05
+		# Adds 5 opinion with other empires (opinion_modifiers)
+	}
+	
+	slave_cost = {
+		energy = 100
+	}
+}
+
+# Synth Breasts
+trait_lv_synth_breasts_cyborg = {
+	cost = {
+		base = 2
+		modifier = {
+			add = -2
+			has_country_flag = lv_cheat_mode
+		}
+		modifier = {
+			mult = 0
+			owner = { has_valid_civic = civic_augmentation_bazaars }
+		}
+	}
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	custom_tooltip = trait_lv_synth_breasts_cyborg_effect
+	
+	opposites = {
+		trait_lv_breast_augmenters_cyborg
+		trait_lv_sex_dolls_cyborg
+	}
+	
+	initial = no
+	species_potential_add = {
+		can_add_cybernetic_traits = yes
+	}
+	species_possible_remove = {
+		can_remove_cybernetic_traits = yes
+	}
+	randomized = no
+	category = cyborg
+	
+	modifier = {
+		# Luscious pillows
+		pop_happiness = 0.05
+		pop_housing_usage_mult = -0.15
+		species_empire_size_mult = -0.15
+		planet_pops_cyborgs_upkeep_mult = 0.1
+		# Dairy Jobs Output +5%
+		planet_lv_dairy_jobs_produces_mult = 0.05
+		# Sex Jobs Output +15%
+		pop_job_amenities_mult = 0.15
+		pop_job_trade_mult = 0.15
+		planet_lv_sex_jobs_produces_mult = 0.15
+		# Adds 15 opinion with other empires (opinion_modifiers)
+	}
+	
+	slave_cost = {
+		energy = 200
+	}
+}
+
+# Synth Vagina
+trait_lv_synth_vagina_cyborg = {
+	cost = {
+		base = 2
+		modifier = {
+			add = -2
+			has_country_flag = lv_cheat_mode
+		}
+		modifier = {
+			mult = 0
+			owner = { has_valid_civic = civic_augmentation_bazaars }
+		}
+	}
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	custom_tooltip = trait_lv_synth_vagina_cyborg_effect
+	
+	opposites = {
+		trait_lv_sex_dolls_cyborg
+	}
+	
+	initial = no
+	species_potential_add = {
+		can_add_cybernetic_traits = yes
+	}
+	species_possible_remove = {
+		can_remove_cybernetic_traits = yes
+	}
+	randomized = no
+	category = cyborg
+	
+	modifier = {
+		# Superior in every way
+		pop_happiness = 0.1
+		planet_jobs_energy_produces_mult = 0.15
+		pop_housing_usage_mult = -0.1
+		planet_pops_cyborgs_upkeep_mult = 0.1
+		# Sex Jobs Output +25%
+		pop_job_amenities_mult = 0.25
+		pop_job_trade_mult = 0.25
+		planet_lv_sex_jobs_produces_mult = 0.25
+	}
+	
+	slave_cost = {
+		energy = 150
+	}
+}
+
+#########
+# Combo #
+#########
+
+# Sex Dolls
+trait_lv_sex_dolls_cyborg = {
+	cost = {
+		base = 8
+		modifier = {
+			add = -8
+			has_country_flag = lv_cheat_mode
+		}
+#		modifier = {
+#			mult = 0
+#			owner = { has_valid_civic = civic_augmentation_bazaars }
+#		}
+	}
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	custom_tooltip = trait_lv_sex_dolls_cyborg_effect
+	
+	opposites = {
+		trait_lv_pheromone_generators_cyborg		# included
+		trait_lv_breast_augmenters_cyborg
+		trait_lv_synth_breasts_cyborg				# included
+		trait_lv_synth_vagina_cyborg				# included
+		trait_lv_lushtech_synthetic_womb_cyborg		# included
+	}
+	
+	initial = no
+	species_potential_add = {
+		can_add_cybernetic_traits = yes
+	}
+	species_possible_remove = {
+		can_remove_cybernetic_traits = yes
+	}
+	randomized = no
+	category = cyborg
+	
+	modifier = {
+		army_health = -0.25
+		pop_happiness = 0.25
+		planet_jobs_energy_produces_mult = 0.15
+		planet_jobs_unity_produces_mult = 0.2
+		pop_housing_usage_mult = -0.35
+		species_empire_size_mult = -0.15
+		pop_resettlement_cost_mult = -0.25
+		planet_pops_cyborgs_upkeep_mult = 0.7
+		# Dairy Jobs Output +5%
+		planet_lv_dairy_jobs_produces_mult = 0.05
+		# Sex Jobs Output +65% (nanites)
+		pop_job_amenities_mult = 0.65
+		pop_job_trade_mult = 0.65
+		planet_lv_sex_jobs_produces_mult = 0.65
+		planet_lv_sex_jobs_nanites_produces_add = 0.05
+		# Adds 20 opinion with other empires (opinion_modifiers)
+	}
+	
+	slave_cost = {
+		energy = 700
+	}
+}
+
+###

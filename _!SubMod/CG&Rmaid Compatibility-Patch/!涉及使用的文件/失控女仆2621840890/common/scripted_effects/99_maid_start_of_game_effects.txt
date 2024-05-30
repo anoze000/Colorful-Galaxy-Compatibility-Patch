@@ -1,0 +1,682 @@
+generate_machine_maid_start_buildings_and_districts = {
+	if = {
+		limit = {
+			owner = { NOT = { has_origin = origin_shattered_ring } }
+		}
+
+		add_district_and_planet_size_if_needed_effect = { district = district_nexus }
+		add_district_and_planet_size_if_needed_effect = { district = district_nexus }
+		add_district_and_planet_size_if_needed_effect = { district = district_nexus }
+
+		add_district_and_planet_size_if_needed_effect = { district = district_industrial }		# 2
+		if = { limit = { owner = { has_origin = origin_default } }
+			add_district_and_planet_size_if_needed_effect = { district = district_industrial }	# 2 (繁荣一统)
+		}
+
+		add_district_and_planet_size_if_needed_effect = { district = district_generator }		# 2
+		add_district_and_planet_size_if_needed_effect = { district = district_generator }		# 2
+		add_district_and_planet_size_if_needed_effect = { district = district_generator }		# 2
+
+		add_district_and_planet_size_if_needed_effect = { district = district_mining }			# 2
+		add_district_and_planet_size_if_needed_effect = { district = district_mining }			# 2
+		if = { limit = { owner = { has_origin = origin_default } }
+			add_district_and_planet_size_if_needed_effect = { district = district_mining }		# 2 (繁荣一统)
+		}
+
+		if = {
+			limit = { last_created_species = { is_lithoid = no } }	#有机陈设种族
+			add_district_and_planet_size_if_needed_effect = { district = district_farming }		# 2
+		}																						#↑二选
+		else = {																				#↓其一
+			add_district_and_planet_size_if_needed_effect = { district = district_mining }		# 2
+		}
+
+		if = {
+			limit = { owner = { is_catalytic_empire = yes } }
+			remove_district = district_mining
+			add_district_and_planet_size_if_needed_effect = { district = district_farming }
+		}
+
+		add_building = building_machine_capital			# 3
+		add_building = building_machine_assembly_plant	# 1
+		add_building = building_research_lab_1			# 2
+		add_building = building_research_lab_1			# 2
+		add_building = building_organic_sanctuary		# 2
+		
+		if = { #探险协议-4岗位：2电2矿
+			limit = { owner = { has_valid_civic = civic_machine_exploration_protocol } }
+			remove_district = district_generator
+			remove_district = district_mining
+		}
+	}
+
+	if = {
+		limit = {
+			owner = { has_origin = origin_shattered_ring }
+		}
+
+		add_deposit = d_segment_rubble_1
+		add_deposit = d_segment_rubble_2
+		add_deposit = d_segment_rubble_3
+		add_deposit = d_segment_rubble_4
+		add_deposit = d_decrepit_tunnels_1
+		add_deposit = d_decrepit_tunnels_2
+		add_deposit = d_decrepit_tunnels_3
+
+		add_deposit = d_collapsed_burrows
+
+		add_district_and_planet_size_if_needed_effect = { district = district_nexus }
+		add_district_and_planet_size_if_needed_effect = { district = district_nexus }
+		add_district_and_planet_size_if_needed_effect = { district = district_nexus }
+		
+		add_district_and_planet_size_if_needed_effect = { district = district_generator_uncapped }		# 2
+		add_district_and_planet_size_if_needed_effect = { district = district_generator_uncapped }		# 2
+		add_district_and_planet_size_if_needed_effect = { district = district_generator_uncapped }		# 2
+
+		add_district_and_planet_size_if_needed_effect = { district = district_mining_uncapped }			# 2
+		add_district_and_planet_size_if_needed_effect = { district = district_mining_uncapped }			# 2
+		add_district_and_planet_size_if_needed_effect = { district = district_mining_uncapped }			# 2
+
+		if = {
+			limit = { last_created_species = { is_lithoid = no } }	#有机陈设种族
+			add_district_and_planet_size_if_needed_effect = { district = district_farming_uncapped }	# 2
+		}																								#↑二选
+		else = {																						#↓其一
+			add_district_and_planet_size_if_needed_effect = { district = district_mining_uncapped }		# 2
+		}
+		
+		add_building = building_machine_capital			# 3
+		add_building = building_machine_assembly_plant	# 1
+		add_building = building_research_lab_1			# 2
+		add_building = building_research_lab_1			# 2
+		add_building = building_organic_sanctuary		# 2
+		
+		if = { #探险协议-4岗位：2电2矿
+			limit = { owner = { has_valid_civic = civic_machine_exploration_protocol } }
+			remove_district = district_generator_uncapped
+			remove_district = district_mining_uncapped
+		}
+	}
+
+	if = {
+		limit = {
+			owner = {
+				has_origin = origin_remnants
+				has_ancrel = yes
+			}
+		}
+		owner = {
+			give_technology = {
+				tech = tech_archaeostudies
+				message = no
+			}
+		}
+		remove_building = building_research_lab_1
+		add_building = building_archaeostudies_faculty
+	}
+	
+	# Additional resources based on empire type and possible subspecies
+	owner = {
+		give_starting_resources_effect = yes
+		add_resource = { consumer_goods = 100 }
+	}
+}
+generate_machine_maid_start_pops_and_others = {
+	generate_servitor_secondary_species_no_pops = yes
+	# 基础 女仆13 机器10 手办10
+	# 探险 女仆10 机器7  手办6
+	if = { #探险协议-4手办
+		limit = {
+			owner = { has_valid_civic = civic_machine_exploration_protocol }
+		}
+		while = {
+			count = 6
+			create_pop = {
+				species = last_created_species
+				ethos = random
+			}
+		}
+	}
+	else = {
+		while = {
+			count = 10
+			create_pop = {
+				species = last_created_species
+				ethos = random
+			}
+		}
+	}
+	if = {
+		limit = {
+			owner = { has_origin = origin_default }
+		}
+		while = {
+			count = 2
+			create_pop = {
+				species = last_created_species
+				ethos = random
+			}
+		}
+	}
+
+	owner = {
+		create_species = {
+			name = "maid's_working_bot"
+			plural = "maid's_working_bot"
+			class = MACHINE
+			namelist = this
+			portrait = "default_robot"
+			traits = {
+				trait = "trait_machine_unit"
+				trait = "trait_working_machine"
+				trait = "trait_robot_bulky"
+				trait = "trait_robot_high_maintenance"
+			}
+		}
+		last_created_species = {
+			if = {
+				limit = { prev = { has_civic = civic_machine_crafters } }
+				modify_species = { remove_trait = trait_robot_high_maintenance }
+			}
+		}
+		last_created_species = {
+			if = {
+				limit = { prev.species = { has_trait = trait_dry_planet_preference } }
+				modify_species = { add_trait = trait_dry_planet_preference }
+			}
+			else_if = {
+				limit = { prev.species = { has_trait = trait_wet_planet_preference } }
+				modify_species = { add_trait = trait_wet_planet_preference }
+			}
+			else_if = {
+				limit = { prev.species = { has_trait = trait_frozen_planet_preference } }
+				modify_species = { add_trait = trait_frozen_planet_preference }
+			}
+			else_if = {
+				limit = { prev.species = { has_trait = trait_machine_habitat_planet_preference } }
+				modify_species = { add_trait = trait_machine_habitat_planet_preference }
+			}
+			else_if = {
+				limit = { prev.species = { has_trait = trait_machine_pc_gaia_preference } }
+				modify_species = { add_trait = trait_machine_pc_gaia_preference }
+			}
+			else_if = {
+				limit = { prev.species = { has_trait = trait_machine_pc_shattered_ring_habitable_preference } }
+				modify_species = { add_trait = trait_machine_pc_shattered_ring_habitable_preference }
+			}
+		}
+		last_created_species = {
+			if = {
+				limit = { prev.species = { has_trait = trait_robot_survivor } }
+				modify_species = { add_trait = trait_robot_survivor }
+			}
+			else_if = {
+				limit = { prev.species = { has_trait = trait_void_dweller_2 } }
+				modify_species = { add_trait = trait_void_dweller_2 }
+			}
+			else_if = {
+				limit = { prev.species = { has_trait = trait_robot_aquatic } }
+				modify_species = { add_trait = trait_robot_aquatic }
+			}
+			else_if = {
+				limit = { prev.species = { has_trait = trait_robot_cave_dweller } }
+				modify_species = { add_trait = trait_robot_cave_dweller }
+			}
+		}
+		last_created_species = {
+			set_citizenship_type = {
+				country = root.owner
+				type = citizenship_full_machine
+			}
+			set_living_standard = {
+				country = root.owner
+				type = living_standard_hive_mind
+			}
+		}
+		set_built_species = owner_main_species
+	}
+	if = { #探险协议-3工作机器
+		limit = {
+			owner = { has_valid_civic = civic_machine_exploration_protocol }
+		}
+		while = {
+			count = 7
+			create_pop = {
+				species = last_created_species
+			}
+		}
+	}
+	else = {
+		while = {
+			count = 10
+			create_pop = {
+				species = last_created_species
+			}
+		}
+	}
+	
+	if = { #探险协议-3主物种
+		limit = {
+			owner = { has_valid_civic = civic_machine_exploration_protocol }
+		}
+		while = {
+			limit = { num_pops < 23 }
+			create_pop = {
+				species = owner_main_species
+			}
+		}
+	}
+	else = {
+		while = {
+			limit = { num_pops < 33 }
+			create_pop = {
+				species = owner_main_species
+			}
+		}
+	}
+	if = {
+		limit = {
+			owner = { has_origin = origin_default }
+		}
+		while = {
+			count = 4
+			create_pop = {
+				species = owner_main_species
+			}
+		}
+	}
+}
+
+void_dweller_home_planet_setup_machine_maid = {
+	optimize_memory
+	set_planet_flag = habitat_level_2
+	owner = {
+		save_event_target_as = void_dweller_owner
+	}
+	solar_system = {
+		random_system_planet = {
+			limit = { has_planet_flag = habitat_1_planet }
+			save_event_target_as = habitat_1_planet
+		}
+		spawn_megastructure = {
+			type = "major_orbital"
+			planet = event_target:habitat_1_planet
+			coords_from = event_target:habitat_1_planet
+			owner = event_target:void_dweller_owner
+			graphical_culture = event_target:void_dweller_owner
+		}
+		random_system_planet = {
+			limit = { has_planet_flag = habitat_2_planet }
+			save_event_target_as = habitat_2_planet
+		}
+		spawn_megastructure = {
+			type = "major_orbital"
+			planet = event_target:habitat_2_planet
+			coords_from = event_target:habitat_2_planet
+			owner = event_target:void_dweller_owner
+			graphical_culture = event_target:void_dweller_owner
+		}
+		random_system_planet = {
+			limit = { has_planet_flag = habitat_3_planet }
+			save_event_target_as = habitat_3_planet
+		}
+		spawn_megastructure = {
+			type = "major_orbital"
+			planet = event_target:habitat_3_planet
+			coords_from = event_target:habitat_3_planet
+			owner = event_target:void_dweller_owner
+			graphical_culture = event_target:void_dweller_owner
+		}
+		if = {
+			limit = {
+				event_target:void_dweller_owner = {
+					is_lithoid_empire = yes
+				}
+			}
+			random_system_planet = {
+				limit = {
+					has_deposit = no
+				}
+				add_deposit = d_minerals_4
+				set_planet_flag = mining_planet
+			}
+		}
+		every_system_planet = {
+			limit = { has_planet_flag = mining_planet }
+			create_mining_station = { owner = event_target:void_dweller_owner }
+		}
+		# Change starting pre-scripted ideal into inhabitable worlds
+		# First pre-sripted is a research system
+		closest_system = {
+			limit = { has_star_flag = neighbor_t1_first_colony }
+			set_star_flag = ideal_habitat_t1
+			max_steps = 3
+			random_system_planet = {
+				limit = {
+					is_colonizable = yes
+					is_colony = no
+					has_planet_flag = prescripted_ideal
+				}
+				change_pc = pc_frozen
+				set_deposit = d_engineering_3
+			}
+			while = {
+				count = 3
+				random_system_planet = {
+					limit = {
+						is_star = no
+						is_colonizable = no
+						has_deposit = no
+						has_anomaly = no
+					}
+					random_list = {
+						5 = { set_deposit = d_physics_1 }
+						5 = { set_deposit = d_society_1 }
+						5 = { set_deposit = d_engineering_1 }
+						1 = { set_deposit = d_physics_2 }
+						1 = { set_deposit = d_society_2 }
+						1 = { set_deposit = d_engineering_2 }
+					}
+				}
+			}
+		}
+		# Second pre-sripted is a resource system
+		closest_system = {
+			limit = { has_star_flag = neighbor_t2_second_colony }
+			set_star_flag = ideal_habitat_t2
+			max_steps = 6
+			random_system_planet = {
+				limit = {
+					is_colonizable = yes
+					is_colony = no
+					has_planet_flag = prescripted_ideal
+				}
+				remove_planet_flag = prescripted_ideal
+				change_pc = pc_molten
+				set_deposit = d_alloys_3
+				add_deposit = d_minerals_4
+			}
+			while = {
+				count = 3
+				random_system_planet = {
+					limit = {
+						is_star = no
+						has_deposit = no
+						has_anomaly = no
+					}
+					random_list = {
+						5 = { set_deposit = d_minerals_1 }
+						5 = { set_deposit = d_energy_1 }
+						1 = { set_deposit = d_minerals_2 }
+						1 = { set_deposit = d_energy_2 }
+					}
+				}
+			}
+		}
+	}
+	event_target:habitat_1_planet = {
+		set_planet_flag = habitat@PREV
+	}
+	owner = {
+		give_starting_resources_effect = yes
+		give_technology = {
+			tech = tech_habitat_1
+			message = no
+		}
+		add_research_option = tech_habitat_2
+
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						is_lithoid_empire = no
+						is_mechanical_species = no
+					}
+					is_catalytic_empire = yes
+				}
+			}
+			give_technology = {
+				tech = tech_eco_simulation
+				message = no
+			}
+			give_technology = {
+				tech = tech_hydroponics
+				message = no
+			}
+			root.solar_system.starbase = {
+				remove_starbase_building = {
+					slot = 1
+				}
+				set_starbase_building = {
+					slot = 1
+					building = hydroponics_bay
+				}
+			}
+		}
+		else = {
+			give_technology = {
+				tech = tech_powered_exoskeletons
+				message = no
+			}
+			give_technology = {
+				tech = tech_space_mining_1
+				message = no
+			}
+
+		}
+		if = {
+			limit = {
+				has_valid_civic = civic_private_healthcare_corporate
+			}
+			give_technology = { message = no tech = tech_frontier_health }
+			add_research_option = tech_subdermal_stimulation
+		}
+	}
+	
+	generate_servitor_secondary_species_no_pops = yes
+	# 基础 女仆13 机器10 手办10
+	# 探险 女仆10 机器7  手办6
+	if = { #探险协议-4手办
+		limit = {
+			owner = { has_valid_civic = civic_machine_exploration_protocol }
+		}
+		while = {
+			count = 6
+			create_pop = {
+				species = last_created_species
+				ethos = random
+			}
+		}
+	}
+	else = {
+		while = {
+			count = 10
+			create_pop = {
+				species = last_created_species
+				ethos = random
+			}
+		}
+	}
+
+	owner = {
+		create_species = {
+			name = "maid's_working_bot"
+			plural = "maid's_working_bot"
+			class = MACHINE
+			namelist = this
+			portrait = "default_robot"
+			traits = {
+				trait = "trait_machine_habitat_planet_preference"
+				trait = "trait_void_dweller_2"
+				trait = "trait_machine_unit"
+				trait = "trait_working_machine"
+				trait = "trait_robot_bulky"
+				trait = "trait_robot_high_maintenance"
+			}
+		}
+		last_created_species = {
+			if = {
+				limit = { prev = { has_civic = civic_machine_crafters } }
+				modify_species = { remove_trait = trait_robot_high_maintenance }
+			}
+		}
+		last_created_species = {
+			set_citizenship_type = {
+				country = root.owner
+				type = citizenship_full_machine
+			}
+			set_living_standard = {
+				country = root.owner
+				type = living_standard_organic_trophy
+			}
+		}
+		set_built_species = owner_main_species
+	}
+	if = { #探险协议-3工作机器
+		limit = {
+			owner = { has_valid_civic = civic_machine_exploration_protocol }
+		}
+		while = {
+			count = 7
+			create_pop = {
+				species = last_created_species
+			}
+		}
+	}
+	else = {
+		while = {
+			count = 10
+			create_pop = {
+				species = last_created_species
+			}
+		}
+	}
+	
+	if = { #探险协议-3主物种
+		limit = {
+			owner = { has_valid_civic = civic_machine_exploration_protocol }
+		}
+		while = {
+			limit = { num_pops < 23 }
+			create_pop = {
+				species = owner_main_species
+			}
+		}
+	}
+	else = {
+		while = {
+			limit = { num_pops < 33 }
+			create_pop = {
+				species = owner_main_species
+			}
+		}
+	}
+
+	set_planet_entity = {
+		entity = "habitat_phase_03_entity"
+		graphical_culture = owner
+	}
+	set_planet_size = 6
+	add_deposit = d_arcane_replicator
+	add_district = { district_type = district_hab_housing ignore_cap = yes }
+	add_district = { district_type = district_hab_industrial ignore_cap = yes }
+	add_district = { district_type = district_hab_energy ignore_cap = yes }
+	add_district = { district_type = district_hab_mining ignore_cap = yes }
+	add_district = { district_type = district_hab_mining ignore_cap = yes }
+	add_district = { district_type = district_hab_science ignore_cap = yes }
+	if = {
+		limit = { owner = { is_eager_explorer_empire = no } }
+		add_district = { district_type = district_hab_science ignore_cap = yes }
+	}
+	add_building = building_hab_major_capital
+	add_building = building_machine_assembly_plant
+	add_building = building_organic_sanctuary
+	add_building = building_hydroponics_farm
+	if = {
+		limit = {
+			owner = {
+				is_catalytic_empire = no
+				any_owned_pop = { is_lithoid = yes }
+			}
+		}
+		remove_building = building_hydroponics_farm
+		add_district = { district_type = district_hab_mining ignore_cap = yes }
+	}
+}
+
+generate_servitor_secondary_species_no_pops = {
+	# Ensuring that this country flag has been set by this point
+	owner = {
+		if = {
+			limit = {
+				OR = {
+					has_origin = origin_void_machines
+					has_origin = origin_post_apocalyptic_machines
+					has_origin = origin_subterranean_machines
+				}
+			}
+			switch = {
+				trigger = has_origin
+				origin_void_machines = {
+					last_created_species = {
+						change_species_characteristics = {
+							add_trait = trait_void_dweller_1
+							add_traits_at_start_of_list = yes
+						}
+					}
+				}
+				origin_post_apocalyptic_machines = {
+					last_created_species = {
+						change_species_characteristics = {
+							add_trait = trait_survivor
+							add_traits_at_start_of_list = yes
+						}
+					}
+				}
+				origin_subterranean_machines = {
+					last_created_species = {
+						change_species_characteristics = {
+							add_trait = trait_cave_dweller
+							add_traits_at_start_of_list = yes
+						}
+					}
+				}
+			}
+		}
+	}
+	last_created_species = {
+		if = {
+			limit = { root = { NOT = { is_planet_class = pc_nuked } } }
+			modify_species = {
+				species = this
+				ideal_planet_class = home_planet
+			}
+		}
+		if = {
+			limit = { has_trait = trait_noxious }
+			modify_species = {
+				species = this
+				remove_trait = trait_noxious
+			}
+		}
+		if = {
+			limit = { is_lithoid = yes }
+			owner = { set_country_flag = lithoid_subspecies }
+		}
+		else = {
+			owner = { set_country_flag = non_lithoid_subspecies }
+		}
+		save_event_target_as = last_created_species
+		set_species_flag = original_organic_species_of_@root.owner
+
+		set_citizenship_type = {
+			country = root.owner
+			type = citizenship_organic_trophy
+		}
+		set_living_standard = {
+			country = root.owner
+			type = living_standard_organic_trophy
+		}
+	}
+}
+

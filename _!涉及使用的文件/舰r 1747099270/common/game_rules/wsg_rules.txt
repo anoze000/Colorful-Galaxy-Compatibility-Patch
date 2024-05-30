@@ -64,6 +64,24 @@ can_species_be_assembled = {
 		is_archetype = KANMUSU
 		AND = {
 			is_sapient = yes
+			NOT = {
+				has_trait = trait_exd
+			}
+			NOT = {
+				AND = {
+					has_trait = trait_mechanical
+					root.owner = { is_individual_machine = yes }
+				}
+			}
+			NOT = {
+				AND = {
+					has_virtual_species_trait = yes
+					root.owner = {
+						is_fallen_empire = no
+						has_active_tradition = tr_virtuality_finish
+					}
+				}
+			}
 			OR = {
 				AND = {
 					is_robotic = yes
@@ -71,6 +89,9 @@ can_species_be_assembled = {
 						check_modifier_value = {
 							modifier = planet_pop_assembly_add
 							value > 0
+						}
+						owner = {
+							NOT = { has_country_flag = synth_assembly_stopped }
 						}
 					}
 				}
@@ -93,15 +114,6 @@ can_species_be_assembled = {
 						root = {
 							any_owned_species = { is_exact_same_species = prevprev }
 						}
-					}
-					else_if = {
-						limit = {
-							root.owner = {
-								has_tradition = tr_cybernetics_assembly_standards
-								has_policy_flag = roboticist_output_build_cyborgs
-							}
-						}
-						has_trait = trait_cybernetic
 					}
 					else_if = {
 						limit = {
@@ -136,6 +148,10 @@ can_species_be_assembled = {
 						}
 					}
 				}
+			}
+			has_population_control = {
+				type = no
+				country = root.owner
 			}
 		}
 	}
@@ -338,35 +354,162 @@ can_spawn_debris = {
 	}
 }
 
-###_[z_fw/z_lctr/wsg/teif/ag/ws/smco/s_tnatc]	##################
-#_sys_trgr	ws_[is_ws_system]
-# this = system
-# root = country
-system_blocks_sensors = {
-	#_z_fw/z_lctr
-	root = {
-		NOR = {
-			has_modifier = z_lctr_mod_cntr_sensor			#_[z_lctr]
+# Root = claimer
+# This = system
+can_add_claim = {
+	hidden_trigger = {
+		if = {
+			limit = {
+				root = { NOT = { is_country_type = default } }
+			}
+			always = yes
 		}
 	}
-	OR = {
-		is_inside_nebula = yes
-		has_modifier = space_storm
-		has_modifier = zroni_storm
-		has_star_flag = lcluster
-		has_star_flag = sealed_system
-		has_star_flag = wg_sealed_system			#_wsg
-		has_star_flag = wg_psionic_systems			#_wsg
-		has_star_flag = fallen_sol_system			#_teif
-		root = { is_country_type = teif_primitive }	#_teif
-		has_star_flag = ag_no_sensor_system			#_ag
-		has_star_flag = bok_globules					#_smco
-		has_star_flag = star_flag_GAPS_sealed_system	#_smco
-		is_ws_system = yes			#_ws
-		AND = {#_s_tnatc
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_POLICY
+		OR = {
+			root = { has_policy_flag = unrestricted_wars }
+			AND = {
+				exists = owner
+				owner = { is_gestalt = yes }
+			}
+			AND = {
+				exists = owner
+				owner = {
+					any_war = {
+						any_attacker = { is_same_value = prevprev }
+						any_defender = { is_same_value = root }
+					}
+				}
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_NOT_VALID_EMPIRE
+		NAND = {
 			exists = owner
-			owner = { has_relic = r_invisibility_rune }
-			NOT = { root = { is_same_empire = prev.owner } }
+			owner = {
+				NOR = {
+					#wsg
+					is_country_type = wg_fallen_empire
+					is_country_type = wg_awakened_fallen_empire
+					is_country_type = default
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+				}
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_DEVOURING_SWARM
+		NAND = {
+			root = { has_valid_civic = civic_hive_devouring_swarm }
+			root = { is_lithoid_empire = no }
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_DEVOURING_SWARM_LITHOID
+		NAND = {
+			root = { has_valid_civic = civic_hive_devouring_swarm }
+			root = { is_lithoid_empire = yes }
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_ASSIMILATOR
+		NOT = { root = { has_valid_civic = civic_machine_assimilator } }
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_PURIFIERS
+		NAND = {
+			exists = owner
+			root = { has_valid_civic = civic_fanatic_purifiers }
+			NOT = {	owner = { is_same_species = root } }
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_EXTERMINATOR
+		NAND = {
+			exists = owner
+			root = { has_valid_civic = civic_machine_terminator }
+			owner = {
+				NOR = {
+					is_same_species = root
+					has_country_flag = synthetic_empire
+					has_authority = auth_machine_intelligence
+					is_individual_machine = yes
+				}
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_THEY_THREAT
+		NAND = {
+			exists = owner
+			owner = {
+				OR = {
+					has_valid_civic = civic_hive_devouring_swarm
+					has_valid_civic = civic_fanatic_purifiers
+					has_valid_civic = civic_machine_terminator
+					has_valid_civic = civic_machine_assimilator
+				}
+			}
+			root = {
+				NOR = {
+					has_valid_civic = civic_hive_devouring_swarm
+					has_valid_civic = civic_fanatic_purifiers
+					has_valid_civic = civic_machine_terminator
+					has_valid_civic = civic_machine_assimilator
+				}
+			}
+		}
+	}
+}
+
+# Root = taker country
+# This = giver country
+can_get_claim_from_lost_system = {
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_NOT_VALID_EMPIRE
+		OR = {
+			#wsg
+			is_country_type = wg_fallen_empire
+			is_country_type = wg_awakened_fallen_empire
+			is_country_type = default
+			is_country_type = fallen_empire
+			is_country_type = awakened_fallen_empire
+		}
+		root = {
+			OR = {
+				is_country_type = default
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_DEVOURING_SWARM
+		NOT = { has_valid_civic = civic_hive_devouring_swarm }
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_ASSIMILATOR
+		NOT = { has_valid_civic = civic_machine_assimilator }
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_PURIFIERS
+		NAND = {
+			has_valid_civic = civic_fanatic_purifiers
+			NOT = {	is_same_species = root }
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_EXTERMINATOR
+		NAND = {
+			has_valid_civic = civic_machine_terminator
+			NOR = {
+				is_same_species = root
+				has_country_flag = synthetic_empire
+				has_authority = auth_machine_intelligence
+			}
 		}
 	}
 }
@@ -422,7 +565,7 @@ can_enter_system_by_jump = {
 					has_star_flag = wg_sealed_system			#_wsg
 					has_star_flag = wg_psionic_systems			#_wsg
 					has_star_flag = ag_no_jump_in_system		#_ag
-					ag_is_kuat_system = yes						#_狡猾人
+					kuat_is_kuat_system = yes						#_狡猾人
 					has_star_flag = outercluster				#_SOFE	外星门
 					has_star_flag = ehof_compound_system		#_[giga]
 					has_star_flag = giga_core_03				#_[giga]
@@ -547,6 +690,8 @@ can_support_branch_offices = {
 	custom_tooltip = {
 		fail_text = BRANCH_OFFICE_NOT_FALLEN_EMPIRES
 		NOR = {
+			is_wg_fallen_empire = yes
+			is_sh_fallen_empire = yes
 			is_country_type = fallen_empire
 			is_country_type = awakened_fallen_empire
 			has_authority = auth_azur_dictatorial		#_azlx
@@ -1117,8 +1262,35 @@ can_trade_leader = {
 		is_special_affection_leader = no
 		is_wg_event_leader = no
 	}
+	
 	# The leader must have a trait from a specialist subject type.
-	this = { has_specialist_subject_leader_trait = yes }
+	this = {
+		has_specialist_subject_leader_trait = yes
+		is_councilor = no
+		is_heir = no
+	}
+	OR = {
+		AND = { # Either from subject to Overlord
+			ROOT = {
+				is_subject = yes
+			}
+			FROM = {
+				is_overlord_to = ROOT
+			}
+		}
+		AND = { # Or from a tactical cogitator empire to a NON tactical cogitator empire
+			ROOT = { has_valid_civic = civic_machine_tactical_algorithms }
+			FROM = {
+				NOT = { has_valid_civic = civic_machine_tactical_algorithms }
+				is_fallen_empire = no
+				NOT = {
+					any_owned_leader = {
+						has_trait = leader_trait_tactical_algorithms
+					}
+				}
+			}
+		}
+	}
 	# The subject and overlord must both be regular empires, machine intelligences or hive-minds.
 	OR = {
 		AND = {
@@ -1145,20 +1317,42 @@ can_trade_leader = {
 				has_authority = auth_hive_mind
 			}
 		}
+		AND = { # Tactical Cogitator option
+			ROOT = {
+				has_valid_civic = civic_machine_tactical_algorithms
+			}
+			FROM = {
+				OR = {
+					is_regular_empire = yes
+					has_authority = auth_hive_mind
+					has_authority = auth_machine_intelligence
+				}
+				NOT = { has_country_flag = no_murdering_tactical_leaders }
+				NOT = {
+					any_owned_leader = {
+						has_trait = leader_trait_tactical_algorithms
+					}
+				}
+			}
+		}
 	}
+	# Can't trade gestalt nodes
+	is_gestalt_node = no
 	# The overlord can't be a fallen or awakened empire.
 	ROOT = {
 		NAND = {
 			is_overlord = yes
 			OR = {
+				is_wg_fallen_empire = yes
+				is_sh_fallen_empire = yes
 				is_country_type = fallen_empire
 				is_country_type = awakened_fallen_empire
 			}
 		}
 	}
-	NOR = { 
+	NOR = {
 		has_trait = leader_trait_fotd_scientist
-		has_trait = leader_trait_fotd_admiral
+		has_trait = leader_trait_fotd_commander
 	}
 }
 
@@ -1176,11 +1370,14 @@ can_trade_fleet = {
 		NAND = {
 			is_overlord = yes
 			OR = {
+				is_wg_fallen_empire = yes
+				is_sh_fallen_empire = yes
 				is_country_type = fallen_empire
 				is_country_type = awakened_fallen_empire
 			}
 		}
 	}
+	NOT = { has_fleet_flag = dimensional_fleet }
 }
 
 #This, root = country

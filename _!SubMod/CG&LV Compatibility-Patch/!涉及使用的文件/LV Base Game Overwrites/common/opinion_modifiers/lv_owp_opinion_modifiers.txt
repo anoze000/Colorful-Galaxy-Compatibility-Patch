@@ -1,0 +1,296 @@
+#################################
+###     Opinion Modifiers     ###
+#################################
+
+##########
+# Civics #
+##########
+
+# Orgasmic Diplomats #
+
+triggered_opinion_lv_orgasmic_diplomats_civic = {
+	trigger = {
+		FROM = {
+			has_valid_civic = civic_lv_orgasmic_diplomats
+		}
+		ROOT = {
+			NOT = {
+				is_country_type = fallen_empire
+			}
+		}
+	}
+	opinion = {
+		base = 0
+		modifier = {
+			add = 20
+			FROM = {
+				NOR = {
+					has_ethic = ethic_xenophobe
+					has_ethic = ethic_fanatic_xenophobe
+				}
+				has_valid_civic = civic_lv_orgasmic_diplomats
+			}
+			is_country_type = default
+			NOR = {
+				has_ethic = ethic_fanatic_xenophile
+				has_ethic = ethic_xenophile
+			}
+		}
+		modifier = {
+			add = 25
+			FROM = {
+				NOR = {
+					has_ethic = ethic_xenophobe
+					has_ethic = ethic_fanatic_xenophobe
+				}
+				has_valid_civic = civic_lv_orgasmic_diplomats			
+			}
+			is_country_type = default
+			has_ethic = ethic_xenophile
+		}
+		modifier = {
+			add = 30
+			FROM = {
+				NOR = {
+					has_ethic = ethic_xenophobe
+					has_ethic = ethic_fanatic_xenophobe
+				}
+				has_valid_civic = civic_lv_orgasmic_diplomats
+			}
+			is_country_type = default
+			has_ethic = ethic_fanatic_xenophile
+		}		
+	}
+}
+
+# Nymphic Hosts, Propagating Throng and Brood Swarm #
+
+triggered_dc_opinion_of_breeders = {
+	trigger = {
+		has_ai_personality = democratic_crusaders
+		from = {
+			OR = {
+				has_civic = civic_lv_nymphic_hosts
+				has_civic = civic_lv_propagating_throng
+				has_civic = civic_lv_brood_swarm
+			}
+		}
+	}
+
+	opinion = {
+		base = -1000
+	}
+}
+
+triggered_egalitarian_negative_opinion_of_breeders = {
+	trigger = {
+		is_country_type = default
+		OR = { 
+			has_ethic = ethic_egalitarian
+			has_ethic = ethic_fanatic_egalitarian	
+		}
+		from = {
+			OR = {
+				has_civic = civic_lv_nymphic_hosts
+				has_civic = civic_lv_propagating_throng
+				has_civic = civic_lv_brood_swarm
+			}
+		}
+	}
+	
+	opinion = {
+		base = -200
+	}
+}
+
+triggered_negative_opinion_of_breeders = {
+	trigger = {
+		is_country_type = default	
+		NOR = { 	
+			has_ethic = ethic_egalitarian
+			has_ethic = ethic_fanatic_egalitarian
+			has_ethic = ethic_gestalt_consciousness
+			has_ai_personality = democratic_crusaders
+		}
+		from = {
+			OR = {
+				has_civic = civic_lv_nymphic_hosts
+				has_civic = civic_lv_propagating_throng
+				has_civic = civic_lv_brood_swarm
+			}
+		}
+	}
+
+	opinion = {
+		base = -100
+	}
+}
+
+triggered_opinion_f_f_breeders = {
+	trigger = {
+		is_country_type = default
+		has_civic = civic_lv_nymphic_hosts
+		from = { has_civic = civic_lv_nymphic_hosts }
+	}
+	
+	opinion = {
+		base = -1000
+	}
+}
+
+triggered_opinion_f_m_breeders = {
+	trigger = {
+		is_country_type = default
+		has_civic = civic_lv_nymphic_hosts
+		from = { has_civic = civic_lv_propagating_throng }
+	}
+	
+	opinion = {
+		base = -100
+	}
+}
+
+triggered_opinion_f_p_breeders = {
+	trigger = {
+		is_country_type = default
+		has_civic = civic_lv_nymphic_hosts
+		from = { has_civic = civic_lv_brood_swarm }
+	}
+	
+	opinion = {
+		base = -100
+	}
+}
+
+triggered_opinion_m_m_breeders = {
+	trigger = {
+		is_country_type = default
+		has_civic = civic_lv_propagating_throng
+		from = { has_civic = civic_lv_propagating_throng }
+	}
+	
+	opinion = {
+		base = -1000
+	}
+}
+
+triggered_opinion_m_f_breeders = {
+	trigger = {
+		is_country_type = default
+		has_civic = civic_lv_propagating_throng
+		from = { has_civic = civic_lv_nymphic_hosts }
+	}
+	
+	opinion = {
+		base = -100
+	}
+}
+
+triggered_opinion_m_p_breeders = {
+	trigger = {
+		is_country_type = default
+		has_civic = civic_lv_propagating_throng
+		from = { has_civic = civic_lv_brood_swarm }
+	}
+	
+	opinion = {
+		base = -1000
+	}
+}
+
+triggered_opinion_p_p_breeders = {
+	trigger = {
+		is_country_type = default
+		has_civic = civic_lv_brood_swarm
+		from = { has_civic = civic_lv_brood_swarm }
+	}
+	
+	opinion = {
+		base = -1000
+	}
+}
+
+triggered_opinion_p_f_breeders = {
+	trigger = {
+		is_country_type = default
+		has_civic = civic_lv_brood_swarm
+		from = { has_civic = civic_lv_nymphic_hosts }
+	}
+	
+	opinion = {
+		base = -100
+	}
+}
+
+triggered_opinion_p_m_breeders = {
+	trigger = {
+		is_country_type = default
+		has_civic = civic_lv_brood_swarm
+		from = { has_civic = civic_lv_propagating_throng }
+	}
+	
+	opinion = {
+		base = -1000
+	}
+}
+
+triggered_opinion_of_organics = {
+	trigger = {
+		is_country_type = default
+		OR = {
+			has_civic = civic_lv_nymphic_hosts
+			has_civic = civic_lv_propagating_throng
+			has_civic = civic_lv_brood_swarm
+		}
+		from = {
+			OR = {
+				is_country_type = default
+				has_authority = auth_hive_mind
+			}
+		}
+	}
+	
+	opinion = {
+		base = 0
+		
+		modifier = {
+			add = -100
+			has_civic = civic_lv_nymphic_hosts
+			from = {
+				owner_species = {
+					NOR = {
+						has_trait = trait_lv_all_female
+					}
+				}
+			}
+		}
+		
+		modifier = {
+			add = -100
+			has_civic = civic_lv_propagating_throng
+			from = {
+				owner_species = {
+					NOR = {
+						has_trait = trait_lv_all_male
+						has_trait = trait_lv_brood_parasite
+					}
+				}
+			}
+		}
+		
+		modifier = {
+			add = -100
+			has_civic = civic_lv_brood_swarm
+			from = {
+				owner_species = {
+					NOR = {
+						has_trait = trait_lv_all_male
+						has_trait = trait_lv_brood_parasite
+					}
+				}
+			}
+		}
+	}
+}
+
+###

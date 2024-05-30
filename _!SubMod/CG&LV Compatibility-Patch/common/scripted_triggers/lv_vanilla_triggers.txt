@@ -1,0 +1,85 @@
+lv_vanilla_m_disallowed = {
+	OR = {
+		species = { shift_male_to_andro = yes }
+		gender = female
+		species = { set_downstairs_female = yes }
+		species = { set_downstairs_herm = yes }
+	}
+}
+
+lv_vanilla_f_disallowed = {
+	OR = {
+		species = { shift_female_to_andro = yes }
+		gender = male
+		species = { set_downstairs_male = yes }
+	}
+}
+
+lv_vanilla_m_disallowed_species = {
+	OR = {
+		shift_male_to_andro = yes
+		species_gender = female
+		set_downstairs_female = yes
+		set_downstairs_herm = yes
+	}
+}
+
+lv_vanilla_f_disallowed_species = {
+	OR = {
+		shift_female_to_andro = yes
+		species_gender = male
+		set_downstairs_male = yes
+	}
+}
+
+lv_vanilla_toxoid_m_disallowed = {
+	OR = {
+		species = { shift_male_to_andro = yes }
+		NOT = { gender = male }
+		species = { set_downstairs_female = yes }
+		species = { set_downstairs_herm = yes }
+	}
+}
+
+lv_vanilla_toxoid_f_disallowed = {
+	OR = {
+		species = { shift_female_to_andro = yes }
+		NOT = { gender = female }
+		species = { set_downstairs_male = yes }
+	}
+}
+
+lv_vanilla_toxoid_a_disallowed = {
+	NOR = {
+		species = { shift_male_to_andro = yes }
+		species = { shift_female_to_andro = yes }
+		gender = indeterminable
+		species = { set_androgynous = yes }
+	}
+}
+
+lv_vanilla_toxoid_m_disallowed_species = {
+	OR = {
+		shift_male_to_andro = yes
+		NOT = { species_gender = male }
+		set_downstairs_female = yes
+		set_downstairs_herm = yes
+	}
+}
+
+lv_vanilla_toxoid_f_disallowed_species = {
+	OR = {
+		shift_female_to_andro = yes
+		NOT = { species_gender = female }
+		set_downstairs_male = yes
+	}
+}
+
+lv_vanilla_toxoid_a_disallowed_species = {
+	NOR = {
+		shift_male_to_andro = yes
+		shift_female_to_andro = yes
+		species_gender = indeterminable
+		set_androgynous = yes
+	}
+}

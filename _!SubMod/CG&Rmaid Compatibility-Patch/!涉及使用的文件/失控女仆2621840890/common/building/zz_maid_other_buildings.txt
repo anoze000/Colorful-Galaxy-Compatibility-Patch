@@ -1,0 +1,1739 @@
+# 这些建筑更为重要，不应当被覆盖
+# very important buildings, shouldn't be overwritten
+
+# clinics available for maids
+building_clinic = {
+	base_buildtime = @b1_time
+	base_cap_amount = 1
+
+	category = amenity
+
+	potential = {
+		exists = owner
+		# rule out Thrall-Worlds
+		NOT = { has_modifier = slave_colony }
+		# check the empire is valid
+		owner = {
+			# rule out gestalts and pre-FTL societies
+			OR = {
+				is_regular_empire = yes
+				AND = {
+					has_origin = origin_fear_of_the_dark
+					is_country_type = primitive
+				}
+				has_valid_civic = civic_machine_servitor
+				has_valid_civic = civic_machine_healthcare
+			}
+			# rule out AI empires with entirely no access to "Pharma State" Civic, unless the planet is unstable
+			OR = {
+				is_ai = no
+				has_valid_civic = civic_private_healthcare_corporate
+				prev = {
+					has_branch_office = yes
+					branch_office_owner = {
+						has_valid_civic = civic_private_healthcare_corporate
+					}
+				}
+				prev = {
+					NOT = { has_available_jobs = entertainer }
+					NOT = { has_forbidden_jobs = entertainer }
+					planet_stability < 50
+					free_amenities < 0
+				}
+			}
+		}
+	}
+	destroy_trigger = {
+		OR = {
+			# if this is now a Thrall-World
+			has_modifier = slave_colony
+			# if the planet is owned by a gestalt or pre-FTL society
+			AND = {
+				exists = owner
+				owner = {
+					NOR = {
+						is_regular_empire = yes
+						AND = {
+							has_origin = origin_fear_of_the_dark
+							is_country_type = primitive
+						}
+						has_valid_civic = civic_machine_servitor
+						has_valid_civic = civic_machine_healthcare
+					}
+				}
+			}
+			# if this is an AI-controlled empire with entirely no access to "Pharma State" Civic, assuming the planet is now stable
+			AND = {
+				exists = owner
+				owner = {
+					is_ai = yes
+					NOT = {
+						OR = {
+							has_valid_civic = civic_private_healthcare_corporate
+							prev = {
+								has_branch_office = yes
+								branch_office_owner = {
+									has_valid_civic = civic_private_healthcare_corporate
+								}
+							}
+						}
+					}
+				}
+				planet_stability > 70
+				free_amenities > 20
+			}
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+		#兼容更多思潮无限 comp with ECI
+		upkeep = {
+			trigger = {
+				is_ECI_activated = yes
+				owner = {
+					has_policy_flag = public_healthcare
+				}
+			}
+			energy = 0.5
+		}
+	}
+
+	prerequisites = {
+		"tech_frontier_health"
+	}
+	upgrades = {
+		"building_hospital"
+	}
+
+	triggered_planet_modifier = { #
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		job_healthcare_add = 2
+	}
+	triggered_planet_modifier = { #
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_healthcaring_drones_amenities_produces_mult = 0.25 #没有实际效果，实际效果写在pop_jobs中
+			planet_doctors_upkeep_mult = 0.25
+			job_healthcaring_drone_add = 2
+		}
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		text = job_healthcare_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_healthcaring_drone_effect_desc
+	}
+
+	on_destroy = {
+		owner = {
+			if = {
+				limit = {
+					has_event_chain = payback_out_of_warranty_chain
+				}
+				end_event_chain = payback_out_of_warranty_chain
+			}
+		}
+	}
+	on_repaired = {
+		if = {
+			limit = {
+				planet.owner = {
+					has_event_chain = payback_out_of_warranty_chain
+				}
+			}
+			random_list = {
+				50 = { # still broken
+					planet.owner = {
+						country_event = { id = origin.4302 }
+					}
+					modifier = {
+						factor = 0
+						planet.owner = { has_technology = tech_frontier_health }
+					}
+				}
+				20 = { # repaired
+					planet.owner = {
+						country_event = { id = origin.4301 }
+					}
+					modifier = {
+						factor = 2
+						planet.owner = { num_research_agreements = 1 }
+					}
+					modifier = {
+						factor = 3
+						planet.owner = { num_research_agreements = 2 }
+					}
+					modifier = {
+						factor = 4
+						planet.owner = { num_research_agreements >= 3 }
+					}
+				}
+				10 = { # broken beyond repair
+					planet = {
+						planet_event = { id = origin.4303 }
+					}
+				}
+			}
+		}
+	}
+}
+building_hospital = {
+	base_buildtime = @b2_time
+	can_build = no
+
+	category = amenity
+
+	potential = {
+		has_building = building_clinic
+	}
+	allow = {
+		has_upgraded_capital = yes
+		OR = {
+			owner = {
+				OR = {
+					has_valid_civic = civic_private_healthcare_corporate
+					is_ai = no
+				}
+			}
+			AND = {
+				NOT = { has_available_jobs = entertainer }
+				NOT = { has_forbidden_jobs = entertainer }
+				planet_stability < 55
+				free_amenities < 5
+			}
+			AND = {
+				has_branch_office = yes
+				branch_office_owner = {
+					has_valid_civic = civic_private_healthcare_corporate
+				}
+			}
+		}
+		if = {  #女仆非必要不准建造这个
+			limit = {
+				exists = owner
+				owner = {
+					is_ai = yes
+					has_civic = civic_machine_servitor
+				}
+			}
+			OR = {
+				free_amenities < -6
+				count_owned_pop = {
+					limit = {
+						prev = {
+							habitability = {
+								who = prev
+								value < 40
+							}
+						}
+					}
+					count > 5
+				}
+			}
+		}
+	}
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = {
+				is_gestalt = yes
+				NOR = {
+					has_valid_civic = civic_machine_servitor
+					has_valid_civic = civic_machine_healthcare
+				}
+			}
+			has_modifier = slave_colony
+			AND = {
+				buildings_stop_pop = yes
+				owner = { is_ai = yes }
+			}
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b2_minerals
+			exotic_gases = @b2_rare_cost
+		}
+		upkeep = {
+			energy = @b2_upkeep
+			exotic_gases = @b2_rare_upkeep
+		}
+		#兼容更多思潮无限 comp with ECI
+		upkeep = {
+			trigger = {
+				is_ECI_activated = yes
+				owner = {
+					has_policy_flag = public_healthcare
+				}
+			}
+			energy = 1
+		}
+	}
+
+	prerequisites = {
+		"tech_frontier_hospital"
+	}
+	show_tech_unlock_if = {
+		OR ={
+			is_regular_empire = yes
+			has_valid_civic = civic_machine_servitor
+			has_valid_civic = civic_machine_healthcare
+		}
+	}
+
+	triggered_planet_modifier = { #
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		job_healthcare_add = 4
+	}
+	triggered_planet_modifier = { #
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_healthcaring_drones_amenities_produces_mult = 0.5 #没有实际效果，实际效果写在pop_jobs中
+			planet_doctors_upkeep_mult = 0.5
+			job_healthcaring_drone_add = 2
+		}
+	}
+	triggered_planet_modifier = { #
+		potential = {
+			exists = owner
+			owner = {
+				is_servitor_empire = no
+				has_valid_civic = civic_machine_healthcare
+			}
+		}
+		modifier = { job_healthcaring_drone_add = 2 }
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		text = job_healthcare_effect_desc
+	}
+}
+
+# cryo chambers - society produce, repairable for maid
+building_ancient_cryo_chamber = {
+	base_buildtime = @b2_time
+	can_build = no
+	can_demolish = yes
+
+	category = government
+
+	potential = {
+	}
+	upgrades = {
+		building_repaired_cryo_chamber
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @b2_minerals
+		}
+		upkeep = {
+			sr_living_metal = 1
+			energy = 50
+		}
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_fallen_empire = no
+			}
+		}
+		BIOLOGICAL_species_trait_picks_add = 1
+		BIOLOGICAL_species_trait_points_add = 1
+	}
+
+	triggered_desc = {
+		trigger = { owner = { has_valid_civic = civic_machine_servitor } }
+		text = building_ancient_cryo_chamber_effect_desc
+	}
+}
+
+# toxic bath unavailable for maids
+holding_toxic_bath_machine = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	icon = building_toxic_bath_machine
+	base_cap_amount = 1
+
+	category = amenity
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			minerals = @b2_upkeep
+		}
+	}
+
+	potential = {
+		owner.overlord = { has_toxic_baths = yes }
+		owner = { has_authority = auth_machine_intelligence }
+	}
+
+	destroy_trigger = {
+		owner.overlord = { has_toxic_baths = no }
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "no_holding_toxic_bath_machine_for_maids"
+			owner = { NOT = { has_valid_civic = civic_machine_servitor } }
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = {
+				OR = {
+					has_valid_civic = civic_environmentalist
+					has_valid_civic = civic_machine_crafters
+					has_valid_civic = civic_machine_paradise_lost
+				}
+			}
+		}
+		monthly_loyalty = -1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_authority = auth_machine_intelligence }
+		}
+		job_overlord_bath_attendant_machine_add = 2
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = planet.owner
+			planet.owner = { has_authority = auth_machine_intelligence }
+		}
+		text = job_overlord_toxic_baths_effect_machine_desc
+	}
+}
+
+# replace evalutors with head maids for maids
+building_simulation_1 = {
+	base_buildtime = @b1_time
+	base_cap_amount = 1
+	icon = building_holo_theatres
+
+	category = unity
+
+	potential = {
+		exists = owner
+		NOT = { has_modifier = slave_colony }
+		owner = {
+			is_machine_empire = yes
+			is_memorialist_empire = no
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			has_modifier = slave_colony
+			owner = {
+				OR = {
+					is_machine_empire = no
+					is_memorialist_empire = yes
+				}
+			}
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		produces = {
+			trigger = { exists = owner }
+			unity = 1
+			multiplier = owner.trigger:num_ascension_perks
+		}
+		cost = {
+			minerals = @b1_minerals
+		}
+	}
+
+	planet_modifier = {
+		planet_jobs_unity_produces_mult = 0.05
+		job_evaluator_add = @b1_jobs
+	}
+
+	inline_script = { #Rogue Maid
+		script = maid_buildings_change/maid_building_simulation_jobs
+		JOB = 2
+	}
+
+	triggered_desc = {
+		text = building_autochthon_monument_effect
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			OR = {
+				owner = { is_servitor_empire = no }
+				is_planet_class = pc_machine
+			}
+		}
+		text = job_evaluator_effect_desc
+	}
+
+	prerequisites = {
+		"tech_cultural_heritage"
+	}
+
+	convert_to = {
+		building_autochthon_monument
+		building_corporate_monument
+		building_galactic_memorial_1
+		building_sensorium_1
+	}
+
+	show_tech_unlock_if = {
+		is_machine_empire = yes
+		is_memorialist_empire = no
+	}
+
+	upgrades = {
+		building_simulation_2
+	}
+}
+building_simulation_2 = {
+	base_buildtime = @b2_time
+	can_build = no
+	icon = building_hyper_entertainment_forum
+
+	category = unity
+
+	potential = {
+		exists = owner
+		NOT = { has_modifier = slave_colony }
+		owner = {
+			is_machine_empire = yes
+			is_memorialist_empire = no
+		}
+	}
+
+	allow = {
+		has_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			has_modifier = slave_colony
+			owner = {
+				OR = {
+					is_machine_empire = no
+					is_memorialist_empire = yes
+				}
+			}
+		}
+	}
+
+	convert_to = {
+		building_corporate_site
+		building_heritage_site
+		building_galactic_memorial_2
+		building_sensorium_2
+	}
+
+	resources = {
+		category = planet_buildings
+		produces = {
+			trigger = { exists = owner }
+			unity = 2
+			multiplier = owner.trigger:num_ascension_perks
+		}
+		cost = {
+			minerals = @b2_minerals
+		}
+	}
+
+	planet_modifier = {
+		planet_jobs_unity_produces_mult = 0.10
+		job_evaluator_add = @b2_jobs
+	}
+
+	inline_script = { #Rogue Maid
+		script = maid_buildings_change/maid_building_simulation_jobs
+		JOB = 4
+	}
+
+	triggered_desc = {
+		text = building_heritage_site_effect
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_servitor_empire = no }
+		}
+		text = job_evaluator_effect_desc
+	}
+
+	prerequisites = {
+		"tech_heritage_site"
+	}
+
+	show_tech_unlock_if = {
+		is_machine_empire = yes
+		is_memorialist_empire = no
+	}
+
+	upgrades = {
+		building_simulation_3
+	}
+}
+building_simulation_3 = {
+	base_buildtime = @b3_time
+	can_build = no
+	icon = building_citadel_of_faith
+
+	category = unity
+
+	potential = {
+		exists = owner
+		NOT = { has_modifier = slave_colony }
+		owner = {
+			is_machine_empire = yes
+			is_memorialist_empire = no
+		}
+	}
+
+	allow = {
+		has_major_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			has_modifier = slave_colony
+			owner = {
+				OR = {
+					is_machine_empire = no
+					is_memorialist_empire = yes
+				}
+			}
+		}
+	}
+
+	convert_to = {
+		building_corporate_forum
+		building_hypercomms_forum
+		building_galactic_memorial_3
+		building_sensorium_3
+	}
+
+	resources = {
+		category = planet_buildings
+		produces = {
+			trigger = { exists = owner }
+			unity = 3
+			multiplier = owner.trigger:num_ascension_perks
+		}
+		cost = {
+			minerals = @b3_minerals
+		}
+	}
+
+	planet_modifier = {
+		planet_jobs_unity_produces_mult = 0.15
+		job_evaluator_add = @b3_jobs
+	}
+
+	inline_script = { #Rogue Maid
+		script = maid_buildings_change/maid_building_simulation_jobs
+		JOB = 6
+	}
+
+	triggered_desc = {
+		text = building_hypercomms_forum_effect
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_servitor_empire = no }
+		}
+		text = job_evaluator_effect_desc
+	}
+
+	prerequisites = {
+		"tech_hypercomms_forum"
+	}
+
+	show_tech_unlock_if = {
+		is_machine_empire = yes
+		is_memorialist_empire = no
+	}
+}
+
+building_galactic_memorial_1 = {
+	base_buildtime = @b1_time
+	base_cap_amount = 1
+	category = unity
+
+	potential = {
+		exists = owner
+		NOT = { has_modifier = slave_colony }
+		owner = {
+			is_memorialist_empire = yes
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			has_modifier = slave_colony
+			owner = {
+				is_memorialist_empire = no
+			}
+		}
+	}
+
+	convert_to = {
+		building_autochthon_monument
+		building_corporate_monument
+		building_simulation_1
+		building_sensorium_1
+	}
+
+	resources = {
+		category = planet_buildings
+		produces = {
+			trigger = { exists = owner }
+			unity = 1
+			multiplier = owner.trigger:num_ascension_perks
+		}
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			minerals = @b1_upkeep
+		}
+	}
+
+	planet_modifier = {
+		planet_jobs_unity_produces_mult = 0.05
+	}
+
+	triggered_desc = {
+		text = building_autochthon_monument_effect
+	}
+
+	prerequisites = {
+		"tech_cultural_heritage"
+	}
+
+	#Jobs
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		job_death_chronicler_add = @b1_jobs
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		job_chronicle_drone_add = @b1_jobs
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		text = "job_death_chronicler_effect_desc"
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+			OR = {
+				owner = { is_servitor_empire = no }
+				is_planet_class = pc_machine
+			}
+		}
+		text = "job_chronicle_drone_effect_desc"
+	}
+	
+	inline_script = { #Rogue Maid
+		script = maid_buildings_change/maid_building_galactic_memorial_jobs
+		JOB = 2
+	}
+
+	#Tomb/Relic worlds
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+			OR = {
+				is_planet_class = pc_nuked
+				is_planet_class = pc_relic
+			}
+		}
+		pop_government_ethic_attraction = 0.20
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+			OR = {
+				is_planet_class = pc_nuked
+				is_planet_class = pc_relic
+			}
+		}
+		planet_crime_no_happiness_add = -20
+	}
+
+	upgrades = {
+		building_galactic_memorial_2
+	}
+
+	show_tech_unlock_if = {
+		is_memorialist_empire = yes
+	}
+}
+building_galactic_memorial_2 = {
+	base_buildtime = @b2_time
+	can_build = no
+	category = unity
+
+	potential = {
+		exists = owner
+		NOT = { has_modifier = slave_colony }
+		owner = {
+			is_memorialist_empire = yes
+		}
+	}
+
+	allow = {
+		exists = owner
+		has_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			has_modifier = slave_colony
+			owner = {
+				is_memorialist_empire = no
+			}
+		}
+	}
+
+	convert_to = {
+		building_heritage_site
+		building_corporate_site
+		building_simulation_2
+		building_sensorium_2
+	}
+
+	resources = {
+		category = planet_buildings
+		produces = {
+			trigger = { exists = owner }
+			unity = 2
+			multiplier = owner.trigger:num_ascension_perks
+		}
+		cost = {
+			minerals = @b2_minerals
+			exotic_gases = @b2_rare_cost
+		}
+		upkeep = {
+			minerals = @b2_upkeep
+			exotic_gases = @b2_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		planet_jobs_unity_produces_mult = 0.10
+	}
+
+	triggered_desc = {
+		text = building_heritage_site_effect
+	}
+
+	prerequisites = {
+		"tech_heritage_site"
+	}
+
+	#Jobs
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		job_death_chronicler_add = @b2_jobs
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		job_chronicle_drone_add = @b2_jobs
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		text = "job_death_chronicler_effect_desc"
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+			OR = {
+				owner = { is_servitor_empire = no }
+				is_planet_class = pc_machine
+			}
+		}
+		text = "job_chronicle_drone_effect_desc"
+	}
+	
+	inline_script = { #Rogue Maid
+		script = maid_buildings_change/maid_building_galactic_memorial_jobs
+		JOB = 4
+	}
+
+	#Tomb/Relic worlds
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+			OR = {
+				is_planet_class = pc_nuked
+				is_planet_class = pc_relic
+			}
+		}
+		pop_government_ethic_attraction = 0.20
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+			OR = {
+				is_planet_class = pc_nuked
+				is_planet_class = pc_relic
+			}
+		}
+		planet_crime_no_happiness_add = -20
+	}
+
+	upgrades = {
+		building_galactic_memorial_3
+	}
+
+	show_tech_unlock_if = {
+		is_memorialist_empire = yes
+	 }
+}
+building_galactic_memorial_3 = {
+	base_buildtime = @b3_time
+	can_build = no
+	category = unity
+
+	potential = {
+		exists = owner
+		NOT = { has_modifier = slave_colony }
+		owner = {
+			is_memorialist_empire = yes
+		}
+	}
+
+	allow = {
+		has_major_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			has_modifier = slave_colony
+			owner = { is_memorialist_empire = no }
+		}
+	}
+
+	convert_to = {
+		building_hypercomms_forum
+		building_corporate_forum
+		building_simulation_3
+		building_sensorium_3
+	}
+
+	resources = {
+		category = planet_buildings
+		produces = {
+			trigger = { exists = owner }
+			unity = 3
+			multiplier = owner.trigger:num_ascension_perks
+		}
+		cost = {
+			minerals = @b3_minerals
+			exotic_gases = @b3_rare_cost
+		}
+		upkeep = {
+			minerals = @b3_upkeep
+			exotic_gases = @b3_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		planet_jobs_unity_produces_mult = 0.15
+	}
+
+	triggered_desc = {
+		text = building_hypercomms_forum_effect
+	}
+
+	prerequisites = {
+		"tech_hypercomms_forum"
+	}
+
+	#Jobs
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		job_death_chronicler_add = @b3_jobs
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		job_chronicle_drone_add = @b3_jobs
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		text = "job_death_chronicler_effect_desc"
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+			OR = {
+				owner = { is_servitor_empire = no }
+				is_planet_class = pc_machine
+			}
+		}
+		text = "job_chronicle_drone_effect_desc"
+	}
+
+	inline_script = { #Rogue Maid
+		script = maid_buildings_change/maid_building_galactic_memorial_jobs
+		JOB = 6
+	}
+
+	#Tomb/Relic worlds
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+			OR = {
+				is_planet_class = pc_nuked
+				is_planet_class = pc_relic
+			}
+		}
+		pop_government_ethic_attraction = 0.20
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+			OR = {
+				is_planet_class = pc_nuked
+				is_planet_class = pc_relic
+			}
+		}
+		planet_crime_no_happiness_add = -20
+	}
+
+	show_tech_unlock_if = {
+		is_memorialist_empire = yes
+	}
+}
+
+# gaiaseeders for Paradise Machinery
+building_gaiaseeders_1 = {
+	base_buildtime = @b2_time
+	base_cap_amount = 1
+	category = government
+	can_be_disabled = no
+	upgrades = { "building_gaiaseeders_2" }
+
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_country_type = default
+				is_zofe_compatible = yes
+			}
+			is_idyllic_bloom_empire = yes
+		}
+		NOR = {
+			is_planet_class = pc_gaia
+			is_planet_class = pc_city
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+			is_planet_class = pc_relic
+		}
+		is_artificial = no
+		if = {
+			limit = { has_global_flag = planetarydiversity }
+			is_pd_gaia = no
+			is_pd_hive_world = no
+			is_pd_machine = no
+			is_pd_aquatics = no
+			#is_artificial = no
+			is_pd_habitat = no
+			is_pd_unique = no
+			is_pd_arcology = no
+			is_pd_shroud_world = no
+		}
+	}
+
+	allow = {
+		has_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		OR = {
+			is_planet_class = pc_gaia	# No double bonuses if player uses other tools to turn it into a Gaia world.
+			is_planet_class = pc_city
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+			is_planet_class = pc_relic
+			NOT = { exists = owner }
+			owner = {
+				is_idyllic_bloom_empire = no
+			}
+			AND = {
+				has_global_flag = planetarydiversity
+				OR = {
+					is_pd_gaia = yes
+					is_planet_class = pc_city
+					is_pd_hive_world = yes
+					is_pd_machine = yes
+					is_planet_class = pc_relic
+					is_planet_class = pc_nuked_relic
+				}
+			}
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			energy = 1000 #1500
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { is_machine_empire = no }
+			}
+			energy = 10 #20
+			multiplier = value:gaiaseeder_upkeep
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { is_machine_empire = yes }
+			}
+			energy = 10 #20
+			multiplier = value:gaiaseeder_upkeep_machine
+		}
+	}
+
+	planet_modifier = {
+		pop_growth_speed = 0.15
+	}
+}
+building_gaiaseeders_2 = {
+	base_buildtime = @b2_time
+	can_build = no
+	category = government
+	can_be_disabled = no
+	upgrades = { "building_gaiaseeders_3" }
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			energy = 1000 #1500
+			exotic_gases = @b2_rare_cost
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { is_machine_empire = no }
+			}
+			energy = 10 #20
+			exotic_gases = @b2_rare_upkeep
+			multiplier = value:gaiaseeder_upkeep
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { is_machine_empire = yes }
+			}
+			energy = 10 #20
+			exotic_gases = @b2_rare_upkeep
+			multiplier = value:gaiaseeder_upkeep_machine
+		}
+	}
+
+	destroy_trigger = {
+		OR = {
+			is_planet_class = pc_gaia
+			is_planet_class = pc_city
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+			NOT = { exists = owner }
+			owner = {
+				is_idyllic_bloom_empire = no
+			}
+			AND = {
+				has_global_flag = planetarydiversity
+				OR = {
+					is_pd_gaia = yes
+					is_planet_class = pc_city
+					is_pd_hive_world = yes
+					is_pd_machine = yes
+					is_planet_class = pc_relic
+					is_planet_class = pc_nuked_relic
+				}
+			}
+		}
+	}
+
+	allow = {
+		if = {
+			limit = { owner = { is_machine_empire = no } }
+			can_build_gaiaseeder = yes
+		}
+		else = {
+			can_build_gaiaseeder_machine = yes
+		}
+	}
+
+	planet_modifier = {
+		pop_growth_speed = 0.1
+		pop_environment_tolerance = 0.1
+	}
+}
+building_gaiaseeders_3 = {
+	base_buildtime = @b2_time
+	can_build = no
+	category = government
+	can_be_disabled = no
+	upgrades = { "building_gaiaseeders_4" }
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			energy = 1000 #1500
+			exotic_gases = @b3_rare_cost
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { is_machine_empire = no }
+			}
+			energy = 10 #20
+			exotic_gases = @b3_rare_upkeep
+			multiplier = value:gaiaseeder_upkeep
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { is_machine_empire = yes }
+			}
+			energy = 10 #20
+			exotic_gases = @b3_rare_upkeep
+			multiplier = value:gaiaseeder_upkeep_machine
+		}
+	}
+
+	destroy_trigger = {
+		OR = {
+			is_planet_class = pc_gaia
+			is_planet_class = pc_city
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+			NOT = { exists = owner }
+			owner = {
+				is_idyllic_bloom_empire = no
+			}
+			AND = {
+				has_global_flag = planetarydiversity
+				OR = {
+					is_pd_gaia = yes
+					is_planet_class = pc_city
+					is_pd_hive_world = yes
+					is_pd_machine = yes
+					is_planet_class = pc_relic
+					is_planet_class = pc_nuked_relic
+				}
+			}
+		}
+	}
+
+	allow = {
+		if = {
+			limit = { owner = { is_machine_empire = no } }
+			can_build_gaiaseeder = yes
+		}
+		else = {
+			can_build_gaiaseeder_machine = yes
+		}
+	}
+
+	planet_modifier = {
+		pop_growth_speed = 0.05
+		pop_environment_tolerance = 0.2
+	}
+}
+building_gaiaseeders_4 = {
+	base_buildtime = @b2_time
+	can_build = no
+	category = government
+	can_be_disabled = no
+	position_priority = 0
+
+	destroy_trigger = {
+		OR = {
+			NOR = {
+				is_planet_class = pc_gaia
+				AND = {
+					has_global_flag = planetarydiversity
+					is_pd_gaia = yes
+				}
+			}
+			NOT = { exists = owner }
+			owner = {
+				is_idyllic_bloom_empire = no
+			}
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			energy = 1000 #1500
+			exotic_gases = @b4_rare_cost
+		}
+		upkeep = {
+			energy = 10
+		}
+	}
+
+	allow = {
+		if = {
+			limit = { owner = { is_machine_empire = no } }
+			can_build_gaiaseeder = yes
+		}
+		else = {
+			can_build_gaiaseeder_machine = yes
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		modifier = {
+			planet_pop_assembly_mult = 0.15
+			pop_growth_speed = 0.15
+		}
+	}
+
+	triggered_desc = {
+		text = building_gaiaseeders_4_effect_desc
+		trigger = {
+			exists = planet
+			planet = {
+				NOR = {
+					is_planet_class = pc_gaia
+					AND = {
+						has_global_flag = planetarydiversity
+						is_pd_gaia = yes
+					}
+				}
+			}
+		}
+	}
+
+	triggered_desc = {
+		text = gaia_seeder_bloomed_pops_effect
+		trigger = {
+			owner = { is_machine_empire = no }
+		}
+	}
+
+	triggered_desc = {
+		text = gaia_seeder_bloom_timer_tooltip
+		trigger = {
+			has_planet_flag = gaia_seeder_bloom_timer
+			owner = { is_machine_empire = no }
+		}
+	}
+}
+building_gaiaseeders_pc_gaia = {
+	base_buildtime = @b2_time
+	base_cap_amount = 1
+	category = government
+	can_be_disabled = no
+	position_priority = 0
+	icon = building_gaiaseeders_4
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			energy = 1000 #1500
+			exotic_gases = @b4_rare_cost
+		}
+		upkeep = {
+			energy = 10
+		}
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_country_type = default
+				is_zofe_compatible = yes
+			}
+			is_idyllic_bloom_empire = yes
+		}
+		OR = {
+			is_planet_class = pc_gaia
+			AND = {
+				has_global_flag = planetarydiversity
+				is_pd_gaia = yes
+			}
+		}
+		NOR = {
+			has_building = building_gaiaseeders_4
+			has_building_construction = building_gaiaseeders_4
+			has_building = building_gaiaseeders_pc_gaia
+			has_building_construction = building_gaiaseeders_pc_gaia
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		modifier = {
+			planet_pop_assembly_mult = 0.15
+			pop_growth_speed = 0.15
+		}
+	}
+
+	triggered_desc = {
+		text = building_gaiaseeders_4_effect_desc
+		trigger = {
+			exists = planet
+			planet = {
+				NOR = {
+					is_planet_class = pc_gaia
+					AND = {
+						has_global_flag = planetarydiversity
+						is_pd_gaia = yes
+					}
+				}
+			}
+		}
+	}
+
+	triggered_desc = {
+		text = gaia_seeder_bloomed_pops_effect
+		trigger = {
+			owner = { is_machine_empire = no }
+		}
+	}
+
+	triggered_desc = {
+		text = gaia_seeder_bloom_timer_tooltip
+		trigger = {
+			has_planet_flag = gaia_seeder_bloom_timer
+			owner = { is_machine_empire = no }
+		}
+	}
+	
+	on_built = {
+		remove_building = building_gaiaseeders_pc_gaia
+		add_building = building_gaiaseeders_4
+		#planet_event = {
+		#	id = plant.115
+		#	days = 180
+		#}
+		set_saved_date = {
+			key = gaia_seeder_bloom_timer
+			days_from_present = 180
+			expires = 180
+		}
+	}
+}
+holding_idyllic_bloom = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	icon = building_gaiaseeders_4
+	base_cap_amount = 1
+	category = government
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			energy = 1000 #1500
+			exotic_gases = @b4_rare_cost
+		}
+		upkeep = {
+			trigger = {
+				owner.overlord = { is_machine_empire = no }
+			}
+			energy = 10 #20
+			exotic_gases = @b3_rare_upkeep
+			multiplier = value:overlord_gaiaseeder_upkeep
+		}
+		upkeep = {
+			trigger = {
+				owner.overlord = { is_machine_empire = yes }
+			}
+			energy = 10 #20
+			exotic_gases = @b3_rare_upkeep
+			multiplier = value:overlord_gaiaseeder_upkeep_machine
+		}
+	}
+
+	potential = {
+		exists = owner
+		owner.overlord = {
+			OR = {
+				is_country_type = default
+				is_zofe_compatible = yes
+			}
+			is_idyllic_bloom_empire = yes
+		}
+		NOR = {
+			is_planet_class = pc_gaia
+			is_planet_class = pc_city
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+			is_planet_class = pc_relic
+		}
+		is_artificial = no
+		if = {
+			limit = { has_global_flag = planetarydiversity }
+			is_pd_gaia = no
+			is_pd_hive_world = no
+			is_pd_machine = no
+			is_pd_aquatics = no
+			#is_artificial = no
+			is_pd_habitat = no
+			is_pd_unique = no
+			is_pd_arcology = no
+			is_pd_shroud_world = no
+		}
+	}
+
+	planet_modifier = {
+		pop_growth_speed = 0.1
+		pop_environment_tolerance = 0.2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = {
+				has_ascension_perk = ap_hydrocentric
+			}
+		}
+		monthly_loyalty = -0.5
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = {
+				NOT = { has_ascension_perk = ap_hydrocentric }
+			}
+		}
+		monthly_loyalty = 1
+	}
+
+	on_built = {
+		planet = {
+			set_timed_planet_flag = {
+				flag = anti_cheese_idyllic_bloom_flag
+			days = 3599
+			}
+			set_saved_date = {
+				key = idyllic_bloom_holding_timer
+				days_from_present = 3600
+				expires = 3600
+			}
+		}
+		owner.overlord = {
+			country_event = {
+				id = plant.105
+				days = 3600
+			}
+		}
+	}
+	on_destroy = {
+		planet = {
+			remove_planet_flag = anti_cheese_idyllic_bloom_flag
+		}
+	}
+	triggered_desc = {
+		trigger = {
+			planet = {
+				has_planet_flag = anti_cheese_idyllic_bloom_flag
+			}
+		}
+		text = holding_idyllic_bloom_effect_timer
+	}
+	triggered_desc = {
+		trigger = {
+			planet = {
+				NOT = {
+					has_planet_flag = anti_cheese_idyllic_bloom_flag
+				}
+			}
+		}
+		text = holding_idyllic_bloom_effect
+	}
+	allow = {
+		if = {
+			limit = { owner.overlord = { is_machine_empire = no } }
+			can_build_overlord_gaiaseeder = yes
+		}
+		else = {
+			can_build_overlord_gaiaseeder_machine = yes
+		}
+	}
+}
+
+### ASTROCREATOR AZARYN
+# use triggered_planet_modifier instead of on_built=add_modifier
+building_contained_ecosphere = {
+	icon = building_contained_ecosphere
+	empire_limit = { base = 1 }
+	can_build = yes
+	can_demolish = yes
+	can_be_disabled = no
+	position_priority = 1
+
+	category = resource
+
+	potential = {
+		owner = { has_country_flag = azaryn_dead }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 500 alloys = 500 }
+		upkeep = { energy = 5 }
+		produces = { food = 40 }
+	}
+
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = {
+				is_machine_empire = no
+				is_synthetic_empire = no
+			}
+		}
+		pop_citizen_happiness = 0.1
+		pop_growth_speed = 0.1
+		planet_jobs_productive_produces_mult = 0.1
+		planet_jobs_worker_produces_mult = 0.1
+		planet_researchers_produces_mult = 0.1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = {
+				OR = {
+					is_machine_empire = yes
+					is_synthetic_empire = yes
+				}
+			}
+		}
+		pop_citizen_happiness = 0.2
+		pop_growth_speed = 0.2
+		planet_jobs_organics_produces_mult = 0.2
+	}
+	triggered_country_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = {
+				OR = {
+					is_machine_empire = yes
+					is_synthetic_empire = yes
+				}
+			}
+		}
+		country_society_tech_research_speed = 0.15
+	}
+
+
+	on_built = {
+		planet = { add_modifier = { modifier = contained_ecosphere_pheromones } }
+	}
+
+	on_destroy = {
+		planet = { remove_modifier = contained_ecosphere_pheromones }
+	}
+}

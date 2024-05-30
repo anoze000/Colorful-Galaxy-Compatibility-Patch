@@ -9,9 +9,8 @@ can_be_leader = {
 				has_technology = tech_synthetic_leaders
 				has_authority = auth_machine_intelligence
 				is_mechanical_empire = yes
-
-				#欲望机械
-				has_trait = trait_DC_ethic_lust_skynet
+				is_individual_machine = yes
+				is_lbm_empire = yes
 			}
 		}
 	}
@@ -38,29 +37,25 @@ can_be_leader = {
 }
 
 can_be_military_leader = {
-	OR = {
-		is_enslaved = no
-		owner = { has_valid_civic = civic_all_slave }
-	}
+	is_enslaved = no
 	is_sapient = yes
 	OR = {
 		is_robot_pop = no
 		owner = { has_policy_flag = ai_full_rights }
 		owner = { has_authority = auth_machine_intelligence }
+		owner = { is_individual_machine = yes }
+		is_lbm_empire = yes
 	}
 	OR = {
-		AND = {
-			# MIs only accept Fully Integrated leaders
+		AND = { # MIs only accept Fully Integrated leaders
 			owner = { has_authority = auth_machine_intelligence }
-			has_citizenship_type = { type = citizenship_full_machine }
+			has_citizenship_type = { type = citizenship_full_machine country = owner }
 			has_military_service_type = { type = military_service_full }
 		}
-		AND = {
-			# non-MIs accept whatever
+		AND = { # non-MIs accept whatever
 			NOT = { owner = { has_authority = auth_machine_intelligence } }
 			has_military_service_type = { type = military_service_full }
 		}
-		is_lbm_empire = yes
 	}
 }
 
@@ -152,22 +147,7 @@ is_organic_species = {
 can_fill_specialist_job_trigger = {
 	custom_tooltip = SPECIALIST_JOB_TRIGGER
 	hidden_trigger = {
-		OR = {
-			NOT = { has_ethic = ethic_gestalt_consciousness }
-			AND = {
-				exists = owner
-				owner = {
-					is_gestalt = yes
-					OR = {
-						has_country_flag = carnalism_flag
-						has_country_flag = asceticism_flag
-					}
-				}
-				is_being_purged = no
-				is_enslaved = no
-				is_being_assimilated = no
-			}
-		}
+		NOT = { has_ethic = ethic_gestalt_consciousness }
 		exists = owner
 		OR = {
 			is_enslaved = no
@@ -176,8 +156,12 @@ can_fill_specialist_job_trigger = {
 		}
 		is_being_purged = no
 		is_being_assimilated = no
-		NOT = { has_trait = trait_syncretic_proles }
-		can_think = yes
+		# Rule out Traits for servitude & lack of free will
+		NOR = {
+			has_trait = trait_syncretic_proles
+			has_trait = trait_zombie
+			has_trait = trait_nerve_stapled
+		}
 		OR = {
 			NOT = { has_trait = trait_mechanical }
 			owner = { has_technology = tech_droid_workers }
@@ -192,12 +176,9 @@ can_fill_specialist_job_trigger = {
 
 is_robot_empire = {
 	OR = {
-		owner_species = {
-			OR = {
-				has_trait = trait_mechanical
-				has_trait = trait_DC_ethic_lust_skynet
-			}
-		}
+		owner_species = { has_trait = trait_mechanical }
+		owner_species = { has_trait = trait_machine_unit }
+		owner_species = { has_trait = trait_DC_ethic_lust_skynet }
 		has_country_flag = synthetic_empire
 		has_authority = auth_machine_intelligence
 	}

@@ -329,3 +329,50 @@ battle_thrall_job_check_trigger = {
 		}
 	}
 }
+
+is_robot_empire = {
+	OR = {
+		owner_species = { has_trait = trait_mechanical }
+		owner_species = { has_trait = trait_machine_unit }
+		owner_species = { has_trait = trait_DC_ethic_lust_skynet }
+		has_country_flag = synthetic_empire
+		has_authority = auth_machine_intelligence
+	}
+}
+
+is_machine_empire = {
+	OR = {
+		has_authority = auth_machine_intelligence
+		owner_species = { has_trait = trait_DC_ethic_lust_skynet }
+	}
+}
+
+can_fill_specialist_job_trigger = {
+	custom_tooltip = SPECIALIST_JOB_TRIGGER
+	hidden_trigger = {
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+		exists = owner
+		OR = {
+			is_enslaved = no
+			has_slavery_type = { type = slavery_indentured }
+			owner = { has_valid_civic = civic_all_slave }
+		}
+		is_being_purged = no
+		is_being_assimilated = no
+		# Rule out Traits for servitude & lack of free will
+		NOR = {
+			has_trait = trait_syncretic_proles
+			has_trait = trait_zombie
+			has_trait = trait_nerve_stapled
+		}
+		OR = {
+			NOT = { has_trait = trait_mechanical }
+			owner = { has_technology = tech_droid_workers }
+		}
+		NOT = { has_citizenship_type = { type = citizenship_organic_trophy country = owner } }
+		if = {
+			limit = { divinity_right_to_work_job_check_trigger_exempt = no }
+			divinity_right_to_work_job_check_trigger_specialist = yes
+		}
+	}
+}

@@ -1,0 +1,34 @@
+#Set to indicate overwrites are active
+set_downstairs_override = {
+	always = no
+}
+
+#Everything below operates at species scope
+
+set_downstairs_male = {
+	has_trait = trait_lv_all_male
+}
+
+set_downstairs_female = {
+	OR = {
+		has_trait = trait_lv_all_female
+		has_trait = trait_suc_parthenogenesis
+	}	
+}
+
+set_downstairs_herm = {
+	has_trait = trait_lv_futanari
+}
+
+set_androgynous = {
+	has_trait = trait_lv_androgynous
+}
+
+shift_male_to_andro = {
+	has_trait = trait_lv_excess_estrogen
+}
+
+shift_female_to_andro = {
+	has_trait = trait_lv_excess_testosterone
+}
+

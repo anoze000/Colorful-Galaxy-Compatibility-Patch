@@ -244,14 +244,32 @@ can_species_procreate = {
 		}
 	}
 	NOT = { has_species_flag = nivlac_no_procreation }
-	has_cybernetic_creed_trait = no
+	if = {
+		limit = {
+			has_cybernetic_creed_trait = yes
+		}
+		NOT = {
+			root = {
+				any_owned_species = {
+					has_population_control = { country = root.owner type = no }
+					has_cybernetic_creed_trait = no
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_cybernetic_creed_trait = no
+		}
+		root = {
+			any_owned_species = {
+				has_population_control = { country = root.owner type = no }
+				has_cybernetic_creed_trait = no
+			}
+		}
+	}
 
 	##################################################
-	#	HFE
-	NAND = {
-		hfe_trigger_population_procreate_housing_block_enabled = yes
-		root = { free_housing <= -1 }
-	}
 	#	wv
 	if = { limit = { has_species_flag = UGRC_flg_spcs_RULE_wv }
 		if = { limit = { has_trait = trait_reanimated_materials }

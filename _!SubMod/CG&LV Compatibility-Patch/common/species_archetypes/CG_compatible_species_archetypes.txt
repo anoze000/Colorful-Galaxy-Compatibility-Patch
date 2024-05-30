@@ -1,0 +1,3 @@
+CG_species_archetype = {
+	uses_modifiers = no
+}

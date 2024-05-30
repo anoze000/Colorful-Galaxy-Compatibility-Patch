@@ -1,0 +1,1033 @@
+trait_DC_ethic_carnalism = {
+	cost = 0
+	initial = yes
+	randomized = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	allowed_archetypes = {
+		Magical_Bitch
+		CG_compatible_species_archetype
+	}
+	icon = "gfx/interface/icons/traits/ethic_carnalism.dds"
+	opposites = {
+		"trait_DC_ethic_asceticism"
+		"trait_DC_ethic_abstinence"
+		"trait_DC_ethic_parasite_mind"
+		"trait_DC_ethic_lust_skynet"
+	}
+	modifier = {
+		pop_environment_tolerance = -0.1
+		pop_growth_speed = 0.1
+	}
+	ai_weight = { weight = 0 }
+}
+
+################淫欲改造###############
+#改造尤物
+trait_transformed_perfect_body = {
+	cost = 0
+	sorting_priority = 50
+	allowed_archetypes = {
+		Magical_Bitch
+	}
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	slave_cost = { energy = 500 }
+	modifier = {
+		planet_jobs_slave_produces_mult = 0.2
+		pop_cat_slave_happiness = 0.3
+	}
+}
+
+#堕淫圣女
+trait_lust_inn = {
+	cost = -2
+	allowed_archetypes = {
+		Magical_Girl
+	}
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	sorting_priority = 50
+	slave_cost = { energy = 1000 }
+	modifier = {
+		pop_environment_tolerance = 0.3
+		planet_jobs_produces_mult = 0.1
+		pop_amenities_usage_mult = -0.2
+		planet_pops_consumer_goods_upkeep_mult = -0.2
+		species_empire_size_mult = -0.2
+	}
+}
+
+# 崩坏精壶
+trait_broken_fleshtoilet = {
+	cost = -1
+	icon = "gfx/interface/icons/traits/trait_broken_fleshtoilet.dds"
+	allowed_archetypes = {
+		PARASITE
+	}
+	sorting_priority = 20
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	forced_happiness = yes
+	slave_cost = { energy = 500 }
+	modifier = {
+		planet_jobs_society_research_produces_mult = -0.5
+		planet_jobs_physics_research_produces_mult = -0.5
+		planet_jobs_engineering_research_produces_mult = -0.5
+		planet_jobs_unity_produces_mult = 0.5
+		planet_jobs_minerals_produces_mult = 0.5
+		planet_jobs_energy_produces_mult = 0.5
+		planet_jobs_food_produces_mult = 0.5
+		planet_jobs_love_juice_produces_mult = 0.5
+		species_empire_size_mult = -0.5
+	}
+}
+
+# 石化便器
+trait_stone_fleshtoilet = {
+	cost = -1
+	icon = "gfx/interface/icons/traits/trait_stone_fleshtoilet.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+	}
+	sorting_priority = 20
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	slave_cost = { energy = 200 }
+	modifier = {
+		pop_growth_speed = -0.25
+		planet_pop_assembly_mult = -0.25
+		pop_environment_tolerance = 0.5
+		planet_jobs_worker_produces_mult = 0.1
+		planet_jobs_slave_produces_mult = 0.1
+		army_health = 0.5
+		leader_lifespan_add = 50
+	}
+}
+
+# 爱液之花
+trait_sexual_liquid_flower = {
+	cost = -2
+	icon = "gfx/interface/icons/traits/trait_sexual_liquid_flower.dds"
+	sorting_priority = 20
+	allowed_archetypes = {
+		PARASITE
+	}
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	modifier = {
+		planet_jobs_love_juice_produces_mult = 0.5
+		army_damage_mult = -0.2
+		army_health = -0.4
+		army_morale = -1.6
+	}
+}
+
+# 优化基因
+trait_break = {
+	cost = -1
+	icon = "gfx/interface/icons/traits/trait_break.dds"
+	sorting_priority = 50
+	allowed_archetypes = {
+		Magical_Bitch
+	}
+	initial = no
+	species_potential_add = {
+		has_trait = trait_DC_ethic_carnalism
+		NOT = { has_trait = trait_break_2 }
+		from = { has_ascension_perk = ap_break_the_limit }
+	}
+	species_possible_remove = {
+		from = { has_ascension_perk = ap_lust_ascension }
+	}
+	species_possible_merge_add = {
+		has_trait = trait_DC_ethic_carnalism
+		NOT = { has_trait = trait_break_2 }
+		from = { has_ascension_perk = ap_break_the_limit }
+	}
+	species_possible_merge_remove = {
+		from = { has_ascension_perk = ap_lust_ascension }
+	}
+	randomized = no
+	slave_cost = { energy = 500 }
+	modifier = {
+		leader_lifespan_add = 20
+		pop_growth_speed = 0.3
+		pop_environment_tolerance = 0.2
+		species_empire_size_mult = -0.05
+	}
+	ai_weight = { weight = 1000 }
+}
+
+# 完美基因
+trait_break_2 = {
+	cost = -3
+	icon = "gfx/interface/icons/traits/trait_break_2.dds"
+	sorting_priority = 50
+	allowed_archetypes = {
+		Magical_Bitch
+		MONSTER
+		CG_compatible_species_archetype
+	}
+	initial = no
+	species_potential_add = {
+		has_trait = trait_DC_ethic_carnalism
+		from = { has_ascension_perk = ap_lust_ascension }
+	}
+	species_possible_remove = { always = no }
+	species_possible_merge_add = {
+		has_trait = trait_DC_ethic_carnalism
+		from = { has_ascension_perk = ap_lust_ascension }
+	}
+	randomized = no
+	modifier = {
+		leader_lifespan_add = 20
+		pop_growth_speed = 0.4
+		pop_environment_tolerance = 0.4
+		species_empire_size_mult = -0.2
+	}
+	ai_weight = { weight = 1000 }
+}
+
+# 淫艳玩物 0
+trait_siren = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_ephemeral.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+	}
+	initial = no
+	species_potential_add = {
+		has_trait = trait_DC_ethic_carnalism
+		from = { has_country_flag = CG_tentacle2_flag }
+	}
+	species_possible_remove = { always = no }
+	species_possible_merge_add = {
+		has_trait = trait_DC_ethic_carnalism
+		from = { has_country_flag = CG_tentacle2_flag }
+	}
+	randomized = no
+	modifier = {
+		leaders_cost_mult = -0.25
+		planet_pops_consumer_goods_upkeep_mult = -0.1
+		pop_growth_speed = 0.25
+	}
+}
+
+# YC共生
+trait_lustgod_tentacle_symbiosis = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/trait_tentacle_symbiosis.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		CG_compatible_species_archetype
+	}
+	initial = no
+	species_potential_add = {
+		has_trait = trait_DC_ethic_carnalism
+		from = { has_country_flag = cm_lustgod_symbiosis }
+	}
+	species_possible_remove = { always = no }
+	species_possible_merge_add = {
+		has_trait = trait_DC_ethic_carnalism
+		from = { has_country_flag = cm_lustgod_symbiosis }
+	}
+	randomized = no
+	immortal_leaders = yes
+	slave_cost = { energy = 500 }
+	modifier = {
+		planet_pops_consumer_goods_upkeep_mult = -0.1		#
+		planet_pops_food_upkeep_mult = -0.3
+		planet_jobs_society_research_produces_mult = 0.3
+		planet_jobs_physics_research_produces_mult = 0.3
+		planet_jobs_engineering_research_produces_mult = 0.3
+	}
+}
+
+##################### 魅魔特质 #####################
+# 红颜薄命 -3
+trait_ephemeral = {
+	cost = -3
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_ephemeral.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		CG_compatible_species_archetype
+	}
+	sorting_priority = 30
+	species_potential_add = { always = no }
+	species_possible_remove = {
+		from = { has_ascension_perk = ap_break_the_limit }
+	}
+	species_possible_merge_add = { always = no }
+	species_possible_merge_remove = {
+		from = { has_ascension_perk = ap_break_the_limit }
+	}
+	randomized = yes
+	opposites = {
+		"trait_DC_ethic_asceticism"
+		"trait_forbidden_lust"
+		"trait_DC_ethic_parasite_mind"
+		"trait_clumsy_tentacle"
+	}
+	slave_cost = { energy = -500 }
+	modifier = {
+		leader_lifespan_add = -10
+		pop_happiness = -0.2
+	}
+	ai_weight = { weight = 200 }
+	random_weight = {
+		Magical_Bitch = 200
+	}
+}
+
+# 古灵精怪 3
+trait_bright = {
+	cost = 3
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_bright.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		MONSTER
+		CG_compatible_species_archetype
+	}
+	sorting_priority = 30
+	slave_cost = { energy = 500 }
+	modifier = {
+		species_leader_exp_gain = 0.5
+		planet_jobs_ruler_produces_mult = 0.1
+		planet_jobs_specialist_produces_mult = 0.1
+		planet_pop_assemblers_upkeep_mult = 0.25
+	}
+	ai_weight = { weight = 1000 }
+}
+
+##################### 通用特质 #####################
+# 丰姿怡丽 2
+trait_coquettish = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_coquettish.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		MONSTER
+		CG_compatible_species_archetype
+	}
+	sorting_priority = 30
+	slave_cost = { energy = 500 }
+	modifier = {
+		planet_crime_add = -0.2
+		pop_job_trade_mult = 0.2
+	}
+	opposites = {
+		"trait_DC_ethic_asceticism"
+		"trait_DC_ethic_parasite_mind"
+		"trait_holy_suc"
+	}
+	growing_modifier = {
+		pop_growth_speed = 0.2
+		pop_growth_speed_reduction = -0.1
+	}
+	custom_tooltip_with_modifiers = trait_coquettish_tooltip
+}
+
+# 永远发情 2	
+trait_forever_naughty = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_forever_naughty.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		PARASITE
+		MONSTER
+		CG_compatible_species_archetype
+	}
+	sorting_priority = 30
+	opposites = {
+		"trait_DC_ethic_asceticism"
+		"trait_DC_ethic_parasite_mind"
+		"trait_heartless_shojo"
+		"trait_holy_suc"
+	}
+	modifier = {
+		pop_happiness = 0.1
+		planet_pops_food_upkeep_mult = 0.1
+		planet_researchers_produces_mult = -0.1
+	}
+	slave_cost = { energy = 800 }
+	growing_modifier = {
+		planet_amenities_add = 0.2
+		pop_amenities_usage_mult = -0.4
+	}
+	custom_tooltip_with_modifiers = trait_forever_naughty_tooltip
+}
+
+# 性瘾者 -4
+trait_sex_addiction = {
+	cost = -4
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_sex_addiction.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		PARASITE
+		MONSTER
+		CG_compatible_species_archetype
+	}
+	sorting_priority = 30
+	opposites = {
+		"trait_DC_ethic_asceticism"
+		"trait_DC_ethic_parasite_mind"
+		"trait_heartless_shojo"
+		"trait_holy_suc"
+	}
+	slave_cost = { energy = -500 }
+	modifier = {
+		pop_amenities_usage_mult = 0.2
+		planet_crime_add = 0.3
+		planet_pops_consumer_goods_upkeep_mult = 0.2
+	}
+	growing_modifier = {
+		pop_growth_speed_reduction = 0.1
+	}
+	assembling_modifier = {
+		planet_pop_assembly_organic_mult = -0.15
+	}
+	custom_tooltip_with_modifiers = trait_sex_addiction_tooltip
+}
+
+#裸露癖好
+trait_like_nudity = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_like_nudity.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		PARASITE
+		MONSTER
+		CG_compatible_species_archetype
+	}
+	sorting_priority = 30
+	opposites = {
+		"trait_DC_ethic_asceticism"
+		"trait_DC_ethic_parasite_mind"
+		"trait_heartless_shojo"
+		"trait_holy_suc"
+	}
+	slave_cost = { energy = 500 }
+	modifier = {
+		planet_pops_consumer_goods_upkeep_mult = -0.35
+		pop_housing_usage_mult = -0.2
+	}
+	assembling_modifier = {
+		planet_pop_assembly_organic_add = 1.5
+	}
+	custom_tooltip_with_modifiers = trait_like_nudity_tooltip
+}
+
+############高级特质############
+# 性器快感增幅 2
+trait_sexual_pleasure_increase = {
+	cost = 4
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_sexual_pleasure_increase.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		PARASITE
+		MONSTER
+		CG_compatible_species_archetype
+	}
+	initial = no
+	randomized = no
+	opposites = {
+		"trait_DC_ethic_asceticism"
+		"trait_DC_ethic_parasite_mind"
+		"trait_heartless_shojo"
+		"trait_holy_suc"
+		"trait_soul_flesh_link"
+	}
+	prerequisites = {
+		"tech_gene_remodeling"
+	}
+	slave_cost = { energy = 1000 }
+	modifier = {
+		planet_erotic_produces_mult = 0.75
+		planet_jobs_unity_produces_mult = 0.2
+		leaders_cost_mult = -0.25
+	}
+}
+
+# 性欲传教士
+trait_lust_missionary = {
+	cost = 3
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_lust_missionary.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		PARASITE
+		MONSTER
+		CG_compatible_species_archetype
+	}
+	initial = no
+	randomized = no
+	opposites = {
+		"trait_DC_ethic_asceticism"
+		"trait_DC_ethic_parasite_mind"
+		"trait_heartless_shojo"
+		"trait_holy_suc"
+	}
+	prerequisites = {
+		"tech_gene_remodeling"
+	}
+	slave_cost = { energy = 1000 }
+	modifier = {
+		pop_happiness = 0.2
+		pop_growth_speed = 0.25
+		pop_housing_usage_mult = -0.2
+	}
+	growing_modifier = {
+		pop_government_ethic_attraction = 2
+		pop_ethics_shift_speed_mult = 1.5
+	}
+}
+
+# 淫欲科研增幅
+trait_lust_tech_up = {
+	cost = 4
+	icon = "gfx/interface/icons/traits/lust_tech_up.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		PARASITE
+		MONSTER
+		LOVEMACHINE
+		YGWAWA
+		CG_compatible_species_archetype
+	}
+	initial = no
+	randomized = no
+	opposites = {
+		"trait_DC_ethic_asceticism"
+		"trait_DC_ethic_parasite_mind"
+		"trait_heartless_shojo"
+		"trait_holy_suc"
+		"trait_cortex_biochip"
+	}
+	prerequisites = {
+		"tech_gene_remodeling"
+	}
+	slave_cost = { energy = 1000 }
+	custom_tooltip_with_modifiers = trait_lust_tech_up_tooltip
+	growing_modifier = {
+		planet_researchers_produces_mult = 1
+		planet_jobs_society_research_produces_mult = 0.6
+		planet_jobs_physics_research_produces_mult = 0.6
+		planet_jobs_engineering_research_produces_mult = 0.6
+		planet_erotic_upkeep_mult = 0.2
+	}
+}
+
+# 血脉优势 2
+trait_blood_superiority = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/trait_blood_superiority.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		PARASITE
+		CG_compatible_species_archetype
+	}
+	initial = no
+	randomized = no
+	opposites = {
+		"trait_holy_suc"
+		"trait_DC_ethic_asceticism"
+		"trait_DC_ethic_parasite_mind"
+	}
+	slave_cost = { energy = 500 }
+	modifier = {
+		army_morale_damage_mult = 1
+		pop_growth_speed = -0.1
+		planet_pops_organics_food_upkeep_mult = -0.2
+		leader_lifespan_add = 25
+		pop_government_ethic_attraction = 0.75
+	}
+}
+
+# 灵肉链接 3
+trait_soul_flesh_link = {
+	cost = 3
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_soul_flesh_link.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		Lust_Girl
+		PARASITE
+		MONSTER
+		CG_compatible_species_archetype
+	}
+	initial = yes
+	randomized = no
+	opposites = {
+		"trait_holy_suc"
+		"trait_sexual_pleasure_increase"
+		"trait_DC_ethic_asceticism"
+		"trait_DC_ethic_parasite_mind"
+	}
+	slave_cost = { energy = 1500 }
+	modifier = {
+		species_empire_size_mult = -0.1
+		planet_jobs_unity_produces_mult = 0.2
+		pop_growth_speed = 0.1
+		pop_amenities_usage_add = -0.5
+	}
+	ai_weight = { weight = 50 }
+}
+
+# 野兽伙伴 2
+trait_animal_partner = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_animal_partner.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		Lust_Girl
+		PARASITE
+		MONSTER
+		CG_compatible_species_archetype
+	}
+	initial = yes
+	randomized = no
+	opposites = {
+		"trait_holy_suc"
+		"trait_sexual_pleasure_increase"
+		"trait_DC_ethic_asceticism"
+		"trait_DC_ethic_parasite_mind"
+	}
+	slave_cost = { energy = 500 }
+	modifier = {
+		planet_jobs_ruler_produces_mult = 0.1
+		planet_jobs_worker_produces_mult = 0.1
+		armies_upkeep_mult = -0.3
+		army_damage_mult = 0.4
+		army_morale_damage_mult = 0.4
+		army_morale = -0.2
+	}
+	ai_weight = { weight = 50 }
+}
+
+# 脑域芯片 3
+trait_cortex_biochip = {
+	cost = 3
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_cortex_biochip.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		Lust_Girl
+		PARASITE
+		MONSTER
+		CG_compatible_species_archetype
+	}
+	initial = yes
+	randomized = no
+	opposites = {
+		"trait_holy_suc"
+		"trait_lust_tech_up"
+		"trait_DC_ethic_asceticism"
+		"trait_DC_ethic_parasite_mind"
+	}
+	slave_cost = { energy = 500 }
+	modifier = {
+		planet_jobs_society_research_produces_mult = 0.1
+		planet_jobs_physics_research_produces_mult = 0.1
+		planet_jobs_engineering_research_produces_mult = 0.1
+		planet_pops_consumer_goods_upkeep_mult = -0.3
+		species_empire_size_mult = -0.1
+	}
+	ai_weight = { weight = 50 }
+}
+
+trait_brain_activation = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_brain_activation.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		CG_compatible_species_archetype
+	}
+	sorting_priority = 30
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	modifier = {
+		species_leader_exp_gain = 1
+		planet_jobs_society_research_produces_mult = 1
+		planet_jobs_physics_research_produces_mult = 1
+		planet_jobs_engineering_research_produces_mult = 1
+		pop_growth_speed = -10
+		pop_happiness = -0.3
+	}
+}
+
+trait_brain_broken = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_brain_broken.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		CG_compatible_species_archetype
+	}
+	sorting_priority = 30
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	modifier = {
+		species_leader_exp_gain = -1
+		planet_jobs_society_research_produces_mult = -10
+		planet_jobs_physics_research_produces_mult = -10
+		planet_jobs_engineering_research_produces_mult = -10
+		species_empire_size_mult = -1
+		pop_growth_speed = -10
+	}
+}
+
+#劣化丧女
+trait_bereavement = {
+	cost = -3
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_bereavement.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		CG_compatible_species_archetype
+	}
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	opposites = {
+		"trait_coquettish"
+		"trait_bright"
+		"trait_lust_missionary"
+	}
+	slave_cost = { energy = -3000 }
+	modifier = {
+		pop_growth_speed = 0.4
+		planet_jobs_unity_produces_mult = -10
+		planet_jobs_food_produces_mult = 1
+		army_morale_damage_mult = 3
+		planet_livestock_food_produces_mult = -1
+		planet_jobs_society_research_produces_mult = -0.35
+		planet_jobs_physics_research_produces_mult = -0.35
+		planet_jobs_engineering_research_produces_mult = -0.35
+		pop_environment_tolerance = 0.8
+	}
+	ai_weight = { weight = 50 }
+}
+
+#劣化身体
+trait_bereavement_body = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_bereavement_body.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		CG_compatible_species_archetype
+	}
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	opposites = {
+		"trait_skillful"
+	}
+	slave_cost = { energy = -1000 }
+	modifier = {
+		planet_livestock_food_produces_mult = -0.5
+	}
+	ai_weight = { weight = 50 }
+}
+
+#劣化性器
+trait_bereavement_genitals = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_bereavement_genitals.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		CG_compatible_species_archetype
+	}
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	slave_cost = { energy = -1000 }
+	modifier = {
+		planet_livestock_food_produces_mult = -0.5
+	}
+	ai_weight = { weight = 50 }
+}
+
+#渴望劣化
+trait_want_bereavement = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_bereavement.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		CG_compatible_species_archetype
+	}
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	slave_cost = { energy = -200 }
+	modifier = {
+		planet_jobs_society_research_produces_mult = -0.05
+		planet_jobs_physics_research_produces_mult = -0.05
+		planet_jobs_engineering_research_produces_mult = -0.05
+	}
+	ai_weight = { weight = 50 }
+}
+
+#应急储备
+trait_emergency_reserve = {
+	cost = 0
+	icon = "gfx/interface/icons/governments/civics/civic_brain_remodeling.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+	}
+	sorting_priority = 30
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	slave_cost = { energy = 1500 }
+	modifier = {
+		species_empire_size_mult = -0.5
+		planet_pops_consumer_goods_upkeep_mult = -0.5
+		pop_amenities_usage_mult = -0.5
+	}
+}
+
+#奴役抗拒：虐杀淫魔
+trait_enslavement_struggle = {
+	cost = 0
+	icon = "gfx/interface/icons/governments/civics/civic_lust_guro.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		CG_compatible_species_archetype
+	}
+	sorting_priority = 30
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	slave_cost = { energy = -200 }
+	modifier = {
+		pop_cat_slave_happiness = -0.1
+	}
+	randomized = no
+}
+
+#奴役抗拒：至尊女族
+trait_enslavement_resistance = {
+	cost = 0
+	icon = "gfx/interface/icons/governments/civics/civic_fanatic_feminism.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		CG_compatible_species_archetype
+	}
+	sorting_priority = 30
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	modifier = {
+		planet_jobs_produces_mult = 0.3
+		planet_jobs_slave_produces_mult = -0.5
+		pop_cat_slave_happiness = -0.1
+	}
+	randomized = no
+}
+
+#性奴渴望
+trait_all_slave = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_all_slave.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		CG_compatible_species_archetype
+	}
+	sorting_priority = 30
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	slave_cost = { energy = 500 }
+	modifier = {
+		pop_citizen_happiness = -0.05
+		pop_cat_slave_happiness = 0.2
+	}
+	randomized = no
+}
+
+#脑虫共生
+trait_crazy_brain = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_crazy_brain.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		CG_compatible_species_archetype
+	}
+	sorting_priority = 30
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { from = { NOT = { has_valid_civic = civic_crazy_brain } } }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	leader_age_min = 4
+	leader_age_max = 12
+	slave_cost = { energy = 5000 }
+	modifier = {
+		leader_lifespan_add = -56
+		species_leader_exp_gain = 1
+		pop_growth_speed = -0.5
+	}
+	custom_tooltip_with_modifiers = trait_crazy_brain_tooltip
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_crazy_brain }
+		}
+		planet_jobs_physics_research_produces_mult = 3.5
+		planet_jobs_society_research_produces_mult = 3.5
+		planet_jobs_engineering_research_produces_mult = 3.5
+	}
+}
+
+#绝媚娇娃
+trait_sex_baby = {
+	cost = 0
+	icon = "gfx/interface/icons/governments/civics/civic_sex_baby.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		CG_compatible_species_archetype
+	}
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	ai_weight = { weight = 50 }
+	slave_cost = { energy = 3000 }
+}
+
+# 雌伏起源 Origin FIS
+trait_suc_parthenogenesis = {
+	cost = -1
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_suc_parthenogenesis.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		CG_compatible_species_archetype
+	}
+	allowed_origins = {
+		origin_female_in_shadow
+	}
+	opposites = {
+		trait_lv_all_male
+		trait_lv_futanari
+		trait_lv_androgynous
+		trait_lv_large_penis
+		trait_lv_huge_penis
+		trait_lv_multiple_penises
+		trait_lv_high_volume_ejaculations
+		trait_lv_aphrodisiac_cum
+		trait_lv_addictive_cum
+		trait_lv_small_penis
+		trait_lv_all_female
+	}
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	modifier = {
+		pop_growth_speed = -0.8
+	}
+	ai_weight = { weight = 50 }
+}
+
+################深渊魅魔###############
+#色欲种子
+trait_suc_lust_seed = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_suc_lust_seed.dds"
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+}
+
+#欢愉之花
+trait_suc_flower_joy = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_suc_flower_joy.dds"
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	modifier = {
+		pop_happiness = 0.05
+	}
+}
+
+#淫欲核心
+trait_suc_lust_core = {
+	cost = -1
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_suc_lust_core.dds"
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	modifier = {
+		pop_happiness = 0.05
+	}
+}
+
+#深渊魅魔
+trait_suc_abyssal_succubus = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/SUC_traits/trait_suc_abyssal_succubus.dds"
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	modifier = {
+		planet_pops_food_upkeep_mult = -10
+		planet_pops_consumer_goods_upkeep_mult = -10
+		planet_pops_love_juice_upkeep_add = 1
+	}
+}  

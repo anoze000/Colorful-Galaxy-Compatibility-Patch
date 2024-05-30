@@ -1,0 +1,101 @@
+planet_erotic = {
+    parent = planet_jobs_productive
+    generate_mult_modifiers = {
+        produces
+        cost
+        upkeep
+    }
+    generate_add_modifiers = {
+        produces
+    }
+    triggered_produces_modifier = {
+        key = planet_erotic_organic
+        modifier_types = {
+            mult
+        }
+        trigger = {
+            is_robot_pop = no
+        }
+    }
+    modifier_category = pop
+}
+
+planet_tentacle_urinal = {
+    parent = planet_jobs_productive
+    generate_mult_modifiers = {
+        produces
+        upkeep
+    }
+    modifier_category = pop
+}
+
+planet_tentacle = {
+    parent = planet_jobs_productive
+    generate_mult_modifiers = {
+        produces
+        upkeep
+    }
+    modifier_category = pop
+}
+
+planet_lovejuicer = {
+    parent = planet_jobs_productive
+    generate_mult_modifiers = {
+        produces
+        upkeep
+    }
+    generate_add_modifiers = {
+        produces
+    }
+    triggered_produces_modifier = {
+        key = planet_lovejuicer_organic
+        modifier_types = {
+            mult
+        }
+        trigger = {
+            is_robot_pop = no
+        }
+    }
+    modifier_category = pop
+}
+
+planet_holyclergy = {
+    parent = planet_jobs_productive
+    generate_mult_modifiers = {
+        produces
+        upkeep
+    }
+    modifier_category = pop
+}
+
+planet_beauty = {
+    parent = planet_jobs_productive
+    generate_mult_modifiers = {
+        produces
+        cost
+        upkeep
+    }
+    generate_add_modifiers = {
+        produces
+    }
+    triggered_produces_modifier = {
+        key = planet_beauty_organic
+        modifier_types = {
+            mult
+        }
+        trigger = {
+            is_robot_pop = no
+        }
+    }
+    modifier_category = pop
+}
+
+planet_lbm = {
+    parent = planet_jobs_productive
+    generate_mult_modifiers = {
+        produces
+        cost
+        upkeep
+    }
+    modifier_category = pop
+}
