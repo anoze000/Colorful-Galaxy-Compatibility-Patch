@@ -1,5 +1,5 @@
 # 这些建筑重要性较低，被覆盖问题不大
-# not very important buildings, be covered is ok
+# not very important buildings, be overwritten is ok
 
 @buildings_t1 = 1
 @buildings_t2 = 2
