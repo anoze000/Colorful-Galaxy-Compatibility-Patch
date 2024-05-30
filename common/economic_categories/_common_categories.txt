@@ -291,6 +291,19 @@ ships = {
 			has_ship_owner_type = galactic_community
 		}
 	}
+	
+	triggered_cost_modifier = {
+		key = ship_nanite_swarmer
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+		}
+
+		trigger = {
+			is_scope_valid = yes
+			is_ship_size = nanite_swarmer
+		}
+	}
 
 	triggered_cost_modifier = {
 		key = ship_corvette
