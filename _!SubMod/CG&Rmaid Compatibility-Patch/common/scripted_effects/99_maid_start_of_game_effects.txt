@@ -122,9 +122,35 @@ generate_machine_maid_start_buildings_and_districts = {
 	}
 }
 generate_machine_maid_start_pops_and_others = {
-	generate_servitor_secondary_species_no_pops = yes
+	if = {
+		limit = { last_created_species = { has_trait = trait_noxious } }
+		modify_species = {
+			species = last_created_species
+			remove_trait = trait_noxious
+		}
+	}
+	
 	# 基础 女仆13 机器10 手办10
 	# 探险 女仆10 机器7  手办6
+	last_created_species = {
+		save_event_target_as = last_created_species
+		set_species_flag = original_organic_species_of_@root.owner
+		if = {
+			limit = { has_trait = trait_noxious }
+			modify_species = {
+				species = THIS
+				remove_trait = trait_noxious
+			}
+		}
+		set_citizenship_type = {
+			country = root.owner
+			type = citizenship_organic_trophy
+		}
+		set_living_standard = {
+			country = root.owner
+			type = living_standard_organic_trophy
+		}
+	}
 	if = { #探险协议-4手办
 		limit = {
 			owner = { has_valid_civic = civic_machine_exploration_protocol }
@@ -158,19 +184,41 @@ generate_machine_maid_start_pops_and_others = {
 			}
 		}
 	}
-
 	owner = {
-		create_species = {
-			name = "maid's_working_bot"
-			plural = "maid's_working_bot"
-			class = MACHINE
-			namelist = this
-			portrait = "default_robot"
-			traits = {
-				trait = "trait_machine_unit"
-				trait = "trait_working_machine"
-				trait = "trait_robot_bulky"
-				trait = "trait_robot_high_maintenance"
+		if = {
+			limit = {
+				owner_main_species = {
+					is_species_class = LBM
+				}
+			}
+			create_species = {
+				name = "maid's_working_bot"
+				plural = "maid's_working_bot"
+				class = LBM
+				namelist = this
+				portrait = "LustMachine"
+				traits = {
+					trait = "trait_DC_ethic_lust_skynet"
+					trait = "trait_machine_desire_body"
+					trait = "trait_working_machine"
+					trait = "trait_lv_custom_dildo_attachment"
+					trait = "trait_lv_synth_breasts"
+				}
+			}
+		}
+		else = {
+			create_species = {
+				name = "maid's_working_bot"
+				plural = "maid's_working_bot"
+				class = MACHINE
+				namelist = this
+				portrait = "default_robot"
+				traits = {
+					trait = "trait_machine_unit"
+					trait = "trait_working_machine"
+					trait = "trait_robot_bulky"
+					trait = "trait_robot_high_maintenance"
+				}
 			}
 		}
 		last_created_species = {
@@ -679,4 +727,3 @@ generate_servitor_secondary_species_no_pops = {
 		}
 	}
 }
-

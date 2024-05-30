@@ -1,6 +1,9 @@
 # 这些建筑重要性较低，被覆盖问题不大
-# not very important buildings, be covered is ok
+# not very important buildings, be overwritten is ok
 building_sentinel_posts = {
+	#	|PR转化|
+	exempt_from_ai_planet_specialization = yes
+
 	base_buildtime = @b1_time
 
 	category = government
@@ -76,7 +79,7 @@ building_sentinel_posts = {
 building_commercial_zone = {
 	base_buildtime = @b1_time
 
-	exempt_from_ai_planet_specialization = no
+	exempt_from_ai_planet_specialization = yes	# |PR转化|	no
 	category = trade
 
 	potential = {

@@ -1,0 +1,220 @@
+civic_machine_warbots = {
+	potential = {
+		authority = {
+			OR = {
+				value = auth_ancient_machine_intelligence
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}
+		}
+	}
+	possible = {
+		civics = {
+			NOT = {
+				value = civic_machine_servitor
+			}
+		}
+	}
+	random_weight = { base = @civic_default_random_weight }
+	ai_weight = { 
+		base = @ai_civic_default_base_weight 
+		modifier = {
+			factor = @ai_civic_personality_match_factor
+			OR = {
+				has_ai_personality = exterminators
+			}
+		}
+	}
+	description = civic_tooltip_machine_warbots_effects
+	modifier = {
+		councilor_gestalt_legion_exp_gain = @gestalt_civic_node_xp_rate
+		army_damage_mult = 0.2
+		armies_upkeep_mult = -0.2
+	}
+}
+civic_machine_toxic_baths = {
+	playable = { has_toxoids = yes }
+	ai_playable = { has_toxoids = yes }
+	description = "civic_tooltip_machine_toxic_baths_effects"
+	potential = {
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence 
+				value = auth_lust_skynet
+			}
+		}
+	}
+	possible = {
+		origin = { NOT = { value = origin_life_seeded } }
+		civics = {
+			NOR = {
+				value = civic_machine_servitor
+				value = civic_machine_crafters
+				value = civic_machine_paradise_lost
+			}
+		}
+	}
+	random_weight = {
+		base = @civic_uncommon_random_weight
+	}
+	ai_weight = { 
+		base = @ai_civic_uncommon_base_weight 
+	}
+	modifier = {
+		councilor_gestalt_growth_exp_gain = @gestalt_civic_node_xp_rate
+	}
+}
+civic_machine_exploration_protocol = {
+	playable = {
+		has_first_contact_dlc = yes
+	}
+
+	ai_playable = {
+		has_first_contact_dlc = yes
+	}
+
+	description = "civic_machine_exploration_protocol_effects"
+	modification = {
+		add = {
+			has_technology = tech_subspace_drive
+		}
+		remove = {
+			has_technology = tech_jump_drive_1
+		}
+	}
+	potential = {
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence 
+				value = auth_lust_skynet
+			}
+		}
+	}
+
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_machine_terminator
+				value = civic_machine_assimilator
+				value = civic_machine_hyperspace_specialty
+			}
+		}
+	}
+
+	modifier = {
+		councilor_gestalt_legion_exp_gain = @gestalt_civic_node_xp_rate
+		first_contact_speed_mult = 0.2
+		station_observers_unity_produces_add = 3
+	}
+
+	swap_type = {
+		description = "civic_machine_exploration_protocol_effects_maid"
+
+		trigger = { #No scope in empire creation but still checked. Otherwise, country scope is valid and the latter condition is checked
+			AND = {
+				is_scope_valid = yes
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+	}
+
+	random_weight = {
+		base = 0
+	}
+}
+
+civic_idyllic_bloom = {
+	playable = {
+		host_has_dlc = "Plantoids Species Pack"
+	}
+	ai_playable = {
+		host_has_dlc = "Plantoids Species Pack"
+	}
+	description = "civic_tooltip_idyllic_bloom_effects"
+	modification = {
+		add = {
+			custom_tooltip = {
+				has_country_flag = idyllic_bloom
+			}
+		}
+		remove = {
+			always = yes
+		}
+	}
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		species_class = {
+			OR = {
+				value = FUN
+				value = PLANT
+			}
+		}
+		origin = {
+			NOT = {
+				value = origin_void_dwellers
+			}
+		}
+		civics = {
+			NOR = {
+				text = civic_tooltip_not_relentless_industrialists
+				value = civic_relentless_industrialists
+				value = civic_corporate_relentless_industrialists
+			}
+		}
+	}
+	random_weight = {
+		base = @civic_rare_random_weight
+		modifier = {
+			set = 0
+			has_global_flag = game_started
+		}
+	}
+}
+civic_hive_idyllic_bloom = {
+	playable = {
+		host_has_dlc = "Plantoids Species Pack"
+	}
+	ai_playable = {
+		host_has_dlc = "Plantoids Species Pack"
+	}
+	description = "civic_tooltip_hive_idyllic_bloom_effects"
+	modification = {
+		add = {
+			custom_tooltip = {
+				has_country_flag = idyllic_bloom
+			}
+		}
+		remove = {
+			always = yes
+		}
+	}
+	potential = {
+		authority = { value = auth_hive_mind }
+	}
+	possible = {
+		species_class = {
+			OR = {
+				value = FUN
+				value = PLANT
+			}
+		}
+		origin = {
+			NOT = {
+				value = origin_void_dwellers
+			}
+		}
+	}
+	random_weight = {
+		base = @civic_rare_random_weight
+		modifier = {
+			set = 0
+			has_global_flag = game_started
+		}
+	}
+	modifier = {
+		councilor_gestalt_growth_exp_gain = @gestalt_civic_node_xp_rate
+	}
+}

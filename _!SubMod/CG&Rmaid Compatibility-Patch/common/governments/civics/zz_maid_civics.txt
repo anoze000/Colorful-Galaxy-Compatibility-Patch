@@ -1,6 +1,13 @@
 #失控女仆
 civic_machine_servitor = {
-	potential = { authority = { value = auth_machine_intelligence } }
+	potential = {
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}
+		}
+	}
 	possible = {
 		civics = {
 			NOR = {
@@ -56,7 +63,14 @@ civic_machine_servitor = {
 
 #精工技艺
 civic_machine_crafters = {
-	potential = { authority = { value = auth_machine_intelligence } }
+	potential = {
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}
+		}
+	}
 	possible = {
 		civics = {
 			NOT = {
@@ -123,7 +137,14 @@ civic_machine_paradise_lost = {
 			always = yes
 		}
 	}
-	potential = { authority = { value = auth_machine_intelligence } }
+	potential = {
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}
+		}
+	}
 	possible = {
 		civics = {
 			OR = {
@@ -158,7 +179,14 @@ civic_machine_healthcare = {
 		base = 4
 	}
 	description = "civic_tooltip_civic_machine_healthcare_effects_both"
-	potential = { authority = { value = auth_machine_intelligence } }
+	potential = {
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}
+		}
+	}
 	possible = {
 		civics = {
 			OR = {
@@ -184,7 +212,12 @@ civic_custodian_directives_successor = {
 	modification = no
 	icon = "gfx/interface/icons/governments/civics/civic_custodian_directives.dds"
 	potential = {
-		authority = { value = auth_machine_intelligence }
+		authority = { 
+			OR = {
+				value = auth_machine_intelligence
+				value = auth_lust_skynet
+			}
+		}
 		civics = { value = civic_custodian_directives_successor }
 	}
 	random_weight = { base = 0 }
