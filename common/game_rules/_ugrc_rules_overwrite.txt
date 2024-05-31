@@ -7148,6 +7148,18 @@ should_count_towards_leader_cap = { #是否占用领袖数量
 						has_trait = leader_trait_ruler_hive_mind
 					}
 				}
+				AND = {
+					has_trait = leader_trait_concubine
+					exists = owner
+					owner = {
+						OR = {
+							has_civic = civic_concubine_choose
+							any_subject = {
+								has_civic = civic_concubine_choose
+							}
+						}
+					}
+				}
 			}
 		}
 		AND = { #国防部 MOD

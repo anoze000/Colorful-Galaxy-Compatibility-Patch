@@ -1,6 +1,7 @@
-version="3.12.*"
+version="0.0.1"
 tags={
-	"Species"
+	"Gameplay"
 }
-name="Colorful Galaxy with Lustful Void"
-supported_version="3.12.*"
+name="Colorful Galaxy and Rogue Maid Compatibility Patch"
+supported_version="v3.12.*"
+remote_file_id="3257595282"
