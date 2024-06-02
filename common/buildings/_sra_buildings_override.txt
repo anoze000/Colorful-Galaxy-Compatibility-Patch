@@ -212,15 +212,40 @@ building_SRA_plane_collector = {
 		#兽耳娘
 		produces = {
 			trigger = { owner = { has_technology = tech_KZ_VOY_dilithium_magic } }
-			KZ_VOY_dilithium_crystal = 2000
-			KZ_VOY_zero_g_crystal = 2000
-			KZ_VOY_stellar_core = 2000
-			KZ_VOY_stellar_sakura = 2000
+			KZ_VOY_dilithium_crystal = 200
+			KZ_VOY_zero_g_crystal = 200
+			KZ_VOY_stellar_core = 200
+			KZ_VOY_stellar_sakura = 200
 		}
 		produces = {
 			trigger = { owner = { has_technology = tech_KZ_VOY_dilithium_Resonating } }
-			KZ_VOY_hyperstructure_alloys = 2000
+			KZ_VOY_hyperstructure_alloys = 200
 		}
+		#魔物娘
+		produces = {
+			trigger = {
+				owner = {
+					is_monster_girl = yes
+				}
+			}
+			lust_crystal = 200
+		}
+		produces = {
+			trigger = {
+				owner = { 
+					has_technology = tech_sexual_slavery_industry_legalization
+				}
+			}
+			best_slaves = 200
+		}
+		produces = {
+			trigger = {
+				owner = { 
+					has_technology = tech_lewd_virgin_princess
+				}
+			}
+			sr_lewd_princess = 200
+		}t
 	}
 	resources = {
 		category = planet_buildings

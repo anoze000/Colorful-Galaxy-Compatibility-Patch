@@ -1627,6 +1627,25 @@ trait_lv_futanari = {
 		trait_lv_all_female
 		trait_lv_all_male
 		trait_lv_androgynous
+		trait_angel
+		trait_ANGEL_robot
+		trait_angel_fallen
+		trait_ANGEL_F_robot
+		trait_dickman
+		trait_lamia
+		trait_LAMIA_robot
+		trait_Gynoid
+		trait_slime
+		trait_SLIME_robot
+		trait_succubus
+		trait_SUCCUBUS_robot
+		trait_vampire
+		rait_VAMPIRE_robot
+		trait_zombie_girl
+		trait_futanari
+		trait_hidden_futa
+		trait_hidden_futa_common
+		trait_huge_penis_futa
 	}
 	
 	species_potential_add = {
@@ -1679,6 +1698,14 @@ trait_lv_androgynous = {
 		trait_lv_all_female
 		trait_lv_futanari
 		trait_lv_all_male
+		trait_angel
+		trait_ANGEL_robot
+		trait_angel_fallen
+		trait_ANGEL_F_robot
+		trait_futanari
+		trait_hidden_futa
+		trait_hidden_futa_common
+		trait_huge_penis_futa
 	}
 	
 	species_potential_add = {

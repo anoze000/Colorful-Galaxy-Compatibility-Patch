@@ -144,40 +144,45 @@ is_dc_cor_archetype = {
 #是丑陋物种
 is_ugly_pop = {
 	#污女视角的“丑陋”
-	species = {
-		NOR = {
-			#这里都是非“有机生物”
-			is_archetype = LOVEMACHINE
-			is_archetype = HOLYROBOT
-			is_archetype = ROBOT
-			is_archetype = MACHINE
-			is_archetype = LITHOID
-			is_archetype = YGWAWA
-			#有机DC附属物种
-			is_archetype = MONSTER
-			is_archetype = PARASITE
-			is_archetype = Erotic_Creation
-			#DC物种
-			is_archetype = Magical_Bitch
-			is_archetype = Magical_Girl
-			is_archetype = Lust_Girl
-			is_archetype = TENTACLE
-			#涅托
-			is_archetype = NYTO
-			is_archetype = EILD
-			#舰R
-			is_archetype = WARSHIPGIRL
-			is_archetype = SHENHAI
-			#联合舰队
-			is_archetype = UNITED_FLEET
-			#星舰
-			is_archetype = STARSHIPGIRLS
-			#突击莉莉
-			is_archetype = LILY
-			#灰烬战线
-			is_archetype = Dolls
-		}		
+	NOR = {
+		species = {
+			OR = {
+				#这里都是非“有机生物”
+				is_archetype = LOVEMACHINE
+				is_archetype = HOLYROBOT
+				is_archetype = ROBOT
+				is_archetype = MACHINE
+				is_archetype = LITHOID
+				is_archetype = YGWAWA
+				#有机DC附属物种
+				is_archetype = MONSTER
+				is_archetype = PARASITE
+				is_archetype = Erotic_Creation
+				#DC物种
+				is_archetype = Magical_Bitch
+				is_archetype = Magical_Girl
+				is_archetype = Lust_Girl
+				is_archetype = TENTACLE
+				#涅托
+				is_archetype = NYTO
+				is_archetype = EILD
+				#舰R
+				is_archetype = WARSHIPGIRL
+				is_archetype = SHENHAI
+				#联合舰队
+				is_archetype = UNITED_FLEET
+				#星舰
+				is_archetype = STARSHIPGIRLS
+				#突击莉莉
+				is_archetype = LILY
+				#灰烬战线
+				is_archetype = Dolls
+			}		
+		}
+		# 缤纷魔物娘
+		is_monster_girl = yes
 	}
+	
 }
 
 #能否做性奴
@@ -232,6 +237,8 @@ is_canbe_sex_slave = {
 				has_trait = trait_DC_ethic_asceticism
 			}		
 		}
+		#缤纷魔物娘
+		is_monster_girl = yes
 	}
 }
 
@@ -373,6 +380,42 @@ can_fill_specialist_job_trigger = {
 		if = {
 			limit = { divinity_right_to_work_job_check_trigger_exempt = no }
 			divinity_right_to_work_job_check_trigger_specialist = yes
+		}
+	}
+}
+
+# 缤纷魔物娘是否扶她魔物娘判断
+is_futa_monster_girl = {
+	optimize_memory
+	species = {
+		OR = {
+			has_trait = trait_angel
+			has_trait = trait_ANGEL_robot
+			has_trait = trait_angel_fallen
+			has_trait = trait_ANGEL_F_robot
+			AND = {
+				OR = {
+					has_trait = trait_you_are_monster_girl
+					has_trait = trait_dickman
+					has_trait = trait_lamia
+					has_trait = trait_LAMIA_robot
+					has_trait = trait_Gynoid
+					has_trait = trait_slime
+					has_trait = trait_SLIME_robot
+					has_trait = trait_succubus
+					has_trait = trait_SUCCUBUS_robot
+					has_trait = trait_vampire
+					has_trait = trait_VAMPIRE_robot
+					has_trait = trait_zombie_girl
+				}
+				OR = {
+					has_trait = trait_futanari
+					has_trait = trait_hidden_futa
+					has_trait = trait_hidden_futa_common
+					has_trait = trait_huge_penis_futa
+					has_trait = trait_lv_futanari
+				}
+			}
 		}
 	}
 }

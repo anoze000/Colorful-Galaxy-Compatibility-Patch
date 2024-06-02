@@ -1,0 +1,2020 @@
+#色情岗位下限
+erotic_jobs_mult_floor = {
+	base = 0.1
+	divide = value:job_total_output_modifier|JOB|$JOB$|RESOURCE|$RESOURCE$|
+}
+
+#色情岗位产出
+erotic_jobs_modifier = {
+	add = value:job_total_output_modifier|JOB|$JOB$|RESOURCE|$RESOURCE$|
+	add = modifier:erotic_jobs_produces_mult
+	divide = value:job_total_output_modifier|JOB|$JOB$|RESOURCE|$RESOURCE$|
+	modifier = {
+		exists = pop
+		species = {
+			is_monster_girl = no
+		}
+		set = 1
+	}
+	min = value:erotic_jobs_mult_floor|JOB|$JOB$|RESOURCE|$RESOURCE$|
+}
+
+erotic_jobs_modifier_mult = {
+	base =  1
+	mult = value:erotic_jobs_modifier|JOB|$JOB$|RESOURCE|$RESOURCE$|
+	mult = $MULT_CAT$:$MULT$|$PARA$|$PARA_VAL$|
+}
+
+#色情岗位基础修正加成
+erotic_jobs_add_modifier = {
+	add = value:erotic_jobs_modifier|JOB|$JOB$|RESOURCE|$RESOURCE$|
+	subtract = 1
+	mult = modifier:$MODIFIER$
+}
+
+# 技工岗位数量
+num_planet_technician = {
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_generator
+		}
+		potential = {
+			owner = { is_hive_empire = no }
+		}
+		mode = add
+		mult = 2
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_generator
+		}
+		potential = {
+			owner = { is_hive_empire = yes }
+		}
+		mode = add
+		mult = 3
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_generator_uncapped
+		}
+		potential = {
+			owner = { is_hive_empire = no }
+		}
+		mode = add
+		mult = 2
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_generator_uncapped
+		}
+		potential = {
+			owner = { is_hive_empire = yes }
+		}
+		mode = add
+		mult = 3
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_hab_energy
+		}
+		potential = {
+			owner = { is_hive_empire = no }
+		}
+		mode = add
+		mult = 3
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_hab_energy
+		}
+		potential = {
+			owner = { is_hive_empire = yes }
+		}
+		mode = add
+		mult = 4
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_rw_nexus
+		}
+		mode = add
+		mult = 2
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_rw_generator
+		}
+		potential = {
+			owner = { is_hive_empire = no }
+		}
+		mode = add
+		mult = 10
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_rw_generator
+		}
+		potential = {
+			owner = { is_hive_empire = yes }
+		}
+		mode = add
+		mult = 15
+	}
+	modifier = {
+		add = 1
+		has_active_building = building_energy_grid
+	}
+	modifier = {
+		add = 2
+		has_active_building = building_energy_nexus
+	}
+	modifier = {
+		add = 2
+		has_active_building = building_waste_reprocessing_center
+	}
+}
+
+# 农夫岗位数量
+num_planet_farmer = {
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_farming
+		}
+		potential = {
+			owner = { is_hive_empire = no }
+		}
+		mode = add
+		mult = 2
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_farming
+		}
+		potential = {
+			owner = { is_hive_empire = yes }
+		}
+		mode = add
+		mult = 3
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_farming_uncapped
+		}
+		potential = {
+			owner = { is_hive_empire = no }
+		}
+		mode = add
+		mult = 2
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_farming_uncapped
+		}
+		potential = {
+			owner = { is_hive_empire = yes }
+		}
+		mode = add
+		mult = 3
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_hab_housing
+		}
+		potential = {
+			OR = {
+				has_designation = col_habitat_farming
+				has_designation = col_habitat_gestalt_farming
+			}
+		}
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_rw_farming
+		}
+		potential = {
+			owner = { is_hive_empire = no }
+		}
+		mode = add
+		mult = 10
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_rw_farming
+		}
+		potential = {
+			owner = { is_hive_empire = yes }
+		}
+		mode = add
+		mult = 15
+	}
+	modifier = {
+		has_active_building = building_food_processing_facility
+		add = 1
+	}
+	modifier = {
+		has_active_building = building_food_processing_center
+		add = 2
+	}
+	modifier = {
+		has_active_building = building_baol_organic_plant
+		add = 2
+	}
+}
+
+# 渔夫岗位数量
+num_planet_angler = {
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_farming
+		}
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_farming_uncapped
+		}
+		mode = add
+	}
+	modifier = {
+		has_active_building = building_food_processing_facility
+		add = 1
+	}
+	modifier = {
+		has_active_building = building_food_processing_center
+		add = 2
+	}
+	modifier = {
+		has_active_building = building_baol_organic_plant
+		add = 2
+	}
+}
+
+# 矿工岗位数量
+num_planet_miner = {
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_mining
+		}
+		potential = {
+			owner = { is_hive_empire = no }
+		}
+		mode = add
+		mult = 2
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_mining
+		}
+		potential = {
+			owner = { is_hive_empire = yes }
+		}
+		mode = add
+		mult = 3
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_mining_uncapped
+		}
+		potential = {
+			owner = { is_hive_empire = no }
+		}
+		mode = add
+		mult = 2
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_mining_uncapped
+		}
+		potential = {
+			owner = { is_hive_empire = yes }
+		}
+		mode = add
+		mult = 3
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_hab_mining
+		}
+		potential = {
+			owner = { is_hive_empire = no }
+		}
+		mode = add
+		mult = 3
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_hab_mining
+		}
+		potential = {
+			owner = { is_hive_empire = yes }
+		}
+		mode = add
+		mult = 4
+	}
+	modifier = {
+		add = 1
+		has_active_building = building_mineral_purification_plant
+	}
+	modifier = {
+		add = 2
+		has_active_building = building_mineral_purification_hub
+	}
+}
+
+#冶金师岗位数量
+num_planet_foundry = {
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_industrial
+		}
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_hab_industrial
+		}
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_rw_industrial
+		}
+		mult = 5
+		mode = add
+	}
+	modifier = {
+		mult = 2
+		OR = {
+			owner = {country_uses_consumer_goods = no}
+			has_designation = col_foundry
+			has_designation = col_capital_foundry
+			has_designation = col_habitat_foundry
+			AND = {
+				owner = {
+					is_machine_empire = yes
+					country_uses_consumer_goods = yes
+				}
+				NOR = {
+					has_designation = col_factory
+					has_designation = col_capital_factory
+					has_designation = col_habitat_factory
+				}
+			}
+		}
+	}
+	
+	complex_trigger_modifier = {
+		trigger = num_districts
+		potential = {
+			NOR = {
+				has_designation = col_habitat_factory
+				has_designation = col_capital_factory
+			}
+			exists = owner
+			owner = {
+				is_void_dweller_empire = yes
+			}
+		}
+		parameters = {
+			type = district_hab_industrial
+		}
+		mode = add
+	}
+
+	complex_trigger_modifier = {
+		trigger = num_districts
+		potential = {
+			owner = {
+				is_machine_empire = yes
+				has_valid_civic = civic_machine_servitor
+			}
+			has_designation = col_mac_factory
+		}
+		parameters = {
+			type = district_hab_industrial
+		}
+		mode = subtract
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_rw_industrial
+		}
+		potential = {
+			owner = {
+				is_machine_empire = yes
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		mode = subtract
+	}
+	modifier = {
+		mult = 0
+		owner = {
+			is_machine_empire = no
+		}
+		OR = {
+			has_designation = col_factory
+			has_designation = col_capital_factory
+			has_designation = col_habitat_factory
+		}
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_arcology_arms_industry
+		}
+		mult = 6
+		mode = add
+	}
+	modifier = {
+		add = 2
+		OR = {
+			has_active_building = building_foundry_1
+			has_active_building = building_foundry_2
+			has_active_building = building_foundry_3
+		}
+	}
+}
+
+#工匠岗位数量
+num_planet_artisan = {
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_industrial
+		}
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_hab_industrial
+		}
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_rw_industrial
+		}
+		mult = 5
+		mode = add
+	}
+	modifier = {
+		mult = 2
+		owner = {
+			is_machine_empire = no
+		}
+		OR  ={
+			has_designation = col_factory
+			has_designation = col_capital_factory
+			has_designation = col_habitat_factory
+		}
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		potential = {
+			owner = {
+				is_machine_empire = yes
+				has_valid_civic = civic_machine_servitor
+			}
+			has_designation = col_mac_factory
+		}
+		parameters = {
+			type = district_hab_industrial
+		}
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		potential = {
+			OR = {
+				has_designation = col_habitat_factory
+				has_designation = col_capital_factory
+			}
+			owner = {
+				OR  ={
+					is_regular_empire = yes
+					AND = {
+						is_gestalt = yes
+						country_uses_consumer_goods = yes
+					}
+				}
+				is_void_dweller_empire = yes
+			}
+		}
+		parameters = {
+			type = district_hab_industrial
+		}
+		mode = add
+	}
+	modifier = {
+		mult = 0
+		OR = {
+			has_designation = col_foundry
+			has_designation = col_capital_foundry
+			has_designation = col_habitat_foundry
+			AND = {
+				owner = { is_machine_empire = yes }
+				NOR = {
+					has_designation = col_factory
+					has_designation = col_capital_factory
+					has_designation = col_habitat_factory
+				}
+			}
+		}
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_rw_industrial
+		}
+		potential = {
+			owner = {
+				is_machine_empire = yes
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_srw_commercial
+		}
+		mult = 1
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_arcology_civilian_industry
+		}
+		mult = 6
+		mode = add
+	}
+	modifier = {
+		add = 2
+		OR = {
+			has_active_building = building_factory_1
+			has_active_building = building_factory_2
+			has_active_building = building_factory_3
+		}
+	}
+}
+
+num_planet_trader = {
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_srw_commercial
+		}
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_rw_commercial
+		}
+		mult = 2
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_commercial_zone
+		}
+		mult = 1
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_commercial_megaplex
+		}
+		mult = 2
+		mode = add
+	}
+	modifier = {
+		mult = 2
+		exists = owner
+		owner = {
+			has_active_tradition = tr_mercantile_commercial_enterprise
+		}
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+			}
+			colony_type = col_habitat_trade
+		}
+		parameters = {
+			type = district_hab_housing
+		}
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = count_deposits
+		parameters = {
+			type = d_freeports
+		}
+		mult = 4
+		mode = add
+	}
+}
+
+num_planet_whore = {
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_hab_red_lights
+		}
+		mode = add
+	}
+	mult = owner.value:hab_void_dweller_jobs
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_red_lights
+		}
+		mult = 3
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_arcology_red_lights
+		}
+		mult = 9
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_rw_red_lights
+		}
+		mult = 15
+		mode = add
+	}
+	modifier = {
+		divide = 3
+		exists = owner
+		owner = {
+			has_technology = tech_housing_2
+		}
+	}
+	modifier = {
+		factor = 4
+		exists = owner
+		owner = {
+			has_technology = tech_housing_2
+		}
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_red_lights
+		}
+		potential = {
+			owner = {
+				has_active_tradition = tr_virtuality_4
+			}
+		}
+		mult = 2
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_arcology_red_lights
+		}
+		potential = {
+			owner = {
+				has_active_tradition = tr_virtuality_4
+			}
+		}
+		mult = 6
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_rw_red_lights
+		}
+		potential = {
+			owner = {
+				has_active_tradition = tr_virtuality_4
+			}
+		}
+		mult = 10
+		mode = add
+	}
+	modifier = {
+		add = 2
+		has_building = building_lust_crystal_purification_center_2
+	}
+}
+
+#被转化为淫能建筑的建筑数量
+num_converted_regluar_buildings = {
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_holo_theatres
+		}
+		mult = 2
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_hyper_entertainment_forum
+		}
+		mult = 3
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_bureaucratic_1
+		}
+		mult = 2
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_bureaucratic_2
+		}
+		mult = 3
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_bureaucratic_3
+		}
+		mult = 4
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_temple
+		}
+		mult = 2
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_holotemple
+		}
+		mult = 3
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_sacred_nexus
+		}
+		mult = 4
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_research_lab_1
+		}
+		mult = 2
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_research_lab_2
+		}
+		mult = 3
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_research_lab_3
+		}
+		mult = 4
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_stronghold
+		}
+		mult = 2
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_fortress
+		}
+		mult = 3
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_chemical_plant
+		}
+		mult = 2
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_crystal_plant
+		}
+		mult = 2
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_refinery
+		}
+		mult = 2
+		mode = add
+	}
+}
+
+num_converted_hive_buildings = {
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_hive_node
+		}
+		mult = 2
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_hive_cluster
+		}
+		mult = 3
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_hive_confluence
+		}
+		mult = 4
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_research_lab_1
+		}
+		mult = 2
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_research_lab_2
+		}
+		mult = 3
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_research_lab_3
+		}
+		mult = 4
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_stronghold
+		}
+		mult = 2
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_fortress
+		}
+		mult = 3
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_chemical_plant
+		}
+		mult = 2
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_crystal_plant
+		}
+		mult = 2
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_refinery
+		}
+		mult = 2
+		mode = add
+	}
+	
+}
+
+num_converted_machine_buildings = {
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_uplink_node
+		}
+		mult = 2
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_network_junction
+		}
+		mult = 3
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_system_conflux
+		}
+		mult = 4
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_research_lab_1
+		}
+		mult = 2
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_research_lab_2
+		}
+		mult = 3
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_research_lab_3
+		}
+		mult = 4
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_stronghold
+		}
+		mult = 2
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_fortress
+		}
+		mult = 3
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_chemical_plant
+		}
+		mult = 2
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_crystal_plant
+		}
+		mult = 2
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_buildings
+		parameters = {
+			type = building_refinery
+		}
+		mult = 2
+		mode = add
+	}
+	
+}
+
+num_zro_seed_allow = {
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_shr_prostitution
+		}
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_shr_fornication
+		}
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_shr_promiscuous
+		}
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = district_shr_lecherous
+		}
+		mode = add
+	}
+}
+
+#统计物种人口数量
+num_species_pops = {
+	complex_trigger_modifier = {
+		trigger = count_owned_pop
+		parameters = {
+			limit = {
+				is_species_class = $SPECIES$
+			}
+		}
+		mode = add
+	}
+}
+
+#统计特质人口数量
+num_trait_pops = {
+	complex_trigger_modifier = {
+		trigger = count_owned_pop
+		parameters = {
+			limit = {
+				has_trait = $TRAIT$
+			}
+		}
+		mode = add
+	}
+}
+
+#嫖客产出凝聚力
+whorer_unity_produces = {
+	complex_trigger_modifier = {
+		trigger = count_owned_pop
+		parameters = {
+			limit = {
+				OR = {
+					has_job = whore
+					has_job = Gynoid_whore
+				}
+			}
+		}
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = count_owned_pop
+		parameters = {
+			limit = {
+				has_trait = trait_whorer
+			}
+		}
+		mode = divide
+	}
+	mult = 4
+	subtract = 0.2
+	max = 0.6
+}
+
+#特定区划数量
+num_specific_district = {
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = $DISTRICTS$
+		}
+		mode = add
+	}
+}
+
+#蛰伏加成
+hibernation_mult = {
+	modifier = {
+		exists = growing_species
+		OR = {
+			AND = {
+				growing_species = {
+					has_trait = trait_pc_desert_preference
+				}
+				NOT = {
+					is_planet_class = pc_desert
+				}
+			}
+			AND = {
+				growing_species = {
+					has_trait = trait_pc_arid_preference
+				}
+				NOT = {
+					is_planet_class = pc_arid
+				}
+			}
+			AND = {
+				growing_species = {
+					has_trait = trait_pc_savannah_preference
+				}
+				NOT = {
+					is_planet_class = pc_savannah
+				}
+			}
+			AND = {
+				growing_species = {
+					has_trait = trait_pc_tropical_preference
+				}
+				NOT = {
+					is_planet_class = pc_tropical
+				}
+			}
+			AND = {
+				growing_species = {
+					has_trait = trait_pc_continental_preference
+				}
+				NOT = {
+					is_planet_class = pc_continental
+				}
+			}
+			AND = {
+				growing_species = {
+					has_trait = trait_pc_ocean_preference
+				}
+				NOT = {
+					is_planet_class = pc_ocean
+				}
+			}
+			AND = {
+				growing_species = {
+					has_trait = trait_pc_arctic_preference
+				}
+				NOT = {
+					is_planet_class = pc_arctic
+				}
+			}
+			AND = {
+				growing_species = {
+					has_trait = trait_pc_tundra_preference
+				}
+				NOT = {
+					is_planet_class = pc_tundra
+				}
+			}
+			AND = {
+				growing_species = {
+					has_trait = trait_pc_alpine_preference
+				}
+				NOT = {
+					is_planet_class = pc_alpine
+				}
+			}
+		}
+		add = 0.4
+	}
+	modifier = {
+		exists = growing_species
+		OR = {
+			AND = {
+				growing_species = {
+					OR = {
+						has_trait = trait_pc_desert_preference
+						has_trait = trait_pc_arid_preference
+						has_trait = trait_pc_savannah_preference
+					}
+				}
+				NOR = {
+					is_planet_class = pc_desert
+					is_planet_class = pc_arid
+					is_planet_class = pc_savannah
+				}
+			}
+			AND = {
+				growing_species = {
+					OR = {
+						has_trait = trait_pc_tropical_preference
+						has_trait = trait_pc_continental_preference
+						has_trait = trait_pc_ocean_preference
+					}
+				}
+				NOR = {
+					is_planet_class = pc_tropical
+					is_planet_class = pc_continental
+					is_planet_class = pc_ocean
+				}
+			}
+			AND = {
+				growing_species = {
+					OR = {
+						has_trait = trait_pc_arctic_preference
+						has_trait = trait_pc_tundra_preference
+						has_trait = trait_pc_alpine_preference
+					}
+				}
+				NOR = {
+					is_planet_class = pc_arctic
+					is_planet_class = pc_tundra
+					is_planet_class = pc_alpine
+				}
+			}
+		}
+		add = 0.4
+	}
+	modifier = {
+		exists = owner
+		owner = {
+			has_technology = tech_colonization_2
+		}
+		subtract = 0.05
+	}
+	modifier = {
+		exists = owner
+		owner = {
+			has_technology = tech_colonization_3
+		}
+		subtract = 0.05
+	}
+	modifier = {
+		exists = owner
+		owner = {
+			has_technology = tech_colonization_4
+		}
+		subtract = 0.05
+	}
+	modifier = {
+		exists = owner
+		owner = {
+			has_technology = tech_colonization_5
+		}
+		subtract = 0.05
+	}
+	modifier = {
+		exists = growing_species
+		growing_species = {
+			has_trait = trait_void_dweller_1
+		}
+		is_artificial = no
+		is_ideal = no
+		add = 0.15
+	}
+	modifier = {
+		OR = {
+			AND = {
+				exists = growing_species
+				growing_species = {
+					OR = {
+						has_trait = trait_pc_gaia_preference
+						has_trait = trait_pc_ringworld_habitable_preference
+					}
+				}
+				is_ideal = no
+			}
+			AND = {
+				exists = growing_species
+				growing_species = {
+					has_trait = trait_pc_habitat_preference
+				}
+				is_artificial = no
+			}
+			is_planet_class = pc_nuked
+		}
+		add = 1
+	}
+	modifier = {
+		is_ideal = yes
+		mult = 0
+	}
+	min = 0
+	max = 1
+}
+
+#蛇瞳加成
+sensual_snake_eyes_mult = {
+	base = 10
+	complex_trigger_modifier = {
+		trigger = count_owned_pop
+		parameters = {
+			limit = {
+				NOT = {
+					is_monster_girl_species = {
+						SPECIES = LAMIA
+					}
+				}
+			}
+		}
+		mode = add
+	}
+	max = 20
+}
+
+#魔物娘人口
+num_monster_girl = {
+	complex_trigger_modifier = {
+		trigger = count_owned_pop
+		parameters = {
+			limit = {
+				is_monster_girl = yes
+			}
+		}
+		mode = add
+	}
+}
+
+#底层人口数
+num_worker_pops = {
+	complex_trigger_modifier = {
+		trigger = count_owned_pop
+		parameters = {
+			limit = {
+				OR = {
+					is_pop_category = worker
+					is_pop_category = slave
+					is_pop_category = simple_drone
+				}
+			}
+		}
+		mode = add
+	}
+	max = $MAX$
+}
+
+#蛇池性爱
+num_snake_pool_sex = {
+	complex_trigger_modifier = {
+		trigger = count_owned_pop
+		parameters = {
+			limit = {
+				is_monster_girl_species = {
+					SPECIES = LAMIA
+				}
+			}
+		}
+		mode = add
+	}
+	subtract = 1
+	mult = 0.025
+	subtract = -0.75
+	min = -0.75
+	max = 2
+}
+
+#淫姬的忍耐力
+lewd_princess_endure_species  ={
+	modifier = {
+		add = 1
+		has_trait = trait_easy_to_climax
+	}
+	modifier = {
+		add = -1
+		has_trait = trait_difficult_to_climax
+	}
+	modifier = {
+		add = 1
+		is_monster_girl_species = {
+			SPECIES = SUCCUBUS
+		}
+	}
+	modifier = {
+		add = -1
+		is_monster_girl_species = {
+			SPECIES = ANGEL
+		}
+	}
+	mult = 0.05
+	add = 1
+}
+
+lewd_princess_endure_skill = {
+	complex_trigger_modifier = {
+		trigger = has_skill
+		mode = add
+	}
+	square = yes
+	subtract = 1
+	mult = -0.01
+	add = 1
+}
+
+lewd_princess_level_gain = {
+	complex_trigger_modifier = {
+		trigger = has_skill
+		mode = add
+	}
+	square = yes
+	mult = -0.1
+	complex_trigger_modifier = {
+		trigger = has_skill
+		mult = 2
+		mode = add
+	}
+}
+
+#更低领袖招募概率
+MGHG_leader_lower_chance = {
+	base = 1
+	mult = MGHG_paragon_chance_negative
+}
+
+#领袖随机器
+MGHG_leader_randomizer = {
+	base = 1
+	modifier = {
+		add = 1
+		is_$ETHIC$ = yes
+	}
+	modifier = {
+		factor = 0
+		has_global_flag = $LEADER_ID$
+	}
+	modifier = {
+		factor = 0
+		has_country_flag = dismissed_$LEADER_ID$
+	}
+}
+
+#机器人同化
+sexual_energy_robotic_assimilation = {
+	complex_trigger_modifier = {
+		trigger = count_owned_pop
+		parameters = {
+			limit = {
+				NAND = {
+					has_trait = trait_biochemical_Gynoid
+					is_same_species = owner_main_species
+				}
+			}
+		}
+		mode = add
+	}
+}
+
+num_abstinence_convent_sisters = {
+	complex_trigger_modifier = {
+		trigger = count_owned_leader
+		parameters = {
+			limit = {
+				has_trait = leader_trait_abstinence_convent_sisters
+			}
+		}
+		mode = add
+	}
+	mult = $FACTOR$
+	max = 95
+}
+
+T_crime_cost = {
+	base = 20
+	complex_trigger_modifier = {
+		trigger = planet_crime
+		mode = add
+	}
+}
+
+#隐藏扶她加成
+hidden_futa_mult = {
+	complex_trigger_modifier = {
+		trigger = free_amenities
+		mode = add
+	}
+	mult = -0.1
+	add = 1
+	min = -1
+	max = 3
+}
+
+#射精之光
+ejaculatory_light_mult = {
+	complex_trigger_modifier = {
+		trigger = count_owned_pop
+		parameters = {
+			limit = {
+				OR = {
+					is_monster_girl = no
+					AND = {
+						NOT = {
+							is_monster_girl_species = {
+								SPECIES = ANGEL
+							}
+						}
+						OR = {
+							has_trait = trait_futanari
+							has_trait = trait_hidden_futa_common
+							has_trait = trait_huge_penis_futa
+							has_trait = trait_lv_futanari
+						}
+					}
+				}
+				is_robot_pop = no
+				species = {
+					NOT = { is_archetype = LITHOID }
+				}
+			}
+		}
+		mode = add
+	}
+	mult = 0.3
+	max = 3
+}
+
+#处女生育
+virgin_birth_mult = {
+	complex_trigger_modifier = {
+		trigger = count_owned_pop
+		parameters = {
+			limit = {
+				has_trait = trait_virgin_birth
+			}
+		}
+		mode = add
+	}
+	max = 40
+}
+
+#圣痕
+holy_stigmata_mult = {
+	complex_trigger_modifier = {
+		trigger = count_owned_pop
+		parameters = {
+			limit = {
+				is_monster_girl_species = {
+					SPECIES = ANGEL
+				}
+				pop_has_ethic = ethic_spiritualist
+			}
+		}
+		mode = add
+	}
+	max = 50
+}
+
+#圣痕
+holy_stigmata_hive_mult = {
+	complex_trigger_modifier = {
+		trigger = count_owned_pop
+		parameters = {
+			limit = {
+				is_species_class = ANGEL
+				has_trait = trait_hive_mind
+				pop_has_ethic = ethic_gestalt_consciousness
+			}
+		}
+		mode = add
+	}
+	max = 62.5
+}
+
+#淫能亲和人口数
+sexual_energy_affinity_pop_num = {
+	complex_trigger_modifier = {
+		trigger = count_owned_pop
+		parameters = {
+			limit = {
+				is_sexual_energy_affinity = yes
+			}
+		}
+		mode = add
+	}
+}
+
+#娼妓侍奉倍率
+fabricated_book_28 = {
+	base = 1
+	add = modifier:all_technology_research_speed
+	mult = prev.trigger:has_system_trade_value
+}
+
+#淫能等级
+lust_psionic_level = {
+	base = 0
+	modifier = {
+		add = 1
+		species = {
+			has_trait = trait_latent_psionic
+		}
+	}
+	modifier = {
+		add = 2
+		has_trait = leader_trait_psionic
+		has_chosen_one_leader_trait = no
+	}
+	modifier = {
+		add = 3
+		has_chosen_one_leader_trait = yes
+	}
+	modifier = {
+		factor = 0
+		is_sexual_energy_affinity = no
+	}
+	modifier = {
+		add = 1
+		species = {
+			is_monster_girl = yes
+		}
+	}
+	modifier = {
+		add = 1
+		is_sex_mind_species = yes
+	}
+	modifier = {
+		add = 1
+		is_sex_addiction_leader = yes
+	}
+	modifier = {
+		add = 2
+		is_slave_leader = yes
+	}
+	modifier = {
+		add = 1
+		owner = {
+			is_gestalt = yes
+		}
+		has_skill >= 4
+	}
+	modifier = {
+		add = 1
+		owner = {
+			is_gestalt = yes
+		}
+		has_skill >= 8
+	}
+	modifier = {
+		add = 1
+		owner = {
+			is_gestalt = yes
+		}
+		has_skill >= 10
+	}
+	modifier = {
+		add = 1
+		OR = {
+			is_lewd_princess_gene_leader = yes
+			species = {
+				has_trait = trait_son_of_Nurgler
+			}
+		}
+	}
+	modifier = {
+		add = 1
+		has_trait = leader_trait_Slaaanesh
+	}
+	modifier = {
+		add = 2
+		has_trait = leader_trait_lewd_princess_council
+		owner= {
+			is_gestalt = yes
+		}
+	}
+	modifier = {
+		set = 9
+		is_super_lust_psionic_leader = yes
+	}
+	modifier = {
+		add = 1
+		owner = {
+			is_gestalt = yes
+		}
+		is_ruler = yes
+	}
+	modifier = {
+		add = 1
+		has_trait = leader_trait_lewd_princess
+		OR = {
+			has_skill >= 8
+			has_chosen_one_leader_trait = yes
+		}
+	}
+	modifier = {
+		add = 1
+		is_lewd_demon_princess = yes
+	}
+	modifier = {
+		set = 12
+		OR = {
+			has_trait = leader_trait_Reyep_commander
+			has_trait = leader_trait_Reyep_scientist
+			has_trait = leader_trait_Reyep_official
+		}
+	}
+	modifier = {
+		add = 1
+		has_trait = leader_trait_sex_prophet
+	}
+	modifier = {
+		add = 1
+		exists = owner
+		owner = {
+			has_modifier = fabricated_book_29
+		}
+	}
+	modifier = {
+		add = 1
+		exists = owner
+		owner = {
+			has_valid_civic = civic_lust_psionic_fire
+		}
+	}
+	modifier = {
+		set = 66
+		has_leader_flag = legendary_Slaaanesh_girl
+	}
+}
+
+lust_psionic_level_gain = {
+	add = value:lust_psionic_level
+	mult = value:lust_psionic_level
+	mult = value:lust_psionic_level
+	mult = 0.02
+	add = value:lust_psionic_level
+}
+
+num_livestock_pop = {
+	complex_trigger_modifier = {
+		trigger = count_owned_pop
+		parameters = {
+			limit = {
+				is_lithoid = no
+				is_monster_girl = yes
+				has_job = livestock
+			}
+		}
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = count_owned_pop
+		parameters = {
+			limit = {
+				is_lithoid = no
+				is_monster_girl = no
+				NOT = { has_trait = trait_dickman }
+				has_job = livestock
+			}
+		}
+		mult = 0.5
+		mode = add
+	}
+	max = 10
+}
+
+num_MGHG_jobs = {
+	complex_trigger_modifier = {
+		trigger = count_owned_pop
+		parameters = {
+			limit = {
+				has_job = $JOB$
+			}
+		}
+		mode = add
+	}
+}
+
+mult_num_MGHG_jobs = {
+	complex_trigger_modifier = {
+		trigger = count_owned_pop
+		parameters = {
+			limit = {
+				has_job = $JOB$
+			}
+		}
+		mode = add
+	}
+	mult = $MULT$
+}
+
+num_diffusion_pops = {
+	complex_trigger_modifier = {
+		trigger = count_owned_pop
+		parameters = {
+			limit = {
+				is_monster_girl = no
+				species = {
+					NOT = {
+						has_trait = trait_sexual_energy_affinity
+					}
+					OR = {
+						is_archetype = BIOLOGICAL
+						is_archetype = LITHOID
+					}
+				}
+			}
+		}
+		mode = add
+	}
+	max = value:mult_num_MGHG_jobs|JOB|whore|MULT|5|
+}
+
+#名媛产出加成
+complex_harlots_mult = {
+	add = value:scripted_modifier_mult|MODIFIER|planet_complex_harlots_produces_mult|
+	add = value:scripted_modifier_mult|MODIFIER|planet_harlots_produces_mult|
+	subtract = 1
+}
+
+#名妓贸易加成
+complex_harlots_trade_mult = {
+	add = value:scripted_modifier_mult|MODIFIER|planet_complex_harlots_produces_mult|
+	add = value:scripted_modifier_mult|MODIFIER|planet_harlots_produces_mult|
+	add = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
+	subtract = 2
+}
+
+#妓女产出加成
+whores_mult = {
+	add = value:scripted_modifier_mult|MODIFIER|planet_whores_produces_mult|
+	add = value:scripted_modifier_mult|MODIFIER|planet_harlots_produces_mult|
+	add = -2
+}
+
+#妓女、名妓人数
+num_whore_and_sex_trader = {
+	base = 0
+	add = planet.value:num_MGHG_jobs|JOB|sex_trader|
+	mult = $FACTOR$
+	add = planet.value:num_MGHG_jobs|JOB|whore|
+}
+
+#妓女溢价贸易
+whore_premium = {
+	add = planet.trigger:free_amenities
+	mult = $FACTOR$
+	divide = planet.value:num_whore_and_sex_trader|FACTOR|2|
+	modifier = {
+		has_job = sex_trader
+		mult = 2
+	}
+	min = 0
+	max = $MAX$
+}
+
+whore_premium_mult = {
+	add = value:whore_premium|FACTOR|$FACTOR$|MAX|$MAX$|
+	modifier = {
+		has_job = whore
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
+	}
+	modifier = {
+		has_job = sex_trader
+		mult = value:complex_harlots_trade_mult
+	}
+}
+
+#犯罪度加成
+crime_buff = {
+	add = planet.trigger:planet_crime
+	mult = $FACTOR$
+}
+
+#王妃效果
+concubine = {
+	add = trigger:has_skill
+	mult = value:councilor_level|TYPE|councilor_concubine_choose_minister|
+}
+
+#魔物娘基因表达
+monster_girl_gene_express = {
+	complex_trigger_modifier = {
+		trigger = count_owned_pop
+		potential = {
+			owner = { NOT = { has_policy_flag = slaves_cannot_express } }
+		}
+		parameters = {
+			limit = {
+				has_trait = trait_sexual_energy_affinity
+				NOT = { has_trait = trait_dickman }
+			}
+		}
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = count_owned_pop
+		potential = {
+			owner = { has_policy_flag = slaves_cannot_express }
+		}
+		parameters = {
+			limit = {
+				has_trait = trait_sexual_energy_affinity
+				NOT = { has_trait = trait_dickman }
+				NOT = { is_pop_category = slave }
+			}
+		}
+		mode = add
+	}
+}
+
+#王妃数量
+num_concubine = {
+	complex_trigger_modifier = {
+		trigger = count_owned_leader
+		parameters = {
+			limit = {
+				has_trait = leader_trait_concubine
+			}
+		}
+		mode = add
+	}
+}
+
+#淫能超频
+sexual_enery_verclocking = {
+	complex_trigger_modifier = {
+		trigger = resource_income_compare
+		parameters = {
+			resource = lust_crystal
+		}
+		mult = 4
+		mode = add
+	}
+	divide = trigger:num_pops
+	max = 10
+	min = 0
+}
+
+#扩充算力
+lewd_princess_computer = {
+	complex_trigger_modifier = {
+		trigger = num_districts
+		parameters = {
+			type = any
+		}
+		mode = add
+	}
+	complex_trigger_modifier = {
+		trigger = free_district_slots
+		mode = add
+	}
+	modifier = {
+		mult = 3
+		uses_district_set = city_world
+	}
+	modifier = {
+		mult = 5
+		uses_district_set = ring_world
+	}
+}

@@ -582,7 +582,7 @@ ap_mind_over_matter = {
 		}
 		NOR ={
 			is_ban_vanilla_ap_country = yes
-			is_nirvana_empire = yes
+			is_nirvana_empire_council = yes
 			is_lily_goverments = yes
 		}
 	}
@@ -817,6 +817,7 @@ ap_become_the_crisis = {
 			NOR = {
 				has_ascension_perk = ap_become_the_crisis
 				has_ascension_perk = ap_cosmogenesis
+				has_ascension_perk = ap_defender_of_the_galaxy
 				has_origin = origin_slavers
 			}
 		}
@@ -1115,6 +1116,7 @@ ap_cosmogenesis = {
 			NOR = {
 				has_ascension_perk = ap_become_the_crisis
 				has_ascension_perk = ap_cosmogenesis
+				has_ascension_perk = ap_defender_of_the_galaxy
 				has_origin = origin_slavers # No crisis for MSI
 			}
 			has_wg_special_authority = no #舰R

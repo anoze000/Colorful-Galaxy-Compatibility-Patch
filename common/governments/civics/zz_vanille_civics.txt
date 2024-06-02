@@ -17,6 +17,7 @@ civic_natural_design = {
 	possible = {
 		origin = {
 			NOR = {
+				value = origin_clone_army
 				value = origin_overtuned
 				value = origin_shroudwalker_apprentice
 				value = origin_cybernetic_creed

@@ -368,7 +368,17 @@ lv_feminization_effect = {
 					pop_has_trait = trait_lv_all_female
 					pop_has_trait = trait_suc_parthenogenesis 
 				}
-				pop_has_trait = trait_lv_futanari
+				OR = {
+					pop_has_trait = trait_lv_futanari
+					pop_has_trait = trait_angel
+					pop_has_trait = trait_ANGEL_robot
+					pop_has_trait = trait_angel_fallen
+					pop_has_trait = trait_ANGEL_F_robot
+					pop_has_trait = trait_futanari
+					pop_has_trait = trait_hidden_futa
+					pop_has_trait = trait_hidden_futa_common
+					pop_has_trait = trait_huge_penis_futa
+				}
 			}
 		}
 		if = {
@@ -447,7 +457,50 @@ lv_feminization_effect = {
 			remove_trait = trait_lv_excess_estrogen
 			remove_trait = trait_lv_femboy05
 			remove_trait = trait_lv_submissive
-			add_trait = trait_lv_futanari
+		}
+		if = {
+			limit = {
+				pop_has_trait = trait_angel
+			}
+			modify_species = {
+				add_trait = trait_hidden_futa
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					pop_has_trait = trait_ANGEL_robot
+					pop_has_trait = trait_angel_fallen
+					pop_has_trait = trait_ANGEL_F_robot
+					pop_has_trait = trait_dickman
+					pop_has_trait = trait_lamia
+					pop_has_trait = trait_LAMIA_robot
+					pop_has_trait = trait_Gynoid
+					pop_has_trait = trait_slime
+					pop_has_trait = trait_SLIME_robot
+					pop_has_trait = trait_succubus
+					pop_has_trait = trait_SUCCUBUS_robot
+					pop_has_trait = trait_vampire
+					pop_has_trait = trait_VAMPIRE_robot
+					pop_has_trait = trait_zombie_girl
+					AND = {
+						pop_has_trait = trait_you_are_monster_girl
+						species = {
+							is_archetype = BIOLOGICAL 
+							is_archetype = LITHOID 
+							is_archetype = ROBOT
+						}
+					}
+				}
+			}
+			modify_species = {
+				add_trait = trait_futanari
+			}
+		}
+		else = {
+			modify_species = {
+				add_trait = trait_lv_futanari
+			}
 		}
 		owner = {
 			add_monthly_resource_mult = {
@@ -568,7 +621,50 @@ lv_feminization_effect = {
 					remove_trait = trait_lv_excess_estrogen
 					remove_trait = trait_lv_femboy05
 					remove_trait = trait_lv_submissive
-					add_trait = trait_lv_futanari
+				}
+				if = {
+					limit = {
+						pop_has_trait = trait_angel
+					}
+					modify_species = {
+						add_trait = trait_hidden_futa
+					}
+				}
+				else_if = {
+					limit = {
+						OR = {
+							pop_has_trait = trait_ANGEL_robot
+							pop_has_trait = trait_angel_fallen
+							pop_has_trait = trait_ANGEL_F_robot
+							pop_has_trait = trait_dickman
+							pop_has_trait = trait_lamia
+							pop_has_trait = trait_LAMIA_robot
+							pop_has_trait = trait_Gynoid
+							pop_has_trait = trait_slime
+							pop_has_trait = trait_SLIME_robot
+							pop_has_trait = trait_succubus
+							pop_has_trait = trait_SUCCUBUS_robot
+							pop_has_trait = trait_vampire
+							pop_has_trait = trait_VAMPIRE_robot
+							pop_has_trait = trait_zombie_girl
+							AND = {
+								pop_has_trait = trait_you_are_monster_girl
+								species = {
+									is_archetype = BIOLOGICAL 
+									is_archetype = LITHOID 
+									is_archetype = ROBOT
+								}
+							}
+						}
+					}
+					modify_species = {
+						add_trait = trait_futanari
+					}
+				}
+				else = {
+					modify_species = {
+						add_trait = trait_lv_futanari
+					}
 				}
 				owner = {
 					add_monthly_resource_mult = {
@@ -680,7 +776,50 @@ lv_full_feminization_effect = {
 			remove_trait = trait_lv_excess_estrogen
 			remove_trait = trait_lv_femboy05
 			remove_trait = trait_lv_submissive
-			add_trait = trait_lv_futanari
+		}
+		if = {
+			limit = {
+				pop_has_trait = trait_angel
+			}
+			modify_species = {
+				add_trait = trait_hidden_futa
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					pop_has_trait = trait_ANGEL_robot
+					pop_has_trait = trait_angel_fallen
+					pop_has_trait = trait_ANGEL_F_robot
+					pop_has_trait = trait_dickman
+					pop_has_trait = trait_lamia
+					pop_has_trait = trait_LAMIA_robot
+					pop_has_trait = trait_Gynoid
+					pop_has_trait = trait_slime
+					pop_has_trait = trait_SLIME_robot
+					pop_has_trait = trait_succubus
+					pop_has_trait = trait_SUCCUBUS_robot
+					pop_has_trait = trait_vampire
+					pop_has_trait = trait_VAMPIRE_robot
+					pop_has_trait = trait_zombie_girl
+					AND = {
+						pop_has_trait = trait_you_are_monster_girl
+						species = {
+							is_archetype = BIOLOGICAL 
+							is_archetype = LITHOID 
+							is_archetype = ROBOT
+						}
+					}
+				}
+			}
+			modify_species = {
+				add_trait = trait_futanari
+			}
+		}
+		else = {
+			modify_species = {
+				add_trait = trait_lv_futanari
+			}
 		}
 		owner = {
 			add_monthly_resource_mult = {
@@ -800,7 +939,50 @@ lv_full_feminization_effect = {
 					remove_trait = trait_lv_excess_estrogen
 					remove_trait = trait_lv_femboy05
 					remove_trait = trait_lv_submissive
-					add_trait = trait_lv_futanari
+				}
+				if = {
+					limit = {
+						pop_has_trait = trait_angel
+					}
+					modify_species = {
+						add_trait = trait_hidden_futa
+					}
+				}
+				else_if = {
+					limit = {
+						OR = {
+							pop_has_trait = trait_ANGEL_robot
+							pop_has_trait = trait_angel_fallen
+							pop_has_trait = trait_ANGEL_F_robot
+							pop_has_trait = trait_dickman
+							pop_has_trait = trait_lamia
+							pop_has_trait = trait_LAMIA_robot
+							pop_has_trait = trait_Gynoid
+							pop_has_trait = trait_slime
+							pop_has_trait = trait_SLIME_robot
+							pop_has_trait = trait_succubus
+							pop_has_trait = trait_SUCCUBUS_robot
+							pop_has_trait = trait_vampire
+							pop_has_trait = trait_VAMPIRE_robot
+							pop_has_trait = trait_zombie_girl
+							AND = {
+								pop_has_trait = trait_you_are_monster_girl
+								species = {
+									is_archetype = BIOLOGICAL 
+									is_archetype = LITHOID 
+									is_archetype = ROBOT
+								}
+							}
+						}
+					}
+					modify_species = {
+						add_trait = trait_futanari
+					}
+				}
+				else = {
+					modify_species = {
+						add_trait = trait_lv_futanari
+					}
 				}
 				owner = {
 					add_monthly_resource_mult = {

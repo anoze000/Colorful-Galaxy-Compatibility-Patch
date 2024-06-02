@@ -319,7 +319,12 @@ lv_prostitution_legislation = {
 # Gender Leadership
 lv_gender_leadership = {
 	potential = {
-		NOT = { owner = { has_authority = auth_machine_intelligence } }
+		owner = { 
+			NOR = {
+				has_authority = auth_machine_intelligence 
+				has_authority = auth_lust_skynet
+			}
+		}
 		is_ai = no
 	}
 	
@@ -359,7 +364,10 @@ lv_gender_leadership = {
 						has_trait = trait_suc_parthenogenesis
 						has_trait = trait_lv_all_female
 					}
-					has_trait = trait_lv_futanari
+					OR = {
+						has_trait = trait_lv_futanari
+						is_futa_monster_girl = yes
+					}
 				}
 			}
 		}
@@ -685,7 +693,10 @@ lv_feminization_degree = {
 				add = 50
 				owner = {
 					AND = {
-						has_trait = trait_lv_futanari
+						OR = {
+							has_trait = trait_lv_futanari
+							is_futa_monster_girl = yes
+						}
 						has_authority = auth_hive_mind
 						NOT = { has_civic = civic_hive_devouring_swarm }
 					}
@@ -752,7 +763,10 @@ lv_feminization_range = {
 								has_trait = trait_suc_parthenogenesis
 								has_trait = trait_lv_all_female
 							}
-							has_trait = trait_lv_futanari
+							OR = {
+								has_trait = trait_lv_futanari
+								is_futa_monster_girl = yes
+							}
 						}
 						has_authority = auth_hive_mind
 						NOT = {

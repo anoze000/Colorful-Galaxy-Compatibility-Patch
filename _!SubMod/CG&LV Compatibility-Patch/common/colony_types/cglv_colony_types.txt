@@ -1,0 +1,142 @@
+##################################
+###     Planet Designation     ###
+##################################
+#root = planet
+@small_planet_threshold = 18
+@free_districts_verylow_threshold = 3
+@free_districts_low_threshold = 5
+@free_districts_medium_threshold = 10
+@free_districts_high_threshold = 15
+@built_districts_low_threshold = 3
+@built_districts_medium_threshold = 4
+@built_districts_high_threshold = 8
+@stickiness = 10
+@stickiness_low = 5
+###
+
+# Sex World #
+
+col_lv_sex = {
+	icon = GFX_colony_type_generator
+
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				NOR = { 
+					has_authority = auth_machine_intelligence 
+					has_authority = auth_lust_skynet
+				}
+				has_civic = civic_machine_assimilator
+				has_civic = civic_machine_servitor				
+			}
+		}
+	}
+
+	planet_modifier = {
+		planet_stability_add = 5
+		planet_amenities_add = 10
+		planet_lv_sex_jobs_produces_mult = 0.35
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_galactic_community_member = yes
+				is_gestalt = no
+			}
+			OR = {
+				is_active_resolution = "resolution_greatergood_five_year_plans"
+				is_active_resolution = "resolution_greatergood_greater_than_ourselves"
+				is_active_resolution = "resolution_greatergood_balance_in_the_middle"
+				is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
+			}
+		}
+		modifier = {
+			planet_jobs_worker_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_galactic_community_member = yes
+				is_gestalt = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_greatergood_five_year_plans"
+				is_active_resolution = "resolution_greatergood_greater_than_ourselves"
+				is_active_resolution = "resolution_greatergood_balance_in_the_middle"
+				is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
+			}
+		}
+		modifier = {
+			planet_jobs_simple_drone_produces_mult = 0.1
+		}
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = 2
+			has_designation = col_lv_sex
+		}
+		modifier = {
+			add = 5
+			OR = {
+				has_modifier = hazardous_weather
+				has_modifier = strong_magnetic_field
+			}
+		}
+		modifier = {
+			add = 2
+			has_building = building_lv_brothel
+		}
+		modifier = {
+			add = 5
+			num_buildings = { type = building_lv_brothel value >= 4 }
+		}
+		modifier = {
+			add = 3
+			has_building = building_lv_bordello
+		}
+		modifier = {
+			add = 8
+			num_buildings = { type = building_lv_bordello value >= 2 }
+		}
+		modifier = {
+			add = 2
+			has_building = building_lv_sexology_labs
+		}
+		modifier = {
+			add = 5
+			num_buildings = { type = building_lv_sexology_labs value >= 4 }
+		}
+		modifier = {
+			add = 3
+			has_building = building_lv_sexology_complexes
+		}
+		modifier = {
+			add = 8
+			num_buildings = { type = building_lv_sexology_complexes value >= 2 }
+		}
+		modifier = {
+			add = 3
+			has_building = building_lv_advanced_sexology_complexes
+		}
+		modifier = {
+			add = 8
+			num_buildings = { type = building_lv_advanced_sexology_complexes value >= 2 }
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				num_buildings = { type = building_lv_brothel value = 0 }
+				num_buildings = { type = building_lv_bordello value = 0 }
+				num_buildings = { type = building_lv_sexology_labs value = 0 }
+				num_buildings = { type = building_lv_sexology_complexes value = 0 }
+				num_buildings = { type = building_lv_advanced_sexology_complexes value = 0 }
+			}
+		}
+	}
+}

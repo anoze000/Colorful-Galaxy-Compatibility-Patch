@@ -353,7 +353,17 @@ planet_event = {
 				limit = {
 					AND = {
 						pop_has_trait = trait_lv_sadistic
-						pop_has_trait = trait_lv_futanari
+						OR = {
+							pop_has_trait = trait_lv_futanari
+							pop_has_trait = trait_angel
+							pop_has_trait = trait_ANGEL_robot
+							pop_has_trait = trait_angel_fallen
+							pop_has_trait = trait_ANGEL_F_robot
+							pop_has_trait = trait_futanari
+							pop_has_trait = trait_hidden_futa
+							pop_has_trait = trait_hidden_futa_common
+							pop_has_trait = trait_huge_penis_futa
+						}
 					}
 					is_non_sapient_robot = no
 					is_enslaved = no
@@ -889,6 +899,7 @@ planet_event = {
 			NOR = {
 				has_authority = auth_hive_mind
 				has_authority = auth_machine_intelligence
+				has_authority = auth_lust_skynet
 			}
 		}
 		has_modifier = titanic_life
@@ -1095,6 +1106,7 @@ planet_event = {
 			NOR = {
 				has_authority = auth_hive_mind
 				has_authority = auth_machine_intelligence
+				has_authority = auth_lust_skynet
 			}
 		}
 		has_modifier = titanic_life
@@ -1464,6 +1476,7 @@ planet_event = {
 			NOR = {
 				has_authority = auth_hive_mind
 				has_authority = auth_machine_intelligence
+				has_authority = auth_lust_skynet
 			}
 		}
 		has_modifier = titanic_life
@@ -1802,6 +1815,7 @@ planet_event = {
 			NOR = {
 				has_authority = auth_hive_mind
 				has_authority = auth_machine_intelligence
+				has_authority = auth_lust_skynet
 			}
 		}
 		has_modifier = titanic_life
@@ -2044,6 +2058,7 @@ planet_event = {
 							has_trait = trait_suc_parthenogenesis
 						}
 						has_trait = trait_lv_futanari
+						is_futa_monster_girl = yes
 					}
 				}
 				if = {
@@ -2298,6 +2313,7 @@ planet_event = {
 							has_trait = trait_suc_parthenogenesis
 						}
 						has_trait = trait_lv_futanari
+						is_futa_monster_girl = yes
 					}
 				}
 				if = {
@@ -2523,6 +2539,7 @@ planet_event = {
 							has_trait = trait_suc_parthenogenesis
 						}
 						has_trait = trait_lv_futanari
+						is_futa_monster_girl = yes
 					}
 				}
 				if = {
@@ -2624,6 +2641,7 @@ planet_event = {
 			NOR = {
 				has_authority = auth_hive_mind
 				has_authority = auth_machine_intelligence
+				has_authority = auth_lust_skynet
 			}
 		}
 		has_modifier = titanic_life
@@ -2864,6 +2882,7 @@ planet_event = {
 								has_trait = trait_suc_parthenogenesis
 							}
 							has_trait = trait_lv_futanari
+							is_futa_monster_girl = yes
 						}
 					}
 					if = {
@@ -3119,6 +3138,7 @@ planet_event = {
 								has_trait = trait_suc_parthenogenesis
 							}
 							has_trait = trait_lv_futanari
+							is_futa_monster_girl = yes
 						}
 					}
 					if = {
@@ -3374,6 +3394,7 @@ planet_event = {
 								has_trait = trait_suc_parthenogenesis
 							}
 							has_trait = trait_lv_futanari
+							is_futa_monster_girl = yes
 						}
 					}
 					if = {

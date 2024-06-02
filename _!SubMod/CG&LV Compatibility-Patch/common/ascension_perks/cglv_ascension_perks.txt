@@ -1,0 +1,55 @@
+# Sexual Mega-projects
+ap_lv_sworld_project = {
+	potential = {
+		OR = {
+			NOR = { 
+				has_authority = auth_machine_intelligence
+				has_authority = auth_lust_skynet 
+			}
+			has_valid_civic = civic_machine_assimilator
+			has_valid_civic = civic_machine_servitor	
+		}
+		NOT = { has_valid_civic = civic_agrarian_idyll }
+		NOT = {
+			has_ascension_perk = ap_lv_sworld_project
+		}
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_technology_housing_2"
+			has_technology = tech_housing_2
+		}
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
+		}
+	}
+
+	on_enabled = {
+		custom_tooltip = "lv_allow_sexual_engineering"
+		give_technology = { tech = tech_lv_lactation_drugs }
+		give_technology = { tech = tech_lv_generalized_sexology_studies }
+		give_technology = { tech = tech_lv_gem_incubation_insight }
+	}
+
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 2
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 2
+			has_ethic = ethic_materialist
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_materialist
+		}
+	}
+}

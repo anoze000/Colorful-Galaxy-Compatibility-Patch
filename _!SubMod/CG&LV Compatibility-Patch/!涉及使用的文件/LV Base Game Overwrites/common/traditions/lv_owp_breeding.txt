@@ -1,0 +1,49 @@
+########################
+###     Breeding     ###
+########################
+
+tr_lv_breeding_adopt = {
+	
+	possible = {
+		OR = {
+			NOT = { has_authority = auth_machine_intelligence }
+			has_civic = civic_machine_assimilator
+			has_civic = civic_machine_servitor	
+		}
+		is_ai = no
+	}
+	
+	modifier = {
+		pop_growth_speed = 0.20
+	}
+	
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 2
+			has_civic = civic_lv_sex_crazed_breeders
+		}			
+		modifier = {
+			factor = 2
+			has_civic = civic_lv_sex_contractors
+		}			
+		modifier = {
+			factor = 2
+			has_civic = civic_lv_nymphic_hosts
+		}
+		modifier = {
+			factor = 2
+			has_civic = civic_lv_propagating_throng
+		}
+		modifier = {
+			factor = 2
+			has_civic = civic_lv_brood_swarm
+		}
+		modifier = {
+			factor = 2
+			has_trait = trait_lv_breeder_hips
+		}	
+	}
+}
+
+###

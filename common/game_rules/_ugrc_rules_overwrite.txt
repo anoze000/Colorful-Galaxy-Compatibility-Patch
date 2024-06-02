@@ -1167,6 +1167,7 @@ can_modify_species = { #可以修饰物种
 										has_origin = origin_life_seeded
 										has_origin = origin_ocean_machines
 										has_origin = origin_void_machines
+										has_origin = origin_shattered_ring
 									}
 								}
 							}
@@ -1192,17 +1193,6 @@ can_modify_species = { #可以修饰物种
 						has_trait = trait_self_modified
 					}
 					#is_same_species = root
-				}
-			}
-			# Ritualistic Implants
-			custom_tooltip = {
-				fail_text = "CANNOT_MODIFY_RITUALISTIC_IMPLANTS_SPECIES"
-				OR = {
-					AND = {
-						root = { has_country_flag = can_genemod_cyborg_ritualistic_pops }
-						has_cybernetic_creed_trait = yes
-					}
-					has_cybernetic_creed_trait = no
 				}
 			}
 		}
@@ -4155,7 +4145,7 @@ can_resettle_pop = { #可以重新安置pop
 			owner = {
 				is_fallen_empire = no
 				NOT = {
-					has_active_tradition = tr_virtuality_finish
+					has_active_tradition = tr_virtuality_adopt
 				}
 
 			}

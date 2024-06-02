@@ -955,6 +955,14 @@ trait_suc_parthenogenesis = {
 	opposites = {
 		trait_lv_all_male
 		trait_lv_futanari
+		trait_angel
+		trait_ANGEL_robot
+		trait_angel_fallen
+		trait_ANGEL_F_robot
+		trait_futanari
+		trait_hidden_futa
+		trait_hidden_futa_common
+		trait_huge_penis_futa
 		trait_lv_androgynous
 		trait_lv_large_penis
 		trait_lv_huge_penis

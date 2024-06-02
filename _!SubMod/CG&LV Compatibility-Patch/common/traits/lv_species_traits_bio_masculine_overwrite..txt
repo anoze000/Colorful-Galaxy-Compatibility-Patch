@@ -467,7 +467,17 @@ trait_lv_equine_penis = {
 		weight = 1
 		modifier = {
 			factor = 10
-			has_trait = trait_lv_futanari
+			OR = {
+				has_trait = trait_lv_futanari
+				has_trait = trait_angel
+				has_trait = trait_ANGEL_robot
+				has_trait = trait_angel_fallen
+				has_trait = trait_ANGEL_F_robot
+				has_trait = trait_futanari
+				has_trait = trait_hidden_futa
+				has_trait = trait_hidden_futa_common
+				has_trait = trait_huge_penis_futa
+			}
 		}
 		modifier = {
 			factor = 15
@@ -625,6 +635,14 @@ trait_lv_all_male = {
 	opposites = {
 		trait_lv_all_female
 		trait_lv_futanari
+		trait_angel
+		trait_ANGEL_robot
+		trait_angel_fallen
+		trait_ANGEL_F_robot
+		trait_futanari
+		trait_hidden_futa
+		trait_hidden_futa_common
+		trait_huge_penis_futa
 		trait_lv_androgynous
 		trait_lv_large_breasts
 		trait_lv_huge_breasts

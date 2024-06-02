@@ -84,7 +84,17 @@ country_event = {
 										pop_has_trait = trait_suc_parthenogenesis
 									}
 									pop_has_trait = trait_lv_all_male
-									pop_has_trait = trait_lv_futanari
+									OR = {
+										pop_has_trait = trait_lv_futanari
+										pop_has_trait = trait_angel
+										pop_has_trait = trait_ANGEL_robot
+										pop_has_trait = trait_angel_fallen
+										pop_has_trait = trait_ANGEL_F_robot
+										pop_has_trait = trait_futanari
+										pop_has_trait = trait_hidden_futa
+										pop_has_trait = trait_hidden_futa_common
+										pop_has_trait = trait_huge_penis_futa
+									}
 								}
 								is_robot_pop = no
 							}
@@ -123,7 +133,17 @@ planet_event = {
 							pop_has_trait = trait_suc_parthenogenesis
 						}
 						pop_has_trait = trait_lv_all_male
-						pop_has_trait = trait_lv_futanari
+						OR = {
+							pop_has_trait = trait_lv_futanari
+							pop_has_trait = trait_angel
+							pop_has_trait = trait_ANGEL_robot
+							pop_has_trait = trait_angel_fallen
+							pop_has_trait = trait_ANGEL_F_robot
+							pop_has_trait = trait_futanari
+							pop_has_trait = trait_hidden_futa
+							pop_has_trait = trait_hidden_futa_common
+							pop_has_trait = trait_huge_penis_futa
+						}
 						pop_has_trait = trait_lv_intercompatible_womb
 						pop_has_trait = trait_lv_intercompatible_sperm 
 					}
@@ -220,7 +240,17 @@ country_event = {
 										pop_has_trait = trait_suc_parthenogenesis
 									}
 									pop_has_trait = trait_lv_all_male
-									pop_has_trait = trait_lv_futanari
+									OR = {
+										pop_has_trait = trait_lv_futanari
+										pop_has_trait = trait_angel
+										pop_has_trait = trait_ANGEL_robot
+										pop_has_trait = trait_angel_fallen
+										pop_has_trait = trait_ANGEL_F_robot
+										pop_has_trait = trait_futanari
+										pop_has_trait = trait_hidden_futa
+										pop_has_trait = trait_hidden_futa_common
+										pop_has_trait = trait_huge_penis_futa
+									}
 								}
 								is_robot_pop = no
 							}
@@ -259,7 +289,17 @@ planet_event = {
 							pop_has_trait = trait_suc_parthenogenesis
 						}
 						pop_has_trait = trait_lv_all_male
-						pop_has_trait = trait_lv_futanari
+						OR = {
+							pop_has_trait = trait_lv_futanari
+							pop_has_trait = trait_angel
+							pop_has_trait = trait_ANGEL_robot
+							pop_has_trait = trait_angel_fallen
+							pop_has_trait = trait_ANGEL_F_robot
+							pop_has_trait = trait_futanari
+							pop_has_trait = trait_hidden_futa
+							pop_has_trait = trait_hidden_futa_common
+							pop_has_trait = trait_huge_penis_futa
+						}
 						pop_has_trait = trait_lv_intercompatible_womb
 						pop_has_trait = trait_lv_intercompatible_sperm 
 					}
@@ -526,6 +566,67 @@ planet_event = {
 							add_trait = trait_lv_all_female
 							change_scoped_species = no
 						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					event_target:lv_intercompatible_pop = {
+						OR = {
+							has_trait = trait_angel
+							has_trait = trait_hidden_futa
+						}
+						
+					}
+				}
+				last_created_species = {
+					modify_species = {
+						species = this
+						add_trait = trait_angel
+						add_trait = trait_hidden_futa
+						change_scoped_species = no
+					}
+				}
+			}
+			if = {
+				limit = {
+					event_target:lv_intercompatible_pop = {
+						has_trait = trait_futanari
+					}
+				}
+				last_created_species = {
+					modify_species = {
+						species = this
+						add_trait = trait_futanari
+						change_scoped_species = no
+					}
+				}
+			}
+			if = {
+				limit = {
+					event_target:lv_intercompatible_pop = {
+						has_trait = trait_hidden_futa_common
+					}
+				}
+				last_created_species = {
+					modify_species = {
+						species = this
+						add_trait = trait_hidden_futa_common
+						change_scoped_species = no
+					}
+				}
+			}
+			if = {
+				limit = {
+					event_target:lv_intercompatible_pop = {
+						has_trait = trait_huge_penis_futa
+					}
+				}
+				last_created_species = {
+					modify_species = {
+						species = this
+						add_trait = trait_huge_penis_futa
+						change_scoped_species = no
 					}
 				}
 			}
@@ -1039,6 +1140,66 @@ planet_event = {
 									add_trait = trait_lv_all_female
 									change_scoped_species = no
 								}
+							}
+						}
+					}
+					if = {
+						limit = {
+							event_target:lv_bio_breeder_pop = {
+								OR = {
+									has_trait = trait_angel
+									has_trait = trait_hidden_futa
+								}
+							}
+						}
+						last_created_species = {
+							modify_species = {
+								species = this
+								add_trait = trait_angel
+								add_trait = trait_hidden_futa
+								change_scoped_species = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							event_target:lv_bio_breeder_pop = {
+								has_trait = trait_futanari
+							}
+						}
+						last_created_species = {
+							modify_species = {
+								species = this
+								add_trait = trait_futanari
+								change_scoped_species = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							event_target:lv_bio_breeder_pop = {
+								has_trait = trait_hidden_futa_common
+							}
+						}
+						last_created_species = {
+							modify_species = {
+								species = this
+								add_trait = trait_hidden_futa_common
+								change_scoped_species = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							event_target:lv_bio_breeder_pop = {
+								has_trait = trait_huge_penis_futa
+							}
+						}
+						last_created_species = {
+							modify_species = {
+								species = this
+								add_trait = trait_huge_penis_futa
+								change_scoped_species = no
 							}
 						}
 					}

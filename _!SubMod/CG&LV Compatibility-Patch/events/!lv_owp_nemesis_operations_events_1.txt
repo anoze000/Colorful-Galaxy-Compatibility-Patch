@@ -1,0 +1,726 @@
+namespace = operation
+
+# Finalé | from = operation
+country_event = {
+	id = operation.1006
+	title = operation.1006.name
+	desc = {
+		trigger = {
+			switch = {
+				trigger = has_country_flag
+				asset_bureaucrat = { text = operation.1006.desc.official }
+				asset_clerk = { text = operation.1006.desc.official }
+				asset_economist = { text = operation.1006.desc.professional }
+				asset_scientist = { text = operation.1006.desc.professional }
+				asset_junior_officer = { text = operation.1006.desc.underling }
+				asset_criminal_underling = { text = operation.1006.desc.rebel }
+				asset_attache = { text = operation.1006.desc.official }
+				asset_laborer = { text = operation.1006.desc.underling }
+				asset_hacker = { text = operation.1006.desc.rebel }
+				asset_arms_smuggler = { text = operation.1006.desc.rebel }
+				asset_agitator = { text = operation.1006.desc.rebel }
+				asset_newscaster = { text = operation.1006.desc.celebrity }
+				asset_pop_icon = { text = operation.1006.desc.celebrity }
+				asset_academic = { text = operation.1006.desc.professional }
+				asset_veteran = { text = operation.1006.desc.underling }
+				### LV
+				asset_lv_blackmailed_princess = { text = operation.1006.desc.official }
+				asset_lv_provocative_secretary = { text = operation.1006.desc.official }
+				asset_lv_corrupted_streamer = { text = operation.1006.desc.professional }
+				asset_lv_obsessed_zoophile = { text = operation.1006.desc.professional }
+				asset_lv_disgraced_pilot = { text = operation.1006.desc.underling }
+				asset_lv_underworld_trafficker = { text = operation.1006.desc.rebel }
+				asset_lv_loose_lipped_whore = { text = operation.1006.desc.professional }
+				asset_lv_eccentric_technician = { text = operation.1006.desc.underling }
+				### LV
+				asset_synapse_drone = { text = operation.1006.desc.drone }
+				asset_ephapse_relay = { text = operation.1006.desc.organ }
+				asset_labor_drone = { text = operation.1006.desc.drone }
+				asset_research_drone = { text = operation.1006.desc.drone }
+				asset_warrior_drone = { text = operation.1006.desc.drone }
+				asset_behavioral_regulator = { text = operation.1006.desc.organ }
+				asset_pheromone_emitter = { text = operation.1006.desc.organ }
+				asset_resource_distribution_node = { text = operation.1006.desc.network }
+				asset_cortex_node = { text = operation.1006.desc.organ }
+				asset_subspace_tendril = { text = operation.1006.desc.organ }
+				asset_coordination_system = { text = operation.1006.desc.component }
+				asset_engagement_protocol = { text = operation.1006.desc.network }
+				asset_logistics_system = { text = operation.1006.desc.network }
+				asset_research_database = { text = operation.1006.desc.network }
+				asset_war_algorithm = { text = operation.1006.desc.network }
+				asset_command_relay = { text = operation.1006.desc.component }
+				asset_dispatch_uplink = { text = operation.1006.desc.component }
+				asset_resource_pylon = { text = operation.1006.desc.component }
+				asset_memory_cache = { text = operation.1006.desc.network }
+				asset_weapons_platform = { text = operation.1006.desc.network }
+				default = { text = operation.1006.desc.default }
+			}
+		}
+	}
+	picture = {
+		trigger = {
+			from.target = { is_gestalt = no }
+		}
+		picture = GFX_evt_acquire_asset
+	}
+	picture = {
+		trigger = {
+			from.target = { 
+				OR = {
+					has_authority = auth_machine_intelligence 
+					has_authority = auth_lust_skynet
+				}
+			}
+		}
+		picture = GFX_evt_sapient_AI
+	}
+	picture = {
+		trigger = {
+			from.target = { has_authority = auth_hive_mind }
+		}
+		picture = GFX_evt_hive_mind
+	}
+	location = from.target.capital_scope
+	show_sound = event_nem_asset_acquired_positive
+	is_triggered_only = yes
+
+	immediate = {
+		country_event = { id = tutorial.2010 } #Assigning Assets
+	}
+
+	option = {
+		name = EXCELLENT
+		root = {
+			espionage_acquire_asset_create_asset = yes
+		}
+		from.spynetwork = {
+			add_spy_network_level_on_success_effect = { VALUE = -15 }
+		}
+	}
+
+	after = {
+		hidden_effect = {
+			owner = {
+				if = {
+					limit = {
+						NOT = { has_country_flag = operation_complete_acquire_asset }
+					}
+					change_variable = {
+						which = tinker_tailor_soldier_blorg_achievement_count
+						value = 1
+					}
+					set_country_flag = operation_complete_acquire_asset
+				}
+			}
+		}
+		destroy_espionage_operation = from
+	}
+}
+
+# Finalé | from = operation; fromfrom = target (starbase)
+country_event = {
+	id = operation.2005
+	title = operation.2005.name
+	desc = {
+		text = operation.2005.desc.military
+		trigger = {
+			from.target.owner = {
+				OR = {
+					has_country_flag = anchorage_sabotaged
+					has_country_flag = gun_battery_sabotaged
+					has_country_flag = hangar_bay_sabotaged
+					has_country_flag = missile_battery_sabotaged
+					has_country_flag = command_center_sabotaged
+					has_country_flag = communications_jammer_sabotaged
+					has_country_flag = deep_space_black_site_sabotaged
+					has_country_flag = disruption_field_sabotaged
+					has_country_flag = fleet_academy_sabotaged
+					has_country_flag = naval_logistics_office_sabotaged
+					has_country_flag = target_uplink_computer_sabotaged
+					has_country_flag = warp_fluctuator_sabotaged
+					has_country_flag = mercenary_garrison_sabotaged
+					has_country_flag = orbital_ring_anchorage_sabotaged
+					has_country_flag = orbital_ring_gun_battery_sabotaged
+					has_country_flag = orbital_ring_hangar_bay_sabotaged
+					has_country_flag = orbital_ring_missile_battery_sabotaged
+					has_country_flag = offspring_outlook_sabotaged
+					has_country_flag = archaeo_rampart_sabotaged
+					has_country_flag = detection_array_sabotaged
+					has_country_flag = dark_matter_listening_post_sabotaged
+					has_country_flag = dark_matter_detector_sabotaged
+					has_country_flag = cordyceptic_reanimation_facility_sabotaged
+					has_country_flag = irassian_naval_yards_sabotaged
+					has_country_flag = yuht_detection_array_sabotaged
+					has_country_flag = zroni_storm_caster_sabotaged
+					has_country_flag = archaeo_overcharger_sabotaged
+				}
+			}
+		}
+	}
+	desc = {
+		text = operation.2005.desc.trade
+		trigger = {
+			from.target.owner = {
+				OR = {
+					has_country_flag = trading_hub_sabotaged
+					has_country_flag = offworld_trading_company_sabotaged
+					has_country_flag = resource_silo_sabotaged
+					has_country_flag = trader_proxy_office_sabotaged
+					has_country_flag = orbital_ring_trading_hub_sabotaged
+					has_country_flag = ring_trade_hub_sabotaged
+					### LV
+					has_country_flag = lv_ring_brothel_hub_sabotaged
+					### LV
+				}
+			}
+		}
+	}
+	desc = {
+		text = operation.2005.desc.civic
+		trigger = {
+			from.target.owner = {
+				OR = {
+					has_country_flag = art_college_sabotaged
+					has_country_flag = black_hole_observatory_sabotaged
+					has_country_flag = hydroponics_bay_sabotaged
+					has_country_flag = missile_battery_sabotaged
+					has_country_flag = crew_quarters_sabotaged
+					has_country_flag = curator_think_tank_sabotaged
+					has_country_flag = nebula_refinery_sabotaged
+					has_country_flag = solar_panel_network_sabotaged
+					has_country_flag = astromining_bay_sabotaged
+					has_country_flag = astromining_hub_sabotaged 
+					has_country_flag = ice_mining_station_sabotaged
+					has_country_flag = salvager_workshop_sabotaged
+					has_country_flag = transit_hub_sabotaged
+					# has_country_flag = orbital_ring_solar_panel_network_sabotaged
+					has_country_flag = ring_alloys_hub_sabotaged
+					has_country_flag = ring_bureaucracy_hub_sabotaged
+					has_country_flag = ring_consumer_goods_hub_sabotaged
+					has_country_flag = ring_energy_hub_sabotaged
+					has_country_flag = ring_food_hub_sabotaged
+					has_country_flag = ring_maintenance_hub_sabotaged
+					### LV
+					has_country_flag = lv_ring_nurture_hub_sabotaged
+					### LV
+					has_country_flag = ring_minerals_hub_sabotaged
+					has_country_flag = ring_synapse_hub_sabotaged
+					has_country_flag = orbital_ring_habitation_sabotaged
+					has_country_flag = cybrex_mining_hub_sabotaged
+					has_country_flag = orbital_ring_feeder_sabotaged
+					has_country_flag = feeder_sabotaged
+				}
+			}
+		}
+	}
+	location = event_target:sabotaged_starbase_system
+	picture = GFX_evt_archaeologists_escaping
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	trigger = {
+		exists = from
+		exists = event_target:sabotaged_starbase
+	}
+
+	immediate = {
+		from.target = {
+			if = {
+				limit = {
+					count_starbase_modules = {
+						type != shipyard
+						count >= 1
+					}
+				}
+				espionage_sabotage_starbase_module = yes
+			}
+			else_if = {
+				limit = { has_nonshipyard_starbase_buildings = yes }
+				espionage_sabotage_starbase_building = yes
+			}
+		}
+		#Bonus actions
+		if = {
+			limit = {
+				from = { has_espionage_asset_sabotage = yes }
+			}
+			random_list = {
+				1 = { #Take down another module
+					modifier = {
+						factor = 5
+						from = { has_espionage_asset_technology = yes }
+					}
+					modifier = {
+						factor = 0
+						from.target = {
+							count_starbase_modules = {
+								type != shipyard
+								count < 2
+							}
+						}
+					}
+					set_country_flag = sabotage_starbase_collateral@from.target.owner
+				}
+				1 = { #Take down a defense platform
+					modifier = {
+						factor = 5
+						from = { has_espionage_asset_military = yes }
+					}
+					set_country_flag = sabotage_starbase_defence@from.target.owner
+				}
+				4 = {
+					modifier = {
+						factor = 3
+						root = {
+							relative_encryption_decryption = { target = from.target.owner value < 0.6 }
+						}
+					}
+					#No bonus action
+				}
+			}
+		}
+	}
+
+	option = { #We're done here (smooth)
+		name = operation.2005.a
+		trigger = {
+			from.target.owner = {
+				NOR = {
+					has_hostile_espionage_operation_ethics = yes
+					has_closed_borders = root
+					is_at_war_with = root
+				}
+			}
+		}
+		from.spynetwork = {
+			add_spy_network_level_on_success_effect = { VALUE = -30 }
+		}
+		owner = {
+			if = {
+				limit = { has_ascension_perk = ap_become_the_crisis }
+				complete_crisis_objective = crisobj_perform_upsetting_operations
+			}
+		}
+	}
+	option = { #We're done here (messy)
+		name = operation.2005.a
+		trigger = {
+			from.target.owner = {
+				OR = {
+					has_hostile_espionage_operation_ethics = yes
+					has_closed_borders = root
+					is_at_war_with = root
+				}
+			}
+		}
+		from.spynetwork = {
+			add_spy_network_level_on_success_effect = { VALUE = -45 }
+		}
+		owner = {
+			if = {
+				limit = { has_ascension_perk = ap_become_the_crisis }
+				complete_crisis_objective = crisobj_perform_upsetting_operations
+			}
+		}
+	}
+	option = { #Collateral damage (module)
+		name = {
+			trigger = {
+				from.target = { is_normal_starbase = yes }
+			}
+			text = operation.2005.b
+		}
+		name = {
+			trigger = {
+				from.target = { is_orbital_ring = yes }
+			}
+			text = operation.2005.b.orb
+		}
+		icon = {
+			icon = GFX_espionage_asset_icon
+			text = ESPIONAGE_OPERATION_ASSET_EVENT_OPTION
+		}
+		trigger = {
+			has_country_flag = sabotage_starbase_collateral@from.target.owner
+		}
+		hidden_effect = {
+			remove_country_flag = sabotage_starbase_collateral@from.target.owner
+		}
+		from = {
+			if = {
+				limit = { has_espionage_asset_technology = yes }
+				destroy_espionage_asset_technology = yes
+			}
+			target = {
+				remove_random_starbase_module = {
+					type != shipyard
+					count = 1
+				}
+			}
+			spynetwork = {
+				add_spy_network_level_on_success_effect = { VALUE = -45 }
+			}
+		}
+		owner = {
+			if = {
+				limit = { has_ascension_perk = ap_become_the_crisis }
+				complete_crisis_objective = crisobj_perform_upsetting_operations
+			}
+		}
+	}
+	option = { #Collateral damage (defense platform)
+		name = operation.2005.c
+		icon = {
+			icon = GFX_espionage_asset_icon
+			text = ESPIONAGE_OPERATION_ASSET_EVENT_OPTION
+		}
+		trigger = {
+			has_country_flag = sabotage_starbase_defence@from.target.owner
+		}
+		custom_tooltip = operation.2005.c.tooltip
+		allow = {
+			custom_tooltip = {
+				fail_text = STARBASE_NO_PLATFORMS
+				from.target = {
+					fleet = {
+						count_controlled_ship = {
+							count > 0
+							limit = {
+								exists = owner
+								is_ship_size = military_station_small
+							}
+						}
+					}
+				}
+			}
+			resource_stockpile_compare = { resource = volatile_motes value >= 2 }
+		}
+		hidden_effect = {
+			from.target = {
+				fleet = {
+					random_controlled_ship = {
+						limit = { is_ship_size = military_station_small }
+						destroy_ship = this
+					}
+				}
+			}
+		}
+		root = {
+			add_resource = { volatile_motes = -2 }
+		}
+		from.spynetwork = {
+			add_spy_network_level_on_success_effect = { VALUE = -45 }
+		}
+		owner = {
+			if = {
+				limit = { has_ascension_perk = ap_become_the_crisis }
+				complete_crisis_objective = crisobj_perform_upsetting_operations
+			}
+		}
+	}
+
+	after = {
+		hidden_effect = {
+			if = {
+				limit = {
+					owner = { NOT = { has_country_flag = operation_complete_sabotage_starbase } }
+				}
+				owner = {
+					change_variable = {
+						which = tinker_tailor_soldier_blorg_achievement_count
+						value = 1
+					}
+					set_country_flag = operation_complete_sabotage_starbase
+				}
+			}
+			from.target.owner = {
+				set_timed_country_flag = {
+					flag = sabotaged_starbase_alert@root
+					days = @SabotageStarbaseTimer
+				}
+				country_event = { id = operation.2010 } #Notification of sabotage
+			}
+		}
+		destroy_espionage_operation = from
+	}
+}
+
+
+###########################
+# RANDOM EVENTS
+###########################
+# Triggered by operation_random_events_generic via e.g. operation_random_events_regular_regular
+
+### CONTACT LOST (regular vs. any)
+# from = operation; fromfrom = target
+country_event = {
+	id = operation.5000
+	title = operation.5000.name
+	desc = operation.5000.desc
+	picture = GFX_evt_spy_network
+	show_sound = event_radio_chatter
+	is_triggered_only = yes
+
+	trigger = {
+		exists = from
+		is_gestalt = no
+	}
+
+	immediate = {
+		from = { set_espionage_operation_progress_locked = yes }
+		set_timed_country_flag = {
+			flag = recent_op_contact_lost
+			days = @RandomOperationEventTimer
+		}
+	}
+
+	option = { #Find operatives
+		name = operation.5000.a
+		custom_tooltip = operation.5000.a.tooltip
+		allow = {
+			from.spynetwork = { has_available_spy_power >= 10 }
+		}
+		from.spynetwork = {
+			add_spy_network_level = -10 #Returned in subsequent events, or when the Spy Network disbands - whichever comes first
+		}
+		hidden_effect = {
+			random_list = {
+				8 = { #Re-establish contact
+					country_event = { id = operation.5001 days = 34 } #"Contact Re-Established"
+				}
+				2 = { #Contact lost
+					modifier = {
+						factor = 2
+						from = {
+							OR = {
+								has_espionage_category = op_cat_sabotage
+								has_espionage_category = op_cat_provocation
+							}
+						}
+					}
+					modifier = {
+						factor = 4
+						from.target = {
+							relative_encryption_decryption = { target = root value > 1.2 }
+						}
+					}
+					country_event = { id = operation.5002 days = 34 } #"Contact Confirmed Lost"
+					from.target = {
+						if = {
+							limit = {
+								any_spynetwork = {
+									owner = { is_same_value = prev }
+									target = { is_same_value = root }
+								}
+							}
+							set_timed_country_flag = {
+								flag = espionage_caught_spies
+								days = 20
+							}
+							country_event = { id = espionage.1040 days = 15 } #A Surprise Catch
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 10
+				from.spynetwork = { has_available_spy_power > 40 }
+			}
+		}
+	}
+	option = {
+		name = DISAVOW
+		custom_tooltip = operation.5000.b.tooltip
+		hidden_effect = {
+			root = {
+				set_timed_country_flag = {
+					flag = has_disavowed_operative
+					days = 36000 #100 years
+				}
+				set_country_flag = burn_notice_achievement
+			}
+			from = {
+				set_espionage_operation_progress_locked = no
+				fire_on_action = { on_action = on_operation_cancelled }
+				destroy_espionage_operation = this
+			}
+		}
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 20
+				from.target = {
+					relative_encryption_decryption = {
+						target = root
+						value < 1.0
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = operation.5000.c
+		icon = {
+			icon = GFX_espionage_asset_icon
+			text = ESPIONAGE_OPERATION_ASSET_EVENT_OPTION
+		}
+		trigger = {
+			from = {
+				OR = {
+					has_espionage_asset = asset_clerk
+					has_espionage_asset = asset_attache
+					has_espionage_asset = asset_newscaster
+					### LV
+					has_espionage_asset = asset_lv_provocative_secretary
+					has_espionage_asset = asset_lv_loose_lipped_whore
+					### LV
+					has_espionage_asset = asset_synapse_drone
+					has_espionage_asset = asset_resource_distribution_node
+					has_espionage_asset = asset_coordination_system
+					has_espionage_asset = asset_logistics_system
+				}
+			}
+		}
+		from = {
+			locked_random_list = {
+				1 = {
+					modifier = {
+						factor = 0
+						NOT = { has_espionage_asset = asset_clerk }
+					}
+					modifier = {
+						factor = 10
+						OR = {
+							has_espionage_category = op_cat_subterfuge
+							has_espionage_category = op_cat_diplomacy
+						}
+					}
+					destroy_espionage_asset = asset_clerk
+				}
+				1 = {
+					modifier = {
+						factor = 0
+						NOT = { has_espionage_asset = asset_attache }
+					}
+					modifier = {
+						factor = 10
+						OR = {
+							has_espionage_category = op_cat_sabotage
+							has_espionage_category = op_cat_diplomacy
+						}
+					}
+					destroy_espionage_asset = asset_attache
+				}
+				1 = {
+					modifier = {
+						factor = 0
+						NOT = { has_espionage_asset = asset_newscaster }
+					}
+					modifier = {
+						factor = 10
+						OR = {
+							has_espionage_category = op_cat_manipulation
+							has_espionage_category = op_cat_diplomacy
+						}
+					}
+					destroy_espionage_asset = asset_newscaster
+				}
+				### LV
+				1 = {
+					modifier = {
+						factor = 0
+						NOT = { has_espionage_asset = asset_lv_provocative_secretary }
+					}
+					modifier = {
+						factor = 10
+						OR = {
+							has_espionage_category = op_cat_subterfuge
+							has_espionage_category = op_cat_diplomacy
+						}
+					}
+					destroy_espionage_asset = asset_lv_provocative_secretary
+				}
+				1 = {
+					modifier = {
+						factor = 0
+						NOT = { has_espionage_asset = asset_lv_loose_lipped_whore }
+					}
+					modifier = {
+						factor = 10
+						OR = {
+							has_espionage_category = op_cat_sabotage
+							has_espionage_category = op_cat_diplomacy
+						}
+					}
+					destroy_espionage_asset = asset_lv_loose_lipped_whore
+				}
+				### LV
+				1 = {
+					modifier = {
+						factor = 0
+						NOT = { has_espionage_asset = asset_synapse_drone }
+					}
+					modifier = {
+						factor = 10
+						OR = {
+							has_espionage_category = op_cat_subterfuge
+							has_espionage_category = op_cat_government
+						}
+					}
+					destroy_espionage_asset = asset_synapse_drone
+				}
+				1 = {
+					modifier = {
+						factor = 0
+						NOT = { has_espionage_asset = asset_resource_distribution_node }
+					}
+					modifier = {
+						factor = 10
+						OR = {
+							has_espionage_category = op_cat_manipulation
+							has_espionage_category = op_cat_economy
+						}
+					}
+					destroy_espionage_asset = asset_resource_distribution_node
+				}
+				1 = {
+					modifier = {
+						factor = 0
+						NOT = { has_espionage_asset = asset_coordination_system }
+					}
+					modifier = {
+						factor = 10
+						OR = {
+							has_espionage_category = op_cat_subterfuge
+							has_espionage_category = op_cat_government
+						}
+					}
+					destroy_espionage_asset = asset_coordination_system
+				}
+				1 = {
+					modifier = {
+						factor = 0
+						NOT = { has_espionage_asset = asset_logistics_system }
+					}
+					modifier = {
+						factor = 10
+						OR = {
+							has_espionage_category = op_cat_subterfuge
+							has_espionage_category = op_cat_economy
+						}
+					}
+					destroy_espionage_asset = asset_logistics_system
+				}
+			}
+		}
+		hidden_effect = {
+			country_event = { id = operation.5001 days = 4 } #Re-establish contact
+		}
+		ai_chance = {
+			factor = 20
+		}
+	}
+}

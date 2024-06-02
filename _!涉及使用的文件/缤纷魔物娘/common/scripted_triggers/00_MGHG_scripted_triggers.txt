@@ -1,0 +1,389 @@
+#是否是魔物娘
+is_monster_girl = {
+	optimize_memory
+	OR = {
+		has_trait = trait_you_are_monster_girl
+		is_species_class = LAMIA
+		is_species_class = ANGEL
+		is_species_class = GYNOID
+		is_species_class = GYNOID_ROBOT
+		is_species_class = SLIME
+		is_species_class = SUCCUBUS
+		is_species_class = VAMPIRE
+		is_species_class = ZOMBIE
+		is_species_class = ANGEL_F
+	}
+}
+
+#是魔物娘物种
+is_monster_girl_species = {
+	optimize_memory
+	OR = {
+		is_species_class = $SPECIES$
+		has_trait = trait_$SPECIES$_robot
+	}
+}
+
+#是否不朽魔物娘物种
+is_immortal_monster_gril_species = {
+	optimize_memory
+	OR = {
+		is_species_class = ANGEL
+		is_species_class = GYNOID
+		is_species_class = GYNOID_ROBOT
+		is_species_class = SUCCUBUS
+		is_species_class = VAMPIRE
+		is_species_class = ANGEL_F
+	}
+}
+
+#资源建筑可用
+can_use_by_monster_girl_resource = {
+	optimize_memory
+	exists = owner
+	owner = { is_monster_girl = yes }
+	NOT = {
+		has_modifier = resort_colony
+	}
+}
+
+#高级建筑可用
+can_use_by_monster_girl_advanced = {
+	optimize_memory
+	exists = owner
+	owner = { is_monster_girl = yes }
+	NOR = {
+		has_modifier = resort_colony
+		has_modifier = slave_colony
+	}
+}
+
+#舒适度建筑可用
+can_use_by_monster_girl_resort = {
+	optimize_memory
+	exists = owner
+	owner = { is_monster_girl = yes }
+	NOT = {
+		has_modifier = slave_colony
+	}
+}
+
+#能使用超级机器人特质
+can_do_super_robot_modding = {
+	optimize_memory
+	hidden_trigger = { exists = from }
+	from = {
+		has_technology = tech_advanced_lust_prosthesis
+	}
+	is_monster_girl = yes
+	OR = {
+		is_archetype = MACHINE
+		is_archetype = ROBOT
+		has_trait = trait_cybernetic
+	}
+}
+
+#是淫姬基因领袖
+is_lewd_princess_gene_leader = {
+	optimize_memory
+	OR = {
+		has_trait = leader_trait_Kherne
+		has_trait = leader_trait_Tseentch
+		has_trait = leader_trait_Nurgler
+		has_trait = leader_trait_Slaaanesh
+		has_trait = leader_trait_lewd_princess
+	}
+}
+
+#是传奇淫姬领袖
+is_legendary_lewd_princess_leader = {
+	optimize_memory
+	OR = {
+		has_leader_flag = legendary_Tseentch
+		has_leader_flag = legendary_Nurgler
+		has_leader_flag = legendary_Kherne
+		has_leader_flag = legendary_Slaaanesh
+	}
+}
+
+#殖民地设置
+has_harlots_designation = {
+	optimize_memory
+	OR = {
+		has_designation = col_harlots
+		has_designation = col_habitat_harlots
+		has_designation = col_capital_harlots
+	}
+}
+
+has_sex_slaves_designation = {
+	optimize_memory
+	OR = {
+		has_designation = col_sexual_slave
+		has_designation = col_capital_slaves
+		AND = {
+			owner = {
+				is_regular_empire = yes
+			}
+			has_designation = col_habitat_sexual_slave
+		}
+	}
+}
+
+has_sex_slaves_hive_designation = {
+	optimize_memory
+	OR = {
+		has_designation = col_hive_sexual_slave
+		AND = {
+			owner = {
+				is_hive_empire = yes
+			}
+			has_designation = col_habitat_sexual_slave
+		}
+	}
+}
+
+has_sex_slaves_machine_designation = {
+	optimize_memory
+	OR = {
+		has_designation = col_Gynoid_sexual_slave
+		AND = {
+			owner = {
+				is_machine_empire = yes
+			}
+			has_designation = col_habitat_sexual_slave
+		}
+	}
+}
+
+has_lewd_princesses_designation = {
+	optimize_memory
+	OR = {
+		has_designation = col_lewd_princess
+		has_designation = col_habitat_lewd_princess
+	}
+}
+
+has_sexual_religion_designation = {
+	optimize_memory
+	OR = {
+		has_designation = col_Aeranzfi
+		has_designation = col_Reyep
+		has_designation = col_Boranty
+		has_designation = col_Anthena
+		has_designation = col_Belphegor
+		has_designation = col_Nephthy
+		has_designation = col_Ishetar
+	}
+}
+
+#先驱者标志
+has_MGHG_precursor_intro = {
+	optimize_memory
+	OR = {
+		has_country_flag = lamia_intro
+		has_country_flag = angel_intro
+		# Still in the early stages of 'On the Shoulders of Giants'
+		AND = {
+			has_origin = origin_shoulders_of_giants
+			NOT = { has_country_flag = origin_shoulders_closure }
+		}
+	}
+}
+
+#魔物娘初始特质
+has_monster_girl_starting_trait = {
+	optimize_memory
+	OR = {
+		has_trait = leader_trait_masochism
+		has_trait = leader_trait_pregnancy_enthusiasts
+		has_trait = leader_trait_emphasize_semen
+		has_trait = leader_trait_slut
+		has_trait = leader_trait_vixen
+		has_trait = leader_trait_anal_laxity
+		has_trait = leader_trait_paedophilia
+	}
+}
+
+#淫能亲和
+is_sexual_energy_affinity = {
+	optimize_memory
+	species = {
+		OR = {
+			is_monster_girl = yes
+			has_trait = trait_dickman
+			has_trait = trait_sexual_energy_affinity
+			has_trait = trait_sexual_energy_affinity_robot
+		}
+	}
+}
+
+is_sex_mind_species = {
+	optimize_memory
+	species = {
+		OR = {
+			has_trait = trait_succubus
+			has_trait = trait_SUCCUBUS_robot
+			has_trait = trait_angel
+			has_trait = trait_ANGEL_robot
+			has_trait = trait_angel_fallen
+			has_trait = trait_ANGEL_F_robot
+			has_trait = trait_sex_addicts
+			has_trait = trait_masochistic_constitution
+			has_trait = trait_sadism_constitution
+			has_trait = trait_promiscuous
+			has_trait = trait_psycho_girl
+			has_trait = trait_sex_servant
+		}
+	}
+}
+
+is_sex_addiction_leader = {
+	optimize_memory
+	OR = {
+		has_trait = leader_trait_ten_thousand_exp
+		has_trait = leader_trait_ten_thousand_exp_2
+		has_trait = leader_trait_ten_thousand_exp_3
+		has_trait = leader_trait_masochism
+		has_trait = leader_trait_masochism_2
+		has_trait = leader_trait_masochism_3
+		has_trait = leader_trait_sex_addict
+		has_trait = leader_trait_sex_addict_2
+	}
+}
+
+is_slave_leader = {
+	optimize_memory
+	OR = {
+		has_trait = leader_trait_parttime_sex_slaves
+		has_trait = leader_trait_parttime_sex_slaves_2
+		has_trait = leader_trait_parttime_sex_slaves_3
+		has_trait = leader_trait_mother_daughter_slave
+		has_trait = leader_trait_mother_daughter_slave_2
+		has_trait = leader_trait_mother_daughter_slave_3
+		has_trait = leader_trait_free_sex_slaves
+		has_trait = leader_trait_free_sex_slaves_2
+		has_trait = leader_trait_free_sex_slaves_3
+		has_trait = leader_trait_public_sex_slaves
+		has_trait = leader_trait_public_sex_slaves_gestalt
+		has_trait = leader_trait_private_sex_slaves
+		has_background_job = professional_sexual_slave
+		has_background_job = sexual_slave
+		has_background_job = hive_sexual_slave
+		has_background_job = Gynoid_sexual_slave
+		has_background_job = public_cum_dump
+		has_background_job = frenzy_jezebel
+	}
+}
+
+is_super_lust_psionic_leader = {
+	optimize_memory
+	OR = {
+		has_trait = leader_trait_super_lust_powerer
+		has_trait = leader_trait_super_lust_powerer_2
+		has_trait = leader_trait_lewd_princess
+	}
+}
+
+is_lewd_demon_princess = {
+	optimize_memory
+	OR = {
+		has_trait = leader_trait_Tseentch_princess
+		has_trait = leader_trait_Kherne_princess
+		has_trait = leader_trait_Nurgler_princess
+		has_trait = leader_trait_Nurgler_princess_lithoid
+		has_trait = leader_trait_Nurgler_princess_machine
+		has_trait = leader_trait_Slaaanesh_princess
+		has_trait = leader_trait_Slaaanesh_princess_nc
+	}
+}
+
+is_futa_monster_girl = {
+	optimize_memory
+	species = {
+		OR = {
+			has_trait = trait_angel
+			has_trait = trait_ANGEL_robot
+			has_trait = trait_angel_fallen
+			has_trait = trait_ANGEL_F_robot
+			has_trait = trait_futanari
+			has_trait = trait_hidden_futa
+			has_trait = trait_hidden_futa_common
+			has_trait = trait_huge_penis_futa
+		}
+	}
+}
+
+has_dick_leader = {
+	optimize_memory
+	OR = {
+		AND = {
+			species = {
+				OR = {
+					is_archetype = BIOLOGICAL
+					is_archetype = LITHOID
+				}
+				is_monster_girl = no
+			}
+			gender = male
+		}
+		species = {
+			OR = {
+				is_futa_monster_girl = yes
+				has_trait = trait_succubus
+				has_trait = trait_SUCCUBUS_robot
+			}
+		}
+	}
+}
+
+has_dick_species = {
+	optimize_memory
+	species = {
+		OR = {
+			AND = {
+				OR = {
+					is_archetype = BIOLOGICAL
+					is_archetype = LITHOID
+				}
+				is_monster_girl = no
+			}
+			is_futa_monster_girl = yes
+			has_trait = trait_succubus
+			has_trait = trait_SUCCUBUS_robot
+		}
+	}
+}
+
+has_renowed_portrait = {
+	OR = {
+		species_portrait = par_renown_01
+		species_portrait = par_renown_02
+		species_portrait = par_renown_03
+		species_portrait = par_renown_04
+		species_portrait = par_renown_05
+		species_portrait = par_renown_06
+		species_portrait = par_renown_07
+		species_portrait = par_renown_08
+		species_portrait = par_renown_09
+		species_portrait = par_renown_10
+		species_portrait = par_renown_11
+		species_portrait = par_renown_12
+		species_portrait = par_renown_13
+		species_portrait = par_renown_14
+		species_portrait = par_renown_15
+		species_portrait = par_renown_16
+	}
+}
+
+has_MGHG_cyborg_trait = {
+	OR = {
+		has_trait = trait_ovulation_promoter
+		has_trait = trait_MGHG_electronic_chastity_lock
+		has_trait = trait_MGHG_fast_template_cyber
+		has_trait = trait_MGHG_semen_jar_cyber
+		has_trait = trait_semen_absorbed_skin
+		has_trait = trait_advanced_sex_organ_module
+		has_trait = trait_MGHG_super_solid_skin
+	}
+}

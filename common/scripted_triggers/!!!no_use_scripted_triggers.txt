@@ -22,6 +22,8 @@ Maid_trigger_0_can_build_branch_offices = { always = no }
 
 is_zofe_compatible = { always = no }
 
+is_monster_girl = { always = no }
+
 TIME_RULE_trgr_spcs_CAN_live_on_planet = {
 	always = yes
 }

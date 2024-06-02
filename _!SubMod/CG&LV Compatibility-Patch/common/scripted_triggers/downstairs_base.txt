@@ -17,7 +17,10 @@ set_downstairs_female = {
 }
 
 set_downstairs_herm = {
-	has_trait = trait_lv_futanari
+	OR = {
+		has_trait = trait_lv_futanari
+		is_futa_monster_girl = yes
+	}
 }
 
 set_androgynous = {

@@ -921,6 +921,14 @@ trait_lv_all_female = {
 		trait_lv_addictive_cum
 		trait_lv_small_penis
 		trait_suc_parthenogenesis
+		trait_angel
+		trait_ANGEL_robot
+		trait_angel_fallen
+		trait_ANGEL_F_robot
+		trait_futanari
+		trait_hidden_futa
+		trait_hidden_futa_common
+		trait_huge_penis_futa
 	}
 	
 	species_potential_add = {
@@ -977,6 +985,14 @@ trait_lv_femboy01 = {
 		trait_lv_all_female
 		trait_suc_parthenogenesis
 		trait_lv_futanari
+		trait_angel
+		trait_ANGEL_robot
+		trait_angel_fallen
+		trait_ANGEL_F_robot
+		trait_futanari
+		trait_hidden_futa
+		trait_hidden_futa_common
+		trait_huge_penis_futa
 	}
 
 	modifier = {
@@ -1008,6 +1024,14 @@ trait_lv_femboy02 = {
 		trait_lv_all_female
 		trait_suc_parthenogenesis
 		trait_lv_futanari
+		trait_angel
+		trait_ANGEL_robot
+		trait_angel_fallen
+		trait_ANGEL_F_robot
+		trait_futanari
+		trait_hidden_futa
+		trait_hidden_futa_common
+		trait_huge_penis_futa
 	}
 
 	modifier = {
@@ -1040,6 +1064,14 @@ trait_lv_femboy03 = {
 		trait_lv_all_female
 		trait_suc_parthenogenesis
 		trait_lv_futanari
+		trait_angel
+		trait_ANGEL_robot
+		trait_angel_fallen
+		trait_ANGEL_F_robot
+		trait_futanari
+		trait_hidden_futa
+		trait_hidden_futa_common
+		trait_huge_penis_futa
 	}
 
 	modifier = {
@@ -1071,6 +1103,14 @@ trait_lv_femboy04 = {
 		trait_lv_all_female
 		trait_suc_parthenogenesis
 		trait_lv_futanari
+		trait_angel
+		trait_ANGEL_robot
+		trait_angel_fallen
+		trait_ANGEL_F_robot
+		trait_futanari
+		trait_hidden_futa
+		trait_hidden_futa_common
+		trait_huge_penis_futa
 	}
 
 	modifier = {
@@ -1108,6 +1148,14 @@ trait_lv_femboy05 = {
 		trait_lv_all_female
 		trait_suc_parthenogenesis
 		trait_lv_futanari
+		trait_angel
+		trait_ANGEL_robot
+		trait_angel_fallen
+		trait_ANGEL_F_robot
+		trait_futanari
+		trait_hidden_futa
+		trait_hidden_futa_common
+		trait_huge_penis_futa
 	}
 
 	modifier = {

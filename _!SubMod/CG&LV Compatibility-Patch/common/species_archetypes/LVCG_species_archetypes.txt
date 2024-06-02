@@ -1,82 +1,4 @@
-WARSHIPGIRL = {
-	species_trait_points = 3
-	species_max_traits = 7
-	inherit_traits_from = {
-		CG_compatible_species_archetype
-		CG_species_archetype
-	}
-}
-
-SHENHAI = {
-	species_trait_points = 4
-	species_max_traits = 6
-	inherit_traits_from = {
-		CG_compatible_species_archetype
-		CG_species_archetype
-	}
-}
-
-UNITED_FLEET = {
-	species_trait_points = 6
-	species_max_traits = 12
-	inherit_traits_from = {
-		CG_compatible_species_archetype
-		CG_species_archetype
-	}
-}
-
-STARSHIPGIRLS = {
-	species_trait_points = 16
-	species_max_traits = 47
-	inherit_traits_from = {
-		CG_compatible_species_archetype
-		CG_species_archetype
-	}
-}
-
-NYTO = {
-	species_trait_points = 4
-	species_max_traits = 8
-	robotic = yes
-	inherit_traits_from = {
-		CG_compatible_species_archetype
-		CG_species_archetype
-	}
-}
-
-EILD = {
-	species_trait_points = 20
-	species_max_traits = 20
-}
-
-LILY = {
-	species_trait_points = 4
-	species_max_traits = 12
-	inherit_traits_from = {
-		CG_compatible_species_archetype
-		CG_species_archetype
-	}
-}
-
-PUFFER = {
-	species_trait_points = 1
-	species_max_traits = 7
-}
-
-HUGE = {
-	species_trait_points = @al_trait_points
-	species_max_traits = @al_max_traits
-	uses_modifiers = no
-}
-
-Dolls = {
-	species_trait_points = 8
-	species_max_traits = 14
-	inherit_traits_from = {
-		CG_compatible_species_archetype
-		CG_species_archetype
-	}
-}
+#多彩本体
 
 Magical_Bitch = {
 	species_trait_points = 3
@@ -158,3 +80,89 @@ Erotic_Creation = {
 	species_trait_points = 6
 	species_max_traits = 30
 }
+
+#多彩联动
+
+WARSHIPGIRL = {
+	species_trait_points = 3
+	species_max_traits = 7
+	inherit_traits_from = {
+		CG_compatible_species_archetype
+		CG_species_archetype
+	}
+}
+
+SHENHAI = {
+	species_trait_points = 4
+	species_max_traits = 6
+	inherit_traits_from = {
+		CG_compatible_species_archetype
+		CG_species_archetype
+	}
+}
+
+UNITED_FLEET = {
+	species_trait_points = 6
+	species_max_traits = 12
+	inherit_traits_from = {
+		CG_compatible_species_archetype
+		CG_species_archetype
+	}
+}
+
+STARSHIPGIRLS = {
+	species_trait_points = 16
+	species_max_traits = 47
+	inherit_traits_from = {
+		CG_compatible_species_archetype
+		CG_species_archetype
+	}
+}
+
+NYTO = {
+	species_trait_points = 4
+	species_max_traits = 8
+	robotic = yes
+	inherit_traits_from = {
+		CG_compatible_species_archetype
+		CG_species_archetype
+	}
+}
+
+EILD = {
+	species_trait_points = 20
+	species_max_traits = 20
+}
+
+LILY = {
+	species_trait_points = 4
+	species_max_traits = 12
+	inherit_traits_from = {
+		CG_compatible_species_archetype
+		CG_species_archetype
+	}
+}
+
+PUFFER = {
+	species_trait_points = 1
+	species_max_traits = 7
+}
+
+HUGE = {
+	species_trait_points = @al_trait_points
+	species_max_traits = @al_max_traits
+	uses_modifiers = no
+}
+
+Dolls = {
+	species_trait_points = 8
+	species_max_traits = 14
+	inherit_traits_from = {
+		CG_compatible_species_archetype
+		CG_species_archetype
+	}
+}
+
+
+
+

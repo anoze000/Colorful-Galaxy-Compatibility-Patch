@@ -21,7 +21,10 @@ tech_lv_tentacle_symbiosis = {		# Tentacle Symbiosis
 	
 	potential = {
 		OR = {
-			NOT = { has_authority = auth_machine_intelligence }
+			NOR = { 
+				has_authority = auth_machine_intelligence 
+				has_authority = auth_lust_skynet
+			}
 			has_civic = civic_machine_assimilator
 			has_civic = civic_machine_servitor	
 		}
@@ -124,7 +127,10 @@ tech_lv_lactation_drugs = {		# Lactation Drugs
 	
 	potential = {
 		OR = {
-			NOT = { has_authority = auth_machine_intelligence }
+			NOR = { 
+				has_authority = auth_machine_intelligence 
+				has_authority = auth_lust_skynet
+			}
 			has_civic = civic_machine_assimilator
 			has_civic = civic_machine_servitor	
 		}
@@ -209,7 +215,10 @@ tech_lv_milk_cow_specialization = {		# Milk Cow Specialization
 	
 	potential = {
 		OR = {
-			NOT = { has_authority = auth_machine_intelligence }
+			NOR = { 
+				has_authority = auth_machine_intelligence 
+				has_authority = auth_lust_skynet
+			}
 			has_civic = civic_machine_assimilator
 			has_civic = civic_machine_servitor	
 		}
@@ -294,7 +303,10 @@ tech_lv_sex_slavery = {			# Sex Slavery (Pleasure Slaves Training)
 	
 	potential = {
 		OR = {
-			NOT = { has_authority = auth_machine_intelligence }
+			NOR = { 
+				has_authority = auth_machine_intelligence 
+				has_authority = auth_lust_skynet
+			}
 			has_civic = civic_machine_assimilator
 			has_civic = civic_machine_servitor
 		}
@@ -843,7 +855,10 @@ tech_lv_tentacle_purge = {		# Tentacle Purge
 	
 	potential = {
 		OR = {
-			NOT = { has_authority = auth_machine_intelligence }
+			NOR = { 
+				has_authority = auth_machine_intelligence 
+				has_authority = auth_lust_skynet
+			}
 			has_civic = civic_machine_assimilator
 			has_civic = civic_machine_servitor	
 		}
@@ -948,7 +963,10 @@ tech_lv_stentacle_world = {		# Tentacle World Creation
 
 	potential = {
 		OR = {
-			NOT = { has_authority = auth_machine_intelligence }
+			NOR = { 
+				has_authority = auth_machine_intelligence 
+				has_authority = auth_lust_skynet
+			}
 			has_civic = civic_machine_assimilator
 			has_civic = civic_machine_servitor	
 		}
@@ -1050,7 +1068,10 @@ tech_lv_tentacular_awakening = {		# Tentacular Awakening
 	
 	potential = {
 		OR = {
-			NOT = { has_authority = auth_machine_intelligence }
+			NOR = { 
+				has_authority = auth_machine_intelligence 
+				has_authority = auth_lust_skynet
+			}
 			has_civic = civic_machine_assimilator
 			has_civic = civic_machine_servitor	
 		}
@@ -1149,7 +1170,10 @@ tech_lv_prostitution_industry = {		# Intergalactic Prostitution Industry (Courte
 	
 	potential = {
 		OR = {
-			NOT = { has_authority = auth_machine_intelligence }
+			NOR = { 
+				has_authority = auth_machine_intelligence 
+				has_authority = auth_lust_skynet
+			}
 			has_civic = civic_machine_assimilator
 			has_civic = civic_machine_servitor	
 		}
@@ -1387,7 +1411,10 @@ tech_lv_advanced_feminization = {		# Advanced Feminization
 
 	potential = {
 		OR = {
-			NOT = { has_authority = auth_machine_intelligence }
+			NOR = { 
+				has_authority = auth_machine_intelligence 
+				has_authority = auth_lust_skynet
+			}
 			has_civic = civic_machine_assimilator
 			has_civic = civic_machine_servitor
 		}
@@ -1606,7 +1633,10 @@ tech_lv_hybridization_mastery = {		# Hybridization Mastery
 
 	potential = {
 		OR = {
-			NOT = { has_authority = auth_machine_intelligence }
+			NOR = { 
+				has_authority = auth_machine_intelligence 
+				has_authority = auth_lust_skynet
+			}
 			has_civic = civic_machine_assimilator
 			has_civic = civic_machine_servitor	
 		}
@@ -1701,7 +1731,10 @@ tech_lv_transformation_candy = {		# Transformation Candy
 	
 	potential = {
 		OR = {
-			NOT = { has_authority = auth_machine_intelligence }
+			NOR = { 
+				has_authority = auth_machine_intelligence 
+				has_authority = auth_lust_skynet
+			}
 			has_civic = civic_machine_assimilator
 			has_civic = civic_machine_servitor	
 		}
@@ -1845,7 +1878,10 @@ tech_lv_biological_mimicry_m = {		# Biological Mimicry
 		OR = {
 			is_individual_machine = yes
 			AND = {
-				has_authority = auth_machine_intelligence
+				OR = { 
+					has_authority = auth_machine_intelligence 
+					has_authority = auth_lust_skynet
+				}
 				NOT = { has_civic = civic_machine_terminator }	
 			}
 		}
@@ -1892,7 +1928,10 @@ tech_lv_transformation_candy_apple = {		# Apple Flavour Transformation Candy
 	
 	potential = {
 		OR = {
-			NOT = { has_authority = auth_machine_intelligence }
+			NOR = { 
+				has_authority = auth_machine_intelligence 
+				has_authority = auth_lust_skynet
+			}
 			has_civic = civic_machine_assimilator
 			has_civic = civic_machine_servitor	
 		}
@@ -2000,7 +2039,10 @@ tech_lv_transformation_candy_strawberry = {		# Strawberry Flavour Transformation
 	
 	potential = {
 		OR = {
-			NOT = { has_authority = auth_machine_intelligence }
+			NOR = { 
+				has_authority = auth_machine_intelligence 
+				has_authority = auth_lust_skynet
+			}
 			has_civic = civic_machine_assimilator
 			has_civic = civic_machine_servitor	
 		}
@@ -2108,7 +2150,10 @@ tech_lv_transformation_candy_blueberry = {		# Blueberry Flavour Transformation C
 	
 	potential = {
 		OR = {
-			NOT = { has_authority = auth_machine_intelligence }
+			NOR = { 
+				has_authority = auth_machine_intelligence 
+				has_authority = auth_lust_skynet
+			}
 			has_civic = civic_machine_assimilator
 			has_civic = civic_machine_servitor	
 		}
@@ -2216,7 +2261,10 @@ tech_lv_transformation_candy_orange = {		# Orange Flavour Transformation Candy
 	
 	potential = {
 		OR = {
-			NOT = { has_authority = auth_machine_intelligence }
+			NOR = { 
+				has_authority = auth_machine_intelligence 
+				has_authority = auth_lust_skynet
+			}
 			has_civic = civic_machine_assimilator
 			has_civic = civic_machine_servitor	
 		}
