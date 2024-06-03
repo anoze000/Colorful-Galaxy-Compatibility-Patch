@@ -2056,6 +2056,13 @@ planet_event = {
 						OR = {
 							has_trait = trait_lv_all_female
 							has_trait = trait_suc_parthenogenesis
+							AND = {
+								NOR = {
+									has_trait = trait_slime
+									has_trait = trait_SLIME_robot
+								}
+								is_futa_monster_girl = no
+							}
 						}
 						has_trait = trait_lv_futanari
 						is_futa_monster_girl = yes
@@ -2071,10 +2078,61 @@ planet_event = {
 						add_trait = trait_suc_parthenogenesis
 					}
 				}
-				else = {
+				else_if = {
+					limit = {
+						NOR = {
+							has_trait = trait_slime
+							has_trait = trait_SLIME_robot
+						}	
+					}
 					modify_species = {
 						species = this
 						add_trait = trait_lv_all_female
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_futanari
+						}
+						modify_species = {
+							species = this
+							remove_trait = trait_futanari
+						}
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_hidden_futa
+						}
+						modify_species = {
+							species = this
+							remove_trait = trait_hidden_futa
+						}
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_hidden_futa_common
+						}
+						modify_species = {
+							species = this
+							remove_trait = trait_hidden_futa_common
+						}
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_huge_penis_futa
+						}
+						modify_species = {
+							species = this
+							remove_trait = trait_huge_penis_futa
+						}
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_lv_futanari
+						}
+						modify_species = {
+							species = this
+							remove_trait = trait_lv_futanari
+						}
 					}
 				}
 				
@@ -2311,6 +2369,13 @@ planet_event = {
 						OR = {
 							has_trait = trait_lv_all_female
 							has_trait = trait_suc_parthenogenesis
+							AND = {
+								NOR = {
+									has_trait = trait_slime
+									has_trait = trait_SLIME_robot
+								}
+								is_futa_monster_girl = no
+							}
 						}
 						has_trait = trait_lv_futanari
 						is_futa_monster_girl = yes
@@ -2326,10 +2391,61 @@ planet_event = {
 						add_trait = trait_suc_parthenogenesis
 					}
 				}
-				else = {
+				else_if = {
+					limit = {
+						NOR = {
+							has_trait = trait_slime
+							has_trait = trait_SLIME_robot
+						}	
+					}
 					modify_species = {
 						species = this
 						add_trait = trait_lv_all_female
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_futanari
+						}
+						modify_species = {
+							species = this
+							remove_trait = trait_futanari
+						}
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_hidden_futa
+						}
+						modify_species = {
+							species = this
+							remove_trait = trait_hidden_futa
+						}
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_hidden_futa_common
+						}
+						modify_species = {
+							species = this
+							remove_trait = trait_hidden_futa_common
+						}
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_huge_penis_futa
+						}
+						modify_species = {
+							species = this
+							remove_trait = trait_huge_penis_futa
+						}
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_lv_futanari
+						}
+						modify_species = {
+							species = this
+							remove_trait = trait_lv_futanari
+						}
 					}
 				}
 			}
@@ -2537,6 +2653,13 @@ planet_event = {
 						OR = {
 							has_trait = trait_lv_all_female
 							has_trait = trait_suc_parthenogenesis
+							AND = {
+								NOR = {
+									has_trait = trait_slime
+									has_trait = trait_SLIME_robot
+								}
+								is_futa_monster_girl = no
+							}
 						}
 						has_trait = trait_lv_futanari
 						is_futa_monster_girl = yes
@@ -2552,10 +2675,61 @@ planet_event = {
 						add_trait = trait_suc_parthenogenesis
 					}
 				}
-				else = {
+				else_if = {
+					limit = {
+						NOR = {
+							has_trait = trait_slime
+							has_trait = trait_SLIME_robot
+						}	
+					}
 					modify_species = {
 						species = this
 						add_trait = trait_lv_all_female
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_futanari
+						}
+						modify_species = {
+							species = this
+							remove_trait = trait_futanari
+						}
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_hidden_futa
+						}
+						modify_species = {
+							species = this
+							remove_trait = trait_hidden_futa
+						}
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_hidden_futa_common
+						}
+						modify_species = {
+							species = this
+							remove_trait = trait_hidden_futa_common
+						}
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_huge_penis_futa
+						}
+						modify_species = {
+							species = this
+							remove_trait = trait_huge_penis_futa
+						}
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_lv_futanari
+						}
+						modify_species = {
+							species = this
+							remove_trait = trait_lv_futanari
+						}
 					}
 				}
 			}
@@ -2880,6 +3054,13 @@ planet_event = {
 							OR = {
 								has_trait = trait_lv_all_female
 								has_trait = trait_suc_parthenogenesis
+								AND = {
+									NOR = {
+										has_trait = trait_slime
+										has_trait = trait_SLIME_robot
+									}
+									is_futa_monster_girl = no
+								}
 							}
 							has_trait = trait_lv_futanari
 							is_futa_monster_girl = yes
@@ -2895,10 +3076,61 @@ planet_event = {
 							add_trait = trait_suc_parthenogenesis
 						}
 					}
-					else = {
+					else_if = {
+						limit = {
+							NOR = {
+								has_trait = trait_slime
+								has_trait = trait_SLIME_robot
+							}	
+						}
 						modify_species = {
 							species = this
 							add_trait = trait_lv_all_female
+						}
+						if = {
+							limit = {
+								pop_has_trait = trait_futanari
+							}
+							modify_species = {
+								species = this
+								remove_trait = trait_futanari
+							}
+						}
+						if = {
+							limit = {
+								pop_has_trait = trait_hidden_futa
+							}
+							modify_species = {
+								species = this
+								remove_trait = trait_hidden_futa
+							}
+						}
+						if = {
+							limit = {
+								pop_has_trait = trait_hidden_futa_common
+							}
+							modify_species = {
+								species = this
+								remove_trait = trait_hidden_futa_common
+							}
+						}
+						if = {
+							limit = {
+								pop_has_trait = trait_huge_penis_futa
+							}
+							modify_species = {
+								species = this
+								remove_trait = trait_huge_penis_futa
+							}
+						}
+						if = {
+							limit = {
+								pop_has_trait = trait_lv_futanari
+							}
+							modify_species = {
+								species = this
+								remove_trait = trait_lv_futanari
+							}
 						}
 					}
 				}
@@ -3136,6 +3368,13 @@ planet_event = {
 							OR = {
 								has_trait = trait_lv_all_female
 								has_trait = trait_suc_parthenogenesis
+								AND = {
+									NOR = {
+										has_trait = trait_slime
+										has_trait = trait_SLIME_robot
+									}
+									is_futa_monster_girl = no
+								}
 							}
 							has_trait = trait_lv_futanari
 							is_futa_monster_girl = yes
@@ -3151,10 +3390,61 @@ planet_event = {
 							add_trait = trait_suc_parthenogenesis
 						}
 					}
-					else = {
+					else_if = {
+						limit = {
+							NOR = {
+								has_trait = trait_slime
+								has_trait = trait_SLIME_robot
+							}	
+						}
 						modify_species = {
 							species = this
 							add_trait = trait_lv_all_female
+						}
+						if = {
+							limit = {
+								pop_has_trait = trait_futanari
+							}
+							modify_species = {
+								species = this
+								remove_trait = trait_futanari
+							}
+						}
+						if = {
+							limit = {
+								pop_has_trait = trait_hidden_futa
+							}
+							modify_species = {
+								species = this
+								remove_trait = trait_hidden_futa
+							}
+						}
+						if = {
+							limit = {
+								pop_has_trait = trait_hidden_futa_common
+							}
+							modify_species = {
+								species = this
+								remove_trait = trait_hidden_futa_common
+							}
+						}
+						if = {
+							limit = {
+								pop_has_trait = trait_huge_penis_futa
+							}
+							modify_species = {
+								species = this
+								remove_trait = trait_huge_penis_futa
+							}
+						}
+						if = {
+							limit = {
+								pop_has_trait = trait_lv_futanari
+							}
+							modify_species = {
+								species = this
+								remove_trait = trait_lv_futanari
+							}
 						}
 					}
 				}
@@ -3392,6 +3682,13 @@ planet_event = {
 							OR = {
 								has_trait = trait_lv_all_female
 								has_trait = trait_suc_parthenogenesis
+								AND = {
+									NOR = {
+										has_trait = trait_slime
+										has_trait = trait_SLIME_robot
+									}
+									is_futa_monster_girl = no
+								}
 							}
 							has_trait = trait_lv_futanari
 							is_futa_monster_girl = yes
@@ -3407,10 +3704,61 @@ planet_event = {
 							add_trait = trait_suc_parthenogenesis
 						}
 					}
-					else = {
+					else_if = {
+						limit = {
+							NOR = {
+								has_trait = trait_slime
+								has_trait = trait_SLIME_robot
+							}	
+						}
 						modify_species = {
 							species = this
 							add_trait = trait_lv_all_female
+						}
+						if = {
+							limit = {
+								pop_has_trait = trait_futanari
+							}
+							modify_species = {
+								species = this
+								remove_trait = trait_futanari
+							}
+						}
+						if = {
+							limit = {
+								pop_has_trait = trait_hidden_futa
+							}
+							modify_species = {
+								species = this
+								remove_trait = trait_hidden_futa
+							}
+						}
+						if = {
+							limit = {
+								pop_has_trait = trait_hidden_futa_common
+							}
+							modify_species = {
+								species = this
+								remove_trait = trait_hidden_futa_common
+							}
+						}
+						if = {
+							limit = {
+								pop_has_trait = trait_huge_penis_futa
+							}
+							modify_species = {
+								species = this
+								remove_trait = trait_huge_penis_futa
+							}
+						}
+						if = {
+							limit = {
+								pop_has_trait = trait_lv_futanari
+							}
+							modify_species = {
+								species = this
+								remove_trait = trait_lv_futanari
+							}
 						}
 					}
 				}

@@ -317,6 +317,19 @@ lv_mct_4_effect = {
 				OR = {
 					pop_has_trait = trait_lv_all_female
 					pop_has_trait = trait_suc_parthenogenesis 
+					AND = {
+						NOR = {
+							pop_has_trait = trait_slime
+							pop_has_trait = trait_SLIME_robot
+						}
+						NOR = {
+							pop_has_trait = trait_futanari
+							pop_has_trait = trait_hidden_futa
+							pop_has_trait = trait_hidden_futa_common
+							pop_has_trait = trait_huge_penis_futa
+							pop_has_trait = trait_lv_futanari
+						}
+					}
 				}	
 			} 
 		}
@@ -367,6 +380,19 @@ lv_feminization_effect = {
 				OR = {
 					pop_has_trait = trait_lv_all_female
 					pop_has_trait = trait_suc_parthenogenesis 
+					AND = {
+						NOR = {
+							pop_has_trait = trait_slime
+							pop_has_trait = trait_SLIME_robot
+						}
+						NOR = {
+							pop_has_trait = trait_futanari
+							pop_has_trait = trait_hidden_futa
+							pop_has_trait = trait_hidden_futa_common
+							pop_has_trait = trait_huge_penis_futa
+							pop_has_trait = trait_lv_futanari
+						}
+					}
 				}
 				OR = {
 					pop_has_trait = trait_lv_futanari
@@ -522,31 +548,72 @@ lv_feminization_effect = {
 			pop_has_trait = trait_lv_femboy05
 			owner = { has_policy_flag = lv_feminization_degree_female }
 		}
-		
+		modify_species = {
+			remove_trait = trait_lv_small_breasts
+			remove_trait = trait_lv_small_penis
+			remove_trait = trait_lv_erogenous_anus
+			remove_trait = trait_lv_excess_estrogen
+			remove_trait = trait_lv_femboy05
+			remove_trait = trait_lv_submissive
+		}
 		if = {
 			limit = {
 				pop_has_trait = trait_DC_ethic_carnalism
 				owner = { has_origin = origin_female_in_shadow }
 			}
 			modify_species = {
-				remove_trait = trait_lv_small_breasts
-				remove_trait = trait_lv_small_penis
-				remove_trait = trait_lv_erogenous_anus
-				remove_trait = trait_lv_excess_estrogen
-				remove_trait = trait_lv_femboy05
-				remove_trait = trait_lv_submissive
 				add_trait = trait_suc_parthenogenesis
 			}
 		}
-		else = {
+		else_if = {
+			limit = {
+				NOR = {
+					pop_has_trait = trait_slime
+					pop_has_trait = trait_SLIME_robot
+				}
+			}
 			modify_species = {
-				remove_trait = trait_lv_small_breasts
-				remove_trait = trait_lv_small_penis
-				remove_trait = trait_lv_erogenous_anus
-				remove_trait = trait_lv_excess_estrogen
-				remove_trait = trait_lv_femboy05
-				remove_trait = trait_lv_submissive
 				add_trait = trait_lv_all_female
+			}
+			if = {
+				limit = {
+					pop_has_trait = trait_futanari
+				}
+				modify_species = {
+					remove_trait = trait_futanari
+				}
+			}
+			if = {
+				limit = {
+					pop_has_trait = trait_hidden_futa
+				}
+				modify_species = {
+					remove_trait = trait_hidden_futa
+				}
+			}
+			if = {
+				limit = {
+					pop_has_trait = trait_hidden_futa_common
+				}
+				modify_species = {
+					remove_trait = trait_hidden_futa_common
+				}
+			}
+			if = {
+				limit = {
+					pop_has_trait = trait_huge_penis_futa
+				}
+				modify_species = {
+					remove_trait = trait_huge_penis_futa
+				}
+			}
+			if = {
+				limit = {
+					pop_has_trait = trait_lv_futanari
+				}
+				modify_species = {
+					remove_trait = trait_lv_futanari
+				}
 			}
 		}
 		owner = {
@@ -572,30 +639,72 @@ lv_feminization_effect = {
 		random_list = {
 			33 = { set_pop_flag = lv_femboy_pop_flag }
 			33 = { 
+				modify_species = {
+					remove_trait = trait_lv_small_breasts
+					remove_trait = trait_lv_small_penis
+					remove_trait = trait_lv_erogenous_anus
+					remove_trait = trait_lv_excess_estrogen
+					remove_trait = trait_lv_femboy05
+					remove_trait = trait_lv_submissive
+				}
 				if = {
 					limit = {
 						pop_has_trait = trait_DC_ethic_carnalism
 						owner = { has_origin = origin_female_in_shadow }
 					}
 					modify_species = {
-						remove_trait = trait_lv_small_breasts
-						remove_trait = trait_lv_small_penis
-						remove_trait = trait_lv_erogenous_anus
-						remove_trait = trait_lv_excess_estrogen
-						remove_trait = trait_lv_femboy05
-						remove_trait = trait_lv_submissive
 						add_trait = trait_suc_parthenogenesis
 					}
 				}
-				else = {
+				else_if = {
+					limit = {
+						NOR = {
+							pop_has_trait = trait_slime
+							pop_has_trait = trait_SLIME_robot
+						}
+					}
 					modify_species = {
-						remove_trait = trait_lv_small_breasts
-						remove_trait = trait_lv_small_penis
-						remove_trait = trait_lv_erogenous_anus
-						remove_trait = trait_lv_excess_estrogen
-						remove_trait = trait_lv_femboy05
-						remove_trait = trait_lv_submissive
 						add_trait = trait_lv_all_female
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_futanari
+						}
+						modify_species = {
+							remove_trait = trait_futanari
+						}
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_hidden_futa
+						}
+						modify_species = {
+							remove_trait = trait_hidden_futa
+						}
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_hidden_futa_common
+						}
+						modify_species = {
+							remove_trait = trait_hidden_futa_common
+						}
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_huge_penis_futa
+						}
+						modify_species = {
+							remove_trait = trait_huge_penis_futa
+						}
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_lv_futanari
+						}
+						modify_species = {
+							remove_trait = trait_lv_futanari
+						}
 					}
 				}
 				owner = {
@@ -698,6 +807,19 @@ lv_feminization_effect = {
 			OR = {
 				pop_has_trait = trait_lv_all_female
 				pop_has_trait = trait_suc_parthenogenesis 
+				AND = {
+					NOR = {
+						pop_has_trait = trait_slime
+						pop_has_trait = trait_SLIME_robot
+					}
+					NOR = {
+						pop_has_trait = trait_futanari
+						pop_has_trait = trait_hidden_futa
+						pop_has_trait = trait_hidden_futa_common
+						pop_has_trait = trait_huge_penis_futa
+						pop_has_trait = trait_lv_futanari
+					}
+				}
 			}
 		}
 		modify_species = {
@@ -842,10 +964,6 @@ lv_full_feminization_effect = {
 			owner = { has_policy_flag = lv_feminization_degree_female }
 		}
 		if = {
-			limit = {
-				pop_has_trait = trait_DC_ethic_carnalism
-				owner = { has_origin = origin_female_in_shadow }
-			}
 			modify_species = {
 				remove_trait = trait_lv_small_breasts
 				remove_trait = trait_lv_small_penis
@@ -855,16 +973,63 @@ lv_full_feminization_effect = {
 				remove_trait = trait_lv_submissive
 				add_trait = trait_suc_parthenogenesis
 			}
-		}
-		else = {
+			limit = {
+				pop_has_trait = trait_DC_ethic_carnalism
+				owner = { has_origin = origin_female_in_shadow }
+			}
 			modify_species = {
-				remove_trait = trait_lv_small_breasts
-				remove_trait = trait_lv_small_penis
-				remove_trait = trait_lv_erogenous_anus
-				remove_trait = trait_lv_excess_estrogen
-				remove_trait = trait_lv_femboy05
-				remove_trait = trait_lv_submissive
+				add_trait = trait_suc_parthenogenesis
+			}
+		}
+		else_if = {
+			limit = {
+				NOR = {
+					pop_has_trait = trait_slime
+					pop_has_trait = trait_SLIME_robot
+				}
+			}
+			modify_species = {
 				add_trait = trait_lv_all_female
+			}
+			if = {
+				limit = {
+					pop_has_trait = trait_futanari
+				}
+				modify_species = {
+					remove_trait = trait_futanari
+				}
+			}
+			if = {
+				limit = {
+					pop_has_trait = trait_hidden_futa
+				}
+				modify_species = {
+					remove_trait = trait_hidden_futa
+				}
+			}
+			if = {
+				limit = {
+					pop_has_trait = trait_hidden_futa_common
+				}
+				modify_species = {
+					remove_trait = trait_hidden_futa_common
+				}
+			}
+			if = {
+				limit = {
+					pop_has_trait = trait_huge_penis_futa
+				}
+				modify_species = {
+					remove_trait = trait_huge_penis_futa
+				}
+			}
+			if = {
+				limit = {
+					pop_has_trait = trait_lv_futanari
+				}
+				modify_species = {
+					remove_trait = trait_lv_futanari
+				}
 			}
 		}
 		owner = {
@@ -890,30 +1055,72 @@ lv_full_feminization_effect = {
 		random_list = {
 			33 = { set_pop_flag = lv_femboy_pop_flag }
 			33 = { 
+				modify_species = {
+					remove_trait = trait_lv_small_breasts
+					remove_trait = trait_lv_small_penis
+					remove_trait = trait_lv_erogenous_anus
+					remove_trait = trait_lv_excess_estrogen
+					remove_trait = trait_lv_femboy05
+					remove_trait = trait_lv_submissive
+				}
 				if = {
 					limit = {
 						pop_has_trait = trait_DC_ethic_carnalism
 						owner = { has_origin = origin_female_in_shadow }
 					}
 					modify_species = {
-						remove_trait = trait_lv_small_breasts
-						remove_trait = trait_lv_small_penis
-						remove_trait = trait_lv_erogenous_anus
-						remove_trait = trait_lv_excess_estrogen
-						remove_trait = trait_lv_femboy05
-						remove_trait = trait_lv_submissive
 						add_trait = trait_suc_parthenogenesis
 					}
 				}
-				else = {
+				else_if = {
+					limit = {
+						NOR = {
+							pop_has_trait = trait_slime
+							pop_has_trait = trait_SLIME_robot
+						}
+					}
 					modify_species = {
-						remove_trait = trait_lv_small_breasts
-						remove_trait = trait_lv_small_penis
-						remove_trait = trait_lv_erogenous_anus
-						remove_trait = trait_lv_excess_estrogen
-						remove_trait = trait_lv_femboy05
-						remove_trait = trait_lv_submissive
 						add_trait = trait_lv_all_female
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_futanari
+						}
+						modify_species = {
+							remove_trait = trait_futanari
+						}
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_hidden_futa
+						}
+						modify_species = {
+							remove_trait = trait_hidden_futa
+						}
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_hidden_futa_common
+						}
+						modify_species = {
+							remove_trait = trait_hidden_futa_common
+						}
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_huge_penis_futa
+						}
+						modify_species = {
+							remove_trait = trait_huge_penis_futa
+						}
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_lv_futanari
+						}
+						modify_species = {
+							remove_trait = trait_lv_futanari
+						}
 					}
 				}
 				owner = {
@@ -1016,6 +1223,19 @@ lv_full_feminization_effect = {
 			OR = {
 				pop_has_trait = trait_lv_all_female
 				pop_has_trait = trait_suc_parthenogenesis 
+				AND = {
+					NOR = {
+						pop_has_trait = trait_slime
+						pop_has_trait = trait_SLIME_robot
+					}
+					NOR = {
+						pop_has_trait = trait_futanari
+						pop_has_trait = trait_hidden_futa
+						pop_has_trait = trait_hidden_futa_common
+						pop_has_trait = trait_huge_penis_futa
+						pop_has_trait = trait_lv_futanari
+					}
+				}
 			}
 		}
 		modify_species = {

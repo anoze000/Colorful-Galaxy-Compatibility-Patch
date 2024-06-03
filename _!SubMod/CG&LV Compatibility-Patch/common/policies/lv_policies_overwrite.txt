@@ -363,6 +363,13 @@ lv_gender_leadership = {
 					OR = {
 						has_trait = trait_suc_parthenogenesis
 						has_trait = trait_lv_all_female
+						AND = {
+							NOR = {
+								has_trait = trait_slime
+								has_trait = trait_SLIME_robot
+							}
+							is_futa_monster_girl = no
+						}
 					}
 					OR = {
 						has_trait = trait_lv_futanari
@@ -665,6 +672,13 @@ lv_feminization_degree = {
 						OR = {
 							has_trait = trait_suc_parthenogenesis
 							has_trait = trait_lv_all_female
+							AND = {
+								NOR = {
+									has_trait = trait_slime
+									has_trait = trait_SLIME_robot
+								}
+							is_futa_monster_girl = no
+						}
 						}
 						has_authority = auth_hive_mind
 						NOT = { has_civic = civic_hive_devouring_swarm }
@@ -762,6 +776,13 @@ lv_feminization_range = {
 							OR = {
 								has_trait = trait_suc_parthenogenesis
 								has_trait = trait_lv_all_female
+								AND = {
+									NOR = {
+										has_trait = trait_slime
+										has_trait = trait_SLIME_robot
+									}
+									is_futa_monster_girl = no
+								}
 							}
 							OR = {
 								has_trait = trait_lv_futanari

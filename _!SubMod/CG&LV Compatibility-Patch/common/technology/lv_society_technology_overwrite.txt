@@ -1445,8 +1445,15 @@ tech_lv_advanced_feminization = {		# Advanced Feminization
 					OR = {
 						has_trait = trait_lv_all_female
 						has_trait = trait_suc_parthenogenesis
+						AND = {
+							NOR = {
+								has_trait = trait_slime
+								has_trait = trait_SLIME_robot
+							}
+							is_futa_monster_girl = no
+						}
 					}
-					has_trait = trait_lv_futanari
+					is_futa_monster_girl = yes
 				}
 			}
 		}
@@ -1474,8 +1481,15 @@ tech_lv_advanced_feminization = {		# Advanced Feminization
 						OR = {
 							has_trait = trait_lv_all_female
 							has_trait = trait_suc_parthenogenesis
+							AND = {
+								NOR = {
+									has_trait = trait_slime
+									has_trait = trait_SLIME_robot
+								}
+								is_futa_monster_girl = no
+							}
 						}
-						has_trait = trait_lv_futanari
+						is_futa_monster_girl = yes
 					}
 					has_authority = auth_hive_mind
 					NOT = {

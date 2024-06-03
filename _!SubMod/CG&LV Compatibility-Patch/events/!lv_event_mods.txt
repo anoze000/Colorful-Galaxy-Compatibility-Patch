@@ -172,6 +172,19 @@ pop_event = {
 				OR = {
 					pop_has_trait = trait_lv_all_female
 					pop_has_trait = trait_suc_parthenogenesis
+					AND = {
+						OR = {
+							pop_has_trait = trait_slime
+							pop_has_trait = trait_SLIME_robot
+						}
+						OR = {
+							pop_has_trait = trait_futanari
+							pop_has_trait = trait_hidden_futa
+							pop_has_trait = trait_hidden_futa_common
+							pop_has_trait = trait_huge_penis_futa
+							pop_has_trait = trait_lv_futanari
+						}
+					}
 				}
 				planet = {
 					any_owned_pop = {
@@ -266,6 +279,19 @@ pop_event = {
 							OR = {
 								pop_has_trait = trait_lv_all_female
 								pop_has_trait = trait_suc_parthenogenesis
+								AND = {
+									OR = {
+										pop_has_trait = trait_slime
+										pop_has_trait = trait_SLIME_robot
+									}
+									OR = {
+										pop_has_trait = trait_futanari
+										pop_has_trait = trait_hidden_futa
+										pop_has_trait = trait_hidden_futa_common
+										pop_has_trait = trait_huge_penis_futa
+										pop_has_trait = trait_lv_futanari
+									}
+								}
 							}
 							pop_has_trait = trait_lv_all_male
 							pop_has_trait = trait_lv_futanari
@@ -476,6 +502,19 @@ planet_event = {
 						OR = {
 							pop_has_trait = trait_lv_all_female 
 							pop_has_trait = trait_suc_parthenogenesis
+							AND = {
+								OR = {
+									pop_has_trait = trait_slime
+									pop_has_trait = trait_SLIME_robot
+								}
+								OR = {
+									pop_has_trait = trait_futanari
+									pop_has_trait = trait_hidden_futa
+									pop_has_trait = trait_hidden_futa_common
+									pop_has_trait = trait_huge_penis_futa
+									pop_has_trait = trait_lv_futanari
+								}
+							}
 						}
 					} 
 				}
@@ -493,6 +532,19 @@ planet_event = {
 						OR = {
 							pop_has_trait = trait_lv_all_female 
 							pop_has_trait = trait_suc_parthenogenesis
+							AND = {
+								OR = {
+									pop_has_trait = trait_slime
+									pop_has_trait = trait_SLIME_robot
+								}
+								OR = {
+									pop_has_trait = trait_futanari
+									pop_has_trait = trait_hidden_futa
+									pop_has_trait = trait_hidden_futa_common
+									pop_has_trait = trait_huge_penis_futa
+									pop_has_trait = trait_lv_futanari
+								}
+							}
 						}
 					} 
 				}

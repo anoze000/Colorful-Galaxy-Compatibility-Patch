@@ -1250,6 +1250,19 @@ event = {
 							OR = {
 								pop_has_trait = trait_lv_all_female 
 								pop_has_trait = trait_suc_parthenogenesis
+								AND = {
+									OR = {
+										pop_has_trait = trait_slime
+										pop_has_trait = trait_SLIME_robot
+									}
+									OR = {
+										pop_has_trait = trait_futanari
+										pop_has_trait = trait_hidden_futa
+										pop_has_trait = trait_hidden_futa_common
+										pop_has_trait = trait_huge_penis_futa
+										pop_has_trait = trait_lv_futanari
+									}
+								}
 							}
 							OR = {
 								pop_has_trait = trait_lv_futanari
@@ -1284,9 +1297,55 @@ event = {
 									add_trait = trait_suc_parthenogenesis
 								}
 							}
-							else = {
+							else_if = {
+								limit = {
+									NOR = {
+										has_trait = trait_slime
+										has_trait = trait_SLIME_robot
+									}	
+								}
 								modify_species = {
 									add_trait = trait_lv_all_female
+								}
+								if = {
+									limit = {
+										pop_has_trait = trait_futanari
+									}
+									modify_species = {
+										remove_trait = trait_futanari
+									}
+								}
+								if = {
+									limit = {
+										pop_has_trait = trait_hidden_futa
+									}
+									modify_species = {
+										remove_trait = trait_hidden_futa
+									}
+								}
+								if = {
+									limit = {
+										pop_has_trait = trait_hidden_futa_common
+									}
+									modify_species = {
+										remove_trait = trait_hidden_futa_common
+									}
+								}
+								if = {
+									limit = {
+										pop_has_trait = trait_huge_penis_futa
+									}
+									modify_species = {
+										remove_trait = trait_huge_penis_futa
+									}
+								}
+								if = {
+									limit = {
+										pop_has_trait = trait_lv_futanari
+									}
+									modify_species = {
+										remove_trait = trait_lv_futanari
+									}
 								}
 							}
 						}
@@ -1354,6 +1413,19 @@ event = {
 							OR = {
 								pop_has_trait = trait_lv_all_female 
 								pop_has_trait = trait_suc_parthenogenesis
+								AND = {
+									OR = {
+										pop_has_trait = trait_slime
+										pop_has_trait = trait_SLIME_robot
+									}
+									OR = {
+										pop_has_trait = trait_futanari
+										pop_has_trait = trait_hidden_futa
+										pop_has_trait = trait_hidden_futa_common
+										pop_has_trait = trait_huge_penis_futa
+										pop_has_trait = trait_lv_futanari
+									}
+								}
 							}
 							OR = {
 								pop_has_trait = trait_lv_futanari
@@ -1384,6 +1456,19 @@ event = {
 							OR = {
 								pop_has_trait = trait_lv_all_female 
 								pop_has_trait = trait_suc_parthenogenesis
+								AND = {
+									OR = {
+										pop_has_trait = trait_slime
+										pop_has_trait = trait_SLIME_robot
+									}
+									OR = {
+										pop_has_trait = trait_futanari
+										pop_has_trait = trait_hidden_futa
+										pop_has_trait = trait_hidden_futa_common
+										pop_has_trait = trait_huge_penis_futa
+										pop_has_trait = trait_lv_futanari
+									}
+								}
 							}
 							OR = {
 								pop_has_trait = trait_lv_futanari
@@ -1417,6 +1502,19 @@ event = {
 							OR = {
 								pop_has_trait = trait_lv_all_female 
 								pop_has_trait = trait_suc_parthenogenesis
+								AND = {
+									NR = {
+										pop_has_trait = trait_slime
+										pop_has_trait = trait_SLIME_robot
+									}
+									OR = {
+										pop_has_trait = trait_futanari
+										pop_has_trait = trait_hidden_futa
+										pop_has_trait = trait_hidden_futa_common
+										pop_has_trait = trait_huge_penis_futa
+										pop_has_trait = trait_lv_futanari
+									}
+								}
 							}
 							OR = {
 								pop_has_trait = trait_lv_futanari

@@ -1706,6 +1706,8 @@ trait_lv_androgynous = {
 		trait_hidden_futa
 		trait_hidden_futa_common
 		trait_huge_penis_futa
+		trait_slime
+		trait_SLIME_robot
 	}
 	
 	species_potential_add = {

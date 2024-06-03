@@ -204,7 +204,22 @@ event = {
 				}
 				if = {
 					limit = { 
-						pop_has_trait = trait_lv_all_female
+						OR = {
+							pop_has_trait = trait_lv_all_female
+							AND = {
+								OR = {
+									pop_has_trait = trait_slime
+									pop_has_trait = trait_SLIME_robot
+								}
+								OR = {
+									pop_has_trait = trait_futanari
+									pop_has_trait = trait_hidden_futa
+									pop_has_trait = trait_hidden_futa_common
+									pop_has_trait = trait_huge_penis_futa
+									pop_has_trait = trait_lv_futanari
+								}
+							}
+						}
 					}
 					modify_species = {
 						remove_trait = trait_lv_all_female
@@ -294,6 +309,19 @@ planet_event = {
 				NOR = {
 					pop_has_trait = trait_lv_equine_penis
 					pop_has_trait = trait_lv_all_female
+					AND = {
+						OR = {
+							pop_has_trait = trait_slime
+							pop_has_trait = trait_SLIME_robot
+						}
+						OR = {
+							pop_has_trait = trait_futanari
+							pop_has_trait = trait_hidden_futa
+							pop_has_trait = trait_hidden_futa_common
+							pop_has_trait = trait_huge_penis_futa
+							pop_has_trait = trait_lv_futanari
+						}
+					}
 				}
 			}
 			modify_species = {
@@ -301,7 +329,24 @@ planet_event = {
 			}
 		}
 		every_owned_pop = {
-			limit = { pop_has_trait = trait_lv_all_female }
+			limit = { 
+				OR = {
+					pop_has_trait = trait_lv_all_female 
+					AND = {
+						OR = {
+							pop_has_trait = trait_slime
+							pop_has_trait = trait_SLIME_robot
+						}
+						OR = {
+							pop_has_trait = trait_futanari
+							pop_has_trait = trait_hidden_futa
+							pop_has_trait = trait_hidden_futa_common
+							pop_has_trait = trait_huge_penis_futa
+							pop_has_trait = trait_lv_futanari
+						}
+					}
+				}
+			}
 			modify_species = {
 				remove_trait = trait_lv_all_female
 				add_trait = trait_lv_equine_penis

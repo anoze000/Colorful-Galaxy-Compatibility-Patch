@@ -972,6 +972,8 @@ trait_suc_parthenogenesis = {
 		trait_lv_addictive_cum
 		trait_lv_small_penis
 		trait_lv_all_female
+		trait_slime
+		trait_SLIME_robot
 	}
 	initial = no
 	species_potential_add = { always = no }
