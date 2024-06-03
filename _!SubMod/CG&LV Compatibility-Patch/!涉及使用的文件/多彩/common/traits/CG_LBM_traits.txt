@@ -1,0 +1,783 @@
+trait_DC_ethic_lust_skynet = {
+	cost = 0
+	initial = yes
+	randomized = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	allowed_archetypes = {
+		LOVEMACHINE
+	}
+	icon = "gfx/interface/icons/traits/ethic_lust_skynet.dds"
+	opposites = {
+		"trait_DC_ethic_carnalism"
+		"trait_DC_ethic_asceticism"
+		"trait_DC_ethic_parasite_mind"
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOT = { has_ascension_perk = ap_lbm_full_of_pathos }
+			}
+		}
+		pop_amenities_usage_mult = -0.7
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_ascension_perk = ap_lbm_end_of_night }
+		}
+		pop_amenities_usage_mult = 2
+	}
+	modifier = {
+		planet_jobs_unity_produces_mult = 0.25
+		pop_growth_speed = 0.2
+		planet_researchers_produces_mult = -0.2
+		species_leader_exp_gain = -0.25
+	}
+	ai_weight = { weight = 0 }
+}
+
+#欲械之躯
+trait_machine_desire_body = {
+	cost = -1
+	icon = "gfx/interface/icons/traits/LBM_traits/trait_machine_desire_body.dds"
+	species_potential_add = { always = no }
+	species_possible_remove = {
+		from = { has_ascension_perk = ap_lbm_desire_agreement }
+	}
+	species_possible_merge_add = { always = no }
+	species_possible_merge_remove = {
+		from = { has_ascension_perk = ap_lbm_desire_agreement }
+	}
+	allowed_archetypes = {
+		LOVEMACHINE
+	}
+	initial = yes
+	randomized = no
+	forced_happiness = yes
+	opposites = {
+		"trait_lust_toy"
+	}
+	assembling_modifier = {
+		planet_pop_assembly_mult = -999999
+	}
+	modifier = {
+		planet_jobs_worker_produces_mult = 0.3
+		planet_pops_consumer_goods_upkeep_mult = -0.15
+	}
+}
+
+#绯色欲械
+trait_lbm_scarlet_desire = {
+	cost = -1
+	icon = "gfx/interface/icons/traits/LBM_traits/trait_lbm_scarlet_desire.dds"
+	species_potential_add = {
+		has_trait = trait_DC_ethic_lust_skynet
+		NOR = {
+			has_trait = trait_lbm_fantastic_dance
+			has_trait = trait_lbm_nice_dance
+		}
+		from = { has_ascension_perk = ap_lbm_desire_agreement }
+	}
+	species_possible_remove = {
+		from = { has_ascension_perk = ap_lbm_full_of_pathos }
+	}
+	species_possible_merge_add = {
+		has_trait = trait_DC_ethic_lust_skynet
+		NOR = {
+			has_trait = trait_lbm_fantastic_dance
+			has_trait = trait_lbm_nice_dance
+		}
+		from = { has_ascension_perk = ap_lbm_desire_agreement }
+	}
+	species_possible_merge_remove = {
+		from = { has_ascension_perk = ap_lbm_full_of_pathos }
+	}
+	allowed_archetypes = {
+		LOVEMACHINE
+	}
+	initial = no
+	randomized = no
+	opposites = {
+		"trait_lust_toy"
+	}
+	modifier = {
+		planet_jobs_produces_mult = 0.05
+		planet_jobs_engineering_research_produces_mult = 0.1
+		planet_jobs_physics_research_produces_mult = 0.1
+		planet_jobs_society_research_produces_mult = 0.1
+		pop_growth_speed = 0.1
+	}
+}
+
+#群芳艳舞
+trait_lbm_fantastic_dance = {
+	cost = -2
+	icon = "gfx/interface/icons/traits/LBM_traits/trait_lbm_fantastic_dance.dds"
+	species_potential_add = {
+		has_trait = trait_DC_ethic_lust_skynet
+		NOT = { has_trait = trait_lbm_nice_dance }
+		from = { has_ascension_perk = ap_lbm_full_of_pathos }
+	}
+	species_possible_remove = {
+		from = { has_ascension_perk = ap_lbm_end_of_night }
+	}
+	species_possible_merge_add = {
+		has_trait = trait_DC_ethic_lust_skynet
+		NOT = { has_trait = trait_lbm_nice_dance }
+		from = { has_ascension_perk = ap_lbm_full_of_pathos }
+	}
+	species_possible_merge_remove = {
+		from = { has_ascension_perk = ap_lbm_end_of_night }
+	}
+	allowed_archetypes = {
+		LOVEMACHINE
+	}
+	initial = no
+	randomized = no
+	opposites = {
+		"trait_lust_toy"
+	}
+	modifier = {
+		planet_jobs_worker_produces_mult = 0.3
+		planet_jobs_produces_mult = 0.5
+		planet_jobs_engineering_research_produces_mult = 0.6
+		planet_jobs_physics_research_produces_mult = 0.6
+		planet_jobs_society_research_produces_mult = 0.6
+		pop_growth_speed = 0.2
+		army_damage_mult = 0.15
+		army_health = 0.15
+	}
+}
+
+#万曦柔芳
+trait_lbm_nice_dance = {
+	cost = -3
+	icon = "gfx/interface/icons/traits/LBM_traits/trait_lbm_nice_dance.dds"
+	species_potential_add = {
+		has_trait = trait_DC_ethic_lust_skynet
+		from = { has_ascension_perk = ap_lbm_end_of_night }
+	}
+	species_possible_remove = { always = no }
+	species_possible_merge_add = {
+		has_trait = trait_DC_ethic_lust_skynet
+		from = { has_ascension_perk = ap_lbm_end_of_night }
+	}
+	allowed_archetypes = {
+		LOVEMACHINE
+	}
+	initial = no
+	randomized = no
+	opposites = {
+		"trait_lust_toy"
+	}
+	modifier = {
+		planet_jobs_produces_mult = 0.5
+		planet_jobs_engineering_research_produces_mult = 1.5
+		planet_jobs_physics_research_produces_mult = 1.5
+		planet_jobs_society_research_produces_mult = 1.5
+		pop_growth_speed = 1
+		army_damage_mult = 0.5
+		army_health = 0.5
+		starbase_shipyard_build_cost_mult = -0.25
+		ships_upkeep_mult = -0.25
+		starbase_shipyard_build_speed_mult = 0.25
+	}
+}
+
+#拘束爱好者
+trait_bondage_lover = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/LBM_traits/trait_bondage_lover.dds"
+	allowed_archetypes = {
+		LOVEMACHINE
+	}
+	initial = no
+	randomized = no
+	opposites = {
+		"trait_lust_toy"
+	}
+	modifier = {
+		pop_housing_usage_mult = -0.1
+		pop_happiness = 0.25
+		planet_pop_assembly_mult = 0.25
+	}
+}
+
+#放浪式生产
+trait_lust_things_yes_yes = {
+	cost = 3
+	icon = "gfx/interface/icons/traits/LBM_traits/trait_lust_things_yes_yes.dds"
+	allowed_archetypes = {
+		LOVEMACHINE
+	}
+	initial = no
+	randomized = no
+	opposites = {
+		"trait_lust_toy"
+	}
+	modifier = {
+		planet_jobs_produces_mult = 0.2
+		starbase_shipyard_build_cost_mult = -0.3
+		starbase_shipyard_build_speed_mult = 0.3
+	}
+}
+
+#好伙伴
+trait_yeah_teamwork = {
+	cost = 3
+	icon = "gfx/interface/icons/traits/LBM_traits/trait_yeah_teamwork.dds"
+	allowed_archetypes = {
+		LOVEMACHINE
+	}
+	initial = no
+	randomized = no
+	opposites = {
+		"trait_lust_toy"
+	}
+	modifier = {
+		planet_jobs_unity_produces_mult = 0.3
+		army_damage_mult = 0.45
+		army_health = 0.45
+		armies_upkeep_mult = 0.2
+	}
+}
+
+##############性爱机械############
+#娃娃通用特质 #LOVEMACHINE 
+#淫能残留
+trait_obscenity_remain_robot = {
+	cost = 1
+	icon = "gfx/interface/icons/traits/common_traits/trait_obscenity_remain.dds"
+	allowed_archetypes = {
+		LOVEMACHINE
+	}
+	initial = no
+	randomized = no
+	opposites = {
+		"trait_libido_sensing_robot"
+		"trait_pleasure_sync_robot"
+		"trait_overall_libido_robot"
+		"trait_masturbation_world_robot"
+	}
+	slave_cost = { energy = 500 }
+	modifier = {
+		planet_jobs_physics_research_produces_mult = 0.3
+		pop_happiness = -0.05
+	}
+}
+
+#性欲感应
+trait_libido_sensing_robot = {
+	cost = 1
+	icon = "gfx/interface/icons/traits/common_traits/trait_libido_sensing.dds"
+	allowed_archetypes = {
+		LOVEMACHINE
+	}
+	initial = no
+	randomized = no
+	opposites = {
+		"trait_obscenity_remain_robot"
+		"trait_pleasure_sync_robot"
+		"trait_overall_libido_robot"
+		"trait_masturbation_world_robot"
+	}
+	slave_cost = { energy = 500 }
+	modifier = {
+		planet_jobs_society_research_produces_mult = 0.3
+		pop_housing_usage_mult = 0.1
+	}
+}
+
+#快感同步
+trait_pleasure_sync_robot = {
+	cost = 1
+	icon = "gfx/interface/icons/traits/common_traits/trait_pleasure_sync.dds"
+	allowed_archetypes = {
+		LOVEMACHINE
+	}
+	initial = no
+	randomized = no
+	opposites = {
+		"trait_obscenity_remain"
+		"trait_libido_sensing"
+		"trait_overall_libido"
+		"trait_masturbation_world"
+	}
+	slave_cost = { energy = 500 }
+	modifier = {
+		planet_jobs_unity_produces_mult = 0.15
+	}
+}
+
+#整体性欲
+trait_overall_libido_robot = {
+	cost = 1
+	icon = "gfx/interface/icons/traits/common_traits/trait_overall_libido.dds"
+	allowed_archetypes = {
+		LOVEMACHINE
+	}
+	initial = no
+	randomized = no
+	opposites = {
+		"trait_obscenity_remain_robot"
+		"trait_libido_sensing_robot"
+		"trait_pleasure_sync_robot"
+		"trait_masturbation_world_robot"
+	}
+	slave_cost = { energy = 500 }
+	modifier = {
+		planet_erotic_produces_mult = 0.1
+		planet_jobs_unity_produces_mult = 0.15
+		pop_happiness = -0.1
+	}
+}
+
+#淫能世界
+trait_masturbation_world_robot = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/common_traits/trait_masturbation_world.dds"
+	allowed_archetypes = {
+		LOVEMACHINE
+	}
+	initial = no
+	randomized = no
+	opposites = {
+		"trait_obscenity_remain_robot"
+		"trait_libido_sensing_robot"
+		"trait_pleasure_sync_robot"
+		"trait_overall_libido_robot"
+	}
+	slave_cost = { energy = 1000 }
+	modifier = {
+		planet_pop_assembly_mult = 0.1
+		planet_jobs_unity_produces_mult = 0.1
+		planet_jobs_society_research_produces_mult = 0.15
+		pop_happiness = 0.1
+	}
+}
+
+#超维快感
+trait_ultradimensional_pleasure_robot = {
+	cost = 3
+	icon = "gfx/interface/icons/traits/common_traits/trait_ultradimensional_pleasure.dds"
+	allowed_archetypes = {
+		LOVEMACHINE
+	}
+	initial = no
+	randomized = no
+	slave_cost = { energy = 1500 }
+	modifier = {
+		species_leader_exp_gain = 0.25
+		planet_jobs_ruler_produces_mult = 0.05
+		planet_jobs_specialist_produces_mult = 0.05
+		planet_jobs_physics_research_produces_mult = 0.2
+		planet_jobs_society_research_produces_mult = 0.2
+		planet_jobs_engineering_research_produces_mult = 0.2
+		planet_erotic_produces_mult = 0.05
+		planet_erotic_upkeep_mult = -0.05
+	}
+}
+
+# 色欲玩具 0
+trait_lust_toy = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/trait_lust_toy.dds"
+	allowed_archetypes = {
+		LOVEMACHINE
+		YGWAWA
+	}
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	forced_happiness = yes
+	modifier = {
+		planet_jobs_produces_mult = -0.1
+		planet_erotic_produces_mult = 0.1
+		pop_demotion_time_mult = -1
+	}
+}
+
+# 网路算法优化 1
+trait_network_algorithm_optimization = {
+	cost = 1
+	icon = "gfx/interface/icons/traits/trait_network_algorithm_optimization.dds"
+	allowed_archetypes = {
+		LOVEMACHINE
+		YGWAWA
+	}
+	initial = no
+	randomized = no
+	modifier = {
+		species_empire_size_mult = -0.05
+		planet_erotic_produces_mult = 0.05
+	}
+	slave_cost = { energy = 500 }
+}
+
+#住家服务 3
+trait_live_with_master = {
+	cost = 3
+	allowed_archetypes = {
+		LOVEMACHINE
+		YGWAWA
+	}
+	initial = no
+	randomized = no
+	opposites = {
+		trait_cyber_RBQ
+	}
+	modifier = {
+		planet_jobs_consumer_goods_produces_mult = 0.1
+		pop_housing_usage_mult = -0.5
+		species_empire_size_mult = -0.1
+	}
+	slave_cost = { energy = 1000 }
+}
+
+#深度情感学习 1
+trait_deep_emotion = {
+	cost = 0
+	allowed_archetypes = {
+		LOVEMACHINE
+		YGWAWA
+	}
+	initial = no
+	randomized = no
+	opposites = {
+		trait_cyber_RBQ
+	}
+	modifier = {
+		planet_pop_assembly_mult = -0.15
+		planet_pop_assemblers_upkeep_mult = 0.1
+	}
+}
+
+#丰富模组 2
+trait_rich_modules = {
+	cost = 2
+	allowed_archetypes = {
+		LOVEMACHINE
+		YGWAWA
+	}
+	initial = no
+	randomized = no
+	modifier = {
+		planet_pop_assemblers_upkeep_mult = 0.2
+		planet_pops_robotics_upkeep_mult = 0.2
+		planet_jobs_produces_mult = 0.1
+	}
+	slave_cost = { energy = 1000 }
+}
+
+#快速修复模板
+trait_fast_template = {
+	cost = 1
+	allowed_archetypes = {
+		LOVEMACHINE
+		YGWAWA
+	}
+	initial = no
+	randomized = no
+	modifier = {
+		army_health = 0.8
+		armies_cost_mult = -0.25
+		armies_upkeep_mult = 0.25
+	}
+}
+
+# 上古核心 0
+trait_ancient_core = {
+	cost = 0
+	allowed_archetypes = {
+		LOVEMACHINE
+		YGWAWA
+	}
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	modifier = {
+		species_leader_exp_gain = 1
+		planet_technician_produces_mult = 0.2
+		planet_miners_produces_mult = 0.2
+		planet_farmers_produces_mult = 0.2
+		planet_researchers_produces_mult = 0.1
+		planet_erotic_produces_mult = 0.1
+		planet_beauty_produces_mult = 0.1
+	}
+	slave_cost = { energy = 2000 }
+}
+
+###娃娃高级特质
+##合成人娃娃
+trait_cyber_RBQ = {
+	cost = 0
+	sorting_priority = 30
+	allowed_archetypes = {
+		LOVEMACHINE
+		YGWAWA
+	}
+	icon = "gfx/interface/icons/traits/RBQ_traits/trait_cyber_RBQ.dds"
+	initial = no
+	randomized = no
+	modifier = {
+		planet_erotic_produces_mult = 0.05
+	}
+	prerequisites = {
+		"tech_synthetic_workers"
+	}
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	opposites = {
+		trait_lust_toy
+	}
+	slave_cost = { energy = 1000 }
+}
+
+#电子贞操锁
+trait_electronic_chastity_lock = {
+	cost = 1
+	allowed_archetypes = {
+		LOVEMACHINE
+		YGWAWA
+	}
+	icon = "gfx/interface/icons/traits/RBQ_traits/trait_electronic_chastity_lock.dds"
+	initial = no
+	randomized = no
+	modifier = {
+		planet_jobs_slave_produces_mult = 0.15
+		pop_cat_slave_happiness = -0.15
+	}
+	prerequisites = {
+		"tech_synthetic_workers"
+	}
+	opposites = {
+		trait_lust_toy
+	}
+	slave_cost = { energy = 500 }
+}
+
+#赛博储精罐
+trait_semen_jar = {
+	cost = 1
+	allowed_archetypes = {
+		LOVEMACHINE
+		YGWAWA
+	}
+	icon = "gfx/interface/icons/traits/RBQ_traits/trait_semen_jar.dds"
+	initial = no
+	randomized = no
+	modifier = {
+		planet_jobs_love_juice_produces_mult = 0.15
+	}
+	prerequisites = {
+		"tech_synthetic_workers"
+	}
+	opposites = {
+		trait_lust_toy
+	}
+	slave_cost = { energy = 500 }
+}
+
+##生体化情欲机械
+trait_biochemical_doll = {
+	cost = -2
+	sorting_priority = 30
+	allowed_archetypes = {
+		LOVEMACHINE
+		YGWAWA
+	}
+	icon = "gfx/interface/icons/traits/RBQ_traits/trait_biochemical_doll.dds"
+	initial = no
+	randomized = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	modifier = {
+		planet_pop_assembly_mult = 0.1
+		planet_erotic_produces_mult = 0.05
+	}
+	opposites = {
+		trait_lust_toy
+	}
+	slave_cost = { energy = 1000 }
+}
+
+#嫰体多汁 1
+trait_body_by_juice = {
+	cost = 1
+	allowed_archetypes = {
+		LOVEMACHINE
+		YGWAWA
+	}
+	icon = "gfx/interface/icons/traits/RBQ_traits/trait_body_by_juice.dds"
+	initial = no
+	randomized = no
+	slave_cost = { energy = 500 }
+	modifier = {
+		planet_pop_assembly_mult = 0.15
+		pop_job_amenities_mult = 0.2
+		planet_pops_robotics_upkeep_mult = 0.2
+	}
+}
+
+#改造YR
+trait_transformation_breasts = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/RBQ_traits/trait_transformation_breasts.dds"
+	allowed_archetypes = {
+		LOVEMACHINE
+		YGWAWA
+	}
+	initial = no
+	randomized = no
+	slave_cost = { energy = 200 }
+	modifier = {
+		planet_jobs_unity_produces_mult = 0.1
+	}
+}
+
+#改造YX
+trait_transformation_vaginal = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/RBQ_traits/trait_transformation_vaginal.dds"
+	allowed_archetypes = {
+		LOVEMACHINE
+		YGWAWA
+	}
+	initial = no
+	randomized = no
+	slave_cost = { energy = 200 }
+	modifier = {
+		planet_erotic_produces_mult = 0.05
+	}
+}
+
+#奇香腋窝
+trait_armpit = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/RBQ_traits/trait_armpit.dds"
+	allowed_archetypes = {
+		LOVEMACHINE
+		YGWAWA
+	}
+	initial = no
+	randomized = no
+	slave_cost = { energy = 200 }
+	modifier = {
+		pop_job_amenities_mult = 0.1
+	}
+	ai_weight = { weight = 50 }
+}
+
+#甘美圣水
+trait_sweet_urine = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/RBQ_traits/trait_sweet_urine.dds"
+	allowed_archetypes = {
+		LOVEMACHINE
+		YGWAWA
+	}
+	initial = no
+	randomized = no
+	slave_cost = { energy = 200 }
+	modifier = {
+		planet_beauty_produces_mult = 0.05
+	}
+	ai_weight = { weight = 50 }
+}
+
+#永久发情电路
+trait_estrous_circuit = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/RBQ_traits/trait_estrous_circuit.dds"
+	allowed_archetypes = {
+		LOVEMACHINE
+		YGWAWA
+	}
+	initial = no
+	randomized = no
+	prerequisites = {
+		"tech_robomodding_points_3"
+	}
+	opposites = {
+		trait_lust_toy
+	}
+	modifier = {
+		pop_happiness = 0.1
+		planet_erotic_produces_mult = 0.1
+	}
+	slave_cost = { energy = 1000 }
+	ai_weight = { weight = 50 }
+}
+
+#超固体稳态皮肤
+trait_super_solid_skin = {
+	cost = -2
+	icon = "gfx/interface/icons/traits/RBQ_traits/trait_super_solid_skin.dds"
+	allowed_archetypes = {
+		LOVEMACHINE
+		YGWAWA
+	}
+	initial = no
+	randomized = no
+	prerequisites = {
+		"tech_robomodding_points_3"
+	}
+	modifier = {
+		planet_erotic_produces_mult = 0.05
+		planet_jobs_worker_produces_mult = -0.05
+		army_health = 0.1
+		planet_pop_assembly_mult = -0.1
+		planet_pop_assemblers_upkeep_mult = 0.2
+	}
+	slave_cost = { energy = 200 }
+	ai_weight = { weight = 50 }
+}
+
+#机械生殖
+trait_self_replication = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/RBQ_traits/trait_self_replication.dds"
+	allowed_archetypes = {
+		LOVEMACHINE
+		YGWAWA
+	}
+	initial = no
+	randomized = no
+	prerequisites = {
+		"tech_robomodding_points_3"
+	}
+	slave_cost = { energy = 1000 }
+	modifier = {
+		planet_pop_assembly_mult = 0.4
+		planet_pop_assemblers_upkeep_mult = 0.2
+	}
+	ai_weight = { weight = 50 }
+}
+
+trait_imaginary_link = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/RBQ_traits/trait_imaginary_link.dds"
+	allowed_archetypes = {
+		LOVEMACHINE
+		YGWAWA
+	}
+	initial = no
+	randomized = no
+	slave_cost = { energy = 1000 }
+	modifier = {
+		planet_jobs_produces_mult = 0.3
+		planet_jobs_energy_upkeep_mult = -1
+		planet_pops_upkeep_mult = -1
+		pop_housing_usage_mult = -1
+	}
+	ai_weight = { weight = 50 }
+}

@@ -52,6 +52,8 @@ trait_lv_aphrodisiac_milk = {
 		trait_lv_all_male
 		trait_lv_sexually_inept
 		trait_lv_sexually_repressed
+		trait_frigid
+		trait_emotionless
 	}
 	
 	species_potential_add = {
@@ -216,6 +218,8 @@ trait_lv_large_breasts = {
 		trait_lv_all_male
 		trait_lv_sexually_inept
 		trait_lv_titanic_evolution
+		trait_frigid
+		trait_emotionless
 	}
 	
 	modifier = {
@@ -273,6 +277,8 @@ trait_lv_huge_breasts = {
 		trait_lv_all_male
 		trait_lv_sexually_inept
 		trait_lv_titanic_evolution
+		trait_frigid
+		trait_emotionless
 	}
 	
 	species_potential_add = {
@@ -341,6 +347,8 @@ trait_lv_multiple_breasts = {
 	opposites = {
 		trait_lv_all_male
 		trait_lv_sexually_inept
+		trait_frigid
+		trait_emotionless
 	}
 	
 	species_potential_add = {
@@ -407,6 +415,8 @@ trait_lv_fuckable_nipples = {
 	opposites = {
 		trait_lv_all_male
 		trait_lv_sexually_inept
+		trait_frigid
+		trait_emotionless
 	}
 	
 	modifier = {
@@ -649,6 +659,8 @@ trait_lv_drooling_vagina = {
 	opposites = {
 		trait_lv_all_male
 		trait_lv_sexually_inept
+		trait_frigid
+		trait_emotionless
 	}
 	
 	species_potential_add = {
@@ -1375,6 +1387,8 @@ trait_lv_titanic_evolution = {
 		trait_conformists
 		trait_sedentary
 		trait_decadent
+		trait_frigid
+		trait_emotionless
 	}
 	
 	modifier = {

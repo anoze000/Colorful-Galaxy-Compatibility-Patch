@@ -54,8 +54,8 @@ trait_lv_aphrodisiac_cum = {
 		trait_lv_sexually_repressed
 		trait_lv_addictive_cum
 		trait_suc_parthenogenesis
-		trait_slime
-		trait_SLIME_robot
+		trait_frigid
+		trait_emotionless
 	}
 	
 	species_potential_add = {
@@ -128,8 +128,8 @@ trait_lv_addictive_cum = {
 		trait_lv_sexually_repressed
 		trait_lv_aphrodisiac_cum
 		trait_suc_parthenogenesis
-		trait_slime
-		trait_SLIME_robot
+		trait_frigid
+		trait_emotionless
 	}
 	
 	species_potential_add = {
@@ -250,8 +250,8 @@ trait_lv_large_penis = {
 		trait_lv_small_penis
 		trait_lv_all_female
 		trait_suc_parthenogenesis
-		trait_slime
-		trait_SLIME_robot
+		trait_frigid
+		trait_emotionless
 	}
 	
 	modifier = {
@@ -306,8 +306,8 @@ trait_lv_huge_penis = {
 		trait_lv_sexually_inept
 		trait_lv_all_female
 		trait_suc_parthenogenesis
-		trait_slime
-		trait_SLIME_robot
+		trait_frigid
+		trait_emotionless
 	}
 	
 	species_potential_add = {
@@ -374,8 +374,8 @@ trait_lv_multiple_penises = {
 		trait_lv_all_female
 		trait_lv_sexually_inept
 		trait_suc_parthenogenesis
-		trait_slime
-		trait_SLIME_robot
+		trait_frigid
+		trait_emotionless
 	}
 	
 	species_potential_add = {
@@ -442,8 +442,6 @@ trait_lv_equine_penis = {
 		trait_lv_sexually_inept
 		trait_suc_parthenogenesis
 #		trait_lvex_knotted_penis
-		trait_slime
-		trait_SLIME_robot
 	}
 	
 	species_potential_add = {
@@ -536,8 +534,8 @@ trait_lv_high_volume_ejaculations = {
 		trait_lv_all_female
 		trait_lv_sexually_inept
 		trait_suc_parthenogenesis
-		trait_slime
-		trait_SLIME_robot
+		trait_frigid
+		trait_emotionless
 	}
 	
 	species_potential_add = {
@@ -608,8 +606,6 @@ trait_lv_small_penis = {
 		trait_lv_huge_penis
 		trait_lv_all_female
 		trait_suc_parthenogenesis
-		trait_slime
-		trait_SLIME_robot
 	}
 	
 	modifier = {
@@ -729,8 +725,6 @@ trait_lv_intercompatible_sperm = {
 		trait_lv_all_female
 		trait_lv_aggressively_adaptive_reproduction
 		trait_suc_parthenogenesis
-		trait_slime
-		trait_SLIME_robot
 	}
 	
 	species_potential_add = {

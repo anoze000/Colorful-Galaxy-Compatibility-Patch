@@ -41,9 +41,6 @@ trait_transformed_perfect_body = {
 		planet_jobs_slave_produces_mult = 0.2
 		pop_cat_slave_happiness = 0.3
 	}
-	opposites = {
-		trait_lv_scary
-	}
 }
 
 #堕淫圣女
@@ -94,10 +91,6 @@ trait_broken_fleshtoilet = {
 		planet_jobs_love_juice_produces_mult = 0.5
 		species_empire_size_mult = -0.5
 	}
-	opposites = {
-		trait_lv_sexually_inept
-		trait_lv_sexually_repressed
-	}
 }
 
 # 石化便器
@@ -143,10 +136,6 @@ trait_sexual_liquid_flower = {
 		army_damage_mult = -0.2
 		army_health = -0.4
 		army_morale = -1.6
-	}
-	opposites = {
-		trait_lv_sexually_inept
-		trait_lv_sexually_repressed
 	}
 }
 
@@ -239,10 +228,6 @@ trait_siren = {
 		planet_pops_consumer_goods_upkeep_mult = -0.1
 		pop_growth_speed = 0.25
 	}
-	opposites = {
-		"trait_lv_sexually_inept"
-		"trait_lv_sexually_repressed"
-	}
 }
 
 # YC共生
@@ -299,7 +284,6 @@ trait_ephemeral = {
 		"trait_forbidden_lust"
 		"trait_DC_ethic_parasite_mind"
 		"trait_clumsy_tentacle"
-		"trait_lv_scary"
 	}
 	slave_cost = { energy = -500 }
 	modifier = {
@@ -354,7 +338,6 @@ trait_coquettish = {
 		"trait_DC_ethic_asceticism"
 		"trait_DC_ethic_parasite_mind"
 		"trait_holy_suc"
-		"trait_lv_scary"
 	}
 	growing_modifier = {
 		pop_growth_speed = 0.2
@@ -381,8 +364,6 @@ trait_forever_naughty = {
 		"trait_DC_ethic_parasite_mind"
 		"trait_heartless_shojo"
 		"trait_holy_suc"
-		"trait_lv_sexually_inept"
-		"trait_lv_sexually_repressed"
 	}
 	modifier = {
 		pop_happiness = 0.1
@@ -415,8 +396,6 @@ trait_sex_addiction = {
 		"trait_DC_ethic_parasite_mind"
 		"trait_heartless_shojo"
 		"trait_holy_suc"
-		"trait_lv_sexually_inept"
-		"trait_lv_sexually_repressed"
 	}
 	slave_cost = { energy = -500 }
 	modifier = {
@@ -484,7 +463,6 @@ trait_sexual_pleasure_increase = {
 		"trait_heartless_shojo"
 		"trait_holy_suc"
 		"trait_soul_flesh_link"
-		"trait_lv_sexually_inept"
 	}
 	prerequisites = {
 		"tech_gene_remodeling"
@@ -516,7 +494,6 @@ trait_lust_missionary = {
 		"trait_DC_ethic_parasite_mind"
 		"trait_heartless_shojo"
 		"trait_holy_suc"
-		"trait_lv_scary"
 	}
 	prerequisites = {
 		"tech_gene_remodeling"
@@ -555,8 +532,6 @@ trait_lust_tech_up = {
 		"trait_heartless_shojo"
 		"trait_holy_suc"
 		"trait_cortex_biochip"
-		"trait_lv_sexually_inept"
-		"trait_lv_sexually_repressed"
 	}
 	prerequisites = {
 		"tech_gene_remodeling"
@@ -782,7 +757,6 @@ trait_bereavement_body = {
 	randomized = no
 	opposites = {
 		"trait_skillful"
-		"trait_lv_sexually_inept"
 	}
 	slave_cost = { energy = -1000 }
 	modifier = {
@@ -809,9 +783,6 @@ trait_bereavement_genitals = {
 		planet_livestock_food_produces_mult = -0.5
 	}
 	ai_weight = { weight = 50 }
-	opposites = {
-		"trait_lv_sexually_inept"
-	}
 }
 
 #渴望劣化
@@ -834,12 +805,6 @@ trait_want_bereavement = {
 		planet_jobs_engineering_research_produces_mult = -0.05
 	}
 	ai_weight = { weight = 50 }
-	opposites = {
-		"trait_lv_sexually_inept"
-		"trait_lv_sexually_repressed"
-		"trait_lv_dominant"
-		"trait_lv_sadistic"
-	}
 }
 
 #应急储备
@@ -881,10 +846,6 @@ trait_enslavement_struggle = {
 		pop_cat_slave_happiness = -0.1
 	}
 	randomized = no
-	opposites = { 
-		"trait_lv_masochistic"
-		"trait_lv_sexually_repressed"
-	}
 }
 
 #奴役抗拒：至尊女族
@@ -906,9 +867,6 @@ trait_enslavement_resistance = {
 		pop_cat_slave_happiness = -0.1
 	}
 	randomized = no
-	opposites = {
-		trait_lv_submissive
-	}
 }
 
 #性奴渴望
@@ -930,9 +888,6 @@ trait_all_slave = {
 		pop_cat_slave_happiness = 0.2
 	}
 	randomized = no
-	opposites = {
-		trait_lv_dominant
-	}
 }
 
 #脑虫共生
@@ -996,29 +951,6 @@ trait_suc_parthenogenesis = {
 	}
 	allowed_origins = {
 		origin_female_in_shadow
-	}
-	opposites = {
-		trait_lv_all_male
-		trait_lv_futanari
-		trait_angel
-		trait_ANGEL_robot
-		trait_angel_fallen
-		trait_ANGEL_F_robot
-		trait_futanari
-		trait_hidden_futa
-		trait_hidden_futa_common
-		trait_huge_penis_futa
-		trait_lv_androgynous
-		trait_lv_large_penis
-		trait_lv_huge_penis
-		trait_lv_multiple_penises
-		trait_lv_high_volume_ejaculations
-		trait_lv_aphrodisiac_cum
-		trait_lv_addictive_cum
-		trait_lv_small_penis
-		trait_lv_all_female
-		trait_slime
-		trait_SLIME_robot
 	}
 	initial = no
 	species_potential_add = { always = no }

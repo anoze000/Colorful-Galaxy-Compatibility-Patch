@@ -1,0 +1,250 @@
+######################MWN######################
+#魔物娘
+trait_monster_girl = {
+	cost = 0
+	allowed_archetypes = {
+		MONSTER
+	}
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	sorting_priority = 49
+	modifier = {
+		pop_environment_tolerance = 0.1
+		PLANET_AMENITIES_MULT = 0.1
+		planet_jobs_produces_mult = 0.2
+	}
+	opposites = {
+		"trait_lv_scary"
+	}
+}
+
+#美人鱼
+trait_fish_girl = {
+	cost = 0
+	allowed_archetypes = {
+		MONSTER
+	}
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	sorting_priority = 20
+	modifier = {
+		planet_pops_consumer_goods_upkeep_mult = 0.2
+		planet_jobs_unity_produces_mult = 0.2
+		army_damage_mult = -0.25
+		army_health = -0.1
+		army_morale_damage_mult = -0.1
+		army_morale = -0.1
+	}
+}
+
+#蛇女
+trait_snake_girl = {
+	cost = 0
+	allowed_archetypes = {
+		MONSTER
+	}
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	sorting_priority = 20
+	modifier = {
+		planet_pops_food_upkeep_mult = 0.2
+		planet_jobs_produces_mult = 0.1
+		army_damage_mult = 0.25
+		army_health = 0.25
+		army_morale_damage_mult = 1
+	}
+}
+
+#蜘蛛女
+trait_spider_girl = {
+	cost = 0
+	allowed_archetypes = {
+		MONSTER
+	}
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	sorting_priority = 20
+	modifier = {
+		planet_jobs_produces_mult = 0.2
+		army_damage_mult = 0.25
+		army_health = 0.25
+		army_morale_damage_mult = 1
+	}
+}
+
+#翼女
+trait_wing_girl = {
+	cost = 0
+	allowed_archetypes = {
+		MONSTER
+	}
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	sorting_priority = 20
+	modifier = {
+		planet_jobs_unity_produces_mult = 0.2
+		planet_jobs_minerals_produces_mult = 0.2
+		pop_housing_usage_mult = 0.2
+		army_damage_mult = 0.4
+	}
+}
+
+#兽耳娘
+trait_fox_girl = {
+	cost = 0
+	allowed_archetypes = {
+		MONSTER
+	}
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	sorting_priority = 20
+	modifier = {
+		planet_jobs_physics_research_produces_mult = 0.15
+		planet_jobs_society_research_produces_mult = 0.15
+		planet_jobs_engineering_research_produces_mult = 0.15
+		army_damage_mult = 0.25
+	}
+}
+
+#####################共用#####################
+#惹人怜爱
+trait_lovable = {
+	cost = 2
+	allowed_archetypes = {
+		MONSTER
+	}
+	initial = no
+	randomized = no
+	sorting_priority = 10
+	modifier = {
+		planet_jobs_produces_mult = 0.2
+	}
+}
+
+#多卵繁育
+trait_rich_oviparous = {
+	cost = 2
+	allowed_archetypes = {
+		MONSTER
+	}
+	initial = no
+	randomized = no
+	sorting_priority = 10
+	opposites = {
+		"trait_fox_girl"
+	}
+	modifier = {
+		pop_growth_speed = 0.2
+		planet_pops_food_upkeep_mult = 0.2
+		planet_pops_consumer_goods_upkeep_mult = 0.2
+	}
+}
+
+#女王气息
+trait_queen_flavour = {
+	cost = 2
+	allowed_archetypes = {
+		MONSTER
+	}
+	initial = no
+	randomized = no
+	sorting_priority = 10
+	modifier = {
+		planet_jobs_influence_produces_mult = 0.5
+		planet_pops_consumer_goods_upkeep_mult = 0.5
+		POP_AMENITIES_USAGE_NO_HAPPINESS_MULT = 0.5
+	}
+}
+
+#思想退化
+trait_mind_degeneration = {
+	cost = 2
+	allowed_archetypes = {
+		MONSTER
+	}
+	initial = no
+	randomized = no
+	sorting_priority = 10
+	opposites = {
+		"trait_new_view"
+		"trait_bright"
+		"trait_extremely_intelligent"
+	}
+	modifier = {
+		planet_jobs_worker_produces_mult = 0.35
+		planet_jobs_slave_produces_mult = 0.35
+		planet_jobs_ruler_produces_mult = -0.7
+		planet_researchers_produces_mult = -0.7
+		pop_happiness = 0.35
+	}
+}
+
+#新视野思维模式
+trait_new_view = {
+	cost = 2
+	allowed_archetypes = {
+		MONSTER
+	}
+	initial = no
+	randomized = no
+	sorting_priority = 10
+	opposites = {
+		"trait_mind_degeneration"
+	}
+	modifier = {
+		planet_researchers_produces_mult = 0.2
+	}
+}
+
+#饲养属性
+trait_like_being_raised = {
+	cost = 2
+	allowed_archetypes = {
+		MONSTER
+	}
+	initial = no
+	randomized = no
+	sorting_priority = 10
+	modifier = {
+		pop_housing_usage_mult = -0.5
+		planet_pops_consumer_goods_upkeep_mult = -0.2
+		POP_AMENITIES_USAGE_NO_HAPPINESS_MULT = -0.5
+		pop_environment_tolerance = 0.1
+		planet_jobs_produces_mult = -0.2
+	}
+}
+
+#野性回归
+trait_animal_savagery = {
+	cost = 2
+	allowed_archetypes = {
+		MONSTER
+	}
+	initial = no
+	randomized = no
+	sorting_priority = 10
+	modifier = {
+		army_damage_mult = 0.5
+		army_health = 0.2
+		army_morale_damage_mult = 0.5
+		army_morale = 0.5
+	}
+}

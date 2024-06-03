@@ -348,6 +348,10 @@ trait_hidden_futa = {
 		"trait_hidden_futa_common"
 		"trait_huge_penis_futa"
 		"trait_lv_futanari"
+		"trait_suc_parthenogenesis"
+		"trait_lv_all_female"
+		"trait_lv_all_male"
+		"trait_lv_androgynous"
 	}
 	custom_tooltip_with_modifiers = hidden_futa_tooltip
 

@@ -1,0 +1,734 @@
+# species
+# BIOLOGICAL
+# 深空游骑兵
+trait_deepspace_ranger = {
+	cost = 1
+	icon = "gfx/interface/icons/traits/trait_deepspace_ranger.dds"
+	allowed_archetypes = {
+		BIOLOGICAL
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		TENTACLE
+		CG_compatible_species_archetype
+	}
+	initial = no
+	randomized = no
+	prerequisites = {
+		"tech_ultimate_body"
+	}
+	slave_cost = { energy = 500 }
+	modifier = {
+		army_health = 0.4
+		army_damage_mult = 0.4
+		army_disengage_chance_mult = 0.25
+		army_starting_experience_add = 10000
+	}
+}
+
+# 肾上腺素爆发
+trait_adrenaline = {
+	cost = 1
+	icon = "gfx/interface/icons/traits/trait_adrenaline.dds"
+	allowed_archetypes = {
+		MONSTER
+		BIOLOGICAL
+		PARASITE
+		Magical_Bitch
+		TENTACLE
+		Magical_Girl
+		Lust_Girl
+		CG_compatible_species_archetype
+	}
+	initial = no
+	randomized = no
+	prerequisites = {
+		"tech_ultimate_body"
+	}
+	slave_cost = { energy = 500 }
+	modifier = {
+		army_health = 1.2
+		army_disengage_chance_mult = 0.8
+		army_morale = 10.8
+	}
+}
+
+# 论美貌你赢不了我
+trait_super_beautiful = {
+	cost = -1
+	icon = "gfx/interface/icons/traits/trait_super_beautiful.dds"
+	allowed_archetypes = {
+		BIOLOGICAL
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		TENTACLE
+		CG_compatible_species_archetype
+	}
+	opposites = {
+		trait_super_beautiful2
+	}
+	initial = yes
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	slave_cost = { energy = -1000 }
+	randomized = no
+	custom_tooltip = TRAIT_SUPER_BEAUTIFUL_EFFECT
+}
+
+# 论美貌你是比不过我的
+trait_super_beautiful2 = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/trait_super_beautiful2.dds"
+	opposites = {
+		trait_super_beautiful
+	}
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	slave_cost = { energy = 500 }
+	randomized = no
+	custom_tooltip = TRAIT_SUPER_BEAUTIFUL_EFFECT
+}
+
+# NOT BIOLOGICAL
+####全种族通用特质###
+# 非触手多彩物种通用特质
+# 洛丽塔
+trait_cute_appearance = {
+	cost = -2
+	icon = "gfx/interface/icons/traits/trait_cute_appearance.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		TENTACLE
+		CG_compatible_species_archetype
+	}
+	opposites = {
+		"trait_very_strong"
+		"trait_strong"
+		"trait_repugnant"
+	}
+	initial = yes
+	randomized = no
+	modifier = {
+		pop_growth_speed = -0.05
+		planet_pop_assembly_organic_mult = 0.05
+		planet_jobs_worker_produces_mult = -0.01
+		pop_housing_usage_mult = -0.15
+	}
+}
+
+# 知性佳人
+trait_clever_beauty = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/trait_clever_beauty.dds"
+	allowed_archetypes = {
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		TENTACLE
+		CG_compatible_species_archetype
+	}
+	opposites = {
+		"trait_very_strong"
+		"trait_repugnant"
+	}
+	initial = yes
+	randomized = no
+	modifier = {
+		planet_jobs_physics_research_produces_mult = 0.1
+		planet_jobs_engineering_research_produces_mult = 0.1
+		planet_jobs_society_research_produces_mult = 0.1
+		pop_happiness = 0.05
+		planet_jobs_unity_produces_mult = 0.1
+		species_leader_exp_gain = 0.1
+	}
+}
+
+#纤纤巧手 2
+trait_skillful = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/trait_skillful.dds"
+	allowed_archetypes = {
+		MONSTER
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		TENTACLE
+		CG_compatible_species_archetype
+	}
+	initial = yes
+	randomized = yes
+	slave_cost = { energy = 500 }
+	modifier = {
+		planet_jobs_consumer_goods_produces_mult = 0.35
+		planet_artisans_minerals_upkeep_mult = 0.15
+		planet_jobs_alloys_produces_mult = -0.05
+		planet_jobs_alloys_upkeep_mult = -0.2
+	}
+}
+
+#多彩物种通用特质
+#淫能残留
+trait_obscenity_remain = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/common_traits/trait_obscenity_remain.dds"
+	allowed_archetypes = {
+		MONSTER
+		PARASITE
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		TENTACLE
+		CG_compatible_species_archetype
+	}
+	initial = yes
+	randomized = yes
+	opposites = {
+		"trait_sexual_deprivation"
+		"trait_libido_sensing"
+		"trait_pleasure_sync"
+		"trait_overall_libido"
+		"trait_masturbation_world"
+		"trait_highcold_conservative"
+		"trait_DC_ethic_asceticism"
+		"trait_holy_suc"
+	}
+	slave_cost = { energy = 500 }
+	modifier = {
+		pop_growth_speed = 0.1
+		planet_jobs_physics_research_produces_mult = 0.35
+		planet_jobs_unity_produces_mult = 0.3
+		planet_researchers_consumer_goods_upkeep_mult = 0.4
+		pop_happiness = -0.1
+	}
+}
+
+#性欲感应
+trait_libido_sensing = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/common_traits/trait_libido_sensing.dds"
+	allowed_archetypes = {
+		MONSTER
+		PARASITE
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		TENTACLE
+		CG_compatible_species_archetype
+	}
+	initial = yes
+	randomized = yes
+	opposites = {
+		"trait_sexual_deprivation"
+		"trait_obscenity_remain"
+		"trait_pleasure_sync"
+		"trait_overall_libido"
+		"trait_masturbation_world"
+		"trait_highcold_conservative"
+		"trait_DC_ethic_asceticism"
+		"trait_holy_suc"
+	}
+	modifier = {
+		pop_growth_speed = 0.2
+		pop_growth_from_immigration = 1.25
+		planet_jobs_society_research_produces_mult = 0.35
+		pop_housing_usage_mult = 0.15
+	}
+}
+
+#快感同步
+trait_pleasure_sync = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/common_traits/trait_pleasure_sync.dds"
+	allowed_archetypes = {
+		MONSTER
+		PARASITE
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		TENTACLE
+		CG_compatible_species_archetype
+	}
+	initial = yes
+	randomized = yes
+	opposites = {
+		"trait_sexual_deprivation"
+		"trait_obscenity_remain"
+		"trait_libido_sensing"
+		"trait_overall_libido"
+		"trait_masturbation_world"
+		"trait_highcold_conservative"
+		"trait_DC_ethic_asceticism"
+		"trait_holy_suc"
+	}
+	slave_cost = { energy = 500 }
+	modifier = {
+		planet_jobs_unity_produces_mult = 0.2
+		pop_growth_from_immigration = 2.5
+		planet_jobs_slave_produces_mult = 0.3
+		planet_pops_food_upkeep_mult = 0.4
+		pop_government_ethic_attraction = -0.4
+	}
+}
+
+#整体性欲
+trait_overall_libido = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/common_traits/trait_overall_libido.dds"
+	allowed_archetypes = {
+		MONSTER
+		PARASITE
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		TENTACLE
+		CG_compatible_species_archetype
+	}
+	initial = yes
+	randomized = yes
+	opposites = {
+		"trait_sexual_deprivation"
+		"trait_obscenity_remain"
+		"trait_libido_sensing"
+		"trait_pleasure_sync"
+		"trait_masturbation_world"
+		"trait_highcold_conservative"
+		"trait_DC_ethic_asceticism"
+		"trait_holy_suc"
+	}
+	slave_cost = { energy = 500 }
+	modifier = {
+		pop_growth_speed = -0.3		#POP GROWTH MISTAKE
+		planet_researchers_produces_mult = 0.2
+		pop_amenities_usage_add = 0.5
+		pop_job_amenities_mult = 0.3
+	}
+}
+
+#淫能世界
+trait_masturbation_world = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/common_traits/trait_masturbation_world.dds"
+	allowed_archetypes = {
+		MONSTER
+		PARASITE
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		TENTACLE
+		CG_compatible_species_archetype
+	}
+	initial = no
+	randomized = no
+	opposites = {
+		"trait_sexual_deprivation"
+		"trait_obscenity_remain"
+		"trait_libido_sensing"
+		"trait_pleasure_sync"
+		"trait_overall_libido"
+		"trait_highcold_conservative"
+		"trait_DC_ethic_asceticism"
+		"trait_holy_suc"
+	}
+	slave_cost = { energy = 1000 }
+	modifier = {
+		pop_growth_speed = 0.4
+		planet_jobs_produces_mult = 0.4
+		planet_jobs_upkeep_mult = 0.3
+		pop_happiness = 0.3
+	}
+}
+
+#高冷保守
+trait_highcold_conservative = {
+	cost = 1
+	icon = "gfx/interface/icons/traits/common_traits/trait_highcold_conservative.dds"
+	allowed_archetypes = {
+		MONSTER
+		PARASITE
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		TENTACLE
+		CG_compatible_species_archetype
+	}
+	initial = yes
+	randomized = yes
+	opposites = {
+		"trait_sexual_deprivation"
+		"trait_obscenity_remain"
+		"trait_libido_sensing"
+		"trait_pleasure_sync"
+		"trait_overall_libido"
+		"trait_masturbation_world"
+		"trait_DC_ethic_carnalism"
+		"trait_lust_inn"
+	}
+	slave_cost = { energy = 500 }
+	modifier = {
+		pop_job_amenities_mult = -0.15
+		pop_happiness = 0.15
+		pop_government_ethic_attraction = 0.3
+	}
+}
+
+#性欲剥夺
+trait_sexual_deprivation = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/common_traits/trait_sexual_deprivation.dds"
+	allowed_archetypes = {
+		MONSTER
+		PARASITE
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		TENTACLE
+		CG_compatible_species_archetype
+	}
+	initial = yes
+	randomized = yes
+	opposites = {
+		"trait_highcold_conservative"
+		"trait_obscenity_remain"
+		"trait_libido_sensing"
+		"trait_pleasure_sync"
+		"trait_overall_libido"
+		"trait_masturbation_world"
+		"trait_DC_ethic_carnalism"
+		"trait_lust_inn"
+	}
+	slave_cost = { energy = 500 }
+	modifier = {
+		pop_job_amenities_mult = -0.1
+		pop_amenities_usage_add = -0.25
+		planet_pops_consumer_goods_upkeep_mult = -0.25
+	}
+}
+
+#通用特质第二批 #通用负面特质
+#负面小组
+#快感薄弱
+trait_pleasure_weak = {
+	cost = -2
+	icon = "gfx/interface/icons/traits/common_traits/trait_pleasure_weak.dds"
+	allowed_archetypes = {
+		MONSTER
+		PARASITE
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		TENTACLE
+		CG_compatible_species_archetype
+	}
+	initial = yes
+	randomized = yes
+	opposites = {
+		"trait_pleasure_shield"
+		"trait_pleasure_lack"
+		"trait_utmost_sensitive"
+		"trait_pleasure_sync"
+		"trait_ultradimensional_pleasure"
+		"trait_DC_ethic_carnalism"
+		"trait_lust_inn"
+	}
+	slave_cost = { energy = -500 }
+	modifier = {
+		pop_amenities_usage_mult = 0.2
+		planet_pop_assemblers_upkeep_mult = 0.4
+		army_defense_health_mult = 0.1
+		army_defense_morale_mult = 2
+	}
+}
+
+#快感屏蔽
+trait_pleasure_shield = {
+	cost = -3
+	icon = "gfx/interface/icons/traits/common_traits/trait_pleasure_shield.dds"
+	allowed_archetypes = {
+		MONSTER
+		PARASITE
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		TENTACLE
+		CG_compatible_species_archetype
+	}
+	initial = yes
+	randomized = yes
+	opposites = {
+		"trait_pleasure_weak"
+		"trait_pleasure_lack"
+		"trait_utmost_sensitive"
+		"trait_pleasure_sync"
+		"trait_ultradimensional_pleasure"
+		"trait_DC_ethic_carnalism"
+		"trait_lust_inn"
+	}
+	slave_cost = { energy = -500 }
+	modifier = {
+		pop_growth_speed = -0.05
+		pop_happiness = -0.2
+		planet_pop_assemblers_upkeep_mult = 0.4
+		army_defense_health_mult = 0.15
+		army_defense_morale_mult = 4
+	}
+}
+
+#快感缺失
+trait_pleasure_lack = {
+	cost = -3
+	icon = "gfx/interface/icons/traits/common_traits/trait_pleasure_lack.dds"
+	allowed_archetypes = {
+		MONSTER
+		PARASITE
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		TENTACLE
+		CG_compatible_species_archetype
+	}
+	initial = yes
+	randomized = yes
+	opposites = {
+		"trait_pleasure_weak"
+		"trait_pleasure_shield"
+		"trait_utmost_sensitive"
+		"trait_pleasure_sync"
+		"trait_ultradimensional_pleasure"
+		"trait_DC_ethic_carnalism"
+		"trait_lust_inn"
+	}
+	slave_cost = { energy = -1000 }
+	modifier = {
+		pop_amenities_usage_mult = 0.2
+		pop_happiness = -0.2
+		planet_pop_assemblers_upkeep_mult = 0.4
+		planet_jobs_unity_produces_mult = 0.3
+		army_defense_health_mult = 0.15
+		army_defense_morale_mult = 4
+	}
+}
+
+#性欲低下
+trait_decreased_libido = {
+	cost = -2
+	icon = "gfx/interface/icons/traits/common_traits/trait_decreased_libido.dds"
+	allowed_archetypes = {
+		MONSTER
+		PARASITE
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		TENTACLE
+		CG_compatible_species_archetype
+	}
+	initial = yes
+	randomized = yes
+	opposites = {
+		"trait_orgasms_prohibited"
+		"trait_sensitive_delicatebody"
+		"trait_utmost_sensitive"
+		"trait_ultradimensional_pleasure"
+		"trait_DC_ethic_carnalism"
+		"trait_lust_inn"
+	}
+	slave_cost = { energy = -500 }
+	modifier = {
+		pop_growth_speed = -0.2
+		pop_job_trade_mult = -0.1
+		pop_government_ethic_attraction = -0.5
+		pop_ethics_shift_speed_mult = 0.3
+	}
+}
+
+#高潮禁止
+trait_orgasms_prohibited = {
+	cost = -3
+	icon = "gfx/interface/icons/traits/common_traits/trait_orgasms_prohibited.dds"
+	allowed_archetypes = {
+		MONSTER
+		PARASITE
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		TENTACLE
+		CG_compatible_species_archetype
+	}
+	initial = no
+	randomized = no
+	prerequisites = {
+		"tech_ultimate_body"
+	}
+	opposites = {
+		"trait_pleasure_weak"
+		"trait_pleasure_shield"
+		"trait_pleasure_lack"
+		"trait_pleasure_sync"
+		"trait_ultradimensional_pleasure"
+		"trait_DC_ethic_carnalism"
+		"trait_lust_inn"
+	}
+	slave_cost = { energy = -1000 }
+	modifier = {
+		pop_happiness = -0.45
+		planet_pops_food_upkeep_mult = -0.2
+	}
+	assembling_modifier = {
+		planet_pop_assemblers_upkeep_mult = -0.6
+	}
+	custom_tooltip_with_modifiers = trait_orgasms_prohibited_tooltip
+}
+
+#敏感身躯 
+trait_sensitive_delicatebody = {
+	cost = -2
+	icon = "gfx/interface/icons/traits/common_traits/trait_sensitive_delicatebody.dds"
+	allowed_archetypes = {
+		MONSTER
+		PARASITE
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		TENTACLE
+		CG_compatible_species_archetype
+	}
+	initial = yes
+	randomized = yes
+	opposites = {
+		"trait_ultradimensional_pleasure"
+		"trait_utmost_sensitive"
+		"trait_pleasure_lack"
+		"trait_pleasure_shield"
+		"trait_pleasure_weak"
+		"trait_DC_ethic_asceticism"
+		"trait_holy_suc"
+	}
+	slave_cost = { energy = -500 }
+	modifier = {
+		species_leader_exp_gain = -0.25
+		species_empire_size_mult = 0.1
+		pop_housing_usage_mult = 0.1
+	}
+}
+
+#过敏体质
+trait_utmost_sensitive = {
+	cost = -4
+	icon = "gfx/interface/icons/traits/common_traits/trait_utmost_sensitive.dds"
+	allowed_archetypes = {
+		MONSTER
+		PARASITE
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		TENTACLE
+		CG_compatible_species_archetype
+	}
+	initial = yes
+	randomized = yes
+	opposites = {
+		"trait_ultradimensional_pleasure"
+		"trait_sensitive_delicatebody"
+		"trait_pleasure_lack"
+		"trait_pleasure_shield"
+		"trait_pleasure_weak"
+		"trait_DC_ethic_asceticism"
+		"trait_holy_suc"
+	}
+	slave_cost = { energy = -500 }
+	modifier = {
+		leader_lifespan_add = -20
+		species_leader_exp_gain = -0.5
+		species_empire_size_mult = 0.15
+		pop_housing_usage_mult = 0.15
+	}
+}
+
+#超维快感
+trait_ultradimensional_pleasure = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/common_traits/trait_ultradimensional_pleasure.dds"
+	allowed_archetypes = {
+		MONSTER
+		PARASITE
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		TENTACLE
+		CG_compatible_species_archetype
+	}
+	initial = no
+	randomized = no
+	opposites = {
+		"trait_utmost_sensitive"
+		"trait_sensitive_delicatebody"
+		"trait_pleasure_lack"
+		"trait_orgasms_prohibited"
+		"trait_pleasure_shield"
+		"trait_pleasure_weak"
+		"trait_decreased_libido"
+		"trait_DC_ethic_asceticism"
+		"trait_holy_suc"
+	}
+	prerequisites = {
+		"tech_gene_remodeling"
+	}
+	slave_cost = { energy = 1500 }
+	modifier = {
+		leader_lifespan_add = -40
+		planet_jobs_physics_research_produces_mult = 0.2
+		planet_jobs_society_research_produces_mult = 0.2
+		planet_jobs_engineering_research_produces_mult = 0.2
+		planet_erotic_produces_mult = 0.2
+		planet_erotic_upkeep_mult = -0.1
+		pop_government_ethic_attraction = -0.3
+	}
+}
+
+#肉便器
+trait_resolution_rbq = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/common_traits/trait_resolution_rbq.dds"
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	slave_cost = { energy = 500 }
+	modifier = {
+		pop_amenities_usage_mult = -0.2
+		pop_housing_usage_mult = -0.2
+		pop_government_ethic_attraction = 10
+	}
+}
+
+#精力旺盛
+trait_strong_fuck = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/common_traits/trait_strong_fuck.dds"
+	prerequisites = {
+		"tech_ultimate_body"
+	}
+	allowed_archetypes = {
+		BIOLOGICAL
+	}
+	initial = no
+	species_potential_add = { always = yes }
+	opposites = {
+		"trait_frigid"
+		"trait_cute_appearance"
+		"trait_super_beautiful"
+		"trait_weak"
+	}
+	randomized = no
+	slave_cost = { energy = 100 }
+	modifier = {
+		planet_erotic_unity_produces_mult = 0.1
+	}
+	ai_weight = { weight = 50 }
+}

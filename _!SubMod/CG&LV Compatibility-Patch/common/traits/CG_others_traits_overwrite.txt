@@ -1,0 +1,115 @@
+trait_sowing_and_breeding = {
+	cost = 0
+	potential_crossbreeding_chance = 0
+	sorting_priority = 20
+	initial = no
+	randomized = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	ai_weight = { weight = 0 }
+	opposites = { "trait_plantoid_phototrophic" "trait_aquatic" "trait_advanced_phototrophic" }
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	icon = "gfx/interface/icons/traits/other_traits/trait_sowing_and_breeding.dds"
+	modifier = {
+		habitability_floor_add = 0.5
+		planet_jobs_minerals_produces_mult = 0.25
+		pop_housing_usage_mult = -0.2
+		pop_growth_speed = -1
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_country_flag = sower_cg_empire }
+		}
+		pop_housing_usage_mult = -1
+		pop_amenities_usage_mult = -1
+		planet_pops_upkeep_mult = -1
+		planet_jobs_produces_mult = 1
+	}
+	slave_cost = { energy = 500 }
+}
+
+trait_sower_sadistic_tyrant = {
+	cost = 1
+	icon = "gfx/interface/icons/traits/other_traits/trait_sower_sadistic_tyrant.dds"
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	initial = no
+	randomized = no
+	allowed_origins = { origin_deep_cave_noise }
+	prerequisites = { "tech_system_destruction_dignity" }
+	slave_cost = { energy = 1000 }
+	custom_tooltip = trait_sower_sadistic_tyrant_effect
+}
+
+trait_flies_seedbed_branding = {
+	cost = 0
+	potential_crossbreeding_chance = 0
+	sorting_priority = 20
+	initial = no
+	randomized = no
+	forced_happiness = no
+	immortal_leaders = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	ai_weight = { weight = 0 }
+	icon = "gfx/interface/icons/traits/other_traits/trait_flies_seedbed_branding.dds"
+	modifier = {
+		planet_jobs_unity_produces_mult = 0.1
+		pop_happiness = -0.1
+	}
+	slave_cost = { energy = 500 }
+}
+
+trait_fallen_female_animal = {
+	cost = 0
+	potential_crossbreeding_chance = 0
+	sorting_priority = 20
+	initial = no
+	randomized = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	ai_weight = { weight = 0 }
+	icon = "gfx/interface/icons/traits/other_traits/trait_fallen_female_animal.dds"
+	modifier = {
+		pop_cat_slave_happiness = 1
+		species_leader_exp_gain = -10
+		army_damage_mult = -10
+	}
+	slave_cost = { energy = 100 }
+}
+
+trait_good_pregnancy_seedbed = {
+	cost = 1
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	initial = no
+	randomized = no
+	opposites = { trait_sowing_and_breeding }
+	allowed_origins = { origin_deep_cave_noise }
+	prerequisites = { "tech_heterogeneous_hormonal_secretion" }
+	icon = "gfx/interface/icons/traits/other_traits/trait_good_pregnancy_seedbed.dds"
+	modifier = {
+		pop_cat_slave_happiness = 1
+	}
+	custom_tooltip_with_modifiers = trait_good_pregnancy_seedbed_effect
+	slave_cost = { energy = 100 }
+}
+
+trait_nurturing_motherhood = {
+	cost = 1
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	initial = no
+	randomized = no
+	opposites = { trait_sowing_and_breeding }
+	allowed_origins = { origin_deep_cave_noise }
+	prerequisites = { "tech_heterogeneous_hormonal_secretion" }
+	icon = "gfx/interface/icons/traits/other_traits/trait_nurturing_motherhood.dds"
+	modifier = {
+		pop_cat_slave_happiness = 1
+		army_damage_mult = 0.75
+	}
+	custom_tooltip_with_modifiers = trait_nurturing_motherhood_effect
+	slave_cost = { energy = 100 }
+}

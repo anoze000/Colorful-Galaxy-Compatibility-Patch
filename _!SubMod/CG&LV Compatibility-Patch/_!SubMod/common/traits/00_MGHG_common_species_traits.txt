@@ -90,7 +90,10 @@ trait_masochistic_constitution = {
 		always = yes
 	}
 	potential_crossbreeding_chance = 1.0
-	opposites = { "trait_sadism_constitution" }
+	opposites = { 
+		"trait_sadism_constitution" 
+		"trait_lv_sadistic"
+	}
 	allowed_archetypes = { BIOLOGICAL LITHOID MACHINE ROBOT}
 	species_class = { LAMIA ANGEL GYNOID GYNOID_ROBOT SLIME SUCCUBUS VAMPIRE ANGEL_F}
 	modifier = {
@@ -136,7 +139,10 @@ trait_sadism_constitution = {
 		always = yes
 	}
 	potential_crossbreeding_chance = 1.0
-	opposites = { "trait_masochistic_constitution" }
+	opposites = { 
+		"trait_masochistic_constitution"
+		"trait_lv_masochistic" 
+	}
 	allowed_archetypes = { BIOLOGICAL LITHOID MACHINE ROBOT }
 	species_class = { LAMIA ANGEL GYNOID GYNOID_ROBOT SLIME SUCCUBUS VAMPIRE ANGEL_F}
 	modifier = {
@@ -311,7 +317,13 @@ trait_hesitant = {
 		is_monster_girl = yes
 	}
 	potential_crossbreeding_chance = 1.0
-	opposites = { "trait_promiscuous" "trait_emotionless" "trait_hive_mind" }
+	opposites = { 
+		"trait_promiscuous" 
+		"trait_emotionless" 
+		"trait_hive_mind" 
+		"trait_lv_sexually_inept"
+		"trait_lv_sexually_repressed"
+	}
 	allowed_archetypes = { BIOLOGICAL LITHOID ROBOT }
 	species_class = { LAMIA ANGEL GYNOID_ROBOT SLIME SUCCUBUS VAMPIRE ZOMBIE ANGEL_F}
 	modifier = {
@@ -340,7 +352,30 @@ trait_emotionless = {
 		is_monster_girl = yes
 	}
 	potential_crossbreeding_chance = 1.0
-	opposites = { "trait_promiscuous" "trait_hesitant" }
+	opposites = { 
+		"trait_promiscuous" 
+		"trait_hesitant" 
+		"trait_lv_sexual_pheromones"
+		"trait_lv_targeted_pheromones"
+		"trait_lv_elastic_orifices"
+		"trait_lv_sexually_gifted"
+		"trait_lv_lewd_mind"
+		"trait_lv_large_breasts"
+		"trait_lv_huge_breasts"
+		"trait_lv_multiple_breasts"
+		"trait_lv_drooling_vagina"
+		"trait_lv_aphrodisiac_milk"
+		"trait_lv_fuckable_nipples"
+		"trait_lv_large_penis"
+		"trait_lv_huge_penis"
+		"trait_lv_multiple_penises"
+		"trait_lv_high_volume_ejaculations"
+		"trait_lv_aphrodisiac_cum"
+		"trait_lv_addictive_cum"
+		"trait_lv_sex_crazed"
+		"trait_lv_perfect_hybrid"
+		"trait_lv_titanic_evolution"
+	}
 	allowed_archetypes = { BIOLOGICAL LITHOID MACHINE ROBOT }
 	species_class = { LAMIA ANGEL GYNOID GYNOID_ROBOT SLIME SUCCUBUS VAMPIRE ZOMBIE ANGEL_F}
 	modifier = {
@@ -378,7 +413,11 @@ trait_erotic_genius = {
 		always = yes
 	}
 	potential_crossbreeding_chance = 1.0
-	opposites = { "trait_dull_dog" }
+	opposites = { 
+		"trait_lv_sexually_inept"
+		"trait_lv_sexually_repressed"
+		"trait_dull_dog" 
+	}
 	allowed_archetypes = { BIOLOGICAL LITHOID ROBOT }
 	species_class = { LAMIA ANGEL GYNOID_ROBOT SLIME SUCCUBUS VAMPIRE ZOMBIE ANGEL_F}
 	modifier = {
@@ -407,7 +446,10 @@ trait_dull_dog = {
 		is_monster_girl = yes
 	}
 	potential_crossbreeding_chance = 1.0
-	opposites = { "trait_erotic_genius" }
+	opposites = { 
+		"trait_erotic_genius" 
+		"trait_lv_sexually_gifted"
+	}
 	allowed_archetypes = { BIOLOGICAL LITHOID MACHINE ROBOT }
 	species_class = { LAMIA ANGEL GYNOID GYNOID_ROBOT SLIME SUCCUBUS VAMPIRE ZOMBIE ANGEL_F}
 	modifier = {
@@ -675,6 +717,10 @@ trait_futanari = {
 		"trait_hidden_futa_common"
 		"trait_huge_penis_futa"
 		"trait_lv_futanari"
+		"trait_suc_parthenogenesis"
+		"trait_lv_all_female"
+		"trait_lv_all_male"
+		"trait_lv_androgynous"
 	}
 	randomized = no
 
@@ -775,6 +821,10 @@ trait_sex_addicts = {
 	ai_weight = {
 		weight = 2
 	}
+	opposites = {
+		trait_lv_sexually_inept
+		trait_lv_sexually_repressed
+	}
 }
 
 #柔韧身躯
@@ -869,6 +919,10 @@ trait_much_love_liquid = {
 	ai_weight = {
 		weight = 2
 	}
+	opposites = {
+		trait_lv_sexually_inept
+		trait_lv_sexually_repressed
+	}
 }
 
 #丰沛母乳
@@ -899,7 +953,10 @@ trait_abundant_milk = {
 	ai_weight = {
 		weight = 2
 	}
-
+	opposites = {
+		trait_lv_sexually_inept
+		trait_lv_sexually_repressed
+	}
 }
 
 #延迟满足
@@ -973,7 +1030,14 @@ trait_sex_servant = {
 	potential_crossbreeding_chance = 1.0
 	allowed_archetypes = { BIOLOGICAL }
 	species_class = { LAMIA ANGEL SLIME SUCCUBUS VAMPIRE ZOMBIE ANGEL_F }
-	opposites = { trait_whorer trait_hesitant trait_female_imps trait_haughty_harlots trait_hive_mind }
+	opposites = { 
+		trait_whorer 
+		trait_hesitant 
+		trait_female_imps 
+		trait_haughty_harlots 
+		trait_hive_mind 
+		trait_lv_dominant
+	}
 	modifier = {
 		pop_amenities_usage_mult = -0.1
 		species_empire_size_mult = -0.1
@@ -1540,6 +1604,10 @@ trait_hidden_futa_common = {
 		"trait_hidden_futa"
 		"trait_huge_penis_futa"
 		"trait_lv_futanari"
+		"trait_suc_parthenogenesis"
+		"trait_lv_all_female"
+		"trait_lv_all_male"
+		"trait_lv_androgynous"
 	}
 	custom_tooltip_with_modifiers = hidden_futa_tooltip
 
@@ -1676,6 +1744,9 @@ trait_gigantic_breasts = {
 	ai_weight = {
 		weight = 0
 	}
+	opposites = {
+		trait_lv_small_breasts
+	}
 }
 
 #巨根扶她
@@ -1701,6 +1772,11 @@ trait_huge_penis_futa = {
 		"trait_hidden_futa"
 		"trait_hidden_futa_common"
 		"trait_lv_futanari"
+		"trait_suc_parthenogenesis"
+		"trait_lv_all_female"
+		"trait_lv_all_male"
+		"trait_lv_androgynous"
+		"trait_lv_small_penis"
 	}
 	allowed_archetypes = { BIOLOGICAL LITHOID }
 	modifier = {
@@ -1881,6 +1957,9 @@ trait_ovulation_promoter = {
 	ai_weight = {
 		weight = 0
 	}
+	opposites = {
+		trait_lv_sexually_repressed
+	}
 }
 
 #电子贞操锁
@@ -2023,6 +2102,9 @@ trait_semen_absorbed_skin = {
 	ai_weight = {
 		weight = 0
 	}
+	opposites = {
+		trait_lv_sexually_repressed
+	}
 }
 
 ###########################
@@ -2053,6 +2135,9 @@ trait_advanced_sex_organ_module = {
 	}
 	ai_weight = {
 		weight = 0
+	}
+	opposites = {
+		trait_lv_sexually_repressed
 	}
 }
 
@@ -2109,6 +2194,9 @@ trait_MGHG_self_replication = {
 	}
 	ai_weight = {
 		weight = 0
+	}
+	opposites = {
+		trait_lv_sexually_repressed
 	}
 }
 

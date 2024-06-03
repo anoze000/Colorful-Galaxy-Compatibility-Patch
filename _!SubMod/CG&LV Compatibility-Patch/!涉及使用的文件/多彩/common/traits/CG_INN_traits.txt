@@ -1,0 +1,641 @@
+trait_DC_ethic_asceticism = {
+	cost = 0
+	initial = yes
+	randomized = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	allowed_archetypes = {
+		Magical_Girl
+		CG_compatible_species_archetype
+	}
+	icon = "gfx/interface/icons/traits/ethic_asceticism.dds"
+	opposites = {
+		"trait_DC_ethic_carnalism"
+		"trait_DC_ethic_abstinence"
+		"trait_DC_ethic_parasite_mind"
+		"trait_DC_ethic_lust_skynet"
+	}
+	modifier = {
+		leader_lifespan_add = 500
+		pop_environment_tolerance = 0.1
+		pop_growth_speed = -0.3
+	}
+	ai_weight = { weight = 0 }
+}
+
+#无心圣女
+trait_heartless_shojo = {
+	cost = -3
+	icon = "gfx/interface/icons/traits/trait_heartless_shojo.dds"
+	allowed_archetypes = {
+		Magical_Girl
+	}
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	forced_happiness = yes
+	sorting_priority = 20
+	slave_cost = { energy = 500 }
+	modifier = {
+		planet_jobs_society_research_produces_mult = -0.25
+		planet_jobs_physics_research_produces_mult = -0.25
+		planet_jobs_engineering_research_produces_mult = -0.25
+		pop_growth_speed = -0.3
+		species_empire_size_mult = -0.25
+	}
+}
+
+# 狂热修女
+trait_zealot_shojo = {
+	cost = -1
+	icon = "gfx/interface/icons/traits/trait_zealot_shojo.dds"
+	allowed_archetypes = {
+		Magical_Girl
+		Magical_Bitch
+	}
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	sorting_priority = 20
+	slave_cost = { energy = 1000 }
+	modifier = {
+		planet_jobs_holylight_crystal_produces_mult = 0.5
+		army_morale = 1
+		army_health = -0.2
+	}
+}
+
+#洗礼金身
+trait_baptized_perfect_body = {
+	icon = "gfx/interface/icons/traits/trait_baptized_perfect_body.dds"
+	cost = 0
+	allowed_archetypes = {
+		Magical_Girl
+	}
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	sorting_priority = 50
+	slave_cost = { energy = 1000 }
+	modifier = {
+		planet_jobs_unity_produces_mult = 0.1
+		planet_jobs_holylight_crystal_produces_mult = 0.1
+		pop_environment_tolerance = 0.2
+		planet_pops_upkeep_mult = -0.2
+	}
+}
+
+#迷途知返
+trait_holy_suc = {
+	icon = "gfx/interface/icons/traits/trait_holy_suc.dds"
+	cost = -2
+	allowed_archetypes = {
+		Magical_Bitch
+	}
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	sorting_priority = 50
+	slave_cost = { energy = 1000 }
+	modifier = {
+		pop_happiness = 0.1
+		pop_growth_speed = 0.4
+		planet_jobs_slave_produces_mult = 0.1
+	}
+}
+
+##################### 圣女特质 #####################
+# 绝对禁欲
+trait_forbidden_lust = {
+	cost = -3
+	icon = "gfx/interface/icons/traits/trait_forbidden_lust.dds"
+	allowed_archetypes = {
+		Magical_Girl
+		CG_compatible_species_archetype
+	}
+	sorting_priority = 30
+	species_potential_add = { always = no }
+	species_possible_remove = {
+		from = { has_ascension_perk = ap_holy_light_remove_seal }
+	}
+	species_possible_merge_add = { always = no }
+	species_possible_merge_remove = {
+		from = { has_ascension_perk = ap_holy_light_remove_seal }
+	}
+	opposites = {
+		"trait_DC_ethic_parasite_mind"
+		"trait_clumsy_tentacle"
+	}
+	randomized = yes
+	slave_cost = { energy = -500 }
+	modifier = {
+		planet_jobs_produces_mult = 0.2
+		pop_happiness = -0.1
+		pop_growth_speed = -0.5
+	}
+	ai_weight = { weight = 200 }
+	random_weight = {
+		Magical_Girl = 200
+	}
+}
+
+#仙姿玉色
+trait_beautiful = {
+	cost = {
+		base = 3
+		modifier = {
+			add = -2
+			has_ascension_perk = ap_holylight_god_blood
+		}
+		modifier = {
+			add = -1
+			has_country_flag = has_ap_pure_ascension
+		}
+	}
+	icon = "gfx/interface/icons/traits/trait_beautiful.dds"
+	allowed_archetypes = {
+		Magical_Girl
+		CG_compatible_species_archetype
+	}
+	species_potential_add = {
+		NOT = { exists = from }
+	}
+	opposites = {
+		"trait_lust_inn"
+		"trait_DC_ethic_carnalism"
+		"trait_DC_ethic_parasite_mind"
+	}
+	sorting_priority = 30
+	slave_cost = { energy = 1500 }
+	custom_tooltip_with_modifiers = trait_beautiful_tooltip
+	modifier = {
+		pop_job_trade_mult = 0.4
+		pop_amenities_usage_mult = -0.05
+		planet_pop_assembly_organic_mult = -0.0625
+		country_trade_attractiveness = 0.125
+		country_organic_trust_cap_add = 100
+		country_subject_trust_cap_add = 50
+		country_trust_growth = 1
+	}
+}
+
+#冰雪聪明
+trait_extremely_intelligent = {
+	cost = 3
+	allowed_archetypes = {
+		Magical_Girl
+		CG_compatible_species_archetype
+	}
+	sorting_priority = 30
+	opposites = {
+		"trait_lust_inn"
+		"trait_DC_ethic_carnalism"
+		"trait_DC_ethic_parasite_mind"
+	}
+	slave_cost = { energy = 500 }
+	modifier = {
+		planet_jobs_physics_research_produces_mult = 0.2
+		planet_jobs_society_research_produces_mult = 0.2
+		planet_jobs_engineering_research_produces_mult = 0.2
+		species_leader_exp_gain = 0.3
+	}
+}
+
+#双宿双栖
+trait_live_in_pairs = {
+	cost = 2
+	allowed_archetypes = {
+		Magical_Girl
+		CG_compatible_species_archetype
+	}
+	sorting_priority = 30
+	opposites = {
+		"trait_lust_inn"
+		"trait_DC_ethic_carnalism"
+		"trait_DC_ethic_parasite_mind"
+	}
+	slave_cost = { energy = 500 }
+	modifier = {
+		pop_housing_usage_mult = -0.5
+	}
+}
+
+# 冰清玉洁
+trait_virtuous = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/trait_virtuous.dds"
+	allowed_archetypes = {
+		Magical_Girl
+		CG_compatible_species_archetype
+	}
+	sorting_priority = 30
+	opposites = {
+		"trait_lust_inn"
+		"trait_DC_ethic_carnalism"
+		"trait_DC_ethic_parasite_mind"
+	}
+	slave_cost = { energy = 500 }
+	modifier = {
+		pop_amenities_usage_mult = -0.25
+		species_empire_size_mult = -0.25
+	}
+}
+
+# 心如止水
+trait_inner_peace = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/trait_inner_peace.dds"
+	allowed_archetypes = {
+		Magical_Girl
+		CG_compatible_species_archetype
+	}
+	sorting_priority = 30
+	opposites = {
+		"trait_lust_inn"
+		"trait_DC_ethic_carnalism"
+		"trait_DC_ethic_parasite_mind"
+	}
+	slave_cost = { energy = 500 }
+	modifier = {
+		planet_jobs_ruler_produces_mult = 0.15
+		planet_pops_consumer_goods_upkeep_mult = -0.15
+		species_empire_size_mult = -0.1
+	}
+}
+
+# 性冷淡
+trait_frigid = {
+	cost = -2
+	allowed_archetypes = {
+		MONSTER
+		PARASITE
+		Magical_Bitch
+		Magical_Girl
+		CG_compatible_species_archetype
+	}
+	sorting_priority = 30
+	opposites = {
+		"trait_DC_ethic_carnalism"
+		"trait_DC_ethic_parasite_mind"
+		"trait_transformed_perfect_body"
+		"trait_lust_inn"
+	}
+	slave_cost = { energy = -500 }
+	modifier = {
+		planet_researchers_produces_mult = 0.05
+		pop_growth_speed = -0.4
+		planet_pop_assembly_organic_mult = -0.1
+	}
+}
+
+#贞洁烈女
+trait_chaste_warrior_women = {
+	cost = 2
+	allowed_archetypes = {
+		Magical_Girl
+		CG_compatible_species_archetype
+	}
+	opposites = {
+		"trait_lust_inn"
+		"trait_DC_ethic_carnalism"
+		"trait_DC_ethic_parasite_mind"
+	}
+	sorting_priority = 30
+	slave_cost = { energy = 500 }
+	modifier = {
+		pop_environment_tolerance = 0.1
+		army_damage_mult = 0.8
+		army_health = 0.4
+		army_morale = 2.4
+		armies_upkeep_mult = -0.25
+	}
+}
+
+#高情远致
+trait_highbrow = {
+	cost = 3
+	allowed_archetypes = {
+		Magical_Girl
+		CG_compatible_species_archetype
+	}
+	opposites = {
+		"trait_lust_inn"
+		"trait_DC_ethic_carnalism"
+		"trait_DC_ethic_parasite_mind"
+	}
+	sorting_priority = 30
+	slave_cost = { energy = 500 }
+	modifier = {
+		pop_environment_tolerance = 0.25
+		planet_pops_consumer_goods_upkeep_mult = -0.15
+		planet_crime_add = -0.3
+	}
+}
+
+#灵魂伴侣
+trait_soul_mate = {
+	cost = 1
+	icon = "gfx/interface/icons/traits/INN_traits/trait_soul_mate.dds"
+	allowed_archetypes = {
+		Magical_Girl
+		CG_compatible_species_archetype
+	}
+	opposites = {
+		"trait_lust_inn"
+		"trait_DC_ethic_carnalism"
+		"trait_DC_ethic_parasite_mind"
+	}
+	sorting_priority = 30
+	slave_cost = { energy = 500 }
+	modifier = {
+		pop_demotion_time_mult = -0.2
+		pop_growth_from_immigration = 0.1
+		pop_resettlement_cost_mult = -0.25
+	}
+}
+
+# 心灵提升 圣女飞升1阶段
+trait_mind_break = {
+	cost = -1
+	icon = "gfx/interface/icons/traits/trait_mind_break.dds"
+	allowed_archetypes = {
+		Magical_Girl
+		CG_compatible_species_archetype
+	}
+	sorting_priority = 30
+	species_potential_add = {
+		has_trait = trait_DC_ethic_asceticism
+		NOT = { has_trait = trait_mind_evolution }
+		from = { has_ascension_perk = ap_holy_light_remove_seal }
+	}
+	species_possible_remove = {
+		from = { has_country_flag = has_ap_pure_ascension }
+	}
+	species_possible_merge_add = {
+		has_trait = trait_DC_ethic_asceticism
+		NOT = { has_trait = trait_mind_evolution }
+		from = { has_ascension_perk = ap_holy_light_remove_seal }
+	}
+	species_possible_merge_remove = {
+		from = { has_country_flag = has_ap_pure_ascension }
+	}
+	initial = no
+	randomized = no
+	slave_cost = { energy = 500 }
+	modifier = {
+		species_leader_exp_gain = 0.25
+		planet_jobs_produces_mult = 0.2
+	}
+}
+
+# 心灵升华 圣女飞升2阶段
+trait_mind_evolution = {
+	cost = -1
+	icon = "gfx/interface/icons/traits/trait_mind_evolution.dds"
+	allowed_archetypes = {
+		Magical_Girl
+		CG_compatible_species_archetype
+	}
+	sorting_priority = 30
+	species_potential_add = {
+		has_trait = trait_DC_ethic_asceticism
+		from = { has_country_flag = has_ap_pure_ascension }
+	}
+	species_possible_remove = { always = no }
+	species_possible_merge_add = {
+		has_trait = trait_DC_ethic_asceticism
+		from = { has_country_flag = has_ap_pure_ascension }
+	}
+	initial = no
+	randomized = no
+	slave_cost = { energy = 1000 }
+	modifier = {
+		species_leader_exp_gain = 0.5
+		planet_jobs_produces_mult = 0.2
+		planet_pops_consumer_goods_upkeep_mult = -0.1
+		pop_housing_usage_mult = -0.1
+		POP_AMENITIES_USAGE_NO_HAPPINESS_MULT = -0.1
+	}
+}
+
+###############圣女高级特质###############
+#疾风军团
+trait_wind_warrior = {
+	cost = 4
+	icon = "gfx/interface/icons/traits/trait_wind_warrior.dds"
+	allowed_archetypes = {
+		Magical_Girl
+		CG_compatible_species_archetype
+	}
+	initial = no
+	randomized = no
+	prerequisites = {
+		"tech_information_light_grains"
+	}
+	slave_cost = { energy = 1000 }
+	modifier = {
+		armies_upkeep_mult = -1.25
+		army_health = 0.8
+		army_morale = 4.8
+		army_damage_mult = 1.6
+	}
+}
+
+#ips适应性
+trait_ips_adaptability = {
+	cost = 3
+	icon = "gfx/interface/icons/traits/trait_ips_adaptability.dds"
+	allowed_archetypes = {
+		Magical_Girl
+		CG_compatible_species_archetype
+	}
+	initial = no
+	randomized = no
+	prerequisites = {
+		"tech_information_light_grains"
+	}
+	slave_cost = { energy = 1000 }
+	modifier = {
+		planet_pop_assembly_organic_mult = 0.5
+	}
+}
+
+#次元旅者
+trait_dimension_traveler = {
+	cost = 4
+	icon = "gfx/interface/icons/traits/trait_dimension_traveler.dds"
+	allowed_archetypes = {
+		Magical_Girl
+		CG_compatible_species_archetype
+	}
+	initial = no
+	randomized = no
+	prerequisites = {
+		"tech_information_light_grains"
+	}
+	slave_cost = { energy = 1000 }
+	modifier = {
+		pop_environment_tolerance = 0.2
+		planet_jobs_society_research_produces_mult = 0.1
+		planet_jobs_physics_research_produces_mult = 0.1
+		planet_jobs_engineering_research_produces_mult = 0.1
+		pop_resettlement_cost_mult = -1.3
+		pop_job_trade_mult = 0.8
+	}
+}
+
+#圣洁修女
+trait_the_vestal = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/trait_the_vestal.dds"
+	allowed_archetypes = {
+		Magical_Girl
+		CG_compatible_species_archetype
+	}
+	initial = no
+	randomized = no
+	prerequisites = {
+		"tech_information_light_grains"
+	}
+	slave_cost = { energy = 1000 }
+	modifier = {
+		planet_jobs_produces_mult = 0.1
+		POP_AMENITIES_USAGE_NO_HAPPINESS_MULT = -0.35
+	}
+}
+
+###########圣光仆从特质##########
+#圣光仆从
+trait_holy_robot = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/INN_traits/trait_holy_robot.dds"
+	allowed_archetypes = {
+		HOLYROBOT
+	}
+	initial = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	randomized = no
+	forced_happiness = yes
+	assembling_modifier = {
+		planet_pop_assembly_mult = 0.5
+		planet_pop_assemblers_upkeep_mult = -0.5
+	}
+	slave_cost = { energy = 500 }
+}
+
+# 圣光联络 2
+trait_holylight_network = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/INN_traits/trait_holylight_network.dds"
+	allowed_archetypes = {
+		HOLYROBOT
+	}
+	initial = no
+	randomized = no
+	slave_cost = { energy = 2000 }
+	modifier = {
+		species_empire_size_mult = -0.5
+		pop_housing_usage_mult = -0.5
+	}
+}
+
+# 圣光情感 2
+trait_holy_emotion = {
+	cost = 2
+	icon = "gfx/interface/icons/traits/INN_traits/trait_holy_emotion.dds"
+	allowed_archetypes = {
+		HOLYROBOT
+	}
+	initial = no
+	randomized = no
+	slave_cost = { energy = 2000 }
+	modifier = {
+		planet_holyclergy_produces_mult = 0.3
+		planet_holyclergy_upkeep_mult = -0.3
+	}
+}
+
+# 绝对信仰 1
+trait_holy_absolute_faith = {
+	cost = 1
+	icon = "gfx/interface/icons/traits/INN_traits/trait_holy_absolute_faith.dds"
+	allowed_archetypes = {
+		HOLYROBOT
+	}
+	initial = no
+	randomized = no
+	slave_cost = { energy = 2000 }
+	modifier = {
+		pop_amenities_usage_robotic_mult = -0.3
+		planet_pops_robotics_upkeep_mult = -0.3
+	}
+}
+
+#趋光者
+trait_holylight_god_light = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/INN_traits/trait_holylight_god_light.dds"
+	allowed_archetypes = {
+		Magical_Girl
+	}
+	initial = no
+	species_potential_add = {
+		has_trait = trait_DC_ethic_asceticism
+		from = { has_ascension_perk = ap_holylight_god_light }
+	}
+	species_possible_remove = { always = no }
+	species_possible_merge_add = {
+		has_trait = trait_DC_ethic_asceticism
+		from = { has_ascension_perk = ap_holylight_god_light }
+	}
+	randomized = no
+	immortal_leaders = yes
+	slave_cost = { energy = 2000 }
+	modifier = {
+		planet_pops_consumer_goods_upkeep_mult = -0.1
+		planet_pops_food_upkeep_mult = -0.1
+		planet_jobs_produces_mult = 0.1
+		planet_jobs_society_research_produces_mult = 0.1
+		planet_jobs_physics_research_produces_mult = 0.1
+		planet_jobs_engineering_research_produces_mult = 0.1
+	}
+}
+
+#神明
+trait_holylight_god = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/INN_traits/trait_holylight_god.dds"
+	allowed_archetypes = {
+		Magical_Girl
+	}
+	initial = no
+	species_potential_add = {
+		has_trait = trait_DC_ethic_asceticism
+		from = { has_technology = tech_holylight_god_crown }
+	}
+	species_possible_remove = { always = no }
+	species_possible_merge_add = {
+		has_trait = trait_DC_ethic_asceticism
+		from = { has_technology = tech_holylight_god_crown }
+	}
+	randomized = no
+	slave_cost = { energy = 2000 }
+	modifier = {
+		planet_pops_upkeep_mult = -0.5
+		pop_housing_usage_mult = -0.25
+		pop_amenities_usage_mult = -0.25
+		pop_happiness = 0.25
+		pop_environment_tolerance = 0.5
+	}
+}

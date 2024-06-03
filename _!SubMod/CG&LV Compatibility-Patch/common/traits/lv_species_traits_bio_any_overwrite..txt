@@ -55,6 +55,9 @@ trait_lv_submissive = {
 		trait_decadent
 		trait_hive_mind
 		trait_machine_unit
+		trait_enslavement_resistance
+		trait_forbidden_lust
+		trait_virtuous
 	}
 	
 	triggered_pop_modifier = {
@@ -132,6 +135,10 @@ trait_lv_masochistic = {
 	opposites = {
 		trait_lv_sadistic
 		trait_lv_sexually_repressed
+		trait_enslavement_struggle
+		trait_forbidden_lust
+		trait_virtuous
+		trait_sadism_constitution
 	}
 	
 	triggered_pop_modifier = {
@@ -324,6 +331,9 @@ trait_lv_sexually_gifted = {
 		trait_lv_sexually_inept
 		trait_lv_sexually_repressed
 		trait_lv_perfect_hybrid
+		trait_frigid
+		trait_emotionless
+		trait_dull_dog
 	}
 	
 	modifier = {
@@ -375,6 +385,8 @@ trait_lv_sexual_pheromones = {
 		trait_lv_sexually_repressed
 		trait_repugnant
 		trait_lv_perfect_hybrid
+		trait_frigid
+		trait_emotionless
 	}
 	
 	modifier = {
@@ -426,6 +438,8 @@ trait_lv_targeted_pheromones = {
 		trait_lv_sexually_repressed
 		trait_repugnant
 		trait_lv_perfect_hybrid
+		trait_frigid
+		trait_emotionless
 	}
 	
 	species_potential_add = {
@@ -753,6 +767,8 @@ trait_lv_elastic_orifices = {
 		trait_lv_sexually_inept
 		trait_lv_perfect_hybrid
 		trait_lv_titanic_evolution
+		trait_frigid
+		trait_emotionless
 	}
 	
 	modifier = {
@@ -1014,6 +1030,14 @@ trait_lv_dominant = {
 		trait_hive_mind
 		trait_machine_unit
 		trait_nerve_stapled
+		trait_all_slave
+		trait_pleasure_weak
+		trait_pleasure_shield
+		trait_pleasure_lack
+		trait_want_bereavement
+		trait_forbidden_lust
+		trait_virtuous
+		trait_sex_servant
 	}
 	
 	triggered_pop_modifier = {
@@ -1119,6 +1143,10 @@ trait_lv_sadistic = {
 	opposites = {
 		trait_lv_masochistic
 		trait_lv_sexually_repressed
+		trait_want_bereavement
+		trait_forbidden_lust
+		trait_virtuous
+		trait_masochistic_constitution
 	}
 	
 	triggered_pop_modifier = {
@@ -1227,6 +1255,10 @@ trait_lv_lewd_mind = {
 		trait_lv_sexually_repressed
 		trait_conformists
 		trait_lv_titanic_evolution
+		trait_forbidden_lust
+		trait_virtuous
+		trait_frigid
+		trait_emotionless
 	}
 	
 	modifier = {
@@ -1274,6 +1306,10 @@ trait_lv_sex_crazed = {
 		trait_lv_lewd_mind
 		trait_conformists
 		trait_lv_titanic_evolution
+		trait_forbidden_lust
+		trait_virtuous
+		trait_frigid
+		trait_emotionless
 	}
 	
 	modifier = {
@@ -1335,9 +1371,25 @@ trait_lv_sexually_inept = {
 		trait_lv_aphrodisiac_cum
 		trait_lv_addictive_cum
 		trait_lv_sex_crazed
-#		trait_lv_cybernetic_minifacturing_fabrication_womb
 		trait_lv_perfect_hybrid
 		trait_lv_titanic_evolution
+		trait_sex_addiction
+		trait_forever_naughty
+		trait_siren
+		trait_sexual_pleasure_increase
+		trait_lust_tech_up
+		trait_broken_fleshtoilet
+		trait_sexual_liquid_flower
+		trait_transformation_breasts
+		trait_transformation_vaginal
+		trait_bereavement_body
+		trait_bereavement_genitals
+		trait_want_bereavement
+		trait_promiscuous
+		trait_hesitant
+		trait_erotic_genius
+		trait_much_love_liquid
+		trait_abundant_milk
 	}
 	
 	modifier = {
@@ -1394,6 +1446,22 @@ trait_lv_sexually_repressed = {
 		trait_lv_brood_parasite
 		trait_lv_perfect_hybrid
 		trait_lv_titanic_evolution
+		trait_sex_addiction
+		trait_forever_naughty
+		trait_siren
+		trait_lust_tech_up
+		trait_broken_fleshtoilet
+		trait_sexual_liquid_flower
+		trait_want_bereavement
+		trait_promiscuous
+		trait_hesitant
+		trait_erotic_genius
+		trait_much_love_liquid
+		trait_abundant_milk
+		trait_ovulation_promoter
+		trait_semen_absorbed_skin
+		trait_advanced_sex_organ_module
+		trait_MGHG_self_replication
 	}
 	
 	modifier = {
@@ -1439,6 +1507,14 @@ trait_lv_scary = {
 	
 	opposites = {
 		trait_lv_cute
+		trait_clever_beauty 
+		trait_beautiful
+		trait_coquettish
+		trait_ephemeral
+		trait_transformed_perfect_body
+		trait_monster_girl
+		trait_lust_missionary
+		trait_cute_appearance
 	}
 	
 	triggered_pop_modifier = {
@@ -1604,6 +1680,9 @@ trait_lv_seasonal_breeders = {
 	
 	slave_cost = {
 		energy = -350
+	}
+	opposites = {
+		trait_forbidden_lust
 	}
 }
 
@@ -1826,6 +1905,8 @@ trait_lv_perfect_hybrid = {
 		trait_repugnant
 		trait_nonadaptive
 		trait_lv_nudist
+		trait_frigid
+		trait_emotionless
 	}
 	
 	modifier = {
