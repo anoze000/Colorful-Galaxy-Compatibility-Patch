@@ -751,6 +751,7 @@ trait_bereavement = {
 		"trait_coquettish"
 		"trait_bright"
 		"trait_lust_missionary"
+		"trait_lv_all_male"
 	}
 	slave_cost = { energy = -3000 }
 	modifier = {
@@ -783,6 +784,7 @@ trait_bereavement_body = {
 	opposites = {
 		"trait_skillful"
 		"trait_lv_sexually_inept"
+		"trait_lv_all_male"
 	}
 	slave_cost = { energy = -1000 }
 	modifier = {
@@ -811,6 +813,7 @@ trait_bereavement_genitals = {
 	ai_weight = { weight = 50 }
 	opposites = {
 		"trait_lv_sexually_inept"
+		"trait_lv_all_male"
 	}
 }
 
@@ -908,6 +911,7 @@ trait_enslavement_resistance = {
 	randomized = no
 	opposites = {
 		trait_lv_submissive
+		trait_lv_all_male
 	}
 }
 

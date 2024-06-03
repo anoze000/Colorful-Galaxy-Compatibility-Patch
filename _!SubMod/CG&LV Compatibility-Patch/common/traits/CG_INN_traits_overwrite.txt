@@ -46,6 +46,9 @@ trait_heartless_shojo = {
 		pop_growth_speed = -0.3
 		species_empire_size_mult = -0.25
 	}
+	opposites = {
+		"trait_lv_all_male"
+	}
 }
 
 # 狂热修女
@@ -67,6 +70,9 @@ trait_zealot_shojo = {
 		planet_jobs_holylight_crystal_produces_mult = 0.5
 		army_morale = 1
 		army_health = -0.2
+	}
+	opposites = {
+		"trait_lv_all_male"
 	}
 }
 
@@ -231,6 +237,7 @@ trait_live_in_pairs = {
 		"trait_lust_inn"
 		"trait_DC_ethic_carnalism"
 		"trait_DC_ethic_parasite_mind"
+		"trait_lv_all_male"
 	}
 	slave_cost = { energy = 500 }
 	modifier = {
@@ -344,6 +351,7 @@ trait_chaste_warrior_women = {
 		"trait_lust_inn"
 		"trait_DC_ethic_carnalism"
 		"trait_DC_ethic_parasite_mind"
+		"trait_lv_all_male"
 	}
 	sorting_priority = 30
 	slave_cost = { energy = 500 }
@@ -546,6 +554,9 @@ trait_the_vestal = {
 	modifier = {
 		planet_jobs_produces_mult = 0.1
 		POP_AMENITIES_USAGE_NO_HAPPINESS_MULT = -0.35
+	}
+	opposites = {
+		"trait_lv_all_male"
 	}
 }
 

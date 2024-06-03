@@ -86,7 +86,13 @@ trait_good_pregnancy_seedbed = {
 	allowed_archetypes = { BIOLOGICAL LITHOID }
 	initial = no
 	randomized = no
-	opposites = { trait_sowing_and_breeding }
+	opposites = { 
+		trait_sowing_and_breeding 
+		trait_lv_intercompatible_womb
+		trait_lv_all_male
+		trait_lv_intercompatible_sperm
+		trait_lv_aggressively_adaptive_reproduction
+	}
 	allowed_origins = { origin_deep_cave_noise }
 	prerequisites = { "tech_heterogeneous_hormonal_secretion" }
 	icon = "gfx/interface/icons/traits/other_traits/trait_good_pregnancy_seedbed.dds"

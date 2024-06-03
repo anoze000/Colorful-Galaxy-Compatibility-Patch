@@ -644,6 +644,7 @@ trait_transformation_breasts = {
 	}
 	opposites = {
 		"trait_lv_sexually_inept"
+		"trait_lv_all_male"
 	}
 }
 
@@ -663,6 +664,7 @@ trait_transformation_vaginal = {
 	}
 	opposites = {
 		"trait_lv_sexually_inept"
+		"trait_lv_all_male"
 	}
 }
 

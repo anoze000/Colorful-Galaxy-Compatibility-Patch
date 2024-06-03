@@ -675,6 +675,23 @@ trait_lv_all_male = {
 		trait_suc_parthenogenesis
 		trait_slime
 		trait_SLIME_robot
+		trait_enslavement_resistance
+		trait_transformation_breasts
+		trait_transformation_vaginal
+		trait_cute_appearance
+		trait_live_in_pairs
+		trait_the_vestal
+		trait_heartless_shojo
+		trait_zealot_shojo
+		trait_bereavement
+		trait_bereavement_body
+		trait_bereavement_genitals
+		trait_ovulation_difficulty
+		trait_abundant_milk
+		trait_much_love_liquid
+		trait_gigantic_breasts
+		trait_girl_megalization
+		trait_intensive_ovulation
 	}
 	
 	species_potential_add = {
@@ -725,6 +742,7 @@ trait_lv_intercompatible_sperm = {
 		trait_lv_all_female
 		trait_lv_aggressively_adaptive_reproduction
 		trait_suc_parthenogenesis
+		trait_good_pregnancy_seedbed
 	}
 	
 	species_potential_add = {

@@ -1832,6 +1832,7 @@ trait_lv_aggressively_adaptive_reproduction = {
 	opposites = {
 		trait_lv_intercompatible_womb
 		trait_lv_intercompatible_sperm
+		trait_good_pregnancy_seedbed
 	}
 	
 	species_potential_add = {

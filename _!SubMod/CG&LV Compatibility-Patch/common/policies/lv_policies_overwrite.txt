@@ -486,7 +486,14 @@ lv_intercompatible_womb_conversion = {
 	option = {
 		name = "lv_no_intervention_womb"
 		policy_flags = { lv_no_intervention_womb }
-		valid = { any_owned_pop = { has_trait = trait_lv_intercompatible_womb } }
+		valid = { 
+			any_owned_pop = { 
+				OR = {
+					has_trait = trait_lv_intercompatible_womb 
+					has_trait = trait_good_pregnancy_seedbed
+				}
+			} 
+		}
 		
 		modifier = {
 			pop_growth_speed = 0.1

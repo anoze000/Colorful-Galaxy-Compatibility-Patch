@@ -1254,6 +1254,7 @@ trait_lv_intercompatible_womb = {
 		trait_lv_intercompatible_sperm
 		trait_lv_all_male
 		trait_lv_aggressively_adaptive_reproduction
+		trait_good_pregnancy_seedbed
 	}
 	
 	species_potential_add = {
