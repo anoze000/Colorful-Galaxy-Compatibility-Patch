@@ -695,6 +695,15 @@ tb_others_group = {
 		lust_crystal
 		best_slaves
 		sr_lewd_princess
+
+		#冰月的精灵
+		sr_semen
+		sr_semen_ten
+		sr_live_pantyhose
+		sr_theta
+		sr_alpha
+		sr_elemental_crystal
+		sr_st
 	}
 
 	localization = {

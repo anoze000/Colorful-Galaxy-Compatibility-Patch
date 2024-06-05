@@ -1,0 +1,1855 @@
+#魅魔
+trait_suc = {
+	cost = -2
+	potential_crossbreeding_chance = 0
+	initial = no	# 开局可用
+	randomized = no
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	potential_crossbreeding_chance = 0
+	allowed_archetypes = {
+		BIOLOGICAL
+		MACHINE
+		WARSHIPGIRL
+		SHENHAI
+		STARSHIPGIRLS
+		TOUHOUGIRLS
+		Dolls
+		Magical_Bitch
+		ELF
+	}
+	# opposites = {
+	# 	# 	# "trait_inn"
+	# 	"trait_DC_ethic_asceticism"
+	# 	# "trait_dimension_life"
+	# }
+	improves_leaders = yes
+	icon = "gfx/interface/icons/traits/trait_dark.dds"
+	modifier = {
+		# leaders_cost_mult = -0.15		#基础领袖费用 
+		species_leader_exp_gain = 0.5
+		leader_lifespan_add = 50
+		army_damage_mult = 0.25
+		army_defense_damage_mult = 0.25
+		army_health = 1
+		# pop_government_ethic_attraction = 0.5
+		pop_environment_tolerance = 0.1
+		pop_cat_slave_happiness = 0.1
+		pop_cat_worker_happiness = 0.05
+		pop_cat_futa_rbq_happiness = 0.05
+		pop_growth_speed = 0.05
+		PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.05
+		PLANET_POP_ASSEMBLY_MULT = 0.05
+
+		# planet_jobs_minerals_produces_mult = 1
+		# # planet_jobs_slave_produces_mult = 0.5
+		# pop_cat_slave_happiness = 0.2
+		# pop_cat_futa_rbq_happiness = 0.2
+		# pop_growth_speed = 0.15
+		# PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.15
+		# PLANET_POP_ASSEMBLY_MULT = 0.15
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_ai = yes
+			}
+		}
+		modifier = {
+			planet_jobs_minerals_produces_mult = -1
+		}
+	}
+	slave_cost = {
+		energy = 1000
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+#圣女
+trait_inn = {
+	cost = -2
+	potential_crossbreeding_chance = 0
+	initial = no	# 开局可用
+	randomized = no
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	potential_crossbreeding_chance = 0
+	allowed_archetypes = {
+		BIOLOGICAL
+		MACHINE
+		WARSHIPGIRL
+		SHENHAI
+		STARSHIPGIRLS
+		TOUHOUGIRLS
+		Dolls
+		Magical_Bitch
+		ELF
+	}
+	# opposites = {
+	# 	# 	# "trait_dark"
+	# 	"trait_DC_ethic_carnalism"
+	# 	# 	# "trait_dimension_life"
+	# }
+	improves_leaders = yes
+	icon = "gfx/interface/icons/traits/trait_light.dds"
+	sorting_priority = 30
+	modifier = {
+		# pc_arid_habitability = @primary
+		# pc_desert_habitability = @primary
+		# pc_savannah_habitability = @primary
+		# pc_tropical_habitability = @primary
+		# pc_continental_habitability = @primary
+		# pc_tundra_habitability = @primary
+		# pc_arctic_habitability = @primary
+		# pc_ocean_habitability = @primary
+		# pc_alpine_habitability = @primary
+		# pc_nuked_habitability = @primary
+		# leaders_cost_mult = -0.15		#基础领袖费用 
+		species_leader_exp_gain = 0.5
+		leader_lifespan_add = 100
+		army_damage_mult = 0.3
+		army_health = 1
+		# pop_government_ethic_attraction = 1
+		pop_environment_tolerance = 0.1
+		pop_cat_ruler_happiness = 0.05
+		pop_cat_specialist_happiness = 0.05
+		# planet_jobs_unity_produces_mult = 0.15
+		# planet_jobs_produces_mult = 0.15
+		# planet_stability_add = 5
+	}
+	slave_cost = {
+		energy = 1000
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+#新魅魔
+trait_dark = {
+	cost = 0
+	initial = no	# 开局可用
+	randomized = no
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	potential_crossbreeding_chance = 0
+	allowed_archetypes = {
+		BIOLOGICAL
+		MACHINE
+		WARSHIPGIRL
+		SHENHAI
+		STARSHIPGIRLS
+		TOUHOUGIRLS
+		Dolls
+		Magical_Bitch
+		ELF
+	}
+	icon = "gfx/interface/icons/traits/trait_dark.dds"
+	modifier = {
+		# leaders_cost_mult = -0.15		#基础领袖费用 
+		species_leader_exp_gain = 0.5
+		leader_lifespan_add = 50
+	}
+	slave_cost = {
+		energy = 1000
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+#黑暗侵蚀
+trait_dark_change = {
+	cost = 0
+	initial = no	# 开局可用
+	randomized = no
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	potential_crossbreeding_chance = 0
+	allowed_archetypes = {
+		BIOLOGICAL
+		MACHINE
+		WARSHIPGIRL
+		SHENHAI
+		STARSHIPGIRLS
+		TOUHOUGIRLS
+		Dolls
+		Magical_Bitch
+		ELF
+	}
+	custom_tooltip = trait_dark_change_effect
+	icon = "gfx/interface/icons/traits/trait_dark_change.dds"
+	modifier = {
+		# leaders_cost_mult = -0.15		#基础领袖费用 
+		# species_leader_exp_gain = 0.5
+		# leader_lifespan_add = 50
+	}
+	slave_cost = {
+		energy = 100
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+#新圣女
+trait_light = {
+	cost = 0
+	initial = no	# 开局可用
+	randomized = no
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	potential_crossbreeding_chance = 0
+	allowed_archetypes = {
+		BIOLOGICAL
+		MACHINE
+		WARSHIPGIRL
+		SHENHAI
+		STARSHIPGIRLS
+		TOUHOUGIRLS
+		Dolls
+		Magical_Bitch
+		ELF
+	}
+	icon = "gfx/interface/icons/traits/trait_light.dds"
+	sorting_priority = 30
+	modifier = {
+		# leaders_cost_mult = -0.15		#基础领袖费用 
+		species_leader_exp_gain = 0.5
+		leader_lifespan_add = 50
+	}
+	slave_cost = {
+		energy = 1000
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+#圣光洗礼
+trait_light_change = {
+	cost = 0
+	initial = no	# 开局可用
+	randomized = no
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	potential_crossbreeding_chance = 0
+	allowed_archetypes = {
+		BIOLOGICAL
+		MACHINE
+		WARSHIPGIRL
+		SHENHAI
+		STARSHIPGIRLS
+		TOUHOUGIRLS
+		Dolls
+		Magical_Bitch
+		ELF
+	}
+	icon = "gfx/interface/icons/traits/trait_light_change.dds"
+	sorting_priority = 30
+	modifier = {
+		# leaders_cost_mult = -0.15		#基础领袖费用 
+		# species_leader_exp_gain = 0.5
+		# leader_lifespan_add = 50
+	}
+	slave_cost = {
+		energy = 100
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+#圣光狂热者
+trait_inn_perfect_body = {
+	cost = -10	# 特质点数花费
+	allowed_archetypes = {
+		ELF
+	}	# 可使用该特质的原型	
+	initial = no	# 开局可用
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	randomized = no	# 随机生成
+	sorting_priority = 50	# 分类优先权
+	modifier = {
+		# 调节器
+		planet_pops_consumer_goods_upkeep_mult = -0.1		#维持人口消费品的花费 [trait]
+		planet_pops_organics_food_upkeep_mult = -0.15		#人口食物消耗 [trait]
+		pop_growth_speed = -0.15		# 人口生长速度 [trait]
+		planet_jobs_unity_produces_mult = 0.1
+		PLANET_AMENITIES_MULT = 0.2		#舒适度 [trait]	
+	}
+}
+
+
+
+# # ##################### 魅魔特质 #####################
+# # # # 红颜薄命 -3
+# # # trait_ephemeral = {
+# # # 	cost = -3 # 特质点数花费
+# # # 	icon = "gfx/interface/icons/traits/trait_ephemeral2.dds" # 图标路径
+# # # 	allowed_archetypes = { Magical_Bitch WARSHIPGIRL SHENHAI } # 可使用该特质的原型
+# # # 	sorting_priority = 30
+# # # 	#modification=no
+# # # 	randomized=no
+# # # 	advanced_trait=no
+# # # 	opposites = { # 对立特质
+# # # 		"trait_beautiful"
+# # # 		"trait_extremely_intelligent"
+# # # 		"trait_live_in_pairs"
+# # # 		"trait_virtuous"
+# # # 		"trait_inner_peace"
+# # # 		"trait_forbidden_lust"
+# # # 		"trait_frigid"
+# # # 		"trait_chaste_warrior_women"
+# # # 		"trait_highbrow"
+# # # 		"trait_mind_break"
+# # # 		"trait_mind_evolution"
+# # # 		"trait_wind_warrior"
+# # # 		"trait_ips_adaptability"
+# # # 		"trait_dimension_traveler"
+# # # 		"trait_the_vestal"
+# # # 		"trait_holy_robot"
+# # # 		"trait_holylight_network"
+# # # 	}
+# # # 	modifier = { # 调节器
+# # # 		leader_lifespan_add = -40 # 领袖寿命增加		-2
+# # # 		pop_growth_speed = -0.3 # 人口生长速度	-1
+# # # 		planet_pops_consumer_goods_upkeep_mult = -0.15 # 消费品花费1
+# # # 	}
+# # # }
+# # ##################### 通用特质 #####################
+# # # 古灵精怪 2
+# # trait_bright = {
+# # 	cost = 2	# 特质点数花费
+# # 	icon = "gfx/interface/icons/traits/trait_ephemeral.dds"	# 图标路径
+# # 	allowed_archetypes = {
+# # 		ELF
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	sorting_priority = 30
+# # 	# 对立特质
+# # 	modifier = {
+# # 		# 调节器
+# # 		species_leader_exp_gain = 0.25		# 领袖经验增长 [trait]1
+# # 		leaders_cost_mult = -0.05		#基础领袖费用 [trait]
+# # 		planet_jobs_produces_mult = 0.1
+# # 	}
+# # 	ai_weight = {
+# # 		weight = 1000
+# # 	}
+# # 	# AI权重
+# # }
+
+# # # 丰姿怡丽 2
+# # trait_coquettish = {
+# # 	cost = 2	# 特质点数花费
+# # 	icon = "gfx/interface/icons/traits/trart_coquettish.dds"	# 图标路径	
+# # 	allowed_archetypes = {
+# # 		ELF
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	sorting_priority = 30
+# # 	modifier = {
+# # 		# 调节器
+# # 		pop_happiness = 0.1		# 人口幸福度
+# # 		pop_growth_speed = 0.1		# 人口生长速度	4
+# # 	}
+# # }
+
+# # # 永远发情 2	
+# # trait_forever_naughty = {
+# # 	cost = 2	# 特质点数花费
+# # 	icon = "gfx/interface/icons/traits/trait_forever_naughty.dds"	# 图标路径
+# # 	allowed_archetypes = {
+# # 		ELF
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	sorting_priority = 30
+# # 	modifier = {
+# # 		# 调节器
+# # 		pop_growth_speed = 0.1		# 人口生长速度	4
+# # 	}
+# # }
+
+# # # 性瘾者 1
+# # trait_sex_addiction = {
+# # 	cost = -1
+# # 	icon = "gfx/interface/icons/traits/trait_sex_addiction.dds"	# 图标路径
+# # 	allowed_archetypes = {
+# # 		ELF
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	sorting_priority = 30
+# # 	modifier = {
+# # 		# 调节器
+# # 		pop_happiness = 0.05		# 幸福度		
+# # 		pop_growth_speed = 0.05
+# # 		planet_stability_add = -15		#稳定性
+# # 	}
+# # }
+
+# # #裸露癖好
+# # trait_like_nudity = {
+# # 	cost = 2
+# # 	allowed_archetypes = {
+# # 		ELF
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	sorting_priority = 30
+# # 	modifier = {
+# # 		# 调节器
+# # 		pop_growth_speed = 0.05		# 人口生长速度
+# # 		planet_pops_consumer_goods_upkeep_mult = -0.1		# 消费品花费1
+# # 	}
+# # }
+
+# # # 论美貌你赢不了我
+# # trait_super_beautiful = {
+# # 	cost = 1	# 特质点数花费
+# # 	icon = "gfx/interface/icons/traits/trait_super_beautiful.dds"	# 图标路径
+# # 	allowed_archetypes = {
+# # 		ELF
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	initial = yes	# 开局可用
+# # 	#modification = no	# 可否修改
+# # 	randomized = no	# 随机生成
+# # 	advanced_trait = no
+# # 	custom_tooltip = TRAIT_SUPER_BEAUTIFUL_EFFECT
+# # 	modifier = {
+# # 		# 调节器
+# # 		planet_miners_minerals_produces_mult = 0.1		#来自￡job_miner 矿工的￡minerals￡ 矿物 [trait]
+# # 		planet_technician_energy_produces_mult = 0.1
+# # 		country_produces_mult = 0.3
+# # 	}
+# # }
+
+# # # 洛丽塔
+# # trait_cute_appearance = {
+# # 	cost = -1	# 特质点数花费
+# # 	icon = "gfx/interface/icons/traits/trait_cute_appearance.dds"	# 图标路径
+# # 	allowed_archetypes = {
+# # 		ELF
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	opposites = {
+# # 		"trait_very_strong"
+# # 		"trait_strong"
+# # 		"trait_repugnant"
+# # 	}
+# # 	#对立特质
+# # 	initial = yes	# 开局可用
+# # 	#modification = yes	# 可否修改
+# # 	randomized = yes	# 随机生成
+# # 	improves_leaders = no	#是否会影响领袖
+# # 	advanced_trait = no	#是否高级特质
+# # 	modifier = {
+# # 		# 调节器
+# # 		PLANET_AMENITIES_ADD = 20		#舒适度 [trait]
+# # 		pop_growth_speed = -0.1		# 人口生长速度 [trait]
+# # 	}
+# # }
+
+# # # 知性佳人
+# # trait_clever_beauty = {
+# # 	cost = 2	# 特质点数花费
+# # 	icon = "gfx/interface/icons/traits/trait_clever_beauty.dds"	# 图标路径
+# # 	allowed_archetypes = {
+# # 		ELF
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	opposites = {
+# # 		"trait_very_strong"
+# # 		"trait_repugnant"
+# # 	}
+# # 	initial = yes	# 开局可用
+# # 	#modification = yes	# 可否修改
+# # 	randomized = yes	# 随机生成（指生成ai时是否会有此特性）
+# # 	modifier = {
+# # 		# 调节器
+# # 		planet_jobs_physics_research_produces_mult = 0.1		#来自￡job_researcher 研究人员的￡physics￡ 物理研究 [trait]
+# # 		planet_jobs_engineering_research_produces_mult = 0.1		#来自￡job_researcher 研究人员的￡engineering￡ 工程研究 [trait]
+# # 		planet_jobs_society_research_produces_mult = 0.1		#来自￡job_researcher 研究人员的￡society￡ 社会研究 [trait]
+# # 		species_leader_exp_gain = 0.25		# 领袖经验增长
+# # 	}
+# # }
+
+# # # 巧手 1
+# # trait_skillful = {
+# # 	cost = 1
+# # 	icon = "gfx/interface/icons/traits/trait_skillful.dds"	# 图标路径
+# # 	allowed_archetypes = {
+# # 		ELF
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	initial = yes	# 开局可用
+# # 	#modification = yes	# 可否修改
+# # 	randomized = yes	# 随机生成
+# # 	modifier = {
+# # 		# 调节器
+# # 		planet_jobs_alloys_produces_mult = 0.05
+# # 		planet_jobs_consumer_goods_produces_mult = 0.05
+# # 	}
+# # }
+# # # 丰挺淫乳 1
+# # trait_big_breasts = {
+# # 	cost = 1	# 特质点数花费
+# # 	icon = "gfx/interface/icons/traits/trait_big_breasts.dds"	# 图标路径
+# # 	allowed_archetypes = {
+# # 		ELF
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	initial = yes	# 开局可用
+# # 	#modification = no	# 可否修改
+# # 	randomized = yes	# 随机生成
+# # 	opposites = {
+# # 		# 对立特质
+# # 		"trait_transformation_breasts"
+# # 	}
+# # 	modifier = {
+# # 		# 调节器
+# # 		pop_growth_speed = 0.05		# 人口生长速度
+# # 	}
+# # 	ai_weight = {
+# # 		weight = 50
+# # 	}
+# # 	# AI权重
+# # }
+
+# # # 敏感肉穴 1
+# # trait_sensitive_vagina = {
+# # 	cost = 1	# 特质点数花费
+# # 	icon = "gfx/interface/icons/traits/trait_sensitive_vagina.dds"	# 图标路径
+# # 	allowed_archetypes = {
+# # 		ELF
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	initial = yes	# 开局可用
+# # 	#modification = no	# 可否修改
+# # 	randomized = yes	# 随机生成
+# # 	opposites = {
+# # 		"trait_transformation_vaginal"
+# # 	}
+# # 	modifier = {
+# # 		# 调节器
+# # 		pop_growth_speed = 0.05		# 人口生长速度
+# # 	}
+# # 	ai_weight = {
+# # 		weight = 50
+# # 	}
+# # 	# AI权重
+# # }
+
+# # # 灵肉链接 3
+# # trait_soul_flesh_link = {
+# # 	cost = 3	# 特质点数花费
+# # 	icon = "gfx/interface/icons/traits/trait_soul_flesh_link.dds"	# 图标路径
+# # 	allowed_archetypes = {
+# # 		ELF
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	initial = yes	# 开局可用
+# # 	#modification = yes	# 可否修改
+# # 	randomized = yes	# 随机生成
+# # 	modifier = {
+# # 		# 调节器
+# # 		planet_jobs_produces_mult = 0.1
+# # 		planet_pops_consumer_goods_upkeep_mult = -0.1		#维持人口消费品的花费 [trait]
+# # 	}
+# # 	ai_weight = {
+# # 		weight = 50
+# # 	}
+# # 	# AI权重
+# # }
+
+# # # 野兽伙伴 3
+# # trait_animal_partner = {
+# # 	cost = 3	# 特质点数花费
+# # 	icon = "gfx/interface/icons/traits/trait_animal_partner.dds"	# 图标路径
+# # 	allowed_archetypes = {
+# # 		ELF
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	initial = yes	# 开局可用
+# # 	#modification = yes	# 可否修改
+# # 	randomized = yes	# 随机生成
+# # 	modifier = {
+# # 		# 调节器
+# # 		planet_jobs_worker_produces_mult = 0.15		#劳工产出 [trait]
+# # 		planet_jobs_specialist_produces_mult = 0.15
+# # 		armies_upkeep_mult = -0.25		#军团维护费 [trait]
+# # 	}
+# # 	ai_weight = {
+# # 		weight = 50
+# # 	}
+# # 	# AI权重
+# # }
+
+# # # 脑域芯片 3
+# # trait_cortex_biochip = {
+# # 	cost = 3	# 特质点数花费
+# # 	icon = "gfx/interface/icons/traits/trait_cortex_biochip.dds"	# 图标路径
+# # 	allowed_archetypes = {
+# # 		ELF
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	initial = yes	# 开局可用
+# # 	#modification = yes	# 可否修改
+# # 	randomized = yes	# 随机生成
+# # 	modifier = {
+# # 		# 调节器
+# # 		planet_jobs_society_research_produces_mult = 0.2		#来自￡job￡职业的￡society￡_research 社会研究 [trait]
+# # 		planet_jobs_physics_research_produces_mult = 0.2		#来自￡job￡职业的￡physics￡_research 物理研究 [trait]
+# # 		planet_jobs_engineering_research_produces_mult = 0.2		#来自￡job￡职业的￡engineering￡_research 工程研究 [trait]
+# # 		pop_citizen_happiness = 0.1		# 公民人口幸福度
+# # 	}
+# # 	ai_weight = {
+# # 		weight = 50
+# # 	}
+# # 	# AI权重
+# # }
+
+# # # 仙姿玉色
+# # trait_beautiful = {
+# # 	cost = 2	# 特质点数花费
+# # 	icon = "gfx/interface/icons/traits/trait_beautiful.dds"	# 图标路径
+# # 	allowed_archetypes = {
+# # 		ELF
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	sorting_priority = 30
+# # 	opposites = {
+# # 		# 对立特质
+# # 		"trait_repugnant"
+# # 	}
+# # 	modifier = {
+# # 		# 调节器
+# # 		pop_happiness = 0.15		# 人口幸福度 [trait]
+# # 		TRADE_VALUE_MULT = 0.1		#贸易值 [trait]
+# # 		COUNTRY_TRADE_ATTRACTIVENESS = 0.1		#贸易吸引力
+# # 		country_organic_trust_cap_add = 10		#有机体信任上限
+# # 	}
+# # }
+
+# # #冰雪聪明
+# # trait_extremely_intelligent = {
+# # 	cost = 3	# 特质点数花费
+# # 	allowed_archetypes = {
+# # 		ELF
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	sorting_priority = 30
+# # 	opposites = {
+# # 		# 对立特质
+# # 		"trait_repugnant"
+# # 	}
+# # 	modifier = {
+# # 		planet_researchers_physics_research_produces_mult = 0.25		#来自￡job_researcher 研究人员的￡physics￡ 物理研究 [trait]
+# # 		planet_researchers_society_research_produces_mult = 0.25		#来自￡job_researcher 研究人员的￡society￡ 社会研究 [trait]
+# # 		planet_researchers_engineering_research_produces_mult = 0.25		#来自￡job_researcher 研究人员的￡engineering￡ 工程研究 [trait]
+# # 		species_leader_exp_gain = 0.25		# 领袖经验增长 [trait]
+# # 		num_tech_alternatives_add = 1		#备选科技+1
+# # 	}
+# # }
+
+# # #双宿双栖
+# # trait_live_in_pairs = {
+# # 	cost = 3	# 特质点数花费
+# # 	allowed_archetypes = {
+# # 		ELF
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	sorting_priority = 30
+# # 	opposites = {
+# # 		# 对立特质
+# # 		"trait_repugnant"
+# # 	}
+# # 	modifier = {
+# # 		planet_pops_consumer_goods_upkeep_mult = -0.25		#人口消费品消耗
+# # 		pop_housing_usage_mult = -0.25		#人口住房占用
+# # 	}
+# # }
+
+# # # 冰清玉洁
+# # trait_virtuous = {
+# # 	cost = 1	# 特质点数花费
+# # 	icon = "gfx/interface/icons/traits/trait_virtuous.dds"	# 图标路径
+# # 	allowed_archetypes = {
+# # 		ELF
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	sorting_priority = 30
+# # 	opposites = {
+# # 		# 对立特质
+# # 		"trait_repugnant"
+# # 	}
+# # 	modifier = {
+# # 		# 调节器
+# # 		leaders_cost_mult = -0.05		#基础领袖费用 [trait]
+# # 	}
+# # }
+
+# # # 心如止水
+# # trait_inner_peace = {
+# # 	cost = 2	# 特质点数花费
+# # 	icon = "gfx/interface/icons/traits/trait_inner_peace.dds"	# 图标路径
+# # 	allowed_archetypes = {
+# # 		ELF
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	sorting_priority = 30
+# # 	opposites = {
+# # 		# 对立特质
+# # 		"trait_repugnant"
+# # 	}
+# # 	modifier = {
+# # 		# 调节器
+# # 		planet_jobs_ruler_produces_mult = 0.2		#统治者产出 [trait]
+# # 		planet_stability_add = 15		#稳定性
+# # 		planet_crime_mult = -0.1		#犯罪率 [trait]
+# # 	}
+# # }
+
+# # # # 性冷淡
+# # # trait_frigid = {
+# # # 	cost = 2	# 特质点数花费
+# # # 	allowed_archetypes = {
+# # # 		BIOLOGICAL
+# # # 		MONSTER
+# # # 		PARASITE
+# # # 		Magical_Bitch
+# # # 		Magical_Girl
+# # # 		WARSHIPGIRL
+# # # 		SHENHAI
+# # # 	}
+# # # 	# 可使用该特质的原型
+# # # 	sorting_priority = 30
+# # # 	modifier = {
+# # # 		# 调节器
+# # # 		planet_jobs_produces_mult = 0.2
+# # # 		pop_growth_speed = -0.3
+# # # 	}
+# # # }
+# # #贞洁烈女
+# # trait_chaste_warrior_women = {
+# # 	cost = 1	# 特质点数花费	
+# # 	allowed_archetypes = {
+# # 		ELF
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	sorting_priority = 30
+# # 	modifier = {
+# # 		# 调节器
+# # 		army_damage_mult = 0.25		#部队伤害
+# # 		army_health = 0.25		#部队生命值
+# # 	}
+# # }
+
+# # #高情远致
+# # trait_highbrow = {
+# # 	cost = 3	# 特质点数花费	
+# # 	allowed_archetypes = {
+# # 		ELF
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	sorting_priority = 30
+# # 	modifier = {
+# # 		# 调节器
+# # 		planet_jobs_produces_mult = 0.1
+# # 		POP_AMENITIES_USAGE_NO_HAPPINESS_MULT = -0.1		#人口舒适度消耗 
+# # 	}
+# # }
+# ################淫欲改造###############
+# # 改造YR
+# trait_transformation_breasts = {
+# 	cost = 0	# 特质点数花费
+# 	icon = "gfx/interface/icons/traits/trait_transformation_breasts.dds"	# 图标路径
+# 	allowed_archetypes = {
+# 		ELF
+# 	}
+# 	# 可使用该特质的原型
+# 	prerequisites = {
+# 		tech_genetic_resequencing
+# 	}
+# 	initial = no	# 开局可用
+# 	#modification = yes	# 可否修改
+# 	randomized = no	# 随机生成
+# 	opposites = {
+# 		#对立特质
+# 		"trait_big_breasts"
+# 	}
+# 	modifier = {
+# 		# 调节器
+# 		pop_growth_speed = 0.05		# 人口生长速度
+# 		planet_jobs_unity_produces_mult = 0.1		#来自￡job￡职业的￡unity￡ 凝聚力 [trait]
+# 	}
+# }
+
+# # 改造YX
+# trait_transformation_vaginal = {
+# 	cost = 0	# 特质点数花费
+# 	icon = "gfx/interface/icons/traits/trait_transformation_vaginal.dds"	# 图标路径
+# 	allowed_archetypes = {
+# 		ELF
+# 	}
+# 	# 可使用该特质的原型
+# 	prerequisites = {
+# 		tech_genetic_resequencing
+# 	}
+# 	initial = no	# 开局可用
+# 	#modification = yes	# 可否修改
+# 	randomized = no	# 随机生成
+# 	opposites = {
+# 		# 对立特质
+# 		"trait_sensitive_vagina"
+# 	}
+# 	modifier = {
+# 		# 调节器
+# 		pop_growth_speed = 0.05		# 人口生长速度
+# 		planet_jobs_unity_produces_mult = 0.1		#来自￡job￡职业的￡unity￡ 凝聚力 [trait]
+# 	}
+# }
+
+# #改造尤物
+# trait_transformed_perfect_body = {
+# 	cost = -3	# 特质点数花费
+# 	sorting_priority = 50	# 分类优先权	
+# 	allowed_archetypes = {
+# 		ELF
+# 	}	# 可使用该特质的原型	
+# 	initial = no	# 开局可用
+# 	#modification = no	# 可否修改
+# 	randomized = no	# 随机生成
+# 	sorting_priority = 50	# 分类优先权
+# 	opposites = {
+# 		# 对立特质
+# 		"trait_sensitive_vagina"
+# 		"trait_big_breasts"
+# 	}
+# 	prerequisites = {
+# 		tech_genetic_resequencing
+# 	}
+# 	modifier = {
+# 		# 调节器
+# 		planet_jobs_slave_produces_mult = 0.1		#奴隶产出
+# 		pop_cat_slave_happiness = 0.1		#奴隶幸福度 [trait]
+# 		planet_pops_consumer_goods_upkeep_mult = 0.1		#维持人口消费品的花费 [trait]
+# 		planet_pops_organics_food_upkeep_mult = -0.15		#人口食物消耗 [trait]
+# 		pop_growth_speed = 0.15		# 人口生长速度 [trait]
+# 		pop_happiness = 0.15		# 人口幸福度
+# 		PLANET_AMENITIES_MULT = 0.2		#舒适度 [trait]		
+# 		ARMY_DAMAGE_MULT = -0.15		# 陆军伤害
+# 	}
+# }
+
+# # 淫欲科研增幅
+# trait_lust_tech_up = {
+# 	cost = 4	# 特质点数花费
+# 	icon = "gfx/interface/icons/traits/lust_tech_up.dds"	# 图标路径
+# 	allowed_archetypes = {
+# 		ELF
+# 	}
+# 	# 可使用该特质的原型
+# 	initial = no	# 开局可用
+# 	#modification = yes	# 可否修改
+# 	randomized = no	# 随机生成
+# 	advanced_trait = yes
+# 	prerequisites = {
+# 		tech_genetic_resequencing
+# 	}
+# 	modifier = {
+# 		# 调节器
+# 		planet_jobs_society_research_produces_mult = 0.35		#来自￡job￡职业的￡society￡_research 社会研究 [trait]
+# 		planet_jobs_physics_research_produces_mult = 0.35		#来自￡job￡职业的￡physics￡_research 物理研究 [trait]
+# 		planet_jobs_engineering_research_produces_mult = 0.35		#来自￡job￡职业的￡engineering￡_research 工程研究 [trait]
+# 	}
+# }
+
+# # 性器快感增幅 4
+# trait_sexual_pleasure_increase = {
+# 	cost = 4	# 特质点数花费
+# 	icon = "gfx/interface/icons/traits/trait_sexual_pleasure_increase.dds"	# 图标路径
+# 	allowed_archetypes = {
+# 		ELF
+# 	}
+# 	# 可使用该特质的原型
+# 	initial = no	# 开局可用
+# 	#modification = yes	# 可否修改
+# 	randomized = no	# 随机生成
+# 	advanced_trait = yes
+# 	prerequisites = {
+# 		tech_genetic_resequencing
+# 	}
+# 	modifier = {
+# 		# 调节器
+# 		planet_jobs_unity_produces_mult = 0.25		#来自￡job￡职业的￡unity￡ 凝聚力 [trait]
+# 		planet_jobs_produces_mult = 0.15
+# 		planet_amenities_mult = 0.25		#舒适度 [trait]
+# 		pop_growth_speed = 0.15
+# 	}
+# }
+
+# # 血脉优势 3
+# trait_blood_superiority = {
+# 	cost = 3	# 特质点数花费
+# 	icon = "gfx/interface/icons/traits/trait_blood_superiority.dds"	# 图标路径
+# 	allowed_archetypes = {
+# 		ELF
+# 	}
+# 	prerequisites = {
+# 		tech_genetic_resequencing
+# 	}
+
+# 	# 可使用该特质的原型
+# 	initial = no	# 开局可用
+# 	#modification = yes	# 可否修改
+# 	randomized = no	# 随机生成
+# 	modifier = {
+# 		# 调节器
+# 		pop_growth_speed = 0.1
+# 		planet_pops_organics_food_upkeep_mult = -0.05
+# 		species_leader_exp_gain = 0.1
+# 		planet_jobs_society_research_produces_mult = 0.15
+# 	}
+# }
+
+# # 深空游骑兵
+# trait_deepspace_ranger = {
+# 	cost = 3	# 特质点数花费
+# 	icon = "gfx/interface/icons/traits/trait_deepspace_ranger.dds"	# 图标路径
+# 	allowed_archetypes = {
+# 		ELF
+# 	}
+# 	prerequisites = {
+# 		tech_genetic_resequencing
+# 	}
+# 	# 可使用该特质的原型
+# 	initial = yes	# 开局可用
+# 	#modification = yes	# 可否修改
+# 	randomized = no	# 随机生成
+# 	advanced_trait = no
+# 	modifier = {
+# 		# 调节器
+# 		ARMY_HEALTH = 1		#军团生命值
+# 		ARMY_MORALE = 1		#军团士气
+# 		country_naval_cap_mult = 0.3
+# 	}
+# }
+
+# #堕淫
+# trait_lust_inn = {
+# 	cost = -6
+# 	allowed_archetypes = {
+# 		ELF
+# 	}
+# 	prerequisites = {
+# 		tech_genetic_resequencing
+# 	}
+# 	initial = no	# 开局可用
+# 	#modification = no	# 可否修改
+# 	randomized = no	# 随机生成
+# 	sorting_priority = 50	# 分类优先权
+# 	allowed_archetypes = {
+# 		ELF
+# 	}
+# 	prerequisites = {
+# 		tech_genetic_resequencing
+# 	}
+# 	modifier = {
+# 		# 调节器
+# 		leader_skill_levels = 4		# 领袖技能等级上限
+# 		species_leader_exp_gain = 0.5		# 领袖经验增长
+# 		planet_researchers_physics_research_produces_mult = 0.3		#来自￡job_researcher 研究人员的￡physics￡ 物理研究 [trait]
+# 		planet_researchers_society_research_produces_mult = 0.3		#来自￡job_researcher 研究人员的￡society￡ 社会研究 [trait]
+# 		planet_researchers_engineering_research_produces_mult = 0.3		#来自￡job_researcher 研究人员的￡engineering￡ 工程研究 [trait]
+# 		leader_lifespan_add = 40		# 领袖寿命增加
+# 		planet_pops_consumer_goods_upkeep_mult = 0.3		#维持人口消费品的花费 [trait]
+# 		pop_growth_speed = 0.3		# 人口生长速度
+# 	}
+# }
+
+# # 淫艳玩物 0
+# # trait_siren = {
+# # 	cost = 1	# 特质点数花费
+# # 	icon = "gfx/interface/icons/traits/trait_ephemeral.dds"	# 图标路径
+# # 	allowed_archetypes = {
+# # 		ELF
+# # 	}
+# # 	prerequisites = {
+# # 		tech_genetic_resequencing
+# # 	}
+# # 	initial = no	# 开局可用
+# # 	#modification = no	# 可否修改
+# # 	randomized = no	# 随机生成
+# # 	opposites = {
+# # 		# 对立特质
+# # 		"trait_enduring"
+# # 		"trait_venerable"
+# # 	}
+# # 	modifier = {
+# # 		# 调节器
+# # 		leaders_cost_mult = -0.36		#基础领袖费用 [trait]
+# # 		planet_pops_consumer_goods_upkeep_mult = -0.1		# 消费品花费
+# # 		pop_growth_speed = 0.25		# 人口生长速度
+# # 	}
+# # }
+
+# # 优化基因
+# trait_break = {
+# 	cost = -3	# 特质点数花费
+# 	icon = "gfx/interface/icons/traits/trait_break.dds"	# 图标路径
+# 	sorting_priority = 50	# 分类优先权
+# 	allowed_archetypes = {
+# 		ELF
+# 	}
+# 	prerequisites = {
+# 		tech_genetic_resequencing
+# 	}
+# 	initial = no	# 开局可用
+# 	#modification = no	# 可否修改
+# 	randomized = no	# 随机生成
+# 	modifier = {
+# 		# 调节器
+# 		leader_skill_levels = 2		# 领袖技能等级上限
+# 		species_leader_exp_gain = 0.2		# 领袖经验增长
+# 		leader_lifespan_add = 20		# 领袖寿命增加 [trait]
+# 		planet_jobs_worker_produces_mult = 0.1		#劳工产出
+# 		planet_jobs_specialist_produces_mult = 0.05		#专家产出
+# 		planet_pops_food_upkeep_mult = -0.05		#维持人口的食物花费
+# 		planet_pops_consumer_goods_upkeep_mult = -0.05		#维持人口消费品的花费 [trait]
+# 		pop_growth_speed = 0.1		# 人口生长速度 [trait]
+# 		PLANET_AMENITIES_MULT = 0.1		#舒适度产出
+# 	}
+# 	ai_weight = {
+# 		weight = 1000
+# 	}	# AI权重
+# }
+
+# # 完美基因
+# trait_break_2 = {
+# 	cost = -6	# 特质点数花费
+# 	icon = "gfx/interface/icons/traits/trait_break_2.dds"	# 图标路径
+# 	sorting_priority = 50	# 分类优先权
+# 	allowed_archetypes = {
+# 		ELF
+# 	}
+# 	prerequisites = {
+# 		tech_genetic_resequencing
+# 	}
+# 	initial = no	# 开局可用
+# 	#modification = no	# 可否修改
+# 	randomized = no	# 随机生成
+# 	modifier = {
+# 		# 调节器
+# 		leader_skill_levels = 4		# 领袖技能等级上限
+# 		species_leader_exp_gain = 0.4		# 领袖经验增长
+# 		leader_lifespan_add = 40		# 领袖寿命增加
+# 		planet_jobs_worker_produces_mult = 0.2		#劳工产出
+# 		planet_jobs_specialist_produces_mult = 0.1		#专家产出
+# 		planet_pops_food_upkeep_mult = -0.1		#维持人口的食物花费
+# 		planet_pops_consumer_goods_upkeep_mult = -0.1		#维持人口消费品的花费 [trait]
+# 		pop_growth_speed = 0.2		# 人口生长速度
+# 		PLANET_AMENITIES_MULT = 0.2		#舒适度产出
+# 	}
+# 	ai_weight = {
+# 		weight = 1000
+# 	}	# AI权重
+# }
+
+# # ##############性爱机械############
+# # # 色欲玩具 0
+# # trait_lust_toy = {
+# # 	cost = 0	# 特质点数花费
+# # 	icon = "gfx/interface/icons/traits/trait_lust_toy.dds"	# 图标路径	
+# # 	allowed_archetypes = {
+# # 		LOVEMACHINE
+# # 		YGWAWA
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	initial = no	# 开局可用
+# # 	#modification = no	# 可否修改
+# # 	randomized = no	# 随机生成
+# # 	forced_happiness = yes
+# # 	modifier = {
+# # 		# 调节器
+# # 		planet_technician_produces_mult = -0.3
+# # 		planet_miners_produces_mult = -0.3
+# # 		planet_farmers_produces_mult = -0.3
+# # 		planet_metallurgists_produces_mult = -0.3
+# # 		planet_artisans_produces_mult = -0.3
+# # 		planet_researchers_produces_mult = -0.3
+# # 		planet_refiners_produces_mult = -0.3
+# # 		pop_demotion_time_mult = -1
+# # 	}
+# # }
+# # # 网路算法优化 2
+# # trait_network_algorithm_optimization = {
+# # 	cost = 2	# 特质点数花费
+# # 	icon = "gfx/interface/icons/traits/trait_network_algorithm_optimization.dds"	# 图标路径
+# # 	allowed_archetypes = {
+# # 		LOVEMACHINE
+# # 		YGWAWA
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	initial = no	# 开局可用
+# # 	#modification = yes	# 可否修改
+# # 	randomized = no	# 随机生成
+# # 	modifier = {
+# # 		# 调节器
+# # 		planet_jobs_produces_mult = 0.15
+# # 	}
+# # }
+# # #住家服务 2
+# # trait_live_with_master = {
+# # 	cost = 2	# 特质点数花费
+# # 	allowed_archetypes = {
+# # 		LOVEMACHINE
+# # 		YGWAWA
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	initial = no	# 开局可用
+# # 	#modification = yes	# 可否修改
+# # 	randomized = no	# 随机生成
+# # 	custom_tooltip = TRAIT_LIVE_WITH_MASTER_EFFECT
+# # 	modifier = {
+# # 		# 调节器
+# # 		planet_pops_consumer_goods_produces_mult = 1
+# # 		pop_housing_usage_mult = -0.8		#人口住房占用
+# # 	}
+# # }
+# # #深度情感学习 2
+# # trait_deep_emotion = {
+# # 	cost = 2	# 特质点数花费
+# # 	allowed_archetypes = {
+# # 		LOVEMACHINE
+# # 		YGWAWA
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	initial = no	# 开局可用
+# # 	#modification = yes	# 可否修改
+# # 	randomized = no	# 随机生成
+# # 	custom_tooltip = TRAIT_DEEP_EMOTION_EFFECT	#允许担任按摩技师、小姐、站街女
+# # 	modifier = {
+# # 		# 调节器
+# # 		pop_assembly_speed = -0.3
+# # 	}
+# # }
+# # #嫰体多汁 1
+# # trait_body_by_juice = {
+# # 	cost = 1	# 特质点数花费
+# # 	allowed_archetypes = {
+# # 		LOVEMACHINE
+# # 		YGWAWA
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	initial = no	# 开局可用
+# # 	#modification = yes	# 可否修改
+# # 	randomized = no	# 随机生成
+# # 	custom_tooltip = TRAIT_BODY_BY_JUICE_EFFECT	#爱液维护费+1
+# # 	modifier = {
+# # 		# 调节器
+# # 		planet_magic_girl_produces_mult = 0.5
+# # 	}
+# # }
+# # #丰富模组 2
+# # trait_rich_modules = {
+# # 	cost = 2	# 特质点数花费
+# # 	allowed_archetypes = {
+# # 		LOVEMACHINE
+# # 		YGWAWA
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	initial = no	# 开局可用
+# # 	#modification = yes	# 可否修改
+# # 	randomized = no	# 随机生成
+# # 	modifier = {
+# # 		# 调节器
+# # 		planet_pop_assemblers_upkeep_mult = 0.2		#组建成本	
+# # 		planet_pops_robotics_upkeep_mult = 0.2		#维护成本
+# # 		pop_assembly_speed = -0.2
+# # 		pop_housing_usage_mult = 0.2		#住房占用
+# # 	}
+# # }
+# # # 上古核心 0
+# # trait_ancient_core = {
+# # 	cost = 0	# 特质点数花费
+# # 	allowed_archetypes = {
+# # 		YGWAWA
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	initial = no	# 开局可用
+# # 	#modification = no	# 可否修改
+# # 	randomized = no	# 随机生成
+# # 	modifier = {
+# # 		# 调节器
+# # 		planet_technician_produces_mult = 0.6
+# # 		planet_miners_produces_mult = 0.6
+# # 		planet_farmers_produces_mult = 0.6
+# # 		planet_metallurgists_produces_mult = 0.6
+# # 		planet_artisans_produces_mult = 0.6
+# # 		planet_researchers_produces_mult = 0.6
+# # 		planet_refiners_produces_mult = 0.6
+# # 	}
+# # }
+# ###瑟琴高级特质###
+# # # 性爱传教士 
+# # trait_lust_missionary = {
+# # 	cost = 4	# 特质点数花费
+# # 	icon = "gfx/interface/icons/traits/trait_lust_missionary.dds"	# 图标路径
+# # 	allowed_archetypes = {
+# # 		PARASITE
+# # 		Magical_Bitch
+# # 		TENTACLE
+# # 		MONSTER
+# # 		WARSHIPGIRL
+# # 		LOVEMACHINE
+# # 		YGWAWA
+# # 		SHENHAI
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	initial = no	# 开局可用
+# # 	#modification = yes	# 可否修改
+# # 	randomized = no	# 随机生成
+# # 	advanced_trait = yes
+# # 	opposites = {
+# # 		"trait_frigid"
+# # 	}
+# # 	prerequisites = {
+# # 		"tech_gene_remodeling"
+# # 	}
+# # 	modifier = {
+# # 		# 调节器
+# # 		####会提高其他国家的评价100###
+# # 		pop_happiness = 0.2
+# # 		pop_cat_slave_happiness = 0.2		#奴隶幸福度 [trait]
+# # 		pop_growth_speed = 0.2
+# # 		planet_amenities_mult = 0.2		#舒适度 [trait]
+# # 	}
+# # }
+# ###魅魔淫奴###
+
+
+# # 心灵提升 圣女飞升1阶段
+# trait_mind_break = {
+# 	cost = -3	# 特质点数花费
+# 	icon = "gfx/interface/icons/traits/trait_mind_break.dds"	# 图标路径
+# 	allowed_archetypes = {
+# 		ELF
+# 	}
+# 	prerequisites = {
+# 		tech_genetic_resequencing
+# 	}
+	
+# 	# 可使用该特质的原型
+# 	sorting_priority = 30
+# 	#modification = yes
+# 	initial = no
+# 	randomized = no
+# 	advanced_trait = yes
+# 	modifier = {
+# 		# 调节器
+# 		leader_skill_levels = 2		# 领袖技能等级上限
+# 		species_leader_exp_gain = 0.2		# 领袖经验增长
+# 		leader_lifespan_add = 20		# 领袖寿命增加
+# 		planet_jobs_produces_mult = 0.1		#全资源产出倍率
+# 		planet_pops_consumer_goods_upkeep_mult = -0.1
+# 		pop_housing_usage_mult = -0.1		#人口住房占用
+# 		POP_AMENITIES_USAGE_NO_HAPPINESS_MULT = -0.1		#人口舒适度消耗
+# 	}
+# }
+
+# # 心灵升华 圣女飞升2阶段
+# trait_mind_evolution = {
+# 	cost = -6	# 特质点数花费
+# 	icon = "gfx/interface/icons/traits/trait_mind_evolution.dds"	# 图标路径
+# 	allowed_archetypes = {
+# 		ELF
+# 	}
+# 	prerequisites = {
+# 		tech_genetic_resequencing
+# 	}
+# 	# 可使用该特质的原型
+# 	sorting_priority = 30
+# 	#modification = yes
+# 	initial = no
+# 	randomized = no
+# 	advanced_trait = yes
+# 	modifier = {
+# 		# 调节器
+# 		leader_skill_levels = 4		# 领袖技能等级上限 [trait]		
+# 		species_leader_exp_gain = 0.4		# 领袖经验增长 [trait]
+# 		leader_lifespan_add = 40		# 领袖寿命增加 [trait]
+# 		planet_jobs_produces_mult = 0.15		#全资源产出倍率 [trait]
+# 		planet_pops_consumer_goods_upkeep_mult = -0.15
+# 		pop_housing_usage_mult = -0.15		#人口住房占用
+# 		POP_AMENITIES_USAGE_NO_HAPPINESS_MULT = -0.15		#人口舒适度消耗
+# 	}
+# }
+
+# ##1.20新增特质###
+# ###圣女高级特质###
+# trait_wind_warrior = {
+# 	# 疾风军团
+# 	cost = 3	# 特质点数花费
+# 	icon = "gfx/interface/icons/traits/trait_wind_warrior.dds"	# 图标路径
+# 	allowed_archetypes = {
+# 		ELF
+# 	}
+# 	prerequisites = {
+# 		tech_genetic_resequencing
+# 	}
+# 	# 可使用该特质的原型
+# 	initial = no	# 开局可用
+# 	#modification = yes	# 可否修改
+# 	randomized = no	# 随机生成
+# 	advanced_trait = yes
+# 	modifier = {
+# 		# 调节器
+# 		armies_upkeep_mult = -0.25		#军团维护费 [trait]
+# 		ship_hull_regen_add_perc = 1
+# 		ship_armor_regen_add_perc = 1
+# 		ships_upkeep_mult = -0.1
+# 	}
+# }
+
+# #ips适应性
+# trait_ips_adaptability = {
+# 	# ips适应性
+# 	cost = 4	# 特质点数花费
+# 	icon = "gfx/interface/icons/traits/trait_ips_adaptability.dds"	# 图标路径	
+# 	allowed_archetypes = {
+# 		ELF
+# 	}
+# 	prerequisites = {
+# 		tech_genetic_resequencing
+# 	}
+# 	# 可使用该特质的原型
+# 	initial = no	# 开局可用
+# 	#modification = yes	# 可否修改
+# 	randomized = no	# 随机生成
+# 	advanced_trait = yes
+# 	modifier = {
+# 		# 调节器
+# 		pop_growth_speed = 0.4
+# 		planet_amenities_mult = 0.25
+# 		planet_jobs_produces_mult = 0.1
+# 	}
+# }
+
+# trait_dimension_traveler = {
+# 	# 次元旅者
+# 	cost = 4	# 特质点数花费
+# 	icon = "gfx/interface/icons/traits/trait_dimension_traveler.dds"	# 图标路径
+# 	allowed_archetypes = {
+# 		ELF
+# 	}
+# 	prerequisites = {
+# 		tech_genetic_resequencing
+# 	}
+# 	# 可使用该特质的原型
+# 	initial = no	# 开局可用
+# 	#modification = yes	# 可否修改
+# 	randomized = no	# 随机生成
+# 	advanced_trait = yes
+# 	modifier = {
+# 		# 调节器
+# 		planet_jobs_society_research_produces_mult = 0.35		#来自￡job￡职业的￡society￡_research 社会研究 [trait]
+# 		planet_jobs_physics_research_produces_mult = 0.35		#来自￡job￡职业的￡physics￡_research 物理研究 [trait]
+# 		planet_jobs_engineering_research_produces_mult = 0.35		#来自￡job￡职业的￡engineering￡_research 工程研究 [trait]
+# 	}
+# }
+
+# trait_the_vestal = {
+# 	# 圣洁修女
+# 	cost = 4	# 特质点数花费
+# 	icon = "gfx/interface/icons/traits/trait_the_vestal.dds"	# 图标路径
+# 	allowed_archetypes = {
+# 		ELF
+# 	}
+# 	prerequisites = {
+# 		tech_genetic_resequencing
+# 	}
+# 	# 可使用该特质的原型
+# 	initial = no	# 开局可用
+# 	#modification = yes	# 可否修改
+# 	randomized = no	# 随机生成
+# 	advanced_trait = yes
+# 	modifier = {
+# 		# 调节器
+# 		planet_jobs_produces_mult = 0.15
+# 		POP_AMENITIES_USAGE_NO_HAPPINESS_MULT = -0.25		#人口舒适度消耗 [trait]
+# 		planet_crime_mult = -0.1		#犯罪率
+# 		planet_stability_add = 10		#稳定性
+# 	}
+# }
+
+# # ###########圣光仆从特质##########
+# # #圣光仆从
+# # trait_holy_robot = {
+# # 	cost = 0	# 特质点数花费
+# # 	allowed_archetypes = {
+# # 		HOLYROBOT
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	initial = no	# 开局可用
+# # 	#modification = no	# 可否修改
+# # 	randomized = no	# 随机生成
+# # 	forced_happiness = yes
+# # 	modifier = {
+# # 		# 调节器
+# # 		planet_jobs_energy_produces_mult = -0.5
+# # 		planet_jobs_food_produces_mult = -0.5
+# # 		planet_jobs_minerals_produces_mult = -0.5
+# # 		planet_jobs_consumer_goods_produces_mult = -0.5
+# # 		planet_jobs_alloys_produces_mult = -0.5
+# # 		planet_researchers_produces_mult = -0.5
+# # 		planet_refiners_produces_mult = -0.5
+# # 		pop_demotion_time_mult = 1
+# # 	}
+# # }
+# # # 圣光联络 2
+# # trait_holylight_network = {
+# # 	cost = 2	# 特质点数花费
+# # 	allowed_archetypes = {
+# # 		HOLYROBOT
+# # 	}
+# # 	# 可使用该特质的原型
+# # 	initial = no	# 开局可用
+# # 	#modification = yes	# 可否修改
+# # 	randomized = no	# 随机生成
+# # 	modifier = {
+# # 		# 调节器
+# # 		planet_jobs_produces_mult = 0.15
+# # 	}
+# # }
+# #trait_abyss_of_lust = { # 淫欲深渊
+# #icon = "gfx/interface/icons/traits/trait_abyss_of_lust.dds" # 图标路径
+# #}
+# #####普通种族高级特质######
+# #开局不可选
+# # 肾上腺素爆发
+# trait_adrenaline = {
+# 	cost = 2	# 特质点数花费
+# 	icon = "gfx/interface/icons/traits/trait_adrenaline.dds"	# 图标路径
+# 	allowed_archetypes = {
+# 		ELF
+# 	}
+# 	# 可使用该特质的原型
+# 	initial = yes	# 开局可用
+# 	#modification = yes	# 可否修改
+# 	randomized = yes	# 随机生成
+# 	modifier = {
+# 		# 调节器
+# 		army_damage_mult = 0.15
+# 		army_health = 0.15
+# 	}
+# }
+
+# ##########################
+# # 事件特殊改造特质
+# ##########################
+# # 无心少女
+# trait_heartless_shojo = {
+# 	cost = 1	# 特质点数花费
+# 	icon = "gfx/interface/icons/traits/trait_heartless_shojo.dds"	# 图标路径
+# 	allowed_archetypes = {
+# 		ELF
+# 	}	# 可使用该特质的原型
+# 	initial = no	# 开局可用
+# 	#modification = no	# 可否修改
+# 	randomized = no	# 随机生成
+# 	forced_happiness = yes	#不受幸福度影响
+# 	sorting_priority = 20
+# 	modifier = {
+# 		# 调节器
+# 		planet_jobs_society_research_produces_mult = -0.75		#来自￡job￡职业的￡society￡_research 社会研究 [trait]
+# 		planet_jobs_physics_research_produces_mult = -0.75		#来自￡job￡职业的￡physics￡_research 物理研究 [trait]
+# 		planet_jobs_engineering_research_produces_mult = -0.75		#来自￡job￡职业的￡engineering￡_research 工程研究 [trait]
+# 		planet_jobs_alloys_produces_mult = -0.3
+# 		planet_jobs_consumer_goods_produces_mult = -0.3
+# 		planet_jobs_unity_produces_mult = 0.1		#来自￡job￡职业的￡unity￡ 凝聚力 [trait]
+# 		planet_jobs_minerals_produces_mult = 0.1		#来自￡job￡职业的￡minerals￡ 矿物 [trait]
+# 		planet_jobs_energy_produces_mult = 0.1		#￡job￡职业的￡energy￡ 能源 [trait]
+# 		planet_jobs_food_produces_mult = 0.1		#来自￡job￡职业的￡food￡ 食物 [trait]
+# 	}
+# }
+
+# # 狂热修女
+# trait_zealot_shojo = {
+# 	cost = 2	# 特质点数花费
+# 	icon = "gfx/interface/icons/traits/trait_zealot_shojo.dds"	# 图标路径
+# 	allowed_archetypes = {
+# 		ELF
+# 	}	# 可使用该特质的原型
+# 	initial = no	# 开局可用
+# 	#modification = no	# 可否修改
+# 	randomized = no	# 随机生成
+# 	forced_happiness = yes
+# 	sorting_priority = 20
+# 	modifier = {
+# 		# 调节器
+# 		planet_jobs_society_research_produces_mult = -0.15		#来自￡job￡职业的￡society￡_research 社会研究 [trait]
+# 		planet_jobs_physics_research_produces_mult = -0.15		#来自￡job￡职业的￡physics￡_research 物理研究 [trait]
+# 		planet_jobs_engineering_research_produces_mult = -0.15		#来自￡job￡职业的￡engineering￡_research 工程研究 [trait]
+# 		planet_jobs_unity_produces_mult = 0.3		#来自￡job￡职业的￡unity￡ 凝聚力 [trait]3
+# 		planet_jobs_minerals_produces_mult = -0.15		#来自￡job￡职业的￡minerals￡ 矿物 [trait]
+# 		planet_jobs_energy_produces_mult = -0.15		#￡job￡职业的￡energy￡ 能源 [trait]
+# 		planet_jobs_food_produces_mult = -0.15		#来自￡job￡职业的￡food￡ 食物 [trait]
+# 		army_damage_mult = 0.4
+# 		army_health = -0.2
+# 	}
+# }
+
+
+# #迷途知返
+# trait_holy_suc = {
+# 	cost = -6
+# 	allowed_archetypes = {
+# 		ELF
+# 	}	# 可使用该特质的原型
+# 	initial = no	# 开局可用
+# 	#modification = no	# 可否修改
+# 	randomized = no	# 随机生成
+# 	sorting_priority = 50	# 分类优先权
+# 	modifier = {
+# 		# 调节器
+# 		leader_skill_levels = 4		# 领袖技能等级上限
+# 		species_leader_exp_gain = 0.5		# 领袖经验增长
+# 		planet_researchers_physics_research_produces_mult = 0.3		#来自￡job_researcher 研究人员的￡physics￡ 物理研究 [trait]
+# 		planet_researchers_society_research_produces_mult = 0.3		#来自￡job_researcher 研究人员的￡society￡ 社会研究 [trait]
+# 		planet_researchers_engineering_research_produces_mult = 0.3		#来自￡job_researcher 研究人员的￡engineering￡ 工程研究 [trait]
+# 		leader_lifespan_add = 40		# 领袖寿命增加
+# 		planet_pops_consumer_goods_upkeep_mult = -0.15		#维持人口消费品的花费 [trait]
+# 		pop_growth_speed = -0.15		# 人口生长速度
+# 	}
+# }
+
+# # 崩坏精壶
+# trait_broken_fleshtoilet = {
+# 	cost = 1	# 特质点数花费
+# 	icon = "gfx/interface/icons/traits/trait_broken_fleshtoilet.dds"	# 图标路径
+# 	allowed_archetypes = {
+# 		ELF
+# 	}	# 可使用该特质的原型
+# 	sorting_priority = 20
+# 	initial = no	# 开局可用
+# 	#modification = no	# 可否修改
+# 	randomized = no	# 随机生成
+# 	forced_happiness = yes
+# 	modifier = {
+# 		# 调节器
+# 		planet_jobs_society_research_produces_mult = -0.75		#来自￡job￡职业的￡society￡_research 社会研究 [trait]
+# 		planet_jobs_physics_research_produces_mult = -0.75		#来自￡job￡职业的￡physics￡_research 物理研究 [trait]
+# 		planet_jobs_engineering_research_produces_mult = -0.75		#来自￡job￡职业的￡engineering￡_research 工程研究 [trait]
+# 		planet_jobs_unity_produces_mult = -0.75		#来自￡job￡职业的￡unity￡ 凝聚力 [trait]
+# 		planet_jobs_minerals_produces_mult = 0.1		#来自￡job￡职业的￡minerals￡ 矿物 [trait]
+# 		planet_jobs_energy_produces_mult = 0.1		#￡job￡职业的￡energy￡ 能源 [trait]
+# 		planet_jobs_food_produces_mult = 0.1		#来自￡job￡职业的￡food￡ 食物 [trait]
+# 	}
+# }
+
+# # 爱液之花
+# trait_sexual_liquid_flower = {
+# 	cost = 2	# 特质点数花费
+# 	icon = "gfx/interface/icons/traits/trait_sexual_liquid_flower.dds"	# 图标路径
+# 	sorting_priority = 20
+# 	allowed_archetypes = {
+# 		ELF
+# 	}	# 可使用该特质的原型
+# 	initial = no	# 开局可用
+# 	#modification = no	# 可否修改
+# 	randomized = no	# 随机生成
+# 	forced_happiness = yes
+# 	modifier = {
+# 		# 调节器
+# 		planet_technician_produces_mult = -0.15
+# 		planet_miners_produces_mult = -0.15
+# 		planet_farmers_produces_mult = -0.15
+# 		planet_jobs_unity_produces_mult = 0.3		#来自￡job￡职业的￡unity￡ 凝聚力
+# 		army_damage_mult = -0.2
+# 		army_health = -0.2
+# 	}
+# }
+
+# # # YC共生
+# # trait_lustgod_tentacle_symbiosis = {
+# # 	cost = 0
+# # 	icon = "gfx/interface/icons/traits/trait_tentacle_symbiosis.dds" # 图标路径
+# # 	allowed_archetypes = { PARASITE Magical_Bitch }
+# # 	initial = no # 开局可用
+# # 	#modification = no # 可否修改
+# # 	randomized = no # 随机生成
+# # 	immortal_leaders = yes # 领袖永生
+# # 	modifier = { # 调节器
+# # 		planet_pops_consumer_goods_upkeep_mult  = -0.10 # 消费品花费
+# # 		planet_jobs_produces_mult = 0.10
+# # 		planet_jobs_society_research_produces_mult = 0.10 #来自￡job￡职业的￡society￡_research 社会研究 [trait]
+# # 		planet_jobs_physics_research_produces_mult = 0.10 #来自￡job￡职业的￡physics￡_research 物理研究 [trait]
+# # 		planet_jobs_engineering_research_produces_mult = 0.10 #来自￡job￡职业的￡engineering￡_research 工程研究 [trait]
+# # 	}
+# # }
+# # ######################	MWN	##################### MWN ################################################################
+# # #魔物娘
+# # trait_monster_girl = {
+# # 	cost = 3
+# # 	allowed_archetypes = { MONSTER } # 可使用该特质的原型
+# # 	initial = no # 开局可用
+# # 	#modification = no # 可否修改
+# # 	randomized = no # 随机生成
+# # 	sorting_priority = 49 # 分类优先权
+# # 	modifier = { # 调节器
+# # 		pop_environment_tolerance = 0.10	#环境适应性
+# # 		PLANET_AMENITIES_MULT = 0.10
+# # 		planet_magic_girl_produces_mult = 0.20
+# # 		planet_jobs_unity_produces_mult = 0.20
+# # 	}
+# # }
+# # ##################
+# # #美人鱼
+# # trait_fish_girl = {
+# # 	cost = 2
+# # 	allowed_archetypes = { MONSTER } # 可使用该特质的原型
+# # 	initial = no # 开局可用
+# # 	#modification = no # 可否修改
+# # 	randomized = no # 随机生成
+# # 	sorting_priority = 20 # 分类优先权
+# # 	modifier = { # 调节器
+# # 		planet_pops_consumer_goods_upkeep_mult = 0.20
+# # 		planet_jobs_unity_produces_mult = 0.20
+# # 		planet_lovejuicer_produces_mult = 0.20
+# # 		army_damage_mult = -0.25 # 陆军伤害	
+# # 		army_health = -0.10 # 部队生命值
+# # 		army_morale_damage_mult = -0.1
+# # 		army_morale	= -0.1
+# # 	}
+# # }
+# # ##################
+# # #蛇女
+# # trait_snake_girl = {
+# # 	cost = 2
+# # 	allowed_archetypes = { MONSTER } # 可使用该特质的原型
+# # 	initial = no # 开局可用
+# # 	#modification = no # 可否修改
+# # 	randomized = no # 随机生成
+# # 	sorting_priority = 20 # 分类优先权
+# # 	modifier = { # 调节器
+# # 		planet_pops_food_upkeep_mult = 0.20
+# # 		planet_lovejuicer_produces_mult = 0.10
+# # 		army_damage_mult = 0.25 # 陆军伤害	
+# # 		army_health = 0.25 # 部队生命值
+# # 		army_morale_damage_mult = 1.0
+# # 	}
+# # }
+# # ###################
+# # #蜘蛛女
+# # trait_spider_girl = {
+# # 	cost = 2
+# # 	allowed_archetypes = { MONSTER } # 可使用该特质的原型
+# # 	initial = no # 开局可用
+# # 	#modification = no # 可否修改
+# # 	randomized = no # 随机生成
+# # 	sorting_priority = 20 # 分类优先权
+# # 	modifier = { # 调节器
+# # 		planet_jobs_consumer_goods_produces_mult = 0.20
+# # 		planet_jobs_alloys_produces_mult = 0.20
+# # 		planet_master_produces_mult = 0.20
+# # 		planet_beauty_produces_mult = 0.20
+# # 		army_damage_mult = 0.25 # 陆军伤害	
+# # 		army_health = 0.25 # 部队生命值
+# # 		army_morale_damage_mult = 1.0
+# # 	}
+# # }
+# ###################
+# # #翼女
+# # trait_wing_girl = {
+# # 	cost = 2
+# # 	allowed_archetypes = { MONSTER } # 可使用该特质的原型
+# # 	initial = no # 开局可用
+# # 	#modification = no # 可否修改
+# # 	randomized = no # 随机生成
+# # 	sorting_priority = 20 # 分类优先权
+# # 	modifier = { # 调节器
+# # 		planet_jobs_unity_produces_mult = 0.20
+# # 		planet_jobs_minerals_produces_mult = 0.20
+# # 		pop_housing_usage_mult = 0.20
+# # 		army_damage_mult = 0.4 # 陆军伤害
+# # 	}
+# # }
+# ###################
+# # #兽耳娘
+# # trait_fox_girl = {
+# # 	cost = 2
+# # 	allowed_archetypes = { MONSTER } # 可使用该特质的原型
+# # 	initial = no # 开局可用
+# # 	#modification = no # 可否修改
+# # 	randomized = no # 随机生成
+# # 	sorting_priority = 20 # 分类优先权
+# # 	modifier = { # 调节器
+# # 		planet_jobs_physics_research_produces_mult = 0.15
+# # 		planet_jobs_society_research_produces_mult = 0.15
+# # 		planet_jobs_engineering_research_produces_mult = 0.15
+# # 		army_damage_mult = 0.25 # 陆军伤害
+# # 	}
+# # }
+# # #####################共用	或  部分共用###############
+# # #惹人怜爱
+# # trait_pet_lovable = {
+# # 	cost = 2
+# # 	allowed_archetypes = { MONSTER } # 可使用该特质的原型
+# # 	initial = no # 开局可用
+# # 	#modification = yes # 可否修改
+# # 	randomized = no # 随机生成
+# # 	sorting_priority = 10 # 分类优先权
+# # 	modifier = { # 调节器
+# # 		planet_magic_girl_produces_mult = 0.20
+# # 		planet_trade_produces_mult = 0.20
+# #     }
+# # }
+# # #多卵繁育
+# # trait_pet_rich_oviparous = {
+# # 	cost = 2
+# # 	allowed_archetypes = { MONSTER } # 可使用该特质的原型
+# # 	initial = no # 开局可用
+# # 	#modification = yes # 可否修改
+# # 	randomized = no # 随机生成
+# # 	sorting_priority = 10 # 分类优先权
+# # 	opposites = { # 对立特质
+# # 		"trait_fox_girl"		#花女不可用
+# # 	}
+# # 	modifier = { # 调节器
+# # 		pop_growth_speed = 0.20
+# # 		planet_pops_food_upkeep_mult = 0.20
+# # 		planet_pops_consumer_goods_upkeep_mult = 0.20
+# # 	}
+# # }
+# # #女王气息
+# # trait_queen_flavour = {
+# # 	cost = 2
+# # 	allowed_archetypes = { MONSTER } # 可使用该特质的原型
+# # 	initial = no # 开局可用
+# # 	#modification = yes # 可否修改
+# # 	randomized = no # 随机生成
+# # 	sorting_priority = 10 # 分类优先权
+# # 	modifier = { # 调节器
+# # 		planet_jobs_influence_produces_mult = 0.5
+# # 		planet_pops_consumer_goods_upkeep_mult = 0.5
+# # 		POP_AMENITIES_USAGE_NO_HAPPINESS_MULT = 0.5		#人口舒适度消耗
+# # 	}
+# # }
+# # #思想退化
+# # trait_mind_degeneration = {
+# # 	cost = 2
+# # 	allowed_archetypes = { MONSTER } # 可使用该特质的原型
+# # 	initial = no # 开局可用
+# # 	#modification = yes # 可否修改
+# # 	randomized = no # 随机生成
+# # 	sorting_priority = 10 # 分类优先权
+# # 	opposites = { # 对立特质	
+# # 		"trait_new_view"
+# # 		"trait_bright"
+# # 		"trait_extremely_intelligent"
+# # 	}
+# # 	modifier = { # 调节器
+# # 		planet_jobs_worker_produces_mult = 0.35
+# # 		planet_jobs_slave_produces_mult = 0.35
+# # 		planet_jobs_ruler_produces_mult = -0.70
+# # 		planet_researchers_produces_mult = -0.70
+# # 		pop_happiness = 0.35 
+# # 	}
+# # }
+# # #新视野思维模式
+# # trait_new_view = {
+# # 	cost = 2
+# # 	allowed_archetypes = { MONSTER } # 可使用该特质的原型
+# # 	initial = no # 开局可用
+# # 	#modification = yes # 可否修改
+# # 	randomized = no # 随机生成
+# # 	sorting_priority = 10 # 分类优先权
+# # 	opposites = { # 对立特质
+# # 		"trait_mind_degeneration"
+# # 	}
+# # 	modifier = { # 调节器
+# # 		planet_researchers_produces_mult = 0.20
+# # 	}
+# # }
+# # #饲养属性
+# # trait_like_being_raised = {
+# # 	cost = 2
+# # 	allowed_archetypes = { MONSTER } # 可使用该特质的原型
+# # 	initial = no # 开局可用
+# # 	#modification = yes # 可否修改
+# # 	randomized = no # 随机生成
+# # 	sorting_priority = 10 # 分类优先权
+# # 	modifier = { # 调节器
+# # 		pop_housing_usage_mult = -0.5
+# # 		planet_pops_consumer_goods_upkeep_mult = -0.2
+# # 		POP_AMENITIES_USAGE_NO_HAPPINESS_MULT = -0.5	
+# # 		pop_environment_tolerance = 0.1
+# # 		planet_jobs_produces_mult = -0.2
+# # 	}
+# # }
+# # #野性回归
+# # trait_animal_savagery = {
+# # 	cost = 2
+# # 	allowed_archetypes = { MONSTER } # 可使用该特质的原型
+# # 	initial = no # 开局可用
+# # 	#modification = yes # 可否修改
+# # 	randomized = no # 随机生成
+# # 	sorting_priority = 10 # 分类优先权
+# # 	modifier = { # 调节器
+# # 		army_damage_mult = 0.50 # 陆军伤害	
+# # 		army_health = 0.20 # 部队生命值
+# # 		army_morale_damage_mult = 0.50
+# # 		army_morale	= 0.50
+# # 	}
+# # }

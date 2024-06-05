@@ -1,0 +1,752 @@
+#阶级
+planet_futa_job = {
+	use_for_ai_budget = yes
+	parent = planet_jobs
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = pop
+	# triggered_produces_modifier = {
+	# 	key = planet_jobs_futa_rbq
+	# 	modifier_types = {
+	# 		mult
+	# 		add
+	# 	}
+	# 	trigger = {
+	# 		has_job_category = futa_rbq
+	# 	}
+	# 	# trigger = {
+	# 	# 	OR = {
+	# 	# 		# is_pop_category = futa_rbq
+	# 	# 		has_job_category = futa_rbq
+	# 	# 		# AND = {
+	# 	# 		# 	is_pop_category = slave					# Yes, slave should count towards both worker and slave
+	# 	# 		# 	has_job_category = futa_rbq
+	# 	# 		# }
+	# 	# 	}
+	# 	# }
+	# }
+	# triggered_produces_modifier = {
+	# 	key = planet_jobs_slave
+	# 	modifier_types = {
+	# 		mult
+	# 	}
+	# 	trigger = {
+	# 		is_pop_category = slave
+	# 		OR = {
+	# 			has_job_category = worker
+	# 			has_job_category = futa_rbq
+	# 		}
+	# 	}
+	# }
+}
+
+# pop_category_futa_rbq = {
+# 	parent = planet_pops
+# 	generate_add_modifiers = {
+# 		produces
+# 		upkeep
+# 	}
+# 	generate_mult_modifiers = {
+# 		produces
+# 		upkeep
+# 	}
+# }
+#
+#特殊区划
+#一产
+planet_district_futa_production_center = {
+	parent = planet_districts
+	generate_add_modifiers = {
+		cost
+		upkeep
+		produces
+	}
+	generate_mult_modifiers = {
+		cost
+		upkeep
+		produces
+	}
+	modifier_category = planet
+}
+
+#女仆
+planet_district_futa_maid_dispatch_center = {
+	parent = planet_districts
+	generate_add_modifiers = {
+		cost
+		upkeep
+		produces
+	}
+	generate_mult_modifiers = {
+		cost
+		upkeep
+		produces
+	}
+	modifier_category = planet
+}
+
+#牧场
+planet_district_futa_semen_production_center = {
+	parent = planet_districts
+	generate_add_modifiers = {
+		cost
+		upkeep
+		produces
+	}
+	generate_mult_modifiers = {
+		cost
+		upkeep
+		produces
+	}
+	modifier_category = planet
+}
+
+#工业区
+planet_district_semen_ten_production_center = {
+	parent = planet_districts
+	generate_add_modifiers = {
+		cost
+		upkeep
+		produces
+	}
+	generate_mult_modifiers = {
+		cost
+		upkeep
+		produces
+	}
+	modifier_category = planet
+}
+
+#悬浮基地
+planet_district_ELF_endless_ocean_1 = {
+	parent = planet_districts
+	generate_add_modifiers = {
+		cost
+		upkeep
+		produces
+	}
+	generate_mult_modifiers = {
+		cost
+		upkeep
+		produces
+	}
+	modifier_category = planet
+}
+
+#城市地基
+planet_district_ELF_endless_ocean_2 = {
+	parent = planet_districts
+	generate_add_modifiers = {
+		cost
+		upkeep
+		produces
+	}
+	generate_mult_modifiers = {
+		cost
+		upkeep
+		produces
+	}
+	modifier_category = planet
+}
+
+#海洋牧场
+planet_district_ELF_endless_ocean_3 = {
+	parent = planet_districts
+	generate_add_modifiers = {
+		cost
+		upkeep
+		produces
+	}
+	generate_mult_modifiers = {
+		cost
+		upkeep
+		produces
+	}
+	modifier_category = planet
+}
+
+#深海冶炼
+planet_district_ELF_endless_ocean_4 = {
+	parent = planet_districts
+	generate_add_modifiers = {
+		cost
+		upkeep
+		produces
+	}
+	generate_mult_modifiers = {
+		cost
+		upkeep
+		produces
+	}
+	modifier_category = planet
+}
+
+#深海勘探
+planet_district_ELF_endless_ocean_5 = {
+	parent = planet_districts
+	generate_add_modifiers = {
+		cost
+		upkeep
+		produces
+	}
+	generate_mult_modifiers = {
+		cost
+		upkeep
+		produces
+	}
+	modifier_category = planet
+}
+
+# planet_district_semen_ten_production = {
+# 	parent = planet_district_semen_ten_production_center
+# 	generate_mult_modifiers = {
+# 		produces
+# 		upkeep
+# 	}
+# 	modifier_category = planet
+# }
+#岗位
+planet_futa_semen = {
+	parent = planet_futa_job
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = pop
+}
+
+#扶她电工
+planet_futa_generator = {
+	parent = planet_technician
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = pop
+}
+
+#扶她矿工
+planet_futa_miner = {
+	parent = planet_miners
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = pop
+}
+
+#扶她农夫
+planet_futa_farmer = {
+	parent = planet_farmers
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = pop
+}
+
+#丝袜工匠
+planet_futa_artisan = {
+	parent = planet_artisans
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = pop
+}
+
+#扶她炼金师
+planet_futa_metallurgist = {
+	parent = planet_metallurgists
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = pop
+}
+
+planet_futa_primary = {
+	parent = planet_futa_job
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = pop
+}
+
+# planet_futa_intermediate = {
+# 	parent = planet_futa_job
+# 	generate_add_modifiers = {
+# 		produces
+# 		upkeep
+# 	}
+# 	generate_mult_modifiers = {
+# 		produces
+# 		upkeep
+# 	}
+# }
+#扶她科研
+planet_futa_research = {
+	parent = planet_researchers
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = pop
+}
+
+#扶她修女
+planet_futa_priest = {
+	parent = planet_priests
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = pop
+}
+
+planet_futa_maid = {
+	parent = planet_futa_job
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = pop
+}
+
+#扶她特殊资源培育员
+planet_futa_special = {
+	parent = planet_futa_job
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = pop
+}
+
+planet_futa_top = {
+	parent = planet_futa_job
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = pop
+}
+
+planet_magic_girl = {
+	parent = planet_futa_job
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = pop
+}
+
+#深海劳工
+planet_endless_ocean_survey_worker = {
+	parent = planet_researchers
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = pop
+}
+
+###_[独特舰船]	######################################################
+ELF_ships = {
+	use_for_ai_budget = yes
+	generate_mult_modifiers = {
+		produces
+		upkeep
+		cost
+	}
+	generate_add_modifiers = {
+		produces
+		upkeep
+		cost
+	}
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		sr_semen
+	}
+	modifier_category = ship
+	parent = ships
+	triggered_cost_modifier = {
+		key = ship_futa_orgin_ship_1
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = futa_orgin_ship_1
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = ship_futa_orgin_ship_1
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = futa_orgin_ship_1
+		}
+	}
+	triggered_cost_modifier = {
+		key = ship_star_power
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = star_power
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = ship_star_power
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = star_power
+		}
+	}
+	triggered_cost_modifier = {
+		key = ship_world_tree_one
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = world_tree_one
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = ship_world_tree_one
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = world_tree_one
+		}
+	}
+	triggered_cost_modifier = {
+		key = ship_world_tree_two
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = world_tree_two
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = ship_world_tree_two
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = world_tree_two
+		}
+	}
+	triggered_cost_modifier = {
+		key = ship_world_tree_three
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = world_tree_three
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = ship_world_tree_three
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = world_tree_three
+		}
+	}
+	triggered_cost_modifier = {
+		key = ship_world_tree_four
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = world_tree_four
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = ship_world_tree_four
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = world_tree_four
+		}
+	}
+	triggered_cost_modifier = {
+		key = ship_world_tree_max
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = world_tree_max
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = ship_world_tree_max
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = world_tree_max
+		}
+	}
+	triggered_cost_modifier = {
+		key = ship_ten_airship_1
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = ten_airship_1
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = ship_ten_airship_1
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = ten_airship_1
+		}
+	}
+	triggered_cost_modifier = {
+		key = ship_ten_battleship
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = ten_battleship
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = ship_ten_battleship
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = ten_battleship
+		}
+	}
+	triggered_cost_modifier = {
+		key = futa_starbase_stronghold
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = futa_starbase_stronghold
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = futa_starbase_stronghold
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = futa_starbase_stronghold
+		}
+	}
+	triggered_cost_modifier = {
+		key = futa_starbase_headquarters
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = futa_starbase_headquarters
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = futa_starbase_headquarters
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = futa_starbase_headquarters
+		}
+	}
+}
+
+#星灵
+#触手区划
+planet_districts_star_ten_center = {
+	parent = planet_districts
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = planet
+}
+
+elf_star_jobs = {
+	parent = planet_jobs
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = pop
+}
+
+planet_star_maid = {
+	parent = elf_star_jobs
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = pop
+}
+
+#################
+leader_ELF_special_leaders = {
+	parent = leaders
+	generate_mult_modifiers = {
+		produces
+		cost
+		upkeep
+	}
+	generate_add_modifiers = {
+		cost
+		produces
+		upkeep
+	}
+}

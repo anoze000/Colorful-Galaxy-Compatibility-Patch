@@ -1,0 +1,4499 @@
+greetings = {
+	### 敌对问候
+	01_HOSTILE_CG_TO_CG = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = yes
+			FROM = { is_same_species = root }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	# 魅魔和非mod相互
+	01_HOSTILE_SUC_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_SUC_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	03_HOSTILE_SUC_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	04_HOSTILE_SUC_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	05_HOSTILE_SUC_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	06_HOSTILE_SUC_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#敌对的其他国家问候魅魔
+	01_HOSTILE_OTHER_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_OTHER_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	03_HOSTILE_OTHER_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	04_HOSTILE_OTHER_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#魅魔和淫虫相互
+	01_HOSTILE_SUC_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_SUC_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	03_HOSTILE_SUC_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	04_HOSTILE_SUC_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	01_HOSTILE_PAR_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_PAR_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	03_HOSTILE_PAR_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	04_HOSTILE_PAR_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#魅魔和魅魔相互
+	01_HOSTILE_SUC_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_SUC_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	03_HOSTILE_SUC_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	04_HOSTILE_SUC_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#魅魔和肉便器相互
+	01_HOSTILE_SUC_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_SUC_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	03_HOSTILE_SUC_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	04_HOSTILE_SUC_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	01_HOSTILE_RBQ_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_RBQ_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	03_HOSTILE_RBQ_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	04_HOSTILE_RBQ_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#魅魔和圣女相互
+	01_HOSTILE_SUC_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_SUC_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	03_HOSTILE_SUC_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	04_HOSTILE_SUC_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#圣女和魅魔相互
+	01_HOSTILE_INN_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_INN_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	03_HOSTILE_INN_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	04_HOSTILE_INN_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#淫虫和非mod相互
+	01_HOSTILE_PAR_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_PAR_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	01_HOSTILE_OTHER_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_OTHER_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#淫虫和淫虫相互
+	01_HOSTILE_PAR_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_PAR_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	03_HOSTILE_PAR_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#淫虫和肉便器相互
+	01_HOSTILE_PAR_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_PAR_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	01_HOSTILE_RBQ_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_RBQ_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#淫虫和圣女相互
+	01_HOSTILE_PAR_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_PAR_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	03_HOSTILE_PAR_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	04_HOSTILE_PAR_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	01_HOSTILE_PAR_TO_ALL = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_ten_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	01_HOSTILE_ALL_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = no
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#圣女和淫虫相互
+	01_HOSTILE_INN_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_INN_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	03_HOSTILE_INN_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	04_HOSTILE_INN_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#肉便器和非mod相互
+	01_HOSTILE_RBQ_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_RBQ_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	01_HOSTILE_OTHER_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_OTHER_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#肉便器和肉便器相互
+	01_HOSTILE_RBQ_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_RBQ_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#肉便器和圣女相互
+	01_HOSTILE_RBQ_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_RBQ_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	01_HOSTILE_INN_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_INN_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#圣女和非mod种族相互
+	01_HOSTILE_INN_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_INN_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#非mod种族和圣女交互
+	01_HOSTILE_OTHER_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_OTHER_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#圣女和圣女相互
+	01_HOSTILE_INN_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	02_HOSTILE_INN_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	03_HOSTILE_INN_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	04_HOSTILE_INN_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#堕落INN和非mod交互
+	01_HOSTILE_FALLEN_INN_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = fallen_empire
+			is_species_class = Magical_Girl
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#堕落INN和魅魔交互
+	01_HOSTILE_FALLEN_INN_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = fallen_empire
+			is_species_class = Magical_Girl
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	01_HOSTILE_FALLEN_INN_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = fallen_empire
+			is_species_class = Magical_Girl
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	01_HOSTILE_FALLEN_INN_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = fallen_empire
+			is_species_class = Magical_Girl
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#堕落INN对INN交互
+	01_HOSTILE_FALLEN_INN_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = fallen_empire
+			is_species_class = Magical_Girl
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#堕落RBQ
+	01_HOSTILE_FALLEN_RBQ_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = fallen_empire
+			is_species_class = LBM
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	01_HOSTILE_FALLEN_RBQ_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = fallen_empire
+			is_species_class = LBM
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	01_HOSTILE_FALLEN_RBQ_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = fallen_empire
+			is_species_class = LBM
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	01_HOSTILE_FALLEN_RBQ_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = fallen_empire
+			is_species_class = LBM
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	01_HOSTILE_FALLEN_RBQ_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = fallen_empire
+			is_species_class = LBM
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#觉醒INN对非mod
+	01_HOSTILE_AWAKENED_INN_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = Magical_Girl
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#觉醒INN对魅魔
+	01_HOSTILE_AWAKENED_INN_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = Magical_Girl
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	01_HOSTILE_AWAKENED_INN_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = Magical_Girl
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	01_HOSTILE_AWAKENED_INN_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = Magical_Girl
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	#觉醒INN对INN
+	01_HOSTILE_AWAKENED_INN_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = Magical_Girl
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	01_HOSTILE_AWAKENED_RBQ_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = LBM
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	01_HOSTILE_AWAKENED_RBQ_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = LBM
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	01_HOSTILE_AWAKENED_RBQ_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = LBM
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	01_HOSTILE_AWAKENED_RBQ_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = LBM
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	01_HOSTILE_AWAKENED_RBQ_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = LBM
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_hostile_to = FROM
+				is_domineering_to = FROM
+				is_unfriendly_to = FROM
+			}
+		}
+	}
+	01_HOSTILE_FALLEN_SUC_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			is_angry_to = FROM
+		}
+	}
+	02_HOSTILE_FALLEN_SUC_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			is_angry_to = FROM
+		}
+	}
+	03_HOSTILE_FALLEN_SUC_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			is_angry_to = FROM
+		}
+	}
+	04_HOSTILE_FALLEN_SUC_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			is_angry_to = FROM
+		}
+	}
+	####中立问候####
+	# 魅魔和非mod相互
+	SUC_NEUTRAL_other_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	SUC_NEUTRAL_other_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	SUC_NEUTRAL_other_03 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	#非mod对魅魔
+	other_NEUTRAL_SUC_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	other_NEUTRAL_SUC_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	#魅魔和淫虫相互
+	SUC_NEUTRAL_PAR_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	SUC_NEUTRAL_PAR_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	SUC_NEUTRAL_PAR_03 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	#淫虫和魅魔相互
+	PAR_NEUTRAL_SUC_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	PAR_NEUTRAL_SUC_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	#魅魔和魅魔相互
+	SUC_NEUTRAL_SUC_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	SUC_NEUTRAL_SUC_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	SUC_NEUTRAL_SUC_03 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	#魅魔和肉便器相互
+	SUC_NEUTRAL_RBQ_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	SUC_NEUTRAL_RBQ_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	RBQ_NEUTRAL_SUC_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	RBQ_NEUTRAL_SUC_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	#魅魔和圣女相互
+	SUC_NEUTRAL_INN_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	SUC_NEUTRAL_INN_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	#圣女和魅魔相互
+	INN_NEUTRAL_SUC_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	INN_NEUTRAL_SUC_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	#淫虫和非mod相互
+	PAR_NEUTRAL_other_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	PAR_NEUTRAL_other_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	other_NEUTRAL_PAR_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	other_NEUTRAL_PAR_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	#淫虫和淫虫相互
+	PAR_NEUTRAL_PAR_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	PAR_NEUTRAL_PAR_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	PAR_NEUTRAL_PAR_03 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	PAR_NEUTRAL_ALL_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_ten_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	PAR_NEUTRAL_ALL_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_ten_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	#淫虫和肉便器相互
+	PAR_NEUTRAL_RBQ_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	PAR_NEUTRAL_RBQ_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	RBQ_NEUTRAL_PAR_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	RBQ_NEUTRAL_PAR_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	#淫虫和圣女相互
+	PAR_NEUTRAL_INN_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	PAR_NEUTRAL_INN_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	INN_NEUTRAL_PAR_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	INN_NEUTRAL_PAR_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	#肉便器和非mod相互
+	RBQ_NEUTRAL_other_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	RBQ_NEUTRAL_other_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	other_NEUTRAL_RBQ_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	other_NEUTRAL_RBQ_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	#肉便器和肉便器相互
+	RBQ_NEUTRAL_RBQ_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	RBQ_NEUTRAL_RBQ_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	#肉便器和圣女相互
+	RBQ_NEUTRAL_INN_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	RBQ_NEUTRAL_INN_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	INN_NEUTRAL_RBQ_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	INN_NEUTRAL_RBQ_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	#圣女和非mod种族相互
+	INN_NEUTRAL_other_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	INN_NEUTRAL_other_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	#非mod和圣女相互
+	other_NEUTRAL_INN_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	other_NEUTRAL_INN_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	#圣女和圣女相互
+	INN_NEUTRAL_INN_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	INN_NEUTRAL_INN_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_neutral_to = FROM
+				is_threatened_to = FROM
+			}
+		}
+	}
+	#新堕落的发言
+	FALLEN_INN_NEUTRAL_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = fallen_empire
+			is_species_class = Magical_Girl
+			NOT = { is_at_war_with = FROM }
+			is_dismissive_to = FROM
+		}
+	}
+	FALLEN_RBQ_NEUTRAL_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = fallen_empire
+			is_species_class = LBM
+			NOT = { is_at_war_with = FROM }
+			is_dismissive_to = FROM
+		}
+	}
+	FALLEN_SUC_NEUTRAL_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			NOT = { is_at_war_with = FROM }
+			FROM = { is_cg_empire = no }
+			is_dismissive_to = FROM
+		}
+	}
+	FALLEN_SUC_NEUTRAL_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			NOT = { is_at_war_with = FROM }
+			FROM = { is_cg_empire = no }
+			is_dismissive_to = FROM
+		}
+	}
+	FALLEN_SUC_NEUTRAL_03 = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			NOT = { is_at_war_with = FROM }
+			FROM = { is_cg_empire = no }
+			is_dismissive_to = FROM
+		}
+	}
+	FALLEN_SUC_NEUTRAL_04 = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			NOT = { is_at_war_with = FROM }
+			FROM = { is_cg_empire = no }
+			is_dismissive_to = FROM
+		}
+	}
+	FALLEN_SUC_NEUTRAL_SUC_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			NOT = { is_at_war_with = FROM }
+			FROM = { is_lust_empire = yes }
+			is_dismissive_to = FROM
+		}
+	}
+	FALLEN_SUC_NEUTRAL_SUC_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			NOT = { is_at_war_with = FROM }
+			FROM = { is_lust_empire = yes }
+			is_dismissive_to = FROM
+		}
+	}
+	FALLEN_SUC_NEUTRAL_SUC_03 = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			NOT = { is_at_war_with = FROM }
+			FROM = { is_lust_empire = yes }
+			is_dismissive_to = FROM
+		}
+	}
+	FALLEN_SUC_NEUTRAL_SUC_04 = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			NOT = { is_at_war_with = FROM }
+			FROM = { is_lust_empire = yes }
+			is_dismissive_to = FROM
+		}
+	}
+	AWAKENED_INN_NEUTRAL_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = Magical_Girl
+			NOT = { is_at_war_with = FROM }
+			is_dismissive_to = FROM
+		}
+	}
+	AWAKENED_RBQ_NEUTRAL_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = LBM
+			NOT = { is_at_war_with = FROM }
+			is_dismissive_to = FROM
+		}
+	}
+	###友好的问候######
+	# 魅魔和非mod相互
+	SUC_FRIENDLY_other_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	SUC_FRIENDLY_other_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	SUC_FRIENDLY_other_03 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	SUC_FRIENDLY_other_04 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	#非mod和魅魔问候
+	other_FRIENDLY_SUC_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	other_FRIENDLY_SUC_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	#魅魔和淫虫相互
+	SUC_FRIENDLY_PAR_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	SUC_FRIENDLY_PAR_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	PAR_FRIENDLY_SUC_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	PAR_FRIENDLY_SUC_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	#魅魔和魅魔相互
+	SUC_FRIENDLY_SUC_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	SUC_FRIENDLY_SUC_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	#魅魔和肉便器相互
+	SUC_FRIENDLY_RBQ_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	SUC_FRIENDLY_RBQ_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	RBQ_FRIENDLY_SUC_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	RBQ_FRIENDLY_SUC_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	#魅魔和圣女相互
+	SUC_FRIENDLY_INN_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	SUC_FRIENDLY_INN_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	#圣女和魅魔相互
+	INN_FRIENDLY_SUC_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	INN_FRIENDLY_SUC_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lust_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	#淫虫和非mod相互
+	PAR_FRIENDLY_other_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	PAR_FRIENDLY_other_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	other_FRIENDLY_PAR_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	other_FRIENDLY_PAR_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	#淫虫和淫虫相互
+	PAR_FRIENDLY_PAR_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	PAR_FRIENDLY_PAR_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	#淫虫和肉便器相互
+	PAR_FRIENDLY_RBQ_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	PAR_FRIENDLY_RBQ_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	RBQ_FRIENDLY_PAR_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	RBQ_FRIENDLY_PAR_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	#淫虫和圣女相互
+	PAR_FRIENDLY_INN_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	PAR_FRIENDLY_INN_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	INN_FRIENDLY_PAR_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	INN_FRIENDLY_PAR_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_ten_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	#肉便器和非mod相互
+	RBQ_FRIENDLY_other_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	RBQ_FRIENDLY_other_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	other_FRIENDLY_RBQ_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	other_FRIENDLY_RBQ_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	#肉便器和肉便器相互
+	RBQ_FRIENDLY_RBQ_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	RBQ_FRIENDLY_RBQ_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	#肉便器和圣女相互
+	RBQ_FRIENDLY_INN_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	RBQ_FRIENDLY_INN_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	INN_FRIENDLY_RBQ_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	INN_FRIENDLY_RBQ_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lbm_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	#圣女和非mod种族相互
+	INN_FRIENDLY_other_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	INN_FRIENDLY_other_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	#非mod和圣女相互
+	other_FRIENDLY_INN_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	other_FRIENDLY_INN_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	#圣女和圣女相互
+	INN_FRIENDLY_INN_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	INN_FRIENDLY_INN_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_pure_empire = yes }
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	#新堕落的发言
+	FALLEN_INN_FRIENDLY_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = fallen_empire
+			is_species_class = Magical_Girl
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	FALLEN_RBQ_FRIENDLY_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = fallen_empire
+			is_species_class = LBM
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	FALLEN_SUC_FRIENDLY_SUC_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			NOT = { is_at_war_with = FROM }
+			FROM = { is_lust_empire = yes }
+			is_patronizing_to = FROM
+		}
+	}
+	FALLEN_SUC_FRIENDLY_SUC_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			NOT = { is_at_war_with = FROM }
+			FROM = { is_lust_empire = yes }
+			is_patronizing_to = FROM
+		}
+	}
+	FALLEN_SUC_FRIENDLY_SUC_03 = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			NOT = { is_at_war_with = FROM }
+			FROM = { is_lust_empire = yes }
+			is_patronizing_to = FROM
+		}
+	}
+	FALLEN_SUC_FRIENDLY_SUC_04 = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			NOT = { is_at_war_with = FROM }
+			FROM = { is_lust_empire = yes }
+			is_patronizing_to = FROM
+		}
+	}
+	AWAKENED_INN_FRIENDLY_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = Magical_Girl
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	AWAKENED_RBQ_FRIENDLY_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = LBM
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_friendly_to = FROM
+				is_cordial_to = FROM
+				is_protective_to = FROM
+			}
+		}
+	}
+	###战争中的嘲讽####
+	# 魅魔和非mod相互
+	01_WAR_SUC_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_SUC_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			is_at_war_with = FROM
+		}
+	}
+	03_WAR_SUC_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			is_at_war_with = FROM
+		}
+	}
+	04_WAR_SUC_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			is_at_war_with = FROM
+		}
+	}
+	05_WAR_SUC_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			is_at_war_with = FROM
+		}
+	}
+	06_WAR_SUC_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			is_at_war_with = FROM
+		}
+	}
+	07_WAR_SUC_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			is_at_war_with = FROM
+		}
+	}
+	08_WAR_SUC_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			is_at_war_with = FROM
+		}
+	}
+	#非mod和魅魔相互
+	01_WAR_OTHER_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_lust_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_OTHER_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_lust_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	03_WAR_OTHER_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_lust_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	04_WAR_OTHER_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_lust_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	05_WAR_OTHER_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_lust_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	#魅魔和淫虫相互
+	01_WAR_SUC_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_ten_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_SUC_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_ten_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	01_WAR_PAR_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_lust_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_PAR_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_lust_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	#魅魔和魅魔相互
+	01_WAR_SUC_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lust_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_SUC_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lust_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	03_WAR_SUC_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lust_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	04_WAR_SUC_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lust_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	#魅魔和肉便器相互
+	01_WAR_SUC_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lbm_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_SUC_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lbm_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	01_WAR_RBQ_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_lust_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_RBQ_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_lust_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	#魅魔和圣女相互
+	01_WAR_SUC_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_pure_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_SUC_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_pure_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	03_WAR_SUC_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_pure_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	04_WAR_SUC_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_pure_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	#圣女和魅魔交互
+	01_WAR_INN_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lust_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_INN_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lust_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	03_WAR_INN_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lust_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	04_WAR_INN_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lust_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	#淫虫和非mod相互
+	01_WAR_PAR_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_cg_empire = no }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_PAR_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_cg_empire = no }
+			is_at_war_with = FROM
+		}
+	}
+	01_WAR_PAR_TO_ALL = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_ten_empire = no }
+			is_at_war_with = FROM
+		}
+	}
+	#非mod和淫虫相互
+	01_WAR_OTHER_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_ten_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_OTHER_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_ten_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	#淫虫和淫虫相互
+	01_WAR_PAR_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_ten_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_PAR_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_ten_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	#淫虫和肉便器相互
+	01_WAR_PAR_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_lbm_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_PAR_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_lbm_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	01_WAR_RBQ_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_ten_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_RBQ_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_ten_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	#淫虫和圣女相互
+	01_WAR_PAR_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_pure_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_PAR_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			FROM = { is_pure_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	01_WAR_INN_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_ten_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_INN_TO_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_ten_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	#肉便器和非mod相互
+	01_WAR_RBQ_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_cg_empire = no }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_RBQ_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_cg_empire = no }
+			is_at_war_with = FROM
+		}
+	}
+	01_WAR_OTHER_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_lbm_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_OTHER_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_lbm_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	#肉便器和肉便器相互
+	01_WAR_RBQ_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_lbm_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_RBQ_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_lbm_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	#肉便器和圣女相互
+	01_WAR_RBQ_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_pure_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_RBQ_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			FROM = { is_pure_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	01_WAR_INN_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lbm_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_INN_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lbm_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	#圣女和非mod种族相互
+	01_WAR_INN_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_cg_empire = no }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_INN_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_cg_empire = no }
+			is_at_war_with = FROM
+		}
+	}
+	#非mod和圣女相互
+	01_WAR_OTHER_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_pure_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_OTHER_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_pure_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	#圣女和圣女相互
+	01_WAR_INN_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_pure_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	02_WAR_INN_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_pure_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	03_WAR_INN_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_pure_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	04_WAR_INN_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_pure_empire = yes }
+			is_at_war_with = FROM
+		}
+	}
+	#堕落战争发言
+	01_WAR_FALLEN_INN_TO_ALL = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = fallen_empire
+			is_species_class = Magical_Girl
+			is_at_war_with = FROM
+		}
+	}
+	01_WAR_FALLEN_RBQ_TO_ALL = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = fallen_empire
+			is_species_class = LBM
+			is_at_war_with = FROM
+		}
+	}
+	01_WAR_FALLEN_SUC_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			is_at_war_with = FROM
+			FROM = { is_lust_empire = yes }
+		}
+	}
+	02_WAR_FALLEN_SUC_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			is_at_war_with = FROM
+			FROM = { is_lust_empire = yes }
+		}
+	}
+	03_WAR_FALLEN_SUC_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			is_at_war_with = FROM
+			FROM = { is_lust_empire = yes }
+		}
+	}
+	04_WAR_FALLEN_SUC_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			is_at_war_with = FROM
+			FROM = { is_lust_empire = yes }
+		}
+	}
+	01_WAR_FALLEN_SUC_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			is_at_war_with = FROM
+			FROM = { is_pure_empire = yes }
+		}
+	}
+	02_WAR_FALLEN_SUC_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			is_at_war_with = FROM
+			FROM = { is_pure_empire = yes }
+		}
+	}
+	03_WAR_FALLEN_SUC_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			is_at_war_with = FROM
+			FROM = { is_pure_empire = yes }
+		}
+	}
+	04_WAR_FALLEN_SUC_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			is_at_war_with = FROM
+			FROM = { is_pure_empire = yes }
+		}
+	}
+	01_WAR_FALLEN_SUC_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			is_at_war_with = FROM
+			FROM = { is_cg_empire = no }
+		}
+	}
+	02_WAR_FALLEN_SUC_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			is_at_war_with = FROM
+			FROM = { is_cg_empire = no }
+		}
+	}
+	03_WAR_FALLEN_SUC_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			is_at_war_with = FROM
+			FROM = { is_cg_empire = no }
+		}
+	}
+	04_WAR_FALLEN_SUC_TO_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			has_country_flag = suc_fallen_empire
+			is_at_war_with = FROM
+			FROM = { is_cg_empire = no }
+		}
+	}
+	01_WAR_AWAKENED_INN_TO_ALL = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = Magical_Girl
+			is_at_war_with = FROM
+		}
+	}
+	01_WAR_AWAKENED_RBQ_TO_ALL = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = LBM
+			is_at_war_with = FROM
+		}
+	}
+	#####盛气凌人的发言####
+	01_ARROGANT_AWAKENED_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = Magical_Girl
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_arrogant_to = FROM
+				is_imperious_to = FROM
+			}
+		}
+	}
+	01_ARROGANT_AWAKENED_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = LBM
+			NOT = { is_at_war_with = FROM }
+			OR = {
+				is_arrogant_to = FROM
+				is_imperious_to = FROM
+			}
+		}
+	}
+	#####好战挑衅的发言####
+	01_BELLIGERENT_AWAKENED_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = Magical_Girl
+			NOT = { is_at_war_with = FROM }
+			is_belligerent_to = FROM
+		}
+	}
+	01_BELLIGERENT_AWAKENED_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = LBM
+			NOT = { is_at_war_with = FROM }
+			is_belligerent_to = FROM
+		}
+	}
+	#####友好合作的发言###
+	01_SUC_CUSTODIAL_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			is_custodial_to = FROM
+		}
+	}
+	02_SUC_CUSTODIAL_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			NOT = { is_at_war_with = FROM }
+			is_custodial_to = FROM
+		}
+	}
+	01_CUSTODIAL_AWAKENED_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = Magical_Girl
+			NOT = { is_at_war_with = FROM }
+			is_custodial_to = FROM
+			is_in_federation_with = FROM
+		}
+	}
+	02_CUSTODIAL_AWAKENED_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = Magical_Girl
+			NOT = { is_at_war_with = FROM }
+			is_custodial_to = FROM
+			NOT = { is_in_federation_with = FROM }
+		}
+	}
+	01_CUSTODIAL_AWAKENED_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = LBM
+			NOT = { is_at_war_with = FROM }
+			is_custodial_to = FROM
+			is_in_federation_with = FROM
+		}
+	}
+	02_CUSTODIAL_AWAKENED_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = LBM
+			NOT = { is_at_war_with = FROM }
+			is_custodial_to = FROM
+			NOT = { is_in_federation_with = FROM }
+		}
+	}
+	####觉醒爹###
+	01_OVERLORD_AWAKENED_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = Magical_Girl
+			NOT = { is_at_war_with = FROM }
+			is_overlord_to = FROM
+		}
+	}
+	02_OVERLORD_AWAKENED_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = Magical_Girl
+			NOT = { is_at_war_with = FROM }
+			is_overlord_to = FROM
+		}
+	}
+	03_OVERLORD_AWAKENED_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = Magical_Girl
+			NOT = { is_at_war_with = FROM }
+			is_overlord_to = FROM
+		}
+	}
+	04_OVERLORD_AWAKENED_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = Magical_Girl
+			NOT = { is_at_war_with = FROM }
+			is_overlord_to = FROM
+		}
+	}
+	01_OVERLORD_AWAKENED_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = LBM
+			NOT = { is_at_war_with = FROM }
+			is_overlord_to = FROM
+		}
+	}
+	02_OVERLORD_AWAKENED_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_country_type = awakened_fallen_empire
+			is_species_class = LBM
+			NOT = { is_at_war_with = FROM }
+			is_overlord_to = FROM
+		}
+	}
+	####堕落儿###
+	01_VASSAL_FALLEN_INN_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lust_empire = yes }
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			NOT = { is_disloyal_to = FROM }
+		}
+	}
+	02_VASSAL_FALLEN_INN_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lust_empire = yes }
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			NOT = { is_disloyal_to = FROM }
+		}
+	}
+	01_VASSAL_DISLOYAL_FALLEN_INN_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lust_empire = yes }
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			is_disloyal_to = FROM
+		}
+	}
+	02_VASSAL_DISLOYAL_FALLEN_INN_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lust_empire = yes }
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			is_disloyal_to = FROM
+		}
+	}
+	03_VASSAL_DISLOYAL_FALLEN_INN_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lust_empire = yes }
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			is_disloyal_to = FROM
+		}
+	}
+	01_VASSAL_FALLEN_INN_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lbm_empire = yes }
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			NOT = { is_disloyal_to = FROM }
+		}
+	}
+	01_VASSAL_DISLOYAL_FALLEN_INN_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lbm_empire = yes }
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			is_disloyal_to = FROM
+		}
+	}
+	01_VASSAL_FALLEN_INN_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_pure_empire = yes }
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			NOT = { is_disloyal_to = FROM }
+		}
+	}
+	01_VASSAL_DISLOYAL_FALLEN_INN_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_pure_empire = yes }
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			is_disloyal_to = FROM
+		}
+	}
+	####觉醒儿###
+	01_VASSAL_AWAKENED_INN_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lust_empire = yes }
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			NOT = { is_disloyal_to = FROM }
+		}
+	}
+	02_VASSAL_AWAKENED_INN_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lust_empire = yes }
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			NOT = { is_disloyal_to = FROM }
+		}
+	}
+	03_VASSAL_AWAKENED_INN_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lust_empire = yes }
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			NOT = { is_disloyal_to = FROM }
+		}
+	}
+	01_VASSAL_DISLOYAL_AWAKENED_INN_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lust_empire = yes }
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			is_disloyal_to = FROM
+		}
+	}
+	02_VASSAL_DISLOYAL_AWAKENED_INN_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lust_empire = yes }
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			is_disloyal_to = FROM
+		}
+	}
+	03_VASSAL_DISLOYAL_AWAKENED_INN_TO_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lust_empire = yes }
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			is_disloyal_to = FROM
+		}
+	}
+	01_VASSAL_AWAKENED_INN_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lbm_empire = yes }
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			NOT = { is_disloyal_to = FROM }
+		}
+	}
+	01_VASSAL_DISLOYAL_AWAKENED_INN_TO_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_lbm_empire = yes }
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			is_disloyal_to = FROM
+		}
+	}
+	01_VASSAL_AWAKENED_INN_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_pure_empire = yes }
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			NOT = { is_disloyal_to = FROM }
+		}
+	}
+	01_VASSAL_DISLOYAL_AWAKENED_INN_TO_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			FROM = { is_pure_empire = yes }
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			is_disloyal_to = FROM
+		}
+	}
+	####各个种族作为领主#####
+	###魅魔对非mod
+	01_OVERLORD_SUC_OF_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			is_overlord_to = FROM
+		}
+	}
+	02_OVERLORD_SUC_OF_OTHER = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_cg_empire = no }
+			is_overlord_to = FROM
+		}
+	}
+	01_OVERLORD_OTHER_OF_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_cg_empire = no
+			FROM = { is_lust_empire = yes }
+			is_overlord_to = FROM
+		}
+	}
+	#魅魔对魅魔
+	01_OVERLORD_SUC_OF_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lust_empire = yes }
+			is_overlord_to = FROM
+		}
+	}
+	02_OVERLORD_SUC_OF_SUC = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lust_empire = yes }
+			is_overlord_to = FROM
+		}
+	}
+	01_OVERLORD_SUC_OF_PAR = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_ten_empire = yes }
+			is_overlord_to = FROM
+		}
+	}
+	01_OVERLORD_SUC_OF_RBQ = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_lbm_empire = yes }
+			is_overlord_to = FROM
+		}
+	}
+	#魅魔对圣女
+	01_OVERLORD_SUC_OF_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_pure_empire = yes }
+			is_overlord_to = FROM
+		}
+	}
+	02_OVERLORD_SUC_OF_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_pure_empire = yes }
+			is_overlord_to = FROM
+		}
+	}
+	03_OVERLORD_SUC_OF_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_pure_empire = yes }
+			is_overlord_to = FROM
+		}
+	}
+	04_OVERLORD_SUC_OF_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_pure_empire = yes }
+			is_overlord_to = FROM
+		}
+	}
+	01_OVERLORD_SUC_OF_FALLEN_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_pure_empire = yes }
+			is_overlord_to = FROM
+		}
+	}
+	01_OVERLORD_SUC_OF_AWAKENED_INN = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			FROM = { is_pure_empire = yes }
+			is_overlord_to = FROM
+		}
+	}
+	###淫虫
+	01_OVERLORD_PAR_OF_ALL = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			is_overlord_to = FROM
+		}
+	}
+	02_OVERLORD_PAR_OF_ALL = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			is_overlord_to = FROM
+		}
+	}
+	###肉便器
+	01_OVERLORD_RBQ_OF_ALL = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			is_overlord_to = FROM
+		}
+	}
+	02_OVERLORD_RBQ_OF_ALL = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			is_overlord_to = FROM
+		}
+	}
+	###圣女
+	01_OVERLORD_INN_OF_ALL = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			is_overlord_to = FROM
+		}
+	}
+	02_OVERLORD_INN_OF_ALL = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			is_overlord_to = FROM
+		}
+	}
+	####各个种族作为附庸时的发言###
+	###魅魔
+	SUC_VASSAL_GREETING_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			is_disloyal_to = FROM
+		}
+	}
+	SUC_VASSAL_GREETING_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lust_empire = yes
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOR = {
+				is_at_war_with = FROM
+				is_disloyal_to = FROM
+			}
+		}
+	}
+	###淫虫
+	PAR_VASSAL_GREETING_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			is_disloyal_to = FROM
+		}
+	}
+	PAR_VASSAL_GREETING_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_ten_empire = yes
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			NOT = { is_disloyal_to = FROM }
+		}
+	}
+	###肉便器
+	RBQ_VASSAL_GREETING_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			is_disloyal_to = FROM
+		}
+	}
+	RBQ_VASSAL_GREETING_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_lbm_empire = yes
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			NOT = { is_disloyal_to = FROM }
+		}
+	}
+	###圣女
+	INN_VASSAL_GREETING_01 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOT = { is_at_war_with = FROM }
+			is_disloyal_to = FROM
+		}
+	}
+	INN_VASSAL_GREETING_02 = {
+		weight = { weight = 100 }
+		trigger = {
+			is_pure_empire = yes
+			exists = overlord
+			overlord = { is_same_value = FROM }
+			NOR = {
+				is_at_war_with = FROM
+				is_disloyal_to = FROM
+			}
+		}
+	}
+}
+
+#宣战
+action_declare_war = {
+	propose = {
+		#魅魔宣战
+		SUC_DOW_PROPOSE_01 = {
+			weight = { weight = 100 }
+			trigger = { From = { is_lust_empire = yes } }
+		}
+		SUC_DOW_PROPOSE_02 = {
+			weight = { weight = 100 }
+			trigger = { is_lust_empire = yes }
+		}
+		PAR_DOW_PROPOSE_01 = {
+			weight = { weight = 100 }
+			trigger = { From = { is_ten_empire = yes } }
+		}
+		PAR_DOW_PROPOSE_02 = {
+			weight = { weight = 100 }
+			trigger = { From = { is_ten_empire = yes } }
+		}
+		RBQ_DOW_PROPOSE_01 = {
+			weight = { weight = 100 }
+			trigger = { From = { is_lbm_empire = yes } }
+		}
+		RBQ_DOW_PROPOSE_02 = {
+			weight = { weight = 100 }
+			trigger = { From = { is_lbm_empire = yes } }
+		}
+		#圣女宣战
+		INN_DOW_PROPOSE_01 = {
+			weight = { weight = 100 }
+			trigger = { From = { is_pure_empire = yes } }
+		}
+		INN_DOW_PROPOSE_02 = {
+			weight = { weight = 100 }
+			trigger = { From = { is_pure_empire = yes } }
+		}
+		AWAKENED_RBQ_DOW_PROPOSE_01 = {
+			weight = { weight = 100 }
+			trigger = {
+				From = {
+					is_country_type = awakened_fallen_empire
+					is_species_class = LBM
+				}
+			}
+		}
+		AWAKENED_INN_DOW_PROPOSE_01 = {
+			weight = { weight = 100 }
+			trigger = {
+				From = {
+					is_country_type = awakened_fallen_empire
+					is_species_class = Magical_Girl
+				}
+			}
+		}
+		FE_SUC_DOW_PROPOSE_01 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_lust_empire = yes
+				From = { has_country_flag = suc_fallen_empire }
+			}
+		}
+		FE_SUC_DOW_PROPOSE_02 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_pure_empire = yes
+				From = { has_country_flag = suc_fallen_empire }
+			}
+		}
+	}
+	accept = {
+		#对方被宣战后给我们的回应
+		#魅魔宣战其他国家后得到的回应
+		SUC_DOW_RESPONSE_01 = {
+			weight = { weight = 100 }
+			trigger = { From = { is_lust_empire = yes } }
+		}
+		SUC_DOW_RESPONSE_02 = {
+			weight = { weight = 100 }
+			trigger = { From = { is_lust_empire = yes } }
+		}
+		PAR_DOW_RESPONSE_01 = {
+			weight = { weight = 100 }
+			trigger = { From = { is_ten_empire = yes } }
+		}
+		PAR_DOW_RESPONSE_02 = {
+			weight = { weight = 100 }
+			trigger = { From = { is_ten_empire = yes } }
+		}
+		RBQ_DOW_RESPONSE_01 = {
+			weight = { weight = 100 }
+			trigger = { From = { is_lbm_empire = yes } }
+		}
+		RBQ_DOW_RESPONSE_02 = {
+			weight = { weight = 100 }
+			trigger = { From = { is_lbm_empire = yes } }
+		}
+		INN_DOW_RESPONSE_01 = {
+			weight = { weight = 100 }
+			trigger = { From = { is_pure_empire = yes } }
+		}
+		INN_DOW_RESPONSE_02 = {
+			weight = { weight = 100 }
+			trigger = { From = { is_pure_empire = yes } }
+		}
+		FE_SUC_DOW_RESPONSE_01 = {
+			weight = { weight = 100 }
+			trigger = {
+				From = { is_lust_empire = yes }
+				has_country_flag = suc_fallen_empire
+			}
+		}
+	}
+}
+
+action_insult = {
+	#侮辱
+	propose = {
+		#辱骂
+		#魅魔辱骂魅魔
+		SUC_INS_SUC_PROPOSE_01 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_lust_empire = yes
+				FROM = { is_lust_empire = yes }
+			}
+		}
+		SUC_INS_SUC_PROPOSE_02 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_lust_empire = yes
+				FROM = { is_lust_empire = yes }
+			}
+		}
+		#魅魔辱骂圣女
+		SUC_INS_INN_PROPOSE_01 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_pure_empire = yes
+				FROM = { is_lust_empire = yes }
+			}
+		}
+		SUC_INS_INN_PROPOSE_02 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_pure_empire = yes
+				FROM = { is_lust_empire = yes }
+			}
+		}
+		#魅魔辱骂其他种族
+		SUC_INS_PROPOSE_01 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_lust_empire = yes
+				FROM = { is_cg_empire = no }
+			}
+		}
+		SUC_INS_PROPOSE_02 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_cg_empire = no
+				FROM = { is_lust_empire = yes }
+			}
+		}
+		PAR_INS_PROPOSE_01 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_cg_empire = no
+				FROM = { is_ten_empire = yes }
+			}
+		}
+		PAR_INS_PROPOSE_02 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_cg_empire = no
+				FROM = { is_ten_empire = yes }
+			}
+		}
+		RBQ_INS_PROPOSE_01 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_cg_empire = no
+				FROM = { is_lbm_empire = yes }
+			}
+		}
+		RBQ_INS_PROPOSE_02 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_cg_empire = no
+				FROM = { is_lbm_empire = yes }
+			}
+		}
+		#圣女辱骂其他种族
+		INN_INS_PROPOSE_01 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_cg_empire = no
+				FROM = { is_pure_empire = yes }
+			}
+		}
+		INN_INS_PROPOSE_02 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_cg_empire = no
+				FROM = { is_pure_empire = yes }
+			}
+		}
+		#圣女辱骂魅魔
+		#圣女辱骂圣女
+		AWAKENED_RBQ_INS_PROPOSE_01 = {
+			weight = { weight = 100 }
+			trigger = {
+				FROM = {
+					is_country_type = awakened_fallen_empire
+					is_species_class = Magical_Girl
+				}
+			}
+		}
+		AWAKENED_INN_INS_PROPOSE_01 = {
+			weight = { weight = 100 }
+			trigger = {
+				FROM = {
+					is_country_type = awakened_fallen_empire
+					is_species_class = Magical_Girl
+				}
+			}
+		}
+	}
+	accept = {
+		#对方被辱骂后给我们的回复
+		#魅魔辱骂魅魔后得到的回复
+		SUC_INS_SUC_RESPONSE_01 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_lust_empire = yes
+				FROM = { is_lust_empire = yes }
+			}
+		}
+		SUC_INS_SUC_RESPONSE_02 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_lust_empire = yes
+				FROM = { is_lust_empire = yes }
+			}
+		}
+		#魅魔辱骂圣女后得到的回复
+		SUC_INS_INN_RESPONSE_01 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_pure_empire = yes
+				FROM = { is_lust_empire = yes }
+			}
+		}
+		SUC_INS_INN_RESPONSE_02 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_pure_empire = yes
+				FROM = { is_lust_empire = yes }
+			}
+		}
+		#魅魔辱骂其他国家后得到的回复
+		SUC_INS_RESPONSE_01 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_cg_empire = no
+				FROM = { is_lust_empire = yes }
+			}
+		}
+		SUC_INS_RESPONSE_02 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_cg_empire = no
+				FROM = { is_lust_empire = yes }
+			}
+		}
+		PAR_INS_RESPONSE_01 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_cg_empire = no
+				FROM = { is_ten_empire = yes }
+			}
+		}
+		PAR_INS_RESPONSE_02 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_cg_empire = no
+				FROM = { is_ten_empire = yes }
+			}
+		}
+		RBQ_INS_RESPONSE_01 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_cg_empire = no
+				FROM = { is_lbm_empire = yes }
+			}
+		}
+		RBQ_INS_RESPONSE_02 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_cg_empire = no
+				FROM = { is_lbm_empire = yes }
+			}
+		}
+		#圣女辱骂其他国家后得到的回复
+		INN_INS_RESPONSE_01 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_cg_empire = no
+				FROM = { is_pure_empire = yes }
+			}
+		}
+		INN_INS_RESPONSE_02 = {
+			weight = { weight = 100 }
+			trigger = {
+				is_cg_empire = no
+				FROM = { is_pure_empire = yes }
+			}
+		}
+	}
+}

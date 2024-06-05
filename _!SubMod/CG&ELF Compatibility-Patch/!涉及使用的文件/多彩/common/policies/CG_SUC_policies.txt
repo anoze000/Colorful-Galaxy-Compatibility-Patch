@@ -1,0 +1,452 @@
+#强制奴役
+CG_force_enslave = {
+	potential = {
+		NOR = {
+			has_valid_civic = civic_slaver_guilds
+			has_valid_civic = civic_all_slave
+		}
+		has_trait = trait_DC_ethic_carnalism
+	}
+	option = {
+		name = "no_slave"		#禁止
+		policy_flags = { no_slave_flag }
+		potential = {
+			OR = {
+				has_valid_civic = civic_fanatic_feminism
+				has_valid_civic = civic_lust_guro
+			}
+		}
+		modifier = {
+			country_pop_enslaved_mult = -1
+		}
+		AI_weight = { factor = 100 }
+	}
+	option = {
+		name = "nomore_slave"		#一般
+		policy_flags = { nomore_slave_flag }
+		potential = {
+			NOR = {
+				has_valid_civic = civic_fanatic_feminism
+				has_valid_civic = civic_lust_guro
+			}
+		}
+		valid = {
+			NOR = {
+				has_ethic = ethic_authoritarian
+				has_ethic = ethic_fanatic_authoritarian
+			}
+		}
+		AI_weight = { factor = 100 }
+	}
+	option = {
+		name = "few_slave"		#少量奴隶
+		policy_flags = { few_slave_flag }
+		potential = {
+			NOR = {
+				has_valid_civic = civic_fanatic_feminism
+				has_valid_civic = civic_lust_guro
+			}
+		}
+		valid = {
+			has_policy_flag = "slavery_allowed"
+			NOT = { has_ethic = ethic_fanatic_authoritarian }
+		}
+		modifier = {
+			country_pop_enslaved_mult = 0.15
+		}
+	}
+	option = {
+		name = "mid_slave"		#中量奴隶
+		policy_flags = { mid_slave_flag }
+		potential = {
+			NOR = {
+				has_valid_civic = civic_fanatic_feminism
+				has_valid_civic = civic_lust_guro
+			}
+		}
+		valid = {
+			has_policy_flag = "slavery_allowed"
+			OR = {
+				has_ethic = ethic_authoritarian
+				has_ethic = ethic_fanatic_authoritarian
+			}
+			NOT = { has_valid_civic = civic_slave_tradition }
+		}
+		modifier = {
+			country_pop_enslaved_mult = 0.3
+		}
+	}
+	option = {
+		name = "lot_slave"		#大量奴隶
+		policy_flags = { lot_slave_flag }
+		potential = {
+			NOR = {
+				has_valid_civic = civic_fanatic_feminism
+				has_valid_civic = civic_lust_guro
+			}
+		}
+		valid = {
+			has_policy_flag = "slavery_allowed"
+			has_ethic = ethic_fanatic_authoritarian
+		}
+		modifier = {
+			country_pop_enslaved_mult = 0.45
+		}
+	}
+	option = {
+		name = "huge_slave"		#巨量奴役
+		policy_flags = { huge_slave_flag }
+		potential = {
+			NOR = {
+				has_valid_civic = civic_fanatic_feminism
+				has_valid_civic = civic_lust_guro
+			}
+			has_valid_civic = civic_slave_tradition
+		}
+		valid = { has_policy_flag = "slavery_allowed" }
+		modifier = {
+			country_pop_enslaved_mult = 0.6
+			pop_cat_slave_happiness = -0.1
+			planet_jobs_slave_produces_mult = 0.1
+		}
+	}
+	option = {
+		name = "most_slave"		#极致奴役
+		policy_flags = { most_slave_flag }
+		potential = {
+			NOR = {
+				has_valid_civic = civic_fanatic_feminism
+				has_valid_civic = civic_lust_guro
+			}
+			has_valid_civic = civic_slave_tradition
+		}
+		valid = { has_policy_flag = "slavery_allowed" }
+		modifier = {
+			country_pop_enslaved_mult = 0.75
+			pop_cat_slave_happiness = -0.2
+			planet_jobs_slave_produces_mult = 0.2
+		}
+	}
+}
+
+#注射方式
+injection_mode = {
+	potential = { has_valid_civic = civic_mechanical_intercourse }
+	option = {
+		name = "injection_mode_tradition"		#传统
+		policy_flags = { injection_mode_tradition_flag }
+		modifier = {
+			pop_growth_speed = -1
+			pop_citizen_happiness = 0.4
+		}
+		AI_weight = {
+			modifier = {
+				factor = 50
+				has_country_flag = carnalism_flag
+			}
+		}
+	}
+	option = {
+		name = "injection_mode_advance"		#进步
+		policy_flags = { injection_mode_advance_flag }
+		valid = { has_technology = tech_subdermal_stimulation }
+		modifier = {
+			pop_citizen_happiness = 0.2
+		}
+		AI_weight = {
+			modifier = {
+				factor = 50
+				has_country_flag = carnalism_flag
+			}
+		}
+	}
+}
+
+CG_bereavement = {
+	potential = { has_valid_civic = civic_bereavement }
+	option = {
+		name = "CG_bereavement_enforce"		#强制
+		policy_flags = { CG_bereavement_enforce_flag }
+		valid = { NOT = { has_ascension_perk = ap_lust_ascension } }
+		modifier = {
+			planet_stability_add = 10
+		}
+		AI_weight = {
+			modifier = {
+				factor = 50
+				has_country_flag = carnalism_flag
+			}
+		}
+	}
+	option = {
+		name = "CG_bereavement_allow"		#允许
+		policy_flags = { CG_bereavement_allow_flag }
+		valid = {
+			has_ascension_perk = ap_break_the_limit
+			NOT = { has_ascension_perk = ap_lustgod_perfect_idiosoma }
+		}
+		modifier = {
+			planet_stability_add = 5
+		}
+		AI_weight = {
+			modifier = {
+				factor = 50
+				has_country_flag = carnalism_flag
+			}
+		}
+	}
+	option = {
+		name = "CG_bereavement_not_allow"		#不允许
+		policy_flags = { CG_bereavement_not_allow_flag }
+		valid = { has_ascension_perk = ap_lustgod_perfect_idiosoma }
+		modifier = {
+			planet_stability_add = -10
+		}
+		AI_weight = {
+			modifier = {
+				factor = 50
+				has_country_flag = carnalism_flag
+			}
+		}
+	}
+	option = {
+		name = "CG_bereavement_eliminate"		#消除
+		policy_flags = { CG_bereavement_eliminate_flag }
+		valid = { has_ascension_perk = ap_lust_ascension }
+		modifier = {
+			planet_stability_add = -20
+		}
+		AI_weight = {
+			modifier = {
+				factor = 0
+				has_country_flag = carnalism_flag
+			}
+		}
+	}
+}
+
+#性奴居留权法案
+sex_slave_abode_right = {
+	potential = { has_valid_civic = civic_all_slave }
+	option = {
+		name = "no_abode_right"		#禁止居留权
+		policy_flags = { no_abode_right_flag }
+		valid = { NOT = { any_owned_pop = { has_citizenship_type = { type = citizenship_limited } } } }
+		modifier = {
+			pop_cat_slave_happiness = 0.05
+		}
+		AI_weight = {
+			modifier = {
+				factor = 50
+				has_country_flag = carnalism_flag
+			}
+		}
+	}
+	option = {
+		name = "allow_abode_right"		#允许居留权
+		policy_flags = { allow_abode_right_flag }
+		valid = { any_owned_pop = { has_citizenship_type = { type = citizenship_limited } } }
+		modifier = {
+			pop_happiness = -0.5
+		}
+		AI_weight = {
+			modifier = {
+				factor = 50
+				has_country_flag = carnalism_flag
+			}
+		}
+	}
+}
+
+#绝色供应法案
+sr_beauty_offer = {
+	potential = {
+		has_valid_civic = civic_penis_craving
+		has_technology = tech_beauty_theory
+	}
+	option = {
+		name = "sr_beauty_offer"		#朝贡绝色
+		policy_flags = { sr_beauty_offer_flag }
+		AI_weight = {
+			modifier = {
+				factor = 50
+				has_country_flag = carnalism_flag
+			}
+			modifier = {
+				factor = 0
+				has_monthly_income = { resource = sr_beauty value < 20 }
+			}
+		}
+	}
+	option = {
+		name = "no_sr_beauty_offer"		#不朝贡绝色
+		policy_flags = { no_sr_beauty_offer_flag }
+		valid = { has_monthly_income = { resource = sr_beauty value < 100 } }
+		AI_weight = {
+			modifier = {
+				factor = 50
+				has_country_flag = carnalism_flag
+			}
+			modifier = {
+				factor = 0.02
+				has_monthly_income = { resource = sr_beauty value > 20 }
+			}
+			modifier = {
+				factor = 50
+				has_monthly_income = { resource = sr_beauty value > 200 }
+			}
+		}
+	}
+}
+
+####志愿者计划
+planned_economy = {
+	potential = { has_valid_civic = civic_all_slave }
+	option = {
+		name = "no_plan"
+		policy_flags = { no_plan_flag }
+		AI_weight = {
+			modifier = {
+				factor = 50
+				has_country_flag = carnalism_flag
+			}
+		}
+	}
+	option = {
+		name = "planned_energy"
+		policy_flags = { planned_energy_flag }
+		valid = { has_technology = tech_love_trade_improve_finding }
+		AI_weight = {
+			modifier = {
+				factor = 50
+				has_country_flag = carnalism_flag
+			}
+			modifier = {
+				factor = 2
+				has_monthly_income = { resource = energy value < 3 }
+			}
+			modifier = {
+				factor = 2
+				has_monthly_income = { resource = energy value < 30 }
+			}
+			modifier = {
+				factor = 2
+				has_monthly_income = { resource = energy value < 300 }
+			}
+		}
+	}
+	option = {
+		name = "planned_minerals"
+		policy_flags = { planned_minerals_flag }
+		valid = { has_technology = tech_love_juice_mine }
+		AI_weight = {
+			modifier = {
+				factor = 50
+				has_country_flag = carnalism_flag
+			}
+			modifier = {
+				factor = 2
+				has_monthly_income = { resource = minerals value < 2 }
+			}
+			modifier = {
+				factor = 2
+				has_monthly_income = { resource = minerals value < 20 }
+			}
+			modifier = {
+				factor = 2
+				has_monthly_income = { resource = minerals value < 200 }
+			}
+		}
+	}
+	option = {
+		name = "planned_food"
+		policy_flags = { planned_food_flag }
+		valid = { has_technology = tech_love_juice_cultivate }
+		AI_weight = {
+			modifier = {
+				factor = 50
+				has_country_flag = carnalism_flag
+			}
+			modifier = {
+				factor = 2
+				has_monthly_income = { resource = food value < 3 }
+			}
+			modifier = {
+				factor = 2
+				has_monthly_income = { resource = food value < 30 }
+			}
+			modifier = {
+				factor = 2
+				has_monthly_income = { resource = food value < 300 }
+			}
+		}
+	}
+	option = {
+		name = "planned_love_juice"
+		policy_flags = { planned_love_juice_flag }
+		valid = { has_technology = tech_lovejuice_collecting }
+		AI_weight = {
+			modifier = {
+				factor = 50
+				has_country_flag = carnalism_flag
+			}
+			modifier = {
+				factor = 2
+				has_monthly_income = { resource = love_juice value < 2 }
+			}
+			modifier = {
+				factor = 2
+				has_monthly_income = { resource = love_juice value < 20 }
+			}
+			modifier = {
+				factor = 2
+				has_monthly_income = { resource = love_juice value < 200 }
+			}
+		}
+	}
+	option = {
+		name = "planned_consumer_goods"
+		policy_flags = { planned_consumer_goods_flag }
+		valid = { has_technology = tech_lust_instrument_develop }
+		AI_weight = {
+			modifier = {
+				factor = 50
+				has_country_flag = carnalism_flag
+			}
+			modifier = {
+				factor = 2
+				has_monthly_income = { resource = consumer_goods value < 2 }
+			}
+			modifier = {
+				factor = 2
+				has_monthly_income = { resource = consumer_goods value < 20 }
+			}
+			modifier = {
+				factor = 2
+				has_monthly_income = { resource = consumer_goods value < 200 }
+			}
+		}
+	}
+	option = {
+		name = "planned_unity"
+		policy_flags = { planned_unity_flag }
+		valid = { has_technology = tech_national_sex_accord }
+		AI_weight = {
+			modifier = {
+				factor = 100
+				has_country_flag = carnalism_flag
+			}
+		}
+	}
+	option = {
+		name = "planned_research"
+		policy_flags = { planned_research_flag }
+		valid = { has_technology = tech_lovejuice_deep_research }
+		AI_weight = {
+			modifier = {
+				factor = 100
+				has_country_flag = carnalism_flag
+			}
+		}
+	}
+}

@@ -1,0 +1,442 @@
+#覆盖原版
+country = {
+	hidden = yes
+	use_for_ai_budget = yes
+	generate_mult_modifiers = {
+		produces
+		cost
+		upkeep
+	}
+	#modifier category: economic_unit is fine
+}
+
+planet_districts = {
+	parent = planet_structures
+	generate_add_modifiers = {
+		cost
+		upkeep
+		produces
+	}
+	generate_mult_modifiers = {
+		cost
+		upkeep
+		produces
+	}
+	modifier_category = planet
+}
+
+planet_structures = {
+	# use_for_ai_budget = yes
+	parent = planets
+	hidden = yes
+	generate_mult_modifiers = {
+		produces
+		cost
+		upkeep
+	}
+	modifier_category = planet
+}
+
+# Base income of country
+country_base = {
+	parent = country
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = country
+}
+
+megastructures = {
+	use_for_ai_budget = yes
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+	}
+	parent = country
+	generate_mult_modifiers = {
+		cost
+		produces
+		upkeep
+	}
+	generate_add_modifiers = {
+		cost
+		produces
+		upkeep
+	}
+	modifier_category = megastructure
+	###
+	triggered_produces_modifier = {
+		key = megastructure_dyson_sphere
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			AOW_trgr_MEGA_is_dyson_sphere = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = upgrading_megastructures
+		modifier_types = {
+			add
+			mult
+		}
+		trigger = {
+			is_upgrading = yes
+		}
+	}
+}
+
+pop_factions = {
+	parent = country
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = country	#pop factions category currently unused
+}
+
+planet_jobs = {
+	parent = planets
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = pop
+	#性奴国策额外效果
+	triggered_produces_modifier = {
+		key = planet_jobs_slave
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			is_pop_category = slave
+			OR = {
+				owner = {
+					has_civic = civic_pantyhose_slave
+				}
+				has_job_category = worker
+				has_job_category = futa_rbq
+			}
+		}
+	}
+	triggered_produces_modifier = {
+		key = planet_psionic_jobs
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			has_trait = trait_psionic
+		}
+	}
+	triggered_produces_modifier = {
+		key = planet_cyborg_jobs
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			has_trait = trait_cybernetic
+		}
+	}
+	triggered_produces_modifier = {
+		key = habitat_jobs
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			exists = planet
+			planet = {
+				is_planet_class = pc_habitat
+			}
+		}
+	}
+	triggered_produces_modifier = {
+		key = non_artificial_planet_jobs
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			exists = planet
+			planet = {
+				is_artificial = no
+			}
+		}
+	}
+	triggered_produces_modifier = {
+		key = planet_jobs_worker
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			OR = {
+				is_pop_category = worker
+				AND = {
+					is_pop_category = slave					# Yes, slave should count towards both worker and slave
+					has_job_category = worker
+				}
+				is_pop_category = simple_drone
+			}
+		}
+	}
+	triggered_produces_modifier = {
+		#use this one if deliberately excluding worker drones
+		key = planet_jobs_worker_only
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			OR = {
+				is_pop_category = worker
+				AND = {
+					is_pop_category = slave					# Yes, slave should count towards both worker and slave
+					has_job_category = worker
+				}
+			}
+		}
+	}
+	triggered_produces_modifier = {
+		key = planet_jobs_specialist
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			OR = {
+				is_pop_category = specialist
+				is_pop_category = complex_drone				#planet_jobs_complex_drone is preferable for stuff visible during galaxy setup
+				AND = {
+					is_pop_category = slave
+					has_job_category = specialist
+				}
+			}
+		}
+	}
+	triggered_produces_modifier = {
+		#use this one if deliberately excluding complex drones
+		key = planet_jobs_specialist_only
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			OR = {
+				is_pop_category = specialist
+				AND = {
+					is_pop_category = slave
+					has_job_category = specialist
+				}
+			}
+		}
+	}
+	triggered_produces_modifier = {
+		key = planet_jobs_ruler
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			is_pop_category = ruler
+		}
+	}
+	triggered_produces_modifier = {
+		key = planet_jobs_simple_drone
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			is_pop_category = simple_drone
+		}
+	}
+	triggered_produces_modifier = {
+		key = planet_jobs_complex_drone
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			is_pop_category = complex_drone
+		}
+	}
+	triggered_produces_modifier = {
+		key = planet_jobs_complex_and_simple_drone
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			OR = {
+				is_pop_category = complex_drone
+				is_pop_category = simple_drone
+			}
+		}
+	}
+	triggered_produces_modifier = {
+		key = planet_jobs_robotic
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			is_robot_pop = yes
+		}
+	}
+	triggered_produces_modifier = {
+		key = planet_jobs_organics
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			is_robot_pop = no
+		}
+	}
+	#丝袜性奴阶级
+	triggered_produces_modifier = {
+		key = planet_jobs_futa_rbq
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			has_job_category = futa_rbq
+			# OR = {
+			# 	is_pop_category = futa_rbq
+			# 	AND = {
+			# 		is_pop_category = slave
+			# 		has_job_category = futa_rbq
+			# 	}
+			# }
+		}
+	}
+}
+
+##
+planet_pops = {
+	parent = planets
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	triggered_upkeep_modifier = {
+		key = planet_pops_robotics
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			is_robot_pop = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = planet_pops_organics
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			is_robot_pop = no
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = planet_pops_unemployed
+		modifier_types = {
+			add
+		}
+		trigger = {
+			is_unemployed = yes
+		}
+	}
+	# triggered_upkeep_modifier = {
+	# 	key = planet_elf_pops
+	# 	modifier_types = {
+	# 		add
+	# 	}
+	# 	trigger = {
+	# 		has_trait = trait_futa
+	# 		# is_unemployed = yes
+	# 	}
+	# }
+}
+
+##
+#人口维护费
+elf_pops = {
+	parent = planet_pops
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+}
+
+pop_category_workers = {
+	parent = elf_pops
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = pop
+}
+
+pop_category_specialists = {
+	parent = elf_pops
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = pop
+}
+
+pop_category_rulers = {
+	parent = elf_pops
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = pop
+}
+
+pop_category_slave = {
+	parent = elf_pops
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	modifier_category = pop
+}
+
+operations = {
+	use_for_ai_budget = yes
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		sr_semen
+	}
+	generate_mult_modifiers = {
+		cost
+		upkeep
+	}
+	parent = country
+	modifier_category = espionage
+}

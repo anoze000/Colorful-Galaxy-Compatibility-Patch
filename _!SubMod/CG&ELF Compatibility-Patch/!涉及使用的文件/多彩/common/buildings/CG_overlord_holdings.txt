@@ -1,0 +1,987 @@
+################INN_overlord_holdings###############
+holding_world_tree = {
+	base_buildtime = @b1_time
+	category = pop_assembly
+	owner_type = subject_holding
+	icon = building_world_tree_0
+	base_cap_amount = 1
+	potential = { owner.overlord = { has_origin = origin_INN_world_tree } }
+	allow = {
+		owner = {
+			any_owned_planet = {
+				NOT = { has_holding = { holding = holding_world_tree owner = owner.overlord } }
+			}
+		}
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { NOT = { has_country_flag = asceticism_flag } } }
+		planet_pop_assembly_organic_add = 3
+	}
+	planet_modifier = {
+		planet_jobs_unity_produces_mult = 0.1
+		pop_ethic_spiritualist_attraction_mult = 0.5
+		planet_stability_add = 5
+		planet_housing_add = 5
+		monthly_loyalty = 2.5
+	}
+	destroy_trigger = {
+		exists = owner.overlord
+		owner.overlord = { NOT = { has_origin = origin_INN_world_tree } }
+	}
+	triggered_desc = { text = only_assembly_magical_girl }
+	resources = {
+		category = planet_holdings
+		upkeep = {
+			trigger = {
+				exists = assembling_species
+				owner = { NOT = { has_country_flag = asceticism_flag } }
+			}
+			food = 6
+		}
+	}
+}
+
+building_missionary_hall = {
+	base_buildtime = @b2_time
+	category = resource
+	owner_type = subject_holding
+	base_cap_amount = 1
+	potential = {
+		owner.overlord = { has_country_flag = asceticism_flag }
+		owner = {
+			is_robot_empire = no
+			is_lithoid = no
+			is_lust_empire = no
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_light_missionaries_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_light_missionaries_drone_add = 1
+	}
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	triggered_desc = { text = job_light_missionaries_effect_desc }
+	on_built = { owner.overlord = { country_event = { id = CG_inn.72 days = 360 } } }
+}
+
+building_holy_baptistery = {
+	base_buildtime = @b2_time
+	category = resource
+	owner_type = subject_holding
+	base_cap_amount = 1
+	potential = {
+		owner.overlord = { has_country_flag = finish_CG_inn72 }
+		owner = {
+			is_robot_empire = no
+			is_lithoid = no
+			is_lust_empire = no
+		}
+	}
+	allow = { has_holding = { holding = building_missionary_hall owner = owner.overlord } }
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_holylight_baptist_priest_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_holylight_baptist_priest_drone_add = 1
+	}
+	planet_modifier = {
+		monthly_loyalty = 0.5
+	}
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	triggered_desc = { text = job_holylight_baptist_priest_effect_desc }
+	on_built = { owner.overlord = { country_event = { id = CG_inn.73 days = 360 } } }
+}
+
+building_coronation_chapel = {
+	base_buildtime = @b2_time
+	category = amenity
+	owner_type = subject_holding
+	base_cap_amount = 1
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	potential = {
+		owner.overlord = { has_country_flag = finish_CG_inn73 }
+		owner = {
+			is_robot_empire = no
+			is_lithoid = no
+			is_lust_empire = no
+		}
+	}
+	allow = { has_holding = { holding = building_holy_baptistery owner = owner.overlord } }
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_light_patriarch_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_light_patriarch_drone_add = 1
+	}
+	triggered_desc = { text = job_light_patriarch_effect_desc }
+	on_built = { owner.overlord = { country_event = { id = CG_inn.74 days = 360 } } }
+}
+
+building_temple_of_heaven = {
+	base_buildtime = @b2_time
+	category = government
+	owner_type = subject_holding
+	base_cap_amount = 1
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	potential = {
+		owner.overlord = { has_country_flag = finish_CG_inn74 }
+		owner = {
+			is_robot_empire = no
+			is_lithoid = no
+			is_lust_empire = no
+		}
+	}
+	allow = { has_holding = { holding = building_coronation_chapel owner = owner.overlord } }
+	planet_modifier = {
+		monthly_loyalty = 30
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		planet_amenities_add = 15
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = 15
+	}
+	on_built = { owner.overlord = { country_event = { id = CG_common.5002 } } }
+	triggered_desc = { text = building_sexslave_queen_palace_effect }
+}
+
+building_holylight_control_interface = {
+	base_buildtime = @b2_time
+	category = resource
+	owner_type = subject_holding
+	base_cap_amount = 1
+	potential = {
+		owner.overlord = { has_country_flag = asceticism_flag }
+		owner = { is_robot_empire = yes }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_holylight_interface_individual_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_holylight_interface_individual_drone_add = 1
+	}
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	triggered_desc = { text = job_holylight_interface_individual_effect_desc }
+	on_built = { owner.overlord = { country_event = { id = CG_inn.75 days = 360 } } }
+}
+
+building_light_link_interface = {
+	base_buildtime = @b2_time
+	category = resource
+	owner_type = subject_holding
+	base_cap_amount = 1
+	potential = {
+		owner.overlord = { has_country_flag = finish_CG_inn75 }
+		owner = { is_robot_empire = yes }
+	}
+	allow = { has_holding = { holding = building_holylight_control_interface owner = owner.overlord } }
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_holylight_communicator_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_holylight_communicator_drone_add = 1
+	}
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	triggered_desc = { text = job_holylight_communicator_effect_desc }
+	on_built = { owner.overlord = { country_event = { id = CG_inn.76 days = 360 } } }
+}
+
+building_light_gnosis_interface = {
+	base_buildtime = @b2_time
+	category = resource
+	owner_type = subject_holding
+	base_cap_amount = 1
+	potential = {
+		owner.overlord = { has_country_flag = finish_CG_inn76 }
+		owner = { is_robot_empire = yes }
+	}
+	allow = { has_holding = { holding = building_light_link_interface owner = owner.overlord } }
+	planet_modifier = {
+		monthly_loyalty = 0.5
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_holylight_gnosis_terminal_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_holylight_gnosis_terminal_drone_add = 1
+	}
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	triggered_desc = { text = job_holylight_gnosis_terminal_effect_desc }
+	on_built = { owner.overlord = { country_event = { id = CG_inn.77 days = 360 } } }
+}
+
+building_holy_spirit_pivot = {
+	base_buildtime = @b2_time
+	category = resource
+	owner_type = subject_holding
+	base_cap_amount = 1
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	potential = {
+		owner.overlord = { has_country_flag = finish_CG_inn77 }
+		owner = { is_robot_empire = yes }
+	}
+	allow = { has_holding = { holding = building_light_gnosis_interface owner = owner.overlord } }
+	planet_modifier = {
+		monthly_loyalty = 30
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		planet_amenities_add = 15
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = 15
+	}
+	on_built = { owner.overlord = { country_event = { id = CG_common.5002 } } }
+	triggered_desc = { text = building_sexslave_queen_palace_effect }
+}
+
+building_holylight_church = {
+	base_buildtime = @b2_time
+	category = resource
+	owner_type = subject_holding
+	base_cap_amount = 1
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	potential = {
+		owner.overlord = { has_country_flag = asceticism_flag }
+		is_lust_empire = yes
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_holylight_guardians_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_holylight_guardians_drone_add = 1
+	}
+	on_built = { owner.overlord = { country_event = { id = CG_inn.78 days = 360 } } }
+	triggered_desc = { text = job_holylight_guardians_effect_desc }
+}
+
+building_holylight_lust_repression_field = {
+	base_buildtime = @b2_time
+	category = resource
+	owner_type = subject_holding
+	base_cap_amount = 1
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	potential = {
+		owner.overlord = { has_country_flag = finish_CG_inn78 }
+		is_lust_empire = yes
+	}
+	allow = { has_holding = { holding = building_holylight_church owner = owner.overlord } }
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_holylight_ascetic_nun_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_holylight_ascetic_nun_drone_add = 1
+	}
+	on_built = { owner.overlord = { country_event = { id = CG_inn.79 days = 360 } } }
+	triggered_desc = { text = job_holylight_ascetic_nun_effect_desc }
+}
+
+building_holylight_ascetic_tower = {
+	base_buildtime = @b2_time
+	category = amenity
+	owner_type = subject_holding
+	base_cap_amount = 1
+	potential = {
+		owner.overlord = { has_country_flag = finish_CG_inn79 }
+		is_lust_empire = yes
+	}
+	allow = { has_holding = { holding = building_holylight_lust_repression_field owner = owner.overlord } }
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_holylight_dervish_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_holylight_dervish_drone_add = 1
+	}
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	triggered_desc = { text = job_holylight_dervish_effect_desc }
+	on_built = { owner.overlord = { country_event = { id = CG_inn.80 days = 360 } } }
+}
+
+building_temple_of_atonement = {
+	base_buildtime = @b2_time
+	category = government
+	owner_type = subject_holding
+	base_cap_amount = 1
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	potential = {
+		owner.overlord = { has_country_flag = finish_CG_inn80 }
+		is_lust_empire = yes
+	}
+	allow = { has_holding = { holding = building_holylight_ascetic_tower owner = owner.overlord } }
+	planet_modifier = {
+		monthly_loyalty = 30
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		planet_amenities_add = 15
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = 15
+	}
+	on_built = { owner.overlord = { country_event = { id = CG_common.5002 } } }
+	triggered_desc = { text = building_sexslave_queen_palace_effect }
+}
+
+################SUC_overlord_holdings###############
+building_body_transformation_experimental_base = {
+	base_buildtime = @b2_time
+	category = resource
+	owner_type = subject_holding
+	base_cap_amount = 1
+	potential = {
+		owner.overlord = { has_country_flag = carnalism_flag }
+		owner = {
+			is_robot_empire = no
+			is_lithoid = no
+			is_pure_empire = no
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_body_transformation_student_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_body_transformation_student_drone_add = 1
+	}
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	triggered_desc = { text = job_body_transformation_student_effect_desc }
+	on_built = { owner.overlord = { country_event = { id = CG_suc.72 days = 360 } } }
+}
+
+building_sex_open_air_fairgrounds = {
+	base_buildtime = @b2_time
+	category = unity
+	owner_type = subject_holding
+	base_cap_amount = 1
+	potential = {
+		owner.overlord = { has_country_flag = finish_CG_suc72 }
+		owner = {
+			is_robot_empire = no
+			is_lithoid = no
+			is_pure_empire = no
+		}
+	}
+	allow = { has_holding = { holding = building_body_transformation_experimental_base owner = owner.overlord } }
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_outdoor_sex_slaves_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_outdoor_sex_slaves_drone_add = 1
+	}
+	planet_modifier = {
+		monthly_loyalty = 0.5
+	}
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	triggered_desc = { text = job_outdoor_sex_slaves_effect_desc }
+	on_built = { owner.overlord = { country_event = { id = CG_suc.73 days = 360 } } }
+}
+
+building_beta_drop_station = {
+	base_buildtime = @b2_time
+	category = amenity
+	owner_type = subject_holding
+	base_cap_amount = 1
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	potential = {
+		owner.overlord = { has_country_flag = finish_CG_suc73 }
+		owner = {
+			is_robot_empire = no
+			is_lithoid = no
+			is_pure_empire = no
+		}
+	}
+	allow = { has_holding = { holding = building_sex_open_air_fairgrounds owner = owner.overlord } }
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_sex_lab_garrison_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_sex_lab_garrison_drone_add = 1
+	}
+	triggered_desc = { text = job_sex_lab_garrison_effect_desc }
+	on_built = { owner.overlord = { country_event = { id = CG_suc.74 days = 360 } } }
+}
+
+building_sexslave_queen_palace = {
+	base_buildtime = @b2_time
+	category = government
+	owner_type = subject_holding
+	base_cap_amount = 1
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	potential = {
+		owner.overlord = { has_country_flag = finish_CG_suc74 }
+		owner = {
+			is_robot_empire = no
+			is_lithoid = no
+			is_pure_empire = no
+		}
+	}
+	allow = { has_holding = { holding = building_beta_drop_station owner = owner.overlord } }
+	planet_modifier = {
+		monthly_loyalty = 30
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		planet_amenities_add = 15
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = 15
+	}
+	on_built = { owner.overlord = { country_event = { id = CG_common.5002 } } }
+	triggered_desc = { text = building_sexslave_queen_palace_effect }
+}
+
+building_kinky_programming_center = {
+	base_buildtime = @b2_time
+	category = research
+	owner_type = subject_holding
+	base_cap_amount = 1
+	potential = {
+		owner.overlord = { has_country_flag = carnalism_flag }
+		owner = { is_robot_empire = yes }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_lustful_algorithm_engineer_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_lustful_algorithm_engineer_drone_add = 1
+	}
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	triggered_desc = { text = job_lustful_algorithm_engineer_effect_desc }
+	on_built = { owner.overlord = { country_event = { id = CG_suc.75 days = 360 } } }
+}
+
+building_simulation_maid_playground = {
+	base_buildtime = @b2_time
+	category = resource
+	owner_type = subject_holding
+	base_cap_amount = 1
+	potential = {
+		owner.overlord = { has_country_flag = finish_CG_suc75 }
+		owner = { is_robot_empire = yes }
+	}
+	allow = { has_holding = { holding = building_kinky_programming_center owner = owner.overlord } }
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_sex_robot_maid_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_sex_robot_maid_drone_add = 1
+	}
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	triggered_desc = { text = job_sex_robot_maid_effect_desc }
+	on_built = { owner.overlord = { country_event = { id = CG_suc.76 days = 360 } } }
+}
+
+building_mechanical_idol_operation_center = {
+	base_buildtime = @b2_time
+	category = trade
+	owner_type = subject_holding
+	base_cap_amount = 1
+	potential = {
+		owner.overlord = { has_country_flag = finish_CG_suc76 }
+		owner = { is_robot_empire = yes }
+	}
+	allow = { has_holding = { holding = building_simulation_maid_playground owner = owner.overlord } }
+	planet_modifier = {
+		monthly_loyalty = 0.5
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_mechanical_sex_idol_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_mechanical_sex_idol_drone_add = 1
+	}
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	triggered_desc = { text = job_mechanical_sex_idol_effect_desc }
+	on_built = { owner.overlord = { country_event = { id = CG_suc.77 days = 360 } } }
+}
+
+building_self_evolving_core = {
+	base_buildtime = @b2_time
+	category = government
+	owner_type = subject_holding
+	base_cap_amount = 1
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	potential = {
+		owner.overlord = { has_country_flag = finish_CG_suc77 }
+		owner = { is_robot_empire = yes }
+	}
+	allow = { has_holding = { holding = building_mechanical_idol_operation_center owner = owner.overlord } }
+	planet_modifier = {
+		monthly_loyalty = 30
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		planet_amenities_add = 15
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = 15
+	}
+	on_built = { owner.overlord = { country_event = { id = CG_common.5002 } } }
+	triggered_desc = { text = building_sexslave_queen_palace_effect }
+}
+
+building_prostitution_chapel = {
+	base_buildtime = @b2_time
+	category = unity
+	owner_type = subject_holding
+	base_cap_amount = 1
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	potential = {
+		owner.overlord = { has_country_flag = carnalism_flag }
+		is_pure_empire = yes
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_hypnotized_holy_sister_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_hypnotized_holy_sister_drone_add = 1
+	}
+	on_built = { owner.overlord = { country_event = { id = CG_suc.78 days = 360 } } }
+	triggered_desc = { text = job_hypnotized_holy_sister_effect_desc }
+}
+
+building_erotic_teaching_hall = {
+	base_buildtime = @b2_time
+	category = resource
+	owner_type = subject_holding
+	base_cap_amount = 1
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	potential = {
+		owner.overlord = { has_country_flag = finish_CG_suc78 }
+		is_pure_empire = yes
+	}
+	allow = { has_holding = { holding = building_prostitution_chapel owner = owner.overlord } }
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_lustful_nun_apprentice_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_lustful_nun_apprentice_drone_add = 1
+	}
+	on_built = { owner.overlord = { country_event = { id = CG_suc.79 days = 360 } } }
+	triggered_desc = { text = job_lustful_nun_apprentice_effect_desc }
+}
+
+building_temple_of_lustgod = {
+	base_buildtime = @b2_time
+	category = amenity
+	owner_type = subject_holding
+	base_cap_amount = 1
+	potential = {
+		owner.overlord = { has_country_flag = finish_CG_suc79 }
+		is_pure_empire = yes
+	}
+	allow = { has_holding = { holding = building_erotic_teaching_hall owner = owner.overlord } }
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_lustful_confession_saint_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_lustful_confession_saint_drone_add = 1
+	}
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	triggered_desc = { text = job_lustful_confession_saint_effect_desc }
+	on_built = { owner.overlord = { country_event = { id = CG_suc.80 days = 360 } } }
+}
+
+building_lecherous_cathedral = {
+	base_buildtime = @b2_time
+	category = government
+	owner_type = subject_holding
+	base_cap_amount = 1
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	potential = {
+		owner.overlord = { has_country_flag = finish_CG_suc80 }
+		is_pure_empire = yes
+	}
+	allow = { has_holding = { holding = building_temple_of_lustgod owner = owner.overlord } }
+	planet_modifier = {
+		monthly_loyalty = 30
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		planet_amenities_add = 15
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = 15
+	}
+	on_built = { owner.overlord = { country_event = { id = CG_common.5002 } } }
+	triggered_desc = { text = building_sexslave_queen_palace_effect }
+}

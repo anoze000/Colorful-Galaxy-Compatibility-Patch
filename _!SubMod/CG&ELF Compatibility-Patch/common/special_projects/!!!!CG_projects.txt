@@ -1,0 +1,32 @@
+special_project = {
+	key = "FIND_ROBOT_CORE"
+	cost = 0
+	days_to_research = 100
+	tech_department = society_technology
+	picture = GFX_evt_society_research
+	event_scope = ship_event
+	requirements = {
+		shipclass_science_ship = 1
+		leader = scientist
+	}
+	on_success = {
+		if = {
+			limit = {
+				has_global_flag = has_global_flag = ICE_MOON_ELF_MOD
+				is_futa_country = yes
+			}
+			PREV = {
+				country_event = {
+					id = ELF_arc.31
+				}
+			}
+		}
+		else = {
+			event_target:arc30_planet = {
+				planet_event = { id = CG_suc_arc.31 }
+			}
+		}
+	}
+	on_fail = {
+	}
+}

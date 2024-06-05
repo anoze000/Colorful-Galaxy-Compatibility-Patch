@@ -1,0 +1,21 @@
+special_project = {
+	key = "FIND_ROBOT_CORE"
+	cost = 0
+	days_to_research = 100
+	tech_department = society_technology
+	picture = GFX_evt_society_research
+	event_scope = ship_event
+	requirements = {
+		shipclass_science_ship = 1
+		leader = scientist
+	}
+	on_success = {
+		PREV = {
+			country_event = {
+				id = ELF_arc.31
+			}
+		}
+	}
+	on_fail = {
+	}
+}

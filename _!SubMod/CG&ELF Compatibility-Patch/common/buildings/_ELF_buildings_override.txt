@@ -1,0 +1,666 @@
+#############
+#############
+#月灵
+@ice_moon_b1_time = 360
+@ice_moon_b1_minerals = 300
+@ice_moon_b1_upkeep = 2
+@ice_moon_b1_jobs = 2
+@ice_moon_b2_time = 480
+@ice_moon_b2_minerals = 600
+@ice_moon_b2_upkeep = 5
+@ice_moon_b2_live_pantyhose_cost = 50
+@ice_moon_b2_live_pantyhose_upkeep = 1
+@ice_moon_b2_semen_ten_cost = 50
+@ice_moon_b2_semen_ten_upkeep = 1
+@ice_moon_b2_live_pantyhose_cost = 50
+@ice_moon_b2_live_pantyhose_upkeep = 1
+@ice_moon_b2_jobs = 4
+@ice_moon_b3_time = 600
+@ice_moon_b3_minerals = 800
+@ice_moon_b3_upkeep = 8
+@ice_moon_b3_live_pantyhose_cost = 100
+@ice_moon_b3_live_pantyhose_upkeep = 2
+@ice_moon_b3_semen_ten_cost = 100
+@ice_moon_b3_semen_ten_upkeep = 2
+@ice_moon_b3_live_pantyhose_cost = 100
+@ice_moon_b3_live_pantyhose_upkeep = 2
+# @b3_rare_cost = 100
+# @b3_rare_upkeep = 2
+@ice_moon_b3_jobs = 6
+@ice_moon_b4_time = 900
+@ice_moon_b4_minerals = 2000
+@ice_moon_b4_upkeep = 10
+# @b4_rare_cost = 200
+# @b4_rare_upkeep = 4
+
+building_wsg_big_toy_monument = {
+	base_buildtime = 720
+	category = manufacturing
+	empire_limit = { 
+		base = 1 
+		modifier = {
+			factor = building_wg_worm_generator_allow
+		}
+	}
+	potential = {
+		exists = planet
+		has_modifier = slave_colony
+		owner = { 
+			has_valid_civic = civic_Hport 
+		}
+	}
+	prerequisites = { "tech_galactic_administration" }
+	show_tech_unlock_if = { has_valid_civic = civic_Hport }
+	allow = { has_major_upgraded_capital = yes }
+	resources = {
+		category = planet_buildings
+		cost = {
+			influence = 100
+			minerals = 2500
+		}
+		upkeep = {
+			minerals = 25
+		}
+		produces = {
+			society_research = 30
+			physics_research = 30
+			engineering_research = 30
+			unity = 10
+		}
+	}
+	country_modifier = {
+		ship_tracking_mult = 0.1
+		ship_fire_rate_mult = 0.1
+		pop_happiness = 0.1
+		planet_building_build_speed_mult = 0.5
+		planet_jobs_unity_produces_mult = 0.2
+	}
+	on_built = {
+		owner = {
+			set_country_flag = built_one_building_big_toy_monument
+		}
+	}
+	on_destroy = {
+		owner = {
+			remove_country_flag = built_one_building_big_toy_monument
+		}
+	}
+	on_queued = {
+		owner = {
+			set_country_flag = built_one_building_big_toy_monument_queuing
+		}
+	}
+	on_unqueued = {
+		owner = {
+			remove_country_flag = built_one_building_big_toy_monument_queuing
+		}
+	}
+}
+
+#巨炮
+building_big_toy_monument = {
+	base_buildtime = 720
+	# base_cap_amount = 1
+	# can_demolish = no	#可以拆除（默认yes）
+	can_be_ruined = no	#可以被损坏（无格子）（默认yes）
+	# can_be_disabled = yes  #可以禁用（默认yes）
+	category = government
+	empire_limit = {
+		base = 1
+	}
+	potential = {
+		owner = {
+			NOT = {
+				has_country_flag = asceticism_flag
+			}
+			OR = {
+				is_futa_country = yes
+				is_light_country = yes
+				is_dark_country = yes
+			}
+		}
+	}
+	prerequisites = {
+		"tech_galactic_administration"
+	}
+	show_tech_unlock_if = {
+		NOT = {
+			has_country_flag = asceticism_flag
+		}
+		OR = {
+			is_futa_country = yes
+			is_light_country = yes
+			is_dark_country = yes
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			# 花费
+			influence = 100			# 影响力
+			minerals = 2500			# 矿物
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+	country_modifier = {
+		ship_tracking_mult = 0.1
+		ship_fire_rate_mult = 0.1
+		planet_jobs_unity_produces_mult = 0.2
+	}
+}
+
+#榨汁站
+building_brothel_food = {
+    base_buildtime = @b2_time
+    base_cap_amount = 1
+    category = resource
+    owner_type = corporate
+    potential = {
+		has_branch_office = yes
+        OR = {
+			if = {
+				limit = {
+					has_global_flag = love_between_us
+				}
+				branch_office_owner = { 
+					has_valid_civic = civic_master 
+				}
+			}
+			else = {
+				always = no
+			}
+			if = {
+				limit = {
+					has_global_flag = ICE_MOON_ELF_MOD
+				}
+				branch_office_owner = {
+					NOT = {
+						has_country_flag = ICE_MOON_FUTA
+					}
+				}
+			}
+			else = {
+				always = no
+			}
+		}
+    }
+    planet_modifier = {
+        job_love_juice_maker_add = 5
+        planet_lovejuicer_produces_mult = 0.1
+    }
+    triggered_desc = { text = job_love_juice_maker_effect_desc }
+    resources = {
+        category = planet_branch_office_buildings
+        cost = {
+            minerals = @b2_minerals
+        }
+        upkeep = {
+            energy = 2
+        }
+    }
+	ai_weight = {
+		weight = 1000
+		modifier = {
+			weight = 0.5
+			branch_office_owner = {
+				has_monthly_income = {
+					resource = energy
+					value > 50
+				}
+			}
+		}
+	}
+}
+
+# 情欲纪念碑
+building_lust_monument = {
+	base_buildtime = @b4_time
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	category = government
+	empire_limit = { base = 1 }
+	potential = { 
+		OR = {
+			if = {
+				limit = {
+					has_global_flag = love_between_us
+				}
+				can_build_carnalism_resort_buildings = yes 
+			}
+			else = {
+				always = no
+			}
+			if = {
+				limit = {
+					has_global_flag = ICE_MOON_ELF_MOD
+				}
+				is_ai = no
+				NOT = {
+					has_country_flag = asceticism_flag
+				}
+				OR = {
+					is_futa_country = yes
+					is_light_country = yes
+					is_dark_country = yes
+				}
+			}
+			else = {
+				always = no
+			}
+		}
+	}
+	destroy_trigger = { 
+		OR = {
+			if = {
+				limit = {
+					has_global_flag = love_between_us
+				}
+				can_build_carnalism_resort_buildings = no 
+			}
+			else = {
+				always = no
+			}
+			if = {
+				limit = {
+					has_global_flag = ICE_MOON_ELF_MOD
+				}
+				has_planet_flag = vagina_sexslave_planet
+			}
+			else = {
+				always = no
+			}
+		}
+	}
+	prerequisites = { "tech_galactic_administration" }
+	show_tech_unlock_if = { is_lust_empire = yes }
+	allow = { 
+		OR = {
+			if = {
+				limit = {
+					has_global_flag = love_between_us
+				}
+				has_major_upgraded_capital = yes
+			}
+			else = {
+				always = no
+			}
+			if = {
+				limit = {
+					has_global_flag = ICE_MOON_ELF_MOD
+				}
+				custom_tooltip = {
+					text = no_at_vagina_sexslave_planet
+					NOT = {
+						has_planet_flag = vagina_sexslave_planet
+					}
+				}
+			}
+			else = {
+				always = no
+			}
+		}
+	}
+	triggered_planet_modifier = {
+		potential = { has_global_flag = love_between_us }
+		planet_immigration_pull_mult = 0.2
+		job_culture_worker_add = 1
+	}
+	triggered_country_modifier = {
+		potential = { has_global_flag = love_between_us }
+		planet_jobs_unity_produces_mult = 0.05
+		pop_growth_speed = 0.1
+	}
+	triggered_country_modifier = {
+		potential = { has_global_flag = ICE_MOON_ELF_MOD }
+		country_unity_produces_mult = 0.1
+		all_technology_research_speed = 0.05		# 所有科技研究速度
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			influence = @b4_influence
+			minerals = @b4_minerals
+		}
+		upkeep = {
+			energy = @b4_upkeep
+		}
+		produces = {
+			unity = 10
+		}
+		produces = {
+			trigger = {
+				has_global_flag = ICE_MOON_ELF_MOD
+			}
+			influence = 1
+		}
+	}
+	ai_resource_production = {
+		society_research = 500
+		physics_research = 500
+		engineering_research = 500
+		unity = 10
+		influence = 1
+		trigger = {
+			has_global_flag = ICE_MOON_ELF_MOD
+		}
+	}
+	on_built = { hidden_effect = { owner = { country_event = { id = CM_daily.70 } } } }
+}
+
+#地下会所
+building_sex_club = {
+    base_buildtime = @b2_time
+    category = amenity
+    base_cap_amount = 1
+    owner_type = corporate
+    potential = {
+		has_branch_office = yes
+		OR = {
+			if = {
+				limit = {
+					has_global_flag = love_between_us
+				}
+				branch_office_owner = { 
+					has_valid_civic = civic_master 
+				}
+			}
+			else = {
+				always = no
+			}
+			if = {
+				limit = {
+					has_global_flag = ICE_MOON_ELF_MOD
+				}
+				branch_office_owner = {
+					is_criminal_syndicate = yes
+					NOT = {
+						has_country_flag = ICE_MOON_FUTA
+					}
+				}
+			}
+			else = {
+				always = no
+			}
+		}
+    }
+    triggered_planet_modifier = {
+		potential = { 
+			has_global_flag = love_between_us 
+			branch_office_owner = {
+				is_criminal_syndicate = no
+			}
+		}
+        planet_amenities_add = 10
+        planet_erotic_produces_mult = 0.05
+        job_dominatrix_add = 2
+    }
+	triggered_planet_modifier = {
+		potential = { 
+			has_country_flag = ICE_MOON_FUTA
+			branch_office_owner = {
+				is_criminal_syndicate = yes
+			}
+		}
+        planet_crime_add = 40		#犯罪率
+		trade_value_mult = 0.25
+    }
+    triggered_desc = { text = job_dominatrix_effect_desc }
+    resources = {
+        category = planet_branch_office_buildings
+        cost = {
+            minerals = @b2_minerals
+        }
+        upkeep = {
+            energy = 5
+			trigger = {
+				has_global_flag = love_between_us 
+				branch_office_owner = {
+					is_criminal_syndicate = no
+				}
+			}
+        }
+		upkeep = {
+            energy = 3
+			trigger = {
+				has_global_flag = ICE_MOON_ELF_MOD
+				branch_office_owner = {
+					is_criminal_syndicate = yes
+				}
+			}
+        }
+    }
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 1000
+			has_global_flag = ICE_MOON_ELF_MOD
+			branch_office_owner = {
+				is_criminal_syndicate = yes
+			}	
+		}
+	}
+}
+
+#触手服务中心
+building_sexy_alloys = {
+	#建筑名称 触手研究所
+	base_buildtime = @b2_time	#时间
+	base_cap_amount = 1	#数量限制
+	owner_type = corporate	#是否是分公司建筑
+	potential = {
+		has_branch_office = yes
+		OR = {
+			if = {
+				limit = {
+					has_global_flag = love_between_us
+				}
+				branch_office_owner = { 
+					has_valid_civic = civic_master 
+				}
+			}
+			else = {
+				always = no
+			}
+			if = {
+				limit = {
+					has_global_flag = ICE_MOON_ELF_MOD
+				}
+				branch_office_owner = {
+					is_criminal_syndicate = yes
+					NOT = {
+						has_country_flag = ICE_MOON_FUTA
+					}
+				}
+			}
+			else = {
+				always = no
+			}
+		}
+    }
+	triggered_planet_modifier = {
+		potential = { 
+			has_global_flag = love_between_us 
+			branch_office_owner = {
+				is_criminal_syndicate = no
+			}
+		}
+		pop_growth_speed = 0.05
+		planet_amenities_add = 10
+    }
+	triggered_planet_modifier = {
+		potential = { 
+			has_country_flag = ICE_MOON_FUTA
+			branch_office_owner = {
+				is_criminal_syndicate = yes
+			}
+		}
+		#星球修正
+		planet_crime_add = 50		#犯罪率
+		planet_jobs_society_research_produces_mult = 0.1
+		planet_jobs_engineering_research_produces_mult = 0.1
+		planet_jobs_physics_research_produces_mult = 0.1
+	}
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = @b3_minerals
+			trigger = {
+				has_global_flag = love_between_us 
+				branch_office_owner = {
+					is_criminal_syndicate = no
+				}
+			}
+		}
+		cost = {
+            minerals = @b2_minerals
+        }
+        produces = {
+            energy = 10
+			trigger = {
+				has_global_flag = love_between_us 
+				branch_office_owner = {
+					is_criminal_syndicate = no
+				}
+			}
+        }
+		produces = {
+			physics_research = 15
+			engineering_research = 15
+			society_research = 15
+			trigger = {
+				has_global_flag = ICE_MOON_ELF_MOD
+				branch_office_owner = {
+					is_criminal_syndicate = yes
+				}
+			}
+		}
+		upkeep = {
+			energy = 3
+			trigger = {
+				has_global_flag = ICE_MOON_ELF_MOD
+				branch_office_owner = {
+					is_criminal_syndicate = yes
+				}
+			}
+		}
+	}
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 1000
+			has_global_flag = ICE_MOON_ELF_MOD
+			branch_office_owner = {
+				is_criminal_syndicate = yes
+			}	
+		}
+	}
+}
+
+#教会
+building_elf_temple_of_lustgod = {	
+	base_buildtime = @b2_time	#时间
+	base_cap_amount = 1
+	owner_type = corporate
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = {
+			NOT = {
+				has_country_flag = ICE_MOON_FUTA
+			}
+		}
+	}
+	planet_modifier = {
+		# trade_value_add = 10
+		planet_jobs_unity_produces_mult = 0.1
+		# planet_max_branch_office_buildings_add = 1
+	}
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = @b3_minerals
+		}
+		produces = {
+			# energy = 30
+			# love_juice = 30
+			unity = 15
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+	ai_weight = {
+		weight = 1000
+	}
+}
+
+# 广场
+building_sex_square = {
+	base_buildtime = 480
+	base_cap_amount = 1	# 星球限定
+	category = resource
+	# prerequisites = { "tech_galactic_administration" }
+	potential = {
+		exists = owner
+		owner = {
+			if = {
+				limit = {
+					is_futa_country = yes
+				}
+				has_ascension_perk = ap_semen_pantyhose_love
+			}
+			else = {
+				NOT = {
+					has_country_flag = asceticism_flag
+				}
+				OR = {
+					is_light_country = yes
+					is_dark_country = yes
+				}
+			}
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			NOT = {
+				has_planet_flag = vagina_sexslave_planet
+			}
+		}
+		job_futa_sex_slave_add = 1
+		job_futa_female_dog_add = 1
+		job_futa_public_toilet_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_planet_flag = vagina_sexslave_planet
+		}
+		modifier = {
+			job_futa_moyu_add = 2
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 600
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	triggered_desc = {
+		text = building_sex_square_effect_desc
+	}
+	ai_resource_production = {
+		unity = 2
+		rare_crystals = 2
+		exotic_gases = 2
+		volatile_motes = 2
+		# food = 2
+		alloys = 2
+		trigger = {
+			always = yes
+		}
+	}
+}

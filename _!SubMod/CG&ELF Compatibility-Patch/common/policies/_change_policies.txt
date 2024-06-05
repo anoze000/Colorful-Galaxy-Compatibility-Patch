@@ -1,0 +1,680 @@
+slavery = {
+    potential = { NOT = { has_ethic = "ethic_gestalt_consciousness" } }
+    option = {
+        name = "slavery_not_allowed"
+        valid = {
+            NOR = {
+                has_valid_civic = civic_slaver_guilds
+                has_valid_civic = civic_indentured_assets
+                has_valid_civic = civic_slave_tradition
+                has_valid_civic = "civic_all_slave"
+            }
+        }
+        policy_flags = { slavery_not_allowed }
+        on_enabled = {
+            hidden_effect = { every_owned_planet = { remove_modifier = slave_colony } }
+        }
+        modifier = {
+            slave_market_cost_mult = 1
+        }
+    }
+    option = {
+        name = "slavery_allowed"
+        valid = {
+            custom_tooltip = {
+                success_text = is_not_a_signatory_vassal_success
+                fail_text = is_not_a_signatory_vassal_fail
+                NOT = { any_agreement = { agreement_preset = preset_signatory } }
+            }
+            custom_tooltip = {
+                fail_text = is_broken_shackles_origin
+                NOT = { has_origin = origin_broken_shackles }
+            }
+            OR = {
+                has_ethic = ethic_authoritarian
+                has_ethic = ethic_fanatic_authoritarian
+                has_ethic = ethic_xenophobe
+                has_ethic = ethic_fanatic_xenophobe
+                has_DC_framework_trait = yes
+				has_trait = trait_futa
+            }
+            NOT = { has_valid_civic = "civic_all_slave" }
+            NOT = { has_valid_civic = "civic_help_weak" }
+        }
+        policy_flags = { slavery_allowed }
+        modifier = { }
+        AI_weight = {
+            factor = 10
+			modifier = {
+				factor = 2
+				OR = {
+					has_trait = trait_futa
+				}
+			}
+            modifier = {
+                factor = 0
+                has_valid_ai_personality = yes
+                NOT = { has_ai_personality_behaviour = slaver }
+            }
+            modifier = {
+                factor = 0
+                has_valid_ai_personality = no
+                has_DC_framework_trait = no
+                NOR = {
+                    has_ethic = ethic_authoritarian
+                    has_ethic = ethic_fanatic_authoritarian
+                    has_ethic = ethic_xenophobe
+                    has_ethic = ethic_fanatic_xenophobe
+                }
+            }
+            # special case for harmonious collectives
+            modifier = {
+                factor = 0
+                has_valid_ai_personality = no
+                is_ai = yes
+                NOR = {
+                    has_ethic = "ethic_xenophobe"
+                    has_ethic = "ethic_fanatic_xenophobe"
+                    has_ethic = "ethic_militarist"
+                    has_ethic = "ethic_fanatic_militarist"
+                }
+                OR = {
+                    has_ethic = "ethic_pacifist"
+                    has_ethic = "ethic_fanatic_pacifist"
+                    has_ethic = "ethic_xenophile"
+                    has_ethic = "ethic_fanatic_xenophile"
+                }
+                OR = {
+                    has_ethic = "ethic_authoritarian"
+                    has_ethic = "ethic_fanatic_authoritarian"
+                }
+                NOR = {
+                    has_valid_civic = "civic_slaver_guilds"
+                    has_trait = "trait_decadent"
+                    has_trait = "trait_robot_decadent"
+                }
+            }
+        }
+    }
+    option = {
+        name = "happy_slavery"
+        valid = { has_valid_civic = civic_all_slave }
+        potential = { has_valid_civic = "civic_all_slave" }
+        policy_flags = { slavery_allowed }
+        modifier = {
+            pop_cat_slave_happiness = 0.1
+        }
+    }
+}
+
+#强制奴役
+CG_force_enslave = {
+	potential = {
+		OR = {
+			if = {
+				limit = {
+					has_global_flag = love_between_us
+				}
+				NOR = {
+					has_valid_civic = civic_slaver_guilds
+					has_valid_civic = civic_all_slave
+				}
+				has_trait = trait_DC_ethic_carnalism
+			}
+			else = {
+				always = no
+			}
+			if = {
+				limit = {
+					has_global_flag = ICE_MOON_ELF_MOD
+				}
+				NOT = {
+					has_ethic = "ethic_gestalt_consciousness"
+				}
+			}
+			else = {
+				always = no
+			}
+		}
+	}
+	option = {
+		name = "no_slave"		#禁止
+		policy_flags = { no_slave_flag }
+		potential = {
+			OR = {
+				has_valid_civic = civic_fanatic_feminism
+				has_valid_civic = civic_lust_guro
+			}
+		}
+		modifier = {
+			country_pop_enslaved_mult = -1
+		}
+		AI_weight = { factor = 100 }
+	}
+	option = {
+		name = "nomore_slave"		#一般
+		policy_flags = { nomore_slave_flag }
+		potential = {
+			NOR = {
+				has_valid_civic = civic_fanatic_feminism
+				has_valid_civic = civic_lust_guro
+			}
+		}
+		valid = {
+			if = {
+				limit = {
+					has_global_flag = love_between_us
+				}
+				NOR = {
+					has_ethic = ethic_authoritarian
+					has_ethic = ethic_fanatic_authoritarian
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = ICE_MOON_ELF_MOD
+				}
+				has_policy_flag = "slavery_allowed"
+			}
+		}
+		AI_weight = { 
+			factor = 1
+			modifier = {
+				factor = 50
+				has_global_flag = ICE_MOON_ELF_MOD
+			}
+			modifier = {
+				factor = 100
+				has_global_flag = love_between_us
+			}
+		}
+	}
+	option = {
+		name = "few_slave"		#少量奴隶
+		policy_flags = { few_slave_flag }
+		potential = {
+			NOR = {
+				has_valid_civic = civic_fanatic_feminism
+				has_valid_civic = civic_lust_guro
+			}
+		}
+		valid = {
+			has_policy_flag = "slavery_allowed"
+			if = {
+				limit = {
+					has_global_flag = love_between_us
+				}
+				NOT = { has_ethic = ethic_fanatic_authoritarian }
+			}
+		}
+		modifier = {
+			country_pop_enslaved_mult = 0.15
+		}
+		AI_weight = {
+			factor = 1
+			modifier = {
+				factor = 5
+				has_global_flag = ICE_MOON_ELF_MOD
+			}
+		}
+	}
+	option = {
+		name = "mid_slave"		#中量奴隶
+		policy_flags = { mid_slave_flag }
+		potential = {
+			NOR = {
+				has_valid_civic = civic_fanatic_feminism
+				has_valid_civic = civic_lust_guro
+			}
+		}
+		valid = {
+			has_policy_flag = "slavery_allowed"
+			if = {
+				limit = {
+					has_global_flag = love_between_us
+				}
+				OR = {
+					has_ethic = ethic_authoritarian
+					has_ethic = ethic_fanatic_authoritarian
+				}
+				NOT = { has_valid_civic = civic_slave_tradition }
+			}
+		}
+		modifier = {
+			country_pop_enslaved_mult = 0.3
+		}
+		AI_weight = {
+			factor = 1
+			modifier = {
+				factor = 5
+				has_global_flag = ICE_MOON_ELF_MOD
+			}
+		}
+	}
+	option = {
+		name = "lot_slave"		#大量奴隶
+		policy_flags = { lot_slave_flag }
+		potential = {
+			NOR = {
+				has_valid_civic = civic_fanatic_feminism
+				has_valid_civic = civic_lust_guro
+			}
+		}
+		valid = {
+			has_policy_flag = "slavery_allowed"
+			if = {
+				limit = {
+					has_global_flag = love_between_us
+				}
+				has_ethic = ethic_fanatic_authoritarian
+			}
+		}
+		modifier = {
+			country_pop_enslaved_mult = 0.45
+		}
+	}
+	option = {
+		name = "huge_slave"		#巨量奴役
+		policy_flags = { huge_slave_flag }
+		potential = {
+			NOR = {
+				has_valid_civic = civic_fanatic_feminism
+				has_valid_civic = civic_lust_guro
+			}
+			has_valid_civic = civic_slave_tradition
+		}
+		valid = { has_policy_flag = "slavery_allowed" }
+		modifier = {
+			country_pop_enslaved_mult = 0.6
+			pop_cat_slave_happiness = -0.1
+			planet_jobs_slave_produces_mult = 0.1
+		}
+	}
+	option = {
+		name = "most_slave"		#极致奴役
+		policy_flags = { most_slave_flag }
+		potential = {
+			NOR = {
+				has_valid_civic = civic_fanatic_feminism
+				has_valid_civic = civic_lust_guro
+			}
+			has_valid_civic = civic_slave_tradition
+		}
+		valid = { has_policy_flag = "slavery_allowed" }
+		modifier = {
+			country_pop_enslaved_mult = 0.75
+			pop_cat_slave_happiness = -0.2
+			planet_jobs_slave_produces_mult = 0.2
+		}
+	}
+}
+
+#允许纵欲?
+allow_sex_or_not = {
+	potential = { 
+		OR = {
+			if = {
+				limit = {
+					has_global_flag = love_between_us
+				}
+				has_DC_framework_trait = yes 
+			}
+			else = {
+				always = no
+			}
+			if = {
+				limit = {
+					has_global_flag = ICE_MOON_ELF_MOD
+				}
+				NOT = {
+					has_ethic = "ethic_gestalt_consciousness"
+				}
+			}
+			else = {
+				always = no
+			}
+		}
+	}
+	option = {
+		name = "sex_no"		#禁止纵欲
+		policy_flags = {
+			no_sex
+		}
+		potential = {
+			has_global_flag = ICE_MOON_ELF_MOD
+		}
+		valid = {
+			# NOR = {
+			# 	has_trait = trait_futa
+			# }
+		}
+		modifier = {
+			planet_stability_add = 1			#稳定性
+			all_technology_research_speed = 0.02			#研究速度
+			# planet_pops_consumer_goods_upkeep_mult = -0.15			#人口消费品使用
+			pop_growth_speed = -0.02			#人口增长速度
+			PLANET_POP_ASSEMBLY_ORGANIC_MULT = -0.02
+			PLANET_POP_ASSEMBLY_MULT = -0.02
+			# planet_stability_add = -5
+			# planet_crime_add = 5
+		}
+		# AI_weight = {
+		# 	modifier = {
+		# 		factor = 100
+		# 		has_trait = trait_light
+		# 	}
+		# }
+	}
+	option = {
+		name = "sex_limited"		#节制纵欲
+		policy_flags = {
+			sex_limited
+		}
+		potential = {
+			has_global_flag = ICE_MOON_ELF_MOD
+		}
+		modifier = {
+			# # pop_happiness = 0.01			#幸福度
+			pop_growth_speed = 0.01			#人口增长速度
+			# planet_pop_assembly_mult = 0.2
+			all_technology_research_speed = 0.01			#研究速度
+			# planet_pops_consumer_goods_upkeep_mult = 0.05			#人口消费品使用
+			# planet_stability_add = 5
+			# planet_crime_add = -5
+		}
+		AI_weight = {
+			modifier = {
+				factor = 100
+				has_trait = trait_light
+			}
+		}
+	}
+	option = {
+		name = "sex_full"		#允许纵欲
+		potential = {
+			has_global_flag = ICE_MOON_ELF_MOD
+		}
+		policy_flags = {
+			sex_full
+		}
+		modifier = {
+			# # pop_happiness = 0.01			#幸福度
+			pop_growth_speed = 0.02			#人口增长速度
+			PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.02
+			PLANET_POP_ASSEMBLY_MULT = 0.02
+			# planet_pop_assembly_mult = 0.2
+			all_technology_research_speed = -0.01			#研究速度
+			# planet_pops_consumer_goods_upkeep_mult = 0.05			#人口消费品使用
+			# planet_stability_add = 5
+			# planet_crime_add = -5
+		}
+		AI_weight = {
+			modifier = {
+				factor = 1000
+				OR = {
+					has_trait = trait_dark
+					has_trait = trait_futa
+				}
+			}
+		}
+	}
+	option = {
+		name = "lust_forbidden"		#禁止纵欲
+		policy_flags = { lust_forbidden }
+		potential = {
+			has_global_flag = love_between_us
+			NOR = {
+				has_trait = trait_DC_ethic_carnalism
+				has_trait = trait_DC_ethic_parasite_mind
+				has_trait = trait_DC_ethic_parasite_mind_hard
+				has_trait = trait_DC_ethic_lust_skynet
+				has_trait = trait_DC_ethic_abstinence
+			}
+		}
+		modifier = {
+			planet_jobs_physics_research_produces_mult = 0.25
+			planet_jobs_society_research_produces_mult = 0.25
+			planet_jobs_engineering_research_produces_mult = 0.25
+			pop_growth_speed = -0.1
+			pop_happiness = -0.1
+			planet_stability_add = 5
+		}
+		AI_weight = {
+			modifier = {
+				factor = 1000
+				has_country_flag = asceticism_flag
+			}
+		}
+	}
+	option = {
+		name = "lust_limited"		#节制纵欲
+		policy_flags = { lust_limited }
+		potential = {
+			has_global_flag = love_between_us
+		}
+		valid = { has_DC_framework_trait = yes }
+		modifier = {
+			pop_happiness = 0.05
+		}
+		AI_weight = {
+			modifier = {
+				factor = 1000
+				has_DC_framework_trait = no
+			}
+		}
+	}
+	option = {
+		name = "lust_full"		#允许纵欲
+		policy_flags = { lust_full }
+		modifier = {
+			planet_pops_physics_research_produces_mult = -0.15
+			planet_pops_society_research_produces_mult = -0.15
+			planet_pops_engineering_research_produces_mult = -0.15
+			pop_growth_speed = 0.2
+			pop_happiness = 0.1
+			planet_stability_add = -5
+		}
+		potential = { 
+			has_global_flag = love_between_us
+			NOT = { 
+				has_trait = trait_DC_ethic_asceticism 
+			} 
+		}
+		AI_weight = {
+			modifier = {
+				factor = 1000
+				OR = {
+					has_trait = trait_DC_ethic_carnalism
+					has_trait = trait_DC_ethic_parasite_mind
+					has_trait = trait_DC_ethic_parasite_mind_hard
+					has_trait = trait_DC_ethic_lust_skynet
+					has_trait = trait_DC_ethic_abstinence
+				}
+			}
+		}
+	}
+}
+
+#奴隶性服务处置
+slave_how_to_use = {
+	potential = {
+		NOR = {
+			if = {
+				limit = {
+					has_global_flag = love_between_us
+				}
+				has_trait = trait_DC_ethic_asceticism 
+			}
+			else = {
+				always = no
+			}
+			if = {
+				limit = {
+					has_global_flag = ICE_MOON_ELF_MOD
+				}
+				NOT = {
+					has_ethic = "ethic_gestalt_consciousness"
+				}
+			}
+			else = {
+				always = no
+			}
+		}
+	}
+	option = {
+		name = "slave_normal"		#一般
+		policy_flags = {
+			slave_normal_flag
+		}
+		potential = {
+			has_global_flag = ICE_MOON_ELF_MOD
+		}
+		AI_weight = {
+			modifier = {
+				factor = 50
+			}
+		}
+		modifier = {
+			pop_cat_slave_happiness = 0.01
+			pop_cat_futa_rbq_happiness = 0.01
+		}
+	}
+	option = {
+		name = "slave_sex"		#性奴
+		policy_flags = {
+			slave_sex_flag
+		}
+		# valid = {
+		# 	has_technology = "tech_gene_tailoring"
+		# }
+		potential = {
+			has_global_flag = ICE_MOON_ELF_MOD
+		}
+		AI_weight = {
+			modifier = {
+				factor = 75
+			}
+		}
+		modifier = {
+			planet_jobs_slave_produces_mult = 0.01
+			pop_cat_slave_happiness = -0.01
+			# pop_growth_speed = 0.03			#繁殖
+			# PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.03			#人口组装
+			# planet_stability_add = -3
+			# planet_crime_add = 3
+		}
+	}
+	option = {
+		name = "slave_rbq"		#rbq
+		policy_flags = {
+			slave_rbq_flag
+		}
+		potential = {
+			has_global_flag = ICE_MOON_ELF_MOD
+		}
+		AI_weight = {
+			modifier = {
+				factor = 1000
+				OR = {
+					has_trait = trait_dark
+					has_trait = trait_futa
+				}
+			}
+		}
+		modifier = {
+			pop_growth_speed = 0.01
+			PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.01
+			PLANET_POP_ASSEMBLY_MULT = 0.01
+		}
+	}
+	option = {
+		name = "CG_normal_treatment"		#一般
+		policy_flags = { CG_normal_treatment_flag }
+		potential = {
+			has_global_flag = love_between_us
+		}
+		AI_weight = {
+			modifier = {
+				factor = 50
+				has_trait = trait_DC_ethic_carnalism
+			}
+		}
+	}
+	option = {
+		name = "CG_sex_slave_treatment"		#性奴
+		policy_flags = { CG_sex_slave_treatment_flag }
+		potential = { 
+			has_global_flag = love_between_us
+			NOT = { 
+				has_valid_civic = civic_all_slave 
+			} 
+		}
+		valid = { has_technology = tech_sex_slave_train }
+		modifier = {
+			pop_cat_slave_happiness = -0.1
+			planet_jobs_love_juice_produces_mult = 0.15
+		}
+		AI_weight = {
+			modifier = {
+				factor = 75
+				has_country_flag = carnalism_flag
+			}
+		}
+	}
+	option = {
+		name = "CG_rbq_treatment"		#rbq
+		policy_flags = { CG_rbq_treatment_flag }
+		potential = { 
+			has_global_flag = love_between_us
+			NOT = { 
+				has_valid_civic = civic_all_slave 
+			} 
+		}
+		valid = { has_technology = tech_female_livestock_train }
+		modifier = {
+			pop_cat_slave_happiness = -0.2
+			planet_jobs_love_juice_produces_mult = 0.3
+		}
+		AI_weight = {
+			modifier = {
+				factor = 75
+				has_trait = trait_DC_ethic_carnalism
+			}
+		}
+	}
+	option = {
+		name = "CG_sex_slave_volunteer_treatment"		#自愿性奴
+		policy_flags = { CG_sex_slave_volunteer_treatment_flag }
+		potential = { 
+			has_global_flag = love_between_us
+			has_valid_civic = civic_all_slave 
+		}
+		valid = { has_technology = tech_sex_slave_train }
+		modifier = {
+			planet_jobs_love_juice_produces_mult = 0.05
+			planet_jobs_consumer_goods_produces_mult = -0.1
+		}
+		AI_weight = {
+			modifier = {
+				factor = 75
+				has_country_flag = carnalism_flag
+			}
+		}
+	}
+	option = {
+		name = "CG_rbq_volunteer_treatment"		#自愿rbq
+		policy_flags = { CG_rbq_volunteer_treatment_flag }
+		potential = { has_valid_civic = civic_all_slave }
+		valid = { has_technology = tech_female_livestock_train }
+		modifier = {
+			planet_jobs_love_juice_produces_mult = 0.1
+			planet_jobs_consumer_goods_produces_mult = -0.2
+		}
+		AI_weight = {
+			modifier = {
+				factor = 75
+				has_trait = trait_DC_ethic_carnalism
+			}
+		}
+	}
+}

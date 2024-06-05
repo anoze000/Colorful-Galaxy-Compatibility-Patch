@@ -1,0 +1,364 @@
+## Possible Deposit Variables ##
+# resources, resource and amount
+# potential trigger (planet scope)
+# planet_modifier - applied to planet only when deposit blocker has been cleared
+# constant_modifier - applied to planet always
+# station = station class in orbit to gather
+
+d_lust_sea = {
+	time = 960
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 2000
+			minerals = 2000
+		}
+	}
+	potential = { planet_size >= 10 }
+	planet_modifier = {
+		planet_max_districts_add = -2
+	}
+	drop_weight = {
+		weight = 1
+		modifier = {
+			factor = 2
+			is_planet_class = pc_nuked
+		}
+		modifier = {
+			factor = 0.5
+			planet_size < 15
+		}
+	}
+}
+
+d_anti_entropy_dimension = {
+	time = 960
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 2000
+			minerals = 2000
+		}
+	}
+	potential = { planet_size >= 10 }
+	planet_modifier = {
+		planet_max_districts_add = -2
+	}
+	drop_weight = {
+		weight = 1
+		modifier = {
+			factor = 2
+			is_planet_class = pc_nuked
+		}
+		modifier = {
+			factor = 5
+			is_planet_class = pc_ocean
+		}
+		modifier = {
+			factor = 0.5
+			planet_size < 15
+		}
+	}
+}
+
+d_rampage_tentacle = {
+	time = 480
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+	resources = {
+		category = deposit_blockers
+		cost = {
+			trigger = { owner = { is_lust_empire = yes } }
+			energy = 200
+			food = 200
+		}
+		cost = {
+			trigger = { owner = { is_lust_empire = no } }
+			energy = 400
+		}
+	}
+	potential = {
+		planet_size >= 10
+		OR = {
+			is_planet_class = pc_gaia
+			is_planet_class = pc_continental
+			is_planet_class = pc_tropical
+			is_planet_class = pc_ocean
+			is_planet_class = pc_dc_spore
+		}
+	}
+	planet_modifier = {
+		planet_max_districts_add = -2
+	}
+	use_weights_for_blocker_swap_types = no
+	blocker_swap_types = {
+		d_tentacle_jungle
+		d_null_deposit
+	}
+	drop_weight = {
+		weight = 1
+		modifier = {
+			factor = 2
+			is_planet_class = pc_dc_spore
+		}
+		modifier = {
+			factor = 0.5
+			planet_size < 15
+		}
+	}
+}
+
+d_destroyed_generator = {
+	time = 120
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 500
+		}
+	}
+	potential = { always = no }
+	planet_modifier = {
+		planet_max_districts_add = -1
+	}
+	drop_weight = { weight = 0 }
+}
+
+##################################
+############ special deposits  ###
+##################################
+d_love_juice_planet = {
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			love_juice = 10
+			excellent_slave = 5
+		}
+	}
+	station = shipclass_mining_station
+	is_for_colonizable = no
+	potential = { always = no }
+	drop_weight = { weight = 0 }
+}
+
+d_energy_100 = {
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			energy = 100
+		}
+	}
+	station = shipclass_mining_station
+	is_for_colonizable = no
+	potential = { always = no }
+	drop_weight = { weight = 0 }
+}
+
+####################
+##### FOOD/SOCIETY  #####
+####################
+d_tentacle_jungle = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_rare
+	use_weights_for_terraforming_swap_types = yes
+	resources = {
+		category = planet_deposits
+		produces = {
+			trigger = {
+				exists = owner
+				is_lust_empire = yes
+			}
+			food = 10
+			society_research = 10
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				is_pure_empire = yes
+			}
+			society_research = 5
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_pure_empire = no
+					is_lust_empire = no
+				}
+			}
+			society_research = 5
+			food = 5
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			is_lust_empire = yes
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			job_researcher_add = 2
+			job_farmer_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			is_lust_empire = yes
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_brain_drone_add = 2
+			job_agri_drone_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			is_pure_empire = yes
+		}
+		modifier = {
+			job_researcher_add = 1
+		}
+	}
+	potential = {
+		planet_size >= 10
+		OR = {
+			is_planet_class = pc_gaia
+			is_planet_class = pc_continental
+			is_planet_class = pc_tropical
+			is_planet_class = pc_ocean
+			is_planet_class = pc_dc_spore
+		}
+	}
+	drop_weight = {
+		weight = 1
+		modifier = {
+			factor = 1.5
+			is_planet_class = pc_arctic
+		}
+		modifier = {
+			factor = 1.5
+			is_planet_class = pc_tropical
+		}
+		modifier = {
+			factor = 2.5
+			is_planet_class = pc_gaia
+		}
+		modifier = {
+			factor = 0.1
+			planet_size < 10
+		}
+		modifier = {
+			factor = 1.5
+			planet_size > 10
+		}
+	}
+}
+
+####################
+#####city#####
+####################
+d_dc_nightglow = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	resources = {
+		category = planet_deposits
+		produces = {
+			volatile_motes = 12.14
+			exotic_gases = 12.14
+			rare_crystals = 12.14
+		}
+	}
+	drop_weight = { weight = 0 }
+}
+
+d_dc_true = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	resources = {
+		category = planet_deposits
+		produces = {
+			sr_living_metal = 8.12
+		}
+	}
+	drop_weight = { weight = 0 }
+}
+
+d_dc_moon_halo = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	resources = {
+		category = planet_deposits
+		produces = {
+			sr_zro = 7.9
+		}
+	}
+	drop_weight = { weight = 0 }
+}
+
+d_dc_da_capo = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	resources = {
+		category = planet_deposits
+		produces = {
+			sr_dark_matter = 3.3
+		}
+	}
+	drop_weight = { weight = 0 }
+}
+
+d_dc_starfall = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	resources = {
+		category = planet_deposits
+		produces = {
+			nanites = 2.28
+		}
+	}
+	drop_weight = { weight = 0 }
+}
+
+d_dc_regression = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	resources = {
+		category = planet_deposits
+		produces = {
+			minor_artifacts = 1.21
+		}
+	}
+	drop_weight = { weight = 0 }
+}
+
+d_dc_zoo = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		modifier = {
+			job_dc_zoo_worker_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_dc_zoo_drone_add = 1
+		}
+	}
+	drop_weight = { weight = 0 }
+}

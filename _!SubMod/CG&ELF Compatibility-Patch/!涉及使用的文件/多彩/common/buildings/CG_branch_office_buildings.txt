@@ -1,0 +1,254 @@
+############################
+#############SUC############
+############################
+#触手调度中心
+building_space_brothels = {
+    base_buildtime = @b3_time
+    base_cap_amount = 1
+    category = trade
+    owner_type = corporate
+    potential = {
+        has_branch_office = yes
+        branch_office_owner = { has_valid_civic = civic_master }
+    }
+    planet_modifier = {
+        planet_housing_add = 30
+        trade_value_mult = 0.1
+    }
+    resources = {
+        category = planet_branch_office_buildings
+        cost = {
+            minerals = @b3_minerals
+        }
+        upkeep = {
+            energy = @b3_upkeep
+        }
+    }
+}
+
+#榨汁站
+building_brothel_food = {
+    base_buildtime = @b2_time
+    base_cap_amount = 1
+    category = resource
+    owner_type = corporate
+    potential = {
+        has_branch_office = yes
+        branch_office_owner = { has_valid_civic = civic_master }
+    }
+    planet_modifier = {
+        job_love_juice_maker_add = 5
+        planet_lovejuicer_produces_mult = 0.1
+    }
+    triggered_desc = { text = job_love_juice_maker_effect_desc }
+    resources = {
+        category = planet_branch_office_buildings
+        cost = {
+            minerals = @b2_minerals
+        }
+        upkeep = {
+            energy = 2
+        }
+    }
+}
+
+#地下会所
+building_sex_club = {
+    base_buildtime = @b2_time
+    category = amenity
+    base_cap_amount = 1
+    owner_type = corporate
+    potential = {
+        has_branch_office = yes
+        branch_office_owner = { has_valid_civic = civic_master }
+    }
+    planet_modifier = {
+        planet_amenities_add = 10
+        planet_erotic_produces_mult = 0.05
+        job_dominatrix_add = 2
+    }
+    triggered_desc = { text = job_dominatrix_effect_desc }
+    resources = {
+        category = planet_branch_office_buildings
+        cost = {
+            minerals = @b2_minerals
+        }
+        upkeep = {
+            energy = 5
+        }
+    }
+}
+
+#私人玩具制作厂
+building_padult_toy = {
+    base_buildtime = @b2_time
+    category = manufacturing
+    base_cap_amount = 1
+    owner_type = corporate
+    potential = {
+        has_branch_office = yes
+        branch_office_owner = { has_valid_civic = civic_master }
+    }
+    planet_modifier = {
+        planet_jobs_consumer_goods_produces_mult = 0.05
+    }
+    resources = {
+        category = planet_branch_office_buildings
+        cost = {
+            minerals = @b2_minerals
+        }
+        produces = {
+            consumer_goods = 50
+        }
+        upkeep = {
+            minerals = 50
+            energy = 5
+        }
+    }
+}
+
+#触手服务中心
+building_sexy_alloys = {
+    base_buildtime = @b2_time
+    category = amenity
+    base_cap_amount = 1
+    owner_type = corporate
+    potential = {
+        has_branch_office = yes
+        branch_office_owner = { has_valid_civic = civic_master }
+    }
+    planet_modifier = {
+        pop_growth_speed = 0.05
+        planet_amenities_add = 10
+    }
+    resources = {
+        category = planet_branch_office_buildings
+        cost = {
+            minerals = @b2_minerals
+        }
+        produces = {
+            energy = 10
+        }
+    }
+}
+
+############################
+#############INN############
+############################
+building_holy_assist_research = {
+    base_buildtime = @b2_time
+    base_cap_amount = 1
+    owner_type = corporate
+    category = resource
+    potential = {
+        has_branch_office = yes
+        branch_office_owner = { has_origin = origin_INN_destruction_light }
+    }
+    planet_modifier = {
+        planet_crime_add = 50
+        pop_growth_speed = 0.1
+    }
+    resources = {
+        category = planet_branch_office_buildings
+        cost = {
+            minerals = @b3_minerals
+        }
+        produces = {
+            physics_research = 10
+            society_research = 10
+            engineering_research = 10
+        }
+        upkeep = {
+            energy = 2
+        }
+    }
+    ai_weight = { weight = 120 }
+}
+
+building_holy_biological_research = {
+    base_buildtime = @b2_time
+    base_cap_amount = 1
+    owner_type = corporate
+    category = resource
+    potential = {
+        has_branch_office = yes
+        branch_office_owner = { has_origin = origin_INN_destruction_light }
+    }
+    planet_modifier = {
+        planet_crime_add = 50
+        pop_growth_speed = 0.1
+    }
+    resources = {
+        category = planet_branch_office_buildings
+        cost = {
+            minerals = @b3_minerals
+        }
+        produces = {
+            society_research = 30
+        }
+        upkeep = {
+            energy = 2
+        }
+    }
+    ai_weight = { weight = 120 }
+}
+
+############################
+#############TEN############
+############################
+building_tentacle_experience_park = {
+    base_buildtime = @b2_time
+    base_cap_amount = 1
+    owner_type = corporate
+    category = resource
+    potential = {
+        has_branch_office = yes
+        branch_office_owner = { has_valid_civic = civic_parasite_rise_and_all }
+    }
+    planet_modifier = {
+        job_ten_experiencer_add = 1
+    }
+    resources = {
+        category = planet_branch_office_buildings
+        cost = {
+            minerals = @b3_minerals
+        }
+        upkeep = {
+            energy = 2
+        }
+    }
+    ai_weight = { weight = 120 }
+}
+
+############################
+#############other##########
+############################
+building_sower_lurking_lair = {
+    base_buildtime = @b2_time
+    base_cap_amount = 1
+    owner_type = corporate
+    category = pop_assembly
+    potential = {
+        has_branch_office = yes
+        branch_office_owner = {
+            is_criminal_syndicate = yes
+            has_origin = origin_deep_cave_noise
+        }
+    }
+    planet_modifier = {
+        planet_crime_add = 40
+        job_sower_fallen_kin_add = 1
+        job_sower_birth_slave_add = 1
+        job_seedbed_victim_per_pop = 0.05
+    }
+    resources = {
+        category = planet_branch_office_buildings
+        cost = {
+            minerals = @b3_minerals
+        }
+        upkeep = {
+            energy = 3
+        }
+    }
+    ai_weight = { weight = 10 }
+}

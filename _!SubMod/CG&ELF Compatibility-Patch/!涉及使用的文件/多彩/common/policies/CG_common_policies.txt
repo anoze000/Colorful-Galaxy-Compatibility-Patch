@@ -1,0 +1,154 @@
+#允许纵欲?
+allow_sex_or_not = {
+	potential = { has_DC_framework_trait = yes }
+	option = {
+		name = "lust_forbidden"		#禁止纵欲
+		policy_flags = { lust_forbidden }
+		potential = {
+			NOR = {
+				has_trait = trait_DC_ethic_carnalism
+				has_trait = trait_DC_ethic_parasite_mind
+				has_trait = trait_DC_ethic_parasite_mind_hard
+				has_trait = trait_DC_ethic_lust_skynet
+				has_trait = trait_DC_ethic_abstinence
+			}
+		}
+		modifier = {
+			planet_jobs_physics_research_produces_mult = 0.25
+			planet_jobs_society_research_produces_mult = 0.25
+			planet_jobs_engineering_research_produces_mult = 0.25
+			pop_growth_speed = -0.1
+			pop_happiness = -0.1
+			planet_stability_add = 5
+		}
+		AI_weight = {
+			modifier = {
+				factor = 1000
+				has_country_flag = asceticism_flag
+			}
+		}
+	}
+	option = {
+		name = "lust_limited"		#节制纵欲
+		policy_flags = { lust_limited }
+		valid = { has_DC_framework_trait = yes }
+		modifier = {
+			pop_happiness = 0.05
+		}
+		AI_weight = {
+			modifier = {
+				factor = 1000
+				has_DC_framework_trait = no
+			}
+		}
+	}
+	option = {
+		name = "lust_full"		#允许纵欲
+		policy_flags = { lust_full }
+		modifier = {
+			planet_pops_physics_research_produces_mult = -0.15
+			planet_pops_society_research_produces_mult = -0.15
+			planet_pops_engineering_research_produces_mult = -0.15
+			pop_growth_speed = 0.2
+			pop_happiness = 0.1
+			planet_stability_add = -5
+		}
+		potential = { NOT = { has_trait = trait_DC_ethic_asceticism } }
+		AI_weight = {
+			modifier = {
+				factor = 1000
+				OR = {
+					has_trait = trait_DC_ethic_carnalism
+					has_trait = trait_DC_ethic_parasite_mind
+					has_trait = trait_DC_ethic_parasite_mind_hard
+					has_trait = trait_DC_ethic_lust_skynet
+					has_trait = trait_DC_ethic_abstinence
+				}
+			}
+		}
+	}
+}
+
+#奴隶性服务处置
+slave_how_to_use = {
+	potential = {
+		NOR = {
+			has_ethic = "ethic_gestalt_consciousness"
+			has_trait = trait_DC_ethic_asceticism
+		}
+	}
+	option = {
+		name = "CG_normal_treatment"		#一般
+		policy_flags = { CG_normal_treatment_flag }
+		AI_weight = {
+			modifier = {
+				factor = 50
+				has_trait = trait_DC_ethic_carnalism
+			}
+		}
+	}
+	option = {
+		name = "CG_sex_slave_treatment"		#性奴
+		policy_flags = { CG_sex_slave_treatment_flag }
+		potential = { NOT = { has_valid_civic = civic_all_slave } }
+		valid = { has_technology = tech_sex_slave_train }
+		modifier = {
+			pop_cat_slave_happiness = -0.1
+			planet_jobs_love_juice_produces_mult = 0.15
+		}
+		AI_weight = {
+			modifier = {
+				factor = 75
+				has_country_flag = carnalism_flag
+			}
+		}
+	}
+	option = {
+		name = "CG_rbq_treatment"		#rbq
+		policy_flags = { CG_rbq_treatment_flag }
+		potential = { NOT = { has_valid_civic = civic_all_slave } }
+		valid = { has_technology = tech_female_livestock_train }
+		modifier = {
+			pop_cat_slave_happiness = -0.2
+			planet_jobs_love_juice_produces_mult = 0.3
+		}
+		AI_weight = {
+			modifier = {
+				factor = 75
+				has_trait = trait_DC_ethic_carnalism
+			}
+		}
+	}
+	option = {
+		name = "CG_sex_slave_volunteer_treatment"		#自愿性奴
+		policy_flags = { CG_sex_slave_volunteer_treatment_flag }
+		potential = { has_valid_civic = civic_all_slave }
+		valid = { has_technology = tech_sex_slave_train }
+		modifier = {
+			planet_jobs_love_juice_produces_mult = 0.05
+			planet_jobs_consumer_goods_produces_mult = -0.1
+		}
+		AI_weight = {
+			modifier = {
+				factor = 75
+				has_country_flag = carnalism_flag
+			}
+		}
+	}
+	option = {
+		name = "CG_rbq_volunteer_treatment"		#自愿rbq
+		policy_flags = { CG_rbq_volunteer_treatment_flag }
+		potential = { has_valid_civic = civic_all_slave }
+		valid = { has_technology = tech_female_livestock_train }
+		modifier = {
+			planet_jobs_love_juice_produces_mult = 0.1
+			planet_jobs_consumer_goods_produces_mult = -0.2
+		}
+		AI_weight = {
+			modifier = {
+				factor = 75
+				has_trait = trait_DC_ethic_carnalism
+			}
+		}
+	}
+}

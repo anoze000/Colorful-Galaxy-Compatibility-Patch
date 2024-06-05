@@ -23,5 +23,29 @@
 
  finish_synthetic_evolution_1:0 "$TRIGGER_FAIL$需要以下任一飞升：\n　　§Y战舰少女政体§!需要飞升：§Hproject- R§!\n　　§Y深海政体§!需要飞升：§H浴火重生§!\n　　§Y星舰少女政体§!需要飞升：§H银河共和国§!\n　　§Y幻想乡国家§!需要飞升：§H幻·想·突·破§!\n　　§Y红魔馆国家§!需要飞升：§H完美之王§!\n　　§Y灰烬战线mod§!需要飞升：§H新时代企划§!\n　　§Y约战mod§!需要飞升：§H幸福之道§!\n　　§Y少女前线(涅托)mod§!需要飞升：§H心识解放§!\n　　§Y联合舰队§!需要飞升：§H超维革命§!\　　n包括多彩原版的魅魔在内，其他具有魅魔特质的种族需要必须先完成§Y合成进化§!特殊工程"
 "
+building_wsg_big_toy_monument:0 "高射炮雕像"
+ building_wsg_big_toy_monument_desc:0 "尚未有效的记载表明这类形状为何能让我们的民众产生一种平和，共情等情绪，但可以证明的是，此类建筑能让帝国上下更加凝聚在了一起。
 
+ building_elf_temple_of_lustgod:0 "§Y援交传道院§!"
+ building_elf_temple_of_lustgod_desc:0 "伴随着商业活动，思想文化的输出也在进行，这是属于堕淫教派的教堂，虽然名为教堂，但其实更如同其它文明口中的妓院——交钱，并在床上得到一段舒适的布告。"
 
+ job_futa_female_dog:0 "牝犬性奴"
+ job_futa_female_dog_plural:0 "$job_female_dog$"
+ job_futa_female_dog_desc:0 "这些性奴经过了彻底的洗脑改造，从内到外都已经彻底认为自己是一只淫荡的母狗了，她们被铁链项圈牵着，服从任何主人下达的命令，即使是被要求与野兽交配，她们也会毫不犹豫上演一出兽奸戏。她们极大满足了民众的残忍施虐欲，也平复了人们的戾气。['concept_planet_futa_primary']"
+mod_job_futa_female_dog_add:0 "$job_female_dog$职位"
+mod_job_futa_female_dog_per_pop:0 "每$VALUE$个 £pop£ 人口提供§G+1§!$job_female_dog$职位"
+mod_job_futa_female_dog_per_pop_short:0 "每$VALUE$个£pop£有§G+1§!个£mod_job_female_dog_add£  "
+
+ job_futa_public_toilet:0 "公众便所"
+ job_futa_public_toilet_plural:0 "$job_public_toilet$"
+ job_futa_public_toilet_desc:0 "这些美貌的优质奴隶都被强制拘束起来，作为服务民众的免费公众便所，任何人都可以随意使用她们，往往一天之内肉穴就会承受数百根肉棒的插入射精，所以需要及时更换。她们就是帝国公民的福利设施。['concept_planet_futa_primary']"
+mod_job_futa_public_toilet_add:0 "$job_public_toilet$职位"
+mod_job_futa_public_toilet_per_pop:0 "每$VALUE$个 £pop£ 人口提供§G+1§!$job_public_toilet$职位"
+mod_job_futa_public_toilet_per_pop_short:0 "每$VALUE$个£pop£有§G+1§!个£mod_job_public_toilet_add£  "
+
+ job_futa_sex_slave:0 "淫穴性奴"
+ job_futa_sex_slave_plural:0 "$job_sex_slave$"
+ job_futa_sex_slave_desc:0 "这些被特殊调教过的美貌奴隶是专门用来为民众进行公共性处理服务的，她们的身体已经被调教成无法抵抗性爱快感的淫乱肉体，虽然部分性奴还在嘴硬，但是身体还是很老实的——棒棒轻轻蹭着她们的娇嫩肉穴，她们就不由自主地颤抖着，开始滴落淫乱的肉汁。大部分性奴更是已放弃抵抗，开始主动索取精液。['concept_planet_futa_primary']"
+  mod_job_futa_sex_slave_add:0 "$job_sex_slave$职位"
+  mod_job_futa_sex_slave_per_pop:0 "每$VALUE$个 £pop£ 人口提供§G+1§!$job_sex_slave$职位"
+  mod_job_futa_sex_slave_per_pop_short:0 "每$VALUE$个£pop£有§G+1§!个£mod_job_sex_slave_add£  "

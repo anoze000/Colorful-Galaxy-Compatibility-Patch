@@ -24,6 +24,10 @@ is_zofe_compatible = { always = no }
 
 is_monster_girl = { always = no }
 
+is_ELF_criminal_syndicate_rule = { always = no }
+
+is_ELF_food_upkeep_archetype = { always = no }
+
 TIME_RULE_trgr_spcs_CAN_live_on_planet = {
 	always = yes
 }

@@ -2456,8 +2456,13 @@ planet_jobs = {
 		}
 		trigger = {
 			is_scope_type = pop	# |PR转化|
-			is_pop_category = slave
-			has_job_category = worker
+			OR = {
+				owner = {
+					has_civic = civic_pantyhose_slave
+				}
+				has_job_category = worker
+				has_job_category = futa_rbq
+			}
 		}
 	}
 
@@ -2936,6 +2941,17 @@ planet_jobs = {
 				}
 				has_erotic_job_machine = yes
 			}
+		}
+	}
+	#丝袜性奴阶级
+	triggered_produces_modifier = {
+		key = planet_jobs_futa_rbq
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			has_job_category = futa_rbq
 		}
 	}
 }

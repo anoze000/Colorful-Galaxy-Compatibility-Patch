@@ -1,0 +1,1373 @@
+#修改原政策
+slavery = {
+	potential = {
+		NOT = {
+			has_ethic = "ethic_gestalt_consciousness"
+		}
+	}
+	option = {
+		name = "slavery_not_allowed"
+		valid = {
+			NOR = {
+				has_valid_civic = civic_slaver_guilds
+				has_valid_civic = civic_indentured_assets
+			}
+		}
+		policy_flags = {
+			slavery_not_allowed
+		}
+		on_enabled = {
+			hidden_effect = {
+				every_owned_planet = {
+					remove_modifier = slave_colony
+				}
+			}
+		}
+		modifier = {
+			slave_market_cost_mult = 1
+		}
+	}
+	option = {
+		name = "slavery_allowed"
+		valid = {
+			NOT = {
+				any_agreement = {
+					agreement_preset = preset_signatory
+				}
+			}
+			OR = {
+				has_ethic = ethic_authoritarian
+				has_ethic = ethic_fanatic_authoritarian
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_fanatic_xenophobe
+				has_trait = trait_futa
+			}
+		}
+		policy_flags = {
+			slavery_allowed
+		}
+		modifier = {
+		}
+		AI_weight = {
+			factor = 10
+			modifier = {
+				factor = 2
+				OR = {
+					has_trait = trait_futa
+				}
+			}
+			modifier = {
+				factor = 0
+				has_valid_ai_personality = yes
+				NOT = {
+					has_ai_personality_behaviour = slaver
+				}
+			}
+			modifier = {
+				factor = 0
+				has_valid_ai_personality = no
+				NOR = {
+					has_ethic = ethic_authoritarian
+					has_ethic = ethic_fanatic_authoritarian
+					has_ethic = ethic_xenophobe
+					has_ethic = ethic_fanatic_xenophobe
+					has_trait = trait_futa
+				}
+			}
+			# special case for harmonious collectives
+			modifier = {
+				factor = 0
+				has_valid_ai_personality = no
+				is_ai = yes
+				NOR = {
+					has_ethic = "ethic_xenophobe"
+					has_ethic = "ethic_fanatic_xenophobe"
+					has_ethic = "ethic_militarist"
+					has_ethic = "ethic_fanatic_militarist"
+				}
+				OR = {
+					has_ethic = "ethic_pacifist"
+					has_ethic = "ethic_fanatic_pacifist"
+					has_ethic = "ethic_xenophile"
+					has_ethic = "ethic_fanatic_xenophile"
+				}
+				OR = {
+					has_ethic = "ethic_authoritarian"
+					has_ethic = "ethic_fanatic_authoritarian"
+				}
+				NOR = {
+					has_valid_civic = "civic_slaver_guilds"
+					has_trait = "trait_decadent"
+				}
+			}
+		}
+	}
+}
+
+# #附庸条款
+# subjugation_war_terms = {
+# 	potential = {
+# 		is_futa_country = no
+# 		is_subject = no
+# 		OR = {
+# 			is_country_type = default
+# 			is_country_type = fallen_empire
+# 			is_country_type = awakened_fallen_empire
+# 		}
+# 	}
+# 	option = {
+# 		name = "oppressive_terms"
+# 		policy_flags = {
+# 			oppressive_terms
+# 		}
+# 		on_enabled = {
+# 			hidden_effect = { #this is to remember the player's pick if they are subjugated
+# 				if = {
+# 					limit = { is_ai = no }
+# 					set_country_flag = oppressive_terms_preference
+# 					remove_country_flag = benevolent_terms_preference
+# 					remove_country_flag = balanced_terms_preference
+# 				}
+# 			}
+# 		}
+# 		ai_weight = {
+# 			weight = 10
+# 			# Nice people who would never pick this.
+# 			modifier = {
+# 				factor = 0.1
+# 				has_ethic = ethic_fanatic_xenophile
+# 			}
+# 			modifier = {
+# 				factor = 0.5
+# 				has_ethic = ethic_xenophile
+# 			}
+# 			modifier = {
+# 				factor = 0.1
+# 				has_ethic = ethic_fanatic_pacifist
+# 			}
+# 			modifier = {
+# 				factor = 0.5
+# 				has_ethic = ethic_pacifist
+# 			}
+# 			# Bad people who likely would.
+# 			modifier = {
+# 				factor = 1.3
+# 				has_ethic = ethic_fanatic_xenophobe
+# 			}
+# 			modifier = {
+# 				factor = 1.15
+# 				has_ethic = ethic_xenophobe
+# 			}
+# 			modifier = {
+# 				factor = 1.3
+# 				has_ethic = ethic_fanatic_authoritarian
+# 			}
+# 			modifier = {
+# 				factor = 1.15
+# 				has_ethic = ethic_authoritarian
+# 			}
+# 			modifier = {
+# 				factor = 10
+# 				has_country_flag = oppressive_terms_preference
+# 			}
+# 		}
+# 	}
+# 	option = {
+# 		name = "balanced_terms"
+# 		policy_flags = {
+# 			balanced_terms
+# 		}
+# 		on_enabled = {
+# 			hidden_effect = {
+# 				if = {
+# 					limit = { is_ai = no }
+# 					set_country_flag = balanced_terms_preference
+# 					remove_country_flag = benevolent_terms_preference
+# 					remove_country_flag = oppressive_terms_preference
+# 				}
+# 			}
+# 		}
+# 		ai_weight = {
+# 			weight = 10
+# 			# Rational people who would like this.
+# 			modifier = {
+# 				factor = 1.3
+# 				has_ethic = ethic_fanatic_egalitarian
+# 			}
+# 			modifier = {
+# 				factor = 1.15
+# 				has_ethic = ethic_egalitarian
+# 			}
+# 			modifier = {
+# 				factor = 1.3
+# 				has_ethic = ethic_fanatic_materialist
+# 			}
+# 			modifier = {
+# 				factor = 1.15
+# 				has_ethic = ethic_materialist
+# 			}
+# 			modifier = {
+# 				factor = 10
+# 				has_country_flag = balanced_terms_preference
+# 			}
+# 		}
+# 	}
+# 	option = {
+# 		name = "benevolent_terms"
+# 		policy_flags = {
+# 			benevolent_terms
+# 		}
+# 		on_enabled = {
+# 			hidden_effect = {
+# 				if = {
+# 					limit = { is_ai = no }
+# 					set_country_flag = benevolent_terms_preference
+# 					remove_country_flag = balanced_terms_preference
+# 					remove_country_flag = oppressive_terms_preference
+# 				}
+# 			}
+# 		}
+# 		ai_weight = {
+# 			weight = 10
+# 			# Bad people who probably not pick this.
+# 			modifier = {
+# 				factor = 0.1
+# 				has_ethic = ethic_fanatic_xenophobe
+# 			}
+# 			modifier = {
+# 				factor = 0.5
+# 				has_ethic = ethic_xenophobe
+# 			}
+# 			modifier = {
+# 				factor = 0.1
+# 				has_ethic = ethic_fanatic_authoritarian
+# 			}
+# 			modifier = {
+# 				factor = 0.5
+# 				has_ethic = ethic_authoritarian
+# 			}
+# 			# Nice people who probably would.
+# 			modifier = {
+# 				factor = 1.3
+# 				has_ethic = ethic_fanatic_xenophile
+# 			}
+# 			modifier = {
+# 				factor = 1.15
+# 				has_ethic = ethic_xenophile
+# 			}
+# 			modifier = {
+# 				factor = 1.3
+# 				has_ethic = ethic_fanatic_pacifist
+# 			}
+# 			modifier = {
+# 				factor = 1.15
+# 				has_ethic = ethic_pacifist
+# 			}
+# 			modifier = {
+# 				factor = 10
+# 				has_country_flag = benevolent_terms_preference
+# 			}
+# 		}
+# 	}
+# }
+#人口控制
+population_controls = {
+	potential = {
+		NOT = {
+			has_ethic = "ethic_gestalt_consciousness"
+		}
+	}
+	option = {
+		name = "population_controls_not_allowed"
+		on_enabled = {
+			hidden_effect = {
+				every_owned_planet = {
+					remove_modifier = planet_population_control
+				}
+			}
+		}
+		policy_flags = {
+			population_controls_not_allowed
+		}
+	}
+	option = {
+		name = "population_controls_allowed"
+		on_enabled = {
+			hidden_effect = {
+				every_owned_planet = {
+					remove_modifier = planet_growth_discouraged
+				}
+			}
+		}
+		policy_flags = {
+			population_controls_allowed
+		}
+		modifier = {
+		}
+		AI_weight = {
+			factor = 10
+			modifier = {
+				factor = 0
+				is_ai = yes
+				OR = {
+					has_ethic = ethic_egalitarian
+					has_ethic = ethic_fanatic_egalitarian
+					has_ethic = ethic_xenophile
+					has_ethic = ethic_fanatic_xenophile
+				}
+			}
+			modifier = {
+				factor = 100
+				is_ai = no
+			}
+		}
+	}
+}
+
+# #土著干涉
+# interference = {
+# 	potential = {
+# 		has_met_primitives = yes
+# 	}
+# 	option = {
+# 		name = "interference_passive"
+# 		policy_flags = {
+# 			interference_passive
+# 		}
+# 		on_enabled = {
+# 		}
+# 		valid = {
+# 			OR = {
+# 				is_subject_type = signatory
+# 				NOR = {
+# 					has_ethic = "ethic_fanatic_xenophobe"
+# 					has_valid_civic = "civic_fanatic_purifiers"
+# 					has_valid_civic = "civic_hive_devouring_swarm"
+# 					has_valid_civic = "civic_machine_terminator"
+# 				}
+# 			}
+# 		}
+# 	}
+# 	option = {
+# 		name = "interference_active"
+# 		policy_flags = {
+# 			interference_active
+# 		}
+# 		modifier = {
+# 		}
+# 		valid = {
+# 			NOR = {
+# 				is_subject_type = signatory
+# 				has_valid_civic = "civic_fanatic_purifiers"
+# 				has_valid_civic = "civic_hive_devouring_swarm"
+# 			}
+# 		}
+# 		AI_weight = {
+# 			modifier = {
+# 				factor = 2
+# 				has_valid_ai_personality = yes
+# 				OR = {
+# 					has_ai_personality_behaviour = infiltrator
+# 					has_ai_personality_behaviour = dominator
+# 				}
+# 			}
+# 			modifier = {
+# 				factor = 0
+# 				has_valid_ai_personality = yes
+# 				NOR = {
+# 					has_ai_personality_behaviour = infiltrator
+# 					has_ai_personality_behaviour = dominator
+# 				}
+# 			}
+# 		}
+# 	}
+# 	option = {
+# 		name = "interference_full"
+# 		potential = {
+# 		}
+# 		valid = {
+# 			NOT = {
+# 				is_subject_type = signatory
+# 			}
+# 			NOR = {
+# 				has_ethic = "ethic_pacifist"
+# 				has_ethic = "ethic_fanatic_pacifist"
+# 			}
+# 		}
+# 		policy_flags = {
+# 			interference_full
+# 		}
+# 		modifier = {
+# 		}
+# 		AI_weight = {
+# 			modifier = {
+# 				factor = 100
+# 				is_ai = no
+# 				OR = {
+# 					has_trait = trait_futa
+# 					has_trait = trait_DC_ethic_carnalism					#魅魔系
+# 					has_trait = trait_DC_ethic_parasite_mind					#普通淫虫
+# 					has_trait = trait_DC_ethic_parasite_mind_hard					#困难淫虫
+# 				}
+# 			}
+# 			modifier = {
+# 				factor = 3
+# 				has_valid_ai_personality = yes
+# 				OR = {
+# 					has_ai_personality_behaviour = infiltrator
+# 					has_ai_personality_behaviour = dominator
+# 				}
+# 			}
+# 			modifier = {
+# 				factor = 0
+# 				has_valid_ai_personality = yes
+# 				NOR = {
+# 					has_ai_personality_behaviour = infiltrator
+# 					has_ai_personality_behaviour = dominator
+# 					has_trait = trait_futa
+# 					has_trait = trait_DC_ethic_carnalism					#魅魔系
+# 					has_trait = trait_DC_ethic_parasite_mind					#普通淫虫
+# 					has_trait = trait_DC_ethic_parasite_mind_hard					#困难淫虫
+# 				}
+# 			}
+# 			modifier = {
+# 				factor = 0
+# 				OR = {
+# 					has_ethic = "ethic_pacifist"
+# 					has_ethic = "ethic_fanatic_pacifist"
+# 				}
+# 			}
+# 		}
+# 	}
+# }
+#净化
+# purge = {
+# 	option = {
+# 		name = "purge_not_allowed"
+# 		valid = {
+# 			NOT = {
+# 				has_ethic = ethic_gestalt_consciousness
+# 			}
+# 			NOT = {
+# 				has_valid_civic = "civic_fanatic_purifiers"
+# 			}
+# 			OR = {
+# 				is_star_country = no
+# 				AND = {
+# 					is_star_country = yes
+# 					has_ascension_perk = ap_elf_star_angel2
+# 				}
+# 			}
+# 		}
+# 		policy_flags = {
+# 			purge_not_allowed
+# 		}
+# 	}
+# 	option = {
+# 		name = "purge_displacement_only"
+# 		policy_flags = {
+# 			purge_displacement_only
+# 		}
+# 		modifier = {
+# 		}
+# 		valid = {
+# 			NOR = {
+# 				has_ethic = ethic_xenophile
+# 				has_ethic = ethic_fanatic_xenophile
+# 			}
+# 			is_homicidal = no
+# 			OR = {
+# 				is_star_country = no
+# 				AND = {
+# 					is_star_country = yes
+# 					has_ascension_perk = ap_elf_star_angel2
+# 				}
+# 			}
+# 		}
+# 		AI_weight = {
+# 			factor = 5
+# 			modifier = {
+# 				factor = 0
+# 				has_valid_ai_personality = yes
+# 				has_ai_personality_behaviour = multispecies
+# 			}
+# 		}
+# 	}
+# 	option = {
+# 		name = "purge_allowed"
+# 		in_breach_of = {
+# 			{
+# 				key = resolution_rulesofwar_reverence_for_life
+# 			}
+# 		}
+# 		policy_flags = {
+# 			purge_allowed
+# 		}
+# 		modifier = {
+# 		}
+# 		valid = {
+# 			NOT = {
+# 				is_subject_type = signatory
+# 			}
+# 			OR = {
+# 				has_ethic = ethic_gestalt_consciousness
+# 				has_ethic = ethic_xenophobe
+# 				has_ethic = ethic_fanatic_xenophobe
+# 				has_menace_perk = menp_undertaker				# Unlocked with Crisis Level 1
+# 			}
+# 		}
+# 		AI_weight = {
+# 			factor = 10
+# 			modifier = {
+# 				factor = 40
+# 				has_ethic = ethic_gestalt_consciousness
+# 				NOT = {
+# 					has_valid_civic = civic_hive_empath
+# 				}
+# 			}
+# 			modifier = {
+# 				factor = 0
+# 				OR = {
+# 					has_ethic = ethic_pacifist
+# 					has_ethic = ethic_fanatic_pacifist
+# 				}
+# 			}
+# 			modifier = {
+# 				factor = 0
+# 				has_valid_ai_personality = yes
+# 				NOR = {
+# 					has_ai_personality_behaviour = purger
+# 					has_ethic = ethic_gestalt_consciousness
+# 				}
+# 			}
+# 			modifier = {
+# 				factor = 0.1
+# 				has_valid_ai_personality = yes
+# 				is_ai = yes
+# 				is_galactic_community_member = yes
+# 				OR = {
+# 					is_active_resolution = "resolution_rulesofwar_reverence_for_life"
+# 					is_active_resolution = "resolution_rulesofwar_independent_tribunals"
+# 					is_active_resolution = "resolution_rulesofwar_last_resort_doctrine"
+# 					is_active_resolution = "resolution_rulesofwar_demobilization_initiative"
+# 				}
+# 			}
+# 			modifier = {
+# 				factor = 10
+# 				has_ascension_perk = ap_become_the_crisis
+# 			}
+# 		}
+# 	}
+# }
+#允许纵欲？
+allow_sex_or_not = {
+	potential = {
+		NOT = {
+			has_ethic = "ethic_gestalt_consciousness"
+		}
+	}
+	option = {
+		name = "sex_no"		#禁止纵欲
+		policy_flags = {
+			no_sex
+		}
+		valid = {
+			# NOR = {
+			# 	has_trait = trait_futa
+			# }
+		}
+		modifier = {
+			planet_stability_add = 1			#稳定性
+			all_technology_research_speed = 0.02			#研究速度
+			# planet_pops_consumer_goods_upkeep_mult = -0.15			#人口消费品使用
+			pop_growth_speed = -0.02			#人口增长速度
+			PLANET_POP_ASSEMBLY_ORGANIC_MULT = -0.02
+			PLANET_POP_ASSEMBLY_MULT = -0.02
+			# planet_stability_add = -5
+			# planet_crime_add = 5
+		}
+		# AI_weight = {
+		# 	modifier = {
+		# 		factor = 100
+		# 		has_trait = trait_light
+		# 	}
+		# }
+	}
+	option = {
+		name = "sex_limited"		#节制纵欲
+		policy_flags = {
+			sex_limited
+		}
+		potential = {
+			always = yes
+		}
+		modifier = {
+			# # pop_happiness = 0.01			#幸福度
+			pop_growth_speed = 0.01			#人口增长速度
+			# planet_pop_assembly_mult = 0.2
+			all_technology_research_speed = 0.01			#研究速度
+			# planet_pops_consumer_goods_upkeep_mult = 0.05			#人口消费品使用
+			# planet_stability_add = 5
+			# planet_crime_add = -5
+		}
+		AI_weight = {
+			modifier = {
+				factor = 100
+				has_trait = trait_light
+			}
+		}
+	}
+	option = {
+		name = "sex_full"		#允许纵欲
+		policy_flags = {
+			sex_full
+		}
+		modifier = {
+			# # pop_happiness = 0.01			#幸福度
+			pop_growth_speed = 0.02			#人口增长速度
+			PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.02
+			PLANET_POP_ASSEMBLY_MULT = 0.02
+			# planet_pop_assembly_mult = 0.2
+			all_technology_research_speed = -0.01			#研究速度
+			# planet_pops_consumer_goods_upkeep_mult = 0.05			#人口消费品使用
+			# planet_stability_add = 5
+			# planet_crime_add = -5
+		}
+		AI_weight = {
+			modifier = {
+				factor = 1000
+				OR = {
+					has_trait = trait_dark
+					has_trait = trait_futa
+				}
+			}
+		}
+	}
+}
+
+#奴隶性处理
+slave_how_to_use = {
+	potential = {
+		# 
+		NOT = {
+			has_ethic = "ethic_gestalt_consciousness"
+		}
+	}
+	option = {
+		name = "slave_normal"		#一般
+		policy_flags = {
+			slave_normal_flag
+		}
+		AI_weight = {
+			modifier = {
+				factor = 50
+			}
+		}
+		modifier = {
+			pop_cat_slave_happiness = 0.01
+			pop_cat_futa_rbq_happiness = 0.01
+		}
+	}
+	option = {
+		name = "slave_sex"		#性奴
+		policy_flags = {
+			slave_sex_flag
+		}
+		# valid = {
+		# 	has_technology = "tech_gene_tailoring"
+		# }
+		AI_weight = {
+			modifier = {
+				factor = 75
+			}
+		}
+		modifier = {
+			planet_jobs_slave_produces_mult = 0.01
+			pop_cat_slave_happiness = -0.01
+			# pop_growth_speed = 0.03			#繁殖
+			# PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.03			#人口组装
+			# planet_stability_add = -3
+			# planet_crime_add = 3
+		}
+	}
+	option = {
+		name = "slave_rbq"		#rbq
+		policy_flags = {
+			slave_rbq_flag
+		}
+		AI_weight = {
+			modifier = {
+				factor = 1000
+				OR = {
+					has_trait = trait_dark
+					has_trait = trait_futa
+				}
+			}
+		}
+		modifier = {
+			pop_growth_speed = 0.01
+			PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.01
+			PLANET_POP_ASSEMBLY_MULT = 0.01
+		}
+	}
+}
+
+#外族性处置
+alien_policy = {
+	potential = {
+		# 
+	}
+	option = {
+		name = "alien_normal"
+		policy_flags = {
+			alien_normal_flag
+		}
+		AI_weight = {
+			weight = 50
+		}
+		modifier = {
+			planet_stability_add = 1
+			planet_crime_add = -1
+		}
+	}
+	option = {
+		name = "alien_seedbed"
+		policy_flags = {
+			alien_seedbed_flag
+		}
+		potential = {
+			has_trait = trait_futa
+		}
+		AI_weight = {
+			weight = 100
+			# modifier = {
+			# 	factor = 100
+			# 	has_trait = trait_futa
+			# }
+		}
+		modifier = {
+			pop_growth_speed = 0.01
+			PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.01
+			PLANET_POP_ASSEMBLY_MULT = 0.01
+			country_trust_growth = -0.02
+		}
+	}
+}
+
+#强制奴役
+CG_force_enslave = {
+	potential = {
+		# 
+		NOT = {
+			has_ethic = "ethic_gestalt_consciousness"
+		}
+	}
+	option = {
+		name = "nomore_slave"		#无
+		policy_flags = {
+			nomore_slave_flag
+		}
+		AI_weight = {
+			factor = 50
+		}
+	}
+	option = {
+		name = "few_slave"		#少量奴隶
+		policy_flags = {
+			few_slave_flag
+		}
+		potential = {
+			is_ai = no
+		}
+		valid = {
+			has_policy_flag = "slavery_allowed"
+		}
+		modifier = {
+			country_pop_enslaved_mult = 0.1
+			# planet_stability_add = -5
+			# planet_crime_add = 5
+		}
+		AI_weight = {
+			factor = 5
+		}
+	}
+	option = {
+		name = "mid_slave"		#中量奴隶
+		policy_flags = {
+			mid_slave_flag
+		}
+		potential = {
+			is_ai = no
+		}
+		valid = {
+			has_policy_flag = "slavery_allowed"
+		}
+		modifier = {
+			country_pop_enslaved_mult = 0.2
+			# planet_stability_add = -5
+			# planet_crime_add = 5
+		}
+		AI_weight = {
+			factor = 5
+		}
+	}
+	option = {
+		name = "large_slave"		#大量奴隶
+		policy_flags = {
+			lot_slave_flag
+		}
+		potential = {
+			is_ai = no
+		}
+		valid = {
+			has_policy_flag = "slavery_allowed"
+		}
+		modifier = {
+			country_pop_enslaved_mult = 0.3
+			planet_stability_add = -5
+			# planet_crime_add = 5
+		}
+		AI_weight = {
+			factor = 5
+		}
+	}
+}
+
+#穿着自由
+policies_of_wearing = {
+	potential = {
+		# 
+		NOT = {
+			has_ethic = "ethic_gestalt_consciousness"
+		}
+	}
+	option = {
+		name = "wear_much"
+		policy_flags = {
+			wear_much
+		}
+		modifier = {
+			planet_amenities_mult = -0.01
+			# leader_lifespan_add = 10
+			# pop_happiness = -0.15			#人口幸福度
+		}
+		# valid = {
+		# 	is_light_country = yes
+		# }
+		AI_weight = {
+			modifier = {
+				factor = 50
+			}
+		}
+	}
+	option = {
+		name = "wear_normally"
+		policy_flags = {
+			wear_normally
+		}
+		AI_weight = {
+			modifier = {
+				factor = 75
+			}
+		}
+	}
+	option = {
+		name = "wear_none"
+		policy_flags = {
+			wear_none
+		}
+		modifier = {
+			planet_crime_add = 1
+			planet_amenities_mult = 0.01			#人口舒适度
+		}
+		# potential = {
+		# 	has_trait = trait_futa
+		# }
+		AI_weight = {
+			modifier = {
+				factor = 1000
+				OR = {
+					has_trait = trait_dark
+					has_trait = trait_futa
+				}
+			}
+		}
+	}
+}
+
+#生育自由
+policy_of_birth = {
+	potential = {
+		NOT = {
+			has_ethic = "ethic_gestalt_consciousness"
+		}
+	}
+	option = {
+		name = "birth_at_will"
+		policy_flags = {
+			birth_at_will
+		}
+		# modifier = {
+		# 	pop_happiness = -0.1			#人口幸福度
+		# 	pop_growth_speed = -0.05
+		# }
+		AI_weight = {
+			modifier = {
+				factor = 50
+			}
+		}
+	}
+	option = {
+		name = "birth_more"
+		policy_flags = {
+			birth_more
+		}
+		modifier = {
+			pop_growth_speed = 0.02
+			PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.02
+			PLANET_POP_ASSEMBLY_MULT = 0.02
+			planet_jobs_produces_mult = -0.01
+		}
+		AI_weight = {
+			modifier = {
+				factor = 75
+			}
+		}
+	}
+	option = {
+		name = "birth_no"
+		policy_flags = {
+			birth_no
+		}
+		# potential = {
+		# 	has_trait = trait_futa
+		# }
+		modifier = {
+			# pop_happiness = 0.05			#人口幸福度
+			planet_jobs_specialist_produces_mult = 0.01
+			# planet_jobs_produces_mult = 0.05
+			pop_growth_speed = -0.01
+			PLANET_POP_ASSEMBLY_ORGANIC_MULT = -0.01
+			PLANET_POP_ASSEMBLY_MULT = -0.01
+		}
+		AI_weight = {
+			modifier = {
+				factor = 1000
+				OR = {
+					has_trait = trait_dark
+					has_trait = trait_futa
+				}
+			}
+		}
+	}
+}
+
+#兽娘保护法案
+policy_of_bestiality = {
+	potential = {
+		NOT = {
+			has_ethic = "ethic_gestalt_consciousness"
+		}
+	}
+	option = {
+		name = "fuck_no"
+		policy_flags = {
+			fuck_no
+		}
+		modifier = {
+			planet_stability_add = 1
+			planet_crime_add = -1
+		}
+		AI_weight = {
+			modifier = {
+				factor = 100
+			}
+		}
+	}
+	option = {
+		name = "fuck_yeah"
+		policy_flags = {
+			fuck_yeah
+		}
+		modifier = {
+			# pop_growth_speed = 0.02
+			# PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.02
+			# PLANET_POP_ASSEMBLY_MULT = 0.02
+			# planet_stability_add = 5
+			# planet_crime_add = 5
+			planet_jobs_food_produces_mult = 0.01
+			# planet_pops_food_upkeep_mult = -0.1
+		}
+		AI_weight = {
+			modifier = {
+				factor = 1000
+				OR = {
+					has_trait = trait_dark
+					has_trait = trait_futa
+				}
+			}
+		}
+	}
+}
+
+#婚姻制度
+policy_of_marriage_relationship = {
+	potential = {
+		NOT = {
+			has_ethic = "ethic_gestalt_consciousness"
+		}
+	}
+	option = {
+		name = "monogamy"		#一夫一妻制
+		policy_flags = {
+			monogamy
+		}
+		# modifier = {
+		# 	pop_growth_speed = 0.01
+		# }
+		AI_weight = {
+			modifier = {
+				factor = 50
+			}
+		}
+	}
+	option = {
+		name = "polygyny"		#一夫多妻制
+		policy_flags = {
+			polygyny
+		}
+		modifier = {
+			# pop_happiness = 0.01			#人口幸福度
+			pop_growth_speed = 0.01
+			planet_stability_add = -1
+		}
+		potential = {
+			always = yes
+		}
+		AI_weight = {
+			modifier = {
+				factor = 100
+				has_trait = trait_dark
+			}
+		}
+	}
+	option = {
+		name = "polygamy"
+		policy_flags = {
+			polygamy
+		}
+		potential = {
+			has_trait = trait_futa
+		}
+		modifier = {
+			# pop_happiness = 0.01			#人口幸福度
+			pop_growth_speed = 0.01
+			planet_jobs_unity_produces_mult = 0.01
+			planet_stability_add = -2
+			planet_crime_add = 1
+		}
+		AI_weight = {
+			modifier = {
+				factor = 1000
+			}
+		}
+	}
+}
+
+#罪犯管理制度
+policy_of_criminal = {
+	potential = {
+		NOT = {
+			has_ethic = "ethic_gestalt_consciousness"
+		}
+	}
+	option = {
+		name = "criminal_free"
+		policy_flags = {
+			criminal_free
+		}
+		modifier = {
+			pop_cat_worker_happiness = 0.02
+			pop_cat_futa_rbq_happiness = 0.02
+			pop_cat_slave_happiness = 0.02
+		}
+		AI_weight = {
+			modifier = {
+				factor = 50
+			}
+		}
+	}
+	option = {
+		name = "criminal_normal"
+		policy_flags = {
+			criminal_normal
+		}
+		modifier = {
+			planet_jobs_worker_produces_mult = 0.01
+			planet_jobs_futa_rbq_produces_mult = 0.01
+			pop_cat_worker_happiness = -0.01
+			pop_cat_futa_rbq_happiness = -0.01
+		}
+		AI_weight = {
+			modifier = {
+				factor = 75
+			}
+		}
+	}
+	option = {
+		name = "criminal_die"
+		policy_flags = {
+			criminal_die
+		}
+		modifier = {
+			planet_stability_add = -3
+			planet_jobs_food_produces_mult = 0.03
+			pop_cat_slave_happiness = -0.02
+		}
+		AI_weight = {
+			modifier = {
+				factor = 50
+			}
+		}
+	}
+	option = {
+		name = "criminal_sexslave"
+		policy_flags = {
+			criminal_sexslave
+		}
+		modifier = {
+			pop_growth_speed = 0.01
+			PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.01
+			PLANET_POP_ASSEMBLY_MULT = 0.01
+			planet_jobs_worker_produces_mult = -0.01
+			planet_jobs_futa_rbq_produces_mult = -0.01
+		}
+		AI_weight = {
+			modifier = {
+				factor = 1000
+				OR = {
+					has_trait = trait_dark
+					has_trait = trait_futa
+				}
+			}
+		}
+	}
+}
+
+#住房制度
+policy_of_housing = {
+	potential = {
+		NOT = {
+			has_ethic = "ethic_gestalt_consciousness"
+		}
+	}
+	option = {
+		name = "buy_youself"
+		policy_flags = {
+			buy_youself
+		}
+		modifier = {
+			pop_cat_Ruler_happiness = 0.02
+			trade_value_mult = 0.03
+			pop_cat_worker_happiness = -0.01
+			pop_cat_futa_rbq_happiness = -0.01
+			pop_cat_slave_happiness = -0.01
+			pop_housing_usage_mult = 0.03
+		}
+		AI_weight = {
+			modifier = {
+				factor = 100
+			}
+		}
+	}
+	option = {
+		name = "country_assign"
+		policy_flags = {
+			country_assign
+		}
+		modifier = {
+			pop_cat_worker_happiness = 0.01
+			pop_cat_futa_rbq_happiness = 0.01
+			pop_cat_slave_happiness = 0.01
+		}
+		AI_weight = {
+			modifier = {
+				factor = 50
+			}
+		}
+	}
+	option = {
+		name = "live_everywhere"
+		policy_flags = {
+			live_everywhere
+		}
+		modifier = {
+			pop_cat_Ruler_happiness = -0.01
+			# pop_growth_speed = 0.01
+			pop_housing_usage_mult = -0.01
+			pop_amenities_usage_mult = -0.01
+		}
+		AI_weight = {
+			modifier = {
+				factor = 1000
+				OR = {
+					has_trait = trait_dark
+					has_trait = trait_futa
+				}
+			}
+		}
+	}
+}
+
+#自动化技术-开采站
+ELF_automatic_construction_station = {
+	# potential = {
+	# 	OR = {
+	# 		has_country_flag = vassal_futa_1_4
+	# 		has_country_flag = has_relic_God_Elemental_Crystal_light
+	# 		has_country_flag = has_relic_God_Elemental_Crystal_dark
+	# 		has_country_flag = has_relic_God_Elemental_Crystal_wind
+	# 		has_country_flag = has_relic_God_Elemental_Crystal_water
+	# 		has_country_flag = has_relic_God_Elemental_Crystal_dream
+	# 	}
+	# }
+	option = {
+		name = "ELF_automatic_construction_station_on"
+		policy_flags = {
+			ELF_automatic_construction_station_on
+		}
+		valid = {
+			custom_tooltip_fail = {
+				text = ELF_automatic_construction_allow_txt
+				OR = {
+					has_country_flag = vassal_futa_1_4
+					has_country_flag = has_relic_God_Elemental_Crystal_light
+					has_country_flag = has_relic_God_Elemental_Crystal_dark
+					has_country_flag = has_relic_God_Elemental_Crystal_wind
+					has_country_flag = has_relic_God_Elemental_Crystal_water
+					has_country_flag = has_relic_God_Elemental_Crystal_dream
+				}
+			}
+		}
+		# modifier = {
+		# 	pop_cat_Ruler_happiness = 0.02
+		# 	trade_value_mult = 0.03
+		# 	pop_cat_worker_happiness = -0.01
+		# 	pop_cat_futa_rbq_happiness = -0.01
+		# 	pop_cat_slave_happiness = -0.01
+		# 	pop_housing_usage_mult = 0.03
+		# }
+		AI_weight = {
+			modifier = {
+				factor = 100
+			}
+		}
+	}
+	option = {
+		name = "ELF_automatic_construction_station_off"
+		policy_flags = {
+			ELF_automatic_construction_station_off
+		}
+		valid = {
+			custom_tooltip_fail = {
+				text = ELF_automatic_construction_allow_txt
+				OR = {
+					has_country_flag = vassal_futa_1_4
+					has_country_flag = has_relic_God_Elemental_Crystal_light
+					has_country_flag = has_relic_God_Elemental_Crystal_dark
+					has_country_flag = has_relic_God_Elemental_Crystal_wind
+					has_country_flag = has_relic_God_Elemental_Crystal_water
+					has_country_flag = has_relic_God_Elemental_Crystal_dream
+				}
+			}
+		}
+		# modifier = {
+		# 	pop_cat_worker_happiness = 0.01
+		# 	pop_cat_futa_rbq_happiness = 0.01
+		# 	pop_cat_slave_happiness = 0.01
+		# }
+		AI_weight = {
+			modifier = {
+				factor = 50
+			}
+		}
+	}
+}
+
+#自动化技术-超空间中继器
+ELF_automatic_construction_hyper_relays = {
+	# allow = {
+	# 	custom_tooltip_fail = {
+	# 		text = ELF_automatic_construction_allow_txt
+	# 		OR = {
+	# 			has_country_flag = vassal_futa_1_4
+	# 			has_country_flag = has_relic_God_Elemental_Crystal_light
+	# 			has_country_flag = has_relic_God_Elemental_Crystal_dark
+	# 			has_country_flag = has_relic_God_Elemental_Crystal_wind
+	# 			has_country_flag = has_relic_God_Elemental_Crystal_water
+	# 			has_country_flag = has_relic_God_Elemental_Crystal_dream
+	# 		}
+	# 	}
+	# }
+	option = {
+		name = "ELF_automatic_construction_hyper_relays_on"
+		policy_flags = {
+			ELF_automatic_construction_hyper_relays_on
+		}
+		valid = {
+			custom_tooltip_fail = {
+				text = ELF_automatic_construction_allow_txt
+				OR = {
+					has_country_flag = vassal_futa_1_4
+					has_country_flag = has_relic_God_Elemental_Crystal_light
+					has_country_flag = has_relic_God_Elemental_Crystal_dark
+					has_country_flag = has_relic_God_Elemental_Crystal_wind
+					has_country_flag = has_relic_God_Elemental_Crystal_water
+					has_country_flag = has_relic_God_Elemental_Crystal_dream
+				}
+			}
+		}
+		# modifier = {
+		# 	pop_cat_Ruler_happiness = 0.02
+		# 	trade_value_mult = 0.03
+		# 	pop_cat_worker_happiness = -0.01
+		# 	pop_cat_futa_rbq_happiness = -0.01
+		# 	pop_cat_slave_happiness = -0.01
+		# 	pop_housing_usage_mult = 0.03
+		# }
+		AI_weight = {
+			modifier = {
+				factor = 100
+			}
+		}
+	}
+	option = {
+		name = "ELF_automatic_construction_hyper_relays_off"
+		policy_flags = {
+			ELF_automatic_construction_hyper_relays_off
+		}
+		valid = {
+			custom_tooltip_fail = {
+				text = ELF_automatic_construction_allow_txt
+				OR = {
+					has_country_flag = vassal_futa_1_4
+					has_country_flag = has_relic_God_Elemental_Crystal_light
+					has_country_flag = has_relic_God_Elemental_Crystal_dark
+					has_country_flag = has_relic_God_Elemental_Crystal_wind
+					has_country_flag = has_relic_God_Elemental_Crystal_water
+					has_country_flag = has_relic_God_Elemental_Crystal_dream
+				}
+			}
+		}
+		# modifier = {
+		# 	pop_cat_worker_happiness = 0.01
+		# 	pop_cat_futa_rbq_happiness = 0.01
+		# 	pop_cat_slave_happiness = 0.01
+		# }
+		AI_weight = {
+			modifier = {
+				factor = 50
+			}
+		}
+	}
+}

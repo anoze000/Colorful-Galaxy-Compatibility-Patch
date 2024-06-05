@@ -1,0 +1,3307 @@
+@futa_pop_weight_max = 50000
+@futa_pop_weight_lv1 = 5
+@futa_pop_weight_lv2 = 100
+@futa_pop_weight_lv3 = 10000#旅游球奴隶
+@futa_pop_weight_lv4 = 20000
+@futa_pop_weight_lv5 = 30000#分公司rbq
+##牧场
+futa_semen = {
+	category = futa_rbq
+	condition_string = ELF_JOB_CAN_CUM_TRIGGER
+	clothes_texture_index = 2
+	possible = {
+		ELF_job_can_cum_check_trigger = yes
+	}
+	resources = {
+		category = planet_futa_semen
+		produces = {
+			sr_semen = 4
+		}
+		produces = {
+			sr_semen = 4
+			trigger = {
+				pop = {
+					has_trait = trait_FUTA_DOLL
+				}
+			}
+		}
+		# upkeep = {
+		# 	food = 5
+		# }
+		# upkeep = {
+		# 	energy = 5
+		# 	trigger = {
+		# 		pop = {
+		# 			has_trait = trait_FUTA_DOLL
+		# 		}
+		# 	}
+		# }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 1
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	weight = {
+		weight = @futa_pop_weight_lv4
+		modifier = {
+			factor = 2
+			pop = {
+				has_trait = trait_FUTA_DOLL
+			}
+		}
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = food
+		# 			amount <= 0
+		# 		}
+		# 	}
+		# }
+	}
+}
+
+#电工
+futa_generator = {
+	category = futa_rbq
+	condition_string = ELF_JOB_CAN_CUM_TRIGGER
+	clothes_texture_index = 2
+	possible = {
+		ELF_job_can_cum_check_trigger = yes
+	}
+	resources = {
+		category = planet_futa_generator
+		produces = {
+			energy = 6
+		}
+		produces = {
+			energy = 1
+			multiplier = planet.modifier:planet_technician_energy_produces_add
+		}
+		produces = {
+			energy = 6
+			trigger = {
+				pop = {
+					has_trait = trait_FUTA_DOLL
+				}
+			}
+		}
+		upkeep = {
+			energy = 1
+			multiplier = planet.modifier:planet_technician_energy_upkeep_add
+		}
+		# upkeep = {
+		# 	sr_semen = 3
+		# }
+		# upkeep = {
+		# 	sr_semen = 1
+		# 	trigger = {
+		# 		pop = {
+		# 			has_trait = trait_FUTA_DOLL
+		# 		}
+		# 	}
+		# }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 1
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	weight = {
+		weight = @futa_pop_weight_lv1
+		modifier = {
+			factor = 3
+			owner = {
+				has_resource = {
+					type = energy
+					amount < 1000
+				}
+			}
+		}
+		modifier = {
+			factor = 2
+			exists = pop
+			has_trait = trait_LOW_FUTA
+		}
+		modifier = {
+			factor = 2
+			exists = pop
+			has_trait = trait_FUTA_DOLL
+		}
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = sr_semen
+		# 			amount < 5
+		# 		}
+		# 	}
+		# }
+	}
+}
+
+#矿工
+futa_miner = {
+	category = futa_rbq
+	condition_string = ELF_JOB_CAN_CUM_TRIGGER
+	clothes_texture_index = 2
+	possible = {
+		ELF_job_can_cum_check_trigger = yes
+	}
+	resources = {
+		category = planet_futa_miner
+		produces = {
+			minerals = 4
+			#consumer_goods = 5
+		}
+		produces = {
+			minerals = 1
+			multiplier = planet.modifier:planet_miners_minerals_produces_add
+		}
+		produces = {
+			alloys = 1
+			multiplier = planet.modifier:planet_miners_alloys_produces_add
+		}
+		produces = {
+			minerals = 4
+			trigger = {
+				pop = {
+					has_trait = trait_FUTA_DOLL
+				}
+			}
+		}
+		upkeep = {
+			energy = 1
+			multiplier = planet.modifier:planet_miners_energy_upkeep_add
+		}
+		# upkeep = {
+		# 	sr_semen = 3
+		# }
+		# upkeep = {
+		# 	sr_semen = 1
+		# 	trigger = {
+		# 		pop = {
+		# 			has_trait = trait_FUTA_DOLL
+		# 		}
+		# 	}
+		# }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 1
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	weight = {
+		weight = @futa_pop_weight_lv1
+		modifier = {
+			factor = 3
+			owner = {
+				has_resource = {
+					type = minerals
+					amount < 600
+				}
+			}
+		}
+		modifier = {
+			factor = 2
+			exists = pop
+			pop = {
+				has_trait = trait_FUTA_DOLL
+			}
+		}
+		modifier = {
+			factor = 2
+			exists = pop
+			pop = {
+				has_trait = trait_LOW_FUTA
+			}
+		}
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = sr_semen
+		# 			amount < 5
+		# 		}
+		# 	}
+		# }
+	}
+}
+
+#农夫
+futa_farmer = {
+	category = futa_rbq
+	condition_string = ELF_JOB_CAN_CUM_TRIGGER
+	clothes_texture_index = 2
+	possible = {
+		ELF_job_can_cum_check_trigger = yes
+	}
+	resources = {
+		category = planet_futa_farmer
+		produces = {
+			food = 6
+		}
+		produces = {
+			food = 1
+			multiplier = planet.modifier:planet_farmers_food_produces_add
+		}
+		produces = {
+			food = 1
+			multiplier = planet.modifier:planet_farmers_consumer_goods_produces_add
+		}
+		produces = {
+			food = 6
+			trigger = {
+				pop = {
+					has_trait = trait_FUTA_DOLL
+				}
+			}
+		}
+		upkeep = {
+			energy = 1
+			multiplier = planet.modifier:planet_farmers_energy_upkeep_add
+		}
+		# upkeep = {
+		# 	sr_semen = 3
+		# }
+		# upkeep = {
+		# 	sr_semen = 3
+		# 	trigger = {
+		# 		pop = {
+		# 			has_trait = trait_FUTA_DOLL
+		# 		}
+		# 	}
+		# }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 1
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	weight = {
+		weight = @futa_pop_weight_lv1
+		modifier = {
+			factor = 200
+			owner = {
+				has_resource = {
+					type = food
+					amount < 1000
+				}
+			}
+		}
+		modifier = {
+			factor = 2
+			owner = {
+				has_monthly_income = {
+					resource = food
+					value = 0
+				}
+			}
+		}
+		modifier = {
+			factor = 2
+			exists = pop
+			pop = {
+				has_trait = trait_FUTA_DOLL
+			}
+		}
+		modifier = {
+			factor = 2
+			exists = pop
+			pop = {
+				has_trait = trait_LOW_FUTA
+			}
+		}
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = sr_semen
+		# 			amount < 5
+		# 		}
+		# 	}
+		# }
+	}
+}
+
+#（广场）
+futa_sex_slave = {
+	category = futa_rbq
+	clothes_texture_index = 2
+	icon = sex_slave
+	possible = {
+		always = yes
+	}
+	resources = {
+		category = planet_futa_primary
+		produces = {
+			trigger = {
+				owner = {
+					is_can_cum_country = yes
+				}
+			}
+			sr_semen = 1
+		}
+		produces = {
+			unity = 1
+			rare_crystals = 0.3
+			exotic_gases = 0.3
+			volatile_motes = 0.3
+			# food = 0.3
+			alloys = 0.3
+		}
+		produces = {
+			sr_semen = 1
+			unity = 1
+			rare_crystals = 0.3
+			exotic_gases = 0.3
+			volatile_motes = 0.3
+			# food = 0.3
+			alloys = 0.3
+			trigger = {
+				pop = {
+					has_trait = trait_FUTA_DOLL
+				}
+			}
+		}
+	}
+	planet_modifier = {
+		planet_stability_add = 5		#稳定性
+		planet_crime_add = -5		#犯罪率
+		# pop_happiness = 0.01
+	}
+	weight = {
+		weight = @futa_pop_weight_lv1
+		modifier = {
+			factor = 2
+			owner = {
+				OR = {
+					has_resource = {
+						type = rare_crystals
+						amount < 1
+					}
+					has_resource = {
+						type = exotic_gases
+						amount < 1
+					}
+					has_resource = {
+						type = volatile_motes
+						amount < 1
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 2
+			exists = pop
+			has_trait = trait_LOW_FUTA
+		}
+		modifier = {
+			factor = 0
+			exists = pop
+			has_trait = trait_FUTA_DOLL
+			NOT = {
+				has_trait = trait_futa
+			}
+		}
+	}
+}
+
+futa_public_toilet = {
+	category = futa_rbq
+	clothes_texture_index = 2
+	icon = public_toilet
+	possible = {
+		always = yes
+	}
+	resources = {
+		category = planet_futa_primary
+		produces = {
+			trigger = {
+				owner = {
+					is_can_cum_country = yes
+				}
+			}
+			sr_semen = 1
+		}
+		produces = {
+			unity = 1
+			rare_crystals = 0.3
+			exotic_gases = 0.3
+			volatile_motes = 0.3
+			# food = 0.3
+			alloys = 0.3
+		}
+		produces = {
+			sr_semen = 1
+			unity = 1
+			rare_crystals = 0.3
+			exotic_gases = 0.3
+			volatile_motes = 0.3
+			# food = 0.3
+			alloys = 0.3
+			trigger = {
+				pop = {
+					has_trait = trait_FUTA_DOLL
+				}
+			}
+		}
+	}
+	planet_modifier = {
+		planet_stability_add = 5		#稳定性
+		planet_crime_add = -5		#犯罪率
+		# pop_happiness = 0.01
+	}
+	weight = {
+		weight = @futa_pop_weight_lv1
+		modifier = {
+			factor = 2
+			owner = {
+				OR = {
+					has_resource = {
+						type = rare_crystals
+						amount < 1
+					}
+					has_resource = {
+						type = exotic_gases
+						amount < 1
+					}
+					has_resource = {
+						type = volatile_motes
+						amount < 1
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 2
+			exists = pop
+			has_trait = trait_LOW_FUTA
+		}
+		modifier = {
+			factor = 0
+			exists = pop
+			has_trait = trait_FUTA_DOLL
+			NOT = {
+				has_trait = trait_futa
+			}
+		}
+	}
+}
+
+futa_female_dog = {
+	category = futa_rbq
+	clothes_texture_index = 2
+	icon = female_dog
+	possible = {
+		always = yes
+	}
+	resources = {
+		category = planet_futa_primary
+		produces = {
+			trigger = {
+				owner = {
+					is_can_cum_country = yes
+				}
+			}
+			sr_semen = 1
+		}
+		produces = {
+			unity = 1
+			rare_crystals = 0.3
+			exotic_gases = 0.3
+			volatile_motes = 0.3
+			# food = 0.3
+			alloys = 0.3
+		}
+		produces = {
+			sr_semen = 1
+			unity = 1
+			rare_crystals = 0.3
+			exotic_gases = 0.3
+			volatile_motes = 0.3
+			# food = 0.3
+			alloys = 0.3
+			trigger = {
+				pop = {
+					has_trait = trait_FUTA_DOLL
+				}
+			}
+		}
+	}
+	planet_modifier = {
+		planet_stability_add = 5		#稳定性
+		planet_crime_add = -5		#犯罪率
+		# pop_happiness = 0.01
+	}
+	weight = {
+		weight = @futa_pop_weight_lv1
+		modifier = {
+			factor = 2
+			owner = {
+				OR = {
+					has_resource = {
+						type = rare_crystals
+						amount < 1
+					}
+					has_resource = {
+						type = exotic_gases
+						amount < 1
+					}
+					has_resource = {
+						type = volatile_motes
+						amount < 1
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 2
+			exists = pop
+			has_trait = trait_LOW_FUTA
+		}
+		modifier = {
+			factor = 0
+			exists = pop
+			has_trait = trait_FUTA_DOLL
+			NOT = {
+				has_trait = trait_futa
+			}
+		}
+	}
+}
+
+#分公司女仆 （暂时弃用 
+pantyhose_futa_maid = {
+	category = futa_rbq
+	condition_string = ELF_FUTA_JOB_TRIGGER
+	clothes_texture_index = 2
+	possible = {
+		ELF_futa_job_check_trigger = yes
+	}
+	resources = {
+		category = planet_futa_maid
+		produces = {
+			sr_semen = 15
+		}
+		# upkeep = {
+		# 	consumer_goods = 5
+		# 	food = 10
+		# }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 1
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				has_civic = civic_pantyhose_futa
+			}
+		}
+		pop_growth_speed = 0.01
+		PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.01
+		PLANET_POP_ASSEMBLY_MULT = 0.01
+	}
+	triggered_planet_modifier = {
+		# Gives some Stability per "x" Councilor level.
+		potential = {
+			has_councilor = {
+				COUNCILOR = "councilor_pantyhose_sex"
+			}
+		}
+		trade_value_add = 0.5
+		mult = value:councilor_level|TYPE|councilor_pantyhose_sex|
+	}
+	weight = {
+		weight = @futa_pop_weight_lv4
+		modifier = {
+			factor = 0
+			owner = {
+				has_resource = {
+					type = food
+					amount <= 0
+				}
+			}
+		}
+	}
+}
+
+#旅游球奴隶
+vagina_sexslave = {
+	category = futa_rbq
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+	possible = {
+		planet = {
+			has_planet_flag = vagina_sexslave_planet
+		}
+	}
+	resources = {
+		category = planet_futa_primary
+		produces = {
+			sr_semen = 1
+			food = 0.5
+			unity = 0.5
+			sr_neo = 0.1
+			sr_pantsu = 0.1
+			sr_se = 0.1
+			sr_alpha = 0.1
+			sr_kyber_swgs = 0.1
+			sr_tibanna_swgs = 0.1
+			rare_crystals = 0.1
+			exotic_gases = 0.1
+			volatile_motes = 0.1
+			sr_living_metal = 0.1
+			alloys = 0.1
+			sr_semen_ten = 0.1
+			sr_live_pantyhose = 0.1
+			# sr_theta = 0.01
+			sr_st = 0.01
+			nanites = 0.001
+			sr_zro = 0.001
+			sr_living_metal = 0.001
+		}
+		produces = {
+			sr_semen = 1
+			food = 0.5
+			unity = 0.5
+			sr_neo = 0.1
+			sr_pantsu = 0.1
+			sr_se = 0.1
+			sr_alpha = 0.1
+			sr_kyber_swgs = 0.1
+			sr_tibanna_swgs = 0.1
+			rare_crystals = 0.1
+			exotic_gases = 0.1
+			volatile_motes = 0.1
+			sr_living_metal = 0.1
+			alloys = 0.1
+			sr_semen_ten = 0.1
+			sr_live_pantyhose = 0.1
+			# sr_theta = 0.01
+			sr_st = 0.01
+			nanites = 0.001
+			sr_zro = 0.001
+			sr_living_metal = 0.001
+			trigger = {
+				pop = {
+					has_trait = trait_FUTA_DOLL
+				}
+			}
+		}
+		produces = {
+			trigger = {
+				owner = {
+					has_civic = civic_ice_moon_inn_4
+				}
+				has_living_standard = {
+					type = living_standard_utopian
+				}
+			}
+			society_research = 2.5
+			physics_research = 2.5
+			engineering_research = 2.5
+			unity = 1
+		}
+		produces = {
+			trigger = {
+				owner = {
+					has_civic = civic_ice_moon_inn_4
+				}
+				has_living_standard = {
+					type = living_standard_shared_burden
+				}
+			}
+			unity = 1
+		}
+		# upkeep = {
+		# 	trigger = {
+		# 		owner = {
+		# 			has_civic = civic_ice_moon_inn_4
+		# 		}
+		# 		has_living_standard = {
+		# 			type = living_standard_utopian
+		# 		}
+		# 	}
+		# 	consumer_goods = @living_standard_luxuries_very_high
+		# }
+		# upkeep = {
+		# 	trigger = {
+		# 		owner = {
+		# 			has_civic = civic_ice_moon_inn_4
+		# 		}
+		# 		has_living_standard = {
+		# 			type = living_standard_shared_burden
+		# 		}
+		# 	}
+		# 	consumer_goods = @living_standard_luxuries_shared_burden
+		# }
+	}
+	weight = {
+		weight = @futa_pop_weight_lv3
+	}
+}
+
+#
+fei_ji_bei = {
+	category = futa_rbq
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+	possible = {
+		exists = pop
+		pop = {
+			has_trait = trait_fei_ji_bei
+		}
+	}
+	country_modifier = {
+		country_sr_semen_produces_mult = 0.01
+		# planet_jobs_sr_semen_produces_mult = 0.005		#精液全产
+	}
+	planet_modifier = {
+		# country_sr_semen_produces_mult = 0.005
+		# planet_jobs_sr_semen_produces_mult = 0.005		#精液全产
+		# planet_amenities_add = 1		#舒适度
+		planet_amenities_mult = 0.01		#舒适度百分比
+		# pop_happiness = 0.001		#幸福度
+		planet_stability_add = 1		#星球稳定度
+	}
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 1
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	weight = {
+		weight = @futa_pop_weight_max
+	}
+}
+
+#神的奴隶
+sexslave_rbq = {
+	category = ruler
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+	icon = futa_metallurgist
+	possible = {
+		owner = {
+			is_ai = yes
+		}
+		planet = {
+			has_planet_flag = sexslave_rbq
+		}
+		# owner = {
+		# 	NOT = {
+		# 		has_country_flag = ICE_MOON_FUTA
+		# 	}
+		# }
+		# planet = {
+		# 	has_building = building_evolution_center
+		# }
+	}
+	planet_modifier = {
+		trade_value_add = 2
+		planet_crime_add = 5
+		planet_stability_add = -5
+	}
+	resources = {
+		category = planet_futa_primary
+		produces = {
+			sr_semen = 1
+		}
+		upkeep = {
+			sr_st = 1
+			# sr_theta = 0.5
+			# sr_live_pantyhose = 0.5
+		}
+	}
+	weight = {
+		weight = @futa_pop_weight_lv5
+		# modifier = {
+		# 	factor = 10
+		# 	planet = {
+		# 		num_buildings = {
+		# 			type = "building_evolution_center"
+		# 			value > 0
+		# 		}
+		# 	}
+		# }
+		# modifier = {
+		# 	factor = 10
+		# 	planet = {
+		# 		num_buildings = {
+		# 			type = "building_evolution_center"
+		# 			value > 1
+		# 		}
+		# 	}
+		# }
+		# modifier = {
+		# 	factor = 1000
+		# 	planet = {
+		# 		num_buildings = {
+		# 			type = "building_evolution_center"
+		# 			value > 2
+		# 		}
+		# 	}
+		# }
+	}
+}
+
+#统治者
+#女皇专属女仆
+pantyhose_extract_semen = {
+	category = ruler
+	condition_string = ELF_FUTA_JOB_TRIGGER
+	clothes_texture_index = 1
+	# possible_pre_triggers = {
+	# 	is_enslaved = no
+	# }
+	possible = {
+		ELF_futa_job_check_trigger = yes
+	}
+	resources = {
+		category = planet_futa_maid
+		produces = {
+			physics_research = 100
+			engineering_research = 100
+			society_research = 100
+			sr_theta = 50
+		}
+		produces = {
+			physics_research = 100
+			engineering_research = 100
+			society_research = 100
+			sr_theta = 50
+			trigger = {
+				pop = {
+					has_trait = trait_FUTA_DOLL
+				}
+			}
+		}
+		upkeep = {
+			trigger = {
+				owner = {
+					is_can_cum_country = yes
+				}
+			}
+			sr_semen = 500
+			sr_live_pantyhose = 10
+			sr_semen_ten = 10
+		}
+		#原初线兼容，暂时删除限制
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				has_civic = civic_pantyhose_futa
+			}
+		}
+		pop_growth_speed = 0.01
+		PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.01
+		PLANET_POP_ASSEMBLY_MULT = 0.01
+	}
+	triggered_planet_modifier = {
+		# Gives some Stability per "x" Councilor level.
+		potential = {
+			has_councilor = {
+				COUNCILOR = "councilor_pantyhose_sex"
+			}
+		}
+		trade_value_add = 0.5
+		mult = value:councilor_level|TYPE|councilor_pantyhose_sex|
+	}
+	weight = {
+		weight = @futa_pop_weight_lv5
+		modifier = {
+			factor = 0
+			OR = {
+				owner = {
+					has_resource = {
+						type = sr_semen
+						amount < 1000
+					}
+				}
+				# owner = {
+				# 	has_resource = {
+				# 		type = sr_live_pantyhose
+				# 		amount < 20
+				# 	}
+				# }
+			}
+		}
+		modifier = {
+			factor = 1.5
+			exists = pop
+			pop = {
+				has_trait = trait_FUTA_DOLL
+			}
+		}
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = food
+		# 			amount <= 0
+		# 		}
+		# 	}
+		# }
+	}
+}
+
+#神之代言
+# nb_trainer = {
+# 	category = ruler
+# 	condition_string = ELF_FUTA_JOB_TRIGGER
+# 	clothes_texture_index = 3
+# 	icon = nb_trainer
+# 	possible_pre_triggers = {
+# 		is_enslaved = no
+# 	}
+# 	possible = {
+# 		ELF_futa_job_check_trigger = yes
+# 	}
+# 	resources = {
+# 		category = planet_futa_special
+# 		produces = {
+# 			sr_pantyhose_slave = 20
+# 			excellent_slave = 20
+# 			sr_beauty = 20
+# 		}
+# 		upkeep = {
+# 			energy = 100
+# 			consumer_goods = 100
+# 			food = 100
+# 			sr_semen = 100
+# 		}
+# 	}
+# 	weight = {
+# 		weight = 1000
+# 		modifier = {
+# 			factor = 1.1
+# 			is_unemployed = yes
+# 		}
+# 	}
+# }
+# #天使 暂无
+# pantyhose_degenerate_angel = {
+# 	category = ruler
+# 	condition_string = PRINCESS_JOB_TRIGGER
+# 	clothes_texture_index = 1
+# 	icon = pantyhose_degenerate_angel
+# 	possible_pre_triggers = {
+# 		is_enslaved = no
+# 	}
+# 	possible = {
+# 		princess_job_check_trigger = yes
+# 	}
+# 	resources = {
+# 		category = planet_magic_girl
+# 		produces = {
+# 			unity = 5
+# 			sr_christian = 5
+# 		}
+# 		produces = {
+# 			unity = 2
+# 			sr_christian = 1
+# 			trigger = {
+# 				planet = {
+# 					is_planet_class = pc_gaia
+# 				}
+# 			}
+# 		}
+# 		upkeep = {
+# 			food = 100
+# 			consumer_goods = 100
+# 			excellent_slave = 10
+# 			sr_beauty = 1
+# 			love_juice = 100
+# 		}
+# 	}
+# 	planet_modifier = {
+# 		planet_amenities_add = 10		#舒适度
+# 		pop_happiness = 0.1		#幸福度
+# 		planet_jobs_unity_produces_mult = 0.15
+# 		planet_magic_girl_produces_mult = 0.1		
+# 	}
+# 	weight = {
+# 		weight = 1000
+# 		modifier = {
+# 			factor = 1.1
+# 			is_has_lust_trait = yes
+# 		}
+# 		modifier = {
+# 			factor = 1.05
+# 			is_has_pure_trait = yes
+# 		}
+# 		modifier = {
+# 			factor = 1.1
+# 			is_unemployed = yes
+# 		}
+# 		modifier = {
+# 			factor = 0
+# 			AND = {
+# 				owner = {
+# 					has_resource = {
+# 						type = excellent_slave
+# 						amount < 12
+# 					}
+# 				}
+# 			}
+# 		}
+# 	}
+# }
+#丝袜制作大师
+pantyhose_master_producer = {
+	category = ruler
+	condition_string = ELF_FUTA_JOB_TRIGGER
+	clothes_texture_index = 2
+	possible_pre_triggers = {
+		is_enslaved = no
+	}
+	possible = {
+		ELF_futa_job_check_trigger = yes
+	}
+	resources = {
+		category = planet_futa_special
+		produces = {
+			sr_live_pantyhose = 5
+		}
+		produces = {
+			sr_live_pantyhose = 5
+			trigger = {
+				pop = {
+					has_trait = trait_FUTA_DOLL
+				}
+			}
+		}
+		upkeep = {
+			energy = 100
+		}
+		upkeep = {
+			trigger = {
+				owner = {
+					is_can_cum_country = yes
+				}
+			}
+			sr_semen = 50
+			# food = 20
+			# sr_theta = 5
+			# sr_pantyhose_slave = 5
+		}
+	}
+	planet_modifier = {
+		planet_futa_special_produces_mult = 0.15		#特殊资源职业产出 
+	}
+	weight = {
+		weight = 1000
+		modifier = {
+			factor = 1.2
+			is_enslaved = yes
+		}
+		modifier = {
+			factor = 1.5
+			exists = pop
+			pop = {
+				has_trait = trait_FUTA_DOLL
+			}
+		}
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = food
+		# 			amount <= 0
+		# 		}
+		# 	}
+		# }
+	}
+}
+
+#专家
+#白丝女仆
+white_pantyhose_futa_rbq = {
+	category = specialist
+	condition_string = ELF_FUTA_JOB_TRIGGER
+	clothes_texture_index = 2
+	possible = {
+		ELF_futa_job_check_trigger = yes
+	}
+	resources = {
+		category = planet_futa_maid
+		produces = {
+			# consumer_goods = 3
+			# minerals = 5
+			unity = 2
+		}
+		produces = {
+			unity = 2
+			trigger = {
+				pop = {
+					has_trait = trait_FUTA_DOLL
+				}
+			}
+		}
+		upkeep = {
+			trigger = {
+				owner = {
+					is_can_cum_country = yes
+				}
+			}
+			# consumer_goods = 1
+			# food = 1
+			sr_semen = 1
+		}
+	}
+	planet_modifier = {
+		# planet_amenities_add = 5
+		planet_pop_assembly_add = 1.5
+		planet_pop_assembly_organic_add = 1.5
+	}
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		always = yes
+	# 	}
+	# 	planet_amenities_add = 5
+	# 	mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	# }
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				has_civic = civic_pantyhose_futa
+			}
+		}
+		pop_growth_speed = 0.01
+		PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.01
+		PLANET_POP_ASSEMBLY_MULT = 0.01
+	}
+	triggered_planet_modifier = {
+		# Gives some Stability per "x" Councilor level.
+		potential = {
+			has_councilor = {
+				COUNCILOR = "councilor_pantyhose_sex"
+			}
+		}
+		trade_value_add = 0.5
+		mult = value:councilor_level|TYPE|councilor_pantyhose_sex|
+	}
+	weight = {
+		weight = @futa_pop_weight_max
+		modifier = {
+			factor = 0
+			owner = {
+				has_resource = {
+					type = sr_semen
+					amount < 5
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			exists = pop
+			pop = {
+				has_trait = trait_FUTA_DOLL
+				NOT = {
+					has_trait = trait_futa
+				}
+			}
+		}
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = food
+		# 			amount <= 0
+		# 		}
+		# 	}
+		# }
+	}
+}
+
+#丝袜工匠
+futa_artisan = {
+	category = specialist
+	condition_string = ELF_FUTA_JOB_TRIGGER
+	clothes_texture_index = 2
+	possible = {
+		OR = {
+			suc_vs_inn_job_check_trigger = yes
+			ELF_futa_job_check_trigger = yes
+		}
+	}
+	resources = {
+		category = planet_futa_artisan
+		produces = {
+			consumer_goods = 6
+		}
+		produces = {
+			consumer_goods = 6
+			trigger = {
+				pop = {
+					has_trait = trait_FUTA_DOLL
+				}
+			}
+		}
+		produces = {
+			consumer_goods = 0.5
+			trigger = {
+				owner = {
+					is_ai = yes
+				}
+			}
+		}
+		produces = {
+			consumer_goods = 1
+			multiplier = planet.modifier:planet_artisans_consumer_goods_produces_add
+		}
+		upkeep = {
+			minerals = 1
+			multiplier = planet.modifier:planet_artisans_minerals_upkeep_add
+		}
+		upkeep = {
+			energy = 1
+			multiplier = planet.modifier:planet_artisans_energy_upkeep_add
+		}
+		upkeep = {
+			minerals = 3
+		}
+		upkeep = {
+			trigger = {
+				owner = {
+					is_can_cum_country = yes
+				}
+			}
+			sr_semen = 3
+		}
+		# upkeep = {
+		# 	sr_semen = 6
+		# }
+		# upkeep = {
+		# 	sr_semen = 3
+		# 	trigger = {
+		# 		pop = {
+		# 			has_trait = trait_FUTA_DOLL
+		# 		}
+		# 	}
+		# }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 1
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	weight = {
+		weight = @futa_pop_weight_lv2
+		modifier = {
+			factor = 2
+			exists = pop
+			pop = {
+				has_trait = trait_FUTA_DOLL
+			}
+		}
+		# modifier = {
+		# 	factor = 3
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = consumer_goods
+		# 			amount < 1000
+		# 		}
+		# 	}
+		# }
+		modifier = {
+			factor = 2
+			exists = pop
+			pop = {
+				has_trait = trait_LOW_FUTA
+			}
+		}
+		modifier = {
+			factor = 0
+			owner = {
+				has_resource = {
+					type = sr_semen
+					amount < 5
+				}
+			}
+		}
+	}
+}
+
+#调教师
+# pantyhose_slave_teach = {
+# 	category = specialist
+# 	condition_string = ELF_FUTA_JOB_TRIGGER
+# 	building_icon = building_brothel_background
+# 	clothes_texture_index = 2
+# 	possible = {
+# 		ELF_futa_job_check_trigger = yes
+# 	}
+# 	resources = {
+# 		category = planet_futa_special
+# 		produces = {
+# 			sr_pantyhose_slave = 1
+# 			# excellent_slave = 0.25
+# 			# sr_beauty = 0.25
+# 		}
+# 		produces = {
+# 			sr_pantyhose_slave = 1
+# 			excellent_slave = 0.25
+# 			sr_beauty = 0.25
+# 			trigger = {
+# 				pop = {
+# 					has_trait = trait_FUTA_DOLL
+# 				}
+# 			}
+# 		}
+# 		upkeep = {
+# 			food = 1
+# 		}
+# 	}
+# 	planet_modifier = {
+# 		planet_amenities_add = 1
+# 	}
+# 	weight = {
+# 		weight = @futa_pop_weight_lv2
+# 		modifier = {
+# 			factor = 0
+# 			exists = pop
+# 			pop = {
+# 				has_trait = trait_FUTA_DOLL
+# 				NOT = {
+# 					has_trait = trait_futa
+# 				}
+# 			}
+# 		}
+# 		modifier = {
+# 			factor = 1.5
+# 			owner = {
+# 				has_resource = {
+# 					type = sr_pantyhose_slave
+# 					amount < 20
+# 				}
+# 			}
+# 		}
+# 		modifier = {
+# 			factor = 0
+# 			owner = {
+# 				has_resource = {
+# 					type = sr_semen
+# 					amount < 200
+# 				}
+# 			}
+# 		}
+# 		modifier = {
+# 			factor = 0
+# 			owner = {
+# 				has_resource = {
+# 					type = food
+# 					amount <= 0
+# 				}
+# 			}
+# 		}
+# 	}
+# }
+#合金
+futa_metallurgist = {
+	category = specialist
+	condition_string = ELF_FUTA_JOB_TRIGGER
+	clothes_texture_index = 2
+	possible = {
+		OR = {
+			suc_vs_inn_job_check_trigger = yes
+			ELF_futa_job_check_trigger = yes
+		}
+	}
+	resources = {
+		category = planet_futa_metallurgist
+		produces = {
+			# consumer_goods = 4
+			alloys = 3
+			# sr_neo = 0.1
+			# sr_pantsu = 0.1
+			# sr_se = 0.1
+			# sr_alpha = 0.1
+			# sr_kyber_swgs = 0.1
+			# sr_tibanna_swgs = 0.1
+			# rare_crystals = 0.1
+			# exotic_gases = 0.1
+			# volatile_motes = 0.1
+		}
+		produces = {
+			alloys = 3
+			# sr_neo = 0.1
+			# sr_pantsu = 0.1
+			# sr_se = 0.1
+			# sr_alpha = 0.1
+			# sr_kyber_swgs = 0.1
+			# sr_tibanna_swgs = 0.1
+			# rare_crystals = 0.1
+			# exotic_gases = 0.1
+			# volatile_motes = 0.1
+			trigger = {
+				pop = {
+					has_trait = trait_FUTA_DOLL
+				}
+			}
+		}
+		produces = {
+			alloys = 0.25
+			trigger = {
+				owner = {
+					is_ai = yes
+				}
+			}
+		}
+		produces = {
+			alloys = 1
+			multiplier = planet.modifier:planet_metallurgists_alloys_produces_add
+		}
+		upkeep = {
+			minerals = 1
+			multiplier = planet.modifier:planet_metallurgists_minerals_upkeep_add
+		}
+		upkeep = {
+			energy = 1
+			multiplier = planet.modifier:planet_metallurgists_energy_upkeep_add
+		}
+		upkeep = {
+			# sr_semen = 20
+			minerals = 3
+		}
+		upkeep = {
+			trigger = {
+				owner = {
+					is_can_cum_country = yes
+				}
+			}
+			sr_semen = 3
+		}
+	}
+	weight = {
+		weight = @futa_pop_weight_lv2
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = sr_semen_ten
+		# 			amount < 4
+		# 		}
+		# 	}
+		# }
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = sr_pantyhose_slave
+		# 			amount < 20
+		# 		}
+		# 	}
+		# }
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = sr_semen
+		# 			amount < 200
+		# 		}
+		# 	}
+		# }
+		modifier = {
+			factor = 5
+			exists = pop
+			pop = {
+				has_trait = trait_FUTA_DOLL
+			}
+		}
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = food
+		# 			amount <= 0
+		# 		}
+		# 	}
+		# }
+	}
+}
+
+#巫女
+black_pantyhose_futa_tentacle_rbq = {
+	category = specialist
+	condition_string = ELF_FUTA_JOB_TRIGGER
+	clothes_texture_index = 2
+	possible = {
+		ELF_futa_job_check_trigger = yes
+	}
+	resources = {
+		category = planet_futa_farmer
+		produces = {
+			# sr_semen_ten = 1
+			food = 8
+		}
+		produces = {
+			food = 8
+			trigger = {
+				pop = {
+					has_trait = trait_FUTA_DOLL
+				}
+			}
+		}
+		produces = {
+			food = 1
+			multiplier = planet.modifier:planet_farmers_food_produces_add
+		}
+		# upkeep = {
+		# 	# energy = 20
+		# }
+		# upkeep = {
+		# 	trigger = {
+		# 		owner = {
+		# 			has_country_flag = ICE_MOON_FUTA
+		# 		}
+		# 	}
+		# 	sr_pantyhose_slave = 1
+		# }
+	}
+	planet_modifier = {
+		planet_futa_special_produces_mult = 0.05		#	
+	}
+	weight = {
+		weight = @futa_pop_weight_lv2
+		modifier = {
+			factor = 2
+			owner = {
+				has_resource = {
+					type = sr_semen_ten
+					amount < 4
+				}
+			}
+		}
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = sr_pantyhose_slave
+		# 			amount < 20
+		# 		}
+		# 	}
+		# }
+		modifier = {
+			factor = 0
+			owner = {
+				has_resource = {
+					type = sr_semen
+					amount < 200
+				}
+			}
+		}
+		modifier = {
+			factor = 5
+			exists = pop
+			pop = {
+				has_trait = trait_FUTA_DOLL
+			}
+		}
+		# modifier = {
+		# 	factor = 5
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = food
+		# 			amount <= 0
+		# 		}
+		# 	}
+		# }
+	}
+}
+
+#援交女仆(弃用)
+futa_sex_maid = {
+	category = specialist
+	condition_string = SPECIALIST_JOB_TRIGGER
+	clothes_texture_index = 3
+	possible = {
+		always = yes
+		# ELF_futa_job_check_trigger = yes
+	}
+	resources = {
+		category = planet_futa_maid
+		# upkeep = {
+		# 	consumer_goods = 2
+		# }
+		produces = {
+			unity = 5
+		}
+		produces = {
+			unity = 5
+			trigger = {
+				pop = {
+					has_trait = trait_FUTA_DOLL
+				}
+			}
+		}
+	}
+	# country_modifier = {
+	# 	country_admin_cap_add = 10
+	# 	# country_naval_cap_add = 10
+	# }
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 1
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				has_civic = civic_pantyhose_futa
+			}
+		}
+		pop_growth_speed = 0.01
+		PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.01
+		PLANET_POP_ASSEMBLY_MULT = 0.01
+	}
+	triggered_planet_modifier = {
+		# Gives some Stability per "x" Councilor level.
+		potential = {
+			has_councilor = {
+				COUNCILOR = "councilor_pantyhose_sex"
+			}
+		}
+		trade_value_add = 0.5
+		mult = value:councilor_level|TYPE|councilor_pantyhose_sex|
+	}
+	weight = {
+		weight = 15
+	}
+}
+
+#修女
+futa_priest = {
+	category = specialist
+	condition_string = ELF_FUTA_JOB_TRIGGER
+	clothes_texture_index = 2
+	possible = {
+		ELF_futa_job_check_trigger = yes
+	}
+	resources = {
+		category = planet_futa_priest
+		produces = {
+			unity = 5
+		}
+		produces = {
+			unity = 5
+			trigger = {
+				pop = {
+					has_trait = trait_FUTA_DOLL
+				}
+			}
+		}
+		# produces = {
+		# 	unity = 1
+		# 	multiplier = planet.modifier:planet_priests_unity_produces_add
+		# }
+		# produces = {
+		# 	unity = 1
+		# 	multiplier = planet.modifier:planet_administrators_unity_produces_add
+		# }
+		upkeep = {
+			trigger = {
+				is_energy_upkeep_species = no
+			}
+			consumer_goods = 2
+		}
+		upkeep = {
+			trigger = {
+				is_energy_upkeep_species = yes
+			}
+			energy = 2
+		}
+		upkeep = {
+			trigger = {
+				owner = {
+					is_can_cum_country = yes
+				}
+			}
+			sr_semen = 1
+			# sr_pantyhose_slave = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 1
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	country_modifier = {
+		country_edict_fund_add = 2
+	}
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		exists = owner
+	# 		owner = { has_valid_civic = civic_byzantine_bureaucracy }
+	# 	}
+	# 	modifier = {
+	# 		planet_stability_add = 1
+	# 	}
+	# }
+	triggered_planet_modifier = {
+		potential = {
+			planet = {
+				has_active_building = building_league_offices
+			}
+		}
+		planet_amenities_add = 1
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_semen_Religion
+			}
+		}
+		country_edict_fund_add = 2
+		mult = value:job_total_output_modifier|JOB|futa_priest|RESOURCE|unity|
+	}
+	weight = {
+		weight = @futa_pop_weight_lv2
+		modifier = {
+			factor = 0
+			exists = pop
+			pop = {
+				has_trait = trait_FUTA_DOLL
+				NOT = {
+					has_trait = trait_futa
+				}
+			}
+		}
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = sr_pantyhose_slave
+		# 			amount < 20
+		# 		}
+		# 	}
+		# }
+		modifier = {
+			factor = 0
+			owner = {
+				has_resource = {
+					type = sr_semen
+					amount < 200
+				}
+			}
+		}
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = food
+		# 			amount <= 0
+		# 		}
+		# 	}
+		# }
+	}
+}
+
+#忏悔修女
+clean_priest = {
+	category = specialist
+	condition_string = ELF_FUTA_JOB_TRIGGER
+	clothes_texture_index = 2
+	possible = {
+		always = yes
+	}
+	resources = {
+		category = planet_futa_priest
+		produces = {
+			unity = 5
+		}
+		produces = {
+			unity = 5
+			trigger = {
+				pop = {
+					has_trait = trait_FUTA_DOLL
+				}
+			}
+		}
+		# produces = {
+		# 	unity = 1
+		# 	multiplier = planet.modifier:planet_priests_unity_produces_add
+		# }
+		# produces = {
+		# 	unity = 1
+		# 	multiplier = planet.modifier:planet_administrators_unity_produces_add
+		# }
+		upkeep = {
+			trigger = {
+				is_energy_upkeep_species = no
+			}
+			consumer_goods = 2
+		}
+		upkeep = {
+			trigger = {
+				is_energy_upkeep_species = yes
+			}
+			energy = 3
+		}
+		upkeep = {
+			trigger = {
+				owner = {
+					is_can_cum_country = yes
+				}
+			}
+			sr_semen = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 10
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		exists = owner
+	# 		owner = { has_valid_civic = civic_byzantine_bureaucracy }
+	# 	}
+	# 	modifier = {
+	# 		planet_stability_add = 1
+	# 	}
+	# }
+	triggered_planet_modifier = {
+		potential = {
+			planet = {
+				has_active_building = building_league_offices
+			}
+		}
+		planet_amenities_add = 1
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_semen_Religion
+			}
+		}
+		country_edict_fund_add = 2
+		mult = value:job_total_output_modifier|JOB|clean_priest|RESOURCE|unity|
+	}
+	weight = {
+		weight = @futa_pop_weight_lv2
+		modifier = {
+			factor = 0
+			exists = pop
+			pop = {
+				has_trait = trait_FUTA_DOLL
+				NOT = {
+					has_trait = trait_futa
+				}
+			}
+		}
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = sr_pantyhose_slave
+		# 			amount < 20
+		# 		}
+		# 	}
+		# }
+		modifier = {
+			factor = 0
+			owner = {
+				has_resource = {
+					type = sr_semen
+					amount < 200
+				}
+			}
+		}
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = food
+		# 			amount <= 0
+		# 		}
+		# 	}
+		# }
+	}
+}
+
+#触手培育
+semen_ten_feeding = {
+	category = specialist
+	condition_string = ELF_FUTA_JOB_TRIGGER
+	clothes_texture_index = 2
+	possible = {
+		ELF_futa_job_check_trigger = yes
+	}
+	resources = {
+		category = planet_futa_special
+		produces = {
+			# food = 4
+			sr_semen_ten = 1
+		}
+		produces = {
+			sr_semen_ten = 1
+			trigger = {
+				pop = {
+					has_trait = trait_FUTA_DOLL
+				}
+			}
+		}
+		upkeep = {
+			trigger = {
+				owner = {
+					is_can_cum_country = yes
+				}
+			}
+			sr_semen = 3
+			# sr_pantyhose_slave = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 1
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	weight = {
+		weight = @futa_pop_weight_lv2
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = sr_pantyhose_slave
+		# 			amount < 10
+		# 		}
+		# 	}
+		# }
+		modifier = {
+			factor = 0
+			owner = {
+				has_resource = {
+					type = sr_semen
+					amount < 200
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			exists = pop
+			pop = {
+				has_trait = trait_FUTA_DOLL
+				NOT = {
+					has_trait = trait_futa
+				}
+			}
+		}
+		# modifier = {
+		# 	factor = 5
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = food
+		# 			amount <= 0
+		# 		}
+		# 	}
+		# }
+	}
+}
+
+#研究员 科研
+futa_research = {
+	category = specialist
+	condition_string = ELF_FUTA_JOB_TRIGGER
+	clothes_texture_index = 2
+	possible = {
+		ELF_futa_job_check_trigger = yes
+	}
+	triggered_country_modifier = {
+		modifier = {
+			country_naval_cap_add = 1
+		}
+		mult = planet.modifier:job_researcher_naval_cap_add
+	}
+	resources = {
+		category = planet_futa_research
+		# produces = {
+		# 	physics_research = 5
+		# 	engineering_research = 5
+		# 	society_research = 5
+		# }
+		# produces = {
+		# 	physics_research = 5
+		# 	engineering_research = 5
+		# 	society_research = 5
+		# 	trigger = {
+		# 		pop = {
+		# 			has_trait = trait_FUTA_DOLL
+		# 		}
+		# 	}
+		# }
+		#适配3.11 原版基础333
+		produces = {
+			physics_research = 4
+			engineering_research = 4
+			society_research = 4
+		}
+		produces = {
+			physics_research = 4
+			engineering_research = 4
+			society_research = 4
+			trigger = {
+				pop = {
+					has_trait = trait_FUTA_DOLL
+				}
+			}
+		}
+
+		produces = {
+			physics_research = 1
+			multiplier = planet.modifier:planet_researchers_physics_research_produces_add
+		}
+		produces = {
+			engineering_research = 1
+			multiplier = planet.modifier:planet_researchers_engineering_research_produces_add
+		}
+		produces = {
+			society_research = 1
+			multiplier = planet.modifier:planet_researchers_society_research_produces_add
+		}
+		upkeep = {
+			trigger = {
+				is_energy_upkeep_species = no
+			}
+			consumer_goods = 2
+		}
+		upkeep = {
+			trigger = {
+				is_energy_upkeep_species = yes
+			}
+			energy = 2
+		}
+		upkeep = {
+			trigger = {
+				owner = {
+					is_can_cum_country = yes
+				}
+			}
+			sr_semen = 1
+		}
+		upkeep = {
+			trigger = {
+				planet = {
+					has_planet_flag = has_science_ministry
+				}
+			}
+			consumer_goods = 1
+		}
+	}
+	overlord_resources = {
+		category = planet_requisitioned_research
+		produces = {
+			trigger = {
+				planet = {
+					has_planet_flag = has_science_ministry
+				}
+			}
+			physics_research = 2
+			engineering_research = 2
+			society_research = 2
+		}
+	}
+	# planet_modifier = {
+	# 	planet_futa_research_produces_mult = 0.01
+	# }
+	weight = {
+		weight = @futa_pop_weight_lv2
+		modifier = {
+			factor = 5
+			exists = pop
+			pop = {
+				has_trait = trait_FUTA_DOLL
+			}
+		}
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = sr_live_pantyhose
+		# 			amount < 20
+		# 		}
+		# 	}
+		# }
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = sr_semen
+		# 			amount < 200
+		# 		}
+		# 	}
+		# }
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = food
+		# 			amount <= 0
+		# 		}
+		# 	}
+		# }
+	}
+}
+
+#丝袜培育员
+live_pantyhose_feeding = {
+	category = specialist
+	condition_string = ELF_FUTA_JOB_TRIGGER
+	clothes_texture_index = 2
+	possible = {
+		ELF_futa_job_check_trigger = yes
+	}
+	resources = {
+		category = planet_futa_special
+		produces = {
+			sr_live_pantyhose = 1
+			#consumer_goods = 5
+		}
+		produces = {
+			sr_live_pantyhose = 1
+			trigger = {
+				pop = {
+					has_trait = trait_FUTA_DOLL
+				}
+			}
+		}
+		upkeep = {
+			trigger = {
+				owner = {
+					is_can_cum_country = yes
+				}
+			}
+			sr_semen = 3
+			# sr_pantyhose_slave = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 1
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	weight = {
+		weight = @futa_pop_weight_lv2
+		modifier = {
+			factor = 0
+			exists = pop
+			pop = {
+				has_trait = trait_FUTA_DOLL
+				NOT = {
+					has_trait = trait_futa
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			owner = {
+				has_resource = {
+					type = sr_semen
+					amount < 5
+				}
+			}
+		}
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = food
+		# 			amount <= 0
+		# 		}
+		# 	}
+		# }
+	}
+}
+
+#########
+#组装女仆
+futa_assembly = {
+	category = specialist
+	condition_string = SPECIALIST_JOB_TRIGGER
+	clothes_texture_index = 3
+	icon = roboticist
+	# possible_pre_triggers = {
+	# 	has_owner = yes
+	# 	is_being_purged = no
+	# 	is_being_assimilated = no
+	# }
+	possible = {
+		always = yes
+	}
+	planet_modifier = {
+		planet_pop_assembly_add = 1
+		planet_pop_assembly_organic_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				has_technology = tech_ELF_modification_0
+			}
+		}
+		planet_pop_assembly_add = 2
+		planet_pop_assembly_organic_add = 2
+	}
+	resources = {
+		category = planet_futa_maid
+		upkeep = {
+			trigger = {
+				owner = {
+					is_can_cum_country = yes
+				}
+			}
+			sr_semen = 10
+		}
+		# upkeep = {
+		# 	trigger = {
+		# 		has_food_upkeep = yes
+		# 	}
+		# 	food = 3
+		# }
+		# upkeep = {
+		# 	trigger = {
+		# 		has_energy_upkeep = yes
+		# 	}
+		# 	energy = 3
+		# }
+		# upkeep = {
+		# 	trigger = {
+		# 		has_mineral_upkeep = yes
+		# 	}
+		# 	mineral = 3
+		# }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				has_civic = civic_pantyhose_futa
+			}
+		}
+		pop_growth_speed = 0.01
+		PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.01
+		PLANET_POP_ASSEMBLY_MULT = 0.01
+	}
+	triggered_planet_modifier = {
+		# Gives some Stability per "x" Councilor level.
+		potential = {
+			has_councilor = {
+				COUNCILOR = "councilor_pantyhose_sex"
+			}
+		}
+		trade_value_add = 0.5
+		mult = value:councilor_level|TYPE|councilor_pantyhose_sex|
+	}
+	weight = {
+		weight = @futa_pop_weight_max
+		modifier = {
+			factor = 0
+			exists = pop
+			pop = {
+				has_trait = trait_FUTA_DOLL
+				NOT = {
+					has_trait = trait_futa
+				}
+			}
+		}
+	}
+}
+
+#特殊女仆
+futa_moyu = {
+	category = futa_rbq
+	condition_string = ELF_FUTA_JOB_TRIGGER
+	clothes_texture_index = 2
+	possible_pre_triggers = {
+		has_owner = yes
+		# is_enslaved = no
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+	possible_precalc = can_fill_worker_job
+	possible = {
+		always = yes
+		# complex_worker_job_check_trigger = yes
+		# owner = { is_fallen_empire = no }
+		# OR = {
+		# 	has_job = wsg_moyu
+		# 	z_pop_job_trigger = yes
+		# }
+	}
+	# possible_precalc = can_fill_worker_job
+	# triggered_country_modifier = {
+	# 	potential = {
+	# 		planet = { 			
+	# 			is_planet_class = pc_futa_ring_world
+	# 		}
+	# 	}
+	# 	country_naval_cap_add = 2
+	# 	command_limit_add = 2
+	# }
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		planet = { 			
+	# 			is_planet_class = pc_futa_ring_world
+	# 		}
+	# 	}
+	# }
+	triggered_planet_modifier = {
+		potential = {
+			planet = {
+				NOT = {
+					has_planet_flag = has_franchise_headquarters
+				}
+			}
+		}
+		trade_value_add = 6
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
+	}
+	triggered_planet_modifier = {
+		# Gives some Stability per "x" Councilor level.
+		potential = {
+			has_councilor = {
+				COUNCILOR = "councilor_pantyhose_sex"
+			}
+		}
+		trade_value_add = 0.5
+		mult = value:councilor_level|TYPE|councilor_pantyhose_sex|
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = {
+				has_planet_flag = has_franchise_headquarters
+			}
+		}
+		trade_value_add = 4.5
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
+	}
+	overlord_resources = {
+		category = planet_corporate_franchising_meddling
+		produces = {
+			trigger = {
+				planet = {
+					has_planet_flag = has_franchise_headquarters
+				}
+			}
+			unity = 0.25
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 2
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = {
+				exists = orbital_defence
+				orbital_defence = {
+					exists = starbase
+					starbase = {
+						has_starbase_building = ring_trade_hub
+					}
+				}
+			}
+		}
+		planet_amenities_add = 1
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_tradition = tr_xyct_4
+			}
+		}
+		trade_value_add = 1
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
+	}
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_modifier = paragon_origin_strengthened_government_iii
+			}
+		}
+		country_edict_fund_add = 1
+	}
+	planet_modifier = {
+		# planet_amenities_add = 1
+		# trade_value_add = 6
+		# trade_value_mult = 0.01
+		# country_produces_mult = 0.005
+		# planet_jobs_produces_mult = 0.005
+	}
+	triggered_country_modifier = {
+		potential = {
+			planet = {
+				is_planet_class = pc_futa_ring_world
+			}
+		}
+		country_naval_cap_add = 2
+		command_limit_add = 2
+		country_produces_mult = 0.015
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				has_civic = civic_pantyhose_futa
+			}
+		}
+		pop_growth_speed = 0.01
+		PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.01
+		PLANET_POP_ASSEMBLY_MULT = 0.01
+	}
+	resources = {
+		category = planet_futa_maid
+		produces = {
+			unity = 2
+			# physics_research = 10
+			# engineering_research = 10
+			# society_research = 10
+		}
+		produces = {
+			unity = 2
+			trigger = {
+				pop = {
+					has_trait = trait_FUTA_DOLL
+				}
+			}
+		}
+		produces = {
+			unity = 1
+			multiplier = planet.modifier:planet_clerks_unity_produces_add
+		}
+		###月灵ai额外加成白嫖###
+		produces = {
+			alloys = 0.25
+			trigger = {
+				# has_global_flag = ICE_MOON_FUTA_AI_Knights_power_up
+				owner = {
+					has_country_flag = ICE_MOON_FUTA_AI_Knights
+				}
+			}
+		}
+		produces = {
+			alloys = 0.25
+			trigger = {
+				owner = {
+					is_ai = yes
+				}
+			}
+		}
+		# produces = {
+		# 	consumer_goods = 0.5
+		# 	trigger = {
+		# 		has_global_flag = ICE_MOON_FUTA_AI_Knights_power_up
+		# 		owner = {
+		# 			has_country_flag = ICE_MOON_FUTA_AI_Knights
+		# 		}
+		# 	}
+		# }
+		# produces = {
+		# 	consumer_goods = 0.5
+		# 	trigger = {
+		# 		owner = {
+		# 			is_ai = yes
+		# 		}
+		# 	}
+		# }
+		upkeep = {
+			# trigger = {
+			# 	owner = {
+			# 		has_country_flag = ICE_MOON_FUTA
+			# 	}
+			# }
+			# consumer_goods = 1
+			# energy = 1
+			sr_semen = 1
+		}
+	}
+	weight = {
+		weight = @futa_pop_weight_lv4
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = food
+		# 			amount <= 0
+		# 		}
+		# 	}
+		# }
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = consumer_goods
+		# 			amount <= 0
+		# 		}
+		# 	}
+		# }
+		modifier = {
+			factor = 0
+			owner = {
+				has_resource = {
+					type = sr_semen
+					amount <= 0
+				}
+			}
+		}
+	}
+}
+
+######################涅槃停滞者禁止
+# str_thinker = {
+# 	category = worker
+# 	is_capped_by_modifier = no
+# 	building_icon = building_hyper_entertainment_forum
+# 	clothes_texture_index = 2
+# 	possible_pre_triggers = {
+# 		has_owner = yes
+# 	}
+# 	possible = {
+# 		owner = {
+# 			is_ai = yes
+# 			OR = {
+# 				is_nirvana_empire_council = yes
+# 				is_nirvana_empire_dragon = yes
+# 			}
+# 			OR = {
+# 				has_ascension_perk = ap_power_of_heaven
+# 				has_ascension_perk = ap_power_of_multiverse
+# 			}
+# 		}
+# 	}
+# 	triggered_country_modifier = {
+# 		modifier = {
+# 			country_naval_cap_add = 2
+# 		}
+# 	}
+# 	triggered_planet_modifier = {
+# 		modifier = {
+# 			planet_stability_add = 2
+# 		}
+# 	}
+# 	resources = {
+# 		category = planet_jobs
+# 		produces = {
+# 			trigger = {
+# 				OR = {
+# 					has_trait = trait_mechanical
+# 					has_trait = trait_machine_unit
+# 				}
+# 			}
+# 			energy = 5
+# 		}
+# 		produces = {
+# 			trigger = {
+# 				owner = {
+# 					OR = {
+# 						has_ascension_perk = ap_god_of_multiverse
+# 						has_ascension_perk = ap_god_of_heaven
+# 					}
+# 				}
+# 			}
+# 			influence = 0.02
+# 			nanites = 0.02
+# 			rare_crystals = 0.2
+# 			exotic_gases = 0.2
+# 			volatile_motes = 0.2
+# 			sr_zro = 0.2
+# 			sr_dark_matter = 0.2
+# 			sr_living_metal = 0.2
+# 			food = 2
+# 			unity = 2
+# 			alloys = 2
+# 			minerals = 2
+# 			consumer_goods = 2
+# 			energy = 2
+# 			engineering_research = 4
+# 			physics_research = 4
+# 			society_research = 4
+# 		}
+# 	}
+# 	weight = {
+# 		weight = 0.1
+# 	}
+# }
+#女仆长
+futa_pr_main = {
+	category = ruler
+	condition_string = ELF_FUTA_JOB_TRIGGER
+	clothes_texture_index = 1
+	# possible_pre_triggers = {
+	# 	is_enslaved = no
+	# }
+	possible = {
+		ELF_futa_job_check_trigger = yes
+	}
+	resources = {
+		category = planet_futa_maid
+		upkeep = {
+			trigger = {
+				is_energy_upkeep_species = no
+			}
+			consumer_goods = 2
+		}
+		upkeep = {
+			trigger = {
+				is_energy_upkeep_species = yes
+			}
+			energy = 2
+		}
+		# upkeep = {
+		# 	trigger = {
+		# 		owner = {
+		# 			has_country_flag = ICE_MOON_FUTA
+		# 		}
+		# 	}
+		# 	sr_semen_ten = 1
+		# 	# sr_semen = 25
+		# }
+		produces = {
+			unity = 6
+		}
+		produces = {
+			unity = 6
+			trigger = {
+				pop = {
+					has_trait = trait_FUTA_DOLL
+				}
+			}
+		}
+	}
+	country_modifier = {
+		# country_admin_cap_add = 25		#行政
+		country_naval_cap_mult = 0.01
+	}
+	# planet_modifier = {
+	# 	planet_amenities_add = 3
+	# 	# planet_futa_maid_produces_mult = 0.01
+	# }
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 3
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				has_civic = civic_pantyhose_futa
+			}
+		}
+		pop_growth_speed = 0.01
+		PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.01
+		PLANET_POP_ASSEMBLY_MULT = 0.01
+	}
+	triggered_planet_modifier = {
+		# Gives some Stability per "x" Councilor level.
+		potential = {
+			has_councilor = {
+				COUNCILOR = "councilor_pantyhose_sex"
+			}
+		}
+		trade_value_add = 0.5
+		mult = value:councilor_level|TYPE|councilor_pantyhose_sex|
+	}
+	weight = {
+		weight = @futa_pop_weight_lv4
+		modifier = {
+			factor = 0
+			OR = {
+				# owner = {
+				# 	has_resource = {
+				# 		type = sr_semen
+				# 		amount < 1000
+				# 	}
+				# }
+				owner = {
+					has_resource = {
+						type = sr_semen_ten
+						amount < 20
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			exists = pop
+			pop = {
+				has_trait = trait_FUTA_DOLL
+				NOT = {
+					has_trait = trait_futa
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			owner = {
+				has_resource = {
+					type = food
+					amount <= 0
+				}
+			}
+		}
+	}
+}
+
+#女仆秘书
+futa_special_envoy = {
+	category = specialist
+	condition_string = ELF_FUTA_JOB_TRIGGER
+	clothes_texture_index = 1
+	# possible_pre_triggers = {
+	# 	is_enslaved = no
+	# }
+	possible = {
+		ELF_futa_job_check_trigger = yes
+	}
+	resources = {
+		category = planet_futa_maid
+		upkeep = {
+			# consumer_goods = 25
+			# sr_semen = 25
+		}
+		# upkeep = {
+		# 	trigger = {
+		# 		owner = {
+		# 			has_country_flag = ICE_MOON_FUTA
+		# 		}
+		# 	}
+		# 	sr_semen_ten = 1
+		# }
+	}
+	country_modifier = {
+		country_naval_cap_add = 10
+	}
+	planet_modifier = {
+		planet_stability_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				has_civic = civic_pantyhose_futa
+			}
+		}
+		pop_growth_speed = 0.01
+		PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.01
+		PLANET_POP_ASSEMBLY_MULT = 0.01
+	}
+	triggered_planet_modifier = {
+		# Gives some Stability per "x" Councilor level.
+		potential = {
+			has_councilor = {
+				COUNCILOR = "councilor_pantyhose_sex"
+			}
+		}
+		trade_value_add = 0.5
+		mult = value:councilor_level|TYPE|councilor_pantyhose_sex|
+	}
+	weight = {
+		weight = @futa_pop_weight_lv3
+		modifier = {
+			factor = 0
+			OR = {
+				# owner = {
+				# 	has_resource = {
+				# 		type = sr_semen
+				# 		amount < 1000
+				# 	}
+				# }
+				owner = {
+					has_resource = {
+						type = sr_semen_ten
+						amount < 20
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			exists = pop
+			pop = {
+				has_trait = trait_FUTA_DOLL
+			}
+		}
+		# modifier = {
+		# 	factor = 0
+		# 	owner = {
+		# 		has_resource = {
+		# 			type = food
+		# 			amount <= 0
+		# 		}
+		# 	}
+		# }
+	}
+}
+
+###
+#无尽之海探索工人
+endless_ocean_survey_worker = {
+	icon = miner
+	category = specialist
+	is_capped_by_modifier = yes
+	clothes_texture_index = 2
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+	possible = {
+		# NOT = {
+		# 	has_global_flag = endless_ocean_guardian_attack
+		# }
+		# planet = {
+		# 	is_planet_class = pc_ELF_endless_ocean
+		# 	# OR = {
+		# 	# 	has_deposit = d_ELF_endless_ocean_blocker_1
+		# 	# 	has_deposit = d_ELF_endless_ocean_blocker_2
+		# 	# 	has_deposit = d_ELF_endless_ocean_blocker_3
+		# 	# 	has_deposit = d_ELF_endless_ocean_blocker_4
+		# 	# 	has_deposit = d_ELF_endless_ocean_blocker_5
+		# 	# 	has_building = building_endless_ocean_survey
+		# 	# }
+		# }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			# owner = {
+			# 	is_ai = yes
+			# }
+			always = yes
+		}
+		planet_crime_add = -2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 0.5
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	resources = {
+		category = planet_endless_ocean_survey_worker
+		produces = {
+			physics_research = 3
+			engineering_research = 3
+			society_research = 3
+		}
+		produces = {
+			physics_research = 1
+			multiplier = planet.modifier:planet_researchers_physics_research_produces_add
+		}
+		produces = {
+			engineering_research = 1
+			multiplier = planet.modifier:planet_researchers_engineering_research_produces_add
+		}
+		produces = {
+			society_research = 1
+			multiplier = planet.modifier:planet_researchers_society_research_produces_add
+		}
+		upkeep = {
+			energy = 1
+		}
+	}
+	weight = {
+		weight = @futa_pop_weight_lv2
+		modifier = {
+			factor = 2
+		}
+		modifier = {
+			planet = {
+				num_assigned_jobs = {
+					job = endless_ocean_survey_worker
+					value > 50
+				}
+			}
+			factor = 0
+		}
+	}
+}
+
+endless_ocean_clerk = {
+	category = worker
+	icon = clerk
+	condition_string = WORKER_JOB_TRIGGER
+	building_icon = building_residence
+	clothes_texture_index = 2
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+	possible_precalc = can_fill_worker_job
+	resources = {
+		category = planet_clerks
+	}
+	planet_modifier = {
+		trade_value_mult = 0.01
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = {
+				NOT = {
+					has_planet_flag = has_franchise_headquarters
+				}
+			}
+		}
+		trade_value_add = 3
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = {
+				has_planet_flag = has_franchise_headquarters
+			}
+		}
+		trade_value_add = 2
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
+	}
+	overlord_resources = {
+		category = planet_corporate_franchising_meddling
+		produces = {
+			trigger = {
+				planet = {
+					has_planet_flag = has_franchise_headquarters
+				}
+			}
+			unity = 0.25
+		}
+	}
+	triggered_pop_modifier = {
+		potential = {
+			owner = {
+				has_modifier = paragon_origin_strengthened_government_ii
+			}
+		}
+		pop_political_power = 0.25
+	}
+	triggered_pop_modifier = {
+		potential = {
+			owner = {
+				has_modifier = paragon_origin_strengthened_government_iii
+			}
+		}
+		pop_political_power = 0.5
+	}
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 3
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = {
+				exists = orbital_defence
+				orbital_defence = {
+					exists = starbase
+					starbase = {
+						has_starbase_building = ring_trade_hub
+					}
+				}
+			}
+		}
+		planet_amenities_add = 1
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_tradition = tr_mercantile_trickle_up_economics
+			}
+		}
+		trade_value_add = 1
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_tradition = tr_mercantile_trickle_up_economics
+			}
+		}
+		planet_amenities_add = 1
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_modifier = paragon_origin_strengthened_government_iii
+			}
+		}
+		country_edict_fund_add = 1
+	}
+	weight = {
+		weight = @futa_pop_weight_lv2
+	}
+}
+
+endless_ocean_angler = {
+	icon = angler
+	category = specialist
+	condition_string = WORKER_JOB_TRIGGER
+	building_icon = building_food_processing_facility
+	clothes_texture_index = 2
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+	possible_precalc = can_fill_specialist_job
+	possible = {
+		always = yes
+	}
+	resources = {
+		category = planet_farmers
+		produces = {
+			food = 6
+			consumer_goods = 3
+		}
+		upkeep = {
+			minerals = 3
+		}
+		produces = {
+			trigger = {
+				has_councilor = {
+					COUNCILOR = "councilor_anglers"
+				}
+			}
+			food = @councilor_anglers_angler_food_bonus
+			mult = value:councilor_level|TYPE|councilor_anglers|
+		}
+		produces = {
+			trigger = {
+				planet = {
+					has_planet_flag = has_produce_requisitorium
+				}
+			}
+			food = @requisitorium_food_reduction
+		}
+	}
+	overlord_resources = {
+		category = planet_requisitioned_food
+		produces = {
+			trigger = {
+				planet = {
+					has_planet_flag = has_produce_requisitorium
+				}
+			}
+			food = @requisitorium_food_overlord
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		trade_value_add = 2
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_councilor = {
+				COUNCILOR = "councilor_corporate_anglers"
+			}
+		}
+		trade_value_add = @councilor_corporate_anglers_angler_trade_value_bonus
+		mult = value:scripted_modifier_councilor_level_mult|MODIFIER|pop_job_trade_mult|TYPE|councilor_corporate_anglers|
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_agrarian_idyll
+			}
+		}
+		planet_amenities_add = 2
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 0.5
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	weight = {
+		weight = @futa_pop_weight_lv2
+	}
+}
+
+endless_ocean_foundry = {
+	icon = foundry
+	category = specialist
+	condition_string = SPECIALIST_JOB_TRIGGER
+	building_icon = building_foundry_1
+	clothes_texture_index = 3
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+	possible_precalc = can_fill_specialist_job
+	possible = {
+		always = yes
+	}
+	resources = {
+		category = planet_metallurgists
+		produces = {
+			alloys = 3
+		}
+		upkeep = {
+			minerals = 6
+		}
+		produces = {
+			trigger = {
+				planet = {
+					has_planet_flag = has_material_requisitorium
+				}
+			}
+			alloys = @requisitorium_alloys_reduction
+		}
+		upkeep = {
+			trigger = {
+				planet = {
+					has_planet_flag = has_material_requisitorium
+				}
+			}
+			minerals = 2
+		}
+	}
+	overlord_resources = {
+		category = planet_requisitioned_alloys
+		produces = {
+			trigger = {
+				planet = {
+					has_planet_flag = has_material_requisitorium
+				}
+			}
+			alloys = @requisitorium_alloys_overlord
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 0.5
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	weight = {
+		weight = @futa_pop_weight_lv2
+	}
+}
+
+endless_ocean_researcher = {
+	icon = researcher
+	category = specialist
+	condition_string = SPECIALIST_JOB_TRIGGER
+	building_icon = building_research_lab_1
+	clothes_texture_index = 3
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+	possible_precalc = can_fill_specialist_job
+	possible = {
+		complex_specialist_job_check_trigger = yes
+	}
+	triggered_country_modifier = {
+		modifier = {
+			country_naval_cap_add = 1
+		}
+		mult = planet.modifier:job_researcher_naval_cap_add
+	}
+	resources = {
+		category = planet_researchers
+		produces = {
+			physics_research = 4
+			engineering_research = 4
+			society_research = 4
+		}
+		upkeep = {
+			trigger = {
+				is_energy_upkeep_species = no
+			}
+			consumer_goods = 2
+		}
+		upkeep = {
+			trigger = {
+				is_energy_upkeep_species = yes
+			}
+			energy = 2
+		}
+		upkeep = {
+			trigger = {
+				planet = {
+					has_planet_flag = has_science_ministry
+				}
+			}
+			consumer_goods = 1
+		}
+	}
+	overlord_resources = {
+		category = planet_requisitioned_research
+		produces = {
+			trigger = {
+				planet = {
+					has_planet_flag = has_science_ministry
+				}
+			}
+			physics_research = 2
+			engineering_research = 2
+			society_research = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 0.5
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	weight = {
+		weight = @futa_pop_weight_lv2
+	}
+}

@@ -1,0 +1,523 @@
+####################
+##### FOOD/SOCIETY  #####
+####################
+d_tentacle_jungle = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_rare
+	use_weights_for_terraforming_swap_types = yes
+	resources = {
+		category = planet_deposits
+		produces = {
+			trigger = {
+				exists = owner
+				is_lust_empire = yes
+			}
+			food = 10
+			society_research = 10
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				is_pure_empire = yes
+			}
+			society_research = 5
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_pure_empire = no
+					is_lust_empire = no
+				}
+			}
+			society_research = 5
+			food = 5
+		}
+		produces = {
+			trigger = {
+				owner = {
+					is_dark_country = yes
+				}
+			}
+			food = 10
+			society_research = 10
+		}
+		produces = {
+			trigger = {
+				owner = {
+					is_light_country = yes
+				}
+			}
+			society_research = 5
+		}
+		produces = {
+			trigger = {
+				owner = {
+					NOT = {
+						is_dark_country = yes
+						is_light_country = yes
+					}
+				}
+			}
+			society_research = 5
+			food = 5
+		}
+	}
+	resources = {
+		category = planet_deposits
+		produces = {
+			sr_semen_ten = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			is_lust_empire = yes
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			job_researcher_add = 2
+			job_farmer_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			is_lust_empire = yes
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_brain_drone_add = 2
+			job_agri_drone_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			is_pure_empire = yes
+		}
+		modifier = {
+			job_researcher_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_futa_country = yes
+			}
+			NOT = {
+				has_planet_flag = vagina_sexslave_planet
+			}
+		}
+		modifier = {
+			# job_black_pantyhose_futa_tentacle_rbq_add = 1
+			job_futa_metallurgist_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_futa_country = yes
+			}
+			has_planet_flag = vagina_sexslave_planet
+		}
+		modifier = {
+			planet_jobs_futa_rbq_produces_mult = 0.05
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_dark_country = yes
+			}
+		}
+		modifier = {
+			# job_researcher_add = 2
+			job_farmer_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_light_country = yes
+			}
+		}
+		modifier = {
+			job_researcher_add = 2
+		}
+	}
+	potential = {
+		OR = {
+			AND = {
+				has_global_flag = love_between_us 
+				planet_size >= 10
+				OR = {
+					is_planet_class = pc_gaia
+					is_planet_class = pc_continental
+					is_planet_class = pc_tropical
+					is_planet_class = pc_ocean
+					is_planet_class = pc_dc_spore
+				}
+			}
+			AND = {
+				has_global_flag = ICE_MOON_ELF_MOD
+				is_wet = yes
+			}
+		}
+		
+	}
+	drop_weight = {
+		weight = 1
+		modifier = {
+			factor = 1.5
+			is_planet_class = pc_arctic
+			has_global_flag = love_between_us 
+		}
+		modifier = {
+			factor = 1.5
+			is_planet_class = pc_tropical
+			has_global_flag = love_between_us 
+		}
+		modifier = {
+			factor = 2.5
+			is_planet_class = pc_gaia
+			has_global_flag = love_between_us 
+		}
+		modifier = {
+			factor = 0.1
+			planet_size < 10
+			has_global_flag = love_between_us 
+		}
+		modifier = {
+			factor = 1.5
+			planet_size > 10
+			has_global_flag = love_between_us 
+		}
+		modifier = {
+			factor = 8
+			has_global_flag = ICE_MOON_ELF_MOD
+		}
+	}
+}
+
+####################
+#####sr_beauty#####
+####################
+d_beauty_paradise = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	category = deposit_cat_rare
+	potential = {
+		can_have_habitable_deposits = yes
+		OR = {
+			is_planet_class = pc_semen_planet_no_col
+			if = {
+				limit = {
+					has_global_flag = ICE_MOON_ELF_MOD
+				}
+				planet_size >= 20
+				is_wet = yes
+				is_planet_class = pc_semen_planet_no_col
+			}
+			else = {
+				always = no
+			}
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_global_flag = love_between_us
+		}
+		building_beauty_college_max = 1
+		planet_beauty_produces_mult = 0.2
+	}
+	drop_weight = {
+		weight = 0.1
+		modifier = {
+			factor = 1.5
+			is_planet_class = pc_continental
+			planet_size > 9
+			has_global_flag = love_between_us
+		}
+		modifier = {
+			factor = 1.5
+			is_planet_class = pc_tropical
+			planet_size > 9
+			has_global_flag = love_between_us
+		}
+		modifier = {
+			factor = 1.5
+			is_planet_class = pc_ocean
+			planet_size > 9
+			has_global_flag = love_between_us
+		}
+		modifier = {
+			factor = 4
+			is_planet_class = pc_gaia
+			planet_size > 9
+			has_global_flag = love_between_us
+		}
+		modifier = {
+			factor = 4
+			is_planet_class = pc_gaia
+			planet_size > 14
+			has_global_flag = love_between_us
+		}
+		modifier = {
+			factor = 4
+			is_planet_class = pc_gaia
+			planet_size > 19
+			has_global_flag = love_between_us
+		}
+		modifier = {
+			factor = 4
+			is_planet_class = pc_gaia
+			planet_size > 24
+			has_global_flag = love_between_us
+		}
+		modifier = {
+			factor = 4
+			is_planet_class = pc_gaia
+			planet_size > 29
+			has_global_flag = love_between_us
+		}
+		modifier = {
+			factor = 1.5
+			solar_system = {
+				OR = {
+					has_star_flag = empire_home_system
+					has_star_flag = sol_system
+					has_star_flag = deneb_system
+				}
+			}
+			has_global_flag = love_between_us
+		}
+		modifier = {
+			factor = 0
+			count_deposits = { count >= 5 type = d_beauty_paradise }
+			has_global_flag = love_between_us
+		}
+		modifier = {
+			factor = 50
+			has_global_flag = ICE_MOON_ELF_MOD
+		}
+		modifier = {
+			factor = 1.5
+			has_global_flag = ICE_MOON_ELF_MOD
+			OR = {
+				is_planet_class = pc_semen_planet_no_col
+				is_planet_class = pc_gaia
+			}
+		}
+	}
+	resources = {
+		category = planet_deposits
+		produces = {
+			sr_semen_ten = 1
+			trigger = {
+				has_global_flag = ICE_MOON_ELF_MOD
+			}
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					is_light_country = yes
+					is_dark_country = yes
+				}
+			}
+		}
+		modifier = {
+			# building_heaven_college_max = 1
+			planet_jobs_produces_mult = 0.05
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+			}
+		}
+		modifier = {
+			building_beauty_college_max = 1
+			planet_beauty_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_futa_country = yes
+			}
+			NOT = {
+				has_planet_flag = vagina_sexslave_planet
+			}
+		}
+		modifier = {
+			planet_futa_maid_produces_mult = 0.05			#女仆职业产出
+			planet_futa_special_produces_mult = 0.05			#特殊产出
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_futa_country = yes
+			}
+			has_planet_flag = vagina_sexslave_planet
+		}
+		modifier = {
+			planet_jobs_futa_rbq_produces_mult = 0.15
+		}
+	}
+}
+
+d_beauty_heaven = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	potential = {
+		can_have_habitable_deposits = yes
+		OR = {
+			is_planet_class = pc_semen_planet_no_col
+			if = {
+				limit = {
+					has_global_flag = ICE_MOON_ELF_MOD
+				}
+				planet_size >= 20
+				is_wet = yes
+				is_planet_class = pc_semen_planet_no_col
+			}
+			else = {
+				always = no
+			}
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_global_flag = love_between_us
+		}
+		building_heaven_college_max = 1
+		planet_beauty_produces_mult = 0.2
+	}
+	drop_weight = {
+		weight = 0.01
+		modifier = {
+			factor = 5
+			is_planet_class = pc_gaia
+			planet_size > 9
+			has_global_flag = love_between_us
+		}
+		modifier = {
+			factor = 5
+			is_planet_class = pc_gaia
+			planet_size > 14
+			has_global_flag = love_between_us
+		}
+		modifier = {
+			factor = 5
+			is_planet_class = pc_gaia
+			planet_size > 19
+			has_global_flag = love_between_us
+		}
+		modifier = {
+			factor = 5
+			is_planet_class = pc_gaia
+			planet_size > 24
+			has_global_flag = love_between_us
+		}
+		modifier = {
+			factor = 10
+			is_planet_class = pc_gaia
+			planet_size > 29
+			has_global_flag = love_between_us
+		}
+		modifier = {
+			weight = 0.15
+			solar_system = {
+				OR = {
+					has_star_flag = empire_home_system
+					has_star_flag = sol_system
+					has_star_flag = deneb_system
+				}
+			}
+			has_global_flag = love_between_us
+		}
+		modifier = {
+			factor = 0
+			count_deposits = { count >= 5 type = d_beauty_heaven }
+			has_global_flag = love_between_us
+		}
+		modifier = {
+			factor = 50
+			has_global_flag = ICE_MOON_ELF_MOD
+		}
+		modifier = {
+			factor = 1.5
+			has_global_flag = ICE_MOON_ELF_MOD
+			OR = {
+				is_planet_class = pc_semen_planet_no_col
+				is_planet_class = pc_gaia
+			}
+		}
+	}
+	resources = {
+	 	category = planet_deposits
+	 	produces = {
+			sr_semen_ten = 1
+			trigger = {
+				has_global_flag = ICE_MOON_ELF_MOD
+			}
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					is_light_country = yes
+					is_dark_country = yes
+				}
+			}
+		}
+		modifier = {
+			planet_jobs_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_futa_country = yes
+			}
+			NOT = {
+				has_planet_flag = vagina_sexslave_planet
+			}
+		}
+		modifier = {
+			planet_futa_maid_produces_mult = 0.1			#女仆职业产出
+			planet_futa_special_produces_mult = 0.1			#特殊产出
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_futa_country = yes
+			}
+			has_planet_flag = vagina_sexslave_planet
+		}
+		modifier = {
+			planet_jobs_futa_rbq_produces_mult = 0.15
+		}
+	}
+}

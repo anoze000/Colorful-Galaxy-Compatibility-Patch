@@ -2248,13 +2248,6 @@ can_species_be_assembled = { #可组装物种
 					has_modifier = modifier_ban_assemble 
 				} 
 			}
-			## Futa
-			if = {
-				limit = {
-					has_global_flag = futa_between_us
-				}
-				is_can_not_be_assembled_species = yes
-			}
 			##_|基础条件|
 			OR = {
 				#_|原版组装|	+azl/GF/wv/久远
@@ -2349,49 +2342,10 @@ can_species_be_assembled = { #可组装物种
 							}
 						}
 					}
-					# Futa
-					if = {
-						limit = { 
-							has_global_flag = futa_between_us
-						}
-						if = {
-							limit = {
-								root.owner = {
-									is_futa_country = yes
-								}
-							}
-							if = {
-								limit = {
-									has_trait = trait_FUTA_DOLL
-									NOT = {
-										has_trait = trait_futa
-									}
-								}
-								root = {
-									OR = {
-										is_planet_class = pc_futa_ring_world
-										has_building = building_futa_wawa
-									}
-								}
-							}
-							else = {
-								has_trait = trait_futa
-							}
-						}	
-					}
 				}
 				#_|原版克隆|	+ECI/星海皇帝/thl	/wv
 				AND = {
 					is_organic_species = yes
-					#_|Futa|
-					if = {
-						limit = { 
-							root.owner = {
-								is_futa_country = yes
-							}
-						}
-						has_trait = trait_futa
-					}
 					#_|v蜂群|	+ECI
 					else_if = {
 						limit = {
@@ -5450,37 +5404,35 @@ is_criminal_syndicate_rule = { #遵循犯罪集团规则
 					has_country_flag = community_is_criminal_syndicate_rule_false
 				}
 			}
-			#	|精灵|
-			NOR = {
-				has_country_flag = ICE_MOON_FUTA_AI
-				has_country_flag = ICE_MOON_FUTA
-			}
-			#	|政体|
 			OR = {
-				has_authority = auth_corporate
-				has_valid_civic = civic_galactic_sovereign_megacorp
-				#	UGRC
-				has_country_flag = UGRC_flg_cntr_RULE_criminal_syndicate
-				#	wsg
-				has_authority = auth_warshipgirls
-			}
-			#	|国策|
-			OR = {
-				has_valid_civic = civic_criminal_heritage
-				#	UGRC
-				has_country_flag = UGRC_flg_cntr_RULE_criminal_syndicate
-				
-				#	ECI
-				has_civic = civic_underworld_society
-				has_civic = civic_family_business
-				has_civic = civic_world_cooperative
-				#	wsg
-				has_civic = civic_sh_criminal_syndicate
-				#	ev
-				has_valid_civic = civic_ev_criminal_ship
-				#	cg+
-				has_valid_civic = civic_corruption_syndicate # 罪企
-				has_valid_civic = civic_semen_pantyhose_brothel
+				#	|政体|
+				OR = {
+					has_authority = auth_corporate
+					has_valid_civic = civic_galactic_sovereign_megacorp
+					#	UGRC
+					has_country_flag = UGRC_flg_cntr_RULE_criminal_syndicate
+					#	wsg
+					has_authority = auth_warshipgirls
+				}
+				#	|国策|
+				OR = {
+					has_valid_civic = civic_criminal_heritage
+					#	UGRC
+					has_country_flag = UGRC_flg_cntr_RULE_criminal_syndicate
+					
+					#	ECI
+					has_civic = civic_underworld_society
+					has_civic = civic_family_business
+					has_civic = civic_world_cooperative
+					#	wsg
+					has_civic = civic_sh_criminal_syndicate
+					#	ev
+					has_valid_civic = civic_ev_criminal_ship
+					#	cg+
+					has_valid_civic = civic_corruption_syndicate # 罪企
+					has_valid_civic = civic_semen_pantyhose_brothel
+				}
+				is_ELF_criminal_syndicate_rule = yes
 			}
 		}
 		AND = { #国防部 MOD

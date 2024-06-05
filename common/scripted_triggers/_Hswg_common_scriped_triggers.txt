@@ -6,6 +6,8 @@ is_carbon_based = {
 			OR = {
 				# 香草
 				is_archetype = BIOLOGICAL				# original trigger did not include pre-sapient classes
+				#精灵
+				is_ELF_food_upkeep_archetype = yes
 				# 多彩
 				is_archetype = Magical_Bitch
 				is_archetype = PARASITE

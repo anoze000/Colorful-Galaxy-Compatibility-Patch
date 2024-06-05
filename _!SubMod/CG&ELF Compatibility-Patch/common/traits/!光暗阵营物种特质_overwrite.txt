@@ -1,0 +1,295 @@
+#魅魔
+trait_suc = {
+	cost = -2
+	potential_crossbreeding_chance = 0
+	initial = no	# 开局可用
+	randomized = no
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	potential_crossbreeding_chance = 0
+	allowed_archetypes = {
+		ELF
+		TOUHOUGIRLS
+		ELF_species_archetype
+	}
+	# opposites = {
+	# 	# 	# "trait_inn"
+	# 	"trait_DC_ethic_asceticism"
+	# 	# "trait_dimension_life"
+	# }
+	improves_leaders = yes
+	icon = "gfx/interface/icons/traits/trait_dark.dds"
+	modifier = {
+		# leaders_cost_mult = -0.15		#基础领袖费用 
+		species_leader_exp_gain = 0.5
+		leader_lifespan_add = 50
+		army_damage_mult = 0.25
+		army_defense_damage_mult = 0.25
+		army_health = 1
+		# pop_government_ethic_attraction = 0.5
+		pop_environment_tolerance = 0.1
+		pop_cat_slave_happiness = 0.1
+		pop_cat_worker_happiness = 0.05
+		pop_cat_futa_rbq_happiness = 0.05
+		pop_growth_speed = 0.05
+		PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.05
+		PLANET_POP_ASSEMBLY_MULT = 0.05
+
+		# planet_jobs_minerals_produces_mult = 1
+		# # planet_jobs_slave_produces_mult = 0.5
+		# pop_cat_slave_happiness = 0.2
+		# pop_cat_futa_rbq_happiness = 0.2
+		# pop_growth_speed = 0.15
+		# PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.15
+		# PLANET_POP_ASSEMBLY_MULT = 0.15
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_ai = yes
+			}
+		}
+		modifier = {
+			planet_jobs_minerals_produces_mult = -1
+		}
+	}
+	slave_cost = {
+		energy = 1000
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+#圣女
+trait_inn = {
+	cost = -2
+	potential_crossbreeding_chance = 0
+	initial = no	# 开局可用
+	randomized = no
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	potential_crossbreeding_chance = 0
+	allowed_archetypes = {
+		ELF
+		TOUHOUGIRLS
+		ELF_species_archetype
+	}
+	# opposites = {
+	# 	# 	# "trait_dark"
+	# 	"trait_DC_ethic_carnalism"
+	# 	# 	# "trait_dimension_life"
+	# }
+	improves_leaders = yes
+	icon = "gfx/interface/icons/traits/trait_light.dds"
+	sorting_priority = 30
+	modifier = {
+		# pc_arid_habitability = @primary
+		# pc_desert_habitability = @primary
+		# pc_savannah_habitability = @primary
+		# pc_tropical_habitability = @primary
+		# pc_continental_habitability = @primary
+		# pc_tundra_habitability = @primary
+		# pc_arctic_habitability = @primary
+		# pc_ocean_habitability = @primary
+		# pc_alpine_habitability = @primary
+		# pc_nuked_habitability = @primary
+		# leaders_cost_mult = -0.15		#基础领袖费用 
+		species_leader_exp_gain = 0.5
+		leader_lifespan_add = 100
+		army_damage_mult = 0.3
+		army_health = 1
+		# pop_government_ethic_attraction = 1
+		pop_environment_tolerance = 0.1
+		pop_cat_ruler_happiness = 0.05
+		pop_cat_specialist_happiness = 0.05
+		# planet_jobs_unity_produces_mult = 0.15
+		# planet_jobs_produces_mult = 0.15
+		# planet_stability_add = 5
+	}
+	slave_cost = {
+		energy = 1000
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+#新魅魔
+trait_dark = {
+	cost = 0
+	initial = no	# 开局可用
+	randomized = no
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	potential_crossbreeding_chance = 0
+	allowed_archetypes = {
+		ELF
+		TOUHOUGIRLS
+		ELF_species_archetype
+	}
+	icon = "gfx/interface/icons/traits/trait_dark.dds"
+	modifier = {
+		# leaders_cost_mult = -0.15		#基础领袖费用 
+		species_leader_exp_gain = 0.5
+		leader_lifespan_add = 50
+	}
+	slave_cost = {
+		energy = 1000
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+#黑暗侵蚀
+trait_dark_change = {
+	cost = 0
+	initial = no	# 开局可用
+	randomized = no
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	potential_crossbreeding_chance = 0
+	allowed_archetypes = {
+		ELF
+		TOUHOUGIRLS
+		ELF_species_archetype
+	}
+	custom_tooltip = trait_dark_change_effect
+	icon = "gfx/interface/icons/traits/trait_dark_change.dds"
+	modifier = {
+		# leaders_cost_mult = -0.15		#基础领袖费用 
+		# species_leader_exp_gain = 0.5
+		# leader_lifespan_add = 50
+	}
+	slave_cost = {
+		energy = 100
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+#新圣女
+trait_light = {
+	cost = 0
+	initial = no	# 开局可用
+	randomized = no
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	potential_crossbreeding_chance = 0
+	allowed_archetypes = {
+		ELF
+		TOUHOUGIRLS
+		ELF_species_archetype
+	}
+	icon = "gfx/interface/icons/traits/trait_light.dds"
+	sorting_priority = 30
+	modifier = {
+		# leaders_cost_mult = -0.15		#基础领袖费用 
+		species_leader_exp_gain = 0.5
+		leader_lifespan_add = 50
+	}
+	slave_cost = {
+		energy = 1000
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+#圣光洗礼
+trait_light_change = {
+	cost = 0
+	initial = no	# 开局可用
+	randomized = no
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	potential_crossbreeding_chance = 0
+	allowed_archetypes = {
+		ELF
+		TOUHOUGIRLS
+		ELF_species_archetype
+	}
+	icon = "gfx/interface/icons/traits/trait_light_change.dds"
+	sorting_priority = 30
+	modifier = {
+		# leaders_cost_mult = -0.15		#基础领袖费用 
+		# species_leader_exp_gain = 0.5
+		# leader_lifespan_add = 50
+	}
+	slave_cost = {
+		energy = 100
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+#圣光狂热者
+trait_inn_perfect_body = {
+	cost = -10	# 特质点数花费
+	allowed_archetypes = {
+		ELF
+	}	# 可使用该特质的原型	
+	initial = no	# 开局可用
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	randomized = no	# 随机生成
+	sorting_priority = 50	# 分类优先权
+	modifier = {
+		# 调节器
+		planet_pops_consumer_goods_upkeep_mult = -0.1		#维持人口消费品的花费 [trait]
+		planet_pops_organics_food_upkeep_mult = -0.15		#人口食物消耗 [trait]
+		pop_growth_speed = -0.15		# 人口生长速度 [trait]
+		planet_jobs_unity_produces_mult = 0.1
+		PLANET_AMENITIES_MULT = 0.2		#舒适度 [trait]	
+	}
+}

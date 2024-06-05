@@ -1,0 +1,384 @@
+special_project = {
+	key = "SUC_SHROUD_PROJECT"
+	cost = 100000
+	tech_department = society_technology
+	icon = "gfx/interface/icons/situation_log/situation_log_main_quest.dds"
+	picture = GFX_evt_CM_chain30
+	location = no
+	event_scope = planet_event
+	on_success = {
+		owner = {
+			country_event = { id = CG_suc_shroud.1 }
+		}
+	}
+}
+
+special_project = {
+	key = "FIND_ROBOT_CORE"
+	cost = 0
+	days_to_research = 100
+	tech_department = society_technology
+	picture = GFX_evt_society_research
+	event_scope = ship_event
+	requirements = {
+		shipclass_science_ship = 1
+		leader = scientist
+	}
+	on_success = {
+		event_target:arc30_planet = {
+			planet_event = { id = CG_suc_arc.31 }
+		}
+	}
+	on_fail = {}
+}
+
+special_project = {
+	key = "BUMPY_CG_ROAD_AHEAD_YIELD"
+	cost = 1500
+	tech_department = society_technology
+	picture = GFX_evt_BUMPY_CG_ROAD_AHEAD_YIELD
+	event_scope = country_event
+	event_chain = bumpy_cg_road_ahead
+	on_success = {
+		hidden_effect = { set_country_flag = bumpy_cg_road_ahead_yield }
+		end_event_chain = bumpy_cg_road_ahead
+	}
+}
+
+special_project = {
+	key = "BUMPY_CG_ROAD_AHEAD_INVERSE"
+	cost = 6000
+	tech_department = society_technology
+	picture = GFX_evt_BUMPY_CG_ROAD_AHEAD_INVERSE
+	event_scope = country_event
+	event_chain = bumpy_cg_road_ahead
+	on_success = {
+		hidden_effect = { set_country_flag = bumpy_cg_road_ahead_inverse }
+		end_event_chain = bumpy_cg_road_ahead
+	}
+}
+
+special_project = {
+	key = "BUMPY_CG_ROAD_AHEAD_COEXISTENCE"
+	cost = 12000
+	tech_department = society_technology
+	picture = GFX_evt_BUMPY_CG_ROAD_AHEAD_COEXISTENCE
+	event_scope = country_event
+	event_chain = bumpy_cg_road_ahead
+	on_success = {
+		hidden_effect = { set_country_flag = bumpy_cg_road_ahead_coexistence }
+		end_event_chain = bumpy_cg_road_ahead
+	}
+}
+
+special_project = {
+	key = "ORIGIN_OF_THE_DRAGON_UNDERGROUND_RECORD_ONE"
+	cost = 5000
+	tech_department = engineering_technology
+	picture = GFX_evt_ORIGIN_OF_THE_DRAGON_UNDERGROUND_RECORD
+	event_scope = country_event
+	event_chain = origin_of_the_dragon_underground
+	on_success = {
+		hidden_effect = { country_event = { id = CG_suc.215 } }
+	}
+}
+
+special_project = {
+	key = "ORIGIN_OF_THE_DRAGON_UNDERGROUND_RECORD_TWO"
+	cost = 5000
+	tech_department = physics_technology
+	picture = GFX_evt_ORIGIN_OF_THE_DRAGON_UNDERGROUND_RECORD
+	event_scope = country_event
+	event_chain = origin_of_the_dragon_underground
+	on_success = {
+		hidden_effect = { country_event = { id = CG_suc.216 } }
+	}
+}
+
+special_project = {
+	key = "ORIGIN_OF_THE_DRAGON_UNDERGROUND_RECORD_THREE"
+	cost = 10000
+	tech_department = physics_technology
+	picture = GFX_evt_ORIGIN_OF_THE_DRAGON_UNDERGROUND_RECORD
+	event_scope = country_event
+	event_chain = origin_of_the_dragon_underground
+	on_success = {
+		hidden_effect = { country_event = { id = CG_suc.217 } }
+	}
+}
+
+special_project = {
+	key = "ORIGIN_OF_THE_DRAGON_VENGEFUL_BLADE"
+	cost = 2000
+	tech_department = society_technology
+	picture = GFX_evt_ORIGIN_OF_THE_DRAGON_VENGEFUL_BLADE
+	event_scope = country_event
+	event_chain = origin_of_the_dragon_why_does_sword_shine
+	on_success = {
+		set_country_flag = origin_of_the_dragon_why_does_sword_shine
+		hidden_effect = { country_event = { id = CG_suc.280 } }
+		end_event_chain = origin_of_the_dragon_why_does_sword_shine
+	}
+}
+
+special_project = {
+	key = "ORIGIN_OF_THE_DRAGON_PUNISHING_DRAGON"
+	cost = 2000
+	tech_department = society_technology
+	picture = GFX_evt_here_be_dragons
+	event_scope = country_event
+	event_chain = origin_of_the_dragon_why_does_sword_shine
+	on_success = {
+		set_country_flag = origin_of_the_dragon_why_does_sword_shine
+		hidden_effect = { country_event = { id = CG_suc.281 } }
+		end_event_chain = origin_of_the_dragon_why_does_sword_shine
+	}
+}
+
+special_project = {
+	key = "ORIGIN_OF_THE_DRAGON_RAISE_DRAGON_SPEAR"
+	days_to_research = 5
+	picture = GFX_evt_ORIGIN_OF_THE_DRAGON_RAISE_DRAGON_SPEAR
+	event_scope = country_event
+	on_success = {
+		hidden_effect = { country_event = { id = CG_suc.273 } }
+	}
+}
+
+special_project = {
+	key = "TOUCH_CG_THE_ABYSS_YESTERDAY"
+	cost = 500000
+	tech_department = physics_technology
+	picture = GFX_evt_TOUCH_CG_THE_ABYSS_YESTERDAY
+	event_scope = country_event
+	event_chain = touch_cg_the_abyss
+	abort_trigger = { has_global_flag = already_initiat_CG_crisis }
+	on_start = {
+		country_event = { id = CG_crisis.1020 }
+	}
+	on_progress_25 = {
+		country_event = { id = CG_crisis.1021 }
+	}
+	on_progress_50 = {
+		country_event = { id = CG_crisis.1022 }
+	}
+	on_progress_75 = {
+		country_event = { id = CG_crisis.1023 }
+	}
+	on_success = {
+		country_event = { id = CG_crisis.1024 }
+	}
+}
+
+special_project = {
+	key = "TOUCH_CG_THE_ABYSS_CONGREGATION"
+	cost = 500000
+	tech_department = society_technology
+	picture = GFX_evt_TOUCH_CG_THE_ABYSS_CONGREGATION
+	event_scope = country_event
+	event_chain = touch_cg_the_abyss
+	abort_trigger = { has_global_flag = already_initiat_CG_crisis }
+	on_start = {
+		country_event = { id = CG_crisis.1025 }
+	}
+	on_progress_25 = {
+		country_event = { id = CG_crisis.1026 }
+	}
+	on_progress_50 = {
+		country_event = { id = CG_crisis.1027 }
+	}
+	on_progress_75 = {
+		country_event = { id = CG_crisis.1028 }
+	}
+	on_success = {
+		country_event = { id = CG_crisis.1029 }
+	}
+}
+
+special_project = {
+	key = "TOUCH_CG_THE_ABYSS_HEAVEN"
+	cost = 500000
+	tech_department = engineering_technology
+	picture = GFX_evt_TOUCH_CG_THE_ABYSS_HEAVEN
+	event_scope = country_event
+	event_chain = touch_cg_the_abyss
+	abort_trigger = { has_global_flag = already_initiat_CG_crisis }
+	on_start = {
+		country_event = { id = CG_crisis.1030 }
+	}
+	on_progress_25 = {
+		country_event = { id = CG_crisis.1031 }
+	}
+	on_progress_50 = {
+		country_event = { id = CG_crisis.1032 }
+	}
+	on_progress_75 = {
+		country_event = { id = CG_crisis.1033 }
+	}
+	on_success = {
+		country_event = { id = CG_crisis.1034 }
+	}
+}
+
+special_project = {
+	key = "TOUCH_CG_THE_ABYSS_US"
+	cost = 500000
+	tech_department = physics_technology
+	picture = GFX_evt_TOUCH_CG_THE_ABYSS_US
+	event_scope = country_event
+	event_chain = touch_cg_the_abyss
+	abort_trigger = { has_global_flag = already_initiat_CG_crisis }
+	on_start = {
+		country_event = { id = CG_crisis.1035 }
+	}
+	on_progress_25 = {
+		country_event = { id = CG_crisis.1036 }
+	}
+	on_progress_50 = {
+		country_event = { id = CG_crisis.1037 }
+	}
+	on_progress_75 = {
+		country_event = { id = CG_crisis.1038 }
+	}
+	on_success = {
+		country_event = { id = CG_crisis.1039 }
+	}
+}
+
+special_project = {
+	key = "ORIGIN_LUSTTOY_HERITAGE_RECORD"
+	cost = 2000
+	tech_department = physics_technology
+	picture = GFX_evt_spymaster
+	event_scope = country_event
+	on_success = {
+		hidden_effect = { country_event = { id = CG_suc.1000 } }
+	}
+}
+
+special_project = {
+	key = "ORIGIN_LUSTTOY_HERITAGE_RECORD_TWO"
+	cost = 5000
+	tech_department = physics_technology
+	picture = GFX_evt_spymaster
+	event_scope = country_event
+	on_success = {
+		hidden_effect = { country_event = { id = CG_suc.1004 } }
+	}
+}
+
+special_project = {
+	key = "ORIGIN_LUSTTOY_HERITAGE_RECORD_THREE"
+	cost = 20000
+	tech_department = physics_technology
+	picture = GFX_evt_spymaster
+	event_scope = country_event
+	on_success = {
+		hidden_effect = { country_event = { id = CG_suc.1007 } }
+	}
+}
+
+special_project = {
+	key = "ORIGIN_LUSTTOY_HERITAGE_RECORD_FOUR"
+	cost = 50000
+	tech_department = physics_technology
+	picture = GFX_evt_spymaster
+	event_scope = country_event
+	on_success = {
+		hidden_effect = { country_event = { id = CG_suc.1010 } }
+	}
+}
+
+special_project = {
+	key = "ORIGIN_LUSTTOY_HERITAGE_RECORD_FIVE"
+	cost = 100000
+	tech_department = physics_technology
+	picture = GFX_evt_spymaster
+	event_scope = country_event
+	on_success = {
+		hidden_effect = { country_event = { id = CG_suc.1014 } }
+	}
+}
+
+special_project = {
+	key = "ORIGIN_OF_THE_DRAGON_ESTABLISHMENT_OF_THE_TEAM"
+	cost = 10000
+	tech_department = engineering_technology
+	picture = GFX_evt_spymaster
+	event_scope = country_event
+	on_success = {
+		hidden_effect = { country_event = { id = CG_suc.311 days = 7 } }
+		enable_special_project = { name = ORIGIN_OF_THE_DRAGON_EXPLORING_THE_LITERATURE owner = root }
+	}
+}
+
+special_project = {
+	key = "ORIGIN_OF_THE_DRAGON_EXPLORING_THE_LITERATURE"
+	cost = 10000
+	tech_department = society_technology
+	picture = GFX_evt_ORIGIN_OF_THE_DRAGON_EXPLORING_THE_LITERATURE
+	event_scope = country_event
+	on_success = {
+		hidden_effect = { country_event = { id = CG_suc.312 days = 7 } }
+		enable_special_project = { name = ORIGIN_OF_THE_DRAGON_RESEARCH_HYPOTHESIS owner = root }
+	}
+}
+
+special_project = {
+	key = "ORIGIN_OF_THE_DRAGON_RESEARCH_HYPOTHESIS"
+	cost = 10000
+	tech_department = society_technology
+	picture = GFX_evt_animal_wildlife
+	event_scope = country_event
+	on_success = {
+		hidden_effect = { country_event = { id = CG_suc.313 days = 7 } }
+		enable_special_project = { name = ORIGIN_OF_THE_DRAGON_DESIGN_OF_EXPERIMENTS owner = root }
+	}
+}
+
+special_project = {
+	key = "ORIGIN_OF_THE_DRAGON_DESIGN_OF_EXPERIMENTS"
+	cost = 10000
+	tech_department = society_technology
+	picture = GFX_evt_society_research
+	event_scope = country_event
+	on_success = {
+		hidden_effect = { country_event = { id = CG_suc.314 days = 7 } }
+		enable_special_project = { name = ORIGIN_OF_THE_DRAGON_DATA_OBSERVATION owner = root }
+	}
+}
+
+special_project = {
+	key = "ORIGIN_OF_THE_DRAGON_DATA_OBSERVATION"
+	cost = 10000
+	tech_department = society_technology
+	picture = GFX_evt_genetic_modification
+	event_scope = country_event
+	on_success = {
+		hidden_effect = { country_event = { id = CG_suc.315 days = 7 } }
+		enable_special_project = { name = ORIGIN_OF_THE_DRAGON_DATA_ANALYSIS owner = root }
+	}
+}
+
+special_project = {
+	key = "ORIGIN_OF_THE_DRAGON_DATA_ANALYSIS"
+	cost = 10000
+	tech_department = physics_technology
+	picture = GFX_evt_analyzing_artifacts
+	event_scope = country_event
+	on_success = {
+		hidden_effect = { country_event = { id = CG_suc.317 days = 7 } }
+		enable_special_project = { name = ORIGIN_OF_THE_DRAGON_RESULTS_REPORT owner = root }
+	}
+}
+
+special_project = {
+	key = "ORIGIN_OF_THE_DRAGON_RESULTS_REPORT"
+	cost = 10000
+	tech_department = engineering_technology
+	picture = GFX_evt_intelligence_report
+	event_scope = country_event
+	on_success = {
+		hidden_effect = { country_event = { id = CG_suc.318 days = 7 } }
+	}
+}

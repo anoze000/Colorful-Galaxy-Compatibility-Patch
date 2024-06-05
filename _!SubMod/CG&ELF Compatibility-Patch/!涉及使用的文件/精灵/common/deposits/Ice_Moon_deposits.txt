@@ -1,0 +1,595 @@
+#海洋地块
+d_ten_semen_ocean = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	potential = {
+		can_have_habitable_deposits = yes
+		OR = {
+			is_planet_class = pc_semen_planet
+			# is_planet_class = pc_semen_planet_no_col
+		}
+	}
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		exists = owner
+	# 		owner = {
+	# 			is_regular_empire = yes
+	# 		}
+	# 		has_building = "building_ten_production"
+	# 	}
+	# 	modifier = {
+	# 		job_futa_metallurgist_per_pop = 0.01
+	# 	}
+	# }
+	triggered_planet_modifier = {
+		potential = {
+			NOT = {
+				has_planet_flag = vagina_sexslave_planet
+			}
+		}
+		modifier = {
+			job_futa_priest_per_pop = 0.05			#每20
+			job_black_pantyhose_futa_tentacle_rbq_per_pop = 0.05			#每20人加一个岗位
+			# job_live_pantyhose_feeding_per_pop = 0.1
+			planet_jobs_food_produces_mult = 0.5
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_planet_flag = vagina_sexslave_planet
+		}
+		modifier = {
+			planet_jobs_futa_rbq_produces_mult = 0.15
+		}
+	}
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		exists = owner
+	# 		owner = {
+	# 			is_regular_empire = yes
+	# 		}
+	# 		has_building = "building_ten_maker"
+	# 	}
+	# 	modifier = {
+	# 		job_black_pantyhose_futa_tentacle_rbq_per_pop = 0.02			#每50人加一个岗位
+	# 	}
+	# }
+	planet_modifier = {
+		planet_jobs_upkeep_mult = -0.3
+		# job_futa_priest_per_pop = 0.02		#每50
+		# job_black_pantyhose_futa_tentacle_rbq_per_pop = 0.02		#每50人加一个岗位
+	}
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		exists = owner
+	# 		owner = { is_regular_empire = yes }
+	# 		has_building = "building_semen_food_make"
+	# 	}
+	# 	modifier = {
+	# 		job_semen_ten_feeding_per_pop = 0.02 #每50人加一个岗位
+	# 	}
+	# }
+	drop_weight = {
+		weight = 0
+	}
+}
+
+#精液牧场
+d_futa_semen = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		NOT = {
+	# 			is_planet_class = pc_ELF_home_world
+	# 		}
+	# 		# has_planet_flag = vagina_sexslave_planet
+	# 	}
+	# 	modifier = {
+	# 		# job_futa_semen_add = 3
+	# 	}
+	# }
+	planet_modifier = {
+		job_futa_farmer_add = 1
+		job_futa_semen_add = 1
+		# job_futa_semen_per_pop = 0.1		#每10人加一个岗位
+		# job_futa_generator_per_pop = 0.05		#每20人加一个岗位
+		# job_futa_miner_per_pop = 0.05		#每20人加一个岗位
+		# job_futa_farmer_per_pop = 0.05		#每20人加一个岗位
+		# job_pantyhose_slave_teach_per_pop = 0.05
+	}
+	potential = {
+		always = no
+	}
+	drop_weight = {
+		weight = 0
+	}
+}
+
+#纯白世界 
+d_ten_semen_planet = {
+	station = shipclass_mining_station
+	is_for_colonizable = no
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			sr_semen = 20
+			sr_semen_ten = 1
+			sr_live_pantyhose = 1
+		}
+	}
+	potential = {
+		always = no
+	}
+	drop_weight = {
+		weight = 0
+	}
+}
+
+#纯白世界 野生丝袜
+d_ten_semen_planet_2 = {
+	station = shipclass_mining_station
+	is_for_colonizable = no
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			# sr_semen = 5
+			# sr_semen_ten = 1
+			sr_live_pantyhose = 1
+		}
+	}
+	potential = {
+		is_planet_class = pc_semen_planet_no_col
+	}
+	drop_weight = {
+		weight = 15
+		modifier = {
+			factor = 2
+			is_inside_nebula = yes
+		}
+	}
+}
+
+#纯白世界 野生丝袜
+d_ten_semen_planet_3 = {
+	station = shipclass_mining_station
+	is_for_colonizable = no
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			# sr_semen = 10
+			sr_live_pantyhose = 2
+		}
+	}
+	potential = {
+		is_planet_class = pc_semen_planet_no_col
+	}
+	drop_weight = {
+		weight = 10
+		modifier = {
+			factor = 2
+			is_inside_nebula = yes
+		}
+	}
+}
+
+#纯白世界 野生丝袜
+d_ten_semen_planet_4 = {
+	station = shipclass_mining_station
+	is_for_colonizable = no
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			# sr_semen = 15
+			sr_live_pantyhose = 3
+			# sr_semen_ten = 1
+		}
+	}
+	potential = {
+		is_planet_class = pc_semen_planet_no_col
+	}
+	drop_weight = {
+		weight = 5
+		modifier = {
+			factor = 2
+			is_inside_nebula = yes
+		}
+	}
+}
+
+# 野生触手
+d_semen_ten_1 = {
+	station = shipclass_mining_station
+	is_for_colonizable = no
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			# sr_semen = 15
+			sr_semen_ten = 3
+			# sr_semen_ten = 1
+		}
+	}
+	potential = {
+		is_planet_class = pc_semen_planet_no_col
+	}
+	drop_weight = {
+		weight = 15
+		modifier = {
+			factor = 2
+			is_inside_nebula = yes
+		}
+	}
+}
+
+# 野生触手
+d_semen_ten_2 = {
+	station = shipclass_mining_station
+	is_for_colonizable = no
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			# sr_semen = 15
+			sr_semen_ten = 2
+			# sr_semen_ten = 1
+		}
+	}
+	potential = {
+		is_planet_class = pc_semen_planet_no_col
+	}
+	drop_weight = {
+		weight = 10
+		modifier = {
+			factor = 2
+			is_inside_nebula = yes
+		}
+	}
+}
+
+# 野生触手
+d_semen_ten_3 = {
+	station = shipclass_mining_station
+	is_for_colonizable = no
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			# sr_semen = 15
+			sr_semen_ten = 3
+			# sr_semen_ten = 1
+		}
+	}
+	potential = {
+		is_planet_class = pc_semen_planet_no_col
+	}
+	drop_weight = {
+		weight = 5
+		modifier = {
+			factor = 2
+			is_inside_nebula = yes
+		}
+	}
+}
+
+#世界树增殖地块
+d_star_ten_1 = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	planet_modifier = {
+		# job_futa_semen_per_pop = 0.05		#每20人加一个岗位
+		# job_futa_generator_per_pop = 0.05		#每20人加一个岗位
+		# job_futa_miner_per_pop = 0.05		#每20人加一个岗位
+		# job_futa_farmer_per_pop = 0.05		#每20人加一个岗位
+	}
+	potential = {
+		always = no
+	}
+	drop_weight = {
+		weight = 0
+	}
+}
+
+#世界树本体
+d_star_ten_0 = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	planet_modifier = {
+	}
+	potential = {
+		always = no
+	}
+	drop_weight = {
+		weight = 0
+	}
+}
+
+#被封印的区域
+d_star_ten_sp = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	resources = {
+		category = planet_deposits
+		produces = {
+			society_research = 30
+			physics_research = 30
+			engineering_research = 30
+		}
+	}
+	planet_modifier = {
+		planet_max_districts_add = -30
+	}
+	potential = {
+		always = no
+	}
+	drop_weight = {
+		weight = 0
+	}
+}
+
+##########阻碍
+d_ELF_home_world_blocker_1 = {
+	time = 180
+	icon = d_broken_spire
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+	potential = {
+		always = no
+	}
+	planet_modifier = {
+		planet_max_districts_add = -2
+	}
+	use_weights_for_blocker_swap_types = no
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 500
+		}
+	}
+}
+
+d_ELF_home_world_blocker_2 = {
+	time = 480
+	icon = d_broken_spire
+	is_for_colonizable = yes
+	category = deposit_cat_rare_blocker
+	potential = {
+		always = no
+	}
+	planet_modifier = {
+		planet_max_districts_add = -2
+	}
+	use_weights_for_blocker_swap_types = no
+	blocker_swap_types = {
+		d_ELF_home_world_blocker_3
+	}
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 2000
+		}
+	}
+}
+
+d_ELF_home_world_blocker_3 = {
+	is_for_colonizable = yes
+	icon = d_central_spire
+	category = deposit_cat_rare
+	potential = {
+		always = no
+	}
+	planet_modifier = {
+		planet_jobs_society_research_produces_mult = 0.2
+		planet_jobs_engineering_research_produces_mult = 0.2
+		planet_jobs_physics_research_produces_mult = 0.2
+	}
+}
+
+###水球
+#无尽之海 
+d_ELF_endless_ocean_1 = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	resources = {
+		category = planet_deposits
+		produces = {
+			society_research = 30
+			physics_research = 30
+			engineering_research = 30
+		}
+	}
+	planet_modifier = {
+		# planet_max_districts_add = -59
+		planet_max_buildings_add = -1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			NOT = {
+				has_global_flag = endless_ocean_guardian_attack
+			}
+		}
+		job_endless_ocean_survey_worker_add = 50
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				is_ai = yes
+			}
+		}
+		planet_stability_add = 50		#星球稳定度
+	}
+	potential = {
+		always = no
+	}
+	drop_weight = {
+		weight = 0
+	}
+}
+
+#勘探区1
+d_ELF_endless_ocean_blocker_1 = {
+	time = 180
+	is_for_colonizable = yes
+	category = deposit_cat_rare_blocker
+	potential = {
+		always = no
+	}
+	can_be_cleared = {
+		num_assigned_jobs = {
+			job = endless_ocean_survey_worker
+			value >= 5
+		}
+	}
+	on_cleared = {
+		planet_event = {
+			id = ICE_MOON_futa_main_event.302
+		}
+		# create_pop = {
+		# 	species = owner
+		# }
+	}
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 300
+		}
+	}
+	planet_modifier = {
+	}
+	ai_weight = {
+		weight = 10
+	}
+}
+
+d_ELF_endless_ocean_blocker_2 = {
+	time = 180
+	is_for_colonizable = yes
+	category = deposit_cat_rare_blocker
+	potential = {
+		always = no
+	}
+	can_be_cleared = {
+		num_assigned_jobs = {
+			job = endless_ocean_survey_worker
+			value >= 10
+		}
+	}
+	on_cleared = {
+		planet_event = {
+			id = ICE_MOON_futa_main_event.303
+		}
+		# create_pop = {
+		# 	species = owner
+		# }
+	}
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 300
+		}
+	}
+	planet_modifier = {
+	}
+	ai_weight = {
+		weight = 10
+	}
+}
+
+d_ELF_endless_ocean_blocker_3 = {
+	time = 180
+	is_for_colonizable = yes
+	category = deposit_cat_rare_blocker
+	potential = {
+		always = no
+	}
+	can_be_cleared = {
+		num_assigned_jobs = {
+			job = endless_ocean_survey_worker
+			value >= 15
+		}
+	}
+	on_cleared = {
+		planet_event = {
+			id = ICE_MOON_futa_main_event.304
+		}
+		# create_pop = {
+		# 	species = owner
+		# }
+	}
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 300
+		}
+	}
+	planet_modifier = {
+	}
+	ai_weight = {
+		weight = 10
+	}
+}
+
+d_ELF_endless_ocean_blocker_4 = {
+	time = 180
+	is_for_colonizable = yes
+	category = deposit_cat_rare_blocker
+	potential = {
+		always = no
+	}
+	can_be_cleared = {
+		num_assigned_jobs = {
+			job = endless_ocean_survey_worker
+			value >= 25
+		}
+	}
+	on_cleared = {
+		planet_event = {
+			id = ICE_MOON_futa_main_event.305
+		}
+		# create_pop = {
+		# 	species = owner
+		# }
+	}
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 300
+		}
+	}
+	planet_modifier = {
+	}
+	ai_weight = {
+		weight = 10
+	}
+}
+
+d_ELF_endless_ocean_blocker_5 = {
+	time = 180
+	is_for_colonizable = yes
+	category = deposit_cat_rare_blocker
+	potential = {
+		always = no
+	}
+	can_be_cleared = {
+		num_assigned_jobs = {
+			job = endless_ocean_survey_worker
+			value >= 50
+		}
+	}
+	on_cleared = {
+		planet_event = {
+			id = ICE_MOON_futa_main_event.306
+		}
+		# create_pop = {
+		# 	species = owner
+		# }
+	}
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 300
+		}
+	}
+	planet_modifier = {
+	}
+	ai_weight = {
+		weight = 10
+	}
+}

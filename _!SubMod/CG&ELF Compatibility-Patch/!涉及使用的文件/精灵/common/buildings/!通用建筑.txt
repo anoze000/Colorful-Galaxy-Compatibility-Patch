@@ -1,0 +1,653 @@
+#############
+#############
+#月灵
+@ice_moon_b1_time = 360
+@ice_moon_b1_minerals = 300
+@ice_moon_b1_upkeep = 2
+@ice_moon_b1_jobs = 2
+@ice_moon_b2_time = 480
+@ice_moon_b2_minerals = 600
+@ice_moon_b2_upkeep = 5
+@ice_moon_b2_live_pantyhose_cost = 50
+@ice_moon_b2_live_pantyhose_upkeep = 1
+@ice_moon_b2_semen_ten_cost = 50
+@ice_moon_b2_semen_ten_upkeep = 1
+@ice_moon_b2_live_pantyhose_cost = 50
+@ice_moon_b2_live_pantyhose_upkeep = 1
+@ice_moon_b2_jobs = 4
+@ice_moon_b3_time = 600
+@ice_moon_b3_minerals = 800
+@ice_moon_b3_upkeep = 8
+@ice_moon_b3_live_pantyhose_cost = 100
+@ice_moon_b3_live_pantyhose_upkeep = 2
+@ice_moon_b3_semen_ten_cost = 100
+@ice_moon_b3_semen_ten_upkeep = 2
+@ice_moon_b3_live_pantyhose_cost = 100
+@ice_moon_b3_live_pantyhose_upkeep = 2
+# @b3_rare_cost = 100
+# @b3_rare_upkeep = 2
+@ice_moon_b3_jobs = 6
+@ice_moon_b4_time = 900
+@ice_moon_b4_minerals = 2000
+@ice_moon_b4_upkeep = 10
+# @b4_rare_cost = 200
+# @b4_rare_upkeep = 4
+#巨炮
+building_big_toy_monument = {
+	base_buildtime = 720
+	# base_cap_amount = 1
+	# can_demolish = no	#可以拆除（默认yes）
+	can_be_ruined = no	#可以被损坏（无格子）（默认yes）
+	# can_be_disabled = yes  #可以禁用（默认yes）
+	category = government
+	empire_limit = {
+		base = 1
+		# modifier = {
+		# 	factor = building_wg_worm_generator_allow
+		# }
+	}
+	potential = {
+		owner = {
+			NOT = {
+				has_country_flag = asceticism_flag
+			}
+			OR = {
+				is_futa_country = yes
+				is_light_country = yes
+				is_dark_country = yes
+			}
+			# NOR = {
+			# 	custom_tooltip_fail = {
+			# 		text = alpha_building_built						#已经建造该建筑
+			# 		has_country_flag = built_one_building_big_toy_monument
+			# 	}
+			# 	custom_tooltip_fail = {
+			# 		text = alpha_building_queuing						#该建筑正在建造中
+			# 		has_country_flag = built_one_building_big_toy_monument_queuing
+			# 	}
+			# }
+		}
+	}
+	prerequisites = {
+		"tech_galactic_administration"
+	}
+	show_tech_unlock_if = {
+		NOT = {
+			has_country_flag = asceticism_flag
+		}
+		OR = {
+			is_futa_country = yes
+			is_light_country = yes
+			is_dark_country = yes
+		}
+	}
+	# destroy_trigger = {
+	# 	exists = owner
+	# 	owner = {
+	# 		is_futa_country = no
+	# 	}
+	# }
+	# allow = {
+	# 	is_capital = yes
+	# }
+	resources = {
+		category = planet_buildings
+		cost = {
+			# 花费
+			influence = 100			# 影响力
+			minerals = 2500			# 矿物
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+	country_modifier = {
+		ship_tracking_mult = 0.1
+		ship_fire_rate_mult = 0.1
+		# # pop_happiness = 0.01
+		# planet_building_build_speed_mult = 0.5
+		planet_jobs_unity_produces_mult = 0.2
+	}
+	# on_built = {
+	# 	owner = {
+	# 		set_country_flag = built_one_building_big_toy_monument
+	# 	}
+	# }
+	# on_destroy = {
+	# 	owner = {
+	# 		remove_country_flag = built_one_building_big_toy_monument
+	# 	}
+	# }
+	# on_queued = {
+	# 	owner = {
+	# 		set_country_flag = built_one_building_big_toy_monument_queuing
+	# 	}
+	# }
+	# on_unqueued = {
+	# 	owner = {
+	# 		remove_country_flag = built_one_building_big_toy_monument_queuing
+	# 	}
+	# }
+}
+
+#侍奉所
+building_sex_serve = {
+	base_buildtime = @b1_time
+	base_cap_amount = 1	# 星球限定
+	category = amenity
+	upgrades = {
+		building_sex_serve2
+	}
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_futa_country = yes
+				is_light_country = yes
+				is_dark_country = yes
+			}
+		}
+	}
+	# allow = {
+	# 	buildings_simple_allow = yes
+	# }
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			NOR = {
+				is_futa_country = yes
+				is_light_country = yes
+				is_dark_country = yes
+			}
+		}
+	}
+	planet_modifier = {
+		planet_jobs_unity_produces_mult = 0.05
+		# planet_amenities_add = 20
+		# # planet_stability_add = 50
+		# planet_jobs_worker_produces_mult = 0.05
+		# planet_jobs_futa_rbq_produces_mult = 0.05
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_planet_flag = vagina_sexslave_planet
+		}
+		modifier = {
+			job_futa_moyu_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			NOT = {
+				has_planet_flag = vagina_sexslave_planet
+			}
+		}
+		modifier = {
+			job_clean_priest_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				is_ai = yes
+			}
+		}
+		modifier = {
+			pop_housing_usage_mult = -1			#人口住房占用
+			# planet_housing_add = 9999
+		}
+	}
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		exists = owner
+	# 		owner = {
+	# 			has_non_swapped_tradition = tr_domination_imperious_architecture
+	# 		}
+	# 	}
+	# 	modifier = {
+	# 		planet_housing_add = 10
+	# 	}
+	# }
+	triggered_desc = {
+		text = job_clean_priest_effect_desc
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b1_minerals
+		}
+		# upkeep = {
+		# 	energy = @b1_upkeep
+		# }
+	}
+}
+
+building_sex_serve2 = {
+	icon = building_sex_serve
+	base_buildtime = @b2_time
+	can_build = no
+	category = amenity
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_futa_country = yes
+				is_light_country = yes
+				is_dark_country = yes
+			}
+		}
+	}
+	upgrades = {
+		building_sex_serve3
+	}
+	# allow = {
+	# 	has_upgraded_capital = yes
+	# }
+	# destroy_trigger = {
+	# 	exists = owner
+	# 	OR = {
+	# 		owner = { is_regular_empire = no }
+	# 		has_modifier = slave_colony
+	# 		buildings_no_exotic_gases = yes
+	# 	}
+	# }
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		exists = owner
+	# 		owner = {
+	# 			NOT = { has_valid_civic = civic_warrior_culture }
+	# 		}
+	# 	}
+	# 	modifier = {
+	# 		job_entertainer_add = @b2_jobs
+	# 	}
+	# }
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		exists = owner
+	# 		owner = {
+	# 			has_valid_civic = civic_warrior_culture
+	# 		}
+	# 	}
+	# 	modifier = {
+	# 		job_duelist_add = @b2_jobs
+	# 	}
+	# }
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b2_minerals
+		}
+		# cost = {
+		# 	trigger = {
+		# 		owner = {
+		# 			is_futa_country = yes
+		# 		}
+		# 	}
+		# 	sr_semen_ten = @ice_moon_b2_semen_ten_cost
+		# }
+		# cost = {
+		# 	trigger = {
+		# 		owner = {
+		# 			is_futa_country = no
+		# 		}
+		# 	}
+		# 	exotic_gases = @ice_moon_b2_semen_ten_cost
+		# }
+		# upkeep = {
+		# 	energy = @b2_upkeep
+		# }
+		# upkeep = {
+		# 	trigger = {
+		# 		owner = {
+		# 			has_country_flag = ICE_MOON_FUTA
+		# 		}
+		# 	}
+		# 	sr_semen_ten = @ice_moon_b2_semen_ten_upkeep
+		# }
+		# upkeep = {
+		# 	trigger = {
+		# 		owner = {
+		# 			is_futa_country = no
+		# 		}
+		# 	}
+		# 	exotic_gases = @ice_moon_b2_semen_ten_upkeep
+		# }
+	}
+	planet_modifier = {
+		planet_jobs_unity_produces_mult = 0.1
+		# planet_amenities_add = 50
+		# # planet_stability_add = 50
+		# planet_jobs_worker_produces_mult = 0.1
+		# planet_jobs_futa_rbq_produces_mult = 0.1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_planet_flag = vagina_sexslave_planet
+		}
+		modifier = {
+			job_futa_moyu_add = 4
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			NOT = {
+				has_planet_flag = vagina_sexslave_planet
+			}
+		}
+		modifier = {
+			job_clean_priest_add = 4
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				is_ai = yes
+			}
+		}
+		modifier = {
+			pop_housing_usage_mult = -1			#人口住房占用
+			# planet_housing_add = 9999
+		}
+	}
+	prerequisites = {
+		"tech_sex_serve2"
+	}
+	triggered_desc = {
+		text = job_clean_priest_effect_desc
+	}
+}
+
+building_sex_serve3 = {
+	icon = building_sex_serve
+	base_buildtime = @b3_time
+	can_build = no
+	category = amenity
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_futa_country = yes
+				is_light_country = yes
+				is_dark_country = yes
+			}
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b3_minerals
+		}
+		# cost = {
+		# 	trigger = {
+		# 		owner = {
+		# 			is_futa_country = yes
+		# 		}
+		# 	}
+		# 	sr_semen_ten = @ice_moon_b3_semen_ten_cost
+		# }
+		# cost = {
+		# 	trigger = {
+		# 		owner = {
+		# 			is_futa_country = no
+		# 		}
+		# 	}
+		# 	exotic_gases = @ice_moon_b3_semen_ten_cost
+		# }
+		# upkeep = {
+		# 	energy = @b3_upkeep
+		# }
+		# upkeep = {
+		# 	trigger = {
+		# 		owner = {
+		# 			is_can_cum_country = yes
+		# 		}
+		# 	}
+		# 	sr_semen_ten = @ice_moon_b3_semen_ten_upkeep
+		# }
+		# upkeep = {
+		# 	trigger = {
+		# 		owner = {
+		# 			is_futa_country = no
+		# 		}
+		# 	}
+		# 	exotic_gases = @ice_moon_b3_semen_ten_upkeep
+		# }
+	}
+	planet_modifier = {
+		planet_jobs_unity_produces_mult = 0.15
+		# planet_amenities_add = 80
+		# # planet_stability_add = 50
+		# planet_jobs_worker_produces_mult = 0.15
+		# planet_jobs_futa_rbq_produces_mult = 0.15
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_planet_flag = vagina_sexslave_planet
+		}
+		modifier = {
+			job_futa_moyu_add = 6
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			NOT = {
+				has_planet_flag = vagina_sexslave_planet
+			}
+		}
+		modifier = {
+			job_clean_priest_add = 6
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				is_ai = yes
+			}
+		}
+		modifier = {
+			pop_housing_usage_mult = -1			#人口住房占用
+			# planet_housing_add = 9999
+		}
+	}
+	prerequisites = {
+		"tech_sex_serve3"
+	}
+	triggered_desc = {
+		text = job_clean_priest_effect_desc
+	}
+}
+
+# 广场
+building_sex_square = {
+	base_buildtime = 480
+	base_cap_amount = 1	# 星球限定
+	category = resource
+	# prerequisites = { "tech_galactic_administration" }
+	potential = {
+		exists = owner
+		owner = {
+			if = {
+				limit = {
+					is_futa_country = yes
+				}
+				has_ascension_perk = ap_semen_pantyhose_love
+			}
+			else = {
+				NOT = {
+					has_country_flag = asceticism_flag
+				}
+				OR = {
+					is_light_country = yes
+					is_dark_country = yes
+				}
+			}
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			NOT = {
+				has_planet_flag = vagina_sexslave_planet
+			}
+		}
+		job_sex_slave_add = 1
+		job_female_dog_add = 1
+		job_public_toilet_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_planet_flag = vagina_sexslave_planet
+		}
+		modifier = {
+			job_futa_moyu_add = 2
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 600
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	triggered_desc = {
+		text = building_sex_square_effect_desc
+	}
+	ai_resource_production = {
+		unity = 2
+		rare_crystals = 2
+		exotic_gases = 2
+		volatile_motes = 2
+		# food = 2
+		alloys = 2
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+# 纪念碑
+building_lust_monument = {
+	base_buildtime = 720
+	# base_cap_amount = 1
+	# can_demolish = no	#可以拆除（默认yes）
+	can_be_ruined = no	#可以被损坏（无格子）（默认yes）
+	# can_be_disabled = yes  #可以禁用（默认yes）
+	category = government
+	empire_limit = {
+		base = 1
+	}
+	potential = {
+		owner = {
+			is_ai = no
+			NOT = {
+				has_country_flag = asceticism_flag
+			}
+			OR = {
+				is_futa_country = yes
+				is_light_country = yes
+				is_dark_country = yes
+			}
+			# NOR = {
+			# 	custom_tooltip_fail = {
+			# 		text = has_building_built
+			# 		has_country_flag = built_one_building_lust_monument
+			# 	}
+			# 	custom_tooltip_fail = {
+			# 		text = has_building_queuing
+			# 		has_country_flag = built_one_building_lust_monument_queuing
+			# 	}
+			# 	has_modifier = slave_colony
+			# }
+		}
+	}
+	prerequisites = {
+		"tech_galactic_administration"
+	}
+	show_tech_unlock_if = {
+		NOT = {
+			has_country_flag = asceticism_flag
+		}
+		OR = {
+			is_futa_country = yes
+			is_light_country = yes
+			is_dark_country = yes
+		}
+	}
+	allow = {
+		custom_tooltip = {
+			text = no_at_vagina_sexslave_planet
+			NOT = {
+				has_planet_flag = vagina_sexslave_planet
+			}
+		}
+	}
+	destroy_trigger = {
+		has_planet_flag = vagina_sexslave_planet
+	}
+	# allow = {
+	# 	is_capital = yes
+	# }
+	# planet_modifier = {
+	# 	# pop_happiness = 0.01
+	# }
+	country_modifier = {
+		country_unity_produces_mult = 0.1
+		# planet_jobs_unity_produces_mult = 0.15		# 凝聚力产出
+		all_technology_research_speed = 0.05		# 所有科技研究速度
+		# # pop_happiness = 0.01
+		# pop_growth_speed = 0.1
+		# PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.1
+		# PLANET_POP_ASSEMBLY_MULT = 0.1
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			# 花费
+			influence = 100			# 影响力
+			minerals = 1000			# 矿物
+		}
+		upkeep = {
+			energy = 5
+			# minerals = 5			# 矿物
+		}
+		produces = {
+			# society_research = 500
+			# physics_research = 500
+			# engineering_research = 500
+			unity = 10
+			influence = 1
+		}
+	}
+	# on_built = {
+	# 	owner = {
+	# 		set_country_flag = built_one_building_lust_monument
+	# 	}
+	# }
+	# on_destroy = {
+	# 	owner = {
+	# 		remove_country_flag = built_one_building_lust_monument
+	# 	}
+	# }
+	# on_queued = {
+	# 	owner = {
+	# 		set_country_flag = built_one_building_lust_monument_queuing
+	# 	}
+	# }
+	# on_unqueued = {
+	# 	owner = {
+	# 		remove_country_flag = built_one_building_lust_monument_queuing
+	# 	}
+	# }
+	ai_resource_production = {
+		society_research = 500
+		physics_research = 500
+		engineering_research = 500
+		unity = 10
+		influence = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
