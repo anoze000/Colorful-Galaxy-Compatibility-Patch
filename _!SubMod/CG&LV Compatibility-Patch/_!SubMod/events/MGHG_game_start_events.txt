@@ -1303,7 +1303,7 @@ event = {
 			gender = male
 			sapient = no
 			traits = {
-				trait_pc_lv_stentacle_preference
+				trait = trait_pc_lust_shrouded_preference
 				trait = trait_dickman
 				trait = trait_latent_psionic
 				trait = trait_very_strong

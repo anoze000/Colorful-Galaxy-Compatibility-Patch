@@ -512,9 +512,11 @@ lv_feminization_effect = {
 					AND = {
 						pop_has_trait = trait_you_are_monster_girl
 						species = {
-							is_archetype = BIOLOGICAL 
-							is_archetype = LITHOID 
-							is_archetype = ROBOT
+							OR = {
+								is_archetype = BIOLOGICAL 
+								is_archetype = LITHOID 
+								is_archetype = ROBOT
+							}
 						}
 					}
 				}
@@ -759,9 +761,11 @@ lv_feminization_effect = {
 							AND = {
 								pop_has_trait = trait_you_are_monster_girl
 								species = {
-									is_archetype = BIOLOGICAL 
-									is_archetype = LITHOID 
-									is_archetype = ROBOT
+									OR = {
+										is_archetype = BIOLOGICAL 
+										is_archetype = LITHOID 
+										is_archetype = ROBOT
+									}
 								}
 							}
 						}
@@ -927,9 +931,11 @@ lv_full_feminization_effect = {
 					AND = {
 						pop_has_trait = trait_you_are_monster_girl
 						species = {
-							is_archetype = BIOLOGICAL 
-							is_archetype = LITHOID 
-							is_archetype = ROBOT
+							OR = {
+								is_archetype = BIOLOGICAL 
+								is_archetype = LITHOID 
+								is_archetype = ROBOT
+							}
 						}
 					}
 				}
@@ -1175,9 +1181,11 @@ lv_full_feminization_effect = {
 							AND = {
 								pop_has_trait = trait_you_are_monster_girl
 								species = {
-									is_archetype = BIOLOGICAL 
-									is_archetype = LITHOID 
-									is_archetype = ROBOT
+									OR = {
+										is_archetype = BIOLOGICAL 
+										is_archetype = LITHOID 
+										is_archetype = ROBOT
+									}
 								}
 							}
 						}

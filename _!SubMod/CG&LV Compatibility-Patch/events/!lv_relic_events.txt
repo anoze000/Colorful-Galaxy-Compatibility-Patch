@@ -252,9 +252,11 @@ event = {
 								AND = {
 									pop_has_trait = trait_you_are_monster_girl
 									species = {
-										is_archetype = BIOLOGICAL 
-										is_archetype = LITHOID 
-										is_archetype = ROBOT
+										OR = {
+											is_archetype = BIOLOGICAL 
+											is_archetype = LITHOID 
+											is_archetype = ROBOT
+										}
 									}
 								}
 							}
@@ -379,9 +381,11 @@ planet_event = {
 						AND = {
 							pop_has_trait = trait_you_are_monster_girl
 							species = {
-								is_archetype = BIOLOGICAL 
-								is_archetype = LITHOID 
-								is_archetype = ROBOT
+								OR = {
+									is_archetype = BIOLOGICAL 
+									is_archetype = LITHOID 
+									is_archetype = ROBOT
+								}
 							}
 						}
 					}

@@ -14,7 +14,7 @@ set_downstairs_female = {
 		has_trait = trait_lv_all_female
 		has_trait = trait_suc_parthenogenesis
 		AND = {
-			NOR = {
+			OR = {
 				has_trait = trait_slime
 				has_trait = trait_SLIME_robot
 			}
