@@ -1,0 +1,405 @@
+@primary = 0.8
+@secondary = 0.6
+@tertiary = 0.2
+#########################
+# Sterey Species Traits #
+#########################
+#月灵少女
+trait_futa = {
+	cost = 0
+	potential_crossbreeding_chance = 0
+	sorting_priority = 1000
+	icon = "gfx/interface/icons/traits/trait_futa.dds"	# 图标路径
+	allowed_archetypes = {
+		ELF
+		TOUHOUGIRLS
+		Dolls
+	}
+	# 可使用该特质的原型
+	initial = yes	# 开局可用
+	# modification = no	# 可否修改
+	randomized = no	# 随机生成
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	opposites = {
+		# 对立特质
+		"trait_DC_ethic_carnalism"
+		"trait_DC_ethic_asceticism"
+		"trait_DC_ethic_parasite_mind"
+		"trait_DC_ethic_lust_skynet"
+		"trait_transformation_breasts"
+		"trait_transformation_vaginal"
+		"trait_ephemeral"
+		"trait_cortex_biochip"
+		"trait_animal_partner"
+		"trait_repugnant"
+		"trait_beautiful"
+		"trait_star"
+		"trait_CD"
+		"trait_angel"
+		"trait_ANGEL_robot"
+		"trait_angel_fallen"
+		"trait_ANGEL_F_robot"
+		"trait_futanari"
+		"trait_hidden_futa"
+		"trait_hidden_futa_common"
+		"trait_huge_penis_futa"
+		"trait_lv_futanari"
+		"trait_suc_parthenogenesis"
+		"trait_lv_all_female"
+		"trait_lv_all_male"
+		"trait_lv_androgynous"
+	}
+	# custom_tooltip = trait_futa_effect
+	modifier = {
+		leaders_cost_mult = -0.15		#基础领袖费用 
+		leaders_upkeep_mult = -0.15
+		planet_jobs_unity_produces_mult = 0.1		#来自￡job￡职业的￡unity￡ 凝聚力 [trait]
+		planet_futa_semen_produces_mult = 0.05
+		planet_futa_research_produces_mult = 0.05
+		planet_futa_maid_produces_mult = 0.05
+		leader_lifespan_add = 100
+	}
+	triggered_pop_modifier = {
+		potential = {
+			always = yes
+		}
+		elf_pops_food_upkeep_mult = 0.002
+		elf_pops_sr_semen_upkeep_mult = 0.002
+		mult = owner.trigger:num_pops
+	}
+	ai_weight = {
+		weight = 0
+	}
+	slave_cost = {
+		energy = 1000
+	}
+	assembly_score = {
+		base = 1.5
+	}
+}
+
+#星灵少女
+trait_star = {
+	cost = 999
+	potential_crossbreeding_chance = 0
+	sorting_priority = 1000
+	icon = "gfx/interface/icons/traits/trait_star.dds"	# 图标路径
+	allowed_archetypes = {
+		ELF
+		TOUHOUGIRLS
+		Dolls
+	}
+	# 可使用该特质的原型
+	initial = yes	# 开局可用
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	randomized = no	# 随机生成
+	opposites = {
+		# 对立特质
+		"trait_DC_ethic_carnalism"
+		"trait_DC_ethic_asceticism"
+		"trait_DC_ethic_parasite_mind"
+		"trait_DC_ethic_lust_skynet"
+		"trait_dark"
+		"trait_light"
+		"trait_transformation_breasts"
+		"trait_transformation_vaginal"
+		"trait_ephemeral"
+		"trait_cortex_biochip"
+		"trait_animal_partner"
+		"trait_repugnant"
+		"trait_beautiful"
+		"trait_futa"
+		"trait_yumo"
+		"trait_lv_all_female"
+		"trait_lv_all_male"
+		"trait_lv_futanari"
+		"trait_lv_androgynous"
+		"trait_lv_large_penis"
+		"trait_lv_huge_penis"
+		"trait_lv_multiple_penises"
+		"trait_lv_equine_penis"
+		"trait_lv_high_volume_ejaculations"
+		"trait_lv_aphrodisiac_cum"
+		"trait_lv_addictive_cum"
+		"trait_lv_small_penis"
+		"trait_suc_parthenogenesis"
+		"trait_angel"
+		"trait_ANGEL_robot"
+		"trait_angel_fallen"
+		"trait_ANGEL_F_robot"
+		"trait_futanari"
+		"trait_hidden_futa"
+		"trait_hidden_futa_common"
+		"trait_huge_penis_futa"
+		"trait_slime"
+		"trait_SLIME_robot"
+	}
+	# custom_tooltip = trait_star_effect	#属性描述
+	modifier = {
+		leaders_cost_mult = -0.15		#基础领袖费用 
+		leaders_upkeep_mult = -0.15
+		planet_jobs_unity_produces_mult = 0.1		#来自￡job￡职业的￡unity￡ 凝聚力 [trait]
+		pop_category_rulers_sr_theta_produces_add = 0.01
+		pop_category_specialists_sr_theta_produces_add = 0.01
+		pop_category_workers_sr_theta_produces_add = 0.01
+		pop_category_slave_sr_theta_produces_add = 0.01
+		leader_lifespan_add = 100
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+#扶她娃娃
+trait_FUTA_DOLL = {
+	cost = 0
+	sorting_priority = 900
+	species_possible_add = {
+		custom_tooltip_fail = {
+			text = ELF_DOLL_modification_allow
+			from = {
+				has_country_flag = wawa_FUTA_alow
+			}
+		}
+	}
+	species_possible_remove = {
+		always = no
+	}
+	immortal_leaders = yes
+	forced_happiness = yes
+	initial = no
+	randomized = no
+	icon = "gfx/interface/icons/traits/trait_FUTA_DOLL.dds"
+	allowed_archetypes = {
+		ELF_FUTA_DOLL
+	}
+	modifier = {
+		# planet_pop_assembly_mult = 0.1
+		# pop_demotion_time_mult = -1		#降级时间
+		pop_environment_tolerance = 1		#环境适应度
+	}
+	assembly_score = {
+		base = 2
+	}
+}
+
+#改造扶她
+trait_LOW_FUTA = {
+	cost = -4
+	sorting_priority = 900
+	potential_crossbreeding_chance = 0
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	initial = no
+	randomized = no
+	icon = "gfx/interface/icons/traits/trait_LOW_FUTA.dds"
+	allowed_archetypes = {
+		ELF
+	}
+	modifier = {
+		leaders_cost_mult = -0.3		#基础领袖费用 
+		planet_jobs_unity_produces_mult = 0.1		#来自￡job￡职业的￡unity￡ 凝聚力 [trait]
+		planet_futa_semen_produces_mult = 0.05
+		planet_futa_research_produces_mult = 0.05
+		planet_futa_maid_produces_mult = 0.05
+		# planet_amenities_mult = 0.25		#舒适度 [trait]
+		pop_environment_tolerance = 1		#人口宜居性		
+		pop_resettlement_cost_mult = -0.5		#人口强制迁移花费
+		pop_amenities_usage_mult = -0.5		#人口舒适度使用
+	}
+}
+
+#改造飞机杯
+trait_fei_ji_bei = {
+	cost = -4
+	potential_crossbreeding_chance = 0
+	sorting_priority = 900
+	initial = no
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	randomized = no
+	immortal_leaders = yes
+	icon = "gfx/interface/icons/traits/trait_fei_ji_bei.dds"
+	allowed_archetypes = {
+		ELF
+	}
+	modifier = {
+		# planet_pops_upkeep_mult = -1
+		pop_amenities_usage_mult = -1		#人口舒适度使用
+		pop_happiness = 1		# 幸福度		
+		pop_housing_usage_mult = -1
+		pop_environment_tolerance = 1		#人口宜居性
+		pop_resettlement_cost_mult = -1		#人口强制迁移花费
+		species_empire_size_mult = -1
+		# pop_assembly_speed = -100
+		# pop_growth_speed = -100
+		# planet_jobs_produces_mult = -100
+	}
+}
+
+#伪娘精灵
+trait_CD = {
+	cost = 0
+	potential_crossbreeding_chance = 0
+	sorting_priority = 1000
+	icon = "gfx/interface/icons/traits/trait_futa.dds"	# 图标路径
+	allowed_archetypes = {
+		CD_LOST
+	}
+	# 可使用该特质的原型
+	initial = no	# 开局可用
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	randomized = no	# 随机生成
+	opposites = {
+		trait_futa
+		trait_star
+		trait_lv_all_female
+		trait_lv_futanari
+		trait_lv_androgynous
+		trait_angel
+		trait_ANGEL_robot
+		trait_angel_fallen
+		trait_ANGEL_F_robot
+		trait_futanari
+		trait_hidden_futa
+		trait_hidden_futa_common
+		trait_huge_penis_futa
+		trait_lv_drooling_vagina
+		trait_suc_parthenogenesis
+		trait_slime
+		trait_SLIME_robot
+		trait_enslavement_resistance
+		trait_cute_appearance
+		trait_live_in_pairs
+		trait_the_vestal
+		trait_heartless_shojo
+		trait_zealot_shojo
+		trait_bereavement
+		trait_bereavement_body
+		trait_bereavement_genitals
+		trait_ovulation_difficulty
+		trait_girl_megalization
+		trait_intensive_ovulation
+	}
+	modifier = {
+		leaders_cost_mult = -0.5		#基础领袖费用 
+		planet_jobs_unity_produces_mult = 0.1		#来自￡job￡职业的￡unity￡ 凝聚力 [trait]
+		planet_futa_semen_produces_mult = 0.05
+		planet_futa_research_produces_mult = 0.05
+		planet_futa_maid_produces_mult = 0.05
+		planet_amenities_mult = 0.25		#舒适度 [trait]
+		leader_lifespan_add = 100
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+#被调教的宠物
+trait_ELF_PETS = {
+	cost = 0
+	potential_crossbreeding_chance = 0
+	sorting_priority = 900
+	icon = "gfx/interface/icons/traits/trait_ELF_PETS.dds"	# 图标路径
+	allowed_archetypes = {
+		ELF_PETS
+	}
+	# 可使用该特质的原型
+	initial = no	# 开局可用
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	randomized = no	# 随机生成
+	opposites = {
+		"trait_futa"
+	}
+	modifier = {
+		planet_jobs_physics_research_produces_mult = 0.15
+		planet_jobs_society_research_produces_mult = 0.15
+		planet_jobs_engineering_research_produces_mult = 0.15
+		# planet_jobs_futa_rbq_produces_mult = 0.5
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+#龙魂之力
+trait_Long_Power = {
+	cost = -8
+	# potential_crossbreeding_chance = 0
+	sorting_priority = 800
+	icon = "gfx/interface/icons/traits/trait_Long_Power.dds"	# 图标路径
+	allowed_archetypes = {
+		ELF
+		TOUHOUGIRLS
+		Dolls
+	}
+	# 可使用该特质的原型
+	initial = no	# 开局可用
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_remove = {
+		always = no
+	}
+	randomized = no	# 随机生成
+	custom_tooltip = trait_Long_Power_effect
+	modifier = {
+		pop_category_slave_food_upkeep_add = -0.5
+		pop_category_workers_food_upkeep_add = -0.5
+		pop_category_specialists_food_upkeep_add = -0.5
+		pop_category_rulers_food_upkeep_add = -0.5
+		elf_pops_sr_semen_upkeep_add = -0.5
+	}
+	ai_weight = {
+		weight = 0
+	}
+}

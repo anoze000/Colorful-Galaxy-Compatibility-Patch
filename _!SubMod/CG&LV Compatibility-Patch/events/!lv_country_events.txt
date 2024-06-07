@@ -717,8 +717,16 @@ country_event = {
 		from = { 
 			species = { 
 				NOR = { 
-					has_trait = trait_lv_futanari 
-					is_futa_monster_girl = yes
+					has_trait = trait_angel
+					has_trait = trait_ANGEL_robot
+					has_trait = trait_angel_fallen
+					has_trait = trait_ANGEL_F_robot
+					has_trait = trait_futanari
+					has_trait = trait_hidden_futa
+					has_trait = trait_hidden_futa_common
+					has_trait = trait_huge_penis_futa
+					has_trait = trait_lv_futanari
+					has_trait = trait_futa
 				} 
 			} 
 		}
@@ -1128,8 +1136,8 @@ country_event = {
 				is_at_war_with = ROOT
 				is_subject = yes
 				has_authority = auth_machine_intelligence
-				has_authority = auth_lust_skynet
 				has_authority = auth_hive_mind
+				has_authority = auth_lust_skynet
 			}
 			OR = {
 				NOT = { has_policy_flag = lv_prostitution_prohibited }

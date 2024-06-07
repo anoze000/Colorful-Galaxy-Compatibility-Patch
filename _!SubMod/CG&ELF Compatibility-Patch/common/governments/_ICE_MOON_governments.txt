@@ -1,0 +1,10 @@
+gov_semen_brothel = {
+	ruler_title = semen_princess
+	ruler_title_female = semen_princess
+	possible = {
+		has_authority = auth_futa_brothel
+	}
+	weight = {
+		base = 10000
+	}
+}

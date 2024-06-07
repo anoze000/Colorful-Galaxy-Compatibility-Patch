@@ -6,7 +6,10 @@ set_downstairs_override = {
 #Everything below operates at species scope
 
 set_downstairs_male = {
-	has_trait = trait_lv_all_male
+	OR = {
+		has_trait = trait_lv_all_male
+		has_trait = trait_CD
+	}
 }
 
 set_downstairs_female = {

@@ -206,12 +206,13 @@ event = {
 					limit = { 
 						OR = {
 							pop_has_trait = trait_lv_all_female
+							pop_has_trait = trait_suc_parthenogenesis
 							AND = {
 								OR = {
 									pop_has_trait = trait_slime
 									pop_has_trait = trait_SLIME_robot
 								}
-								OR = {
+								NOR = {
 									pop_has_trait = trait_futanari
 									pop_has_trait = trait_hidden_futa
 									pop_has_trait = trait_hidden_futa_common
@@ -219,10 +220,16 @@ event = {
 									pop_has_trait = trait_lv_futanari
 								}
 							}
+							pop_has_trait = trait_star
 						}
 					}
-					modify_species = {
-						remove_trait = trait_lv_all_female
+					if = {
+						limit = {
+							pop_has_trait = trait_lv_all_female
+						}
+						modify_species = {
+							remove_trait = trait_lv_all_female
+						}
 					}
 					if = {
 						limit = {
@@ -252,11 +259,9 @@ event = {
 								AND = {
 									pop_has_trait = trait_you_are_monster_girl
 									species = {
-										OR = {
-											is_archetype = BIOLOGICAL 
-											is_archetype = LITHOID 
-											is_archetype = ROBOT
-										}
+										is_archetype = BIOLOGICAL 
+										is_archetype = LITHOID 
+										is_archetype = ROBOT
 									}
 								}
 							}
@@ -265,7 +270,12 @@ event = {
 							add_trait = trait_futanari
 						}
 					}
-					else = {
+					else_if = {
+						NOR = {
+							pop_has_trait = trait_futa
+							pop_has_trait = trait_star
+							pop_has_trait = trait_CD
+						}
 						modify_species = {
 							add_trait = trait_lv_futanari
 						}
@@ -310,19 +320,23 @@ planet_event = {
 			limit = {
 				NOR = {
 					pop_has_trait = trait_lv_equine_penis
-					pop_has_trait = trait_lv_all_female
-					AND = {
-						OR = {
-							pop_has_trait = trait_slime
-							pop_has_trait = trait_SLIME_robot
+					OR = {
+						pop_has_trait = trait_lv_all_female
+						pop_has_trait = trait_suc_parthenogenesis
+						AND = {
+							OR = {
+								pop_has_trait = trait_slime
+								pop_has_trait = trait_SLIME_robot
+							}
+							NOR = {
+								pop_has_trait = trait_futanari
+								pop_has_trait = trait_hidden_futa
+								pop_has_trait = trait_hidden_futa_common
+								pop_has_trait = trait_huge_penis_futa
+								pop_has_trait = trait_lv_futanari
+							}
 						}
-						OR = {
-							pop_has_trait = trait_futanari
-							pop_has_trait = trait_hidden_futa
-							pop_has_trait = trait_hidden_futa_common
-							pop_has_trait = trait_huge_penis_futa
-							pop_has_trait = trait_lv_futanari
-						}
+						pop_has_trait = trait_star
 					}
 				}
 			}
@@ -333,13 +347,14 @@ planet_event = {
 		every_owned_pop = {
 			limit = { 
 				OR = {
-					pop_has_trait = trait_lv_all_female 
+					pop_has_trait = trait_lv_all_female
+					pop_has_trait = trait_suc_parthenogenesis
 					AND = {
 						OR = {
 							pop_has_trait = trait_slime
 							pop_has_trait = trait_SLIME_robot
 						}
-						OR = {
+						NOR = {
 							pop_has_trait = trait_futanari
 							pop_has_trait = trait_hidden_futa
 							pop_has_trait = trait_hidden_futa_common
@@ -347,11 +362,16 @@ planet_event = {
 							pop_has_trait = trait_lv_futanari
 						}
 					}
+					pop_has_trait = trait_star
 				}
 			}
-			modify_species = {
-				remove_trait = trait_lv_all_female
-				add_trait = trait_lv_equine_penis
+			if = {
+				limit = {
+					pop_has_trait = trait_lv_all_female
+				}
+				modify_species = {
+					remove_trait = trait_lv_all_female
+				}
 			}
 			if = {
 				limit = {
@@ -381,11 +401,9 @@ planet_event = {
 						AND = {
 							pop_has_trait = trait_you_are_monster_girl
 							species = {
-								OR = {
-									is_archetype = BIOLOGICAL 
-									is_archetype = LITHOID 
-									is_archetype = ROBOT
-								}
+								is_archetype = BIOLOGICAL 
+								is_archetype = LITHOID 
+								is_archetype = ROBOT
 							}
 						}
 					}
@@ -394,10 +412,18 @@ planet_event = {
 					add_trait = trait_futanari
 				}
 			}
-			else = {
+			else_if = {
+				NOR = {
+					pop_has_trait = trait_futa
+					pop_has_trait = trait_star
+					pop_has_trait = trait_CD
+				}
 				modify_species = {
 					add_trait = trait_lv_futanari
 				}
+			}
+			modify_species = {
+				add_trait = trait_lv_equine_penis
 			}
 		}
 		planet_event = { id = lv_trait_cleanup.1 }

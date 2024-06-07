@@ -31,7 +31,7 @@ trait_lv_paternal_chip_cyborg = {
 			owner = { has_valid_civic = civic_augmentation_bazaars }
 		}
 	}
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype LITHOID }
 	custom_tooltip = trait_lv_paternal_chip_cyborg_effect
 	
 	opposites = {
@@ -77,7 +77,7 @@ trait_lv_synth_penis_cyborg = {
 			owner = { has_valid_civic = civic_augmentation_bazaars }
 		}
 	}
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype LITHOID }
 	custom_tooltip = trait_lv_synth_penis_cyborg_effect
 	
 	initial = no
@@ -120,7 +120,7 @@ trait_lv_lushtech_omni_seed_fabrication_modules_cyborg = {
 			owner = { has_valid_civic = civic_augmentation_bazaars }
 		}
 	}
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype LITHOID }
 	custom_tooltip = trait_lv_lushtech_omni_seed_fabrication_modules_cyborg_effect
 	
 	initial = no

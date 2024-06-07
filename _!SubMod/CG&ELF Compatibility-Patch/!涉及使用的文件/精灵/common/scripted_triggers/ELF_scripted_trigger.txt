@@ -1,0 +1,581 @@
+is_futa_country = {
+	optimize_memory
+	custom_tooltip_fail = {
+		text = is_futa_country_txt
+		OR = {
+			has_country_flag = ICE_MOON_FUTA
+			has_country_flag = ICE_MOON_FUTA_AI
+			# has_country_flag = ICE_MOON_CD_LOST_AI
+		}
+	}
+}
+
+is_can_cum_country = {
+	optimize_memory
+	custom_tooltip_fail = {
+		text = is_can_cum_country_txt
+		OR = {
+			is_cd_country = yes
+			is_futa_country = yes
+		}
+	}
+}
+
+is_cd_country = {
+	optimize_memory
+	custom_tooltip_fail = {
+		text = is_cd_country_txt
+		OR = {
+			has_country_flag = ICE_MOON_CD_LOST
+			has_country_flag = ICE_MOON_CD_LOST_AI
+		}
+	}
+}
+
+is_star_country = {
+	optimize_memory
+	custom_tooltip_fail = {
+		text = is_star_country_txt
+		OR = {
+			has_country_flag = ICE_MOON_STAR
+			has_country_flag = ICE_MOON_STAR_AI
+		}
+	}
+}
+
+is_ice_moon_suc_vs_inn_ai_country = {
+	optimize_memory
+	is_ai = yes
+	OR = {
+		is_dark_country = yes
+		is_light_country = yes
+		# has_country_flag = ICE_MOON_SUC_AI
+		# has_country_flag = ICE_MOON_INN_AI
+	}
+}
+
+is_ice_moon_ai_country = {
+	optimize_memory
+	is_ai = yes
+	OR = {
+		# has_country_flag = ICE_MOON_YUMO_AI
+		# has_country_flag = ICE_MOON_FUTA_AI
+		# has_country_flag = ICE_MOON_STAR_AI
+		# has_country_flag = ICE_MOON_SUC_AI
+		# has_country_flag = ICE_MOON_INN_AI
+		# has_country_flag = ICE_MOON_CD_LOST_AI
+		is_cd_country = yes
+		is_futa_country = yes
+		is_star_country = yes
+		is_dark_country = yes
+		is_light_country = yes
+	}
+}
+
+is_ice_moon_country = {
+	optimize_memory
+	OR = {
+		# has_country_flag = ICE_MOON_YUMO_AI
+		# has_country_flag = ICE_MOON_FUTA_AI
+		# has_country_flag = ICE_MOON_STAR_AI
+		# has_country_flag = ICE_MOON_SUC_AI
+		# has_country_flag = ICE_MOON_INN_AI
+		# has_country_flag = ICE_MOON_CD_LOST_AI
+		is_cd_country = yes
+		is_futa_country = yes
+		is_star_country = yes
+		is_dark_country = yes
+		is_light_country = yes
+	}
+}
+
+is_elf_country = {
+	optimize_memory
+	OR = {
+		is_cd_country = yes
+		is_futa_country = yes
+		is_star_country = yes
+	}
+}
+
+is_DCYH_country = {
+	optimize_memory
+	or = {
+		has_country_flag = carnalism_flag
+		has_country_flag = asceticism_flag
+		has_country_flag = parasite_mind_flag
+		has_country_flag = lust_skynet_flag
+	}
+}
+
+# is_dark_country = {
+# 	optimize_memory
+# 	custom_tooltip_fail = {
+# 		text = is_dark_country_txt
+# 		OR = {
+# 			has_country_flag = ICE_MOON_SUC
+# 			has_country_flag = ICE_MOON_SUC_AI
+# 		}
+# 	}
+# }
+# is_light_country = {
+# 	optimize_memory
+# 	custom_tooltip_fail = {
+# 		text = is_light_country_txt
+# 		OR = {
+# 			has_country_flag = ICE_MOON_INN
+# 			has_country_flag = ICE_MOON_INN_AI
+# 		}
+# 	}
+# }
+#各种mod自带的事件生成的普通国家
+is_mod_event_create_default_country = {
+	optimize_memory
+	OR = {
+		#涅槃
+		has_country_flag = ai_dragon
+		has_country_flag = ai_council
+		has_country_flag = wg_dragon_empire
+		has_country_flag = wg_high_council
+		#灵能舰娘
+		has_country_flag = wg_psi_country
+		#骑士团
+		has_country_flag = ICE_MOON_FUTA_AI_Knights
+		has_country_flag = ICE_MOON_SUC_AI_Initial
+		has_country_flag = ICE_MOON_INN_AI_Initial
+		has_country_flag = ICE_MOON_CD_LOST_AI
+	}
+}
+
+##显示企业分部开启ui
+is_ELF_can_build_branch_offices = {
+	optimize_memory
+	OR = {
+		#精灵政体
+		has_authority = auth_brothel
+		has_authority = auth_brothel_Knights
+		has_authority = auth_SUC_AI_Initial
+		has_authority = auth_INN_AI_Initial
+		#月灵特质
+		has_country_flag = ICE_MOON_FUTA
+		#精灵罪企
+		has_valid_civic = civic_criminal_brothel
+	}
+}
+
+#暴力开企业无视企业政体
+is_ELF_can_force_build_branch_offices_on_planet = {
+	optimize_memory
+	is_ai = no
+	is_futa_country = yes
+}
+
+ELF_can_build_branch_office_on_planet_rules = {
+	optimize_memory
+	#罪企ai不可以在ai罪企和堕落上造企业
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_CRIMINAL_ai_RULE
+		exists = owner
+		if = {
+			limit = {
+				root = {
+					is_criminal_syndicate = yes
+					is_ai = yes
+				}
+			}
+			owner = {
+				NOR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					AND = {
+						is_criminal_syndicate = yes
+						is_ai = yes
+					}
+				}
+			}
+		}
+	}
+	###_|罪企查封|	+wsg
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_CRIMINAL_COOLDOWN
+		exists = owner
+		if = {
+			limit = {
+				root = {
+					is_criminal_syndicate = yes
+				}
+			}
+		}
+		OR = {
+			owner = {
+				is_same_empire = root				#如果自己是罪企，查封了其他人的罪企后，不影响自己开自己
+			}
+			NOT = {
+				has_planet_flag = criminal_branch_closed_cooldown_planet@root
+			}
+		}
+	}
+}
+
+#精灵罪企规则
+is_ELF_criminal_syndicate_rule = {
+	optimize_memory
+	has_valid_civic = civic_criminal_brothel
+}
+
+#精灵企业政体
+is_ELF_corporate_authority_rule = {
+	optimize_memory
+	has_authority = auth_brothel
+}
+
+#轨道轰炸
+#this = 轰炸舰队的owner
+is_ELF_can_orbital_bombard_country_type = {
+	optimize_memory
+	#莫莫帝国
+	OR = {
+		is_country_type = ICE_MOON_dormant_marauders
+		is_country_type = ICE_MOON_ruined_marauders
+		is_country_type = ICE_MOON_momo_fleet
+	}
+}
+
+#不可被轨道轰炸的星球
+#this =  星球
+is_ELF_can_not_be_orbital_bombard_planet = {
+	optimize_memory
+	#莫莫帝国
+	OR = {
+		# is_planet_class = pc_hollow
+	}
+}
+
+#禁止净化的物种
+is_can_not_be_purged_species = {
+	optimize_memory
+	NOR = {
+		has_trait = trait_CD		#空灵
+		has_trait = trait_star		#星灵
+		has_trait = trait_LOW_FUTA		#眷属
+		has_trait = trait_fei_ji_bei		#飞姬杯
+		has_trait = trait_FUTA_DOLL		#娃娃
+		has_trait = trait_ELF_PETS		#宠物
+		# has_trait = trait_yumo		#观星
+	}
+}
+
+#物种增长规则 不允许增长的物种
+# This = Species
+# Root = Planet
+ELF_species_procreate_rules = {
+	optimize_memory
+	OR = {
+		has_trait = trait_LOW_FUTA		#眷属
+		has_trait = trait_fei_ji_bei		#飞姬杯
+		has_trait = trait_FUTA_DOLL		#娃娃
+		# has_trait = trait_ELF_PETS		#宠物
+		has_trait = trait_star		#星灵
+		# has_trait = trait_yumo
+		#精液环
+		# root = {
+		# 	is_planet_class = pc_futa_ring_world
+		# }
+		#
+		has_trait = trait_dark_change		#魅魔感染人口
+	}
+}
+
+#精灵物种组装规则 内圈规则暂时废弃
+# This = Species
+# Root = Planet
+ELF_species_assembled_rules = {
+	optimize_memory
+	# if = {
+	# 	limit = {
+	# 		root.owner = {
+	# 			is_futa_country = yes
+	# 		}
+	# 	}
+	# 	if = {
+	# 		limit = {
+	# 			has_trait = trait_FUTA_DOLL
+	# 			NOT = {
+	# 				has_trait = trait_futa
+	# 			}
+	# 		}
+	# 		root = {
+	# 			OR = {
+	# 				is_planet_class = pc_futa_ring_world
+	# 				has_building = building_futa_wawa
+	# 			}
+	# 		}
+	# 	}
+	# 	else = {
+	# 		has_trait = trait_futa
+	# 	}
+	# }
+}
+
+#禁止组装的物种 外圈规则
+# This = Species
+# Root = Planet
+ELF_can_not_be_assembled_species = {
+	optimize_memory
+	NOR = {
+		has_trait = trait_LOW_FUTA		#眷属
+		has_trait = trait_fei_ji_bei		#飞姬杯
+		has_trait = trait_ELF_PETS		#宠物
+		has_trait = trait_star		#星灵
+		has_trait = trait_dark_change		#魅魔感染人口
+		# has_trait = trait_yumo
+	}
+	if = {
+		limit = {
+			#三个精灵国家禁止组装机器人
+			root.owner = {
+				is_elf_country = yes
+			}
+		}
+		# OR = {
+		# 	has_trait = trait_FUTA_DOLL
+		# 	has_trait = trait_futa
+		# }
+		#
+		#娃娃和月灵机器人组装规则
+		if = {
+			limit = {
+				has_trait = trait_FUTA_DOLL
+				NOT = {
+					has_trait = trait_futa
+				}
+			}
+			root = {
+				OR = {
+					is_planet_class = pc_futa_ring_world
+					has_building = building_futa_wawa
+				}
+			}
+		}
+		else = {
+			has_trait = trait_futa
+		}
+	}
+}
+
+is_can_be_male_species = {
+	optimize_memory
+	exists = species
+	species = {
+		# OR = {
+		# 	has_trait = trait_CD
+		# 	has_trait = trait_futa
+		# }
+		species_portrait = ELF_FUTA_and_CD
+	}
+}
+
+#扶她国家物种特质判断
+is_futa_country_species = {
+	optimize_memory
+	# exists = species
+	# species = {
+	OR = {
+		AND = {
+			has_trait = trait_futa
+			is_same_species = owner_main_species
+		}
+		has_trait = trait_CD
+		has_trait = trait_FUTA_DOLL
+		has_trait = trait_fei_ji_bei
+		has_trait = trait_LOW_FUTA
+		has_trait = trait_ELF_PETS
+		has_trait = trait_elf_event_leader
+		has_trait = trait_funny
+		# has_trait = trait_star
+	}
+}
+
+#灵月节物种改造排除
+is_futa_country_can_change_species = {
+	optimize_memory
+	NOR = {
+		AND = {
+			has_trait = trait_futa
+			is_same_species = owner_main_species
+		}
+		has_trait = trait_CD
+		has_trait = trait_FUTA_DOLL
+		has_trait = trait_fei_ji_bei
+		has_trait = trait_LOW_FUTA
+		has_trait = trait_ELF_PETS
+		has_trait = trait_elf_event_leader
+		has_trait = trait_funny
+		# has_trait = trait_star
+	}
+}
+
+#月灵普通岗位规则
+ELF_futa_job_check_trigger = {
+	optimize_memory
+	custom_tooltip = ELF_FUTA_JOB_TRIGGER
+	hidden_trigger = {
+		exists = pop
+		pop = {
+			OR = {
+				has_trait = trait_ELF_PETS
+				has_trait = trait_CD
+				has_trait = trait_FUTA_DOLL
+				has_trait = trait_futa
+				has_trait = trait_LOW_FUTA
+				# has_trait = trait_pantyhose_legs
+				# has_trait = trait_pantyhose_hand
+				# has_trait = trait_semen_pantyhose_addiction
+				has_trait = trait_funny
+				has_trait = trait_dark_change
+				has_trait = trait_light_change
+				# has_trait = trait_star
+				# has_trait = trait_yumo
+			}
+		}
+	}
+}
+
+#月灵专属岗位（仅限一产）
+ELF_job_can_cum_check_trigger = {
+	optimize_memory
+	# custom_tooltip = ELF_FUTA_JOB_TRIGGER
+	hidden_trigger = {
+		exists = pop
+		pop = {
+			OR = {
+				# has_trait = trait_ELF_PETS
+				has_trait = trait_CD
+				has_trait = trait_FUTA_DOLL
+				has_trait = trait_futa
+				has_trait = trait_LOW_FUTA
+				# has_trait = trait_pantyhose_legs
+				# has_trait = trait_pantyhose_hand
+				# has_trait = trait_semen_pantyhose_addiction
+				# has_trait = trait_funny
+				# has_trait = trait_inn_perfect_body
+				# has_trait = trait_star
+				# has_trait = trait_yumo
+			}
+		}
+	}
+}
+
+suc_vs_inn_job_check_trigger = {
+	optimize_memory
+	hidden_trigger = {
+		exists = pop
+		pop = {
+			OR = {
+				has_trait = trait_dark
+				has_trait = trait_light
+			}
+		}
+	}
+}
+#电力维护代替消费品物种
+is_energy_upkeep_species = {
+	OR = {
+		is_hive_species = yes
+		is_robotic_species = yes
+	}
+}
+
+#精灵消耗食物物种
+is_ELF_food_upkeep_archetype = {
+	OR = {
+		is_archetype = ELF
+		is_archetype = ELF_PETS
+		is_archetype = ELF_SUB
+		is_archetype = CD_LOST
+		# is_archetype = Magical_Bitch
+		# is_archetype = Magical_Girl
+	}
+}
+
+#精灵消耗精液物种
+is_ELF_sr_semen_upkeep_archetype = {
+	OR = {
+		is_archetype = ELF_SUB
+		is_archetype = ELF_FUTA_DOLL
+	}
+}
+
+# #神系飞升认知度条件
+# god_understand_limit = {
+# 	custom_tooltip_fail = {
+# 		text = god_understand_limit_text
+# 		hidden_trigger = {
+# 			check_variable = {
+# 				which = god_understand
+# 				value >= value:god_understand_limit
+# 			}
+# 			# switch = {
+# 			# 	trigger = galaxy_size
+# 			# 	super_huge = {
+# 			# 		check_variable = {
+# 			# 			which = god_understand
+# 			# 			value = 300
+# 			# 		}
+# 			# 	}
+# 			# 	huge = {
+# 			# 		check_variable = {
+# 			# 			which = god_understand
+# 			# 			value = 250
+# 			# 		}
+# 			# 	}
+# 			# 	large = {
+# 			# 		check_variable = {
+# 			# 			which = god_understand
+# 			# 			value = 200
+# 			# 		}
+# 			# 	}
+# 			# 	medium = {
+# 			# 		check_variable = {
+# 			# 			which = god_understand
+# 			# 			value = 150
+# 			# 		}
+# 			# 	}
+# 			# 	small = {
+# 			# 		check_variable = {
+# 			# 			which = god_understand
+# 			# 			value = 100
+# 			# 		}
+# 			# 	}
+# 			# 	tiny = {
+# 			# 		check_variable = {
+# 			# 			which = god_understand
+# 			# 			value = 50
+# 			# 		}
+# 			# 	}
+# 			# }
+# 		}
+# 	}
+# }
+CD_LOST_resource_cost_allow = {
+	optimize_memory
+	custom_tooltip_fail = {
+		text = CD_LOST_$resource$_resource_cost_lv_$lv$
+		resource_stockpile_compare = {
+			resource = $resource$
+			value >= $lv$
+			mult = cd_$resource$_cost_lv_$lv$
+		}
+	}
+}
+
+CD_LOST_sr_mo_jing_kuang_resource_cost_allow = {
+	optimize_memory
+	custom_tooltip_fail = {
+		text = CD_LOST_sr_mo_jing_kuang_resource_cost_lv_$lv$
+		check_variable = {
+			which = sr_mo_jing_kuang_stockpile
+			value >= cd_sr_mo_jing_kuang_cost_lv_$lv$
+		}
+	}
+}

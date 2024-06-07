@@ -1247,36 +1247,37 @@ event = {
 				if = {
 					limit = { 
 						NOR = {
-							OR = {
-								pop_has_trait = trait_lv_all_female 
-								pop_has_trait = trait_suc_parthenogenesis
-								AND = {
-									OR = {
-										pop_has_trait = trait_slime
-										pop_has_trait = trait_SLIME_robot
-									}
-									OR = {
-										pop_has_trait = trait_futanari
-										pop_has_trait = trait_hidden_futa
-										pop_has_trait = trait_hidden_futa_common
-										pop_has_trait = trait_huge_penis_futa
-										pop_has_trait = trait_lv_futanari
-									}
+							#孤雌
+							pop_has_trait = trait_lv_all_female
+							pop_has_trait = trait_suc_parthenogenesis
+							AND = {
+								OR = {
+									pop_has_trait = trait_slime
+									pop_has_trait = trait_SLIME_robot
+								}
+								NOR = {
+									pop_has_trait = trait_futanari
+									pop_has_trait = trait_hidden_futa
+									pop_has_trait = trait_hidden_futa_common
+									pop_has_trait = trait_huge_penis_futa
+									pop_has_trait = trait_lv_futanari
 								}
 							}
-							OR = {
-								pop_has_trait = trait_lv_futanari
-								pop_has_trait = trait_angel
-								pop_has_trait = trait_ANGEL_robot
-								pop_has_trait = trait_angel_fallen
-								pop_has_trait = trait_ANGEL_F_robot
-								pop_has_trait = trait_futanari
-								pop_has_trait = trait_hidden_futa
-								pop_has_trait = trait_hidden_futa_common
-								pop_has_trait = trait_huge_penis_futa
-							}
-							
+							pop_has_trait = trait_star
+							#futa
+							pop_has_trait = trait_angel
+							pop_has_trait = trait_ANGEL_robot
+							pop_has_trait = trait_angel_fallen
+							pop_has_trait = trait_ANGEL_F_robot
+							pop_has_trait = trait_futanari
+							pop_has_trait = trait_hidden_futa
+							pop_has_trait = trait_hidden_futa_common
+							pop_has_trait = trait_huge_penis_futa
+							pop_has_trait = trait_lv_futanari
+							pop_has_trait = trait_futa
+							#孤雄
 							pop_has_trait = trait_lv_all_male
+							pop_has_trait = trait_CD
 							#pop_has_trait = trait_lvex_amazon
 							pop_has_trait = trait_lv_femboy01
 							pop_has_trait = trait_lv_femboy02
@@ -1288,70 +1289,42 @@ event = {
 					}
 					random_list = {
 						50 = {  
-							if = {
-								limit = {
-									pop_has_trait = trait_DC_ethic_carnalism
-									owner = { has_origin = origin_female_in_shadow }
-								}
-								modify_species = {
-									add_trait = trait_suc_parthenogenesis
-								}
-							}
-							else_if = {
-								limit = {
-									NOR = {
-										has_trait = trait_slime
-										has_trait = trait_SLIME_robot
-									}	
-								}
-								modify_species = {
-									add_trait = trait_lv_all_female
-								}
+							modify_species = {
 								if = {
 									limit = {
-										pop_has_trait = trait_futanari
+										pop_has_trait = trait_DC_ethic_carnalism
+										owner = { has_origin = origin_female_in_shadow }
 									}
 									modify_species = {
-										remove_trait = trait_futanari
+										species = this
+										add_trait = trait_suc_parthenogenesis
+										change_scoped_species = no
 									}
 								}
-								if = {
+								else_if = {
 									limit = {
-										pop_has_trait = trait_hidden_futa
+										NOR = {
+											pop_has_trait = trait_slime
+											pop_has_trait = trait_SLIME_robot
+											pop_has_trait = trait_star
+										}	
 									}
 									modify_species = {
-										remove_trait = trait_hidden_futa
-									}
-								}
-								if = {
-									limit = {
-										pop_has_trait = trait_hidden_futa_common
-									}
-									modify_species = {
-										remove_trait = trait_hidden_futa_common
-									}
-								}
-								if = {
-									limit = {
-										pop_has_trait = trait_huge_penis_futa
-									}
-									modify_species = {
-										remove_trait = trait_huge_penis_futa
-									}
-								}
-								if = {
-									limit = {
-										pop_has_trait = trait_lv_futanari
-									}
-									modify_species = {
-										remove_trait = trait_lv_futanari
+										species = this
+										add_trait = trait_lv_all_female
+										change_scoped_species = no
 									}
 								}
 							}
 						}
 						50 = {
-							modify_species = {
-								add_trait = trait_lv_all_male
+							if = {
+								limit = {
+									has_trait = trait_CD
+								}
+								modify_species = {
+									add_trait = trait_lv_all_male
+								}
 							}
 						}
 						10 = {
@@ -1383,11 +1356,9 @@ event = {
 										AND = {
 											pop_has_trait = trait_you_are_monster_girl
 											species = {
-												OR = {
-													is_archetype = BIOLOGICAL 
-													is_archetype = LITHOID 
-													is_archetype = ROBOT
-												}
+												is_archetype = BIOLOGICAL 
+												is_archetype = LITHOID 
+												is_archetype = ROBOT
 											}
 										}
 									}
@@ -1396,7 +1367,14 @@ event = {
 									add_trait = trait_futanari
 								}
 							}
-							else = {
+							else_if = {
+								limit = {
+									NOR = {
+										pop_has_trait = trait_futa
+										pop_has_trait = trait_star
+										pop_has_trait = trait_CD
+									}
+								}
 								modify_species = {
 									add_trait = trait_lv_futanari
 								}
@@ -1411,35 +1389,38 @@ event = {
 						owner = { has_policy_flag = lv_feminization_range_all }
 						is_robot_pop = no
 						OR = {
-							pop_has_trait = trait_lv_all_male
-							OR = {
-								pop_has_trait = trait_lv_all_female 
-								pop_has_trait = trait_suc_parthenogenesis
-								AND = {
-									OR = {
-										pop_has_trait = trait_slime
-										pop_has_trait = trait_SLIME_robot
-									}
-									OR = {
-										pop_has_trait = trait_futanari
-										pop_has_trait = trait_hidden_futa
-										pop_has_trait = trait_hidden_futa_common
-										pop_has_trait = trait_huge_penis_futa
-										pop_has_trait = trait_lv_futanari
-									}
+							#孤雌
+							pop_has_trait = trait_lv_all_female
+							pop_has_trait = trait_suc_parthenogenesis
+							AND = {
+								OR = {
+									pop_has_trait = trait_slime
+									pop_has_trait = trait_SLIME_robot
+								}
+								NOR = {
+									pop_has_trait = trait_futanari
+									pop_has_trait = trait_hidden_futa
+									pop_has_trait = trait_hidden_futa_common
+									pop_has_trait = trait_huge_penis_futa
+									pop_has_trait = trait_lv_futanari
 								}
 							}
-							OR = {
-								pop_has_trait = trait_lv_futanari
-								pop_has_trait = trait_angel
-								pop_has_trait = trait_ANGEL_robot
-								pop_has_trait = trait_angel_fallen
-								pop_has_trait = trait_ANGEL_F_robot
-								pop_has_trait = trait_futanari
-								pop_has_trait = trait_hidden_futa
-								pop_has_trait = trait_hidden_futa_common
-								pop_has_trait = trait_huge_penis_futa
-							}
+							pop_has_trait = trait_star
+							#futa
+							pop_has_trait = trait_angel
+							pop_has_trait = trait_ANGEL_robot
+							pop_has_trait = trait_angel_fallen
+							pop_has_trait = trait_ANGEL_F_robot
+							pop_has_trait = trait_futanari
+							pop_has_trait = trait_hidden_futa
+							pop_has_trait = trait_hidden_futa_common
+							pop_has_trait = trait_huge_penis_futa
+							pop_has_trait = trait_lv_futanari
+							pop_has_trait = trait_futa
+							#孤雄
+							pop_has_trait = trait_lv_all_male
+							pop_has_trait = trait_CD
+							#femboy
 							pop_has_trait = trait_lv_femboy01
 							pop_has_trait = trait_lv_femboy02
 							pop_has_trait = trait_lv_femboy03
@@ -1454,35 +1435,38 @@ event = {
 						owner = { has_policy_flag = lv_feminization_range_livestock }
 						is_robot_pop = no
 						OR = {
-							pop_has_trait = trait_lv_all_male
-							OR = {
-								pop_has_trait = trait_lv_all_female 
-								pop_has_trait = trait_suc_parthenogenesis
-								AND = {
-									OR = {
-										pop_has_trait = trait_slime
-										pop_has_trait = trait_SLIME_robot
-									}
-									OR = {
-										pop_has_trait = trait_futanari
-										pop_has_trait = trait_hidden_futa
-										pop_has_trait = trait_hidden_futa_common
-										pop_has_trait = trait_huge_penis_futa
-										pop_has_trait = trait_lv_futanari
-									}
+							#孤雌
+							pop_has_trait = trait_lv_all_female
+							pop_has_trait = trait_suc_parthenogenesis
+							AND = {
+								OR = {
+									pop_has_trait = trait_slime
+									pop_has_trait = trait_SLIME_robot
+								}
+								NOR = {
+									pop_has_trait = trait_futanari
+									pop_has_trait = trait_hidden_futa
+									pop_has_trait = trait_hidden_futa_common
+									pop_has_trait = trait_huge_penis_futa
+									pop_has_trait = trait_lv_futanari
 								}
 							}
-							OR = {
-								pop_has_trait = trait_lv_futanari
-								pop_has_trait = trait_angel
-								pop_has_trait = trait_ANGEL_robot
-								pop_has_trait = trait_angel_fallen
-								pop_has_trait = trait_ANGEL_F_robot
-								pop_has_trait = trait_futanari
-								pop_has_trait = trait_hidden_futa
-								pop_has_trait = trait_hidden_futa_common
-								pop_has_trait = trait_huge_penis_futa
-							}
+							pop_has_trait = trait_star
+							#futa
+							pop_has_trait = trait_angel
+							pop_has_trait = trait_ANGEL_robot
+							pop_has_trait = trait_angel_fallen
+							pop_has_trait = trait_ANGEL_F_robot
+							pop_has_trait = trait_futanari
+							pop_has_trait = trait_hidden_futa
+							pop_has_trait = trait_hidden_futa_common
+							pop_has_trait = trait_huge_penis_futa
+							pop_has_trait = trait_lv_futanari
+							pop_has_trait = trait_futa
+							#孤雄
+							pop_has_trait = trait_lv_all_male
+							pop_has_trait = trait_CD
+							#femboy
 							pop_has_trait = trait_lv_femboy01
 							pop_has_trait = trait_lv_femboy02
 							pop_has_trait = trait_lv_femboy03
@@ -1500,35 +1484,38 @@ event = {
 						owner = { has_policy_flag = lv_feminization_range_slaves }
 						is_robot_pop = no
 						OR = {
-							pop_has_trait = trait_lv_all_male
-							OR = {
-								pop_has_trait = trait_lv_all_female 
-								pop_has_trait = trait_suc_parthenogenesis
-								AND = {
-									NR = {
-										pop_has_trait = trait_slime
-										pop_has_trait = trait_SLIME_robot
-									}
-									OR = {
-										pop_has_trait = trait_futanari
-										pop_has_trait = trait_hidden_futa
-										pop_has_trait = trait_hidden_futa_common
-										pop_has_trait = trait_huge_penis_futa
-										pop_has_trait = trait_lv_futanari
-									}
+							#孤雌
+							pop_has_trait = trait_lv_all_female
+							pop_has_trait = trait_suc_parthenogenesis
+							AND = {
+								OR = {
+									pop_has_trait = trait_slime
+									pop_has_trait = trait_SLIME_robot
+								}
+								NOR = {
+									pop_has_trait = trait_futanari
+									pop_has_trait = trait_hidden_futa
+									pop_has_trait = trait_hidden_futa_common
+									pop_has_trait = trait_huge_penis_futa
+									pop_has_trait = trait_lv_futanari
 								}
 							}
-							OR = {
-								pop_has_trait = trait_lv_futanari
-								pop_has_trait = trait_angel
-								pop_has_trait = trait_ANGEL_robot
-								pop_has_trait = trait_angel_fallen
-								pop_has_trait = trait_ANGEL_F_robot
-								pop_has_trait = trait_futanari
-								pop_has_trait = trait_hidden_futa
-								pop_has_trait = trait_hidden_futa_common
-								pop_has_trait = trait_huge_penis_futa
-							}
+							pop_has_trait = trait_star
+							#futa
+							pop_has_trait = trait_angel
+							pop_has_trait = trait_ANGEL_robot
+							pop_has_trait = trait_angel_fallen
+							pop_has_trait = trait_ANGEL_F_robot
+							pop_has_trait = trait_futanari
+							pop_has_trait = trait_hidden_futa
+							pop_has_trait = trait_hidden_futa_common
+							pop_has_trait = trait_huge_penis_futa
+							pop_has_trait = trait_lv_futanari
+							pop_has_trait = trait_futa
+							#孤雄
+							pop_has_trait = trait_lv_all_male
+							pop_has_trait = trait_CD
+							#femboy
 							pop_has_trait = trait_lv_femboy01
 							pop_has_trait = trait_lv_femboy02
 							pop_has_trait = trait_lv_femboy03

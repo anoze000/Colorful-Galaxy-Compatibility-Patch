@@ -1,0 +1,888 @@
+# species_potential_add = {}
+# show the trait to add to species when genemodding or randomizing traits.
+# Scopes are this = species, from = country performing the modification.
+# default = always=yes
+
+# species_possible_remove = {}
+# allow to remove the trait when genemodding.
+# Scopes are this = species, from = country performing the modification.
+# default = always=yes
+
+#尼德霍格的馈赠
+trait_you_are_monster_girl = {
+	cost = 0
+	sorting_priority = 19
+
+	initial = yes
+	randomized = no
+
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+
+	potential_crossbreeding_chance = 0
+
+	opposites = {
+		"trait_dickman"
+		"trait_lamia"
+		"trait_angel"
+		"trait_Gynoid"
+		"trait_slime"
+		"trait_succubus"
+		"trait_vampire"
+		"trait_zombie_girl"
+		"trait_angel_fallen"
+	}
+
+	allowed_archetypes = {
+		BIOLOGICAL
+		LITHOID
+		MACHINE
+		ELF
+		Magical_Bitch
+		Magical_Girl
+		Lust_Girl
+		TENTACLE
+		LOVEMACHINE
+		NYTO
+		EILD
+		WARSHIPGIRL
+		SHENHAI
+		UNITED_FLEET
+	}
+
+	modifier = {
+		pop_amenities_usage_mult = -0.1
+		planet_pops_lust_crystal_upkeep_add = 0.1
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+
+}
+
+#魔人
+trait_dickman = {
+	cost = 0
+	sorting_priority = 19
+
+	initial = no
+	randomized = no
+	forced_happiness = no
+
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+
+	potential_crossbreeding_chance = 1
+
+	allowed_archetypes = { PRESAPIENT BIOLOGICAL }
+
+	opposites = { "trait_charismatic" "trait_weak" "trait_delicious"}
+
+	modifier = {
+		army_damage_mult = 2
+		army_health = 2
+		army_morale = 2
+		army_collateral_damage_mult = 4
+		pop_growth_speed = 1
+		pop_housing_usage_mult = -1
+		pop_amenities_usage_mult = 4
+		planet_pops_consumer_goods_upkeep_mult = -1
+		planet_pops_food_upkeep_mult = -1
+		habitability_floor_add = 0.8
+		planet_miners_minerals_produces_mult = 1
+		planet_farmers_food_produces_mult = 1
+		planet_jobs_physics_research_produces_mult = -1
+		planet_jobs_society_research_produces_mult = -1
+		planet_jobs_engineering_research_produces_mult = -1
+		species_empire_size_mult = 1
+		pop_government_ethic_attraction = -1
+		pop_job_amenities_mult = -1
+		pop_job_trade_mult = -1
+		species_leader_exp_gain = -1
+		planet_livestock_food_produces_add = -3.5
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+
+	icon = "gfx/interface/icons/traits/basic_traits/trait_dickman.dds"
+
+}
+
+#拉米亚
+trait_lamia = {
+	cost = 0
+	sorting_priority = 19
+
+	initial = no
+	randomized = no
+	forced_happiness = no
+
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+
+	potential_crossbreeding_chance = 1.0
+
+	allowed_archetypes = { BIOLOGICAL }
+
+	opposites = { "trait_repugnant" }
+
+	modifier = {
+		pop_ethic_xenophile_attraction_mult = 0.5
+		leader_lifespan_add = -15
+		pop_growth_speed = 0.1
+		planet_harlots_produces_mult = 0.15
+		planet_pops_food_upkeep_mult = -0.2
+		pop_environment_tolerance = -0.05
+		pc_nuked_habitability = 0.1
+		pop_housing_usage_add = 0.1
+		planet_pops_lust_crystal_upkeep_add = 0.2
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+
+	icon = "gfx/interface/icons/traits/basic_traits/trait_lamia.dds"
+
+}
+
+#机械拉米亚
+trait_LAMIA_robot = {
+	cost = 1
+	sorting_priority = 17
+
+	initial = no
+	randomized = no
+
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+
+	allowed_archetypes = { ROBOT }
+
+	modifier = {
+		pop_ethic_xenophile_attraction_mult = 0.5
+		planet_harlots_produces_mult = 0.3
+		erotic_jobs_produces_mult = 0.05
+		pop_housing_usage_add = 0.1
+		planet_pops_lust_crystal_upkeep_add = 0.1
+	}
+	
+	assembly_score = {
+		add = 5
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+
+	icon = "gfx/interface/icons/traits/basic_traits/trait_lamia.dds"
+
+}
+
+#天使
+trait_angel = {
+	cost = 0
+	sorting_priority = 19
+
+	initial = no
+	randomized = no
+	forced_happiness = no
+
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+
+	potential_crossbreeding_chance = 1.0
+
+	allowed_archetypes = { BIOLOGICAL }
+
+	opposites = { 
+		"trait_rapid_breeders" 
+		"trait_repugnant" 
+		"trait_enduring" 
+		"trait_venerable" 
+		"trait_fleeting" 
+		"trait_futa"
+		"trait_star"
+		"trait_CD"
+		"trait_lv_futanari"
+		"trait_suc_parthenogenesis"
+		"trait_lv_all_female"
+		"trait_lv_all_male"
+		"trait_lv_androgynous"
+	}
+
+	immortal_leaders = yes
+
+	modifier = {
+		pop_ethic_spiritualist_attraction_mult = 0.5
+		pop_growth_speed = -0.25
+		negative_leader_traits_species = -2
+		planet_jobs_produces_mult = 0.1
+		planet_jobs_unity_produces_mult = 0.1
+		army_damage_mult = 0.2
+		army_health = 0.2
+		army_morale = 0.2
+		planet_harlots_produces_mult = -0.15
+		planet_jobs_physics_research_produces_mult = -0.15
+		planet_jobs_society_research_produces_mult = -0.15
+		planet_jobs_engineering_research_produces_mult = -0.15
+		planet_pops_food_upkeep_add = -0.3
+		planet_pops_energy_upkeep_add = 0.7
+		planet_pops_lust_crystal_upkeep_add = 0.2
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+
+	icon = "gfx/interface/icons/traits/basic_traits/trait_angel.dds"
+
+}
+
+#机械天使
+trait_ANGEL_robot = {
+	cost = 2
+	sorting_priority = 17
+
+	initial = no
+	randomized = no
+	forced_happiness = no
+
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+
+	allowed_archetypes = { ROBOT }
+
+	modifier = {
+		pop_ethic_spiritualist_attraction_mult = 0.5
+		planet_jobs_produces_mult = 0.1
+		planet_jobs_unity_produces_mult = 0.1
+		army_damage_mult = 0.4
+		army_health = 0.4
+		army_morale = 0.4
+		planet_pops_lust_crystal_upkeep_add = 0.2
+	}
+	
+	assembly_score = {
+		add = 5
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+
+	icon = "gfx/interface/icons/traits/basic_traits/trait_angel.dds"
+
+	
+	opposites = { 
+		"trait_futa"
+		"trait_star"
+		"trait_CD"
+		"trait_lv_futanari"
+		"trait_suc_parthenogenesis"
+		"trait_lv_all_female"
+		"trait_lv_all_male"
+		"trait_lv_androgynous"
+	}		
+		
+}
+
+#机娘
+trait_Gynoid = {
+	cost = 0
+	sorting_priority = 19
+
+	initial = no
+	randomized = no
+	forced_happiness = no
+
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+
+	allowed_archetypes = { MACHINE ROBOT }
+
+	opposites = { "trait_robot_uncanny" }
+
+	immortal_leaders = yes
+
+	triggered_pop_modifier = {
+		potential = {
+			owner = {
+				OR = {
+					is_machine_empire = yes
+					NOT = {
+						has_technology = tech_synthetic_leaders
+					}
+				}
+			}
+		}
+		planet_whores_produces_mult = 0.2
+		planet_sex_slaves_produces_mult = -0.3
+		planet_complex_harlots_produces_mult = 0.1
+	}
+
+	triggered_planet_growth_habitability_modifier = {
+		potential = {
+			owner = {
+				is_individual_machine = yes
+				NOT = {
+					has_trait = trait_machine_unit
+				}
+			}
+		}
+		pop_growth_speed_reduction = 1
+		planet_pop_assembly_reduction = 1
+	}
+
+	modifier = {
+		erotic_jobs_produces_mult = 0.05
+		pop_job_amenities_mult = 0.2
+		negative_leader_traits_species = -1
+		planet_pop_assemblers_upkeep_mult = 0.2
+		planet_pops_lust_crystal_upkeep_add = 0.4
+	}
+	
+	assembly_score = {
+		add = 10
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+
+	custom_tooltip_with_modifiers = trait_Gynoid_tool
+	icon = "gfx/interface/icons/traits/basic_traits/trait_Gynoid.dds"
+
+}
+
+#史莱姆娘
+trait_slime = {
+	cost = -4
+	sorting_priority = 19
+
+	initial = no
+	randomized = no
+	forced_happiness = no
+
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+
+	potential_crossbreeding_chance = 1.0
+
+	allowed_archetypes = { BIOLOGICAL }
+
+	modifier = {
+		planet_pop_assembly_organic_mult = 0.1
+		pop_environment_tolerance = -0.05
+		pop_growth_speed = -0.05
+		planet_pops_lust_crystal_upkeep_add = 0.2
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+
+	icon = "gfx/interface/icons/traits/basic_traits/trait_slime.dds"
+	opposites = {
+		trait_lv_all_male
+		trait_lv_androgynous
+		trait_suc_parthenogenesis
+		trait_angel
+		trait_ANGEL_robot
+		trait_angel_fallen
+		trait_ANGEL_F_robot
+		trait_futa
+		trait_CD
+		trait_star
+	}
+	
+}
+
+#机械史莱姆娘
+trait_SLIME_robot = {
+	cost = 1
+	sorting_priority = 17
+
+	initial = no
+	randomized = no
+	forced_happiness = no
+
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+
+	potential_crossbreeding_chance = 1.0
+
+	allowed_archetypes = { BIOLOGICAL }
+
+	opposites = {}
+
+	immortal_leaders = yes
+
+	modifier = {
+		planet_pop_assembly_mult = 0.5
+		planet_pops_lust_crystal_upkeep_add = 0.2
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+
+	icon = "gfx/interface/icons/traits/basic_traits/trait_slime.dds"
+
+	opposites = {
+		trait_lv_all_male
+		trait_lv_androgynous
+		trait_suc_parthenogenesis
+		trait_angel
+		trait_ANGEL_robot
+		trait_angel_fallen
+		trait_ANGEL_F_robot
+		trait_futa
+		trait_CD
+		trait_star
+	}
+}
+
+#魅魔
+trait_succubus = {
+	cost = 0
+	sorting_priority = 19
+
+	initial = no
+	randomized = no
+	forced_happiness = no
+
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+
+	potential_crossbreeding_chance = 1.0
+
+	allowed_archetypes = { BIOLOGICAL }
+
+	opposites = { "trait_repugnant" "trait_enduring" "trait_venerable" "trait_fleeting" }
+
+	immortal_leaders = yes
+
+	modifier = {
+		pop_ethic_authoritarian_attraction_mult = 0.5
+		pop_growth_speed = 0.25
+		species_leader_exp_gain = 0.1
+		erotic_jobs_produces_mult = 0.1
+		pop_amenities_usage_mult = 0.2
+		species_empire_size_mult = 0.1
+		planet_pops_lust_crystal_upkeep_add = 1
+		planet_pops_consumer_goods_upkeep_mult = 0.2
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+
+	icon = "gfx/interface/icons/traits/basic_traits/trait_succubus.dds"
+
+}
+
+#机械魅魔
+trait_SUCCUBUS_robot = {
+	cost = 1
+	sorting_priority = 17
+
+	initial = no
+	randomized = no
+	forced_happiness = no
+
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+
+	allowed_archetypes = { ROBOT }
+
+	modifier = {
+		pop_ethic_authoritarian_attraction_mult = 0.5
+		erotic_jobs_produces_mult = 0.3
+		planet_pops_consumer_goods_upkeep_mult = 0.1
+		pop_amenities_usage_mult = 0.2
+		species_empire_size_mult = 0.1
+		planet_pops_lust_crystal_upkeep_add = 1
+	}
+	
+	assembly_score = {
+		add = 5
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+
+	icon = "gfx/interface/icons/traits/basic_traits/trait_succubus.dds"
+}
+
+#吸血鬼
+trait_vampire = {
+	cost = 0
+	sorting_priority = 19
+
+	initial = no
+	randomized = no
+	forced_happiness = no
+
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+
+	potential_crossbreeding_chance = 0
+
+	allowed_archetypes = { BIOLOGICAL }
+
+	opposites = { "trait_repugnant" "trait_enduring" "trait_venerable" "trait_fleeting" }
+
+	immortal_leaders = yes
+
+	modifier = {
+		species_leader_exp_gain = 0.1
+		planet_jobs_physics_research_produces_mult = 0.15
+		planet_jobs_society_research_produces_mult = 0.15
+		planet_jobs_specialist_produces_mult = 0.2
+		planet_jobs_worker_produces_mult = -0.1
+		species_empire_size_mult = 0.1
+		planet_pops_lust_crystal_upkeep_add = 0.4
+	}
+
+	triggered_planet_growth_habitability_modifier = {
+		potential = {
+			exists = growing_species
+			growing_species = {
+				NOT = { has_trait = trait_necrophage }
+			}
+		}
+		pop_growth_speed = -0.75
+	}
+
+	triggered_planet_growth_habitability_modifier = {
+		potential = {
+			exists = assembling_species
+			assembling_species = {
+				NOT = { has_trait = trait_necrophage }
+			}
+		}
+		planet_pop_assembly_organic_mult = -0.5
+	}
+
+	triggered_pop_modifier = {
+		potential = {
+			NOT = { has_trait = trait_necrophage }
+		}
+		planet_pops_organics_food_upkeep_mult = -0.5
+		planet_pops_organics_minerals_upkeep_mult = -0.5
+		planet_pops_organics_energy_upkeep_mult = -0.5
+	}
+
+	triggered_pop_modifier = {
+		potential = {
+			NOT = { has_trait = trait_necrophage }
+			owner = {
+				is_gestalt = no
+			}
+		}
+		planet_jobs_ruler_produces_mult = 0.05
+		planet_jobs_specialist_only_produces_mult = 0.05
+		planet_jobs_worker_only_produces_mult = -0.1
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+
+	icon = "gfx/interface/icons/traits/basic_traits/trait_vampire.dds"
+
+	custom_tooltip_with_modifiers = trait_vampire_tooltip
+
+}
+
+#机械吸血鬼
+trait_VAMPIRE_robot = {
+	cost = 2
+	sorting_priority = 17
+
+	initial = no
+	randomized = no
+	forced_happiness = no
+
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+
+	allowed_archetypes = { ROBOT }
+
+	modifier = {
+		planet_jobs_physics_research_produces_mult = 0.15
+		planet_jobs_society_research_produces_mult = 0.15
+		planet_jobs_specialist_produces_mult = 0.2
+		species_empire_size_mult = 0.1
+		planet_pops_food_upkeep_add = 0.1
+		planet_pops_lust_crystal_upkeep_add = 0.2
+	}
+	
+	assembly_score = {
+		add = 5
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+
+	icon = "gfx/interface/icons/traits/basic_traits/trait_vampire.dds"
+
+}
+
+#僵尸娘
+trait_zombie_girl = {
+	cost = 0
+	sorting_priority = 19
+
+	initial = no
+	randomized = no
+	forced_happiness = yes
+
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+
+	potential_crossbreeding_chance = 0
+
+	allowed_archetypes = { BIOLOGICAL }
+
+	opposites = { "trait_enduring" "trait_venerable" "trait_fleeting" }
+
+	immortal_leaders = yes
+
+	modifier = {
+		pop_environment_tolerance = 0.8
+		planet_whores_produces_mult = 0.15
+		erotic_jobs_produces_mult = 0.05
+		planet_pops_upkeep_mult = 0.1
+		planet_pops_lust_crystal_upkeep_add = 0.4
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+
+	icon = "gfx/interface/icons/traits/basic_traits/trait_zombie_girl.dds"
+
+}
+
+#堕天使
+trait_angel_fallen = {
+	cost = 0
+	sorting_priority = 19
+
+	initial = no
+	randomized = no
+	forced_happiness = no
+
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+
+	potential_crossbreeding_chance = 1.0
+
+	allowed_archetypes = { BIOLOGICAL }
+
+	opposites = { 
+		"trait_rapid_breeders" 
+		"trait_repugnant" 
+		"trait_enduring" 
+		"trait_venerable" 
+		"trait_fleeting" 
+		"trait_futa"
+		"trait_star"
+		"trait_CD"
+		"trait_lv_futanari"
+		"trait_suc_parthenogenesis"
+		"trait_lv_all_female"
+		"trait_lv_all_male"
+		"trait_lv_androgynous"
+	}
+	immortal_leaders = yes
+
+	modifier = {
+		pop_ethic_materialist_attraction_mult = 0.5
+		pop_growth_speed = -0.2
+		species_leader_exp_gain = 0.1
+		leader_trait_selection_options_add = 1
+		planet_researchers_physics_research_produces_add = 1
+		planet_researchers_society_research_produces_add = 1
+		planet_researchers_engineering_research_produces_add = 1
+		planet_harlots_produces_mult = -0.15
+		leaders_upkeep_mult = 0.2
+		negative_leader_traits_species = 1
+		planet_pops_food_upkeep_add = -0.3
+		planet_pops_energy_upkeep_add = 0.2
+		planet_pops_lust_crystal_upkeep_add = 0.7
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+
+	icon = "gfx/interface/icons/traits/basic_traits/trait_angel_fallen.dds"
+
+}
+
+#机械堕天使
+trait_ANGEL_F_robot = {
+	cost = 1
+	sorting_priority = 17
+
+	initial = no
+	randomized = no
+	forced_happiness = no
+
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+
+	allowed_archetypes = { ROBOT }
+
+	modifier = {
+		pop_ethic_materialist_attraction_mult = 0.5
+		species_leader_exp_gain = 0.1
+		leader_trait_selection_options_add = 1
+		erotic_jobs_produces_mult = 0.05
+		planet_researchers_physics_research_produces_add = 1
+		planet_researchers_society_research_produces_add = 1
+		planet_researchers_engineering_research_produces_add = 1
+		planet_pops_lust_crystal_upkeep_add = 0.7
+	}
+	
+	assembly_score = {
+		add = 5
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+
+	icon = "gfx/interface/icons/traits/basic_traits/trait_angel_fallen.dds"
+
+	opposites = { 
+		"trait_futa"
+		"trait_star"
+		"trait_CD"
+		"trait_lv_futanari"
+		"trait_suc_parthenogenesis"
+		"trait_lv_all_female"
+		"trait_lv_all_male"
+		"trait_lv_androgynous"
+	}
+}

@@ -25,7 +25,7 @@ trait_pc_lv_srelic_preference = {
 	species_possible_merge_add = {
 		always = yes
 	}
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	sorting_priority = 30
 	
 	modifier = {
@@ -46,7 +46,7 @@ trait_pc_lv_sworld_preference = {
 	species_possible_merge_add = {
 		always = yes
 	}
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	sorting_priority = 30
 	
 	modifier = {
@@ -67,7 +67,7 @@ trait_pc_lv_stentacle_preference = {
 	species_possible_merge_add = {
 		always = yes
 	}
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	sorting_priority = 30
 	
 	modifier = {
@@ -92,7 +92,7 @@ trait_pc_lv_sringworld_preference = {
 	species_possible_merge_add = {
 		always = yes
 	}
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	sorting_priority = 30
 	
 	modifier = {

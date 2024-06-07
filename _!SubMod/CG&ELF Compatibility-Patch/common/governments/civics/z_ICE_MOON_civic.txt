@@ -1,0 +1,753 @@
+#原版奴隶工会
+civic_slaver_guilds = {
+	potential = {
+		authority = {
+			NOT = {
+				value = auth_corporate
+			}
+		}
+	}
+	possible = {
+		civics = {
+			not = {
+				value = civic_pantyhose_slave
+			}
+		}
+		ethics = {
+			OR = {
+				text = civic_tooltip_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		planet_jobs_slave_produces_mult = 0.1
+		country_pop_enslaved_mult = 0.3
+	}
+}
+
+#女仆团
+civic_pantyhose_futa = {
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_fanatic_feminism
+				value = civic_abyssal_ascendancy
+				value = civic_flirtatious_regime
+				value = civic_appease_regulations
+				value = civic_master
+				value = civic_Religion
+			}
+		}
+
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_pantyhose_futa.dds"
+	random_weight = {
+		base = 0
+	}
+	modifier = {
+		planet_futa_maid_physics_research_produces_add = 1
+		planet_futa_maid_engineering_research_produces_add = 1
+		planet_futa_maid_society_research_produces_add = 1
+		planet_futa_maid_sr_semen_upkeep_add = 1
+		# planet_futa_maid_unity_produces_add = 2
+		# # pop_happiness = 0.01
+		# country_unity_produces_mult = 0.1
+		# pop_growth_speed = 0.05
+	}
+	description = "civic_pantyhose_futa_effects"
+}
+
+#快感同调
+civic_pantyhose_power = {
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_fanatic_feminism
+				value = civic_abyssal_ascendancy
+				value = civic_flirtatious_regime
+				value = civic_appease_regulations
+				value = civic_master
+				value = civic_Religion
+			}
+		}
+		ethics = {
+			OR = {
+				value = ethic_fanatic_spiritualist
+				# value = ethic_spiritualist
+			}
+		}
+	}
+	modification = yes
+	icon = "gfx/interface/icons/governments/civics/civic_pantyhose_power.dds"
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		country_war_exhaustion_mult = -0.1
+		ship_fire_rate_mult = 0.1
+		ships_upkeep_mult = -0.1
+		country_naval_cap_add = 100
+		# country_naval_cap_mult = 0.1
+		command_limit_add = 50
+	}
+	swap_type = {
+		description = civic_AI_debuff_desc
+		trigger = {
+			is_scope_valid = yes
+			is_ai = yes
+		}
+		modifier = {
+			country_war_exhaustion_mult = 0.1
+			country_naval_cap_add = -50
+			# country_naval_cap_mult = -0.1
+			command_limit_add = -50
+		}
+	}
+}
+
+#性爱强制法案
+civic_semen_pantyhose = {
+	# modification = no
+	icon = "gfx/interface/icons/governments/civics/civic_semen_pantyhose.dds"
+	possible = {
+		civics = {
+			NOR = {
+				# value = civic_fanatic_purifiers
+				# value = civic_machine_assimilator
+				value = civic_fanatic_feminism
+				value = civic_abyssal_ascendancy
+				value = civic_flirtatious_regime
+				value = civic_appease_regulations
+				value = civic_master
+				value = civic_Religion
+				value = civic_Hport
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	description = "civic_semen_pantyhose_effects"
+	modifier = {
+		# pop_growth_speed = 0.1
+		# PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.1
+		# PLANET_POP_ASSEMBLY_MULT = 0.1
+		# planet_futa_semen_produces_mult = 0.1
+		planet_futa_semen_sr_semen_produces_add = 1
+		# # pop_happiness = 0.01
+	}
+}
+
+#精液红茶销售网络
+civic_pantyhose_sex = {
+	icon = "gfx/interface/icons/governments/civics/civic_pantyhose_sex.dds"
+	random_weight = {
+		base = 5
+	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_fanatic_feminism
+				value = civic_abyssal_ascendancy
+				value = civic_flirtatious_regime
+				value = civic_appease_regulations
+				value = civic_master
+				value = civic_Religion
+				value = civic_Hport
+			}
+		}
+		# ethics = {
+		# 	NOT = {
+		# 		value = ethic_gestalt_consciousness
+		# 	}
+		# }
+	}
+	modifier = {
+		trade_value_mult = 0.3
+		country_trade_fee = -0.1
+		local_trade_protection_add = 100		#贸易保护
+		starbase_trade_collection_range_add = 1
+		starbase_trade_protection_range_add = 1                     	
+	}
+}
+
+#丝袜性奴传统
+civic_pantyhose_slave = {
+	icon = "gfx/interface/icons/governments/civics/civic_pantyhose_slave.dds"
+	random_weight = {
+		base = 5
+	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_fanatic_feminism
+				value = civic_abyssal_ascendancy
+				value = civic_flirtatious_regime
+				value = civic_appease_regulations
+				value = civic_master
+				value = civic_Religion
+				value = civic_Hport
+			}
+		}
+	}
+	description = "civic_pantyhose_slave_effects"
+	modifier = {
+		country_pop_enslaved_mult = 0.3
+		pop_cat_slave_happiness = 0.3
+	}
+}
+
+#精液丝袜圣教
+civic_semen_Religion = {
+	icon = "gfx/interface/icons/governments/civics/civic_semen_Religion.dds"
+	random_weight = {
+		base = 5
+	}
+	possible = {
+		civics = {
+			NOR = {
+				# value = civic_fanatic_purifiers
+				# value = civic_machine_assimilator
+				value = civic_fanatic_feminism
+				value = civic_abyssal_ascendancy
+				value = civic_flirtatious_regime
+				value = civic_appease_regulations
+				value = civic_master
+				value = civic_Religion
+				value = civic_Hport
+			}
+		}
+	}
+	description = "civic_semen_Religion_effects"
+	modifier = {
+		planet_futa_priest_unity_produces_add = 1
+	}
+}
+
+#凝浆精池妓院
+civic_semen_pantyhose_brothel = {
+	possible = {
+		civics = {
+			NOR = {
+				# value = civic_fanatic_purifiers
+				# value = civic_machine_assimilator
+				value = civic_fanatic_feminism
+				value = civic_abyssal_ascendancy
+				value = civic_flirtatious_regime
+				value = civic_appease_regulations
+				value = civic_master
+				value = civic_Religion
+				value = civic_Hport
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_semen_pantyhose_brothel.dds"
+	random_weight = {
+		base = 5
+		modifier = {
+			factor = 0
+			NOR = {
+				has_authority = auth_futa_brothel
+				has_authority = auth_starshipgirls
+				has_authority = auth_warshipgirls
+				has_authority = auth_shenhai
+			}
+		}
+	}
+	description = "civic_semen_pantyhose_brothel_effects"
+	modifier = {
+		espionage_operation_difficulty_add = -5
+		operations_cost_mult = -0.5
+		operations_upkeep_mult = -0.5
+		spy_network_daily_value_mult = 0.5		#渗透速度
+		spy_network_levels_add = 10		#最大渗透等级
+		intel_encryption_add = 1		#加密
+		intel_decryption_add = 1
+	}
+}
+
+#手冲奶茶
+civic_fanatic_semen_pantyhose = {
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_fanatic_feminism
+				value = civic_abyssal_ascendancy
+				value = civic_flirtatious_regime
+				value = civic_appease_regulations
+				value = civic_master
+				value = civic_Religion
+				value = civic_Hport
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		# # pop_happiness = 0.01
+		# all_technology_research_speed = 0.2
+		# planet_researchers_produces_mult = 0.15
+		num_tech_alternatives_add = 1
+		scientist_exp_gain = 0.25
+		negative_traits_country = -2
+		all_technology_research_speed = 0.2
+	}
+}
+
+#淫媚丝袜之力
+civic_semen_pantyhose_ascendancy = {
+	modification = yes
+	# icon = "gfx/interface/icons/governments/civics/civic_abyssal_ascendancy.dds"
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_fanatic_feminism
+				value = civic_abyssal_ascendancy
+				value = civic_flirtatious_regime
+				value = civic_appease_regulations
+				value = civic_master
+				value = civic_Religion
+				value = civic_Hport
+			}
+		}
+		ethics = {
+			OR = {
+				value = ethic_fanatic_egalitarian
+				# value = ethic_egalitarian
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		country_war_exhaustion_mult = -0.1
+		ship_fire_rate_mult = 0.1
+		ships_upkeep_mult = -0.1
+		country_naval_cap_add = 100
+		# country_naval_cap_mult = 0.1
+		command_limit_add = 50
+	}
+	swap_type = {
+		description = civic_AI_debuff_desc
+		trigger = {
+			is_scope_valid = yes
+			is_ai = yes
+		}
+		modifier = {
+			country_war_exhaustion_mult = 0.1
+			country_naval_cap_add = -50
+			# country_naval_cap_mult = -0.1
+			command_limit_add = -50
+		}
+	}
+}
+
+#淫媚丝袜政权
+civic_pantyhose_regime = {
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_fanatic_feminism
+				value = civic_abyssal_ascendancy
+				value = civic_flirtatious_regime
+				value = civic_appease_regulations
+				value = civic_master
+				value = civic_Religion
+				value = civic_Hport
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		governor_exp_gain = 0.25
+		planet_jobs_ruler_produces_mult = 0.25
+		country_leader_cap_add = 3
+		leaders_upkeep_mult = -0.2
+	}
+}
+
+#巨型精液反应堆
+civic_pantyhose_regulations = {
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_fanatic_feminism
+				value = civic_abyssal_ascendancy
+				value = civic_flirtatious_regime
+				value = civic_appease_regulations
+				value = civic_master
+				value = civic_Religion
+				value = civic_Hport
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+	}
+	modifier = {
+		megastructure_build_speed_mult = 0.5
+		country_megastructure_build_cap_add = 5
+	}
+}
+
+#至圣之路
+civic_ice_moon_inn_2 = {
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_fanatic_feminism
+				value = civic_abyssal_ascendancy
+				value = civic_flirtatious_regime
+				value = civic_appease_regulations
+				value = civic_master
+				value = civic_Religion
+			}
+		}
+		ethics = {
+			value = ethic_fanatic_xenophobe
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_pure_racial.dds"
+	random_weight = {
+		base = 5
+	}
+	modification = yes
+	modifier = {
+		planet_max_buildings_add = 2
+		planet_jobs_produces_mult = 0.05
+	}
+}
+
+#高级精液羽衣
+civic_ice_moon_inn_3 = {
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_fanatic_feminism
+				value = civic_abyssal_ascendancy
+				value = civic_flirtatious_regime
+				value = civic_appease_regulations
+				value = civic_master
+				value = civic_Religion
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_platonic_love.dds"
+	random_weight = {
+		base = 5
+	}
+	description = "civic_ice_moon_inn_3_effects"
+	# modification = no
+	modifier = {
+		leaders_cost_mult = -0.1
+		leaders_upkeep_mult = -0.1
+		councilor_skill_add = 2
+	}
+}
+
+#光之本愿
+civic_ice_moon_inn_4 = {
+	icon = "gfx/interface/icons/governments/civics/civic_sage_worshipping.dds"
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_fanatic_feminism
+				value = civic_abyssal_ascendancy
+				value = civic_flirtatious_regime
+				value = civic_appease_regulations
+				value = civic_master
+				value = civic_Religion
+			}
+		}
+		ethics = {
+			OR = {
+				value = ethic_fanatic_egalitarian
+				value = ethic_egalitarian
+			}
+		}
+	}
+	modifier = {
+		planet_building_build_speed_mult = 0.2
+		planet_decision_enact_speed_mult = 0.2		#决议速度	
+		country_edict_fund_add = 100
+		pop_factions_unity_produces_add = 0.5
+		pop_factions_influence_produces_add = 0.01
+	}
+	description = "civic_ice_moon_inn_4_effects"
+	random_weight = {
+		base = 5
+	}
+}
+
+#圣光之力
+civic_ice_moon_inn_6 = {
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_fanatic_feminism
+				value = civic_abyssal_ascendancy
+				value = civic_flirtatious_regime
+				value = civic_appease_regulations
+				value = civic_master
+				value = civic_Religion
+			}
+		}
+		ethics = {
+			value = ethic_fanatic_authoritarian
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_jihad_inherit.dds"
+	random_weight = {
+		base = 5
+	}
+	modification = yes
+	modifier = {
+		country_war_exhaustion_mult = -0.1
+		ship_fire_rate_mult = 0.1
+		ships_upkeep_mult = -0.1
+		country_naval_cap_add = 100
+		# country_naval_cap_mult = 0.1
+		command_limit_add = 50
+	}
+	swap_type = {
+		description = civic_AI_debuff_desc
+		trigger = {
+			is_scope_valid = yes
+			is_ai = yes
+		}
+		modifier = {
+			country_war_exhaustion_mult = 0.1
+			country_naval_cap_add = -50
+			# country_naval_cap_mult = -0.1
+			command_limit_add = -50
+		}
+	}
+}
+
+#魔法少女
+civic_ice_moon_inn_1 = {
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_fanatic_feminism
+				value = civic_abyssal_ascendancy
+				value = civic_flirtatious_regime
+				value = civic_appease_regulations
+				value = civic_master
+				value = civic_Religion
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_glorious_aristocracy.dds"
+	random_weight = {
+		base = 5
+	}
+	description = "civic_ice_moon_inn_1_effects"
+	modifier = {
+	}
+}
+
+#公主
+civic_ELF_special_leader = {
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_fanatic_feminism
+				value = civic_abyssal_ascendancy
+				value = civic_flirtatious_regime
+				value = civic_appease_regulations
+				value = civic_master
+				value = civic_Religion
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_ELF_special_leader.dds"
+	random_weight = {
+		base = 0
+	}
+	ai_playable = {
+		always = no
+	}
+	modifier = {
+		ELF_special_leader_exp_gain = 0.25
+	}
+}
+
+#罪企
+civic_criminal_brothel = {
+	modification = no
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_fanatic_feminism
+				value = civic_abyssal_ascendancy
+				value = civic_flirtatious_regime
+				value = civic_appease_regulations
+				value = civic_master
+				value = civic_Religion
+				value = civic_Hport
+				#
+				value = civic_criminal_heritage
+			}
+		}
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+				# value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_criminal_brothel.dds"
+	random_weight = {
+		base = 5
+	}
+	description = "civic_criminal_brothel_effects"
+	modifier = {
+		planet_branch_offices_cost_mult = -0.5
+		spy_network_daily_value_mult = 0.5
+		intel_decryption_add = 1
+		ship_cloaking_strength_add = 1
+	}
+}
+
+#风属性亲和
+civic_pure_elemental_wind = {
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_fanatic_feminism
+				value = civic_abyssal_ascendancy
+				value = civic_flirtatious_regime
+				value = civic_appease_regulations
+				value = civic_master
+				value = civic_Religion
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_pure_elemental_wind.dds"
+	description = "civic_pure_elemental_wind_effects"
+	modifier = {
+		ELF_pure_elemental_wind_add = 30
+	}
+	random_weight = {
+		base = 0
+	}
+	ai_playable = {
+		always = no
+	}
+}
+#火属性亲和
+civic_pure_elemental_fire = {
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_fanatic_feminism
+				value = civic_abyssal_ascendancy
+				value = civic_flirtatious_regime
+				value = civic_appease_regulations
+				value = civic_master
+				value = civic_Religion
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_pure_elemental_fire.dds"
+	description = "civic_pure_elemental_fire_effects"
+	modifier = {
+		ELF_pure_elemental_fire_add = 30
+	}
+	random_weight = {
+		base = 0
+	}
+	ai_playable = {
+		always = no
+	}
+}
+
+
+#水属性亲和
+civic_pure_elemental_water = {
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_fanatic_feminism
+				value = civic_abyssal_ascendancy
+				value = civic_flirtatious_regime
+				value = civic_appease_regulations
+				value = civic_master
+				value = civic_Religion
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_pure_elemental_water.dds"
+	description = "civic_pure_elemental_water_effects"
+	modifier = {
+		ELF_pure_elemental_water_add = 30
+	}
+	random_weight = {
+		base = 0
+	}
+	ai_playable = {
+		always = no
+	}
+}
+#木属性亲和
+civic_pure_elemental_wood = {
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_fanatic_feminism
+				value = civic_abyssal_ascendancy
+				value = civic_flirtatious_regime
+				value = civic_appease_regulations
+				value = civic_master
+				value = civic_Religion
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_pure_elemental_wood.dds"
+	description = "civic_pure_elemental_wood_effects"
+	modifier = {
+		ELF_pure_elemental_wood_add = 30
+	}
+	random_weight = {
+		base = 0
+	}
+	ai_playable = {
+		always = no
+	}
+}
+#土属性亲和
+civic_pure_elemental_soil = {
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_fanatic_feminism
+				value = civic_abyssal_ascendancy
+				value = civic_flirtatious_regime
+				value = civic_appease_regulations
+				value = civic_master
+				value = civic_Religion
+			}
+		}
+	}
+	icon = "gfx/interface/icons/governments/civics/civic_pure_elemental_soil.dds"
+	description = "civic_pure_elemental_soil_effects"
+	modifier = {
+		ELF_pure_elemental_soil_add = 30
+	}
+	random_weight = {
+		base = 0
+	}
+	ai_playable = {
+		always = no
+	}
+}

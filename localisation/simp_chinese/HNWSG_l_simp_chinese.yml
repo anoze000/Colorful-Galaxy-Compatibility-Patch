@@ -23,7 +23,7 @@
 
  finish_synthetic_evolution_1:0 "$TRIGGER_FAIL$需要以下任一飞升：\n　　§Y战舰少女政体§!需要飞升：§Hproject- R§!\n　　§Y深海政体§!需要飞升：§H浴火重生§!\n　　§Y星舰少女政体§!需要飞升：§H银河共和国§!\n　　§Y幻想乡国家§!需要飞升：§H幻·想·突·破§!\n　　§Y红魔馆国家§!需要飞升：§H完美之王§!\n　　§Y灰烬战线mod§!需要飞升：§H新时代企划§!\n　　§Y约战mod§!需要飞升：§H幸福之道§!\n　　§Y少女前线(涅托)mod§!需要飞升：§H心识解放§!\n　　§Y联合舰队§!需要飞升：§H超维革命§!\　　n包括多彩原版的魅魔在内，其他具有魅魔特质的种族需要必须先完成§Y合成进化§!特殊工程"
 "
-building_wsg_big_toy_monument:0 "高射炮雕像"
+ building_wsg_big_toy_monument:0 "高射炮雕像"
  building_wsg_big_toy_monument_desc:0 "尚未有效的记载表明这类形状为何能让我们的民众产生一种平和，共情等情绪，但可以证明的是，此类建筑能让帝国上下更加凝聚在了一起。
 
  building_elf_temple_of_lustgod:0 "§Y援交传道院§!"
@@ -49,3 +49,11 @@ mod_job_futa_public_toilet_per_pop_short:0 "每$VALUE$个£pop£有§G+1§!个£
   mod_job_futa_sex_slave_add:0 "$job_sex_slave$职位"
   mod_job_futa_sex_slave_per_pop:0 "每$VALUE$个 £pop£ 人口提供§G+1§!$job_sex_slave$职位"
   mod_job_futa_sex_slave_per_pop_short:0 "每$VALUE$个£pop£有§G+1§!个£mod_job_sex_slave_add£  "
+
+
+ auth_brothel:0 "淫渊企业"
+ auth_brothel_desc:0 "这个国家虽然在行政架构上与商业集团别无二致，但其首席执行官却有极大的权力，选举流程也形同虚设。也许是首席执行官每次都能在公司年会的轮奸派对环节中站到最后的缘故。"
+
+ auth_futa_brothel:0 "§H淫堕星河会所§!"
+ auth_futa_brothel_desc:0 "这个国家如同一个巨大的妓院，国民们渴求着精液丝袜的快乐，而这种体制则允许她们将精液丝袜散播到乐意接受她们的国家，并在这过程中获取不菲的利润。\n\n§H企业政体§!" 
+ auth_futa_brothel_tags:1 "每§H500§!年通过选举产生新统治者。"

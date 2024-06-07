@@ -32,7 +32,7 @@ trait_lv_aphrodisiac_milk = {
 	}
 	initial = no
 	potential_crossbreeding_chance = 0.5
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_aphrodisiac_milk_effect
 	
 	species_possible_remove = {
@@ -107,7 +107,7 @@ trait_lv_excess_estrogen = {
 		}
 	}
 	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_excess_estrogen_effect
 	
 	species_possible_remove = {
@@ -152,7 +152,7 @@ trait_lv_litters = {
 		}
 	}
 	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_litters_effect
 	
 	species_possible_remove = {
@@ -196,7 +196,7 @@ trait_lv_large_breasts = {
 		}
 	}
 	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_large_breasts_effect
 	
 	species_possible_remove = {
@@ -254,7 +254,7 @@ trait_lv_huge_breasts = {
 		}
 	}
 	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_huge_breasts_effect
 	
 	species_possible_remove = {
@@ -328,7 +328,7 @@ trait_lv_multiple_breasts = {
 		}
 	}
 	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_multiple_breasts_effect
 	
 	species_possible_remove = {
@@ -396,7 +396,7 @@ trait_lv_fuckable_nipples = {
 		}
 	}
 	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_fuckable_nipples_effect
 	
 	species_possible_remove = {
@@ -451,7 +451,7 @@ trait_lv_high_volume_lactation = {
 		}
 	}
 	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_high_volume_lactation_effect
 	
 	species_possible_remove = {
@@ -513,7 +513,7 @@ trait_lv_highly_nutritious_milk = {
 		}
 	}
 	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_highly_nutritious_milk_effect
 	
 	species_possible_remove = {
@@ -574,7 +574,7 @@ trait_lv_fizzy_milk = {
 	}
 	initial = no
 	potential_crossbreeding_chance = 0.5
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_fizzy_milk_effect
 	
 	species_possible_remove = {
@@ -640,7 +640,7 @@ trait_lv_drooling_vagina = {
 		}
 	}
 	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_drooling_vagina_effect
 	
 	species_possible_remove = {
@@ -661,6 +661,7 @@ trait_lv_drooling_vagina = {
 		trait_lv_sexually_inept
 		trait_frigid
 		trait_emotionless
+		trait_CD
 	}
 	
 	species_potential_add = {
@@ -705,7 +706,7 @@ trait_lv_shapely_ass = {
 		}
 	}
 	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_shapely_ass_effect
 	
 	species_possible_remove = {
@@ -755,7 +756,7 @@ trait_lv_breeder_hips = {
 		}
 	}
 	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_breeder_hips_effect
 	
 	species_possible_remove = {
@@ -815,7 +816,7 @@ trait_lv_breeder_hips = {
 # Physical #
 
 # Small Breasts
-trait_lv_small_breasts = {
+trait_lv_small_ {
 	cost = {
 		base = -3
 		modifier = {
@@ -824,7 +825,7 @@ trait_lv_small_breasts = {
 		}
 	}
 	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_small_breasts_effect
 	
 	species_potential_add = {
@@ -871,7 +872,7 @@ trait_lv_watery_milk = {
 		}
 	}
 	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_watery_milk_effect
 	
 	species_potential_add = {
@@ -916,7 +917,7 @@ trait_lv_watery_milk = {
 trait_lv_all_female = {
 	cost = 0
 	sorting_priority = 15
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_all_female_effect
 	
 	leader_age_min = 16
@@ -927,6 +928,7 @@ trait_lv_all_female = {
 		trait_lv_androgynous
 		trait_lv_large_penis
 		trait_lv_huge_penis
+		trait_lv_equine_penis
 		trait_lv_multiple_penises
 		trait_lv_high_volume_ejaculations
 		trait_lv_aphrodisiac_cum
@@ -943,6 +945,9 @@ trait_lv_all_female = {
 		trait_huge_penis_futa
 		trait_slime
 		trait_SLIME_robot
+		trait_futa
+		trait_CD
+		trait_star
 	}
 	
 	species_potential_add = {
@@ -985,7 +990,7 @@ trait_lv_femboy01 = {
 	potential_crossbreeding_chance = 0
 	initial = no
 	randomized = no
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip_with_modifiers = trait_lv_femboy01_effect
 	
 	species_potential_add = {
@@ -1026,7 +1031,7 @@ trait_lv_femboy02 = {
 	potential_crossbreeding_chance = 0
 	initial = no
 	randomized = no
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip_with_modifiers = trait_lv_femboy02_effect
 	
 	species_potential_add = {
@@ -1067,7 +1072,7 @@ trait_lv_femboy03 = {
 	potential_crossbreeding_chance = 0
 	initial = no
 	randomized = no
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip_with_modifiers = trait_lv_femboy03_effect
 	
 	species_potential_add = {
@@ -1108,7 +1113,7 @@ trait_lv_femboy04 = {
 	potential_crossbreeding_chance = 0
 	initial = no
 	randomized = no
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip_with_modifiers = trait_lv_femboy04_effect
 	
 	species_potential_add = {
@@ -1150,7 +1155,7 @@ trait_lv_femboy05 = {
 	potential_crossbreeding_chance = 0
 	initial = no
 	randomized = no
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip_with_modifiers = trait_lv_femboy05_effect
 	
 	species_potential_add = {
@@ -1197,7 +1202,7 @@ trait_lv_femboy05 = {
 trait_lv_brood_parasite = {
 	cost = 0
 	sorting_priority = 15
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_brood_parasite_effect
 	
 	opposites = {
@@ -1247,7 +1252,7 @@ trait_lv_intercompatible_womb = {
 	sorting_priority = 15
 #	initial = no
 	randomized = no
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_intercompatible_womb_effect
 	
 	opposites = {
@@ -1288,7 +1293,7 @@ trait_lv_intercompatible_womb = {
 trait_lv_nano_forge_womb = {
 	cost = 0
 	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_nano_forge_womb_effect
 	
 	opposites = {
@@ -1349,7 +1354,7 @@ trait_lv_titanic_evolution = {
 	initial = no
 	randomized = no
 #	modification = no
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype LITHOID }
 	custom_tooltip = trait_lv_titanic_evolution_effect
 	advanced_trait = yes
 	

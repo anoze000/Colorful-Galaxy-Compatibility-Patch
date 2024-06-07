@@ -113,6 +113,7 @@ trait_cute_appearance = {
 		"trait_repugnant"
 		"trait_lv_scary"
 		"trait_lv_all_male"
+		"trait_CD"
 	}
 	initial = yes
 	randomized = no

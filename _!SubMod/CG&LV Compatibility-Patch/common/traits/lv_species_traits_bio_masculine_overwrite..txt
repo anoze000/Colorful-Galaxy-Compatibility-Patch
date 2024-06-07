@@ -32,7 +32,7 @@ trait_lv_aphrodisiac_cum = {
 	}
 	initial = no
 	potential_crossbreeding_chance = 0.5
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_aphrodisiac_cum_effect
 	
 	species_possible_remove = {
@@ -56,6 +56,7 @@ trait_lv_aphrodisiac_cum = {
 		trait_suc_parthenogenesis
 		trait_frigid
 		trait_emotionless
+		trait_star
 	}
 	
 	species_potential_add = {
@@ -106,7 +107,7 @@ trait_lv_addictive_cum = {
 	}
 	initial = no
 	potential_crossbreeding_chance = 0.5
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_addictive_cum_effect
 	
 	species_possible_remove = {
@@ -130,6 +131,7 @@ trait_lv_addictive_cum = {
 		trait_suc_parthenogenesis
 		trait_frigid
 		trait_emotionless
+		trait_star
 	}
 	
 	species_potential_add = {
@@ -182,7 +184,7 @@ trait_lv_excess_testosterone = {
 		}
 	}
 	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_excess_testosterone_effect
 	
 	species_possible_remove = {
@@ -228,7 +230,7 @@ trait_lv_large_penis = {
 		}
 	}
 	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_large_penis_effect
 	
 	species_possible_remove = {
@@ -252,6 +254,7 @@ trait_lv_large_penis = {
 		trait_suc_parthenogenesis
 		trait_frigid
 		trait_emotionless
+		trait_star
 	}
 	
 	modifier = {
@@ -283,7 +286,7 @@ trait_lv_huge_penis = {
 		}
 	}
 	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_huge_penis_effect
 	
 	species_possible_remove = {
@@ -308,6 +311,7 @@ trait_lv_huge_penis = {
 		trait_suc_parthenogenesis
 		trait_frigid
 		trait_emotionless
+		trait_star
 	}
 	
 	species_potential_add = {
@@ -354,7 +358,7 @@ trait_lv_multiple_penises = {
 		}
 	}
 	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_multiple_penises_effect
 	
 	species_possible_remove = {
@@ -376,6 +380,7 @@ trait_lv_multiple_penises = {
 		trait_suc_parthenogenesis
 		trait_frigid
 		trait_emotionless
+		trait_star
 	}
 	
 	species_potential_add = {
@@ -421,7 +426,7 @@ trait_lv_equine_penis = {
 	}
 	initial = yes
 	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_equine_penis_effect
 	
 	species_possible_remove = {
@@ -442,6 +447,7 @@ trait_lv_equine_penis = {
 		trait_lv_sexually_inept
 		trait_suc_parthenogenesis
 #		trait_lvex_knotted_penis
+		trait_star
 	}
 	
 	species_potential_add = {
@@ -514,7 +520,7 @@ trait_lv_high_volume_ejaculations = {
 		}
 	}
 	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_high_volume_ejaculations_effect
 	
 	species_possible_remove = {
@@ -536,6 +542,7 @@ trait_lv_high_volume_ejaculations = {
 		trait_suc_parthenogenesis
 		trait_frigid
 		trait_emotionless
+		trait_star
 	}
 	
 	species_potential_add = {
@@ -587,7 +594,7 @@ trait_lv_small_penis = {
 		}
 	}
 	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_small_penis_effect
 	
 	species_potential_add = {
@@ -606,6 +613,7 @@ trait_lv_small_penis = {
 		trait_lv_huge_penis
 		trait_lv_all_female
 		trait_suc_parthenogenesis
+		trait_star
 	}
 	
 	modifier = {
@@ -639,7 +647,7 @@ trait_lv_small_penis = {
 trait_lv_all_male = {
 	cost = 0
 	sorting_priority = 15
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_all_male_effect
 	
 	leader_age_min = 16
@@ -692,6 +700,9 @@ trait_lv_all_male = {
 		trait_gigantic_breasts
 		trait_girl_megalization
 		trait_intensive_ovulation
+		trait_CD
+		trait_futa
+		trait_star
 	}
 	
 	species_potential_add = {
@@ -734,7 +745,7 @@ trait_lv_intercompatible_sperm = {
 	sorting_priority = 15
 #	initial = no
 	randomized = no
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype PRESAPIENT LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype PRESAPIENT LITHOID }
 	custom_tooltip = trait_lv_intercompatible_sperm_effect
 	
 	opposites = {

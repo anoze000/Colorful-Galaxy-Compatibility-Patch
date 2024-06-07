@@ -1,0 +1,24 @@
+# Generated species derive their names from here
+Magical_Girl = {
+	innholyrepublic1 = {
+		name = INN0
+		plural = INN0
+		home_planet = INN0_planet
+		home_system = INN0_system
+		name_list = "Magical_Girl"
+	}
+	innholyrepublic2 = {
+		name = INN1
+		plural = INN1
+		home_planet = INN1_planet
+		home_system = INN1_system
+		name_list = "Magical_Girl"
+	}
+	innholyrepublic3 = {
+		name = INN2
+		plural = INN2 
+		home_planet = INN2_planet
+		home_system = INN2_system
+		name_list = "Magical_Girl"
+	}
+}

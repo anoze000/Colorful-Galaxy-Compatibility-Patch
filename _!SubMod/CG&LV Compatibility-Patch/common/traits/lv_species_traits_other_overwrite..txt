@@ -19,7 +19,7 @@
 trait_lv_cheat_trait = {
 	cost = -99
 	randomized = no
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype LITHOID ROBOT MACHINE }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype LITHOID ROBOT MACHINE }
 	species_potential_add = {
 		always = no
 	}

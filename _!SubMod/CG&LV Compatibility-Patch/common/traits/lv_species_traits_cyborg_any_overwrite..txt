@@ -31,7 +31,7 @@ trait_lv_pheromone_generators_cyborg = {
 			owner = { has_valid_civic = civic_augmentation_bazaars }
 		}
 	}
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype LITHOID }
 	custom_tooltip = trait_lv_pheromone_generators_cyborg_effect
 	
 	opposites = {

@@ -1,0 +1,183 @@
+###########################
+### Basic Resources     ###
+###########################
+# 爱液
+love_juice = {
+	tradable = no
+	category = basic
+	max = 50000
+	prerequisites = {
+		"tech_lust_origin"
+	}
+	deficit_situation = situation_love_juice_deficit
+	ai_weight = {
+		weight = 5
+	}
+	ai_wants = {
+		base = 500
+	}
+	visibility_prerequisite = {
+		is_lust_empire = yes
+	}
+}
+
+###########################
+### Advanced Resources  ###
+###########################
+# 圣光结晶
+holylight_crystal = {
+	tradable = no
+	category = advanced
+	max = 50000
+	prerequisites = {
+		"tech_recasting_bible"
+	}
+	deficit_situation = situation_holylight_crystal_deficit
+	ai_weight = {
+		weight = 5
+	}
+	ai_wants = {
+		base = 500
+	}
+	visibility_prerequisite = {
+		is_pure_empire = yes
+	}
+}
+
+###########################
+### Strategic Resources ###
+###########################
+# Slave
+excellent_slave = {
+	tradable = no
+	category = strategic
+	max = 15000
+	prerequisites = {
+		"tech_sex_slave_train"
+	}
+	deficit_situation = situation_excellent_slave_deficit
+	ai_weight = {
+		weight = 10
+	}
+	ai_wants = {
+		base = 10
+	}
+	visibility_prerequisite = {
+		is_lust_empire = yes
+	}
+}
+
+#圣教徒
+sr_christian = {
+	tradable = no
+	category = strategic
+	max = 15000
+	prerequisites = {
+		"tech_christian_train"
+	}
+	deficit_situation = situation_sr_christian_deficit
+	ai_weight = {
+		weight = 10
+	}
+	ai_wants = {
+		base = 10
+	}
+	visibility_prerequisite = {
+		is_pure_empire = yes
+	}
+}
+
+#######################
+###	Rare Resources	###
+#######################
+#娇艳绝色
+sr_beauty = {
+	tradable = no
+	category = rare
+	max = 15000
+	prerequisites = {
+		"tech_beauty_theory"
+	}
+	visibility_prerequisite = {
+		OR = {
+			has_country_flag = carnalism_flag
+			has_country_flag = asceticism_flag
+			has_country_flag = parasite_mind_flag
+		}
+	}
+	deficit_situation = situation_sr_beauty_deficit
+	ai_weight = {
+		weight = 100
+	}
+	ai_wants = {
+		base = 5
+	}
+}
+
+#活体触手
+living_tentacles = {
+	tradable = no
+	deficit_modifier = living_tentacles_deficit
+	max = 50000
+	ai_weight = {
+		weight = 3
+	}
+	visibility_prerequisite = {
+		is_sos_empire = yes
+	}
+}
+
+#淫虫分身
+obscene_separation = {
+	tradable = no
+	deficit_modifier = obscene_separation_deficit
+	max = 50000
+	ai_weight = {
+		weight = 3
+	}
+	visibility_prerequisite = {
+		is_sos_empire = yes
+	}
+}
+
+# 淫堕值
+suc_sex_point = {
+	tradable = no
+	ai_weight = {
+		weight = 1
+	}
+}
+
+# 情欲核心数据
+lust_data = {
+	tradable = no
+	max = 50000
+	ai_weight = {
+		weight = 10
+	}
+	visibility_prerequisite = {
+		is_lbm_empire = yes
+	}
+}
+
+# 绯色皇女
+lust_princess = {
+	max = 50000
+	ai_weight = {
+		weight = 10
+	}
+	visibility_prerequisite = {
+		is_lbm_empire = yes
+	}
+}
+
+# 爱欲合金
+lust_metal = {
+	max = 50000
+	ai_weight = {
+		weight = 10
+	}
+	visibility_prerequisite = {
+		is_lbm_empire = yes
+	}
+}

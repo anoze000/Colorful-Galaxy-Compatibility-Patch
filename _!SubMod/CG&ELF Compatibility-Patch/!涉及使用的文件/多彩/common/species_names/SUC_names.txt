@@ -1,0 +1,97 @@
+# Generated species derive their names from here
+### SUC
+Magical_Bitch = {
+	sucholyrepublic1 = {
+		name = SUC0
+		plural = SUC0
+		home_planet = SUC0_planet
+		home_system = SUC0_system
+		name_list = "Magical_Bitch"
+	}
+	sucholyrepublic2 = {
+		name = SUC1
+		plural = SUC1
+		home_planet = SUC1_planet
+		home_system = SUC1_system
+		name_list = "Magical_Bitch"
+	}
+	sucholyrepublic3 = {
+		name = SUC2
+		plural = SUC2
+		home_planet = SUC2_planet
+		home_system = SUC2_system
+		name_list = "Magical_Bitch"
+	}
+}
+
+PAR = {
+	parholyrepublic1 = {
+		name = PARASITE
+		plural = PARASITE_plural
+		home_planet = PARASITE0_planet
+		home_system = PARASITE0_system
+		name_list = "Magical_Bitch"
+	}
+	parholyrepublic2 = {
+		name = PARASITE
+		plural = PARASITE_plural
+		home_planet = PARASITE1_planet
+		home_system = PARASITE1_system
+		name_list = "Magical_Bitch"
+	}
+	parholyrepublic3 = {
+		name = PARASITE
+		plural = PARASITE_plural
+		home_planet = PARASITE2_planet
+		home_system = PARASITE2_system
+		name_list = "Magical_Bitch"
+	}
+}
+
+TEN = {
+	tentaclerepublic1 = {
+		name = TENTACLE0
+		plural = TENTACLE0
+		home_planet = TENTACLE0_planet
+		home_system = TENTACLE0_system
+		name_list = "Tentacle"
+	}
+	tentaclerepublic2 = {
+		name = TENTACLE1
+		plural = TENTACLE1
+		home_planet = TENTACLE1_planet
+		home_system = TENTACLE1_system
+		name_list = "Tentacle"
+	}
+	tentaclerepublic3 = {
+		name = TENTACLE2
+		plural = TENTACLE2
+		home_planet = TENTACLE2_planet
+		home_system = TENTACLE2_system
+		name_list = "Tentacle"
+	}
+}
+
+RBQ = {
+	rbqrepublic1 = {
+		name = 肉便器
+		plural = 肉便器们
+		home_planet = 子宫之口
+		home_system = 肉壶星系
+		name_list = "Magical_Bitch"
+	}
+	rbqrepublic2 = {
+		name = 肉便器
+		plural = 肉便器们
+		home_planet = 精液便所
+		home_system = 蜜液星沼
+		name_list = "Magical_Bitch"
+	}
+	rbqrepublic3 = {
+		name = 肉便器
+		plural = 肉便器们
+		home_planet = 濡湿洞穴
+		home_system = 糜烂星系
+		name_list = "Magical_Bitch"
+	}
+}

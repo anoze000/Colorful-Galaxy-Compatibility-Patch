@@ -1,0 +1,250 @@
+# #舰娘
+# auth_warshipgirls = {
+# 	icon = "gfx/interface/icons/governments/authorities/auth_wsg_fix.dds"
+# 	has_heir = no
+# 	election_type = oligarchic
+# 	election_term_years = 500
+# 	election_term_variance = 20
+# 	can_have_emergency_elections = yes
+# 	emergency_election_cost = 50
+# 	max_election_candidates = 6
+# 	has_factions = yes
+# 	can_reform = no
+# 	valid_for_released_vassal = no
+# 	has_agendas = yes
+# 	random_weight = {
+# 		modifier = {
+# 			factor = 0
+# 		}
+# 	}
+# 	possible = {
+# 		ethics = {
+# 			NOT = {
+# 				value = ethic_gestalt_consciousness
+# 			}
+# 		}
+# 		civics = {
+# 			NOR = {
+# 				value = civic_fanatic_purifiers
+# 			}
+# 		}
+# 	}
+# 	traits = {
+# 		trait = wsg_trait_warshipgirls
+# 	}
+# 	tags = {
+# 		ETHIC_ALLOW_OVERWHELMING_FIRE_POWER
+# 		MEGAWARSHIP_GIRLS
+# 		auth_warshipgirls_fix_txt
+# 	}
+# 	country_modifier = {
+# 		# country_admin_cap_add = 30
+# 		# country_admin_cap_mult = 0.1
+# 		# country_base_influence_produces_add = 0.5
+# 		country_power_projection_influence_produces_add = 0.5
+# 		pop_growth_speed = 0.1
+# 		PLANET_POP_ASSEMBLY_ORGANIC_MULT = 0.1
+# 		PLANET_POP_ASSEMBLY_MULT = 0.1
+# 		intel_decryption_add = 1
+# 		intel_encryption_add = 1
+# 		envoys_add = 1
+# 	}
+# }
+
+# #深海
+# auth_shenhai = {
+# 	has_heir = no
+# 	election_type = oligarchic
+# 	election_term_years = 5000
+# 	election_term_variance = 20
+# 	can_have_emergency_elections = yes
+# 	emergency_election_cost = 50
+# 	max_election_candidates = 6
+# 	has_factions = yes
+# 	can_reform = no
+# 	valid_for_released_vassal = no
+# 	has_agendas = yes
+# 	possible = {
+# 		ethics = {
+# 			OR = {
+# 				value = ethic_militarist
+# 				value = ethic_fanatic_militarist
+# 			}
+# 			NOR = {
+# 				value = ethic_egalitarian
+# 				value = ethic_fanatic_egalitarian
+# 			}
+# 		}
+# 	}
+# 	random_weight = {
+# 		modifier = {
+# 			factor = 0
+# 		}
+# 	}
+	
+# 	# triggered_planet_modifier = {
+# 	# 	potential = {
+# 	# 		is_ai = yes
+# 	# 	}
+# 	# 	modifier = {
+# 	# 		planet_pop_assembly_add = 3
+# 	# 	}
+# 	# }
+# 	traits = {
+# 		trait = sh_trait_shenhai
+# 	}
+# 	tags = {
+# 		ETHIC_ALLOW_OVERWHELMING_FIRE_POWER
+# 		auth_shenhai_fix_txt
+# 	}
+# 	country_modifier = {
+# 		# country_admin_cap_mult = 0.15
+# 		# country_base_influence_produces_add = 0.5
+# 		country_power_projection_influence_produces_add = 0.5
+
+# 		country_starbase_influence_cost_mult = -0.15
+# 		intel_decryption_add = 1
+# 		intel_encryption_add = 1
+# 		envoys_add = 1
+# 	}
+# }
+
+# #星舰少女
+# auth_starshipgirls = {
+# 	has_heir = no
+# 	election_type = oligarchic
+# 	election_term_years = 5000
+# 	election_term_variance = 20
+# 	can_have_emergency_elections = yes
+# 	emergency_election_cost = 50
+# 	max_election_candidates = 6
+# 	has_factions = yes
+# 	can_reform = no
+# 	valid_for_released_vassal = no
+# 	has_agendas = yes
+# 	possible = {
+# 		ethics = {
+# 			NOT = {
+# 				value = ethic_gestalt_consciousness
+# 			}
+# 		}
+# 	}
+# 	random_weight = {
+# 		modifier = {
+# 			factor = 0
+# 		}
+# 	}
+# 	traits = {
+# 		trait = swg_trait_starshipgirls
+# 	}
+# 	tags = {
+# 		STAR_WARS_FLEET
+# 		auth_starshipgirls_fix_txt
+# 	}
+# 	country_modifier = {
+# 		country_naval_cap_add = 30
+# 		ships_upkeep_mult = -0.15
+# 		country_base_unity_produces_add = 15
+# 		# country_base_influence_produces_add = 0.5
+# 		country_power_projection_influence_produces_add = 0.5
+
+# 		intel_decryption_add = 1
+# 		intel_encryption_add = 1
+# 		envoys_add = 1
+
+# 	}
+# }
+
+# # #碧蓝航线x3
+# # auth_azur_lane_0 = {
+# # 	election_term_years = 50
+# # 	election_type = oligarchic
+# # 	can_have_emergency_elections = yes
+# # 	emergency_election_cost = 100
+# # 	max_election_candidates = 30
+# # 	can_reform = no
+# # 	has_factions = yes
+# # 	has_agendas = yes
+# # 	random_weight = {
+# # 		base = 0
+# # 	}
+# # 	country_modifier = {
+# # 		pop_demotion_time_mult = -1
+# # 		leaders_upkeep_mult = -0.85
+# # 		pop_happiness = 0.15
+# # 		colony_start_num_pops_add = 3
+# # 		country_base_azur_red_diamond_produces_add = 4.5
+# # 	}
+# # 	tags = {
+# # 		azur_lane_fix_txt
+# # 	}
+# # 	possible = {
+# # 		ethics = {
+# # 			NOT = {
+# # 				value = ethic_gestalt_consciousness
+# # 			}
+# # 		}
+# # 	}
+# # }
+
+# # auth_azur_lane_1 = {
+# # 	election_term_years = 20
+# # 	election_type = oligarchic
+# # 	can_have_emergency_elections = yes
+# # 	emergency_election_cost = 0
+# # 	max_election_candidates = 30
+# # 	can_reform = no
+# # 	has_factions = yes
+# # 	has_agendas = yes
+# # 	random_weight = {
+# # 		base = 0
+# # 	}
+# # 	country_modifier = {
+# # 		country_election_influence_cost_mult = -1
+# # 		country_edict_cap_add = 3
+# # 		edicts_cost_mult = -0.33
+# # 		leader_skill_levels = 5
+# # 		planet_jobs_specialist_produces_mult = 0.2
+# # 		country_base_azur_red_diamond_produces_add = 3
+# # 	}
+# # 	possible = {
+# # 		ethics = {
+# # 			NOR = {
+# # 				text = civic_tooltip_not_authoritarian
+# # 				value = ethic_authoritarian
+# # 				value = ethic_fanatic_authoritarian
+# # 				value = ethic_gestalt_consciousness
+# # 			}
+# # 		}
+# # 	}
+# # }
+
+# # auth_azur_lane_2 = {
+# # 	election_type = oligarchic
+# # 	can_have_emergency_elections = no
+# # 	max_election_candidates = 30
+# # 	can_reform = no
+# # 	has_factions = yes
+# # 	has_agendas = yes
+# # 	random_weight = {
+# # 		base = 0
+# # 	}
+# # 	country_modifier = {
+# # 		country_admin_cap_mult = 0.25
+# # 		planet_jobs_ruler_produces_mult = 0.1
+# # 		country_minerals_produces_mult = 0.25
+# # 		country_alloys_produces_mult = 0.25
+# # 		intel_encryption_add = 2
+# # 		country_base_azur_red_diamond_produces_add = 3
+# # 	}
+# # 	possible = {
+# # 		ethics = {
+# # 			NOR = {
+# # 				text = civic_tooltip_not_egalitarian
+# # 				value = ethic_egalitarian
+# # 				value = ethic_fanatic_egalitarian
+# # 				value = ethic_gestalt_consciousness
+# # 			}
+# # 		}
+# # 	}
+# # }

@@ -19,18 +19,32 @@ country_event = {
 		from = {
 			species = {
 				OR = {
-					OR = {
-						has_trait = trait_lv_all_female
-						has_trait = trait_suc_parthenogenesis
-						AND = {
-							OR = {
-								has_trait = trait_slime
-								has_trait = trait_SLIME_robot
-							}
-							is_futa_monster_girl = no
+					has_trait = trait_lv_all_female
+					has_trait = trait_suc_parthenogenesis
+					AND = {
+						OR = {
+							has_trait = trait_slime
+							has_trait = trait_SLIME_robot
+						}
+						NOR = {
+							has_trait = trait_futanari
+							has_trait = trait_hidden_futa
+							has_trait = trait_hidden_futa_common
+							has_trait = trait_huge_penis_futa
+							has_trait = trait_lv_futanari
 						}
 					}
+					has_trait = trait_star
+					has_trait = trait_angel
+					has_trait = trait_ANGEL_robot
+					has_trait = trait_angel_fallen
+					has_trait = trait_ANGEL_F_robot
+					has_trait = trait_futanari
+					has_trait = trait_hidden_futa
+					has_trait = trait_hidden_futa_common
+					has_trait = trait_huge_penis_futa
 					has_trait = trait_lv_futanari
+					has_trait = trait_futa
 					species_gender = female
 				}
 			}
@@ -61,6 +75,7 @@ country_event = {
 			species = {
 				OR = {
 					has_trait = trait_lv_all_male
+					has_trait = trait_CD
 					species_gender = male
 				}
 			}

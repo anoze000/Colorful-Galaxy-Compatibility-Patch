@@ -629,7 +629,7 @@ trait_body_by_juice = {
 }
 
 #改造YR
-trait_transformation_breasts = {
+trait_transformation_ {
 	cost = 0
 	icon = "gfx/interface/icons/traits/RBQ_traits/trait_transformation_breasts.dds"
 	allowed_archetypes = {
@@ -645,6 +645,9 @@ trait_transformation_breasts = {
 	opposites = {
 		"trait_lv_sexually_inept"
 		"trait_lv_all_male"
+		"trait_CD"
+		"trait_star"
+		"trait_futa"
 	}
 }
 
@@ -665,6 +668,9 @@ trait_transformation_vaginal = {
 	opposites = {
 		"trait_lv_sexually_inept"
 		"trait_lv_all_male"
+		"trait_CD"
+		"trait_star"
+		"trait_futa"
 	}
 }
 

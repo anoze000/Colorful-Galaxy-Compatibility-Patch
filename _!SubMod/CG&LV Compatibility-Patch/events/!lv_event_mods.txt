@@ -177,7 +177,7 @@ pop_event = {
 							pop_has_trait = trait_slime
 							pop_has_trait = trait_SLIME_robot
 						}
-						OR = {
+						NOR = {
 							pop_has_trait = trait_futanari
 							pop_has_trait = trait_hidden_futa
 							pop_has_trait = trait_hidden_futa_common
@@ -185,6 +185,7 @@ pop_event = {
 							pop_has_trait = trait_lv_futanari
 						}
 					}
+					pop_has_trait = trait_star
 				}
 				planet = {
 					any_owned_pop = {
@@ -228,7 +229,10 @@ pop_event = {
 		# All Male
 		if = {
 			limit = {
-				pop_has_trait = trait_lv_all_male
+				OR = {
+					pop_has_trait = trait_lv_all_male
+					pop_has_trait = trait_CD
+				}
 				planet = {
 					any_owned_pop = {
 						NOT = { is_same_species = root }
@@ -276,25 +280,34 @@ pop_event = {
 				planet = {
 					any_owned_pop = {
 						OR = {
-							OR = {
-								pop_has_trait = trait_lv_all_female
-								pop_has_trait = trait_suc_parthenogenesis
-								AND = {
-									OR = {
-										pop_has_trait = trait_slime
-										pop_has_trait = trait_SLIME_robot
-									}
-									OR = {
-										pop_has_trait = trait_futanari
-										pop_has_trait = trait_hidden_futa
-										pop_has_trait = trait_hidden_futa_common
-										pop_has_trait = trait_huge_penis_futa
-										pop_has_trait = trait_lv_futanari
-									}
+							pop_has_trait = trait_lv_all_female
+							pop_has_trait = trait_suc_parthenogenesis
+							AND = {
+								OR = {
+									pop_has_trait = trait_slime
+									pop_has_trait = trait_SLIME_robot
+								}
+								NOR = {
+									pop_has_trait = trait_futanari
+									pop_has_trait = trait_hidden_futa
+									pop_has_trait = trait_hidden_futa_common
+									pop_has_trait = trait_huge_penis_futa
+									pop_has_trait = trait_lv_futanari
 								}
 							}
+							pop_has_trait = trait_star
 							pop_has_trait = trait_lv_all_male
+							pop_has_trait = trait_CD
+							pop_has_trait = trait_angel
+							pop_has_trait = trait_ANGEL_robot
+							pop_has_trait = trait_angel_fallen
+							pop_has_trait = trait_ANGEL_F_robot
+							pop_has_trait = trait_futanari
+							pop_has_trait = trait_hidden_futa
+							pop_has_trait = trait_hidden_futa_common
+							pop_has_trait = trait_huge_penis_futa
 							pop_has_trait = trait_lv_futanari
+							pop_has_trait = trait_futa
 						}
 					}
 				}
@@ -500,14 +513,14 @@ planet_event = {
 				NOT = { 
 					any_owned_pop = { 
 						OR = {
-							pop_has_trait = trait_lv_all_female 
+							pop_has_trait = trait_lv_all_female
 							pop_has_trait = trait_suc_parthenogenesis
 							AND = {
 								OR = {
 									pop_has_trait = trait_slime
 									pop_has_trait = trait_SLIME_robot
 								}
-								OR = {
+								NOR = {
 									pop_has_trait = trait_futanari
 									pop_has_trait = trait_hidden_futa
 									pop_has_trait = trait_hidden_futa_common
@@ -515,6 +528,7 @@ planet_event = {
 									pop_has_trait = trait_lv_futanari
 								}
 							}
+							pop_has_trait = trait_star
 						}
 					} 
 				}
@@ -530,14 +544,14 @@ planet_event = {
 				NOT = { 
 					any_owned_pop = { 
 						OR = {
-							pop_has_trait = trait_lv_all_female 
+							pop_has_trait = trait_lv_all_female
 							pop_has_trait = trait_suc_parthenogenesis
 							AND = {
 								OR = {
 									pop_has_trait = trait_slime
 									pop_has_trait = trait_SLIME_robot
 								}
-								OR = {
+								NOR = {
 									pop_has_trait = trait_futanari
 									pop_has_trait = trait_hidden_futa
 									pop_has_trait = trait_hidden_futa_common
@@ -545,6 +559,7 @@ planet_event = {
 									pop_has_trait = trait_lv_futanari
 								}
 							}
+							pop_has_trait = trait_star
 						}
 					} 
 				}
@@ -569,7 +584,14 @@ planet_event = {
 		if = {
 			limit = {
 				has_planet_flag = lv_com_screen_shown_all_male
-				NOT = { any_owned_pop = { pop_has_trait = trait_lv_all_male } }
+				NOT = { 
+					any_owned_pop = { 
+						OR = {
+							pop_has_trait = trait_lv_all_male
+							pop_has_trait = trait_CD
+						}
+					} 
+				}
 			}
 			remove_planet_flag = lv_com_screen_shown_all_male
 		}
@@ -579,7 +601,14 @@ planet_event = {
 					has_modifier = lv_all_male_planet_bonus_nh
 					has_modifier = lv_all_male_planet_bonus_h
 				}
-				NOT = { any_owned_pop = { pop_has_trait = trait_lv_all_male } }
+				NOT = { 
+					any_owned_pop = { 
+						OR = {
+							pop_has_trait = trait_lv_all_male
+							pop_has_trait = trait_CD
+						}
+					} 
+				}
 			}
 			remove_modifier = lv_all_male_planet_bonus_nh
 			remove_modifier = lv_all_male_planet_bonus_h

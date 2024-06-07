@@ -1,0 +1,136 @@
+FUTA_default = {
+	ship_prefix = ""
+	species = {
+		class = "ELF"
+		portrait = "ELF_FUTA_and_CD"
+		name = "PRESCRIPTED_species_name_futa1"
+		plural = "PRESCRIPTED_species_name_futa1"
+		adjective = "PRESCRIPTED_species_name_futa1"
+		name_list = "ICE_MOON"
+		gender = not_set
+		trait = "trait_futa"
+		trait = "trait_pantyhose_legs"
+		trait = "trait_pantyhose_hand"
+		trait = "trait_semen_pantyhose_addiction"
+		# trait = "trait_qlmx"
+		# trait = "trait_wrcp"
+		# trait = "trait_ftyr"
+		species_bio = "在很久很久以前，某个奇怪XP的高维生命体发现了这个原生星球，并且根据自己的外貌，在这个星球上创造了新的物种--精灵族以及辅佐精灵的超级人工智能丝袜娃娃。为了繁衍后代，精灵族划分为月灵少女和星灵少女以及归属月灵少女之中一小部分的空灵一族。新诞生的精灵族不仅继承了高维生命体美貌的外表，她奇怪的xp也被印刻在了基因里。新物种在这个星球上繁荣的发展着，高维生命体无时无刻的都在观望着女儿们的成长。但是突然有一天，高维生命体失联了，精灵们无论怎么做，再也感受不到高维生命体的存在。在这个关键点，战争突然开始了，无数的外星类人型生命开始登陆这个美丽的星球。外星人开始疯狂地掠夺精灵们，在这个星球上烧杀抢掠无恶不作。其中星灵少女们为了躲避战火，集体逃亡，全部族人都逃到了这颗星球上的原生物种--世界树下，世界树有着奇怪的魔力，可以产生大范围的防护立场阻挡外界侵略者，大部分娃娃失去功能集体停机。这之后，战争变成了月灵少女与外星人的对抗，月灵少女们虽然顽强抵抗，但还是不敌强大的外星科技，节节败退，最后全被抓获。全部族人都被抓到各个小型外星殖民地奴役。就在种族即将灭亡之时，其中一个最大的外星殖民地里突然出现了一个传奇人物，她以一人之力,力挽狂澜,榨干无数敌军将领,令全部敌军皆匍匐于她的石榴裙下,最终团灭殖民地全部敌军。之后，月灵少女们攻下外星殖民地，重新组成帝国，吸取了被灭国的教训，现在开始飞速研究科技。至此，月灵少女的历史开启了新的篇章！"
+	}
+	name = "EMPIRE_COUNTYR_futa1"
+	adjective = "EMPIRE_COUNTYR_futa1"
+	authority = "auth_futa_brothel"
+	government = "gov_semen_pantyhose_country"
+	advisor_voice_type = "M4_SOPMOD_II"
+	planet_name = "EMPIRE_PLANET_futa1"
+	planet_class = "pc_continental"
+	system_name = "EMPIRE_SYSTEM_futa1"
+	initializer = "ELF_home_world_system"
+	graphical_culture = "FUTA_01"
+	city_graphical_culture = "FUTA_01"
+	empire_flag = {
+		icon = {
+			category = "ICE_MOON"
+			file = "flag_succubus_1.dds"
+		}
+		background = {
+			category = "backgrounds"
+			file = "new_dawn.dds"
+		}
+		colors = {
+			"pink"
+			"light_orange"
+			"null"
+			"null"
+		}
+	}
+	ruler = {
+		gender = male
+		name = "PRESCRIPTED_ruler_name_futa1"
+		portrait = "ELF_CD_1"
+		texture = 0
+		clothes = 0
+		trait = "trait_ruler_eye_for_talent"
+		leader_class = "governor"
+	}
+	spawn_as_fallen = no
+	ignore_portrait_duplication = no
+	room = "0_1_room"
+	spawn_enabled = no
+	ethic = "ethic_fanatic_xenophobe"
+	ethic = "ethic_spiritualist"
+	civics = {
+		"civic_semen_pantyhose"
+		"civic_pantyhose_futa"
+	}
+	origin = "origin_Knights_rbq"
+}
+
+FUTA_1 = {
+	ship_prefix = ""
+	species = {
+		class = "ELF"
+		portrait = "ELF_FUTA_and_CD"
+		name = "PRESCRIPTED_species_name_futa1"
+		plural = "PRESCRIPTED_species_name_futa1"
+		adjective = "PRESCRIPTED_species_name_futa1"
+		name_list = "ICE_MOON"
+		gender = not_set
+		trait = "trait_futa"
+		trait = "trait_pantyhose_legs"
+		trait = "trait_pantyhose_hand"
+		trait = "trait_semen_pantyhose_addiction"
+		# trait = "trait_qlmx"
+		# trait = "trait_wrcp"
+		# trait = "trait_ftyr"
+		species_bio = "在很久很久以前，某个奇怪XP的高维生命体发现了这个原生星球，并且根据自己的外貌，在这个星球上创造了新的物种--精灵族以及辅佐精灵的超级人工智能丝袜娃娃。为了繁衍后代，精灵族划分为月灵少女和星灵少女以及归属月灵少女之中一小部分的空灵一族。新诞生的精灵族不仅继承了高维生命体美貌的外表，她奇怪的xp也被印刻在了基因里。新物种在这个星球上繁荣的发展着，高维生命体无时无刻的都在观望着女儿们的成长。但是突然有一天，高维生命体失联了，精灵们无论怎么做，再也感受不到高维生命体的存在。在这个关键点，战争突然开始了，无数的外星类人型生命开始登陆这个美丽的星球。外星人开始疯狂地掠夺精灵们，在这个星球上烧杀抢掠无恶不作。其中星灵少女们为了躲避战火，集体逃亡，全部族人都逃到了这颗星球上的原生物种--世界树下，世界树有着奇怪的魔力，可以产生大范围的防护立场阻挡外界侵略者，大部分娃娃失去功能集体停机。这之后，战争变成了月灵少女与外星人的对抗，月灵少女们虽然顽强抵抗，但还是不敌强大的外星科技，节节败退，最后全被抓获。全部族人都被抓到各个小型外星殖民地奴役。就在种族即将灭亡之时，其中一个最大的外星殖民地里突然出现了一个传奇人物，她以一人之力,力挽狂澜,榨干无数敌军将领,令全部敌军皆匍匐于她的石榴裙下,最终团灭殖民地全部敌军。之后，月灵少女们攻下外星殖民地，重新组成帝国，吸取了被灭国的教训，现在开始飞速研究科技。至此，月灵少女的历史开启了新的篇章！"
+	}
+	name = "EMPIRE_COUNTYR_futa1"
+	adjective = "EMPIRE_COUNTYR_futa1"
+	authority = "auth_ELF_special_leader"
+	government = "gov_ELF_special_leader"
+	advisor_voice_type = "M4_SOPMOD_II"
+	planet_name = "EMPIRE_PLANET_futa1"
+	planet_class = "pc_continental"
+	system_name = "EMPIRE_SYSTEM_futa1"
+	initializer = "ELF_home_world_system"
+	graphical_culture = "FUTA_01"
+	city_graphical_culture = "FUTA_01"
+	empire_flag = {
+		icon = {
+			category = "ICE_MOON"
+			file = "flag_succubus_1.dds"
+		}
+		background = {
+			category = "backgrounds"
+			file = "new_dawn.dds"
+		}
+		colors = {
+			"pink"
+			"light_orange"
+			"null"
+			"null"
+		}
+	}
+	ruler = {
+		gender = female
+		name = "PRESCRIPTED_ruler_name_futa1"
+		portrait = "ELF_FUTA_1"
+		texture = 0
+		attachment = 0
+		clothes = 0
+		trait = "leader_trait_ELF_special_leader_ruler_d"
+		leader_class = "ELF_special_leader"
+	}
+	spawn_as_fallen = no
+	ignore_portrait_duplication = no
+	room = "0_1_room"
+	spawn_enabled = no
+	ethic = "ethic_fanatic_xenophile"
+	ethic = "ethic_materialist"
+	civics = {
+		"civic_pantyhose_futa"
+		"civic_ELF_special_leader"
+	}
+	origin = "origin_default"
+}

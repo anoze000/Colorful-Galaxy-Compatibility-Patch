@@ -26,6 +26,8 @@ is_carbon_based = {
 				is_archetype = LILY						# 突击莉莉
 				is_archetype = STARSHIPGIRLS			# swg
 				is_archetype = Dolls					#_灰烬
+				# 精灵
+				is_archetype = EIF
 				# 其他mod中的已确认有机大类
 				is_archetype = KANMUSU					# kc
 				is_archetype = DATEALIVE				# DAL
@@ -179,6 +181,8 @@ is_ugly_pop = {
 				is_archetype = LILY
 				#灰烬战线
 				is_archetype = Dolls
+				#精灵
+				is_archetype = ELF
 			}		
 		}
 		# 缤纷魔物娘
@@ -241,6 +245,8 @@ is_canbe_sex_slave = {
 		}
 		#缤纷魔物娘
 		is_monster_girl = yes
+		#精灵
+		is_archetype = ELF
 	}
 }
 
@@ -411,6 +417,7 @@ is_futa_monster_girl = {
 					has_trait = trait_zombie_girl
 				}
 				OR = {
+					has_trait = trait_futa
 					has_trait = trait_futanari
 					has_trait = trait_hidden_futa
 					has_trait = trait_hidden_futa_common

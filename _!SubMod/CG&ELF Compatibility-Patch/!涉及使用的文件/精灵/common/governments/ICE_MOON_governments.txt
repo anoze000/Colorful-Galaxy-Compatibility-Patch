@@ -1,0 +1,164 @@
+#gov_example = {
+#	possible = {}							# Determines if a government name can be chosen. AND trigger, scope: country; valid triggers: has_ethic, has_authority, has_valid_civic; everything else is undefined behavior!
+#	weight = {								# scriptable value, scope: country; the (possible) government type with the biggest weight is assigned to the country
+#		base = 100
+#	}
+#
+#	ruler_title = RT_KING					# translation tag for male ruler's title
+#	ruler_title_female = RT_QUEEN			# translation tag for female ruler's title
+#	heir_title = HT_CROWN_PRINCE			# translation tag for male heir's title
+#	heir_title_female = HT_CROWN_PRINCESS	# translation tag for female heir's title
+#	use_regnal_names = yes / no				# default: no
+#	dynastic_last_names = yes / no			# default: no
+#	should_force_rename = yes / no			# default: no - if set to yes, empires changing to or from this government will be renamed even if authority type does not change
+#
+#}
+### Generic Governments
+gov_semen_brothel = {
+	ruler_title = semen_princess
+	ruler_title_female = semen_princess
+	possible = {
+		has_authority = auth_brothel
+	}
+	weight = {
+		base = 10000
+	}
+}
+
+
+gov_criminal_brothel = {
+	ruler_title = semen_princess
+	ruler_title_female = semen_princess
+	possible = {
+		# OR = {
+		# 	has_authority = auth_warshipgirls
+		# 	has_authority = auth_brothel
+		# }
+		or = {
+			has_valid_civic = civic_criminal_brothel
+		}
+	}
+	weight = {
+		base = 140000
+	}
+}
+
+gov_ELF_special_leader = {
+	ruler_title = ruler_title_ELF_special_leader
+	ruler_title_female = ruler_title_ELF_special_leader
+	possible = {
+		or = {
+			has_authority = auth_ELF_special_leader
+			has_valid_civic = civic_ELF_special_leader
+		}
+	}
+	weight = {
+		base = 130000
+	}
+}
+
+gov_semen_Religion_brothel = {
+	ruler_title = semen_princess_1
+	ruler_title_female = semen_princess_1
+	should_force_rename = yes
+	possible = {
+		# OR = {
+		# 	has_authority = auth_warshipgirls
+		# 	has_authority = auth_brothel
+		# }
+		has_valid_civic = civic_semen_Religion
+	}
+	weight = {
+		base = 120000
+	}
+}
+
+gov_semen_pantyhose_country = {
+	ruler_title = semen_princess_2
+	ruler_title_female = semen_princess_2
+	possible = {
+		has_valid_civic = civic_semen_pantyhose
+	}
+	weight = {
+		base = 100000
+	}
+}
+
+gov_semen_pantyhose_Knights = {
+	ruler_title = semen_Knights
+	ruler_title_female = semen_Knights
+	possible = {
+		has_authority = auth_brothel_Knights
+	}
+	weight = {
+		base = 1000000
+	}
+}
+
+gov_SUC_AI_Initial = {
+	ruler_title = ruler_title_SUC_AI_Initial
+	ruler_title_female = ruler_title_SUC_AI_Initial
+	possible = {
+		has_authority = auth_SUC_AI_Initial
+	}
+	weight = {
+		base = 1000000
+	}
+}
+
+gov_INN_AI_Initial = {
+	ruler_title = ruler_title_INN_AI_Initial
+	ruler_title_female = ruler_title_INN_AI_Initial
+	possible = {
+		has_authority = auth_INN_AI_Initial
+	}
+	weight = {
+		base = 1000000
+	}
+}
+
+gov_marauder_momo = {
+	ruler_title = ruler_title_marauder_momo
+	ruler_title_female = ruler_title_marauder_momo
+	should_force_rename = yes
+	possible = {
+		has_valid_civic = civic_marauder_momo
+	}
+	weight = {
+		base = 1000000000
+	}
+}
+
+gov_paradise_guardian = {
+	ruler_title = paradise_guardian_ruler
+	should_force_rename = yes
+	possible = {
+		has_valid_civic = civic_paradise_guardian
+	}
+	weight = {
+		base = 1000000000
+	}
+}
+
+gov_elf_star = {
+	ruler_title = elf_star_ruler
+	ruler_title_female = elf_star_ruler
+	should_force_rename = yes
+	possible = {
+		has_trait = trait_star
+	}
+	weight = {
+		base = 100000
+	}
+}
+
+gov_CD_LOST_AI = {
+	ruler_title = ruler_title_CD_LOST_AI
+	ruler_title_female = ruler_title_CD_LOST_AI
+	possible = {
+		has_authority = auth_CD_LOST_AI
+	}
+	weight = {
+		base = 1000000
+	}
+}

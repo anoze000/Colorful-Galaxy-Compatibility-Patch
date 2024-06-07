@@ -15,6 +15,8 @@ trait_DC_ethic_asceticism = {
 		"trait_DC_ethic_abstinence"
 		"trait_DC_ethic_parasite_mind"
 		"trait_DC_ethic_lust_skynet"
+		"trait_futa"
+		"trait_star"
 	}
 	modifier = {
 		leader_lifespan_add = 500
@@ -48,6 +50,7 @@ trait_heartless_shojo = {
 	}
 	opposites = {
 		"trait_lv_all_male"
+		"trait_CD"
 	}
 }
 
@@ -73,6 +76,7 @@ trait_zealot_shojo = {
 	}
 	opposites = {
 		"trait_lv_all_male"
+		"trait_CD"
 	}
 }
 
@@ -188,6 +192,7 @@ trait_beautiful = {
 		"trait_DC_ethic_carnalism"
 		"trait_DC_ethic_parasite_mind"
 		"trait_lv_scary"
+		"trait_futa"
 	}
 	sorting_priority = 30
 	slave_cost = { energy = 1500 }
@@ -238,6 +243,7 @@ trait_live_in_pairs = {
 		"trait_DC_ethic_carnalism"
 		"trait_DC_ethic_parasite_mind"
 		"trait_lv_all_male"
+		"trait_CD"
 	}
 	slave_cost = { energy = 500 }
 	modifier = {
@@ -352,6 +358,7 @@ trait_chaste_warrior_women = {
 		"trait_DC_ethic_carnalism"
 		"trait_DC_ethic_parasite_mind"
 		"trait_lv_all_male"
+		"trait_CD"
 	}
 	sorting_priority = 30
 	slave_cost = { energy = 500 }
@@ -557,6 +564,7 @@ trait_the_vestal = {
 	}
 	opposites = {
 		"trait_lv_all_male"
+		"trait_CD"
 	}
 }
 

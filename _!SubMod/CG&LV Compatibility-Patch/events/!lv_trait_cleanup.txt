@@ -19,77 +19,78 @@ planet_event = {
 			if = {		# Is or became all-female
 				limit = { 
 					OR = {
-						pop_has_trait = trait_lv_all_female 
+						pop_has_trait = trait_lv_all_female
 						pop_has_trait = trait_suc_parthenogenesis
-						pop_has_trait = trait_slime
-						pop_has_trait = trait_SLIME_robot
+						AND = {
+							OR = {
+								pop_has_trait = trait_slime
+								pop_has_trait = trait_SLIME_robot
+							}
+							NOR = {
+								pop_has_trait = trait_futanari
+								pop_has_trait = trait_hidden_futa
+								pop_has_trait = trait_hidden_futa_common
+								pop_has_trait = trait_huge_penis_futa
+								pop_has_trait = trait_lv_futanari
+							}
+						}
+						pop_has_trait = trait_star
 					}
 				}
 				if = {
-					limit = {
-						NOR = {
-							has_trait = trait_futanari
-							has_trait = trait_hidden_futa
-							has_trait = trait_hidden_futa_common
-							has_trait = trait_huge_penis_futa
-							has_trait = trait_lv_futanari
-						}
+					limit = { pop_has_trait = trait_lv_large_penis }
+					modify_species = {
+						species = this
+						remove_trait = trait_lv_large_penis
 					}
-					if = {
-						limit = { pop_has_trait = trait_lv_large_penis }
-						modify_species = {
-							species = this
-							remove_trait = trait_lv_large_penis
-						}
+				}
+				if = {
+					limit = { pop_has_trait = trait_lv_huge_penis }
+					modify_species = {
+						species = this
+						remove_trait = trait_lv_huge_penis
 					}
-					if = {
-						limit = { pop_has_trait = trait_lv_huge_penis }
-						modify_species = {
-							species = this
-							remove_trait = trait_lv_huge_penis
-						}
+				}
+				if = {
+					limit = { pop_has_trait = trait_lv_multiple_penises }
+					modify_species = {
+						species = this
+						remove_trait = trait_lv_multiple_penises
 					}
-					if = {
-						limit = { pop_has_trait = trait_lv_multiple_penises }
-						modify_species = {
-							species = this
-							remove_trait = trait_lv_multiple_penises
-						}
+				}
+				if = {
+					limit = { pop_has_trait = trait_lv_equine_penis }
+					modify_species = {
+						species = this
+						remove_trait = trait_lv_equine_penis
 					}
-					if = {
-						limit = { pop_has_trait = trait_lv_equine_penis }
-						modify_species = {
-							species = this
-							remove_trait = trait_lv_equine_penis
-						}
+				}
+				if = {
+					limit = { pop_has_trait = trait_lv_high_volume_ejaculations }
+					modify_species = {
+						species = this
+						remove_trait = trait_lv_high_volume_ejaculations
 					}
-					if = {
-						limit = { pop_has_trait = trait_lv_high_volume_ejaculations }
-						modify_species = {
-							species = this
-							remove_trait = trait_lv_high_volume_ejaculations
-						}
+				}
+				if = {
+					limit = { pop_has_trait = trait_lv_aphrodisiac_cum }
+					modify_species = {
+						species = this
+						remove_trait = trait_lv_aphrodisiac_cum
 					}
-					if = {
-						limit = { pop_has_trait = trait_lv_aphrodisiac_cum }
-						modify_species = {
-							species = this
-							remove_trait = trait_lv_aphrodisiac_cum
-						}
+				}
+				if = {
+					limit = { pop_has_trait = trait_lv_addictive_cum }
+					modify_species = {
+						species = this
+						remove_trait = trait_lv_addictive_cum
 					}
-					if = {
-						limit = { pop_has_trait = trait_lv_addictive_cum }
-						modify_species = {
-							species = this
-							remove_trait = trait_lv_addictive_cum
-						}
-					}
-					if = {
-						limit = { pop_has_trait = trait_lv_small_penis }
-						modify_species = {
-							species = this
-							remove_trait = trait_lv_small_penis
-						}
+				}
+				if = {
+					limit = { pop_has_trait = trait_lv_small_penis }
+					modify_species = {
+						species = this
+						remove_trait = trait_lv_small_penis
 					}
 				}
 				if = {
@@ -134,44 +135,79 @@ planet_event = {
 				}
 			}
 			if = {		# Is or became all-male
-				limit = { pop_has_trait = trait_lv_all_male }
+				limit = { 
+					OR = {
+						pop_has_trait = trait_lv_all_male
+						pop_has_trait = trait_CD
+					}
+				}
 				if = {
-					limit = { pop_has_trait = trait_lv_large_breasts }
+					limit = { 
+						pop_has_trait = trait_lv_large_breasts 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_large_breasts
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_huge_breasts }
+					limit = { 
+						pop_has_trait = trait_lv_huge_breasts 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_huge_breasts
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_multiple_breasts }
+					limit = { 
+						pop_has_trait = trait_lv_multiple_breasts 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_multiple_breasts
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_high_volume_lactation }
+					limit = { 
+						pop_has_trait = trait_lv_high_volume_lactation
+						NOT = {
+							pop_has_trait = trait_CD
+						} 
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_high_volume_lactation
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_fizzy_milk }
+					limit = { 
+						pop_has_trait = trait_lv_fizzy_milk 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_fizzy_milk
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_highly_nutritious_milk }
+					limit = { 
+						pop_has_trait = trait_lv_highly_nutritious_milk 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_highly_nutritious_milk
@@ -185,73 +221,87 @@ planet_event = {
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_aphrodisiac_milk }
+					limit = { 
+						pop_has_trait = trait_lv_aphrodisiac_milk 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_aphrodisiac_milk
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_fuckable_nipples }
+					limit = { 
+						pop_has_trait = trait_lv_fuckable_nipples 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_fuckable_nipples
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_litters }
+					limit = { 
+						pop_has_trait = trait_lv_litters 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_litters
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_shapely_ass }
+					limit = { 
+						pop_has_trait = trait_lv_shapely_ass 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_shapely_ass
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_breeder_hips }
+					limit = { 
+						pop_has_trait = trait_lv_breeder_hips 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_breeder_hips
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_small_breasts }
+					limit = { 
+						pop_has_trait = trait_lv_small_breasts 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_small_breasts
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_watery_milk }
+					limit = { 
+						pop_has_trait = trait_lv_watery_milk 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_watery_milk
-					}
-				}
-				if = {
-					limit = { pop_has_trait = much_love_liquid }
-					modify_species = {
-						species = this
-						remove_trait = much_love_liquid
-					}
-				}
-				if = {
-					limit = { pop_has_trait = trait_gigantic_breasts }
-					modify_species = {
-						species = this
-						remove_trait = trait_gigantic_breasts
-					}
-				}
-				if = {
-					limit = { pop_has_trait = trait_gigantic_breasts }
-					modify_species = {
-						species = this
-						remove_trait = trait_gigantic_breasts
 					}
 				}
 			}
@@ -289,103 +339,6 @@ planet_event = {
 						remove_trait = trait_lv_futanari
 					}
 				}
-				# 其他mod的futa
-				if = {
-					limit = {
-						NOR = { #这四个本身种族本身就是futa
-							pop_has_trait = trait_angel
-							pop_has_trait = trait_ANGEL_robot
-							pop_has_trait = trait_angel_fallen
-							pop_has_trait = trait_ANGEL_F_robot
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_futanari
-						}
-						modify_species = {
-							remove_trait = trait_futanari
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_hidden_futa
-						}
-						modify_species = {
-							remove_trait = trait_hidden_futa
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_hidden_futa_common
-						}
-						modify_species = {
-							remove_trait = trait_hidden_futa_common
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_huge_penis_futa
-						}
-						modify_species = {
-							remove_trait = trait_huge_penis_futa
-						}
-					}
-				}
-				# 种族本身确定性别的情况
-				if = {
-					limit = {
-						OR = {
-							pop_has_trait = trait_suc_parthenogenesis
-							pop_has_trait = trait_slime
-							pop_has_trait = trait_SLIME_robot
-							pop_has_trait = trait_angel
-							pop_has_trait = trait_ANGEL_robot
-							pop_has_trait = trait_angel_fallen
-							pop_has_trait = trait_ANGEL_F_robot
-						}
-					}
-					if = {
-						limit = {
-							pop_has_trait = trait_lv_femboy01
-						}
-						modify_species = {
-							remove_trait = trait_lv_femboy01
-						}
-					}
-					if = {
-						limit = {
-							pop_has_trait = trait_lv_femboy02
-						}
-						modify_species = {
-							remove_trait = trait_lv_femboy02
-						}
-					}
-					if = {
-						limit = {
-							pop_has_trait = trait_lv_femboy03
-						}
-						modify_species = {
-							remove_trait = trait_lv_femboy03
-						}
-					}
-					if = {
-						limit = {
-							pop_has_trait = trait_lv_femboy04
-						}
-						modify_species = {
-							remove_trait = trait_lv_femboy04
-						}
-					}
-					if = {
-						limit = {
-							pop_has_trait = trait_lv_femboy05
-						}
-						modify_species = {
-							remove_trait = trait_lv_femboy05
-						}
-					}
-				}
 			}
 			if = {		# Mono Gender Check
 				limit = { has_pop_flag = lv_all_female_now }
@@ -403,53 +356,6 @@ planet_event = {
 						remove_trait = trait_lv_futanari
 					}
 				}
-				# 其他mod的futa
-				if = {
-					limit = {
-						NOR = { #这四个本身种族本身就是futa
-							pop_has_trait = trait_angel
-							pop_has_trait = trait_ANGEL_robot
-							pop_has_trait = trait_angel_fallen
-							pop_has_trait = trait_ANGEL_F_robot
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_futanari
-						}
-						modify_species = {
-							species = this
-							remove_trait = trait_futanari
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_hidden_futa
-						}
-						modify_species = {
-							species = this
-							remove_trait = trait_hidden_futa
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_hidden_futa_common
-						}
-						modify_species = {
-							species = this
-							remove_trait = trait_hidden_futa_common
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_huge_penis_futa
-						}
-						modify_species = {
-							species = this
-							remove_trait = trait_huge_penis_futa
-						}
-					}
-				}
 			}
 			if = {		# Mono Gender Check
 				limit = { has_pop_flag = lv_all_male_now }
@@ -465,53 +371,6 @@ planet_event = {
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_futanari
-					}
-				}
-				# 其他mod的futa
-				if = {
-					limit = {
-						NOR = { #这四个本身种族本身就是futa
-							pop_has_trait = trait_angel
-							pop_has_trait = trait_ANGEL_robot
-							pop_has_trait = trait_angel_fallen
-							pop_has_trait = trait_ANGEL_F_robot
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_futanari
-						}
-						modify_species = {
-							species = this
-							remove_trait = trait_futanari
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_hidden_futa
-						}
-						modify_species = {
-							species = this
-							remove_trait = trait_hidden_futa
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_hidden_futa_common
-						}
-						modify_species = {
-							species = this
-							remove_trait = trait_hidden_futa_common
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_huge_penis_futa
-						}
-						modify_species = {
-							species = this
-							remove_trait = trait_huge_penis_futa
-						}
 					}
 				}
 			}
@@ -553,29 +412,47 @@ planet_event = {
 				if = {
 					limit = { 
 						NOR = {
-							pop_has_trait = trait_lv_all_female 
+							pop_has_trait = trait_lv_all_female
 							pop_has_trait = trait_suc_parthenogenesis
-							pop_has_trait = trait_slime
-							pop_has_trait = trait_SLIME_robot
-						}
-					}
-					modify_species = {
-						species = this
-						add_traits_at_start_of_list = yes
+							AND = {
+								OR = {
+									pop_has_trait = trait_slime
+									pop_has_trait = trait_SLIME_robot
+								}
+								NOR = {
+									pop_has_trait = trait_futanari
+									pop_has_trait = trait_hidden_futa
+									pop_has_trait = trait_hidden_futa_common
+									pop_has_trait = trait_huge_penis_futa
+									pop_has_trait = trait_lv_futanari
+								}
+							}
+							pop_has_trait = trait_star
+						} 
 					}
 					if = {
 						limit = {
+							pop_has_trait = trait_DC_ethic_carnalism
 							owner = { has_origin = origin_female_in_shadow }
 						}
 						modify_species = {
 							species = this
-							add_trait = trait_lv_all_female
+							add_trait = trait_suc_parthenogenesis
+							add_traits_at_start_of_list = yes
 						}
 					}
-					else = {
+					else_if = {
+						limit = {
+							NOR = {
+								pop_has_trait = trait_slime
+								pop_has_trait = trait_SLIME_robot
+								pop_has_trait = trait_star
+							}	
+						}
 						modify_species = {
 							species = this
-							add_trait = trait_suc_parthenogenesis
+							add_trait = trait_lv_all_female
+							add_traits_at_start_of_list = yes
 						}
 					}
 					set_pop_flag = lv_all_female_now
@@ -598,33 +475,49 @@ planet_event = {
 			if = {
 				limit = {
 					NOR = {
-						OR = {
-							pop_has_trait = trait_lv_all_female 
-							pop_has_trait = trait_suc_parthenogenesis
-							pop_has_trait = trait_slime
-							pop_has_trait = trait_SLIME_robot
+						pop_has_trait = trait_lv_all_female
+						pop_has_trait = trait_suc_parthenogenesis
+						AND = {
+							OR = {
+								pop_has_trait = trait_slime
+								pop_has_trait = trait_SLIME_robot
+							}
+							NOR = {
+								pop_has_trait = trait_futanari
+								pop_has_trait = trait_hidden_futa
+								pop_has_trait = trait_hidden_futa_common
+								pop_has_trait = trait_huge_penis_futa
+								pop_has_trait = trait_lv_futanari
+							}
 						}
+						pop_has_trait = trait_star
 						is_same_species = owner.species
 						is_robot_pop = yes
 					}
 				}
-				modify_species = {
-					species = this
-					add_traits_at_start_of_list = yes
-				}
 				if = {
 					limit = {
+						pop_has_trait = trait_DC_ethic_carnalism
 						owner = { has_origin = origin_female_in_shadow }
 					}
 					modify_species = {
 						species = this
-						add_trait = trait_lv_all_female
+						add_trait = trait_suc_parthenogenesis
+						add_traits_at_start_of_list = yes
 					}
 				}
-				else = {
+				else_if = {
+					limit = {
+						NOR = {
+							pop_has_trait = trait_slime
+							pop_has_trait = trait_SLIME_robot
+							pop_has_trait = trait_star
+						}	
+					}
 					modify_species = {
 						species = this
-						add_trait = trait_suc_parthenogenesis
+						add_trait = trait_lv_all_female
+						add_traits_at_start_of_list = yes
 					}
 				}
 				set_pop_flag = lv_all_female_now
@@ -646,11 +539,27 @@ planet_event = {
 			if = {		# Convert to all-male
 				limit = { NOT = { is_robot_pop = yes } }
 				if = {
-					limit = { NOT = { pop_has_trait = trait_lv_all_male } }
-					modify_species = {
-						species = this
-						add_trait = trait_lv_all_male
-						add_traits_at_start_of_list = yes
+					limit = { 
+						NOR = {
+							pop_has_trait = trait_lv_all_male
+							pop_has_trait = trait_CD
+						}
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_CD
+						}
+						modify_species = {
+							species = this
+							add_traits_at_start_of_list = yes
+						}
+					}
+					else = {
+						modify_species = {
+							species = this
+							add_trait = trait_lv_all_male
+							add_traits_at_start_of_list = yes
+						}
 					}
 					set_pop_flag = lv_all_male_now
 					remove_pop_flag = lv_all_female_now
@@ -677,10 +586,21 @@ planet_event = {
 						is_robot_pop = yes
 					}
 				}
-				modify_species = {
-					species = this
-					add_trait = trait_lv_all_male
-					add_traits_at_start_of_list = yes
+				if = {
+					limit = {
+						pop_has_trait = trait_CD
+					}
+					modify_species = {
+						species = this
+						add_traits_at_start_of_list = yes
+					}
+				}
+				else = {
+					modify_species = {
+						species = this
+						add_trait = trait_lv_all_male
+						add_traits_at_start_of_list = yes
+					}
 				}
 				set_pop_flag = lv_all_male_now
 				remove_pop_flag = lv_all_female_now
@@ -702,13 +622,18 @@ planet_event = {
 				limit = { NOT = { is_robot_pop = yes } }
 				if = {
 					limit = { 
-						NOR = { 
-							pop_has_trait = trait_lv_futanari 
+						NOR = {
+							pop_has_trait = trait_angel
+							pop_has_trait = trait_ANGEL_robot
+							pop_has_trait = trait_angel_fallen
+							pop_has_trait = trait_ANGEL_F_robot
 							pop_has_trait = trait_futanari
 							pop_has_trait = trait_hidden_futa
 							pop_has_trait = trait_hidden_futa_common
 							pop_has_trait = trait_huge_penis_futa
-						} 
+							pop_has_trait = trait_lv_futanari
+							pop_has_trait = trait_futa
+						}
 					}
 					modify_species = {
 						species = this
@@ -726,16 +651,9 @@ planet_event = {
 					else_if = {
 						limit = {
 							OR = {
-								AND= {
-									pop_has_trait = trait_you_are_monster_girl
-									species = {
-										OR = {
-											is_archetype = BIOLOGICAL 
-											is_archetype = LITHOID 
-											is_archetype = ROBOT
-										}
-									}
-								}
+								pop_has_trait = trait_ANGEL_robot
+								pop_has_trait = trait_angel_fallen
+								pop_has_trait = trait_ANGEL_F_robot
 								pop_has_trait = trait_dickman
 								pop_has_trait = trait_lamia
 								pop_has_trait = trait_LAMIA_robot
@@ -747,6 +665,14 @@ planet_event = {
 								pop_has_trait = trait_vampire
 								pop_has_trait = trait_VAMPIRE_robot
 								pop_has_trait = trait_zombie_girl
+								AND = {
+									pop_has_trait = trait_you_are_monster_girl
+									species = {
+										is_archetype = BIOLOGICAL 
+										is_archetype = LITHOID 
+										is_archetype = ROBOT
+									}
+								}
 							}
 						}
 						modify_species = {
@@ -754,7 +680,12 @@ planet_event = {
 							add_trait = trait_futanari
 						}
 					}
-					else = {
+					else_if = {
+						NOR = {
+							pop_has_trait = trait_futa
+							pop_has_trait = trait_star
+							pop_has_trait = trait_CD
+						}
 						modify_species = {
 							species = this
 							add_trait = trait_lv_futanari
@@ -780,13 +711,16 @@ planet_event = {
 			if = {
 				limit = {
 					NOR = {
-						OR = { 
-							pop_has_trait = trait_lv_futanari 
-							pop_has_trait = trait_futanari
-							pop_has_trait = trait_hidden_futa
-							pop_has_trait = trait_hidden_futa_common
-							pop_has_trait = trait_huge_penis_futa
-						} 
+						pop_has_trait = trait_angel
+						pop_has_trait = trait_ANGEL_robot
+						pop_has_trait = trait_angel_fallen
+						pop_has_trait = trait_ANGEL_F_robot
+						pop_has_trait = trait_futanari
+						pop_has_trait = trait_hidden_futa
+						pop_has_trait = trait_hidden_futa_common
+						pop_has_trait = trait_huge_penis_futa
+						pop_has_trait = trait_lv_futanari
+						pop_has_trait = trait_futa
 						is_same_species = owner.species
 						is_robot_pop = yes
 					}
@@ -807,16 +741,9 @@ planet_event = {
 				else_if = {
 					limit = {
 						OR = {
-							AND= {
-								pop_has_trait = trait_you_are_monster_girl
-								species = {
-									OR = {
-										is_archetype = BIOLOGICAL 
-										is_archetype = LITHOID 
-										is_archetype = ROBOT
-									}
-								}
-							}
+							pop_has_trait = trait_ANGEL_robot
+							pop_has_trait = trait_angel_fallen
+							pop_has_trait = trait_ANGEL_F_robot
 							pop_has_trait = trait_dickman
 							pop_has_trait = trait_lamia
 							pop_has_trait = trait_LAMIA_robot
@@ -828,6 +755,14 @@ planet_event = {
 							pop_has_trait = trait_vampire
 							pop_has_trait = trait_VAMPIRE_robot
 							pop_has_trait = trait_zombie_girl
+							AND = {
+								pop_has_trait = trait_you_are_monster_girl
+								species = {
+									is_archetype = BIOLOGICAL 
+									is_archetype = LITHOID 
+									is_archetype = ROBOT
+								}
+							}
 						}
 					}
 					modify_species = {
@@ -835,7 +770,12 @@ planet_event = {
 						add_trait = trait_futanari
 					}
 				}
-				else = {
+				else_if = {
+					NOR = {
+						pop_has_trait = trait_futa
+						pop_has_trait = trait_star
+						pop_has_trait = trait_CD
+					}
 					modify_species = {
 						species = this
 						add_trait = trait_lv_futanari
@@ -861,77 +801,78 @@ planet_event = {
 			if = {		# Is or became all-female
 				limit = { 
 					OR = {
-						pop_has_trait = trait_lv_all_female 
+						pop_has_trait = trait_lv_all_female
 						pop_has_trait = trait_suc_parthenogenesis
-						pop_has_trait = trait_slime
-						pop_has_trait = trait_SLIME_robot
+						AND = {
+							OR = {
+								pop_has_trait = trait_slime
+								pop_has_trait = trait_SLIME_robot
+							}
+							NOR = {
+								pop_has_trait = trait_futanari
+								pop_has_trait = trait_hidden_futa
+								pop_has_trait = trait_hidden_futa_common
+								pop_has_trait = trait_huge_penis_futa
+								pop_has_trait = trait_lv_futanari
+							}
+						}
+						pop_has_trait = trait_star
 					}
 				}
 				if = {
-					limit = {
-						NOR = {
-							has_trait = trait_futanari
-							has_trait = trait_hidden_futa
-							has_trait = trait_hidden_futa_common
-							has_trait = trait_huge_penis_futa
-							has_trait = trait_lv_futanari
-						}
+					limit = { pop_has_trait = trait_lv_large_penis }
+					modify_species = {
+						species = this
+						remove_trait = trait_lv_large_penis
 					}
-					if = {
-						limit = { pop_has_trait = trait_lv_large_penis }
-						modify_species = {
-							species = this
-							remove_trait = trait_lv_large_penis
-						}
+				}
+				if = {
+					limit = { pop_has_trait = trait_lv_huge_penis }
+					modify_species = {
+						species = this
+						remove_trait = trait_lv_huge_penis
 					}
-					if = {
-						limit = { pop_has_trait = trait_lv_huge_penis }
-						modify_species = {
-							species = this
-							remove_trait = trait_lv_huge_penis
-						}
+				}
+				if = {
+					limit = { pop_has_trait = trait_lv_multiple_penises }
+					modify_species = {
+						species = this
+						remove_trait = trait_lv_multiple_penises
 					}
-					if = {
-						limit = { pop_has_trait = trait_lv_multiple_penises }
-						modify_species = {
-							species = this
-							remove_trait = trait_lv_multiple_penises
-						}
+				}
+				if = {
+					limit = { pop_has_trait = trait_lv_equine_penis }
+					modify_species = {
+						species = this
+						remove_trait = trait_lv_equine_penis
 					}
-					if = {
-						limit = { pop_has_trait = trait_lv_equine_penis }
-						modify_species = {
-							species = this
-							remove_trait = trait_lv_equine_penis
-						}
+				}
+				if = {
+					limit = { pop_has_trait = trait_lv_high_volume_ejaculations }
+					modify_species = {
+						species = this
+						remove_trait = trait_lv_high_volume_ejaculations
 					}
-					if = {
-						limit = { pop_has_trait = trait_lv_high_volume_ejaculations }
-						modify_species = {
-							species = this
-							remove_trait = trait_lv_high_volume_ejaculations
-						}
+				}
+				if = {
+					limit = { pop_has_trait = trait_lv_aphrodisiac_cum }
+					modify_species = {
+						species = this
+						remove_trait = trait_lv_aphrodisiac_cum
 					}
-					if = {
-						limit = { pop_has_trait = trait_lv_aphrodisiac_cum }
-						modify_species = {
-							species = this
-							remove_trait = trait_lv_aphrodisiac_cum
-						}
+				}
+				if = {
+					limit = { pop_has_trait = trait_lv_addictive_cum }
+					modify_species = {
+						species = this
+						remove_trait = trait_lv_addictive_cum
 					}
-					if = {
-						limit = { pop_has_trait = trait_lv_addictive_cum }
-						modify_species = {
-							species = this
-							remove_trait = trait_lv_addictive_cum
-						}
-					}
-					if = {
-						limit = { pop_has_trait = trait_lv_small_penis }
-						modify_species = {
-							species = this
-							remove_trait = trait_lv_small_penis
-						}
+				}
+				if = {
+					limit = { pop_has_trait = trait_lv_small_penis }
+					modify_species = {
+						species = this
+						remove_trait = trait_lv_small_penis
 					}
 				}
 				if = {
@@ -976,44 +917,79 @@ planet_event = {
 				}
 			}
 			if = {		# Is or became all-male
-				limit = { pop_has_trait = trait_lv_all_male }
+				limit = { 
+					OR = {
+						pop_has_trait = trait_lv_all_male
+						pop_has_trait = trait_CD
+					}
+				}
 				if = {
-					limit = { pop_has_trait = trait_lv_large_breasts }
+					limit = { 
+						pop_has_trait = trait_lv_large_breasts 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_large_breasts
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_huge_breasts }
+					limit = { 
+						pop_has_trait = trait_lv_huge_breasts 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_huge_breasts
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_multiple_breasts }
+					limit = { 
+						pop_has_trait = trait_lv_multiple_breasts 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_multiple_breasts
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_high_volume_lactation }
+					limit = { 
+						pop_has_trait = trait_lv_high_volume_lactation
+						NOT = {
+							pop_has_trait = trait_CD
+						} 
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_high_volume_lactation
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_fizzy_milk }
+					limit = { 
+						pop_has_trait = trait_lv_fizzy_milk 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_fizzy_milk
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_highly_nutritious_milk }
+					limit = { 
+						pop_has_trait = trait_lv_highly_nutritious_milk 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_highly_nutritious_milk
@@ -1027,73 +1003,87 @@ planet_event = {
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_aphrodisiac_milk }
+					limit = { 
+						pop_has_trait = trait_lv_aphrodisiac_milk 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_aphrodisiac_milk
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_fuckable_nipples }
+					limit = { 
+						pop_has_trait = trait_lv_fuckable_nipples 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_fuckable_nipples
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_litters }
+					limit = { 
+						pop_has_trait = trait_lv_litters 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_litters
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_shapely_ass }
+					limit = { 
+						pop_has_trait = trait_lv_shapely_ass 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_shapely_ass
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_breeder_hips }
+					limit = { 
+						pop_has_trait = trait_lv_breeder_hips 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_breeder_hips
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_small_breasts }
+					limit = { 
+						pop_has_trait = trait_lv_small_breasts 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_small_breasts
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_lv_watery_milk }
+					limit = { 
+						pop_has_trait = trait_lv_watery_milk 
+						NOT = {
+							pop_has_trait = trait_CD
+						}
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_watery_milk
-					}
-				}
-				if = {
-					limit = { pop_has_trait = much_love_liquid }
-					modify_species = {
-						species = this
-						remove_trait = much_love_liquid
-					}
-				}
-				if = {
-					limit = { pop_has_trait = trait_gigantic_breasts }
-					modify_species = {
-						species = this
-						remove_trait = trait_gigantic_breasts
-					}
-				}
-				if = {
-					limit = { pop_has_trait = trait_gigantic_breasts }
-					modify_species = {
-						species = this
-						remove_trait = trait_gigantic_breasts
 					}
 				}
 			}
@@ -1131,103 +1121,6 @@ planet_event = {
 						remove_trait = trait_lv_futanari
 					}
 				}
-				# 其他mod的futa
-				if = {
-					limit = {
-						NOR = { #这四个本身种族本身就是futa
-							pop_has_trait = trait_angel
-							pop_has_trait = trait_ANGEL_robot
-							pop_has_trait = trait_angel_fallen
-							pop_has_trait = trait_ANGEL_F_robot
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_futanari
-						}
-						modify_species = {
-							remove_trait = trait_futanari
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_hidden_futa
-						}
-						modify_species = {
-							remove_trait = trait_hidden_futa
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_hidden_futa_common
-						}
-						modify_species = {
-							remove_trait = trait_hidden_futa_common
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_huge_penis_futa
-						}
-						modify_species = {
-							remove_trait = trait_huge_penis_futa
-						}
-					}
-				}
-				# 种族本身确定性别的情况
-				if = {
-					limit = {
-						OR = {
-							pop_has_trait = trait_suc_parthenogenesis
-							pop_has_trait = trait_slime
-							pop_has_trait = trait_SLIME_robot
-							pop_has_trait = trait_angel
-							pop_has_trait = trait_ANGEL_robot
-							pop_has_trait = trait_angel_fallen
-							pop_has_trait = trait_ANGEL_F_robot
-						}
-					}
-					if = {
-						limit = {
-							pop_has_trait = trait_lv_femboy01
-						}
-						modify_species = {
-							remove_trait = trait_lv_femboy01
-						}
-					}
-					if = {
-						limit = {
-							pop_has_trait = trait_lv_femboy02
-						}
-						modify_species = {
-							remove_trait = trait_lv_femboy02
-						}
-					}
-					if = {
-						limit = {
-							pop_has_trait = trait_lv_femboy03
-						}
-						modify_species = {
-							remove_trait = trait_lv_femboy03
-						}
-					}
-					if = {
-						limit = {
-							pop_has_trait = trait_lv_femboy04
-						}
-						modify_species = {
-							remove_trait = trait_lv_femboy04
-						}
-					}
-					if = {
-						limit = {
-							pop_has_trait = trait_lv_femboy05
-						}
-						modify_species = {
-							remove_trait = trait_lv_femboy05
-						}
-					}
-				}
 			}
 			if = {		# Mono Gender Check
 				limit = { has_pop_flag = lv_all_female_now }
@@ -1245,53 +1138,6 @@ planet_event = {
 						remove_trait = trait_lv_futanari
 					}
 				}
-				# 其他mod的futa
-				if = {
-					limit = {
-						NOR = { #这四个本身种族本身就是futa
-							pop_has_trait = trait_angel
-							pop_has_trait = trait_ANGEL_robot
-							pop_has_trait = trait_angel_fallen
-							pop_has_trait = trait_ANGEL_F_robot
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_futanari
-						}
-						modify_species = {
-							species = this
-							remove_trait = trait_futanari
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_hidden_futa
-						}
-						modify_species = {
-							species = this
-							remove_trait = trait_hidden_futa
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_hidden_futa_common
-						}
-						modify_species = {
-							species = this
-							remove_trait = trait_hidden_futa_common
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_huge_penis_futa
-						}
-						modify_species = {
-							species = this
-							remove_trait = trait_huge_penis_futa
-						}
-					}
-				}
 			}
 			if = {		# Mono Gender Check
 				limit = { has_pop_flag = lv_all_male_now }
@@ -1307,53 +1153,6 @@ planet_event = {
 					modify_species = {
 						species = this
 						remove_trait = trait_lv_futanari
-					}
-				}
-				# 其他mod的futa
-				if = {
-					limit = {
-						NOR = { #这四个本身种族本身就是futa
-							pop_has_trait = trait_angel
-							pop_has_trait = trait_ANGEL_robot
-							pop_has_trait = trait_angel_fallen
-							pop_has_trait = trait_ANGEL_F_robot
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_futanari
-						}
-						modify_species = {
-							species = this
-							remove_trait = trait_futanari
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_hidden_futa
-						}
-						modify_species = {
-							species = this
-							remove_trait = trait_hidden_futa
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_hidden_futa_common
-						}
-						modify_species = {
-							species = this
-							remove_trait = trait_hidden_futa_common
-						}
-					}
-					if = {
-						limit = { 
-							pop_has_trait = trait_huge_penis_futa
-						}
-						modify_species = {
-							species = this
-							remove_trait = trait_huge_penis_futa
-						}
 					}
 				}
 			}
@@ -1472,19 +1271,47 @@ planet_event = {
 	immediate = {
 		every_owned_pop = {
 			if = {
-				limit = { pop_has_trait = trait_lv_all_female }
+				limit = { 
+					OR = {
+						pop_has_trait = trait_lv_all_female
+						pop_has_trait = trait_suc_parthenogenesis
+						AND = {
+							OR = {
+								pop_has_trait = trait_slime
+								pop_has_trait = trait_SLIME_robot
+							}
+							NOR = {
+								pop_has_trait = trait_futanari
+								pop_has_trait = trait_hidden_futa
+								pop_has_trait = trait_hidden_futa_common
+								pop_has_trait = trait_huge_penis_futa
+								pop_has_trait = trait_lv_futanari
+							}
+						}
+						pop_has_trait = trait_star
+						pop_has_trait = trait_angel
+						pop_has_trait = trait_ANGEL_robot
+						pop_has_trait = trait_angel_fallen
+						pop_has_trait = trait_ANGEL_F_robot
+						pop_has_trait = trait_futanari
+						pop_has_trait = trait_hidden_futa
+						pop_has_trait = trait_hidden_futa_common
+						pop_has_trait = trait_huge_penis_futa
+						pop_has_trait = trait_lv_futanari
+						pop_has_trait = trait_futa		
+					}
+				}
 				species = {
 					change_species_characteristics = { gender = female }
 				}
 			}
 			else_if = {
-				limit = { pop_has_trait = trait_lv_futanari }
-				species = {
-					change_species_characteristics = { gender = female }
+				limit = { 
+					OR = {
+						pop_has_trait = trait_lv_all_male
+						pop_has_trait = trait_CD
+					}
 				}
-			}
-			else_if = {
-				limit = { pop_has_trait = trait_lv_all_male }
 				species = {
 					change_species_characteristics = { gender = male }
 				}
@@ -1499,8 +1326,33 @@ planet_event = {
 				limit = {
 					NOR = {
 						pop_has_trait = trait_lv_all_female
+						pop_has_trait = trait_suc_parthenogenesis
+						AND = {
+							OR = {
+								pop_has_trait = trait_slime
+								pop_has_trait = trait_SLIME_robot
+							}
+							NOR = {
+								pop_has_trait = trait_futanari
+								pop_has_trait = trait_hidden_futa
+								pop_has_trait = trait_hidden_futa_common
+								pop_has_trait = trait_huge_penis_futa
+								pop_has_trait = trait_lv_futanari
+							}
+						}
+						pop_has_trait = trait_star
+						pop_has_trait = trait_angel
+						pop_has_trait = trait_ANGEL_robot
+						pop_has_trait = trait_angel_fallen
+						pop_has_trait = trait_ANGEL_F_robot
+						pop_has_trait = trait_futanari
+						pop_has_trait = trait_hidden_futa
+						pop_has_trait = trait_hidden_futa_common
+						pop_has_trait = trait_huge_penis_futa
 						pop_has_trait = trait_lv_futanari
+						pop_has_trait = trait_futa
 						pop_has_trait = trait_lv_all_male
+						pop_has_trait = trait_CD
 						pop_has_trait = trait_lv_androgynous
 					}
 				}

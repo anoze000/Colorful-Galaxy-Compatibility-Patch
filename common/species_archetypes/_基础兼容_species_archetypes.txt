@@ -1,39 +1,59 @@
-#多彩本体
+@robot_trait_points = 0
+@robot_max_traits = 4
+@machine_trait_points = 1
+@machine_max_traits = 5
+@species_trait_points = 2
+@species_max_traits = 5
 
+#原版
+BIOLOGICAL = {
+	species_trait_points = @species_trait_points
+	species_max_traits = @species_max_traits
+}
+ROBOT = { # Localized as "Mechanical" but kept as ROBOT for script compatibility
+	species_trait_points = @robot_trait_points
+	species_max_traits = @robot_max_traits
+	robotic = yes
+}
+MACHINE = {
+	species_trait_points = @machine_trait_points
+	species_max_traits = @machine_max_traits
+	robotic = yes
+}
+PRESAPIENT = {
+	species_trait_points = @species_trait_points
+	species_max_traits = @species_max_traits
+	uses_modifiers = no
+}
+LITHOID = {
+	inherit_trait_points_from = BIOLOGICAL
+}
+OTHER = {
+	uses_modifiers = no
+}
+
+#多彩
+
+#CG_magical_archetypes
 Magical_Bitch = {
 	species_trait_points = 3
 	species_max_traits = 30
-	inherit_traits_from = {
-		CG_species_archetype
-		EIF_species_archetype
-	}
 }
 
 Magical_Girl = {
 	species_trait_points = 3
 	species_max_traits = 30
-	inherit_traits_from = {
-		CG_species_archetype
-		EIF_species_archetype
-	}
 }
 
+#CG_species_archetypes
 PARASITE = {
 	species_trait_points = 3
 	species_max_traits = 30
-	inherit_traits_from = {
-		CG_species_archetype
-		EIF_species_archetype
-	}
 }
 
 TENTACLE = {
 	species_trait_points = 6
 	species_max_traits = 30
-	inherit_traits_from = {
-		CG_species_archetype
-		EIF_species_archetype
-	}
 }
 
 LOVEMACHINE = {
@@ -42,7 +62,6 @@ LOVEMACHINE = {
 	robotic = yes
 	inherit_traits_from = {
 		ROBOT
-		EIF_species_archetype
 	}
 }
 
@@ -52,7 +71,6 @@ YGWAWA = {
 	robotic = yes
 	inherit_traits_from = {
 		ROBOT
-		EIF_species_archetype
 	}
 }
 
@@ -62,7 +80,6 @@ HOLYROBOT = {
 	robotic = yes
 	inherit_traits_from = {
 		ROBOT
-		EIF_species_archetype
 	}
 }
 
@@ -71,18 +88,12 @@ MONSTER = {
 	species_max_traits = 30
 	inherit_traits_from = {
 		BIOLOGICAL
-		CG_species_archetype
-		EIF_species_archetype
 	}
 }
 
 Lust_Girl = {
 	species_trait_points = 6
 	species_max_traits = 30
-	inherit_traits_from = {
-		CG_species_archetype
-		EIF_species_archetype
-	}
 }
 
 Erotic_Creation = {
@@ -90,15 +101,12 @@ Erotic_Creation = {
 	species_max_traits = 30
 }
 
-#多彩联动
-
+#可与多彩联动
 WARSHIPGIRL = {
 	species_trait_points = 3
 	species_max_traits = 7
 	inherit_traits_from = {
 		CG_compatible_species_archetype
-		CG_species_archetype
-		EIF_species_archetype
 	}
 }
 
@@ -107,8 +115,6 @@ SHENHAI = {
 	species_max_traits = 6
 	inherit_traits_from = {
 		CG_compatible_species_archetype
-		CG_species_archetype
-		EIF_species_archetype
 	}
 }
 
@@ -117,8 +123,6 @@ UNITED_FLEET = {
 	species_max_traits = 12
 	inherit_traits_from = {
 		CG_compatible_species_archetype
-		CG_species_archetype
-		EIF_species_archetype
 	}
 }
 
@@ -127,8 +131,6 @@ STARSHIPGIRLS = {
 	species_max_traits = 47
 	inherit_traits_from = {
 		CG_compatible_species_archetype
-		CG_species_archetype
-		EIF_species_archetype
 	}
 }
 
@@ -138,8 +140,6 @@ NYTO = {
 	robotic = yes
 	inherit_traits_from = {
 		CG_compatible_species_archetype
-		CG_species_archetype
-		EIF_species_archetype
 	}
 }
 
@@ -153,8 +153,6 @@ LILY = {
 	species_max_traits = 12
 	inherit_traits_from = {
 		CG_compatible_species_archetype
-		CG_species_archetype
-		EIF_species_archetype
 	}
 }
 
@@ -174,11 +172,89 @@ Dolls = {
 	species_max_traits = 14
 	inherit_traits_from = {
 		CG_compatible_species_archetype
-		CG_species_archetype
-		EIF_species_archetype
 	}
 }
 
+#精灵
+ELF = {
+	species_trait_points = @ELF_trait_points
+	species_max_traits = @ELF_max_traits
+	inherit_traits_from = {
+		BIOLOGICAL
+		# Magical_Bitch
+		# Magical_Girl
+	}
+}
 
+CD_LOST = {
+	inherit_trait_points_from = ELF
+	inherit_traits_from = {
+		ELF
+		BIOLOGICAL
+	}
+	
+}
+#眷属
+ELF_SUB = {
+	inherit_trait_points_from = ELF
+	inherit_traits_from = {
+	    ELF
+		BIOLOGICAL
+	}
+	robotic = yes
 
+}
+ELF_PETS = {
+	inherit_trait_points_from = ELF
+	inherit_traits_from = {
+	# 	# ELF
+		BIOLOGICAL
+	}
+	# robotic = yes
+}
 
+ELF_FUTA_DOLL = {
+	inherit_trait_points_from = ELF
+	inherit_traits_from = {
+		ELF
+		WARSHIPGIRL
+		SHENHAI
+	}
+
+	robotic = yes
+}
+
+#可与精灵联动
+KANSEN = {
+	species_trait_points = @ELF_trait_points
+	species_max_traits = @ELF_max_traits
+	inherit_traits_from = {
+		ELF
+	}
+}
+
+TOUHOUGIRLS = {
+	species_trait_points = @ELF_trait_points
+	species_max_traits = @ELF_max_traits
+	inherit_traits_from = {
+		ELF
+	}
+}
+
+IZUNA = {
+	species_trait_points = @ELF_trait_points
+	species_max_traits = @ELF_max_traits
+	inherit_traits_from = {
+		ELF
+	}
+
+}
+
+FLUEGEL = {
+	species_trait_points = @ELF_trait_points
+	species_max_traits = @ELF_max_traits
+	inherit_traits_from = {
+		ELF
+	}
+
+}

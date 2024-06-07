@@ -31,7 +31,7 @@ trait_lv_maternal_chip_cyborg = {
 			owner = { has_valid_civic = civic_augmentation_bazaars }
 		}
 	}
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype LITHOID }
 	custom_tooltip = trait_lv_maternal_chip_cyborg_effect
 	
 	opposites = {
@@ -79,7 +79,7 @@ trait_lv_lushtech_synthetic_womb_cyborg = {
 			owner = { has_valid_civic = civic_augmentation_bazaars }
 		}
 	}
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype LITHOID }
 	custom_tooltip = trait_lv_lushtech_synthetic_womb_cyborg_effect
 	
 	opposites = {
@@ -130,7 +130,7 @@ trait_lv_breast_augmenters_cyborg = {
 			owner = { has_valid_civic = civic_augmentation_bazaars }
 		}
 	}
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype LITHOID }
 	custom_tooltip = trait_lv_breast_augmenters_cyborg_effect
 	
 	opposites = {
@@ -177,7 +177,7 @@ trait_lv_synth_breasts_cyborg = {
 			owner = { has_valid_civic = civic_augmentation_bazaars }
 		}
 	}
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype LITHOID }
 	custom_tooltip = trait_lv_synth_breasts_cyborg_effect
 	
 	opposites = {
@@ -228,7 +228,7 @@ trait_lv_synth_vagina_cyborg = {
 			owner = { has_valid_civic = civic_augmentation_bazaars }
 		}
 	}
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype LITHOID }
 	custom_tooltip = trait_lv_synth_vagina_cyborg_effect
 	
 	opposites = {
@@ -279,7 +279,7 @@ trait_lv_sex_dolls_cyborg = {
 #			owner = { has_valid_civic = civic_augmentation_bazaars }
 #		}
 	}
-	allowed_archetypes = { BIOLOGICAL CG_species_archetype LITHOID }
+	allowed_archetypes = { BIOLOGICAL LV_species_archetype LITHOID }
 	custom_tooltip = trait_lv_sex_dolls_cyborg_effect
 	
 	opposites = {

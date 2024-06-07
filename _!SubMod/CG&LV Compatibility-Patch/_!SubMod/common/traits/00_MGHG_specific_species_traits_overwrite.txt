@@ -352,6 +352,9 @@ trait_hidden_futa = {
 		"trait_lv_all_female"
 		"trait_lv_all_male"
 		"trait_lv_androgynous"
+		"trait_futa"
+		"trait_CD"
+		"trait_star"
 	}
 	custom_tooltip_with_modifiers = hidden_futa_tooltip
 

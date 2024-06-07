@@ -1,0 +1,21 @@
+##显示企业分部开启ui
+is_ELF_can_build_branch_offices = {
+	optimize_memory
+	OR = {
+		#精灵政体
+		has_authority = auth_futa_brothel
+		has_authority = auth_brothel_Knights
+		has_authority = auth_SUC_AI_Initial
+		has_authority = auth_INN_AI_Initial
+		#月灵特质
+		has_country_flag = ICE_MOON_FUTA
+		#精灵罪企
+		has_valid_civic = civic_criminal_brothel
+	}
+}
+
+#精灵企业政体
+is_ELF_corporate_authority_rule = {
+	optimize_memory
+	has_authority = auth_futa_brothel
+}

@@ -721,6 +721,9 @@ trait_futanari = {
 		"trait_lv_all_female"
 		"trait_lv_all_male"
 		"trait_lv_androgynous"
+		"trait_futa"
+		"trait_CD"
+		"trait_star"
 	}
 	randomized = no
 
@@ -762,6 +765,7 @@ trait_ovulation_difficulty = {
 	}
 	opposites = {
 		"trait_lv_all_male"
+		"trait_CD"
 	}
 	
 }
@@ -1613,6 +1617,9 @@ trait_hidden_futa_common = {
 		"trait_lv_all_female"
 		"trait_lv_all_male"
 		"trait_lv_androgynous"
+		"trait_futa"
+		"trait_CD"
+		"trait_star"
 	}
 	custom_tooltip_with_modifiers = hidden_futa_tooltip
 
@@ -1659,6 +1666,7 @@ trait_intensive_ovulation = {
 		"trait_slow_breeders" 
 		"trait_ovulation_difficulty" 
 		"trait_lv_all_male"
+		"trait_CD"
 	}
 	allowed_archetypes = { BIOLOGICAL }
 	modifier = {
@@ -1697,6 +1705,7 @@ trait_girl_megalization = {
 	opposites = { 
 		"trait_weak" 
 		"trait_lv_all_male"
+		"trait_CD"
 	}
 	allowed_archetypes = { BIOLOGICAL LITHOID }
 	modifier = {
@@ -1790,6 +1799,9 @@ trait_huge_penis_futa = {
 		"trait_lv_all_male"
 		"trait_lv_androgynous"
 		"trait_lv_small_penis"
+		"trait_futa"
+		"trait_CD"
+		"trait_star"
 	}
 	allowed_archetypes = { BIOLOGICAL LITHOID }
 	modifier = {

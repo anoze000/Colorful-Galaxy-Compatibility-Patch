@@ -110,14 +110,19 @@ slavery = {
 #强制奴役
 CG_force_enslave = {
 	potential = {
+		if = {
+			limit = {
+				has_global_flag = love_between_us
+			}
+			NOR = {
+				has_valid_civic = civic_slaver_guilds
+				has_valid_civic = civic_all_slave
+			}
+		}
 		OR = {
 			if = {
 				limit = {
 					has_global_flag = love_between_us
-				}
-				NOR = {
-					has_valid_civic = civic_slaver_guilds
-					has_valid_civic = civic_all_slave
 				}
 				has_trait = trait_DC_ethic_carnalism
 			}
@@ -134,7 +139,7 @@ CG_force_enslave = {
 			}
 			else = {
 				always = no
-			}
+			}			
 		}
 	}
 	option = {
@@ -207,7 +212,24 @@ CG_force_enslave = {
 				NOT = { has_ethic = ethic_fanatic_authoritarian }
 			}
 		}
-		modifier = {
+		triggered_modifier = {
+			potential = {
+				OR = {
+					is_futa_country = yes
+					is_cd_country = yes
+					is_star_country = yes
+				}
+			}
+			country_pop_enslaved_mult = 0.10
+		}
+		triggered_modifier = {
+			potential = {
+				NOR = {
+					is_futa_country = yes
+					is_cd_country = yes
+					is_star_country = yes
+				}
+			}
 			country_pop_enslaved_mult = 0.15
 		}
 		AI_weight = {
@@ -240,7 +262,24 @@ CG_force_enslave = {
 				NOT = { has_valid_civic = civic_slave_tradition }
 			}
 		}
-		modifier = {
+		triggered_modifier = {
+			potential = {
+				OR = {
+					is_futa_country = yes
+					is_cd_country = yes
+					is_star_country = yes
+				}
+			}
+			country_pop_enslaved_mult = 0.2
+		}
+		triggered_modifier = {
+			potential = {
+				NOR = {
+					is_futa_country = yes
+					is_cd_country = yes
+					is_star_country = yes
+				}
+			}
 			country_pop_enslaved_mult = 0.3
 		}
 		AI_weight = {
@@ -269,7 +308,24 @@ CG_force_enslave = {
 				has_ethic = ethic_fanatic_authoritarian
 			}
 		}
-		modifier = {
+		triggered_modifier = {
+			potential = {
+				OR = {
+					is_futa_country = yes
+					is_cd_country = yes
+					is_star_country = yes
+				}
+			}
+			country_pop_enslaved_mult = 0.3
+		}
+		triggered_modifier = {
+			potential = {
+				NOR = {
+					is_futa_country = yes
+					is_cd_country = yes
+					is_star_country = yes
+				}
+			}
 			country_pop_enslaved_mult = 0.45
 		}
 	}
