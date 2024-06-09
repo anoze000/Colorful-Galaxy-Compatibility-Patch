@@ -1,7 +1,31 @@
 tr_cybernetics_assimilator_adopt = {
 	possible = {
-		has_ascension_perk = ap_organo_machine_interfacing_assimilator
-		has_technology = tech_integrated_cybernetics
+		if = {
+			limit = {
+				has_global_flag = time_mod_active
+			}
+			if = {
+				limit = {
+					has_origin = origin_reassembler
+					has_civic = civic_machine_assimilator
+				}
+				has_technology = tech_integrated_cybernetics
+			}
+			else_if = {
+				limit = {
+					auto_cybernetics_ascension_machine = yes
+				}
+				has_technology = tech_integrated_cybernetics
+			}
+			else = {
+				has_ascension_perk = ap_organo_machine_interfacing_assimilator
+				has_technology = tech_integrated_cybernetics
+			}
+		}
+		else = {
+			has_ascension_perk = ap_organo_machine_interfacing_assimilator
+			has_technology = tech_integrated_cybernetics
+		}
 	}
 	unlocks_agenda = agenda_cybernetic_advantage_assimilator
 	custom_tooltip = tr_cybernetics_assimilator_adopt_desc
@@ -9,6 +33,20 @@ tr_cybernetics_assimilator_adopt = {
 	# See apply_post_assimilation_effects scripted effect
 
 	on_enabled = {
+		if = {
+			limit = {
+				has_global_flag = time_mod_active
+			}
+			custom_tooltip = tr_cybernetics_assimilator_adopt_desc
+			if = {
+				limit = {
+					has_origin = origin_reassembler
+					has_civic = civic_machine_assimilator
+				}
+				add_research_option = tech_neuro_quantum_links
+				add_research_option = tech_gene_tailoring
+			}
+		}
 		if = {
 			limit = {
 				has_machine_age_dlc = yes

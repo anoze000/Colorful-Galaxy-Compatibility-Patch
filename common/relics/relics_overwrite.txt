@@ -318,6 +318,15 @@ r_omnicodex = {
 		}
 		custom_tooltip = relic_omicodex_opinon
 	}
+	triggered_country_modifier = { #探险协议：这个机械智能中央程序的基石是对外行星生命进行编录的冲动
+		potential = {
+			has_valid_civic = civic_machine_exploration_protocol
+		}
+		custom_tooltip = relic_omnicodex_civic_machine_exploration_protocol
+		show_only_custom_tooltip = no
+		country_base_influence_produces_add = 0.1
+		mult = omnicodex_count_organic_species
+	}
 
 	score = 500
 

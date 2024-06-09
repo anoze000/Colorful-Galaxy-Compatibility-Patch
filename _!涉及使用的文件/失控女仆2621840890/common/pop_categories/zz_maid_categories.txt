@@ -1,0 +1,175 @@
+bio_trophy = {
+	rank = 0
+	clothes_texture_index = 1
+
+	change_job_threshold = 1.25
+
+	assign_to_pop = {
+		exists = owner
+		has_citizenship_type = { type = citizenship_organic_trophy }
+	}
+	weight = {
+		weight = 5
+	}
+
+	# scope: pop to be resettled
+	allow_resettlement = {
+		always = yes
+	}
+	resettlement_cost = {
+		energy = 50
+		unity = 25
+	}
+	resettlement_cost = { #
+		trigger = { has_job = hibernation }
+		unity = -25
+	}
+
+	###### 原版
+	# 有机人口组装
+	triggered_planet_modifier = {
+		potential = {
+			can_assemble_budding_pop = yes
+		}
+		planet_pop_assembly_organic_add = @plantoid_budding_rate
+	}
+	triggered_planet_modifier = {
+		potential = {
+			can_assemble_tiyanki_pop = yes
+		}
+		planet_pop_assembly_organic_add = @tiyanki_budding_rate
+	}
+	# 各种阶级修正
+	# Triggered Modifiers
+	inline_script = "pop_categories/social_classes_triggered_modifiers"
+	
+	###### 对冲原版
+	# 剧毒
+	triggered_pop_modifier = {
+		potential = {
+			NOT = { has_trait = trait_noxious }
+			owner = { has_technology = tech_maid_sanctuary_separated_ecocircle }
+		}
+		key = trait_noxious
+		pop_happiness = -1
+		mult = modifier:pop_non_noxious_happiness
+	}
+
+	###### 调整与新增
+	# 基础
+	triggered_pop_modifier = {
+		potential = {
+			NOR = {
+				owner = {
+					exists = this
+					has_modifier = country_modifier_maid_law_RR_1
+				}
+				has_job = hibernation
+			}
+		}
+		pop_political_power = 10
+	}
+	triggered_pop_modifier = {
+		potential = { NOT = { has_job = hibernation } }
+		pop_amenities_usage_no_happiness_base = 1
+	}
+	triggered_pop_modifier = {
+		potential = { NOT = { has_job = hibernation } }
+		modifier = {
+			species_empire_size_mult = 1
+		}
+		mult = modifier:empire_size_bio_trophy_mult
+	}
+	# 冬眠
+	triggered_pop_modifier = {
+		potential = { has_job = hibernation }
+		pop_political_power = -1
+		species_empire_size_mult = -1
+		planet_pops_upkeep_mult = -0.95
+		pop_amenities_usage_no_happiness_base = 0.05
+		pop_happiness = 1
+	}
+	triggered_planet_modifier = {
+		potential = { has_job = hibernation }
+		planet_carry_cap_add = 1
+	}
+	# 受到女仆的侍奉
+	triggered_pop_modifier = {
+		key = pop_modifier_master_in_love
+		modifier = {
+			pop_happiness = 1
+		}
+		mult = planet.happiness_buff_value_for_master
+	}
+	triggered_pop_modifier = {
+		potential = {
+			owner = { has_active_tradition = tr_service_dusk_to_dawn }
+		}
+		key = tr_service_dusk_to_dawn
+		modifier = {
+			planet_jobs_produces_mult = 1
+		}
+		mult = planet.production_buff_value_for_master
+	}
+	# 法律效果
+	inline_script = "pop_categories/laws_effect_for_bio_trophies"
+	
+	###### 资源
+	resources = {
+		category = pop_category_bio_trophy
+
+		# Regular food, mineral and energy upkeep.
+		inline_script = "pop_categories/regular_upkeep"
+
+		# Additional energy upkeep for cyborgs.
+		inline_script = "pop_categories/cyborg_upkeep"
+
+		# Additional energy upkeep for cyborgs.
+		inline_script = "pop_categories/cyborg_upkeep_bio_trophy"
+
+		# Exotic Metabolism Upkeep
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_exotic_metabolism
+			}
+			exotic_gases = @exotic_metabolism
+		}
+
+		# Resource Production 
+		
+		# Lithoid Trait Output
+		inline_script = "pop_categories/trait_production"
+
+		produces = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_inorganic_breath
+			}
+			exotic_gases = @inorganic_breath
+		}
+
+		produces = {
+			trigger = {
+				has_trait = trait_drake_scaled
+			}
+			alloys = @drake_scaled_trait_resource_production
+		}
+	}
+
+	unemployment_penalties = {
+		pop_housing_usage_base = 1
+		pop_happiness = -0.20
+	}
+	triggered_pop_modifier = {
+		potential = {
+			has_global_flag = galactic_community_resolution_divinity_comfort_the_fallen
+			is_unemployed = yes
+			owner = {
+				is_galactic_community_member = yes
+			}
+		}
+
+		pop_happiness = 0.10
+	}
+}

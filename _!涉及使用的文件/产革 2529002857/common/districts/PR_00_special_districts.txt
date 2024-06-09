@@ -1,0 +1,78 @@
+#	PR转化
+
+@hab_cost = 750
+@hab_maintenance = 3
+@low_hab_maintenance = 0.3
+@hab_time = 360
+
+PR_district_HAB_housing_order = {
+	base_buildtime = @hab_time
+	is_capped_by_modifier = no
+	exempt_from_ai_planet_specialization = yes
+
+	show_on_uncolonized = {
+		uses_district_set = habitat
+		has_planet_flag = PR_flg_plnt_VALID
+		OR = {
+			has_planet_flag = toxic_knights_habitat
+			has_building = building_order_castle
+		}
+	}
+	potential = {
+		uses_district_set = habitat
+		has_planet_flag = PR_flg_plnt_VALID
+		exists = owner
+		owner = { has_origin = origin_toxic_knights }
+		OR = {
+			has_planet_flag = toxic_knights_habitat
+			has_building = building_order_castle
+		}
+	}
+	convert_to = {
+		#	|PR转化|
+		PR_district_HAB_housing	# PR居住站
+		PR_district_HAB_housing_order
+	}
+
+	resources = {
+		category = planet_districts_orders_demesne
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+			alloys = @low_hab_maintenance
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 6
+		planet_max_buildings_add = @PR_bldn_HAB_city
+	}
+	triggered_planet_modifier = {
+		planet_housing_add = 1
+		planet_amenities_add = 0.5
+		job_squire_add = 1
+		mult = owner.value:PR_sv_cntr_HAB_void_dweller_jobs
+	}
+	#	deposit|次元操纵装置|
+	triggered_planet_modifier = {
+		potential = {
+			has_deposit = d_dimensional_manipulation_device
+			exists = owner
+			NOT = { owner = { has_deficit = sr_dark_matter } }
+		}
+		planet_max_buildings_add = 0.5
+		planet_housing_add = 1
+	}
+
+	triggered_desc = {
+		text = job_squire_effect_desc
+	}
+
+	##	AI辅助	########################################
+	ai_resource_production = {
+		energy = 10	#1|5|200%
+		mult = value:PR_prmt_sv_RES_produces_MULT_general
+	}
+}

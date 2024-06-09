@@ -428,3 +428,29 @@ is_futa_monster_girl = {
 		}
 	}
 }
+
+# 国家
+use_district_generator_uncapped = {
+	OR = {
+		has_origin = origin_praise_the_sun # 赞美太阳
+		has_origin = origin_no_water_no_fish # 竭泽而渔
+		has_country_flag = use_district_generator_uncapped # MOD接口
+	}
+}
+
+# 国家
+use_district_mining_uncapped = {
+	OR = {
+		is_subterranean_empire = yes # 地底人
+		has_origin = origin_no_water_no_fish # 竭泽而渔
+		has_country_flag = use_district_mining_uncapped # MOD接口
+	}
+}
+
+# 国家
+use_district_farming_uncapped = {
+	OR = {
+		has_origin = origin_no_water_no_fish # 竭泽而渔
+		has_country_flag = use_district_farming_uncapped # MOD接口
+	}
+}

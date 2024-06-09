@@ -24,6 +24,8 @@ is_zofe_compatible = { always = no }
 
 is_monster_girl = { always = no }
 
+is_ice_moon_ai_country = { always = no }
+
 is_ELF_criminal_syndicate_rule = { always = no }
 
 is_ELF_food_upkeep_archetype = { always = no }
@@ -57,5 +59,9 @@ TIME_RULE_trgr_CAN_fill_worker_job = {
 }
 
 BETTER_ASCENSION_TRAITS_RULE_trgr_CAN_spcs_be_assembled = {
+	always = yes
+}
+
+has_spy_wg_special_authority = {
 	always = yes
 }

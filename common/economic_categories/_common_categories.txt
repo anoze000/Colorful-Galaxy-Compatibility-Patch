@@ -182,6 +182,16 @@ megastructures = {
 			AOW_trgr_MEGA_is_dyson_sphere = yes
 		}
 	}
+	triggered_upkeep_modifier = {
+        key = upgrading_megastructures
+        modifier_types = {
+            add
+            mult
+        }
+        trigger = {
+            is_upgrading = yes
+        }
+    }
 }
 
 megastructures_habitat = {
@@ -1923,6 +1933,18 @@ starbase_stations = {
 	}
 	
 	triggered_cost_modifier = {
+        key = ion_cannon
+        modifier_types = {
+            mult
+            add
+        }
+        trigger = {
+            is_scope_valid = yes
+            is_ship_size = ion_cannon
+        }
+    }
+
+	triggered_cost_modifier = {
 		key = starbase_ion_cannon
 		modifier_types = {
 			mult
@@ -2430,6 +2452,28 @@ planet_jobs = {
 	modifier_category = pop
 	#	PR设施
 	triggered_cost_modifier = {
+        key = PR_ec_non_pop
+        modifier_types = {
+            mult
+        }
+        trigger = {
+            NOT = {
+                is_scope_type = pop
+            }
+        }
+    }
+    triggered_produces_modifier = {
+        key = PR_ec_non_pop
+        modifier_types = {
+            mult
+        }
+        trigger = {
+            NOT = {
+                is_scope_type = pop
+            }
+        }
+    }
+	triggered_cost_modifier = {
 		key = PR_ec_FACILITY
 		modifier_types = {
 			mult
@@ -2456,6 +2500,7 @@ planet_jobs = {
 		}
 		trigger = {
 			is_scope_type = pop	# |PR转化|
+			is_pop_category = slave
 			OR = {
 				owner = {
 					has_civic = civic_pantyhose_slave
@@ -2484,9 +2529,11 @@ planet_jobs = {
 		key = planet_worker_ownership_jobs
 		modifier_types = {
 			mult
+			add
 		}
 		trigger = {
 			exists = owner
+			is_scope_type = pop
 			has_living_standard = {
 				country = owner
 				type = living_standard_worker_ownership
@@ -2498,6 +2545,7 @@ planet_jobs = {
 		key = planet_cyborg_jobs
 		modifier_types = {
 			mult
+			add
 		}
 		trigger = {
 			is_scope_type = pop	# |PR转化|
@@ -2519,6 +2567,7 @@ planet_jobs = {
 		key = habitat_jobs
 		modifier_types = {
 			mult
+			add
 		}
 		trigger = {
 			is_scope_type = pop	# |PR转化|
@@ -2533,6 +2582,7 @@ planet_jobs = {
 		key = non_artificial_planet_jobs
 		modifier_types = {
 			mult
+			add
 		}
 		trigger = {
 			is_scope_type = pop	# |PR转化|
@@ -2616,6 +2666,7 @@ planet_jobs = {
 		key = planet_jobs_specialist
 		modifier_types = {
 			mult
+			add
 		}
 		trigger = {
 			is_scope_type = pop	# |PR转化|
@@ -2634,6 +2685,7 @@ planet_jobs = {
 		key = planet_jobs_specialist_only
 		modifier_types = {
 			mult
+			add
 		}
 		trigger = {
 			is_scope_type = pop	# |PR转化|
@@ -3127,6 +3179,16 @@ planet_executives = {
 		upkeep
 	}
 	modifier_category = pop
+	triggered_produces_modifier = {
+        key = planet_politicians
+        modifier_types = {
+            add
+        }
+        trigger = {
+            always = yes
+        }
+        use_parent_icon = yes
+    }
 }
 
 planet_managers = {
@@ -3210,7 +3272,8 @@ planet_culture_workers = {
 }
 
 planet_bio_trophies = {
-	parent = planet_jobs
+	icon = "job_bio_trophy"
+	parent = planet_culture_workers
 	generate_add_modifiers = {
 		produces
 		upkeep
@@ -3256,6 +3319,16 @@ planet_nobles = {
 		produces
 		upkeep
 	}
+	triggered_produces_modifier = {
+        key = planet_politicians
+        modifier_types = {
+            add
+        }
+        trigger = {
+            always = yes
+        }
+        use_parent_icon = yes
+    }
 }
 
 planet_necro_apprentices = {
@@ -3476,6 +3549,7 @@ planet_telepaths = {
 }
 
 planet_doctors = {
+	icon = "planet_doctors"
 	parent = planet_jobs
 	generate_add_modifiers = {
 		produces
@@ -3678,13 +3752,15 @@ planet_pops = {
 	}
 
 	triggered_upkeep_modifier = {
-		key = planet_pops_lithoid
+		key = planet_pops_lithoids
 		modifier_types = {
 			mult
+			add
 		}
 		trigger = {
 			is_scope_type = pop	# PR转化
-			is_species_class = LITHOID
+			is_lithoid = yes
+            is_robot_pop = no
 		}
 	}
 
@@ -3804,6 +3880,7 @@ pop_category_purge = {
 		produces
 		upkeep
 	}
+	modifier_category = pop
 }
 
 pop_category_bio_trophy = {
@@ -3842,6 +3919,7 @@ pop_category_robot = {
 		produces
 		upkeep
 	}
+	modifier_category = pop
 }
 
 pop_category_drones = {
@@ -3854,6 +3932,37 @@ pop_category_drones = {
 		produces
 		upkeep
 	}
+    modifier_category = pop
+    triggered_produces_modifier = {
+        key = pop_category_complex_drones
+        modifier_types = {
+            add
+            mult
+        }
+        trigger = {
+            is_pop_category = complex_drone
+        }
+    }
+    triggered_produces_modifier = {
+        key = pop_category_simple_drones
+        modifier_types = {
+            add
+            mult
+        }
+        trigger = {
+            is_pop_category = simple_drone
+        }
+    }
+    triggered_upkeep_modifier = {
+        key = pop_category_drones_xvcv_bio_robot
+        modifier_types = {
+            add
+            mult
+        }
+        trigger = {
+            has_trait = xvcv_mdlc_trait_bio_robot
+        }
+    }
 }
 
 pop_category_workers = {
@@ -4357,6 +4466,7 @@ rivalries = {
 		produces
 		upkeep
 	}
+	modifier_category = country
 }
 
 non_aggression_pacts = {
@@ -4510,6 +4620,12 @@ relics = {
 }
 
 artifact_actions = {
+	generate_mult_modifiers = {
+        cost
+    }
+    generate_add_modifiers = {
+        cost
+    }
 }
 
 sector = {
@@ -4527,6 +4643,7 @@ operations = {
 	use_for_ai_budget = yes
 	ai_use_parent_for_resources_upkeep = {
 		energy
+		sr_semen
 	}
 	generate_mult_modifiers = {
 		cost
@@ -4539,6 +4656,7 @@ operations = {
 country_situations = {
 	generate_add_modifiers = {
 		produces
+		upkeep
 	}
 	modifier_category = country
 }

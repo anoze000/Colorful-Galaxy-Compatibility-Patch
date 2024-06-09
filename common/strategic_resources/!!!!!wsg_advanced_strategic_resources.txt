@@ -1,0 +1,13 @@
+sr_alpha = {
+	category = rare
+	tradable = no
+	
+	deficit_modifier = sr_alpha_deficit
+		
+	ai_weight = {
+		weight = 100
+	}
+	ai_wants = {
+		base = 100
+	}
+}

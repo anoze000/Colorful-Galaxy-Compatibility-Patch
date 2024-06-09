@@ -2,26 +2,60 @@ tr_cybernetics_adopt = {
 	possible = {
 		if = {
 			limit = {
-				is_hive_empire = no
-				NOT = { has_origin = origin_cybernetic_creed }
+				has_global_flag = time_mod_active
 			}
-			has_ascension_perk = ap_the_flesh_is_weak
-			has_technology = tech_integrated_cybernetics
+			if = {
+				limit = {
+					is_hive_empire = no
+				}
+				if = {
+					limit = {
+						auto_cybernetics_ascension = yes
+					}
+					has_technology = tech_integrated_cybernetics
+				}
+				else = {
+					has_ascension_perk = ap_the_flesh_is_weak
+					has_technology = tech_integrated_cybernetics
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						auto_cybernetics_ascension_hive = yes
+					}
+					has_technology = tech_integrated_cybernetics
+				}
+				else = {
+					has_ascension_perk = ap_organo_machine_interfacing
+					has_technology = tech_integrated_cybernetics
+				}
+			}
 		}
-		else_if = {
-			limit = {
-				is_hive_empire = no
-				has_origin = origin_cybernetic_creed
+		else = {
+			if = {
+				limit = {
+					is_hive_empire = no
+					NOT = { has_origin = origin_cybernetic_creed }
+				}
+				has_ascension_perk = ap_the_flesh_is_weak
+				has_technology = tech_integrated_cybernetics
 			}
-			has_technology = tech_integrated_cybernetics
-		}
-		else_if = {
-			limit = {
-				is_hive_empire = yes
-				NOT = { has_origin = origin_cybernetic_creed }
+			else_if = {
+				limit = {
+					is_hive_empire = no
+					has_origin = origin_cybernetic_creed
+				}
+				has_technology = tech_integrated_cybernetics
 			}
-			has_ascension_perk = ap_organo_machine_interfacing
-			has_technology = tech_integrated_cybernetics
+			else_if = {
+				limit = {
+					is_hive_empire = yes
+					NOT = { has_origin = origin_cybernetic_creed }
+				}
+				has_ascension_perk = ap_organo_machine_interfacing
+				has_technology = tech_integrated_cybernetics
+			}
 		}
 	}
 	unlocks_agenda = agenda_cybernetic_advantage

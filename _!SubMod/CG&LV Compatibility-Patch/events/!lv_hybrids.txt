@@ -96,7 +96,10 @@ country_event = {
 							pop_has_trait = trait_lv_intercompatible_sperm
 						}
 						any_owned_pop = {
-							NOT = { pop_has_trait = trait_lv_intercompatible_womb }
+							NOR = { 
+								pop_has_trait = trait_lv_intercompatible_womb 
+								pop_has_trait = trait_good_pregnancy_seedbed
+							}
 							NOT = { pop_has_trait = trait_lv_intercompatible_sperm }
 							AND = {
 								NOR = {
@@ -198,7 +201,10 @@ planet_event = {
 						pop_has_trait = trait_lv_futanari
 						pop_has_trait = trait_futa
 					}
-					NOT = { pop_has_trait = trait_lv_intercompatible_womb }
+					NOR = { 
+						pop_has_trait = trait_lv_intercompatible_womb 
+						pop_has_trait = trait_good_pregnancy_seedbed
+					}
 					NOT = { pop_has_trait = trait_lv_intercompatible_sperm }
 					NOT = { is_robot_pop = yes }
 				}
@@ -262,17 +268,26 @@ country_event = {
 		every_country = {
 			limit = {
 				any_owned_pop = {
-					has_trait = trait_lv_intercompatible_womb
+					OR = { 
+						has_trait = trait_lv_intercompatible_womb 
+						has_trait = trait_good_pregnancy_seedbed
+					}
 				}
 			}
 			random_owned_planet = {
 				limit = {
 					AND = {
 						any_owned_pop = {
-							pop_has_trait = trait_lv_intercompatible_womb
+							OR = { 
+								pop_has_trait = trait_lv_intercompatible_womb 
+								pop_has_trait = trait_good_pregnancy_seedbed
+							}
 						}
 						any_owned_pop = {
-							NOT = { pop_has_trait = trait_lv_intercompatible_womb }
+							NOR = { 
+								pop_has_trait = trait_lv_intercompatible_womb 
+								pop_has_trait = trait_good_pregnancy_seedbed
+							}
 							NOT = { pop_has_trait = trait_lv_intercompatible_sperm }
 							AND = {
 								NOR = {
@@ -374,7 +389,10 @@ planet_event = {
 						pop_has_trait = trait_lv_futanari
 						pop_has_trait = trait_futa
 					}
-					NOT = { pop_has_trait = trait_lv_intercompatible_womb }
+					NOR = { 
+						pop_has_trait = trait_lv_intercompatible_womb 
+						pop_has_trait = trait_good_pregnancy_seedbed
+					}
 					NOT = { pop_has_trait = trait_lv_intercompatible_sperm }
 					NOT = { is_robot_pop = yes }
 				}
@@ -458,10 +476,16 @@ planet_event = {
 				OR = {
 					AND = {
 						any_owned_pop = {
-							pop_has_trait = trait_lv_intercompatible_womb
+							OR = { 
+								pop_has_trait = trait_lv_intercompatible_womb 
+								pop_has_trait = trait_good_pregnancy_seedbed
+							}
 						}
 						any_owned_pop = {
-							NOT = { pop_has_trait = trait_lv_intercompatible_womb }
+							NOR = { 
+								pop_has_trait = trait_lv_intercompatible_womb 
+								pop_has_trait = trait_good_pregnancy_seedbed
+							}
 							OR = {
 								is_robot_pop = no
 								pop_has_trait = trait_lv_lushtech_synthetic_womb
@@ -587,6 +611,20 @@ planet_event = {
 					modify_species = {
 						species = this
 						add_trait = trait_lv_intercompatible_womb
+						change_scoped_species = no
+					}
+				}
+			}
+			if = {
+				limit = {
+					event_target:lv_intercompatible_pop = {
+						has_trait = trait_good_pregnancy_seedbed
+					}
+				}
+				last_created_species = {
+					modify_species = {
+						species = this
+						add_trait = trait_good_pregnancy_seedbed
 						change_scoped_species = no
 					}
 				}

@@ -395,8 +395,14 @@ tech_nutrient_replication = {
 	}
 
 	potential = {
-		NOT = { has_authority = auth_machine_intelligence }
-	}
+        OR = {
+            NOT = {
+                has_authority = auth_machine_intelligence
+            }
+            has_civic = civic_machine_servitor
+            has_civic = civic_machine_assimilator
+        }
+    }
 
 	weight_modifier = {
 		modifier = {
@@ -437,6 +443,20 @@ tech_nutrient_replication = {
 				has_trait_in_council = { TRAIT = leader_trait_curator }
 			}
 		}
+		modifier = {
+            factor = @ap_technological_ascendancy_rare_tech
+            has_ascension_perk = ap_technological_ascendancy
+        }
+        modifier = {
+            factor = @federation_perk_factor
+            has_federation = yes
+            federation = {
+                has_federation_perk = rare_tech_boost
+                any_member = {
+                    has_technology = tech_nutrient_replication
+                }
+            }
+        }
 		inline_script = {
 			script = technologies/rare_technologies_weight_modifiers
 			TECHNOLOGY = tech_nutrient_replication
@@ -1116,13 +1136,22 @@ tech_frontier_health = {
 	area = society
 	tier = 1
 	category = { biology }
-	prerequisites = { "tech_genome_mapping" }
+	prerequisites = {
+        "tech_genome_mapping"
+        "tech_colonization_1"
+    }
 	weight = @tier1weight2
 
 	potential = {
-		is_regular_empire = yes
-		is_individual_machine = no
-	}
+        OR = {
+            AND = {
+                is_regular_empire = yes
+                is_individual_machine = no
+            }
+            has_valid_civic = civic_machine_servitor
+            has_valid_civic = civic_machine_healthcare
+        }
+    }
 
 	weight_modifier = {
 		factor = 2
@@ -1151,9 +1180,15 @@ tech_frontier_hospital = {
 	weight = @tier2weight3
 
 	potential = {
-		is_gestalt = no
-		is_individual_machine = no
-	}
+        OR = {
+            AND = {
+                is_regular_empire = yes
+                is_individual_machine = no
+            }
+            has_valid_civic = civic_machine_servitor
+            has_valid_civic = civic_machine_healthcare
+        }
+    }
 
 	weight_modifier = {
 		modifier = {
@@ -1997,6 +2032,8 @@ tech_vitality_boosters = {
 		OR = {
 			NOT = { has_authority = auth_machine_intelligence }
 			has_civic = civic_machine_assimilator
+			has_civic = civic_machine_servitor
+            has_civic = civic_machine_healthcare
 		}
 	}
 
@@ -2164,6 +2201,7 @@ tech_cloning = {
 		OR = {
 			NOT = { has_authority = auth_machine_intelligence }
 			has_civic = civic_machine_assimilator
+			has_civic = civic_machine_servitor
 		}
 		is_natural_design_empire = no
 	}
@@ -2199,6 +2237,23 @@ tech_cloning = {
 				}
 			}
 		}
+		modifier = {
+            factor = 0.5
+            is_individual_machine = yes
+        }
+        modifier = {
+            factor = 0.5
+            has_origin = origin_synthetic_fertility
+        }
+        modifier = {
+            factor = 2
+            AND = {
+                is_individual_machine = yes
+                any_owned_species = {
+                    is_organic_species = yes
+                }
+            }
+        }
 	}
 
 	ai_weight = {
@@ -2220,6 +2275,7 @@ tech_gene_banks = {
 		OR = {
 			NOT = { has_authority = auth_machine_intelligence }
 			has_civic = civic_machine_assimilator
+			has_civic = civic_machine_servitor
 		}
 		is_natural_design_empire = no
 	}
@@ -5007,16 +5063,28 @@ tech_paradise_dome = {
 	}
 
 	weight_modifier = {
-		modifier = {
-			factor = 0
-			NOR = {
-				has_technology = tech_mine_rare_crystals
-				has_technology = tech_rare_crystals
-				has_country_flag = has_market_access
-			}
-		}
-
-	}
+        modifier = {
+            factor = 0
+            OR = {
+                AND = {
+                    is_gestalt = no
+                    NOR = {
+                        has_technology = tech_mine_rare_crystals
+                        has_technology = tech_rare_crystals
+                        has_country_flag = has_market_access
+                    }
+                }
+                AND = {
+                    has_valid_civic = civic_machine_servitor
+                    NOR = {
+                        has_technology = tech_mine_exotic_gases
+                        has_technology = tech_exotic_gases
+                        has_country_flag = has_market_access
+                    }
+                }
+            }
+        }
+    }
 
 	ai_weight = {
 

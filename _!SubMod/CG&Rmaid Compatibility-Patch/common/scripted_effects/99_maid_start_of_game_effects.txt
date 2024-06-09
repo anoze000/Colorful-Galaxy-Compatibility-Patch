@@ -122,14 +122,7 @@ generate_machine_maid_start_buildings_and_districts = {
 	}
 }
 generate_machine_maid_start_pops_and_others = {
-	if = {
-		limit = { last_created_species = { has_trait = trait_noxious } }
-		modify_species = {
-			species = last_created_species
-			remove_trait = trait_noxious
-		}
-	}
-	
+	generate_servitor_secondary_species_no_pops = yes
 	# 基础 女仆13 机器10 手办10
 	# 探险 女仆10 机器7  手办6
 	last_created_species = {

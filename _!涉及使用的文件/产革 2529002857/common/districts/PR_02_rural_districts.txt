@@ -1,0 +1,770 @@
+#	PR郊区发电/PR郊区采矿/PR郊区农业/PR郊区渔业	4/3
+#	PR集成发电/PR集成采矿/PR碎环回收/PR集成农业	5/3.7
+#	住房/舒适度	150%
+
+@BASE_cost = 600
+@TIME_cost = 360
+@BASE_upkeep = 2
+@BASE_cost_2 = 750
+
+@efficency_MAX = 0.015
+@efficency_BOOST = 0.005
+
+
+###	PR郊区发电
+PR_district_COMMON_generator = {
+	base_buildtime = @TIME_cost
+	is_capped_by_modifier = yes
+	exempt_from_ai_planet_specialization = yes
+
+	show_on_uncolonized = {
+		uses_district_set = standard
+		has_planet_flag = PR_flg_plnt_VALID
+	}
+	potential = {
+		uses_district_set = standard
+		has_planet_flag = PR_flg_plnt_VALID
+	}
+	allow = {
+		NOT = { has_modifier = resort_colony }
+	}
+	convert_to = {
+		PR_district_COMMON_generator	# PR发电区
+		PR_district_COMMON_generator_ex
+	}
+
+	resources = {
+		category = planet_districts_generator
+		cost = {
+			minerals = @BASE_cost
+		}
+		upkeep = {
+			energy = @BASE_upkeep
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 4
+		planet_max_buildings_add = @PR_bldn_PLNT
+		PR_smod_plnt_RES_JIC_planet_technician = 4
+		PR_smod_plnt_WORKSHOP_add = 4
+		PR_smod_plnt_RES_CAT_planet_technician = 4
+	}
+	#	civic|田园牧歌|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { has_valid_civic = civic_agrarian_idyll } }
+		planet_housing_add = 1.5
+	}
+	#	|蜂群|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { is_hive_empire = yes } }
+		planet_housing_add = 2
+		PR_smod_plnt_RES_JIC_planet_technician = 1
+		PR_smod_plnt_WORKSHOP_add = 1
+		PR_smod_plnt_RES_CAT_planet_technician = 1
+	}
+	#	|智械|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { is_machine_empire = yes } }
+		planet_housing_add = 1
+	}
+
+	triggered_desc = {
+		trigger = { exists = owner		owner = { is_regular_empire = yes } }
+		text = job_technician_effect_desc
+	}
+	triggered_desc = {
+		trigger = { exists = owner		owner = { is_gestalt = yes } }
+		text = job_technician_drone_effect_desc
+	}
+	#	人力产出
+	triggered_desc = {
+		trigger = { has_owner = yes }
+		text = PR_tip_OUTPUT_planet_technician
+	}
+
+	##	AI辅助	########################################
+	ai_resource_production = {
+		energy = 54	#6|4.5|200%
+		mult = value:PR_prmt_sv_RES_produces_MULT|RES|energy|CAT|planet_technician|CHAIN|power|
+	}
+}
+###	PR郊区采矿
+PR_district_COMMON_mining = {
+	base_buildtime = @TIME_cost
+	is_capped_by_modifier = yes
+	exempt_from_ai_planet_specialization = yes
+
+	show_on_uncolonized = {
+		uses_district_set = standard
+		has_planet_flag = PR_flg_plnt_VALID
+		exists = from
+		NOT = { from = { has_origin = origin_subterranean } }	# origin厚土之下|is_subterranean_empire
+	}
+	potential = {
+		uses_district_set = standard
+		has_planet_flag = PR_flg_plnt_VALID
+		NAND = { exists = owner		owner = { has_origin = origin_subterranean } }	# origin厚土之下|is_subterranean_empire
+	}
+	allow = {
+		NOT = { has_modifier = resort_colony }
+	}
+	convert_to = {
+		PR_district_COMMON_mining	# PR采矿区
+		PR_district_COMMON_mining_ex
+		PR_district_COMMON_mining_srw
+	}
+
+	resources = {
+		category = planet_districts_mining
+		cost = {
+			minerals = @BASE_cost
+		}
+		upkeep = {
+			energy = @BASE_upkeep
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 4
+		planet_max_buildings_add = @PR_bldn_PLNT
+		PR_smod_plnt_RES_JIC_planet_miners = 4
+		PR_smod_plnt_WORKSHOP_add = 4
+		PR_smod_plnt_RES_CAT_planet_miners = 4
+	}
+	#	civic|田园牧歌|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { has_valid_civic = civic_agrarian_idyll } }
+		planet_housing_add = 1.5
+	}
+	#	origin_subterranean|地底人|
+	triggered_planet_modifier = {
+		potential = { exists = owner }
+		planet_housing_add = 1
+		PR_smod_plnt_RES_JIC_planet_miners = 0.25
+		mult = owner.value:scripted_modifier_add|MODIFIER|mining_district_housing_add|
+	}
+	#	|蜂群|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { is_hive_empire = yes } }
+		planet_housing_add = 2
+		PR_smod_plnt_RES_JIC_planet_miners = 1
+		PR_smod_plnt_WORKSHOP_add = 1
+		PR_smod_plnt_RES_CAT_planet_miners = 1
+	}
+	#	|智械|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { is_machine_empire = yes } }
+		planet_housing_add = 1
+	}
+
+	triggered_desc = {
+		trigger = { exists = owner		owner = { is_regular_empire = yes } }
+		text = job_miner_effect_desc
+	}
+	triggered_desc = {
+		trigger = { exists = owner		owner = { is_gestalt = yes } }
+		text = job_mining_drone_effect_desc
+	}
+	#	人力产出
+	triggered_desc = {
+		trigger = { has_owner = yes }
+		text = PR_tip_OUTPUT_planet_miners
+	}
+
+	##	AI辅助	########################################
+	ai_resource_production = {
+		minerals = 36	#4|4.5|200%
+		mult = value:PR_prmt_sv_RES_produces_MULT|RES|minerals|CAT|planet_miners|CHAIN|mining|
+	}
+}
+###	PR郊区农业
+PR_district_COMMON_farming = {
+	base_buildtime = @TIME_cost
+	is_capped_by_modifier = yes
+	exempt_from_ai_planet_specialization = yes
+
+	show_on_uncolonized = {
+		uses_district_set = standard
+		has_planet_flag = PR_flg_plnt_VALID
+		NAND = {
+			is_wet = yes
+			exists = from
+			from = { is_anglers_empire = yes }
+		}
+	}
+	potential = {
+		uses_district_set = standard
+		has_planet_flag = PR_flg_plnt_VALID
+		exists = owner
+		NOR = {
+			owner = { is_ai = yes	country_uses_food = no }
+			AND = { is_wet = yes	owner = { is_anglers_empire = yes } }
+		}
+	}
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = { is_ai = yes	country_uses_food = no }
+			AND = { is_wet = yes	owner = { is_anglers_empire = yes } }
+		}
+	}
+	allow = {
+		NOT = { has_modifier = resort_colony }
+	}
+	convert_to = {
+		PR_district_COMMON_farming	# PR农业区
+		PR_district_COMMON_angler
+		PR_district_COMMON_farming_ex
+	}
+
+	resources = {
+		category = planet_districts_mining
+		cost = {
+			minerals = @BASE_cost
+		}
+		upkeep = {
+			energy = @BASE_upkeep
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 4
+		planet_max_buildings_add = @PR_bldn_PLNT
+		PR_smod_plnt_RES_JIC_planet_farmers = 4
+		PR_smod_plnt_WORKSHOP_add = 4
+		PR_smod_plnt_RES_CAT_planet_farmers = 4
+	}
+	#	civic|田园牧歌|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { has_valid_civic = civic_agrarian_idyll } }
+		planet_housing_add = 1.5
+	}
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { has_technology = tech_housing_agrarian_idyll } }
+		planet_housing_add = 1.5
+	}
+	#	|蜂群|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { is_hive_empire = yes } }
+		planet_housing_add = 2
+		PR_smod_plnt_RES_JIC_planet_farmers = 1
+		PR_smod_plnt_WORKSHOP_add = 1
+		PR_smod_plnt_RES_CAT_planet_farmers = 1
+	}
+	#	|智械|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { is_machine_empire = yes } }
+		planet_housing_add = 1
+	}
+
+	triggered_desc = {
+		trigger = { exists = owner		owner = { is_regular_empire = yes } }
+		text = job_farmer_effect_desc
+	}
+	triggered_desc = {
+		trigger = { exists = owner		owner = { is_gestalt = yes } }
+		text = job_agri_drone_effect_desc
+	}
+	#	人力产出
+	triggered_desc = {
+		trigger = { has_owner = yes }
+		text = PR_tip_OUTPUT_planet_farmers
+	}
+
+	##	AI辅助	########################################
+	ai_resource_production = {
+		food = 54	#6|4.5|200%
+		mult = value:PR_prmt_sv_RES_produces_MULT|RES|food|CAT|planet_farmers|CHAIN|farming|
+	}
+}
+###	PR郊区渔业
+PR_district_COMMON_angler = {
+	base_buildtime = @TIME_cost
+	is_capped_by_modifier = no
+	exempt_from_ai_planet_specialization = yes
+
+	show_on_uncolonized = {
+		uses_district_set = standard
+		has_planet_flag = PR_flg_plnt_VALID
+		is_wet = yes
+		exists = from
+		from = { is_anglers_empire = yes }
+	}
+	potential = {
+		uses_district_set = standard
+		has_planet_flag = PR_flg_plnt_VALID
+		is_wet = yes
+		exists = owner
+		owner = { is_anglers_empire = yes }
+	}
+	destroy_trigger = {
+		exists = owner
+		NAND = { is_wet = yes	owner = { is_anglers_empire = yes } }
+	}
+	allow = {
+		NOT = { has_modifier = resort_colony }
+	}
+	convert_to = {
+		PR_district_COMMON_farming	# PR农业区
+		PR_district_COMMON_angler
+		PR_district_COMMON_farming_ex
+	}
+
+	resources = {
+		category = planet_districts_mining
+		cost = {
+			minerals = @BASE_cost
+		}
+		upkeep = {
+			energy = @BASE_upkeep
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 4
+		planet_max_buildings_add = @PR_bldn_PLNT
+		trade_value_add = 2
+		job_pearl_diver_add = 2
+		PR_smod_plnt_RES_JIC_planet_farmers = 2
+		PR_smod_plnt_WORKSHOP_add = 2
+		PR_smod_plnt_RES_CAT_planet_farmers = 2
+		#	产业链
+		PR_smod_plnt_EFFICIENCY_max_farming = @efficency_MAX
+		PR_smod_plnt_EFFICIENCY_boost_farming = @efficency_BOOST
+	}
+	#	civic|田园牧歌|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { has_valid_civic = civic_agrarian_idyll } }
+		planet_amenities_add = 2
+		planet_housing_add = 1.5
+	}
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { has_technology = tech_housing_agrarian_idyll } }
+		planet_housing_add = 1.5
+	}
+
+	triggered_desc = {
+		text = job_aqu_angler_effect_desc
+	}
+	triggered_desc = {
+		text = job_pearl_diver_effect_desc
+	}
+	#	人力产出
+	triggered_desc = {
+		trigger = { has_owner = yes }
+		text = PR_tip_OUTPUT_planet_farmers_ANGLER
+	}
+
+	##	AI辅助	########################################
+	ai_resource_production = {
+		food = 32	#8|2|200%
+		mult = value:PR_prmt_sv_RES_produces_MULT|RES|food|CAT|planet_farmers|CHAIN|farming|
+	}
+	ai_resource_production = {
+		consumer_goods = 32	# 8|2|200%
+		mult = value:PR_prmt_sv_RES_produces_MULT|RES|consumer_goods|CAT|planet_artisans|CHAIN|factory|
+	}
+}
+
+
+
+
+###	PR集成发电
+PR_district_COMMON_generator_ex = {
+	base_buildtime = @TIME_cost
+	is_capped_by_modifier = no
+	exempt_from_ai_planet_specialization = yes
+
+	show_on_uncolonized = {
+		OR = {
+			uses_district_set = hive_world
+			uses_district_set = machine_world
+			uses_district_set = shattered_ring_world
+		}
+		has_planet_flag = PR_flg_plnt_VALID
+	}
+	potential = {
+		has_planet_flag = PR_flg_plnt_VALID
+		OR = {
+			uses_district_set = hive_world
+			uses_district_set = machine_world
+			uses_district_set = shattered_ring_world
+		}
+	}
+	allow = {
+		NOT = { has_modifier = resort_colony }
+	}
+	convert_to = {
+		PR_district_COMMON_generator	# PR发电区
+		PR_district_COMMON_generator_ex
+	}
+
+	resources = {
+		category = planet_districts_generator
+		cost = {
+			minerals = @BASE_cost_2
+		}
+		upkeep = {
+			energy = @BASE_upkeep
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 4
+		planet_max_buildings_add = @PR_bldn_PLNT
+		PR_smod_plnt_RES_JIC_planet_technician = 4
+		PR_smod_plnt_WORKSHOP_add = 4
+		PR_smod_plnt_RES_CAT_planet_technician = 4
+		#	产业链
+		PR_smod_plnt_EFFICIENCY_max_power = @efficency_MAX
+		PR_smod_plnt_EFFICIENCY_boost_power = @efficency_BOOST
+	}
+	#	civic|田园牧歌|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { has_valid_civic = civic_agrarian_idyll } }
+		planet_housing_add = 1.5
+	}
+	##	|蜂群|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { is_hive_empire = yes } }
+		planet_housing_add = 2
+		PR_smod_plnt_RES_JIC_planet_technician = 1
+		PR_smod_plnt_WORKSHOP_add = 1
+		PR_smod_plnt_RES_CAT_planet_technician = 1
+	}
+	##	|智械|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { is_machine_empire = yes } }
+		planet_housing_add = 1
+	}
+	#	ap|机械世界|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { is_machine_empire = yes		has_ascension_perk = ap_machine_worlds } }
+		planet_housing_add = 3
+		PR_smod_plnt_RES_JIC_planet_technician = 2
+		PR_smod_plnt_WORKSHOP_add = 2
+		PR_smod_plnt_RES_CAT_planet_technician = 2
+	}
+
+	triggered_desc = {
+		trigger = { exists = owner		owner = { is_regular_empire = yes } }
+		text = job_technician_effect_desc
+	}
+	triggered_desc = {
+		trigger = { exists = owner		owner = { is_gestalt = yes } }
+		text = job_technician_drone_effect_desc
+	}
+	#	人力产出
+	triggered_desc = {
+		trigger = { has_owner = yes }
+		text = PR_tip_OUTPUT_planet_technician
+	}
+
+	##	AI辅助	########################################
+	ai_resource_production = {
+		energy = 54	#6|4.5|200%
+		mult = value:PR_prmt_sv_RES_produces_MULT|RES|energy|CAT|planet_technician|CHAIN|power|
+	}
+}
+###	PR集成采矿
+PR_district_COMMON_mining_ex = {
+	base_buildtime = @TIME_cost
+	is_capped_by_modifier = no
+	exempt_from_ai_planet_specialization = yes
+
+	show_on_uncolonized = {
+		has_planet_flag = PR_flg_plnt_VALID
+		OR = {
+			uses_district_set = hive_world
+			uses_district_set = machine_world
+			AND = { uses_district_set = standard		exists = from	from = { has_origin = origin_subterranean } }	# origin厚土之下|is_subterranean_empire
+		}
+	}
+	potential = {
+		has_planet_flag = PR_flg_plnt_VALID
+		OR = {
+			uses_district_set = hive_world
+			uses_district_set = machine_world
+			AND = { uses_district_set = standard		exists = owner	owner = { has_origin = origin_subterranean } }	# origin厚土之下|is_subterranean_empire
+		}
+	}
+	allow = {
+		NOT = { has_modifier = resort_colony }
+	}
+	convert_to = {
+		PR_district_COMMON_mining	# PR采矿区
+		PR_district_COMMON_mining_ex
+		PR_district_COMMON_mining_srw
+	}
+
+	resources = {
+		category = planet_districts_mining
+		cost = {
+			minerals = @BASE_cost_2
+		}
+		upkeep = {
+			energy = @BASE_upkeep
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 4
+		planet_max_buildings_add = @PR_bldn_PLNT
+		PR_smod_plnt_RES_JIC_planet_miners = 4
+		PR_smod_plnt_WORKSHOP_add = 4
+		PR_smod_plnt_RES_CAT_planet_miners = 4
+		#	产业链
+		PR_smod_plnt_EFFICIENCY_max_mining = @efficency_MAX
+		PR_smod_plnt_EFFICIENCY_boost_mining = @efficency_BOOST
+	}
+	#	civic|田园牧歌|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { has_valid_civic = civic_agrarian_idyll } }
+		planet_housing_add = 1.5
+	}
+	#	origin_subterranean|地底人|
+	triggered_planet_modifier = {
+		potential = { exists = owner }
+		planet_housing_add = 1
+		PR_smod_plnt_RES_JIC_planet_miners = 0.25
+		mult = owner.value:scripted_modifier_add|MODIFIER|mining_district_housing_add|
+	}
+	##	|蜂群|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { is_hive_empire = yes } }
+		planet_housing_add = 2
+		PR_smod_plnt_RES_JIC_planet_miners = 1
+		PR_smod_plnt_WORKSHOP_add = 1
+		PR_smod_plnt_RES_CAT_planet_miners = 1
+	}
+	##	|智械|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { is_machine_empire = yes } }
+		planet_housing_add = 1
+	}
+	#	ap|机械世界|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { is_machine_empire = yes	has_ascension_perk = ap_machine_worlds } }
+		planet_housing_add = 3
+		PR_smod_plnt_RES_JIC_planet_miners = 2
+		PR_smod_plnt_WORKSHOP_add = 2
+		PR_smod_plnt_RES_CAT_planet_miners = 2
+	}
+
+	triggered_desc = {
+		trigger = { exists = owner		owner = { is_regular_empire = yes } }
+		text = job_miner_effect_desc
+	}
+	triggered_desc = {
+		trigger = { exists = owner		owner = { is_gestalt = yes } }
+		text = job_mining_drone_effect_desc
+	}
+	#	人力产出
+	triggered_desc = {
+		trigger = { has_owner = yes }
+		text = PR_tip_OUTPUT_planet_miners
+	}
+
+	##	AI辅助	########################################
+	ai_resource_production = {
+		minerals = 36	#4|4.5|200%
+		mult = value:PR_prmt_sv_RES_produces_MULT|RES|minerals|CAT|planet_miners|CHAIN|mining|
+	}
+}
+###	PR碎环回收
+PR_district_COMMON_mining_srw = {
+	base_buildtime = @TIME_cost
+	is_capped_by_modifier = no
+	exempt_from_ai_planet_specialization = yes
+
+	show_on_uncolonized = {
+		has_planet_flag = PR_flg_plnt_VALID
+		uses_district_set = shattered_ring_world
+	}
+	potential = {
+		has_planet_flag = PR_flg_plnt_VALID
+		uses_district_set = shattered_ring_world
+	}
+	allow = {
+		NOT = { has_modifier = resort_colony }
+	}
+	convert_to = {
+		PR_district_COMMON_mining	# PR采矿区
+		PR_district_COMMON_mining_ex
+		PR_district_COMMON_mining_srw
+	}
+
+	resources = {
+		category = planet_districts_mining
+		cost = {
+			minerals = @BASE_cost_2
+		}
+		upkeep = {
+			energy = @BASE_upkeep
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 4
+		planet_max_buildings_add = @PR_bldn_PLNT
+		PR_smod_plnt_RES_JIC_planet_miners = 4
+		PR_smod_plnt_WORKSHOP_add = 4
+		PR_smod_plnt_RES_CAT_planet_miners = 4
+		#	产业链
+		PR_smod_plnt_EFFICIENCY_max_mining = @efficency_MAX
+		PR_smod_plnt_EFFICIENCY_boost_mining = @efficency_BOOST
+	}
+	#	civic|田园牧歌|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { has_valid_civic = civic_agrarian_idyll } }
+		planet_housing_add = 1.5
+	}
+	#	origin_subterranean|地底人|
+	triggered_planet_modifier = {
+		potential = { exists = owner }
+		planet_housing_add = 1
+		PR_smod_plnt_RES_JIC_planet_miners = 0.25
+		mult = owner.value:scripted_modifier_add|MODIFIER|mining_district_housing_add|
+	}
+	#	|蜂群|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { is_hive_empire = yes } }
+		planet_housing_add = 2
+		PR_smod_plnt_RES_JIC_planet_miners = 1
+		PR_smod_plnt_WORKSHOP_add = 1
+		PR_smod_plnt_RES_CAT_planet_miners = 1
+	}
+	#	|智械|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { is_machine_empire = yes } }
+		planet_housing_add = 1
+	}
+
+
+	triggered_desc = {
+		trigger = { exists = owner		owner = { is_regular_empire = yes		is_subterranean_empire = no } }
+		text = job_scrap_miner_effect_desc
+	}
+	triggered_desc = {
+		trigger = { exists = owner		owner = { is_gestalt = yes		is_subterranean_empire = no } }
+		text = job_scrap_miner_drone_effect_desc
+	}
+	#	人力产出
+	triggered_desc = {
+		trigger = { has_owner = yes }
+		text = PR_tip_OUTPUT_planet_miners_SRW
+	}
+
+	##	AI辅助	########################################
+	ai_resource_production = {
+		minerals = 23	#2|4.5|200%
+		mult = value:PR_prmt_sv_RES_produces_MULT|RES|minerals|CAT|planet_miners|CHAIN|mining|
+	}
+	ai_resource_production = {
+		alloys = 9	#1|4.5|200%
+		mult = value:PR_prmt_sv_RES_produces_MULT|RES|alloys|CAT|planet_miners|CHAIN|mining|
+	}
+}
+###	PR集成农业
+PR_district_COMMON_farming_ex = {
+	base_buildtime = @TIME_cost
+	is_capped_by_modifier = no
+	exempt_from_ai_planet_specialization = yes
+
+	show_on_uncolonized = {
+		has_planet_flag = PR_flg_plnt_VALID
+		OR = {
+			uses_district_set = hive_world
+			uses_district_set = machine_world
+			uses_district_set = shattered_ring_world
+		}
+	}
+	potential = {
+		has_planet_flag = PR_flg_plnt_VALID
+		OR = {
+			uses_district_set = hive_world
+			uses_district_set = machine_world
+			uses_district_set = shattered_ring_world
+		}
+		NAND = {
+			exists = owner
+			owner = { is_ai = yes	country_uses_food = no }
+		}
+	}
+	destroy_trigger = {
+		exists = owner
+		owner = { is_ai = yes	country_uses_food = no }
+	}
+	allow = {
+		NOT = { has_modifier = resort_colony }
+	}
+	convert_to = {
+		PR_district_COMMON_farming	# PR农业区
+		PR_district_COMMON_angler
+		PR_district_COMMON_farming_ex
+	}
+
+	resources = {
+		category = planet_districts_mining
+		cost = {
+			minerals = @BASE_cost_2
+		}
+		upkeep = {
+			energy = @BASE_upkeep
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 4
+		planet_max_buildings_add = @PR_bldn_PLNT
+		PR_smod_plnt_RES_JIC_planet_farmers = 4
+		PR_smod_plnt_WORKSHOP_add = 4
+		PR_smod_plnt_RES_CAT_planet_farmers = 4
+		#	产业链
+		PR_smod_plnt_EFFICIENCY_max_farming = @efficency_MAX
+		PR_smod_plnt_EFFICIENCY_boost_farming = @efficency_BOOST
+	}
+	#	civic|田园牧歌|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { has_valid_civic = civic_agrarian_idyll } }
+		planet_housing_add = 1.5
+	}
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { has_technology = tech_housing_agrarian_idyll } }
+		planet_housing_add = 1.5
+	}
+	#	|蜂群|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { is_hive_empire = yes } }
+		planet_housing_add = 2
+		PR_smod_plnt_RES_JIC_planet_farmers = 1
+		PR_smod_plnt_WORKSHOP_add = 1
+		PR_smod_plnt_RES_CAT_planet_farmers = 1
+	}
+	#	|智械|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { is_machine_empire = yes } }
+		planet_housing_add = 1
+	}
+
+	triggered_desc = {
+		trigger = { exists = owner		owner = { is_regular_empire = yes } }
+		text = job_farmer_effect_desc
+	}
+	triggered_desc = {
+		trigger = { exists = owner		owner = { is_gestalt = yes } }
+		text = job_agri_drone_effect_desc
+	}
+	#	人力产出
+	triggered_desc = {
+		trigger = { has_owner = yes }
+		text = PR_tip_OUTPUT_planet_farmers
+	}
+
+	##	AI辅助	########################################
+	ai_resource_production = {
+		food = 54	#6|4.5|200%
+		mult = value:PR_prmt_sv_RES_produces_MULT|RES|food|CAT|planet_farmers|CHAIN|farming|
+	}
+}

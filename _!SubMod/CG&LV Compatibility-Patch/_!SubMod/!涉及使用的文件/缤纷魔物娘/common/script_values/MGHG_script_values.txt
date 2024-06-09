@@ -1756,11 +1756,7 @@ lust_psionic_level = {
 	}
 	modifier = {
 		set = 12
-		OR = {
-			has_trait = leader_trait_Reyep_commander
-			has_trait = leader_trait_Reyep_scientist
-			has_trait = leader_trait_Reyep_official
-		}
+		is_god_sexual_slave = yes
 	}
 	modifier = {
 		add = 1
@@ -2016,4 +2012,71 @@ lewd_princess_computer = {
 		mult = 5
 		uses_district_set = ring_world
 	}
+}
+
+num_trait_leader = {
+	complex_trigger_modifier = {
+		trigger = count_owned_leader
+		parameters = {
+			limit = {
+				has_trait = $TRAIT$
+			}
+		}
+		mode = add
+	}
+}
+
+lewd_princess_leader_tech = {
+	add = value:num_trait_leader|TRAIT|leader_trait_lewd_princess_council|
+	mult = 0.25
+	add = 1
+}
+
+mechanical_cell_organ = {
+	modifier = {
+		add = 1
+		any_owned_pop = {
+			is_species_class = LAMIA
+		}
+	}
+	modifier = {
+		add = 1
+		any_owned_pop = {
+			is_species_class = ANGEL
+		}
+	}
+	modifier = {
+		add = 1
+		any_owned_pop = {
+			is_species_class = SLIME
+		}
+	}
+	modifier = {
+		add = 1
+		any_owned_pop = {
+			is_species_class = SUCCUBUS
+		}
+	}
+	modifier = {
+		add = 1
+		any_owned_pop = {
+			is_species_class = VAMPIRE
+		}
+	}
+	modifier = {
+		add = 1
+		any_owned_pop = {
+			is_species_class = ZOMBIE
+		}
+	}
+}
+
+super_lust_powerer_prob = {
+	complex_trigger_modifier = {
+		trigger = has_skill
+		mode = add
+	}
+	subtract = 5
+	min = 1
+	max = 5
 }

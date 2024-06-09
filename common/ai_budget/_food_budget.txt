@@ -1,0 +1,18 @@
+food_upkeep_ships = {
+	resource = food
+	type = upkeep
+	category = ships
+	potential = {
+		OR = {
+			AND = {
+				has_origin = origin_here_be_dragons
+				is_dragon_breeder_country = yes
+			}
+			is_ice_moon_ai_country = yes
+			is_nirvana_empire = yes
+		}
+	}
+	weight = {
+		weight = 0.5
+	}
+}

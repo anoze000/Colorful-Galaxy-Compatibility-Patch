@@ -1,0 +1,149 @@
+###################
+# Special Jobs
+###################
+
+servant = {
+	category = worker
+	is_capped_by_modifier = no
+	building_icon = building_luxury_residence
+	clothes_texture_index = 2
+
+	possible_pre_triggers = {
+		is_sapient = yes
+	}
+
+	possible = {
+		OR = {
+			can_take_servant_job = yes
+			AND = {
+				has_citizenship_type = { type = citizenship_robot_servitude country = owner }
+				has_trait = trait_machine_maid
+			}
+		}
+	}
+
+	resources = {}
+
+	triggered_pop_modifier = {
+		potential = {
+			is_organic_species = yes
+		}
+		pop_housing_usage_add = -0.5
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 4
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_pleasure_seeker = yes }
+		}
+		planet_amenities_add = 5
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+
+	######################################### 机械女仆：侍奉宗主
+	triggered_planet_modifier = {
+		potential = {
+			has_trait = trait_machine_maid
+			exists = owner
+			owner = { is_maids_serviced_overlord = yes }
+		}
+		planet_amenities_add = 2
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+
+	weight = {
+		weight = @special_job_weight
+		modifier = {
+			has_trait = trait_machine_maid
+			mult = 900000
+		}
+	}
+}
+
+assimilation = {
+	category = assimilation
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+
+	possible_pre_triggers = {
+		is_sapient = yes
+	}
+
+	ignores_sapience = yes
+
+	possible = {
+		has_citizenship_type = { type = citizenship_assimilation country = owner }
+	}
+
+	resources = {
+		category = planet_jobs
+		upkeep = {
+			trigger = {
+				has_phototrophic_energy_upkeep = yes
+			}
+			energy = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = no
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = yes
+			}
+			food = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = no
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = yes
+			}
+			minerals = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				is_robotic_or_voidspawn_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+		
+		#机飞帝国不会同化有基因库的星球上的物种，作为补偿产出一点科研
+		produces = {
+			trigger = {
+				planet = { has_building = building_gene_bank }
+				owner = { has_country_flag = synthetic_empire }
+			}
+			physics_research = 1
+			society_research = 1
+			engineering_research = 1
+		}
+	}
+
+	weight = {
+		weight = @special_job_weight
+
+		modifier = {
+			factor = 200 # brings @special_job_weight up to 2
+			is_being_assimilated = yes
+		}
+	}
+}

@@ -1,0 +1,1129 @@
+@base_cost = 300
+@city_cost = 500
+@hab_cost = 500
+@hab_maintenance = 2
+@low_hab_maintenance = 0.2
+@hab_time = 240
+@hab_jobs = 2
+@rw_cost = 1000
+@rw_cost_sr = 50
+@rw_maintenance = 5
+@rw_maintenance_sr = 2
+@rw_district_buildtime = 360
+
+district_nexus = {
+	base_buildtime = 480
+	is_capped_by_modifier = no
+	exempt_from_ai_planet_specialization = yes
+
+	show_on_uncolonized = {
+		from = { is_machine_empire = yes }
+		OR = {
+			uses_district_set = standard
+			uses_district_set = hive_world
+			uses_district_set = machine_world
+			uses_district_set = shattered_ring_world
+		}
+		NOT = { has_planet_flag = PR_flg_plnt_VALID }	# |PR转化|
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_machine_empire = yes }
+		OR = {
+			uses_district_set = standard
+			uses_district_set = hive_world
+			uses_district_set = machine_world
+			uses_district_set = shattered_ring_world
+		}
+		NOT = { has_planet_flag = PR_flg_plnt_VALID }	# |PR转化|
+	}
+
+	allow = {
+		NOT = { has_modifier = resort_colony }
+		custom_tooltip = {
+			if = {
+				limit = { owner = { is_maid_ai = yes } }
+				OR = {
+					AND = {
+						free_building_slots <= 1
+						check_variable_arithmetic = { which = modifier:maidai_building_slots value < 12 }
+					}
+					free_housing < 6
+					check_variable_arithmetic = { which = value:available_bio_trophy_jobs value <= 4 }
+				}
+			}
+		}
+	}
+	conversion_ratio = 1
+	convert_to = {
+		district_arcology_housing
+		district_rw_nexus
+		district_city
+		district_hive
+		#	|PR转化|
+		PR_district_COMMON_housing_regular	# PR住宅区
+		PR_district_COMMON_housing_hive
+		PR_district_COMMON_housing_machine
+	}
+
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			minerals = @city_cost
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 5
+		job_maintenance_drone_add = 3
+		planet_max_buildings_add = 1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_housing_1 }
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			has_modifier = gestation_colony
+		}
+		modifier = {
+			job_maintenance_drone_add = -1
+			job_gestation_drone_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_housing_2 }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_maintenance_drone_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_active_tradition = tr_virtuality_4 }
+		}
+		modifier = {
+			job_maintenance_drone_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_active_tradition = tr_prosperity_optimized_nexus }
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+
+	########################################################################################################
+	########################################################################################################
+	triggered_planet_modifier = {
+		potential = {
+			NOT = { is_planet_class = pc_machine }
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+		}
+		job_maintenance_drone_add = 1
+		mult = value:district_nexus_add_maintenance_drone
+	}
+	triggered_planet_modifier = {
+		potential = {
+			NOT = { is_planet_class = pc_machine }
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+			NOT = { has_active_building = building_virtual_immersion_center }
+		}
+		job_bio_trophy_add = 1
+		mult = value:district_nexus_add_bio_trophy
+	}
+	triggered_planet_modifier = {
+		potential = {
+			NOT = { is_planet_class = pc_machine }
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+			has_active_building = building_virtual_immersion_center
+		}
+		job_virtual_bio_trophy_add = 2
+		mult = value:district_nexus_add_bio_trophy
+	}
+	triggered_planet_modifier = {
+		potential = {
+			NOT = { is_planet_class = pc_machine }
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+		}
+		planet_carry_cap_add = 1
+		mult = value:district_nexus_add_carry_cap
+	}
+	
+	triggered_desc = {
+		trigger = {
+			has_modifier = gestation_colony
+		}
+		text = job_gestation_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			OR = {
+				owner = { NOT = { has_valid_civic = civic_machine_servitor } }
+				owner = { has_policy_flag = flag_service_endure_loneliness }
+				is_planet_class = pc_machine
+			}
+		}
+		text = job_maintenance_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+			NOT = { is_planet_class = pc_machine }
+			NOT = { has_active_building = building_virtual_immersion_center } 
+		}
+		text = job_bio_trophy_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+			NOT = { is_planet_class = pc_machine }
+			has_active_building = building_virtual_immersion_center
+		}
+		text = job_virtual_bio_trophy_effect_desc
+	}
+
+	# maid AI advance
+	on_built = {
+		if = {
+			limit = {
+				owner = { is_maid_ai = yes }
+				NOT = { is_planet_class = pc_machine }
+			}
+			if = {
+				limit = {
+					check_variable_arithmetic = { which = value:available_bio_trophy_jobs value >= 8 }
+					OR = {
+						check_variable_arithmetic = { which = modifier:maidai_building_slots value >= 12 }
+						free_building_slots > 2
+					}
+					num_districts = { type = district_nexus value > 5 }
+					free_housing >= 15
+					NOR = {
+						has_available_jobs = fabricator
+						has_available_jobs = catalytic_drone
+						has_available_jobs = artisan_drone
+						has_available_jobs = artificer_drone
+					}
+				}
+				remove_district = district_nexus
+				add_district = district_industrial
+			}
+		}
+	}
+	on_destroy = {
+		if = {
+			limit = {
+				owner = { is_maid_ai = yes }
+				NOT = { is_planet_class = pc_machine }
+			}
+			if = {
+				limit = {
+					OR = {
+						check_variable_arithmetic = { which = value:available_bio_trophy_jobs value <= 4 }
+						free_housing < 15
+						AND = {
+							free_building_slots < 2
+							check_variable_arithmetic = { which = modifier:maidai_building_slots value < 12 }
+						}
+					}
+				}
+				add_district = district_nexus
+			}
+		}
+	}
+}
+district_rw_nexus = {
+	base_buildtime = @rw_district_buildtime
+	is_capped_by_modifier = no
+	exempt_from_ai_planet_specialization = yes
+
+	show_on_uncolonized = {
+		exists = from
+		from = { is_machine_empire = yes }
+		uses_district_set = ring_world
+		NOT = { has_planet_flag = PR_flg_plnt_VALID }	# |PR转化|
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_machine_empire = yes }
+		uses_district_set = ring_world
+		NOT = { has_planet_flag = PR_flg_plnt_VALID }	# |PR转化|
+	}
+
+	allow = {
+		if = {
+			limit = { owner = { is_maid_ai = yes } }
+			OR = {
+				free_housing < 15
+				NOT = { has_available_jobs = bio_trophy }
+			}
+		}
+	}
+	conversion_ratio = 0.5
+	convert_to = {
+		district_rw_hive
+		district_rw_city
+		#	|PR转化|
+		PR_district_RW_city		# PR居住环
+		PR_district_RW_nexus
+		PR_district_RW_hive
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @rw_cost
+		}
+		upkeep = {
+			energy = @rw_maintenance
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 25
+		job_maintenance_drone_add = 10
+		job_technician_drone_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_housing_1 }
+		}
+		modifier = {
+			planet_housing_add = 5
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_housing_2 }
+		}
+		modifier = {
+			planet_housing_add = 5
+			job_maintenance_drone_add = 5
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_active_tradition = tr_virtuality_4 }
+		}
+		modifier = {
+			job_maintenance_drone_add = 10
+		}
+	}
+                                 
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_active_tradition = tr_prosperity_optimized_nexus }
+		}
+		modifier = {
+			planet_housing_add = 5
+		}
+	}
+
+	########################################################################################################
+	########################################################################################################
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+		}
+		job_maintenance_drone_add = 1
+		mult = value:district_rw_nexus_add_maintenance_drone
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+			NOT = { has_active_building = building_virtual_immersion_center }
+		}
+		job_bio_trophy_add = 1
+		mult = value:district_rw_nexus_add_bio_trophy
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+			has_active_building = building_virtual_immersion_center
+		}
+		job_virtual_bio_trophy_add = 2
+		mult = value:district_rw_nexus_add_bio_trophy
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+		}
+		planet_carry_cap_add = 1
+		mult = value:district_rw_nexus_add_carry_cap
+	}
+	triggered_planet_modifier = { #技工
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+		}
+		job_technician_drone_add = -2
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			OR = {
+				owner = { NOT = { has_valid_civic = civic_machine_servitor } }
+				owner = { has_policy_flag = flag_service_endure_loneliness }
+			}
+		}
+		text = job_maintenance_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { NOT = { has_valid_civic = civic_machine_servitor } }
+		}
+		text = job_technician_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+			NOT = { has_active_building = building_virtual_immersion_center }
+		}
+		text = job_bio_trophy_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+			has_active_building = building_virtual_immersion_center
+		}
+		text = job_virtual_bio_trophy_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			planet = {
+				has_deposit = d_arcane_generator
+				NOT = { has_district = district_rw_nexus }
+			}
+		}
+		text = arcane_generator_upkeep_desc
+	}
+
+	# maid AI advance
+	on_built = {
+		if = {
+			limit = { owner = { is_maid_ai = yes } }
+			if = {
+				limit = { num_districts = { type = district_rw_nexus value > 1 } }
+				remove_district = district_rw_nexus
+				add_district = district_rw_science
+				owner = {
+					if = {
+						limit = { resource_stockpile_compare = { resource = exotic_gases value > 50 } }
+						add_resource = {
+							exotic_gases = -50
+							multiplier = value:scripted_modifier_mult|MODIFIER|planet_buildings_cost_mult|
+						}
+					}
+					else = {
+						add_resource = {
+							energy = -750
+							multiplier = value:scripted_modifier_mult|MODIFIER|planet_buildings_cost_mult|
+						}
+					}
+				}
+			}
+		}
+	}
+}
+district_hab_housing = {
+	base_buildtime = @hab_time
+	is_capped_by_modifier = no
+	exempt_from_ai_planet_specialization = yes
+
+	show_on_uncolonized = {
+		uses_district_set = habitat
+		NOT = { has_planet_flag = PR_flg_plnt_VALID }	# |PR转化|
+		NOR = {
+			has_planet_flag = toxic_knights_habitat
+			has_building = building_order_castle
+		}
+	}
+
+	potential = {
+		uses_district_set = habitat
+		NOT = { has_planet_flag = PR_flg_plnt_VALID }	# |PR转化|
+		NAND = {
+			exists = owner
+			owner = { has_origin = origin_toxic_knights }
+			OR = {
+				has_planet_flag = toxic_knights_habitat
+				has_building = building_order_castle
+			}
+		}
+	}
+
+	convert_to = {
+		district_orders_demesne
+		#	|PR转化|
+		PR_district_HAB_housing	# PR居住站
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+			alloys = @low_hab_maintenance
+		}
+	}
+
+	planet_modifier = {
+		planet_max_buildings_add = 0.50
+		planet_housing_add = 6
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_active_tradition = tr_prosperity_void_works }
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+
+	inline_script = {
+		script = districts/habitat_housing_job_swaps
+	}
+
+	########################################################################################################
+	########################################################################################################
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+		}
+		job_maintenance_drone_add = 1
+		mult = value:district_hab_housing_add_maintenance_drone
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+			NOT = { has_active_building = building_virtual_immersion_center }
+		}
+		job_bio_trophy_add = 1
+		mult = value:district_hab_housing_add_bio_trophy
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+			has_active_building = building_virtual_immersion_center
+		}
+		job_virtual_bio_trophy_add = 2
+		mult = value:district_hab_housing_add_bio_trophy
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+		}
+		planet_carry_cap_add = 1
+		mult = value:district_hab_housing_add_carry_cap
+	}
+	triggered_planet_modifier = { #农业
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_machine_servitor
+			}
+			has_farming_designation = yes
+		}
+		planet_housing_add = -1
+		job_agri_drone_add = -1
+	}
+	
+	#兼容更多思潮（完整版）
+	triggered_planet_modifier = {
+		potential = {
+			has_global_flag = cultural_overhaul_active
+			has_global_flag = ethic_civic_classic_active
+			exists = owner
+			owner = {
+				OR = { has_valid_civic = civic_peaceful_urbanism }
+			}
+		}
+		modifier = {
+			planet_amenities_add = 5
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_global_flag = cultural_overhaul_active
+			has_global_flag = ethic_civic_classic_active
+			exists = owner
+			owner = { or = {  has_valid_civic = civic_welfare_state  } }
+		}
+		modifier = {
+			planet_housing_add = 2
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+			NOT = { has_active_building = building_virtual_immersion_center }
+		}
+		text = job_bio_trophy_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+			has_active_building = building_virtual_immersion_center
+		}
+		text = job_virtual_bio_trophy_effect_desc
+	}
+}
+district_arcology_housing = {
+	base_buildtime = 600
+	is_capped_by_modifier = no
+	exempt_from_ai_planet_specialization = yes
+
+	show_on_uncolonized = {
+		uses_district_set = city_world
+		NOT = { has_planet_flag = PR_flg_plnt_VALID }	# |PR转化|
+	}
+	potential = {
+		uses_district_set = city_world
+		NOT = { has_planet_flag = PR_flg_plnt_VALID }	# |PR转化|
+	}
+	allow = {
+		if = {
+			limit = { owner = { is_maid_ai = yes } }
+			free_housing < 15
+		}
+	}
+	conversion_ratio = 1
+	convert_to = {
+		district_city
+		district_nexus
+		district_hive
+		#	|PR转化|
+		PR_district_ARC_housing		# PR理想城
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = 1000
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 15
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_maintenance_drone_add = 9
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = yes
+				has_active_tradition = tr_virtuality_4
+			}
+		}
+		modifier = {
+			job_maintenance_drone_add = 6
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_active_tradition = tr_prosperity_public_works }
+		}
+		modifier = {
+			planet_housing_add = 3
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_housing_1
+			}
+		}
+		modifier = {
+			planet_housing_add = 3
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_housing_2
+				NOT = { has_valid_civic = civic_agrarian_idyll }
+			}
+		}
+		modifier = {
+			planet_housing_add = 3
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_housing_2
+				has_ethic = ethic_gestalt_consciousness
+			}
+		}
+		modifier = {
+			job_maintenance_drone_add = 3
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+			}
+		}
+		modifier = {
+			job_clerk_add = 3
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				has_active_tradition = tr_virtuality_4
+			}
+		}
+		modifier = {
+			job_clerk_add = 6
+		}
+	}
+
+	########################################################################################################
+	########################################################################################################
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+		}
+		job_maintenance_drone_add = 1
+		mult = value:district_arcology_housing_add_maintenance_drone
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+		}
+		planet_housing_add = 1
+		mult = value:district_arcology_housing_add_housing
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+		}
+		planet_amenities_no_happiness_add = 1
+		mult = value:district_arcology_housing_add_amenities
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+			}
+		}
+		text = job_clerk_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_gestalt = yes
+				NOT = { has_valid_civic = civic_machine_servitor }
+			}
+		}
+		text = job_maintenance_drone_effect_desc
+	}
+}
+district_arcology_organic_housing = {
+	base_buildtime = 600
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = {
+		uses_district_set = city_world
+		NOT = { has_planet_flag = PR_flg_plnt_VALID }	# |PR转化|
+		from = {
+			has_valid_civic = civic_machine_servitor
+		}
+	}
+
+	potential = {
+		uses_district_set = city_world
+		NOT = { has_planet_flag = PR_flg_plnt_VALID }	# |PR转化|
+		exists = owner
+		owner = {
+			has_valid_civic = civic_machine_servitor
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			if = {
+				limit = {
+					owner = {
+						is_ai = yes
+					}
+				}
+				check_variable_arithmetic = { which = value:available_bio_trophy_jobs value < 15 }
+			}
+		}
+	}
+	
+	conversion_ratio = 1
+	convert_to = {
+		district_arcology_leisure
+		district_city
+		district_nexus
+		district_hive
+		district_arcology_housing
+		#	|PR转化|
+		PR_district_ARC_culture	# PR文化城
+		PR_district_ARC_culture_sanctuary
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = 1000
+			exotic_gases = 50
+		}
+		upkeep = {
+			energy = 5
+			exotic_gases = 1
+		}
+	}
+
+	planet_modifier = {
+		job_bio_trophy_add = 15
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { has_valid_civic = civic_machine_servitor }
+		}
+		text = job_bio_trophy_effect_desc
+	}
+
+	########################################################################################################
+	########################################################################################################
+	triggered_planet_modifier = {
+		potential = {
+			NOT = { has_active_building = building_virtual_immersion_center }
+		}
+		job_bio_trophy_add = 1
+		mult = value:district_arcology_organic_housing_add_bio_trophy
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_active_building = building_virtual_immersion_center
+		}
+		job_virtual_bio_trophy_add = 2
+		mult = value:district_arcology_organic_housing_add_bio_trophy
+	}
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_carry_cap_add = 1
+		mult = value:district_arcology_organic_housing_add_carry_cap
+	}
+	triggered_planet_modifier = { #医疗
+		potential = {
+			always = yes
+		}
+		job_healthcaring_drone_add = 1
+	}
+	triggered_planet_modifier = { #忍耐孤独
+		potential = {
+			exists = owner
+			owner = {
+				has_policy_flag = flag_service_endure_loneliness
+			}
+		}
+		modifier = {
+			job_maintenance_drone_add = 5
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			NOT = { has_active_building = building_virtual_immersion_center }
+		}
+		text = job_bio_trophy_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			has_active_building = building_virtual_immersion_center
+		}
+		text = job_virtual_bio_trophy_effect_desc
+	}
+	triggered_desc = {
+		text = job_healthcaring_drone_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				has_policy_flag = flag_service_endure_loneliness
+			}
+		}
+		text = job_maintenance_drone_effect_desc
+	}
+}
+district_resort = {
+	base_buildtime = 480
+	is_capped_by_modifier = no
+	exempt_from_ai_planet_specialization = yes
+
+	show_on_uncolonized = {
+		exists = from
+		from = {
+			OR = {
+				is_regular_empire = yes
+				is_servitor_empire = yes
+			}
+		}
+		has_modifier = resort_colony
+		NOT = { has_planet_flag = PR_flg_plnt_VALID }	# |PR转化|
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_regular_empire = yes
+				is_servitor_empire = yes
+			}
+		}
+		has_modifier = resort_colony
+		NOT = { has_planet_flag = PR_flg_plnt_VALID }	# |PR转化|
+	}
+
+	allow = {
+		NOT = { has_modifier = slave_colony }
+	}
+
+	conversion_ratio = 1
+	convert_to = {
+		district_city
+		district_arcology_housing
+		district_rw_city
+		district_nexus
+		district_hive
+		#	|PR转化|
+		PR_district_COMMON_resort	# PR旅游区
+		PR_district_COMMON_housing_regular	# PR住宅区
+		PR_district_COMMON_housing_hive
+		PR_district_COMMON_housing_machine
+	}
+
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			minerals = @city_cost
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 2
+		planet_max_buildings_add = 0.5
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_agrarian_idyll
+			}
+		}
+		modifier = {
+			planet_housing_add = -1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+			}
+		}
+		modifier = {
+			job_resort_worker_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_pleasure_seeker = yes
+			}
+		}
+		modifier = {
+			job_entertainer_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_active_tradition = tr_prosperity_public_works }
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_housing_1
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_housing_2
+				NOT = { has_valid_civic = civic_agrarian_idyll }
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		text = job_resort_worker_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_pleasure_seeker = yes
+			}
+		}
+		text = job_entertainer_effect_desc
+	}
+
+
+	########################################################################################################
+	########################################################################################################
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_servitor_empire = yes
+			}
+		}
+		modifier = {
+			job_resort_maid_add = 2
+			job_vacation_bio_trophy_add = 2
+		}
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_servitor_empire = yes }
+		}
+		text = job_resort_maid_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_servitor_empire = yes }
+		}
+		text = job_vacation_bio_trophy_effect_desc
+	}
+}

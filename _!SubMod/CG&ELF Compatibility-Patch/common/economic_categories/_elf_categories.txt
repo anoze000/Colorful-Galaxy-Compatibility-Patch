@@ -1,0 +1,51 @@
+pop_category_rulers = {
+    parent = elf_pops
+    generate_add_modifiers = {
+        produces
+        upkeep
+    }
+    generate_mult_modifiers = {
+        produces
+        upkeep
+    }
+    modifier_category = pop
+}
+
+pop_category_slave = {
+    parent = elf_pops
+    generate_add_modifiers = {
+        produces
+        upkeep
+    }
+    generate_mult_modifiers = {
+        produces
+        upkeep
+    }
+    modifier_category = pop
+}
+
+pop_category_specialists = {
+    parent = elf_pops
+    generate_add_modifiers = {
+        produces
+        upkeep
+    }
+    generate_mult_modifiers = {
+        produces
+        upkeep
+    }
+    modifier_category = pop
+}
+
+pop_category_workers = {
+    parent = elf_pops
+    generate_add_modifiers = {
+        produces
+        upkeep
+    }
+    generate_mult_modifiers = {
+        produces
+        upkeep
+    }
+    modifier_category = pop
+}

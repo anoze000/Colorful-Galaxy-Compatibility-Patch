@@ -1,0 +1,617 @@
+#	PR居住站/PR工业站	/PR科研站/PR电力站/PR采矿站
+#	PR贸易站/PR文化站/PR庇护站
+
+@hab_cost = 750
+@hab_maintenance = 3
+@low_hab_maintenance = 0.3
+@hab_time = 360
+
+
+##	PR居住站
+PR_district_HAB_housing = {
+	base_buildtime = @hab_time
+	is_capped_by_modifier = no
+	exempt_from_ai_planet_specialization = yes
+
+	show_on_uncolonized = {
+		uses_district_set = habitat
+		has_planet_flag = PR_flg_plnt_VALID
+		NOR = {
+			has_planet_flag = toxic_knights_habitat
+			has_building = building_order_castle
+		}
+	}
+	potential = {
+		uses_district_set = habitat
+		has_planet_flag = PR_flg_plnt_VALID
+		NAND = {
+			exists = owner
+			owner = { has_origin = origin_toxic_knights }
+			OR = {
+				has_planet_flag = toxic_knights_habitat
+				has_building = building_order_castle
+			}
+		}
+	}
+	convert_to = {
+		PR_district_HAB_housing	# PR居住站
+		PR_district_HAB_housing_order
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+			alloys = @low_hab_maintenance
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 6
+		planet_max_buildings_add = @PR_bldn_HAB_city
+	}
+	#	tr|模块化超构|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { has_active_tradition = tr_prosperity_void_works } }
+		planet_housing_add = 1.5
+	}
+
+	###	script = districts/habitat_housing_job_swaps	############################################################
+	##	普通|默认
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { is_gestalt = no }		has_farming_designation = no }
+		planet_housing_add = 1
+		trade_value_add = 1
+		planet_amenities_add = 1
+		job_clerk_add = 1
+		mult = owner.value:PR_sv_cntr_HAB_void_dweller_jobs
+	}
+	triggered_desc = {
+		trigger = { exists = owner	owner = { is_gestalt = no }		has_farming_designation = no }
+		text = job_clerk_effect_desc
+	}
+	#	普通|商业
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { is_gestalt = no }		colony_type = col_habitat_trade }
+		trade_value_add = 2	#4-2
+		planet_amenities_add = -2
+		job_clerk_add = -2	#base=4
+		job_trader_add = 2
+	}
+	triggered_desc = {
+		trigger = { exists = owner	owner = { is_gestalt = no }		colony_type = col_habitat_trade }
+		text = job_trader_effect_desc
+	}
+	##	格式塔|默认
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { is_gestalt = yes }		has_farming_designation = no }
+		planet_housing_add = 1
+		planet_amenities_no_happiness_add = 1
+		job_maintenance_drone_add = 1
+		mult = owner.value:PR_sv_cntr_HAB_void_dweller_jobs
+	}
+	triggered_desc = {
+		trigger = { exists = owner	owner = { is_gestalt = yes }		has_farming_designation = no }
+		text = job_maintenance_drone_effect_desc
+	}
+	##	全部|农业
+	triggered_planet_modifier = {
+		potential = { has_farming_designation = yes }
+		PR_smod_plnt_RES_JIC_planet_farmers = 1
+		PR_smod_plnt_WORKSHOP_add = 1
+		PR_smod_plnt_RES_CAT_planet_farmers = 1
+		mult = owner.value:PR_sv_cntr_HAB_void_dweller_jobs
+	}
+	triggered_desc = {
+		trigger = { exists = owner	owner = { is_gestalt = no }		has_farming_designation = yes }
+		text = job_farmer_effect_desc
+	}
+	triggered_desc = {
+		trigger = { exists = owner	owner = { is_gestalt = yes }	has_farming_designation = yes }
+		text = job_agri_drone_effect_desc
+	}
+	
+
+	##	AI辅助	########################################
+	ai_resource_production = {
+		trigger = { exists = owner	owner = { is_gestalt = yes } }
+		energy = 10	#1|5|200%	每"舒适"=0.25电
+		mult = value:PR_prmt_sv_RES_produces_MULT_general
+	}
+}
+
+##	PR工业站
+PR_district_HAB_industrial = {
+	base_buildtime = @hab_time
+	is_capped_by_modifier = no
+	exempt_from_ai_planet_specialization = yes
+
+	show_on_uncolonized = {
+		uses_district_set = habitat
+		has_planet_flag = PR_flg_plnt_VALID
+	}
+	potential = {
+		uses_district_set = habitat
+		has_planet_flag = PR_flg_plnt_VALID
+	}
+
+	resources = {
+		category = planet_districts_hab_industrial
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+			alloys = @low_hab_maintenance
+		}
+		upkeep = {
+			trigger = { exists = owner	owner = { has_edict = industrial_maintenance } }
+			energy = 2
+		}
+	}
+	planet_modifier = {
+		planet_max_buildings_add = @PR_bldn_HAB
+		PR_smod_plnt_TALLY_facility_DSTR_industrail = 1
+	}
+	#	住房
+	triggered_planet_modifier = {
+		planet_housing_add = 1
+		mult = value:PR_var_plnt_MULT_district_industrial_HAB
+	}
+	#	pm|工业维护|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { has_edict = industrial_maintenance } }
+		planet_amenities_no_happiness_add = 2
+		job_maintenance_drone_add = 1
+	}
+	triggered_desc = {
+		trigger = { exists = owner		owner = { is_machine_empire = yes	has_edict = industrial_maintenance } }
+		text = job_maintenance_drone_effect_desc
+	}
+	##	工业岗位+AI辅助	########################################
+	inline_script = { script = "districts/PR_district_industrail_TRGR_modifiers_JIC"	MULT = value:PR_var_plnt_MULT_district_industrial_HAB }
+
+	##	人力产出	########################################
+	triggered_desc = {
+		trigger = { has_owner = yes }
+		text = PR_tip_OUTPUT_planet_metallurgists
+	}
+	triggered_desc = {
+		trigger = { has_owner = yes }
+		text = PR_tip_OUTPUT_planet_artisans
+	}
+}
+
+
+##	PR科研站
+PR_district_HAB_science = {
+	base_buildtime = @hab_time
+	is_capped_by_modifier = yes
+	exempt_from_ai_planet_specialization = yes
+
+	show_on_uncolonized = {
+		uses_district_set = habitat
+		has_planet_flag = PR_flg_plnt_VALID
+	}
+	potential = {
+		uses_district_set = habitat
+		has_planet_flag = PR_flg_plnt_VALID
+	}
+	prerequisites = {
+		tech_basic_science_lab_1
+	}
+
+	resources = {
+		category = planet_districts_hab_research
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+			alloys = @low_hab_maintenance
+		}
+	}
+
+	planet_modifier = {
+		planet_max_buildings_add = @PR_bldn_HAB_minus
+	}
+	triggered_planet_modifier = {
+		potential = { exists = owner }
+		planet_max_buildings_add = @PR_bldn_HAB_mult	#已包含"districts/habitat_districts_triggered_mods"中的增益
+		planet_housing_add = 1
+		PR_smod_plnt_RES_JIC_planet_researchers = 1
+		PR_smod_plnt_WORKSHOP_add = 1
+		PR_smod_plnt_RES_CAT_planet_researchers = 1
+		mult = owner.value:PR_sv_cntr_HAB_void_dweller_jobs	# 4x
+	}
+	#	tr|虚拟4|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { has_active_tradition = tr_virtuality_4 } }
+		PR_smod_plnt_RES_JIC_planet_researchers = 0.5
+		PR_smod_plnt_WORKSHOP_add = 0.5
+		PR_smod_plnt_RES_CAT_planet_researchers = 0.5
+		mult = owner.value:hab_void_dweller_jobs	# 2x
+	}
+
+
+	triggered_desc = {
+		trigger = { exists = owner	owner = { is_regular_empire = yes } }
+		text = job_researcher_effect_desc
+	}
+	triggered_desc = {
+		trigger = { exists = owner	owner = { is_hive_empire = yes } }
+		text = job_brain_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = { exists = owner	owner = { is_machine_empire = yes } }
+		text = job_calculator_effect_desc
+	}
+	triggered_desc = {
+		trigger = { always = yes }
+		text = num_science_orbitals
+	}
+	#	人力产出
+	triggered_desc = {
+		trigger = { has_owner = yes }
+		text = PR_tip_OUTPUT_planet_researchers
+	}
+
+	##	AI辅助	########################################
+	ai_resource_production = {
+		physics_research = 36	# 4|4.5|200%
+		engineering_research = 36
+		society_research = 36
+		mult = value:PR_prmt_sv_RES_produces_MULT|RES|physics_research|CAT|planet_researchers|
+	}
+}
+
+##	PR电力站
+PR_district_HAB_energy = {
+	base_buildtime = @hab_time
+	is_capped_by_modifier = yes
+	exempt_from_ai_planet_specialization = yes
+
+	show_on_uncolonized = {
+		uses_district_set = habitat
+		has_planet_flag = PR_flg_plnt_VALID
+	}
+	potential = {
+		uses_district_set = habitat
+		has_planet_flag = PR_flg_plnt_VALID
+	}
+
+	resources = {
+		category = planet_districts_hab_energy
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+			alloys = @low_hab_maintenance
+		}
+	}
+
+	planet_modifier = {
+		planet_max_buildings_add = @PR_bldn_HAB_minus
+	}
+	triggered_planet_modifier = {
+		potential = { exists = owner }
+		planet_max_buildings_add = @PR_bldn_HAB_mult	# inline_script = { script = districts/habitat_districts_triggered_mods }
+		planet_housing_add = 1
+		PR_smod_plnt_RES_JIC_planet_technician = 1
+		PR_smod_plnt_WORKSHOP_add = 1
+		PR_smod_plnt_RES_CAT_planet_technician = 1
+		mult = owner.value:PR_sv_cntr_HAB_void_dweller_jobs
+	}
+	#	|蜂群|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { is_hive_empire = yes } }
+		planet_housing_add = 2
+		PR_smod_plnt_RES_JIC_planet_technician = 1
+		PR_smod_plnt_WORKSHOP_add = 1
+		PR_smod_plnt_RES_CAT_planet_technician = 1
+	}
+
+
+	#	civic|田园牧歌|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { has_valid_civic = civic_agrarian_idyll } }
+		planet_housing_add = 1.5
+	}
+	#	|智械|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { is_machine_empire = yes } }
+		planet_housing_add = 1
+	}
+
+	triggered_desc = {
+		trigger = { exists = owner		owner = { is_regular_empire = yes } }
+		text = job_technician_effect_desc
+	}
+	triggered_desc = {
+		trigger = { exists = owner		owner = { is_gestalt = yes } }
+		text = job_technician_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = { always = yes }
+		text = num_energy_orbitals
+	}
+	#	人力产出
+	triggered_desc = {
+		trigger = { has_owner = yes }
+		text = PR_tip_OUTPUT_planet_technician
+	}
+
+	##	AI辅助	########################################
+	ai_resource_production = {
+		energy = 54	#6|4.5|200%
+		mult = value:PR_prmt_sv_RES_produces_MULT|RES|energy|CAT|planet_technician|CHAIN|power|
+	}
+}
+
+##	PR采矿站
+PR_district_HAB_mining = {
+	base_buildtime = @hab_time
+	is_capped_by_modifier = yes
+	exempt_from_ai_planet_specialization = yes
+
+	show_on_uncolonized = {
+		uses_district_set = habitat
+		has_planet_flag = PR_flg_plnt_VALID
+	}
+	potential = {
+		uses_district_set = habitat
+		has_planet_flag = PR_flg_plnt_VALID
+	}
+
+	resources = {
+		category = planet_districts_hab_mining
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+			alloys = @low_hab_maintenance
+		}
+	}
+
+	planet_modifier = {
+		planet_max_buildings_add = @PR_bldn_HAB_minus
+	}
+	triggered_planet_modifier = {
+		potential = { exists = owner }
+		planet_max_buildings_add = @PR_bldn_HAB_mult
+		planet_housing_add = 1
+		PR_smod_plnt_RES_JIC_planet_miners = 1
+		PR_smod_plnt_WORKSHOP_add = 1
+		PR_smod_plnt_RES_CAT_planet_miners = 1
+		mult = owner.value:PR_sv_cntr_HAB_void_dweller_jobs
+	}
+	#	|蜂群|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { is_hive_empire = yes } }
+		planet_housing_add = 2
+		PR_smod_plnt_RES_JIC_planet_miners = 1
+		PR_smod_plnt_WORKSHOP_add = 1
+		PR_smod_plnt_RES_CAT_planet_miners = 1
+	}
+
+	triggered_desc = {
+		trigger = { exists = owner		owner = { is_regular_empire = yes } }
+		text = job_miner_effect_desc
+	}
+	triggered_desc = {
+		trigger = { exists = owner		owner = { is_gestalt = yes } }
+		text = job_mining_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = { always = yes }
+		text = num_mining_orbitals
+	}
+	#	人力产出
+	triggered_desc = {
+		trigger = { has_owner = yes }
+		text = PR_tip_OUTPUT_planet_miners
+	}
+
+	##	AI辅助	########################################
+	ai_resource_production = {
+		minerals = 36	#4|4.5|200%
+		mult = value:PR_prmt_sv_RES_produces_MULT|RES|minerals|CAT|planet_miners|CHAIN|mining|
+	}
+}
+
+
+
+
+##	PR贸易站
+PR_district_HAB_commercial = {
+	base_buildtime = @hab_time
+	is_capped_by_modifier = yes
+	exempt_from_ai_planet_specialization = yes
+
+	show_on_uncolonized = {
+		uses_district_set = habitat
+		has_planet_flag = PR_flg_plnt_VALID
+		exists = from
+		from = { is_megacorp = yes }
+	}
+	potential = {
+		uses_district_set = habitat
+		has_planet_flag = PR_flg_plnt_VALID
+		exists = owner
+		owner = { is_megacorp = yes }
+	}
+	convert_to = {
+		PR_district_HAB_energy	# PR电力站
+	}
+
+	resources = {
+		category = planet_districts_hab_trade
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+			alloys = @low_hab_maintenance
+		}
+	}
+
+	planet_modifier = {
+		planet_max_buildings_add = @PR_bldn_HAB_minus
+	}
+	triggered_planet_modifier = {
+		planet_max_buildings_add = @PR_bldn_HAB_mult
+		planet_housing_add = 1
+		trade_value_add = 2
+		job_trader_add = 1
+		mult = owner.value:PR_sv_cntr_HAB_void_dweller_jobs
+	}
+	#	tr|商业集团|	merchant+1
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { has_active_tradition = tr_mercantile_commercial_enterprise } }
+		trade_value_add = 2
+		job_trader_add = 1
+	}
+
+	##	AI辅助	########################################
+	ai_resource_production = {
+		energy = 18	#8/4*|4.5|*200%
+		mult = value:PR_prmt_sv_RES_produces_MULT_general
+	}
+}
+
+##	PR文化站
+PR_district_HAB_cultural = {
+	base_buildtime = @hab_time
+	is_capped_by_modifier = yes
+	exempt_from_ai_planet_specialization = yes
+
+	show_on_uncolonized = {
+		uses_district_set = habitat
+		has_planet_flag = PR_flg_plnt_VALID
+		exists = from
+		from = { is_regular_empire = yes		NOT = { has_civic = civic_dystopian_society } }
+	}
+	potential = {
+		uses_district_set = habitat
+		has_planet_flag = PR_flg_plnt_VALID
+		exists = owner
+		owner = { is_regular_empire = yes		NOT = { has_civic = civic_dystopian_society } }
+	}
+	convert_to = {
+		#	|PR转化|
+		PR_district_HAB_cultural	# PR文化站
+		PR_district_HAB_cultural_sanctuary
+	}
+
+	resources = {
+		category = planet_districts_hab_leisure
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+			alloys = @low_hab_maintenance
+		}
+	}
+
+	planet_modifier = {
+		planet_max_buildings_add = @PR_bldn_HAB_minus
+	}
+	triggered_planet_modifier = {
+		planet_max_buildings_add = @PR_bldn_HAB_mult
+		planet_housing_add = 1
+		planet_amenities_add = 2.5
+		job_entertainer_add = 1
+		mult = owner.value:PR_sv_cntr_HAB_void_dweller_jobs
+	}
+	#	civic|尚武文化|
+	triggered_planet_modifier = {
+		potential = { exists = owner	owner = { has_valid_civic = civic_warrior_culture } }
+		job_entertainer_add = -1
+		job_duelist_add = 1
+		mult = owner.value:PR_sv_cntr_HAB_void_dweller_jobs
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner	owner = { NOT = { has_valid_civic = civic_warrior_culture } } }
+		text = job_entertainer_effect_desc
+	}
+	triggered_desc = {
+		trigger = { exists = owner	owner = { has_valid_civic = civic_warrior_culture } }
+		text = job_duelist_effect_desc
+	}
+
+	##	AI辅助	########################################
+	ai_resource_production = {
+		energy = 23	#2.5|4.5*200%
+		unity = 18	#2|4.5*200%
+		mult = value:PR_prmt_sv_RES_produces_MULT_general
+	}
+}
+##	PR庇护站
+PR_district_HAB_cultural_sanctuary = {
+	base_buildtime = @hab_time
+	is_capped_by_modifier = yes
+	exempt_from_ai_planet_specialization = yes
+
+	show_on_uncolonized = {
+		uses_district_set = habitat
+		has_planet_flag = PR_flg_plnt_VALID
+		exists = from
+		from = { has_valid_civic = civic_machine_servitor }
+	}
+	potential = {
+		uses_district_set = habitat
+		has_planet_flag = PR_flg_plnt_VALID
+		exists = owner
+		owner = { has_valid_civic = civic_machine_servitor }
+	}
+	convert_to = {
+		#	|PR转化|
+		PR_district_HAB_cultural	# PR文化站
+		PR_district_HAB_cultural_sanctuary
+	}
+
+	resources = {
+		category = planet_districts_hab_leisure
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+			alloys = @low_hab_maintenance
+		}
+	}
+
+	planet_modifier = {
+		planet_max_buildings_add = @PR_bldn_HAB_minus
+		planet_housing_add = 1
+		planet_amenities_no_happiness_add = 1
+		job_maintenance_drone_add = 1
+	}
+	triggered_planet_modifier = {
+		planet_max_buildings_add = @PR_bldn_HAB_mult
+		planet_housing_add = 1
+		job_bio_trophy_add = 1
+		mult = owner.value:PR_sv_cntr_HAB_void_dweller_jobs
+	}
+
+	triggered_desc = {
+		text = job_bio_trophy_effect_desc
+	}
+	triggered_desc = {
+		text = job_maintenance_drone_effect_desc
+	}
+
+	##	AI辅助	########################################
+	ai_resource_production = {
+		energy = 3	#1|1*200%
+		unity = 18	#2|4.5*200%
+		mult = value:PR_prmt_sv_RES_produces_MULT_general
+	}
+}

@@ -353,7 +353,7 @@ building_major_capital = {
 	}
 }
 
-​building_system_capital = {
+building_system_capital = {
 	base_buildtime = @b4_time
 	capital = yes
 	can_build = no

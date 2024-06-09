@@ -192,7 +192,10 @@ resolution_custodian_form_empire = {
 
 		modifier = {
 			factor = 0
-			has_ascension_perk = ap_become_the_crisis
+			OR = {
+                has_ascension_perk = ap_become_the_crisis
+                has_ascension_perk = ap_cosmogenesis
+            }
 			desc = gal_com_we_have_crisis_perk
 		}
 
@@ -485,8 +488,9 @@ resolution_declare_crisis = {
 		modifier = {
 			factor = 0.5
 			from = {
-				NOT = { 
-					has_ascension_perk = ap_become_the_crisis 
+				NOR = {
+					has_ascension_perk = ap_become_the_crisis
+					has_ascension_perk = ap_cosmogenesis
 				}
 			}
 			desc = gal_com_target_does_not_have_crisis_perk
@@ -547,6 +551,7 @@ resolution_galacticreforms_nominate_custodian = {
 			fail_text = "nominate_other_custodian_not_crisis"
 			NOR = {
 				has_ascension_perk = ap_become_the_crisis
+				has_ascension_perk = ap_cosmogenesis
 				has_valid_civic = civic_pompous_purists
 			}
 		}
@@ -586,7 +591,8 @@ resolution_galacticreforms_nominate_custodian = {
 		custom_tooltip = {
 			fail_text = "nominate_custodian_not_crisis"
 			NOR = { 
-				has_ascension_perk = ap_become_the_crisis 
+				has_ascension_perk = ap_become_the_crisis
+				has_ascension_perk = ap_cosmogenesis 
 				has_ascension_perk = ap_wg_crisis
 			}
 		}
@@ -667,7 +673,10 @@ resolution_galacticreforms_nominate_custodian = {
 
 		modifier = {
 			factor = 0
-			has_ascension_perk = ap_become_the_crisis
+			OR = {
+				has_ascension_perk = ap_become_the_crisis
+				has_ascension_perk = ap_cosmogenesis
+			}
 			desc = gal_com_we_have_crisis_perk
 		}
 

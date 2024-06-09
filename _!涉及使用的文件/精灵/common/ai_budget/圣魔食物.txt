@@ -1,0 +1,71 @@
+food_expenditure_planets_ELF = {
+	resource = food
+	type = expenditure
+	category = ships
+	potential = {
+		# always = yes
+		is_ice_moon_ai_country = yes
+	}
+	weight = {
+		weight = 0.1
+	}
+	desired_min = {
+		base = 200
+	}
+	# desired_max = {
+	# 	base = 200
+	# }
+}
+food_expenditure_colonies_expand_ELF = {
+	resource = food
+	type = expenditure
+	category = colonies
+
+	potential = {
+		is_ice_moon_ai_country = yes
+		ai_colonize_plans > 0
+		OR = {
+			AND = {
+				is_lithoid_empire = no
+				has_resource = { type = food amount > 400 }
+				has_monthly_income = {
+					resource = food
+					value > 0
+				}
+			}
+			AND = {
+				is_lithoid_empire = yes
+				has_resource = { type = minerals amount > 400 }
+				has_monthly_income = {
+					resource = minerals
+					value > 0
+				}
+			}
+		}
+	}
+
+	weight = {
+		weight = 0.1
+	}
+
+	desired_min = {
+		base = 200
+	}
+
+	desired_max = {
+		base = 250
+	}
+}
+
+
+food_upkeep_ships = {
+	resource = food
+	type = upkeep
+	category = ships
+	potential = {
+		is_ice_moon_ai_country = yes
+	}
+	weight = {
+		weight = 0.5
+	}
+}
