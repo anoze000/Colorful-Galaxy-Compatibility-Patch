@@ -1,0 +1,7 @@
+CG_compatible_species_archetype = {
+	uses_modifiers = no
+}
+
+LV_species_archetype = {
+	uses_modifiers = no
+}

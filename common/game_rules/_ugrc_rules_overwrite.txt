@@ -185,8 +185,10 @@ can_add_claim = { #可宣称
 				OR = {
 					has_policy_flag = unrestricted_wars
 					# ETCPM
-					AND = {
-						has_global_flag = expanded_pops_active
+					if = {
+						limit = {
+							has_global_flag = expanded_pops_active
+						}
 						OR = {
 							NOT = { 
 								has_valid_civic = civic_closed_collective 
@@ -195,6 +197,9 @@ can_add_claim = { #可宣称
 								has_valid_civic = civic_closed_network 
 							}
 						}
+					}
+					else = {
+						always = no
 					}
 				}
 			}
@@ -219,24 +224,31 @@ can_add_claim = { #可宣称
 			}
 			
 			# ETCPM
-			AND = {
-				has_global_flag = expanded_pops_active
-				root = {
-					has_policy_flag = liberation_wars
-					has_authority = auth_democratic
-					has_valid_ai_personality = yes
-					has_ai_personality = democratic_crusaders
+			if = {
+				limit = {
+					has_global_flag = expanded_pops_active
 				}
-				owner = { 
-					NOT = { 
-						has_authority = auth_democratic 
-					} 
+				AND = {
+					root = {
+						has_policy_flag = liberation_wars
+						has_authority = auth_democratic
+						has_valid_ai_personality = yes
+						has_ai_personality = democratic_crusaders
+					}
+					owner = { 
+						NOT = { 
+							has_authority = auth_democratic 
+						} 
+					}
+					owner = { 
+						NOT = { 
+							has_authority = auth_cooperative 
+						} 
+					}
 				}
-				owner = { 
-					NOT = { 
-						has_authority = auth_cooperative 
-					} 
-				}
+			}
+			else = {
+				always = no
 			}
 		}
 	}
@@ -949,14 +961,21 @@ can_release_vassal_from_species = { #可以从物种释放附庸
 					#	Eevt/ETCPM
 					has_trait = trait_memorex_comatos
 					has_trait = trait_infested_basic
-					AND = {
-						has_global_flag = expanded_pops_active
-						prev = { 
-							NOT = { 
-								has_technology = tech_synthetic_leaders 
-							} 
+					if = {
+						limit = {
+							has_global_flag = expanded_pops_active
 						}
-						has_trait = trait_mechanical
+						AND = {
+							prev = { 
+								NOT = { 
+									has_technology = tech_synthetic_leaders 
+								} 
+							}
+							has_trait = trait_mechanical
+						}
+					}
+					else = {
+						always = no
 					}
 					#	wv
 					AND = {
@@ -2539,20 +2558,13 @@ can_species_be_assembled = { #可组装物种
 						has_ascension_perk = ap_total_assimilation 
 					}
 				}
-				#	GF
-				is_archetype = Dolls
-				if = {
-					limit = {
-						has_trait = trait_doll
-					}
-					root.owner = { 
-						has_authority = auth_commonwealth 
-					}
-				}
 				#	精灵
 				ELF_species_assembled_rules = yes
 				#	多彩
-				AND = { has_global_flag = love_between_us	# |安装|
+				if = {
+					limit = {
+						has_global_flag = love_between_us	# |安装|
+					}
 					OR = {
 						#雌伏于阴影之下起源 允许孤雌生殖物种组装
 						AND = {
@@ -2627,6 +2639,9 @@ can_species_be_assembled = { #可组装物种
 							}
 						}
 					}
+				}
+				else = {
+					always = no
 				}
 			}
 			##	hiveDLC
@@ -3979,7 +3994,10 @@ can_enter_system_by_jump = { #可跃迁进入星系
 							has_star_flag = lcluster
 							has_star_flag = formless_system
 							# wsg
-							AND = { has_global_flag = has_wsg_mod	# 舰r激活
+							if = {
+								limit = {
+									has_global_flag = has_wsg_mod	# 舰r激活
+								}
 								OR = {
 									has_star_flag = wg_sealed_system
 									has_star_flag = wg_psionic_systems
@@ -3990,6 +4008,9 @@ can_enter_system_by_jump = { #可跃迁进入星系
 										}
 									}
 								}
+							}
+							else = {
+								always = no
 							}
 							#	古代帝国
 							has_star_flag = ag_no_jump_in_system
@@ -4013,15 +4034,23 @@ can_enter_system_by_jump = { #可跃迁进入星系
 							#	seooc
 							has_star_flag = nep_Krahen_cluster
 							has_star_flag = nep_Scrus_cluster
-							AND = {
-								has_global_flag = nep_not_pass_Aemethms 
+							if = {
+								limit = {
+									has_global_flag = nep_not_pass_Aemethms 
+								}
 								OR = {
 									has_star_flag = nep_dragon_system
 									has_star_flag = nep_heptagram_cluster
 								}
 							}
+							else = {
+								always =no
+							}
 							#	|多彩|
-							AND = { has_global_flag = love_between_us	# |安装|
+							if = {
+								limit = {
+									has_global_flag = love_between_us	# |安装|
+								}
 								OR = {
 									# 淫触之虫母星系
 									has_star_flag = ten_crisis_system
@@ -4039,6 +4068,9 @@ can_enter_system_by_jump = { #可跃迁进入星系
 										}
 									}
 								}
+							}
+							else = {
+								always = no
 							}
 							#	|精灵|
 							has_star_flag = ELF_Singularity_System
@@ -4799,16 +4831,30 @@ can_support_branch_offices = { #可被建立分部
 					## 禁止其他|特殊国家|	############
 					# azlr
 					has_authority = auth_azur_dictatorial
+					# wsg
+					if = {
+						limit = {
+							has_global_flag = has_wsg_mod
+						}
+						OR = {
+							is_wg_fallen_empire = yes
+							is_sh_fallen_empire = yes
+						}	
+					}
+					else = {
+						always = no
+					}
 				}
 			}
 			##_|禁止_巨企| +AAR		/ETCPM/hiveDLC/MCA/驴岛/wsg		/GF/azl/SOFE	/ECI
 			custom_tooltip = {
 				fail_text = BRANCH_OFFICE_NOT_ON_MEGACORP_PLANET
+				## 禁止所有|企业政府|	############
 				OR = {
-					## 特殊允许|企业政府|	############
-					# AAR
+					##	特殊允许|企业政府|	############
+					#	AAR
 					is_subject_with_preset = { PRESET = AAR_SBJ_subsidiary }
-					# ECI
+					#	ECI	|巨企|
 					if = {
 						limit = {
 							has_global_flag = ideological_revolution	# |ECI激活|
@@ -4818,7 +4864,7 @@ can_support_branch_offices = { #可被建立分部
 					else = {
 						always = no
 					}
-					# rmaid
+					#	rmaid
 					Maid_trigger_1_can_support_branch_offices = yes
 		
 					## 禁止所有|企业政府|	############
@@ -4827,23 +4873,23 @@ can_support_branch_offices = { #可被建立分部
 						has_civic = civic_galactic_sovereign_megacorp
 						
 						#_|巨企国家|	ETCPM/hiveDLC/MCA/驴岛/wsg
-						# ETCPM
+						#	ETCPM
 						has_authority = auth_private
-						# hiveDLC
+						#	hiveDLC
 						has_valid_civic = civic_mutualistic_behavior
 						has_valid_civic = civic_machine_trading
-						# MCA
+						#	MCA
 						has_authority = auth_corporate_fiefdom
 						has_authority = auth_cooperative
-						# 驴岛
+						#	驴岛
 						has_civic = civic_business_union
-						# wsg
+						#	wsg
 						if = {
 							limit = {
 								has_global_flag = has_wsg_mod
 							}
-							AND ={
-								OR ={
+							AND = {
+								OR = {
 									has_authority = auth_warshipgirls
 									AND = {
 										has_authority = auth_shenhai
@@ -4851,14 +4897,13 @@ can_support_branch_offices = { #可被建立分部
 											has_country_flag = pantsu_shop_origin
 											has_civic = civic_sh_criminal_syndicate
 										}
-									}
+									}	
 								}
-								# 多彩
 								if = {
 									limit = {
 										has_global_flag = love_between_us
 									}
-									NOT = { 
+									NOT = {
 										has_valid_civic = civic_master
 									}
 								}
@@ -4867,27 +4912,30 @@ can_support_branch_offices = { #可被建立分部
 						else = {
 							always = no
 						}
-						# 多彩
+						
+						#	GF
+						has_civic = GF_civic_GK
+						#	azl
+						has_authority = auth_azur_lane_1
+						#	SOFE
+						has_valid_civic = civic_sofe_inner_strength
+						#	多彩
 						if = {
 							limit = {
 								has_global_flag = love_between_us
 							}
-							#破灭之光
-							has_origin = origin_INN_destruction_light
-							#迭起兴衰
-							has_valid_civic = civic_parasite_rise_and_all
-							# 多彩玩法拓展
-							has_valid_civic = civic_corruption_syndicate # 罪企
+							OR = {
+								#破灭之光
+								has_origin = origin_INN_destruction_light
+								#迭起兴衰
+								has_valid_civic = civic_parasite_rise_and_all
+								#玩法拓展
+								has_valid_civic = civic_corruption_syndicate # 罪企
+							}
 						}
 						else = {
 							always = no
 						}
-						# GF
-						has_civic = GF_civic_GK
-						# azl
-						has_authority = auth_azur_lane_1
-						# SOFE
-						has_valid_civic = civic_sofe_inner_strength
 					}
 				}
 			}
@@ -4936,6 +4984,36 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 					has_planet_flag = community_can_build_branch_office_on_planet_false
 				}
 			}
+			### wsg 必须放在前面
+			if = {
+				limit = {
+					has_global_flag = has_wsg_mod
+				}
+				custom_tooltip = {
+					fail_text = requires_recipient_not_warshipgirls
+					exists = owner
+					owner = {
+						NOR = {
+							AND = {
+								has_authority = auth_warshipgirls	# 舰r=不接受分公司
+								NOT = { 
+									has_valid_civic = civic_master
+								}   #_[多彩]
+							}
+							AND = {
+								has_authority = auth_shenhai	# 深海|战利品商店||罪企|=不接受分公司
+								OR = {
+									has_country_flag = pantsu_shop_origin
+									has_civic = civic_sh_criminal_syndicate
+								}
+								NOT = { 
+									has_valid_civic = civic_master
+								}   #_[多彩]
+							}
+						}
+					}
+				}
+			}	
 			#
 			###_|非灭绝政体|
 			custom_tooltip = {
@@ -5125,7 +5203,7 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 					##	星海帝皇	=|义军同盟|
 					AND = {
 						root = { 
-							s_country_type = rebel_allience 
+							is_country_type = rebel_allience 
 						}
 						owner = { 
 							is_galactic_emperor = yes 
@@ -5231,19 +5309,21 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 						limit = {
 							has_global_flag = has_wsg_mod
 						}
+						OR = {
+							owner = {
+								has_civic = civic_sh_criminal_syndicate
+							}
+							#	贸易战争
+							AND = {
+								owner = { 
+									has_country_flag = lose_wg_shop_war 
+								}
+								root = {
+									has_country_flag = pantsu_shop_origin
+								}
+							}
+						}
 						#	深海罪企
-						owner = {
-							has_civic = civic_sh_criminal_syndicate
-						}
-						#	贸易战争
-						AND = {
-							owner = { 
-								has_country_flag = lose_wg_shop_war 
-							}
-							root = {
-								has_country_flag = pantsu_shop_origin
-							}
-						}
 					}
 					else = {
 						always = no
@@ -5305,36 +5385,6 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 				fail_text = NO_BRANCH_OFFICE_ON_NANITE_WORLD
 				NOT = { is_planet_class = pc_gray_goo }
 			}
-			### wsg
-			if = {
-				limit = {
-					has_global_flag = has_wsg_mod
-				}
-				custom_tooltip = {
-					fail_text = requires_recipient_not_warshipgirls
-					exists = owner
-					owner = {
-						NOR = {
-							AND = {
-								has_authority = auth_warshipgirls	# 舰r=不接受分公司
-								NOT = { 
-									has_valid_civic = civic_master
-								}   #_[多彩]
-							}
-							AND = {
-								has_authority = auth_shenhai	# 深海|战利品商店||罪企|=不接受分公司
-								OR = {
-									has_country_flag = pantsu_shop_origin
-									has_civic = civic_sh_criminal_syndicate
-								}
-								NOT = { 
-									has_valid_civic = civic_master
-								}   #_[多彩]
-							}
-						}
-					}
-				}
-			}	
 			hidden_trigger = {
 				### MCA
 				if = { 
@@ -5404,39 +5454,8 @@ is_criminal_syndicate_rule = { #遵循犯罪集团规则
 					has_country_flag = community_is_criminal_syndicate_rule_false
 				}
 			}
-			OR = {
-				AND = {
-					#	|政体|
-					OR = {
-						has_authority = auth_corporate
-						has_valid_civic = civic_galactic_sovereign_megacorp
-						#	UGRC
-						has_country_flag = UGRC_flg_cntr_RULE_criminal_syndicate
-						#	wsg
-						has_authority = auth_warshipgirls
-						has_authority = auth_shenhai
-						has_authority = auth_brothel
-					}
-					#	|国策|
-					OR = {
-						has_valid_civic = civic_criminal_heritage
-						#	UGRC
-						has_country_flag = UGRC_flg_cntr_RULE_criminal_syndicate
-						
-						#	ECI
-						has_civic = civic_underworld_society
-						has_civic = civic_family_business
-						has_civic = civic_world_cooperative
-						#	wsg
-						has_civic = civic_sh_criminal_syndicate
-						#	ev
-						has_valid_civic = civic_ev_criminal_ship
-						#	cg+
-						has_valid_civic = civic_corruption_syndicate # 罪企
-						has_valid_civic = civic_semen_pantyhose_brothel
-					}
-				}
-			}
+			#	UGRC
+			has_country_flag = UGRC_flg_cntr_RULE_criminal_syndicate
 		}
 		AND = { #国防部 MOD
 			has_country_flag = community_mod_rules_trigger
@@ -5713,20 +5732,13 @@ can_be_sold_on_slave_market = { #可在奴隶市场出售
 				}
 			}
 			#	ntr相关	+wsg/多彩/SC
-			NOR = {
-				if = {
-					limit = {
-						has_global_flag = has_wsg_mod
-					}
+			if = {
+				limit = {
+					has_global_flag = has_wsg_mod
+				}
+				NAND = {
 					has_wg_traits = yes
-					species = {
-						OR = {
-							is_archetype = WARSHIPGIRL
-							is_archetype = SHENHAI
-							is_archetype = UNITED_FLEET
-							is_archetype = NANITES_CROP
-						} 
-					}
+					species = { UGRC_trgr_spcs_WSG = yes }
 					if = {
 						limit = {
 							has_global_flag = love_between_us
@@ -5737,18 +5749,13 @@ can_be_sold_on_slave_market = { #可在奴隶市场出售
 						}
 					}
 				}
-				else = {
-					always = no
+			}
+			if = {
+				limit = {
+					has_global_flag = has_swgs_mod
 				}
-				if = {
-					limit = {
-						has_global_flag = has_swgs_mod
-					}
-					species = { 
-						NOT = {
-							is_archetype = STARSHIPGIRLS
-						}
-					}
+				NAND = {
+					species = { UGRC_trgr_spcs_SC = no }
 					if = {
 						limit = {
 							has_global_flag = love_between_us
@@ -5759,9 +5766,7 @@ can_be_sold_on_slave_market = { #可在奴隶市场出售
 						}
 					}
 				}
-				else = {
-					always = no
-				}
+				
 			}
 			#	PTep
 			NOT = { 
@@ -7356,7 +7361,7 @@ can_trade_leader = { #可交易的领导者
 					}
 				}
 			}
-			##_|同类政体|	+反正不是多彩
+			##_|同类政体|
 			# The subject and overlord must both be regular empires, machine intelligences or hive-minds.
 			OR = {
 				AND = {
@@ -7398,16 +7403,6 @@ can_trade_leader = { #可交易的领导者
 							any_owned_leader = {
 								has_trait = leader_trait_tactical_algorithms
 							}
-						}
-					}
-				}
-				#	反正不是多彩
-				AND = {
-					has_global_flag = nongestalt_leader_always_tradable
-					this.species = {
-						NOR = {
-							has_trait = trait_hive_mind
-							has_trait = trait_machine_unit
 						}
 					}
 				}

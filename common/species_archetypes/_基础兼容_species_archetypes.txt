@@ -5,6 +5,9 @@
 @species_trait_points = 2
 @species_max_traits = 5
 
+@ELF_trait_points = 3
+@ELF_max_traits = 36
+
 #原版
 BIOLOGICAL = {
 	species_trait_points = @species_trait_points
