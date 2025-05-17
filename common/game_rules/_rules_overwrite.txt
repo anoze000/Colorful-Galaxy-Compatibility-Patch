@@ -2580,7 +2580,7 @@ can_have_robot_pops = { #可拥有机器人pop
 			#
 			exists = this
 			is_hive_empire = no
-			NOT = { has_policy_flag = robots_outlawed }、
+			NOT = { has_policy_flag = robots_outlawed }
 			#	多彩
 			#雌伏于阴影之下
 			NOT = { has_origin = origin_female_in_shadow }
@@ -4342,7 +4342,13 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 			custom_tooltip = {
 				fail_text = NO_BRANCH_OFFICE_ON_SELF
 				owner = {
-					NOT = { is_same_value = root }
+					OR = {
+						NOT = { is_same_value = root }
+						# CG
+						#爱欲盛宴
+						has_valid_civic = civic_master
+					}
+
 				}
 			}
 			### wsg

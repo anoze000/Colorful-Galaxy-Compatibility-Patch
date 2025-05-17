@@ -3,5 +3,5 @@ tags={
 	"Fixes"
 }
 name="Colorful-Galaxy-Compatibility-Patch"
-supported_version="v4.0.7"
+supported_version="v4.0.10"
 remote_file_id="2631211703"
