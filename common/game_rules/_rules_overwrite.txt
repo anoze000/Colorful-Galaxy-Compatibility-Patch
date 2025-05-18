@@ -3962,57 +3962,14 @@ can_support_branch_offices = { #可被建立分部
 					has_authority = auth_azur_dictatorial
 				}
 			}
-			##_|禁止_巨企| +AAR		/ETCPM/hiveDLC/MCA/驴岛/wsg		/GF/azl/SOFE	/ECI		|待修|
+			##_|禁止_巨企| +多彩		|待修|
 			custom_tooltip = {
 				fail_text = BRANCH_OFFICE_NOT_ON_MEGACORP_PLANET
-				OR = {
-					##	特殊允许|企业政府|	############
-					#	AAR
-					is_subject_with_preset = { PRESET = AAR_SBJ_subsidiary }
-					#	ECI	|巨企|
-					AND = { has_global_flag = ideological_revolution	# |ECI激活|
-						is_eci_megacorp = yes
-					}
-					#	rmaid
-					Maid_trigger_1_can_support_branch_offices = yes
-
-					## 禁止所有|企业政府|	############
-					NOR = {
-						#is_megacorp = yes
-						#has_civic = civic_galactic_sovereign_megacorp
-						
-						#_|巨企国家|	ETCPM/hiveDLC/MCA/驴岛/wsg
-						#	ETCPM
-						has_authority = auth_private
-						#	hiveDLC
-						has_valid_civic = civic_mutualistic_behavior
-						has_valid_civic = civic_machine_trading
-						#	MCA
-						has_authority = auth_corporate_fiefdom
-						has_authority = auth_cooperative
-						#	驴岛
-						has_civic = civic_business_union
-						#	wsg
-						has_authority = auth_warshipgirls
-						AND = {
-							has_authority = auth_shenhai
-							OR = {
-								has_country_flag = pantsu_shop_origin
-								has_civic = civic_sh_criminal_syndicate
-							}
-						}
-						#	GF
-						has_civic = GF_civic_GK
-						#	azl
-						has_authority = auth_azur_lane_1
-						#	SOFE
-						has_valid_civic = civic_sofe_inner_strength
-						#	多彩
-						#破灭之光
-						has_origin = origin_INN_destruction_light
-						#迭起兴衰
-						has_valid_civic = civic_parasite_rise_and_all
-					}
+				NOR = {
+					#破灭之光
+					has_origin = origin_INN_destruction_light
+					#迭起兴衰
+					has_valid_civic = civic_parasite_rise_and_all
 				}
 			}
 			##_|必要国家类型|
@@ -4341,31 +4298,46 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 			}
 			custom_tooltip = {
 				fail_text = NO_BRANCH_OFFICE_ON_SELF
-				owner = {
-					OR = {
+				OR = {
+					owner = {
 						NOT = { is_same_value = root }
-						# CG
+					}
+					# CGPC
+					root = {
 						#爱欲盛宴
 						has_valid_civic = civic_master
 					}
-
 				}
 			}
 			### wsg
 			custom_tooltip = {
 				fail_text = requires_recipient_not_warshipgirls
-				NAND = {
-					has_global_flag = has_wsg_mod	# 舰r激活
-					exists = owner
-					owner = {
-						OR = {
-							has_authority = auth_warshipgirls	# 舰r=不接受分公司
-							AND = {
-								has_authority = auth_shenhai	# 深海|战利品商店||罪企|=不接受分公司
-								OR = {
-									has_country_flag = pantsu_shop_origin
-									has_civic = civic_sh_criminal_syndicate
+				if = {
+					limit = { has_global_flag = has_wsg_mod }
+					OR = {
+						AND = {
+							exists = owner
+							owner = {
+								NOR = {
+									has_authority = auth_warshipgirls 
+									AND = {
+										has_authority = auth_shenhai
+										OR = {
+											has_country_flag = pantsu_shop_origin
+											has_civic = civic_sh_criminal_syndicate
+										}
+									}
 								}
+							}
+						}
+						# CGPC
+						AND = {
+							ROOT = {
+								#爱欲盛宴
+								has_valid_civic = civic_master
+							}
+							owner = {
+								is_same_value = root
 							}
 						}
 					}
