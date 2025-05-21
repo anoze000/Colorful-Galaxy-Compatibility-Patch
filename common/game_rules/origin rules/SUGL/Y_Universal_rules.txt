@@ -411,20 +411,20 @@ can_generate_leader_from_pop_group = { #可从pop中生成领袖
 	OR = {
 		AND = { #香草 vanilla
 			NAND = { #排除条件 Exclusions
-				has_pop_flag = community_mod_rules_trigger
+				has_pop_group_flag = community_mod_rules_trigger
 				OR = {
-					has_pop_flag = community_can_generate_leader_from_pop_true
-					has_pop_flag = community_can_generate_leader_from_pop_false
+					has_pop_group_flag = community_can_generate_leader_from_pop_group_true
+					has_pop_group_flag = community_can_generate_leader_from_pop_group_false
 				}
 			}
 			#
 			can_be_leader = yes
 		}
 		AND = { #国防部 MOD
-			has_pop_flag = community_mod_rules_trigger
+			has_pop_group_flag = community_mod_rules_trigger
 			AND = {
-				has_pop_flag = community_can_generate_leader_from_pop_true
-				NOT = { has_pop_flag = community_can_generate_leader_from_pop_false }
+				has_pop_group_flag = community_can_generate_leader_from_pop_group_true
+				NOT = { has_pop_group_flag = community_can_generate_leader_from_pop_group_false }
 			}
 		}
 	}
@@ -498,10 +498,10 @@ can_generate_military_leader_from_pop_group = { #可从pop创建军事领袖
 	OR = {
 		AND = { #香草 vanilla
 			NAND = { #排除条件 Exclusions
-				has_pop_flag = community_mod_rules_trigger
+				has_pop_group_flag = community_mod_rules_trigger
 				OR = {
-					has_pop_flag = community_can_generate_military_leader_from_pop_true
-					has_pop_flag = community_can_generate_military_leader_from_pop_false
+					has_pop_group_flag = community_can_generate_military_leader_from_pop_group_true
+					has_pop_group_flag = community_can_generate_military_leader_from_pop_group_false
 				}
 			}
 			#
@@ -509,10 +509,10 @@ can_generate_military_leader_from_pop_group = { #可从pop创建军事领袖
 			can_be_military_leader = yes
 		}
 		AND = { #国防部 MOD
-			has_pop_flag = community_mod_rules_trigger
+			has_pop_group_flag = community_mod_rules_trigger
 			AND = {
-				has_pop_flag = community_can_generate_military_leader_from_pop_true
-				NOT = { has_pop_flag = community_can_generate_military_leader_from_pop_false }
+				has_pop_group_flag = community_can_generate_military_leader_from_pop_group_true
+				NOT = { has_pop_group_flag = community_can_generate_military_leader_from_pop_group_false }
 			}
 		}
 	}
@@ -598,7 +598,7 @@ can_release_vassal_from_species = { #可以从物种释放附庸
 					}
 					AND = {
 						NOT = { has_trait = trait_hive_mind }
-						prev.this = { is_hive_empire = yes }
+						prev.this = { is_machine_empire = yes }
 					}
 					has_trait = trait_mechanical
 					can_think = no
@@ -698,10 +698,6 @@ can_modify_species = { #可以修饰物种
 						is_archetype = BIOLOGICAL
 						is_archetype = LITHOID
 					}
-					NOR = {
-						has_trait = trait_clone_soldier_infertile
-						has_trait = trait_clone_soldier_infertile_full_potential
-					}
 				}
 				custom_tooltip = {
 					fail_text = "NEEDS_GENE_TAILORING_OR_INTERGRATED_ANATOMY"
@@ -712,22 +708,6 @@ can_modify_species = { #可以修饰物种
 							has_active_tradition = tr_cybernetics_integrated_anatomy
 							has_active_tradition = tr_cybernetics_assimilator_integrated_anatomy
 						}
-					}
-				}
-			}
-			# Clone Army
-			if = {
-				limit = {
-					OR = {
-						has_trait = trait_clone_soldier_infertile
-						has_trait = trait_clone_soldier_infertile_full_potential
-					}
-				}
-				custom_tooltip = {
-					fail_text = "NEEDS_GENE_TAILORING_AND_CLONE_SYNTHESIZATION"
-					ROOT = {
-						has_technology = tech_gene_tailoring
-						has_active_tradition = tr_cloning_somatic_synthesization_clone_army
 					}
 				}
 			}
@@ -782,13 +762,6 @@ can_modify_species = { #可以修饰物种
 						has_trait = trait_self_modified
 					}
 					#is_same_species = root
-				}
-			}
-			# Malleable Genes
-			custom_tooltip = {
-				fail_text = "CANNOT_MODIFY_MALLEABLE_GENES_SPECIES"
-				NOT = {
-					has_trait = trait_malleable_genes
 				}
 			}
 		}
@@ -1495,59 +1468,87 @@ can_species_be_assembled = { #可组装物种
 # Checks if a species uses bonus_growth modifier
 # This = Species
 # Root = Planet
-species_uses_bonus_growth = {
-	is_sapient = yes
-	has_population_control = {
-		type = no
-		country = root.owner
-	}
-	NAND = {
-		root = { has_modifier = slave_colony }
-		NOT = { has_citizenship_type = { type = citizenship_slavery country = root.owner } }
-	}
-	if = {
-		limit = {
-			has_trait = trait_necrophage
-		}
-		NOT = {
-			root = {
-				any_owned_species = {
-					has_population_control = { country = root.owner type = no }
-					species_can_be_necrophaged = yes
+species_uses_bonus_growth = { #使用有机组装
+	OR = {
+		AND = { #香草 vanilla
+			NAND = { #排除条件 Exclusions
+				has_species_flag = community_mod_rules_trigger
+				OR = {
+					has_species_flag = community_species_uses_bonus_growth_true
+					has_species_flag = community_species_uses_bonus_growth_false
+				}
+			}
+			#
+			is_sapient = yes
+			has_population_control = {
+				type = no
+				country = root.owner
+			}
+			NAND = {
+				root = { has_modifier = slave_colony }
+				NOT = { has_citizenship_type = { type = citizenship_slavery country = root.owner } }
+			}
+			if = {
+				limit = {
+					has_trait = trait_necrophage
+				}
+				NOT = {
+					root = {
+						any_owned_species = {
+							has_population_control = { country = root.owner type = no }
+							species_can_be_necrophaged = yes
+						}
+					}
+				}
+			}
+			NOR = {
+				has_citizenship_type = {
+					type = citizenship_protected_drone
+					country = root.owner
+				}
+				has_citizenship_type = {
+					type = citizenship_symbiotic_drone
+					country = root.owner
+				}
+				has_citizenship_type = {
+					type = citizenship_exploited_drone
+					country = root.owner
+				}
+			}
+			NOT = { has_species_flag = nivlac_no_procreation }
+			if = {
+				limit = {
+					has_infertile_clone_soldier_trait = yes
+				}
+				root = {
+					check_variable = { which = clone_pops_missing_per_vat value > 0 }
+				}
+			}
+			if = {
+				limit = {
+					has_cybernetic_creed_trait = yes
+				}
+				NOT = {
+					root = {
+						any_owned_species = {
+							has_population_control = { country = root.owner type = no }
+							is_robotic_species = no
+							has_cybernetic_creed_trait = no
+						}
+					}
 				}
 			}
 		}
-	}
-	NOR = {
-		has_citizenship_type = {
-			type = citizenship_protected_drone
-			country = root.owner
-		}
-		has_citizenship_type = {
-			type = citizenship_symbiotic_drone
-			country = root.owner
-		}
-		has_citizenship_type = {
-			type = citizenship_exploited_drone
-			country = root.owner
-		}
-	}
-	NOT = { has_species_flag = nivlac_no_procreation }
-	if = {
-		limit = {
-			has_cybernetic_creed_trait = yes
-		}
-		NOT = {
-			root = {
-				any_owned_species = {
-					has_population_control = { country = root.owner type = no }
-					is_robotic_species = no
-					has_cybernetic_creed_trait = no
-				}
+		AND = { #国防部 MOD
+			has_species_flag = community_mod_rules_trigger
+			AND = {
+				has_species_flag = community_species_uses_bonus_growth_true
+				NOT = { has_species_flag = community_species_uses_bonus_growth_false }
 			}
 		}
 	}
 }
+
 
 #Root = country
 #From = species
@@ -2564,10 +2565,10 @@ pop_group_generates_crime = { #pop产生犯罪度
 	OR = {
 		AND = { #香草 vanilla
 			NAND = { #排除条件 Exclusions
-				has_pop_flag = community_mod_rules_trigger
+				has_pop_group_flag = community_mod_rules_trigger
 				OR = {
-					has_pop_flag = community_pop_generates_crime_true
-					has_pop_flag = community_pop_generates_crime_false
+					has_pop_group_flag = community_pop_group_generates_crime_true
+					has_pop_group_flag = community_pop_group_generates_crime_false
 				}
 			}
 			#
@@ -2576,10 +2577,10 @@ pop_group_generates_crime = { #pop产生犯罪度
 			is_being_assimilated = no
 		}
 		AND = { #国防部 MOD
-			has_pop_flag = community_mod_rules_trigger
+			has_pop_group_flag = community_mod_rules_trigger
 			AND = {
-				has_pop_flag = community_pop_generates_crime_true
-				NOT = { has_pop_flag = community_pop_generates_crime_false }
+				has_pop_group_flag = community_pop_group_generates_crime_true
+				NOT = { has_pop_group_flag = community_pop_group_generates_crime_false }
 			}
 		}
 	}
@@ -3150,10 +3151,10 @@ can_be_sold_on_slave_market = { #可在奴隶市场出售
 	OR = {
 		AND = { #香草 vanilla
 			NAND = { #排除条件 Exclusions
-				has_pop_flag = community_mod_rules_trigger
+				has_pop_group_flag = community_mod_rules_trigger
 				OR = {
-					has_pop_flag = community_can_be_sold_on_slave_market_true
-					has_pop_flag = community_can_be_sold_on_slave_market_false
+					has_pop_group_flag = community_can_be_sold_on_slave_market_true
+					has_pop_group_flag = community_can_be_sold_on_slave_market_false
 				}
 			}
 			#
@@ -3194,10 +3195,10 @@ can_be_sold_on_slave_market = { #可在奴隶市场出售
 			}
 		}
 		AND = { #国防部 MOD
-			has_pop_flag = community_mod_rules_trigger
+			has_pop_group_flag = community_mod_rules_trigger
 			AND = {
-				has_pop_flag = community_can_be_sold_on_slave_market_true
-				NOT = { has_pop_flag = community_can_be_sold_on_slave_market_false }
+				has_pop_group_flag = community_can_be_sold_on_slave_market_true
+				NOT = { has_pop_group_flag = community_can_be_sold_on_slave_market_false }
 			}
 		}
 	}
@@ -4080,7 +4081,11 @@ is_civilian_job = { #是平民岗位
 # Does not apply to "crisis building" (colony_automation_exceptions) or sector automation (sector_focuses)
 # this = planet
 should_planetary_automate = { #可自动建设的行星
-	always = yes
+	OR = {
+		free_jobs < 3
+		num_unemployed > 0
+	}
+	has_building_construction = no
 }
 
 #暂不考虑对此的兼容 仅作文本保留
@@ -4341,14 +4346,33 @@ will_leader_retire = { #领导人是否会退休
 # Used to call the Second Chance toast when a leader dies, still need to clone it and actually have the leader survive
 # This = leader
 will_leader_survive = { #领袖复活
-	exists = owner
 	OR = {
-		# Spare Organs trait
-		AND = {
-			species = { has_trait = trait_spare_organs }
-			NOT = { has_trait = trait_leader_second_chanced }
+		AND = { #香草 vanilla
+			NAND = { #排除条件 Exclusions
+				has_leader_flag = community_mod_rules_trigger
+				OR = {
+					has_leader_flag = community_will_leader_survive_true
+					has_leader_flag = community_will_leader_survive_false
+				}
+			}		
+			#	
+			exists = owner
+			OR = {
+				# Spare Organs trait
+				AND = {
+					species = { has_trait = trait_spare_organs }
+					NOT = { has_trait = trait_leader_second_chanced }
+				}
+				leader_backup_clone_can_activate = yes
+			}
 		}
-		leader_backup_clone_can_activate = yes
+		AND = { #国防部 MOD
+			has_leader_flag = community_mod_rules_trigger
+			AND = {
+				has_leader_flag = community_will_leader_survive_true
+				NOT = { has_leader_flag = community_will_leader_survive_false }
+			}
+		}
 	}
 }
 

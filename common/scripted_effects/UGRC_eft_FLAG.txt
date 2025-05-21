@@ -18,16 +18,7 @@ UGRC_eft_npc0_INSTALL_DB = {
 
 ###	UGRC开局DB	################################################################################
 #_evt	<ugrc开局框架>
-UGRC_eft_glbl_START = {
-	every_country = {
-		limit = { pop_amount > 0 }
-		every_owned_pop_group = {
-			set_pop_group_flag = UGRC_flg_pop_RULE_can_generate_leader
-			set_pop_group_flag = UGRC_flg_pop_RULE_can_generate_military_leader
-		}
-	}
-}
-
+UGRC_eft_glbl_START = {}
 
 
 
@@ -428,7 +419,7 @@ UGRC_eft_sstm_RULE_flg_DB = {
 
 ###	UGRC全局国家标签DB	################################################################################################################################################################
 #_evt	<ugrc开局框架/ugrc开局延时	/ugrc读档框架	/ugrc年检框架>
-#_list	UGRC幸福感/UGRC星系管制		/UGRC罪企
+#_list	UGRC幸福感/UGRC殖民地/UGRC星系管制		/UGRC罪企
 UGRC_eft_glbl_RULE_cntr_flg_DB = {
 	every_country = {
 		##	UGRC幸福感		####################
@@ -491,6 +482,21 @@ UGRC_eft_glbl_RULE_cntr_flg_DB = {
 			}
 		}
 
+		##	UGRC殖民地		####################
+		if = { limit = { num_owned_planets > 0 }
+			every_owned_planet = {
+				#	UGRC新地|is_new_colony
+				set_planet_flag = UGRC_flg_plnt_RULE_is_new_colony_DISABLED
+				if = {
+					limit = {
+						NOT = { has_planet_flag = synth_queen_bastille }
+						colony_age < 180
+						pop_amount < 1000
+					}
+					remove_planet_flag = UGRC_flg_plnt_RULE_is_new_colony_DISABLED
+				}
+			}
+		}
 
 		##	UGRC星系管制	####################
 		remove_country_flag = UGRC_flg_cntr_RULE_restrict_DEFAULT
@@ -591,6 +597,7 @@ UGRC_eft_glbl_RULE_cntr_flg_DB = {
 
 
 ###	UGRC全局人口标签DB	################################################################################################################################################################
+#_算法	首先对<全银河物种>进行检测, 然后调用检测结果对<全银河人口组>进行检测
 #_evt	<ugrc开局框架/ugrc开局延时	/ugrc读档框架	/ugrc年检框架>
 UGRC_eft_glbl_RULE_pop_flg_DB = {
 	##	UGRC物种标签DB
@@ -601,17 +608,22 @@ UGRC_eft_glbl_RULE_pop_flg_DB = {
 	##	UGRC人口标签DB
 	#	[CD触发]含instant	=参选/犯罪/产生领袖
 	if = { limit = { NOT = { has_global_flag = UGRC_flg_glbl_RULE_pop_flg_db_CD } }
-		set_timed_global_flag = { flag = UGRC_flg_glbl_RULE_pop_flg_db_CD	days = 720 }
+		set_timed_global_flag = { flag = UGRC_flg_glbl_RULE_pop_flg_db_CD	days = 540 }
 		every_country = {
 			limit = { pop_amount > 0 }
-			every_owned_pop_group = { UGRC_eft_pop_RULE_flg_DB_cd = yes }
+			every_owned_pop_group = {
+				UGRC_eft_pop_RULE_flg_DB_instant = yes	# |每年触发|
+				UGRC_eft_pop_RULE_flg_DB_cd = yes	# |2年触发|
+			}
 		}
 	}
 	#	[立刻触发]	=参选/犯罪
 	else = {
 		every_country = {
 			limit = { pop_amount > 0 }
-			every_owned_pop_group = { UGRC_eft_pop_RULE_flg_DB_instant = yes }
+			every_owned_pop_group = {
+				UGRC_eft_pop_RULE_flg_DB_instant = yes	# |每年触发|
+			}
 		}
 	}
 }
@@ -902,9 +914,8 @@ UGRC_eft_pop_RULE_flg_DB_instant = {
 UGRC_eft_pop_RULE_flg_DB_cd = {
 	optimize_memory	#内存
 
-	UGRC_eft_pop_RULE_flg_DB_instant = yes	# |每年触发|
-
 	##	|UGRC产生领袖|人口条件	####################	同步追踪	|can_be_leader|	/00_scripted_triggers.txt	<root>替换为<owner>
+	set_pop_group_flag = UGRC_flg_pop_RULE_can_generate_leader_DISABLED
 	if = {
 		limit = {
 			species = { has_species_flag = UGRC_flg_spcs_RULE_can_generate_leader }	# |物种条件|通过
@@ -944,50 +955,45 @@ UGRC_eft_pop_RULE_flg_DB_cd = {
 			#	hiveDLC
 			NOT = { owner = { has_origin = origin_hive_overmind } }
 		}
-		set_pop_group_flag = UGRC_flg_pop_RULE_can_generate_leader
-	}
-	else = {
-		remove_pop_group_flag = UGRC_flg_pop_RULE_can_generate_leader
+		remove_pop_group_flag = UGRC_flg_pop_RULE_can_generate_leader_DISABLED
 	}
 
 
-#	##	|UGRC军事领袖|	####################	
-#	if = {
-#		limit = {
-#			##	|can_be_leader|
-#			has_pop_group_flag = UGRC_flg_pop_RULE_can_generate_leader
-#
-#			##	|can_be_military_leader|	同步追踪	/00_scripted_triggers.txt
-#			is_enslaved = no
-#			is_sapient = yes
-#			#	|机器人|	+GF
-#			OR = {
-#				is_robot_pop_group = no
-#				owner = {
-#					OR = {
-#						has_policy_flag = ai_full_rights
-#						has_authority = auth_machine_intelligence
-#						is_individual_machine = yes
-#						has_authority = auth_GF_paradeus	# nyto
-#					}
-#				}
-#			}
-#			OR = {
-#				AND = { # MIs only accept Fully Integrated leaders
-#					owner = { has_authority = auth_machine_intelligence }
-#					has_citizenship_type = { type = citizenship_full_machine country = owner }
-#					has_military_service_type = { type = military_service_full }
-#				}
-#				AND = { # non-MIs accept whatever
-#					NOT = { owner = { has_authority = auth_machine_intelligence } }
-#					has_military_service_type = { type = military_service_full }
-#				}
-#			}
-#		}
-#		set_pop_group_flag = UGRC_flg_pop_RULE_can_generate_military_leader
-#	}
-#	else = {
-#		remove_pop_group_flag = UGRC_flg_pop_RULE_can_generate_military_leader
-#	}
+	##	|UGRC军事领袖|	####################	
+	set_pop_group_flag = UGRC_flg_pop_RULE_can_generate_military_leader_DISABLED
+	if = {
+		limit = {
+			##	|can_be_leader|
+			NOT = { has_pop_group_flag = UGRC_flg_pop_RULE_can_generate_leader_DISABLED }
+
+			##	|can_be_military_leader|	同步追踪	/00_scripted_triggers.txt
+			is_enslaved = no
+			is_sapient = yes
+			#	|机器人|	+GF
+			OR = {
+				is_robot_pop_group = no
+				owner = {
+					OR = {
+						has_policy_flag = ai_full_rights
+						has_authority = auth_machine_intelligence
+						is_individual_machine = yes
+						has_authority = auth_GF_paradeus	# nyto
+					}
+				}
+			}
+			OR = {
+				AND = { # MIs only accept Fully Integrated leaders
+					owner = { has_authority = auth_machine_intelligence }
+					has_citizenship_type = { type = citizenship_full_machine country = owner }
+					has_military_service_type = { type = military_service_full }
+				}
+				AND = { # non-MIs accept whatever
+					NOT = { owner = { has_authority = auth_machine_intelligence } }
+					has_military_service_type = { type = military_service_full }
+				}
+			}
+		}
+		remove_pop_group_flag = UGRC_flg_pop_RULE_can_generate_military_leader_DISABLED
+	}
 }
 

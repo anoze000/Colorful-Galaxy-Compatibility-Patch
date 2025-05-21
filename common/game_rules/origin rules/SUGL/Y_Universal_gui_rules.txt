@@ -110,7 +110,9 @@ should_hide_resources_for_planet = { #应当隐藏此行星资源点
 				}
 			}
 			#
-			always = no
+			any_fleet_in_orbit = {
+				is_ship_class = shipclass_habitat_station
+			}
 		}
 		AND = { #国防部 MOD
 			has_planet_flag = community_mod_rules_trigger

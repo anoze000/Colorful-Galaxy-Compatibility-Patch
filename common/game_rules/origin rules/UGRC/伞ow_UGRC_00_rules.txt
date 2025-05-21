@@ -3,7 +3,7 @@
 
 #_list		可宿敌/允许宣称
 #			星球生存/UGRC参选
-#			UGRC产生领袖*/UGRC军事领袖*
+#			UGRC产生领袖/UGRC军事领袖
 #			释放附庸/发动战争/可殖民/环境改造/殖民物种/自由思潮
 #			UGRC幸福感/可敌对	/UGRC可繁殖
 #			物种组装/轨道轰炸/全图视野
@@ -11,7 +11,7 @@
 #			UGRC修理/产生残骸	/UGRC星系管制/可跃迁/占领军
 #			UGRC传感器/跃迁管制
 #			可迁移の人口
-#			UGRC犯罪/强制灭绝
+#			UGRC新地/UGRC犯罪	/强制灭绝
 #			国家可建公司/国家支持公司/星球支持公司	/UGRC罪企
 #			杂交许可
 #			银河市场/星海议会/星海帝国
@@ -510,9 +510,9 @@ can_vote_in_democratic_election = {
 #Checks whether any leaders (scientists etc) can be formed from this pop
 #Root = country
 #This = pop_group
-#	can_generate_leader_from_pop_group = {
-#		has_pop_group_flag = UGRC_flg_pop_RULE_can_generate_leader	# |UGRC标签|
-#	}
+can_generate_leader_from_pop_group = {
+	NOT = { has_pop_group_flag = UGRC_flg_pop_RULE_can_generate_leader_DISABLED }	# |UGRC标签|
+}
 
 
 ###	can_generate_leader_from_species
@@ -522,9 +522,9 @@ can_vote_in_democratic_election = {
 ###_|UGRC军事领袖|	####################################	GF/hiveDLC	待修
 #Root = country
 #This = pop_group
-#	can_generate_military_leader_from_pop_group = {
-#		has_pop_group_flag = UGRC_flg_pop_RULE_can_generate_military_leader	# |UGRC标签|
-#	}
+can_generate_military_leader_from_pop_group = {
+	NOT = { has_pop_group_flag = UGRC_flg_pop_RULE_can_generate_military_leader_DISABLED }	# |UGRC标签|
+}
 
 
 ###	can_generate_army_from_planet
@@ -2025,16 +2025,6 @@ can_spawn_occupation_armies = {
 system_blocks_sensors = {
 	NOT = { has_star_flag = UGRC_flg_sstm_RULE_blocks_sensors_IGNORE@root }	# |UGRC传感穿透|预留给一些暂时开图的功能
 	has_star_flag = UGRC_flg_sstm_RULE_blocks_sensors@root	# |UGRC传感阻碍|83%|
-
-#	OR = {
-#		is_inside_nebula = yes
-#		has_modifier = space_storm
-#		has_modifier = zroni_storm
-#		has_modifier = queen_scorn_storm
-#		has_star_flag = lcluster
-#		has_star_flag = sealed_system
-#		has_star_flag = storm_system
-#	}
 }
 
 
@@ -2300,7 +2290,13 @@ can_resettle_pop_group = {
 ### can_resettle_planet
 ### should_spawn_deposits
 ###	can_get_colony_events
-### is_new_colony
+
+
+###_|UGRC新地|	####################################
+# This = Planet
+is_new_colony = {
+	NOT = { has_planet_flag = UGRC_flg_plnt_RULE_is_new_colony_DISABLED }	# |UGRC标签|
+}
 
 
 ###_|UGRC犯罪|	####################################	|-50%|

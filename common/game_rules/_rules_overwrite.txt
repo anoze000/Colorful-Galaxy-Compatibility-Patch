@@ -20,7 +20,7 @@
 
 #_list		可宿敌/允许宣称
 #			星球生存/UGRC参选
-#			UGRC产生领袖*/UGRC军事领袖*
+#			UGRC产生领袖/UGRC军事领袖
 #			释放附庸/发动战争/可殖民/环境改造/殖民物种/自由思潮
 #			UGRC幸福感/可敌对	/UGRC可繁殖
 #			物种组装/轨道轰炸/全图视野
@@ -28,7 +28,7 @@
 #			UGRC修理/产生残骸	/UGRC星系管制/可跃迁/占领军
 #			UGRC传感器/跃迁管制
 #			可迁移の人口
-#			UGRC犯罪/强制灭绝
+#			UGRC新地/UGRC犯罪	/强制灭绝
 #			国家可建公司/国家支持公司/星球支持公司	/UGRC罪企
 #			杂交许可
 #			银河市场/星海议会/星海帝国
@@ -640,20 +640,20 @@ can_generate_leader_from_pop_group = { #可从pop中生成领袖
 	OR = {
 		AND = { #香草 vanilla
 			NAND = { #排除条件 Exclusions
-				has_pop_flag = community_mod_rules_trigger
+				has_pop_group_flag = community_mod_rules_trigger
 				OR = {
-					has_pop_flag = community_can_generate_leader_from_pop_true
-					has_pop_flag = community_can_generate_leader_from_pop_false
+					has_pop_group_flag = community_can_generate_leader_from_pop_group_true
+					has_pop_group_flag = community_can_generate_leader_from_pop_group_false
 				}
 			}
 			#
-			can_be_leader = yes
+			NOT = { has_pop_group_flag = UGRC_flg_pop_RULE_can_generate_leader_DISABLED }	# |UGRC标签|
 		}
 		AND = { #国防部 MOD
-			has_pop_flag = community_mod_rules_trigger
+			has_pop_group_flag = community_mod_rules_trigger
 			AND = {
-				has_pop_flag = community_can_generate_leader_from_pop_true
-				NOT = { has_pop_flag = community_can_generate_leader_from_pop_false }
+				has_pop_group_flag = community_can_generate_leader_from_pop_group_true
+				NOT = { has_pop_group_flag = community_can_generate_leader_from_pop_group_false }
 			}
 		}
 	}
@@ -692,6 +692,7 @@ can_generate_leader_from_species = { #可从物种中生成领导人
 	}
 }
 
+###_|UGRC产生领袖|	FW/GF/无言/Ereb/hiveDLC/PTep/Eevt/ETCPM/莉莉/ECI/rmaid/wv	待修
 #Checks whether this species can become espionage assets (note that some checks are also done in code)
 #Root = country
 #This = species
@@ -721,27 +722,27 @@ can_create_espionage_asset_from_species = { #可从物种创建间谍
 	}
 }
 
+###_|UGRC军事领袖|	####################################	GF/hiveDLC	待修
 #Root = country
 #This = pop_group
 can_generate_military_leader_from_pop_group = { #可从pop创建军事领袖
 	OR = {
 		AND = { #香草 vanilla
 			NAND = { #排除条件 Exclusions
-				has_pop_flag = community_mod_rules_trigger
+				has_pop_group_flag = community_mod_rules_trigger
 				OR = {
-					has_pop_flag = community_can_generate_military_leader_from_pop_true
-					has_pop_flag = community_can_generate_military_leader_from_pop_false
+					has_pop_group_flag = community_can_generate_military_leader_from_pop_group_true
+					has_pop_group_flag = community_can_generate_military_leader_from_pop_group_false
 				}
 			}
 			#
-			can_be_leader = yes
-			can_be_military_leader = yes
+			NOT = { has_pop_group_flag = UGRC_flg_pop_RULE_can_generate_military_leader_DISABLED }	# |UGRC标签|
 		}
 		AND = { #国防部 MOD
-			has_pop_flag = community_mod_rules_trigger
+			has_pop_group_flag = community_mod_rules_trigger
 			AND = {
-				has_pop_flag = community_can_generate_military_leader_from_pop_true
-				NOT = { has_pop_flag = community_can_generate_military_leader_from_pop_false }
+				has_pop_group_flag = community_can_generate_military_leader_from_pop_group_true
+				NOT = { has_pop_group_flag = community_can_generate_military_leader_from_pop_group_false }
 			}
 		}
 	}
@@ -2036,67 +2037,6 @@ can_species_be_assembled = { #可组装物种
 					has_species_flag = community_can_species_be_assembled_false
 				}
 			}
-			#	多彩
-			OR = {
-				is_robotic = yes
-				#雌伏于阴影之下起源 允许孤雌生殖物种组装
-				AND = {
-					has_trait = trait_suc_parthenogenesis
-					root = {
-						owner = { has_origin = origin_female_in_shadow }
-					}
-				}
-				#允许播种者组装
-				has_trait = trait_sowing_and_breeding
-				#淫触之虫组装淫奴
-				AND = {
-					is_species_class = PAR
-					root = {
-						is_ten_empire = yes
-						any_owned_pop_job = {
-							has_job_type = ten_nest_worker
-						}
-					}
-				}
-				#虫与自然组装
-				AND = {
-					OR = {
-						is_species_class = TEN
-						is_species_class = PAR
-					}
-					root = { owner = { has_valid_civic = civic_parasite_and_nature } }
-				}
-				#淫触圣女组装淫触造物
-				AND = {
-					is_species_class = Magical_Tentacle
-					root = {
-						is_sos_empire = yes
-						any_owned_pop_job = {
-							has_job_type = procreate_doll
-						}
-					}
-				}
-				#圣光创造圣女
-				AND = {
-					has_trait = trait_DC_ethic_asceticism
-					root = {
-						OR = {
-							has_building = building_holylight_clone_vats
-							has_building = building_world_tree_0
-							has_building = building_world_tree_1
-							has_building = building_world_tree_2
-							has_building = building_world_tree_3
-							has_building = building_world_tree_4
-							has_building = building_world_tree_5
-							AND = {
-								exists = owner
-								has_holding = { holding = holding_world_tree owner = owner.overlord }
-							}
-							owner = { has_origin = origin_INN_destruction_light }
-						}
-					}
-				}
-			}
 			is_sapient = yes
 			NOT = {
 				has_trait = trait_exd
@@ -2134,14 +2074,14 @@ can_species_be_assembled = { #可组装物种
 # Checks if a species uses bonus_growth modifier
 # This = Species
 # Root = Planet
-species_uses_bonus_growth = {
+species_uses_bonus_growth = { #使用有机组装
 	OR = {
 		AND = { #香草 vanilla
 			NAND = { #排除条件 Exclusions
 				has_species_flag = community_mod_rules_trigger
 				OR = {
-					has_species_flag = community_can_species_be_assembled_true
-					has_species_flag = community_can_species_be_assembled_false
+					has_species_flag = community_species_uses_bonus_growth_true
+					has_species_flag = community_species_uses_bonus_growth_false
 				}
 			}
 			#
@@ -2184,6 +2124,14 @@ species_uses_bonus_growth = {
 			NOT = { has_species_flag = nivlac_no_procreation }
 			if = {
 				limit = {
+					has_infertile_clone_soldier_trait = yes
+				}
+				root = {
+					check_variable = { which = clone_pops_missing_per_vat value > 0 }
+				}
+			}
+			if = {
+				limit = {
 					has_cybernetic_creed_trait = yes
 				}
 				NOT = {
@@ -2196,12 +2144,20 @@ species_uses_bonus_growth = {
 					}
 				}
 			}
+			# CG
+			OR = {
+				NOT = { has_trait = trait_DC_ethic_parasite_mind }
+				AND = {
+					has_trait = trait_DC_ethic_parasite_mind
+					root.owner = { has_valid_civic = civic_parasite_and_nature }
+				}
+			}
 		}
 		AND = { #国防部 MOD
 			has_species_flag = community_mod_rules_trigger
 			AND = {
-				has_species_flag = community_can_species_be_assembled_true
-				NOT = { has_species_flag = community_can_species_be_assembled_false }
+				has_species_flag = community_species_uses_bonus_growth_true
+				NOT = { has_species_flag = community_species_uses_bonus_growth_false }
 			}
 		}
 	}
@@ -2668,7 +2624,7 @@ can_orbitable_repair_ships = { #可维修在轨船只
 	}
 }
 
-###_[产生残骸]	FW/z_cm/ev/wsg/swg/失落帝国历史		/ZOFE/SOFE/hiveDLC/twinks	####################################
+###_[产生残骸]	FW/z_cm/ev/swg/失落帝国历史		/ZOFE/SOFE/hiveDLC/twinks	####################################
 #_glbl_flg	[FW_flg_glbl_TECH_overwhelm]	科技壁垒
 # this = ship
 # root = country that kills ship
@@ -2703,9 +2659,6 @@ can_spawn_debris = { #会产生残骸
 			is_country_type = afk_crisis_country			# swg
 			has_civic = civic_hive_strong_connection		# hiveDLC
 			has_civic = civic_tw_atlantis					# twinks
-			# wsg
-			is_country_type = wg_crisis_country
-			is_khan_country_type = yes
 			# SOFE
 			has_government = "gov_eternal_continuum"
 			has_valid_civic = civic_sofe_pursuit_answer
@@ -3188,15 +3141,6 @@ system_blocks_sensors = { #阻断探测星系
 			#
 			NOT = { has_star_flag = UGRC_flg_sstm_RULE_blocks_sensors_IGNORE@root }	# |UGRC传感穿透|预留给一些暂时开图的功能
 			has_star_flag = UGRC_flg_sstm_RULE_blocks_sensors@root	# |UGRC传感阻碍|83%|
-			#	OR = {
-			#		is_inside_nebula = yes
-			#		has_modifier = space_storm
-			#		has_modifier = zroni_storm
-			#		has_modifier = queen_scorn_storm
-			#		has_star_flag = lcluster
-			#		has_star_flag = sealed_system
-			#		has_star_flag = storm_system
-			#	}
 		}
 		AND = { #国防部 MOD
 			has_star_flag = community_mod_rules_trigger
@@ -3604,11 +3548,7 @@ can_get_colony_events = { #可以触发殖民地事件
 
 # This = Planet
 is_new_colony = { #是新殖民地
-	NOT = {
-		has_planet_flag = synth_queen_bastille
-	}
-	colony_age < 180
-	pop_amount < 1000
+	NOT = { has_planet_flag = UGRC_flg_plnt_RULE_is_new_colony_DISABLED }	# |UGRC标签|
 }
 
 # This = pop_group
@@ -3616,10 +3556,10 @@ pop_group_generates_crime = { #pop产生犯罪度
 	OR = {
 		AND = { #香草 vanilla
 			NAND = { #排除条件 Exclusions
-				has_pop_flag = community_mod_rules_trigger
+				has_pop_group_flag = community_mod_rules_trigger
 				OR = {
-					has_pop_flag = community_pop_generates_crime_true
-					has_pop_flag = community_pop_generates_crime_false
+					has_pop_group_flag = community_pop_group_generates_crime_true
+					has_pop_group_flag = community_pop_group_generates_crime_false
 				}
 			}
 			#
@@ -3629,10 +3569,10 @@ pop_group_generates_crime = { #pop产生犯罪度
 		#	is_being_assimilated = no
 		}
 		AND = { #国防部 MOD
-			has_pop_flag = community_mod_rules_trigger
+			has_pop_group_flag = community_mod_rules_trigger
 			AND = {
-				has_pop_flag = community_pop_generates_crime_true
-				NOT = { has_pop_flag = community_pop_generates_crime_false }
+				has_pop_group_flag = community_pop_group_generates_crime_true
+				NOT = { has_pop_group_flag = community_pop_group_generates_crime_false }
 			}
 		}
 	}
@@ -4419,15 +4359,9 @@ can_crossbreed_species_on_planet = { #可杂交物种的行星
 	exists = owner
 	#	|PF|开关
 	NOT = { has_global_flag = PF_flg_glbl_Hybrid_no }
-	#	wsg/SC	禁止ntr
+	#	SC	禁止ntr
 	any_owned_species = {
 		NOR = {
-			#	wsg
-			has_wg_traits = yes
-			is_archetype = WARSHIPGIRL
-			is_archetype = SHENHAI
-			is_archetype = UNITED_FLEET
-			is_archetype = NANITES_CROP
 			#	SC
 			UGRC_trgr_spcs_SC = yes
 		}
@@ -4451,7 +4385,7 @@ can_crossbreed_species_on_planet = { #可杂交物种的行星
 	}
 }
 
-###_|杂交许可|	wsg/PF/SC/ECI	####################################
+###_|杂交许可|	PF/SC/ECI	####################################
 # This = species
 can_crossbreed_species = { #可杂交的物种
 	OR = {
@@ -4466,12 +4400,6 @@ can_crossbreed_species = { #可杂交的物种
 			#
 			is_crossbreeding_possible = yes
 			NOR = {
-				#	wsg	|禁止ntr|
-				has_wg_traits = yes
-				is_archetype = WARSHIPGIRL
-				is_archetype = SHENHAI
-				is_archetype = UNITED_FLEET
-				is_archetype = NANITES_CROP
 				# SC
 				UGRC_trgr_spcs_SC = no
 				# GF
@@ -4577,10 +4505,10 @@ can_be_sold_on_slave_market = { #可在奴隶市场出售
 	OR = {
 		AND = { #香草 vanilla
 			NAND = { #排除条件 Exclusions
-				has_pop_flag = community_mod_rules_trigger
+				has_pop_group_flag = community_mod_rules_trigger
 				OR = {
-					has_pop_flag = community_can_be_sold_on_slave_market_true
-					has_pop_flag = community_can_be_sold_on_slave_market_false
+					has_pop_group_flag = community_can_be_sold_on_slave_market_true
+					has_pop_group_flag = community_can_be_sold_on_slave_market_false
 				}
 			}
 			#
@@ -4625,9 +4553,6 @@ can_be_sold_on_slave_market = { #可在奴隶市场出售
 					}
 				}
 			}
-			#	wsg		禁止ntr
-			has_wg_traits = no
-			species = { UGRC_trgr_spcs_WSG = no }
 			#	SC
 			species = { UGRC_trgr_spcs_SC = no }
 			#	PTep
@@ -4682,8 +4607,8 @@ can_be_sold_on_slave_market = { #可在奴隶市场出售
 		AND = { #国防部 MOD
 			has_pop_flag = community_mod_rules_trigger
 			AND = {
-				has_pop_flag = community_can_be_sold_on_slave_market_true
-				NOT = { has_pop_flag = community_can_be_sold_on_slave_market_false }
+				has_pop_group_flag = community_can_be_sold_on_slave_market_true
+				NOT = { has_pop_group_flag = community_can_be_sold_on_slave_market_false }
 			}
 		}
 	}
@@ -5959,14 +5884,33 @@ will_leader_retire = { #领导人是否会退休
 # Used to call the Second Chance toast when a leader dies, still need to clone it and actually have the leader survive
 # This = leader
 will_leader_survive = { #领袖复活
-	exists = owner
 	OR = {
-		# Spare Organs trait
-		AND = {
-			species = { has_trait = trait_spare_organs }
-			NOT = { has_trait = trait_leader_second_chanced }
+		AND = { #香草 vanilla
+			NAND = { #排除条件 Exclusions
+				has_leader_flag = community_mod_rules_trigger
+				OR = {
+					has_leader_flag = community_will_leader_survive_true
+					has_leader_flag = community_will_leader_survive_false
+				}
+			}		
+			#	
+			exists = owner
+			OR = {
+				# Spare Organs trait
+				AND = {
+					species = { has_trait = trait_spare_organs }
+					NOT = { has_trait = trait_leader_second_chanced }
+				}
+				leader_backup_clone_can_activate = yes
+			}
 		}
-		leader_backup_clone_can_activate = yes
+		AND = { #国防部 MOD
+			has_leader_flag = community_mod_rules_trigger
+			AND = {
+				has_leader_flag = community_will_leader_survive_true
+				NOT = { has_leader_flag = community_will_leader_survive_false }
+			}
+		}
 	}
 }
 
@@ -6044,12 +5988,6 @@ can_trade_leader = { #可交易的领导者
 			##_|mod特殊|	FW/
 			hidden_trigger = {
 				FW_trgr_ldr_SP = no	# |FW特殊领袖|
-			}
-			##	wsg
-			custom_tooltip = {
-				fail_text = "cannot_sold_wg_leader"
-				is_special_affection_leader = no
-				is_wg_event_leader = no
 			}
 			#	
 			##_|特殊任务|	+rmaid/多彩
@@ -6230,12 +6168,6 @@ can_trade_fleet = { #可交易的舰队
 				}
 			}		
 			#	
-			##	wsg
-			if = { limit = { has_global_flag = has_wsg_mod }	# 舰r激活
-				custom_tooltip = { fail_text = "cannot_sold_wg_fleet"
-					NOT = { any_owned_ship = { is_wg_event_limit_ships = yes } }
-				}
-			}
 			##	阿夸
 			if = { limit = { has_global_flag = install_kuat_mod }	# 阿夸激活
 				custom_tooltip = { fail_text = "cannot_sold_kuat_fleet"
