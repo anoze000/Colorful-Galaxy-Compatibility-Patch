@@ -1769,7 +1769,6 @@ can_colonize_with_species = { #可殖民星球的物种
 				NOT = { has_trait = trait_self_modified }
 				is_same_species = root
 			}
-			has_cybernetic_creed_trait = no
 			NOR = {
 				has_trait = trait_pathogenic_genes
 				has_trait = trait_limited_cybernetic
@@ -2005,11 +2004,15 @@ can_species_procreate = { #可繁殖物种
 					}
 				}
 			}
+			# CG
 			#淫触之虫无法自然增长 
 			OR = {
 				AND = {
 					has_trait = trait_DC_ethic_parasite_mind
-					root.owner = { has_country_flag = has_ten_crisis_perk_1 }
+					OR = {
+						root.owner = { has_country_flag = has_ten_crisis_perk_1 }
+						has_trait = trait_ten_zoogony
+					}
 				}
 				NOT = { has_trait = trait_DC_ethic_parasite_mind }
 			}

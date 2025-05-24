@@ -941,7 +941,6 @@ can_colonize_with_species = {
 		NOT = { has_trait = trait_self_modified }
 		is_same_species = root
 	}
-	has_cybernetic_creed_trait = no
 	NOR = {
 		has_trait = trait_pathogenic_genes
 		has_trait = trait_limited_cybernetic
@@ -3485,7 +3484,7 @@ leader_election_weight = {
 			success_text = Xeno
 			owner = { has_ethic = ethic_fanatic_xenophile }
 			NOT = {
-				is_same_species = ruler
+				is_same_species = owner.ruler
 			}
 		}
 		mult = 1.2
