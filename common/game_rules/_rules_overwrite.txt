@@ -57,8 +57,7 @@
 #_[GF]		少女前线									<200804>
 #_[阿夸]												<210819>	|阿夸激活|
 #_[kc]		舰队collection								<210420>
-#_[azl]		碧蓝航线DLC									<210420>
-#_[azlr]	碧蓝航线R									<210915>
+#_[azl]		碧蓝航线DLC									<250528>
 #_[adf]		AshArms灰烬战线								<210420>
 #_|涅槃|	Nirvana Empire Project						<220921>
 #_[pkman]	伊布帝国v1.22								<210501>
@@ -2027,6 +2026,7 @@ can_species_procreate = { #可繁殖物种
 	}
 }
 
+###_|物种组装|	+azl
 # Checks if a species can procreate
 # This = Species
 # Root = Planet
@@ -2039,6 +2039,10 @@ can_species_be_assembled = { #可组装物种
 					has_species_flag = community_can_species_be_assembled_true
 					has_species_flag = community_can_species_be_assembled_false
 				}
+			}
+			OR ={
+				is_robotic = yes
+				is_KANSEN_species = yes	#azl
 			}
 			is_sapient = yes
 			NOT = {
@@ -2462,7 +2466,10 @@ are_rebels_hostile = { #叛乱分子是敌对的
 
 #Root: planet
 should_colony_be_destroyed_on_pc_change = { #应当在更改星球类型时摧毁殖民地
-	is_planet_class = pc_infested
+	OR = {
+		is_planet_class = pc_infested
+		is_planet_class = pc_ai
+	}
 }
 
 # Is the given fleet the portal for given extradimensional country
@@ -3196,7 +3203,7 @@ can_enter_system_by_jump = { #可跃迁进入星系
 						#	|禁止条件|
 						#	|通行可用|
 						OR = {
-							has_country_flag = AAR_flg_cntr_JUMP_webway_TGT		# |AAR|网道行者
+							has_country_flag = AAR_flg_cntr_WEBWAY_relic_ON		# |AAR|网道行者relic
 							has_country_flag = TAC_traveler						# |TAC|
 							has_country_flag = wtmnb_order						# |多彩|wtmnb
 						}
@@ -3771,6 +3778,7 @@ should_force_decline_species = { #应该被强制灭绝的物种
 	}
 }
 
+###_|国家可建公司|	ETCPM/hiveDLC/驴岛/wsg/GF/精灵/莉莉/久远/星海帝皇/ECI/rmaid/ARP/HFE/SC/azl	####################################
 # This = country
 can_build_branch_offices = { #可建立分部
 	OR = {
@@ -3785,7 +3793,7 @@ can_build_branch_offices = { #可建立分部
 			#
 			custom_tooltip = {
 				fail_text = BRANCH_OFFICE_NOT_MEGACORP
-				##	+ETCPM/hiveDLC/MCA/驴岛/wsg	/GF/azl/azlr/精灵	/ECI
+				##	+ETCPM/hiveDLC/MCA/驴岛/wsg	/GF/精灵	/ECI
 				OR = {
 					#	vanilla
 					is_megacorp = yes
@@ -3803,25 +3811,8 @@ can_build_branch_offices = { #可建立分部
 					has_civic = civic_business_union
 					#	wsg
 					has_authority = auth_warshipgirls
-					AND = {
-						has_authority = auth_shenhai
-						OR = {
-							has_country_flag = pantsu_shop_origin
-							has_civic = civic_sh_criminal_syndicate
-						}
-					}
 					#	GF
 					has_civic = GF_civic_GK
-					#	azl
-					has_authority = auth_azur_lane_0
-					has_authority = auth_azur_lane_1
-					has_authority = auth_azur_lane_2
-					has_authority = auth_azur_lane_K
-					#	azlr
-					AND = {
-						exists = event_target:elizabeth_leader
-						has_country_flag = azur_lane_leader_elizabeth
-					}
 					#	精灵
 					is_ELF_can_build_branch_offices = yes
 					#	莉莉
@@ -3842,6 +3833,8 @@ can_build_branch_offices = { #可建立分部
 					is_country_type = hfe_pirate
 					#	SC
 					has_civic = civic_taldarim_marauder
+					#	azl
+					azurlane_default_govement_trigger = yes
 					#	多彩
 					#淫渊企业
 					has_authority = auth_brothel
@@ -3862,6 +3855,7 @@ can_build_branch_offices = { #可建立分部
 	}
 }
 
+###_|国家支持公司|	ev/阿夸/致命风暴/ZOFE/SOFE/EE/莉莉/wsg	####################################
 # This = country
 can_support_branch_offices = { #可被建立分部
 	OR = {
@@ -3881,28 +3875,27 @@ can_support_branch_offices = { #可被建立分部
 					is_country_type = awakened_fallen_empire
 
 					## 禁止所有|堕落帝国|	############
-					# ev
+					#	ev
 					is_country_type = fallen_empire_ev
-					# 阿夸
+					#	阿夸
 					is_country_type = kuat_fallen_empire
 					is_country_type = kuat_awakened_fallen_empire
 					is_country_type = awakened_return_kuat_empire
-					# 致命风暴	|afe|
+					#	致命风暴	|afe|
 					is_country_type = awakened_gate_builders
-					# ZOFE
+					#	ZOFE
 					is_country_type = ascended_empire
 					is_country_type = lost_empire
-					# SOFE
+					#	SOFE
 					is_progenitor_empires = yes
 					is_country_type = sofe_light_seeker
-					# EE
+					#	EE
 					is_country_type = eternal_empire
-					# 莉莉
+					#	莉莉
 					is_country_type = al_fallen_empire
-					
-					## 禁止其他|特殊国家|	############
-					# azlr
-					has_authority = auth_azur_dictatorial
+					#	wsg
+					is_wg_fallen_empire = yes
+					is_sh_fallen_empire = yes
 				}
 			}
 			##_|禁止_巨企| +多彩		|待修|
@@ -3944,6 +3937,7 @@ can_support_branch_offices = { #可被建立分部
 	}
 }
 
+###_|星球支持公司|	AAR	/wsg/azl/rmaid/HFE/hiveDLC/MCA/ETCPM/莉莉/久远/ECI/星海帝皇/精灵/驴岛	####################################
 # This = planet
 # Root = country
 can_build_branch_office_on_planet = { #可建立分部的行星
@@ -3999,7 +3993,7 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 					}
 				}
 			}
-			###_core商业协定	+hiveDLC/wsg/azl/azlr/AAR/ETCPM/莉莉/久远/rmaid/精灵/驴岛
+			###_core商业协定	+hiveDLC/ETCPM/HFE	/wsg/azl/莉莉/久远/rmaid/驴岛	/星海皇帝/精灵
 			custom_tooltip = {
 				fail_text = BRANCH_OFFICE_NOT_COMMERCIAL_PACT
 				exists = owner
@@ -4014,22 +4008,13 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 							has_valid_civic = civic_mutualistic_behavior
 							#	wsg
 							has_civic = civic_sh_criminal_syndicate
-							#	azl
-							has_authority = auth_azur_lane_1
 							#	莉莉
 							has_authority = auth_AL_democratic
 							has_authority = auth_AL_arsenal
 							#	久远
 							KZ_VOY_can_build_branch_offices = yes
-							#	azlr
-							AND = {
-								exists = event_target:elizabeth_leader
-								has_country_flag = azur_lane_leader_elizabeth
-							}
 							#	rmaid
 							Maid_trigger_0_can_build_branch_offices = yes
-							#	精灵
-							is_ELF_can_force_build_branch_offices_on_planet = yes
 							#	驴岛
 							has_civic = civic_business_union
 							#	多彩
@@ -4096,41 +4081,38 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 						has_global_flag = expanded_pops_active
 						owner = { has_country_flag = cb_markets_opened@root }
 					}
-					##	HFE
+					#	HFE
 					root = { is_country_type = hfe_pirate		is_forced_friendly = prev.owner }
-					##	azl	=|自我建造|
-					AND = {
-						has_global_flag = azurlane_KuRUMiiii	# |azl激活|
-						owner = {
-							is_same_value = root
-							OR = {
-								has_authority = auth_azur_lane_2
-								has_authority = auth_azur_lane_0
-								has_authority = auth_azur_lane_K
-							}
-						}
-					}
 
 					##	wsg	=|贸易战争|
 					AND = {
-						owner = { has_country_flag = lose_wg_shop_war }
+						owner = {
+							has_country_flag = lose_wg_shop_war
+						}
 						root = {
-							OR = {
-								has_country_flag = pantsu_shop_origin
-								has_civic = civic_sh_criminal_syndicate
-							}
+							has_country_flag = pantsu_shop_origin
 						}
 					}
-					##	ECI	|自我建造|
+
+					##	azl	=|自我建造|
+					AND = {
+						has_global_flag = azurlane_KuRUMiiii	# |azl激活|
+						root = { azurlane_default_govement_trigger = yes }
+						owner = { is_same_value = root }
+					}
+
+					#	ECI		|自我建造|
 					AND = {
 						has_global_flag = ideological_revolution	# |ECI激活|
 						owner = { is_same_value = root }	# <建造者>和<接受者>相同
 					}
-					##	星海帝皇	=|义军同盟|
+					##	星海帝皇	|义军同盟|
 					AND = {
 						root = { is_country_type = rebel_allience }
 						owner = { is_galactic_emperor = yes }
 					}
+					#	精灵
+					is_ELF_can_force_build_branch_offices_on_planet = yes
 				}
 			}
 			###_|巨企附庸|
@@ -4230,6 +4212,11 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 					}
 				}
 			}
+			###	无分部AI世界
+			custom_tooltip = {
+				fail_text = NO_BRANCH_OFFICE_ON_AI_WORLD
+				NOT = { is_planet_class = pc_ai }
+			}
 			###	无分部世界
 			custom_tooltip = {
 				fail_text = NO_BRANCH_OFFICE_ON_NANITE_WORLD
@@ -4239,16 +4226,29 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 				fail_text = NO_BRANCH_OFFICE_ON_SYNAPTIC_LATHE
 				NOT = { is_planet_class = pc_cosmogenesis_world }
 			}
+			###	自我建造
 			custom_tooltip = {
 				fail_text = NO_BRANCH_OFFICE_ON_SELF
 				OR = {
 					owner = {
 						NOT = { is_same_value = root }
 					}
-					# CGPC
-					root = {
-						#爱欲盛宴
-						has_valid_civic = civic_master
+					root = { 
+						has_country_flag = UGRC_flg_cntr_RULE_branch_self_ENABLE 	#_|UGRC标签|
+					}	
+				}
+			}
+			###	mod	##############################
+			hidden_trigger = {
+				### MCA
+				if = { limit = { has_global_flag = using_mod_more_corporate_authorities }
+					NOR = {
+						NOT = { root = { has_ai_personality = principled_rogues		is_ai = yes } }	
+						owner = { their_opinion = { who = root value < 0 } }
+						owner = {
+							their_opinion = { who = root value < 20 }
+							NOT = { has_opinion_modifier = { who = root modifier = opinion_new_contact is_reverse = yes } }
+						}
 					}
 				}
 			}
@@ -4287,19 +4287,6 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 				}
 			}
 			
-			hidden_trigger = {
-				### MCA
-				if = { limit = { has_global_flag = using_mod_more_corporate_authorities }
-					NOR = {
-						NOT = { root = { has_ai_personality = principled_rogues		is_ai = yes } }	
-						owner = { their_opinion = { who = root value < 0 } }
-						owner = {
-							their_opinion = { who = root value < 20 }
-							NOT = { has_opinion_modifier = { who = root modifier = opinion_new_contact is_reverse = yes } }
-						}
-					}
-				}
-			}
 			###	rmaid	|失控女仆|写得挺精致√
 			Maid_trigger_2_can_build_branch_office_on_planet = yes
 			### 精灵
@@ -4330,7 +4317,7 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 	}
 }
 
-###_|UGRC罪企|	ETCPM/hiveDLC/MCA/wsg/ev/azlr/精灵/ECI	####################################
+###_|UGRC罪企|	ETCPM/hiveDLC/MCA/wsg/ev/精灵/ECI	####################################
 # This = country
 # Checked by is_criminal_syndicate trigger
 is_criminal_syndicate_rule = { #遵循犯罪集团规则

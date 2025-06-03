@@ -420,7 +420,7 @@ UGRC_eft_sstm_RULE_flg_DB = {
 
 ###	UGRC全局国家标签DB	################################################################################################################################################################
 #_evt	<ugrc开局框架/ugrc开局延时	/ugrc读档框架	/ugrc年检框架>
-#_list	UGRC幸福感/UGRC殖民地/UGRC星系管制		/UGRC罪企
+#_list	UGRC幸福感/UGRC殖民地/UGRC星系管制		/UGRC自我分部/UGRC罪企
 UGRC_eft_glbl_RULE_cntr_flg_DB = {
 	every_country = {
 		##	UGRC幸福感		####################
@@ -538,6 +538,20 @@ UGRC_eft_glbl_RULE_cntr_flg_DB = {
 		}
 
 
+		##	UGRC自我分部	####################
+		if = {
+			limit = {
+				pop_amount > 0
+				OR = {
+					#	azl
+					azurlane_default_govement_trigger = no
+				}
+			}
+			set_country_flag = UGRC_flg_cntr_RULE_branch_self_ENABLE
+		}
+		else_if = { limit = { has_country_flag = UGRC_flg_cntr_RULE_branch_self_ENABLE }
+			remove_country_flag = UGRC_flg_cntr_RULE_branch_self_ENABLE
+		}
 		##	UGRC罪企	####################
 		if = {
 			limit = {
@@ -575,11 +589,6 @@ UGRC_eft_glbl_RULE_cntr_flg_DB = {
 					has_authority = auth_cooperative
 					#	ETCPM
 					has_authority = auth_private
-					#	azlr
-					AND = {
-						exists = event_target:elizabeth_leader
-						has_country_flag = azur_lane_leader_elizabeth
-					}
 					#	精灵
 					is_ELF_criminal_syndicate_rule = yes
 					#	SC
@@ -776,7 +785,7 @@ UGRC_eft_spcs_RULE_flg_DB = {
 				#	swg
 				is_archetype = STARSHIPGIRLS
 			}
-			NOT = { has_species_flag = nivlac_no_procreation }
+			NOT = { has_species_flag = nivlac_no_procreation }	# |V禁用繁殖|
 		}
 		remove_species_flag = UGRC_flg_spcs_RULE_procreate_DISABLE
 	}

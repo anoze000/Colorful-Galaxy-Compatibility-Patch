@@ -119,7 +119,7 @@ can_generate_military_leader_from_pop_group = {
 }
 
 
-###_|UGRC幸福感|	rmaid/wv/thl/时空	####################################
+###_|UGRC幸福感|	rmaid/wv/thl/时空/wsg	####################################
 # Root = Species
 # From = Country
 # This = Species
@@ -188,6 +188,12 @@ species_has_happiness = {
 				from = { has_policy_flag = ai_outlawed }
 			}
 		}
+		#	wsg
+		has_trait = sh_trait_shenhai
+		has_trait = sh_trait_shenhai1
+		has_trait = sh_trait_shenhai2
+		has_trait = sh_trait_silent
+		has_trait = sh_trait_silent1
 	}
 }
 
@@ -660,7 +666,7 @@ can_orbitable_repair_ships = {
 }
 
 
-###_|UGRC罪企|	ETCPM/hiveDLC/MCA/wsg/ev/azlr/精灵/ECI/SC	####################################
+###_|UGRC罪企|	ETCPM/hiveDLC/MCA/wsg/ev/精灵/ECI/SC	####################################
 # This = country
 # Checked by is_criminal_syndicate trigger
 is_criminal_syndicate_rule = {
@@ -697,11 +703,6 @@ is_criminal_syndicate_rule = {
 		has_authority = auth_cooperative
 		#	ETCPM
 		has_authority = auth_private
-		#	azlr
-		AND = {
-			exists = event_target:elizabeth_leader
-			has_country_flag = azur_lane_leader_elizabeth
-		}
 		#	精灵
 		is_ELF_criminal_syndicate_rule = yes
 		#	SC
