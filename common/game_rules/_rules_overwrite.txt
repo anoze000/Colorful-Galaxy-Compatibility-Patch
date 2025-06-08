@@ -451,7 +451,10 @@ species_has_citizenship = { #物种拥有公民身份
 should_abduct_pop_group = { #应该绑架pop 组
 	planet = {
 		exists = owner
-		owner = { is_hostile = root }
+		owner = {
+			is_hostile = root
+			is_default_or_fallen = yes
+		}
 	}
 	has_virtual_species_trait = no
 	NAND = {
@@ -3711,12 +3714,6 @@ should_force_decline_species = { #应该被强制灭绝的物种
 						}
 					}
 				}
-				# This slowly kills off the Syntheic Fertility Species
-				custom_tooltip = {
-					success_text = PATHOGENIC_GENES_FORCE_DECLINE
-					exists = this
-					has_trait = trait_pathogenic_genes
-				}
 				from = {
 					custom_tooltip = {
 						success_text = VOIDSPAWN_FORCE_DECLINE
@@ -4212,12 +4209,11 @@ can_build_branch_office_on_planet = { #可建立分部的行星
 					}
 				}
 			}
-			###	无分部AI世界
+			###	无分部世界
 			custom_tooltip = {
 				fail_text = NO_BRANCH_OFFICE_ON_AI_WORLD
 				NOT = { is_planet_class = pc_ai }
 			}
-			###	无分部世界
 			custom_tooltip = {
 				fail_text = NO_BRANCH_OFFICE_ON_NANITE_WORLD
 				NOT = { is_planet_class = pc_gray_goo }

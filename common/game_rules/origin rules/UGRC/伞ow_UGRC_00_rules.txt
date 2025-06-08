@@ -2379,12 +2379,6 @@ should_force_decline_species = {
 				}
 			}
 		}
-		# This slowly kills off the Syntheic Fertility Species
-		custom_tooltip = {
-			success_text = PATHOGENIC_GENES_FORCE_DECLINE
-			exists = this
-			has_trait = trait_pathogenic_genes
-		}
 		from = {
 			custom_tooltip = {
 				success_text = VOIDSPAWN_FORCE_DECLINE
@@ -2794,6 +2788,10 @@ can_build_branch_office_on_planet = {
 		}
 	}
 	###	无分部世界
+	custom_tooltip = {
+		fail_text = NO_BRANCH_OFFICE_ON_AI_WORLD
+		NOT = { is_planet_class = pc_ai }
+	}
 	custom_tooltip = {
 		fail_text = NO_BRANCH_OFFICE_ON_NANITE_WORLD
 		NOT = { is_planet_class = pc_gray_goo }
